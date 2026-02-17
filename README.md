@@ -5,7 +5,7 @@
 
 ## Project Overview
 
-TurtTowers is an interactive hybrid tower defense game developed to satisfy the requirements of the Computer Science Senior Capstone. The project combines strategic gameplay with environmental education, aiming to raise awareness regarding marine ecosystem degradation and ocean pollution.
+TurtTowers is an interactive hybrid tower defense game developed to satisfy the requirements of the Senior Capstone. The project combines strategic gameplay with environmental education, aiming to raise awareness regarding marine ecosystem degradation and ocean pollution.
 
 Players are tasked with defending a central objective, the "Mother Shell," from waves of antagonistic pollutants (plastics, gases, and hazardous waste). The game utilizes a core loop of strategic resource management and tower placement, leveraging a custom economy to upgrade defenses and unlock abilities.
 
