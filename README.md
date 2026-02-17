@@ -39,7 +39,7 @@ The application is built using the Unity Engine with C# as the primary programmi
 
 ## Technology Stack
 
-* **Engine:** Unity (2022 LTS)
+* **Engine:** Unity
 * **Language:** C#
 * **Integrated Development Environment (IDE):** JetBrains Rider
 * **Version Control:** Git / GitHub
