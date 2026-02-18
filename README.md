@@ -3,6 +3,9 @@
 **Senior Computer Science Capstone Project**
 **Authors:** Ryan Madensky, Keegan Dunn, Jason Wang
 
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/7d41cd44-b113-4072-9db4-ed7274115de5" />
+
+
 ## Project Overview
 
 TurtTowers is an interactive hybrid tower defense game developed to satisfy the requirements of the Senior Capstone. The project combines strategic gameplay with environmental education, aiming to raise awareness regarding marine ecosystem degradation and ocean pollution.
