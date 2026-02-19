@@ -1,8 +1,8 @@
 # TurtTowers
 
 **Senior Computer Science Capstone Project**
-**Authors:** Ryan Madensky, Keegan Dunn, Jason Wang
-**Contact Information:** Ryan Madensky - madensrp@gmail.com
+
+**Authors:** [Ryan Madensky](mailto:ryan.madensky@ocvts.org), [Keegan Dunn](mailto:keegan.dunn@ocvts.org), [Jason Wang](mailto:jason.wang@ocvts.org)
 
 <img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/7d41cd44-b113-4072-9db4-ed7274115de5" />
 
