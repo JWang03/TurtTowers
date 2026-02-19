@@ -48,13 +48,4 @@ The application is built using the Unity Engine with C# as the primary programmi
 * **Version Control:** Git / GitHub
 * **Deployment:** Steam
 
-## Installation and Setup
-
-To set up the development environment for TurtTowers, please follow the instructions below.
-
-### Prerequisites
-* Unity Hub and Unity Editor
-* JetBrains Rider
-* Git
-
 This project is created for academic purposes.
