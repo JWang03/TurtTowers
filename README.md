@@ -32,7 +32,7 @@ The game includes planned boss encounters to challenge player strategies.
 
 ## Technical Architecture
 
-The application is built using the Unity Engine with C# as the primary programming language. The architecture prioritizes modularity and performance optimization to ensure scalability.
+The application is built using the Unity Engine with C# as the primary programming language. The object scripts will be coded using the JetBrains Rider IDE. The architecture prioritizes modularity and performance optimization to ensure scalability.
 
 ### Data Management
 * **ScriptableObjects:** All game data (enemy stats, tower attributes, wave configurations) is modularized using Unity's ScriptableObject architecture. This decouples data from logic, allowing designers to balance gameplay without modifying the codebase.
