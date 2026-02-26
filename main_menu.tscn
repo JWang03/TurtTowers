@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1170316964]
+[node name="Background" type="TextureRect" parent="." unique_id=1170316964]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,3 +20,24 @@ grow_vertical = 2
 texture = ExtResource("1_06t4h")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="StartGame" type="Button" parent="." unique_id=1512135169]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 222.0
+offset_right = 655.0
+offset_bottom = 278.0
+
+[node name="Towers" type="Button" parent="." unique_id=984938724]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 295.0
+offset_right = 642.0
+offset_bottom = 347.0
+
+[node name="Settings" type="Button" parent="." unique_id=267498840]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 363.0
+offset_right = 643.0
+offset_bottom = 415.0
