@@ -36,7 +36,7 @@ The game includes planned boss encounters to challenge player strategies.
 The application is built with Godot Engine 4.6.1, using GDScript as the primary programming language. The object scripts will be coded in Godot's built-in script editor. The architecture prioritizes modularity and performance optimization to ensure scalability.
 
 ### Data Management
-* **ScriptableObjects:** All game data (enemy stats, tower attributes, wave configurations) is modularized using Unity's ScriptableObject architecture. This decouples data from logic, allowing designers to balance gameplay without modifying the codebase.
+* **ScriptableObjects:** All game data (enemy stats, tower attributes, wave configurations) is modularized using Godot's ScriptableObject architecture. This decouples data from logic, allowing designers to balance gameplay without modifying the codebase.
 
 ### Performance Optimization
 * **Object Pooling:** To maintain a high framerate during intensive waves, the project implements object pooling for all repetitive entities, including enemies, projectiles, and visual effect particles.
