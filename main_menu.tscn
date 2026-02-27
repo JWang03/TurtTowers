@@ -1,6 +1,25 @@
 [gd_scene format=3 uid="uid://cmuoto6fjqtrl"]
 
 [ext_resource type="Texture2D" uid="uid://cre7gw3yqm71l" path="res://Images/Gemini_Generated_Image_s9d2dps9d2dps9d2.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://7is4vhd752f6" path="res://settings.gd" id="2_7vrkn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06t4h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jix8l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vrkn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlkkf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qe12f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qtwp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dy7ct"]
 
 [node name="MainMenu" type="Control" unique_id=1211162565]
 layout_mode = 3
@@ -27,6 +46,9 @@ offset_left = 464.0
 offset_top = 222.0
 offset_right = 655.0
 offset_bottom = 278.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_06t4h")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jix8l")
 
 [node name="Towers" type="Button" parent="." unique_id=984938724]
 layout_mode = 0
@@ -34,6 +56,9 @@ offset_left = 477.0
 offset_top = 295.0
 offset_right = 642.0
 offset_bottom = 347.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7vrkn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_glbon")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nlkkf")
 
 [node name="Settings" type="Button" parent="." unique_id=267498840]
 layout_mode = 0
@@ -41,3 +66,7 @@ offset_left = 478.0
 offset_top = 363.0
 offset_right = 643.0
 offset_bottom = 415.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qe12f")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8qtwp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dy7ct")
+script = ExtResource("2_7vrkn")
