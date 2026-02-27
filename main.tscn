@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bvxmunixoeuva"]
+
+[ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://zombie.tscn" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c85mslltj4b5f" path="res://tower.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bkhy7b8leu076" path="res://bullet.tscn" id="3_lquwl"]
+
+[node name="Node2D" type="Node2D" unique_id=1520096501]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=665358203]
+position = Vector2(128, 36)
+zoom = Vector2(5, 5)
+
+[node name="zombie" parent="." unique_id=1281579997 instance=ExtResource("1_h2yge")]
+position = Vector2(224, 22)
+
+[node name="Tower" parent="." unique_id=1404473068 instance=ExtResource("2_1bvp3")]
+position = Vector2(27, 23)
+bullet_scene = ExtResource("3_lquwl")

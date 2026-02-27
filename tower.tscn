@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c85mslltj4b5f"]
+
+[ext_resource type="Script" uid="uid://db38jgxklxbj5" path="res://tower.gd" id="1_stebd"]
+[ext_resource type="Texture2D" uid="uid://esw40sfr2q65" path="res://textures/magictower.png" id="2_vedim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stebd"]
+size = Vector2(437, 20)
+
+[node name="Tower" type="StaticBody2D" unique_id=1404473068]
+script = ExtResource("1_stebd")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1053606515]
+position = Vector2(1.0000005, -6.9999995)
+scale = Vector2(0.109375, 0.15624999)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1846110521]
+position = Vector2(-7.748604e-07, 9.536743e-07)
+scale = Vector2(0.011666666, 0.0165625)
+texture = ExtResource("2_vedim")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=973915034]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=120803365]
+position = Vector2(212.5, -1)
+shape = SubResource("RectangleShape2D_stebd")
+
+[node name="Timer" type="Timer" parent="." unique_id=923314776]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=127243569]
+polygon = PackedVector2Array(2, -5, 2, -2, 1, 2, 1, 5, 1, 7, -1, 7, -3, 6, -3, 2, -4, -3, -4, -6, -1, -9)
