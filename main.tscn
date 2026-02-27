@@ -14,5 +14,5 @@ zoom = Vector2(5, 5)
 position = Vector2(224, 22)
 
 [node name="Tower" parent="." unique_id=1404473068 instance=ExtResource("2_1bvp3")]
-position = Vector2(27, 23)
+position = Vector2(26, 26)
 bullet_scene = ExtResource("3_lquwl")
