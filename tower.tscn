@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://db38jgxklxbj5" path="res://tower.gd" id="1_stebd"]
 [ext_resource type="Texture2D" uid="uid://esw40sfr2q65" path="res://textures/magictower.png" id="2_vedim"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_stebd"]
-size = Vector2(437, 20)
+[sub_resource type="CircleShape2D" id="CircleShape2D_vedim"]
+radius = 158.0
 
 [node name="Tower" type="StaticBody2D" unique_id=1404473068]
 script = ExtResource("1_stebd")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1053606515]
-position = Vector2(1.0000005, -6.9999995)
+position = Vector2(4, -4.9999976)
 scale = Vector2(0.109375, 0.15624999)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1846110521]
@@ -18,11 +18,11 @@ position = Vector2(-7.748604e-07, 9.536743e-07)
 scale = Vector2(0.011666666, 0.0165625)
 texture = ExtResource("2_vedim")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=973915034]
+[node name="Range" type="Area2D" parent="." unique_id=973915034]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=120803365]
-position = Vector2(212.5, -1)
-shape = SubResource("RectangleShape2D_stebd")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=120803365]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_vedim")
 
 [node name="Timer" type="Timer" parent="." unique_id=923314776]
 
