@@ -42,6 +42,8 @@ sources/0 = SubResource("TileSetAtlasSource_8orcg")
 sources/1 = SubResource("TileSetAtlasSource_jl37b")
 
 [node name="Node2D" type="Node2D" unique_id=2110147607]
+z_index = -100
+z_as_relative = false
 
 [node name="Grid" type="TileMapLayer" parent="." unique_id=1928809463]
 modulate = Color(1, 1, 1, 0.3019608)
@@ -53,5 +55,3 @@ tile_map_data = PackedByteArray("AAAEAAAAAQAAAAAAAAAEAAEAAQAAAAAAAAAEAAIAAQAAAAA
 tile_set = SubResource("TileSet_60pjt")
 rendering_quadrant_size = 64
 script = ExtResource("2_8orcg")
-
-[node name="Towers" type="Node2D" parent="." unique_id=1926755714]
