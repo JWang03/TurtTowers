@@ -10,6 +10,7 @@ extends StaticBody2D
 var targets_in_range: Array = []
 
 func _ready():
+	print("searching")
 	timer.wait_time = fire_rate
 	timer.one_shot = false
 	

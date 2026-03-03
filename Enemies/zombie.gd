@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var speed: float = -80.0 
-@export var health: int = 10
+@export var speed: float = -10.0 
+@export var health: float = 50.0
 @export var attack_damage: int = 1
 
 @onready var ray_cast = $RayCast2D 
@@ -34,7 +34,8 @@ func start_eating(tower):
 	is_eating = true
 	print("Eating tower!")
 
-func take_damage(amount: int):
+func take_damage(amount):
+	print("zombie took: ", amount, "from ", get_stack()[1].source)
 	health -= amount
 	modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout

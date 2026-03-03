@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bkhy7b8leu076"]
 
-[ext_resource type="Script" uid="uid://c8qrnbc56o7o8" path="res://bullet.gd" id="1_v7oki"]
+[ext_resource type="Script" uid="uid://c8qrnbc56o7o8" path="res://Towers/bullet.gd" id="1_v7oki"]
 [ext_resource type="Texture2D" uid="uid://yxrqjjhaj5x7" path="res://textures/blue fireball.png" id="2_v8qja"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4vbm"]
