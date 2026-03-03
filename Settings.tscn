@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cvdpi6lirmnyy"]
 
+[ext_resource type="Texture2D" uid="uid://du6o1am5iqc2m" path="res://Images/unnamed.jpg" id="1_bvb5x"]
+
 [node name="Settings" type="Control" unique_id=549962643]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +9,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1361659314]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bvb5x")
