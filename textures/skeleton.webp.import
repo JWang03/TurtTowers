@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6sj2q4rco717"
-path="res://.godot/imported/bomber.png-290d2037d634d9ee9567f85836b872af.ctex"
+uid="uid://deqfh0pt5gqaj"
+path="res://.godot/imported/skeleton.webp-f0a66b1554064db93b1e0aadff174315.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/bomber.png"
-dest_files=["res://.godot/imported/bomber.png-290d2037d634d9ee9567f85836b872af.ctex"]
+source_file="res://textures/skeleton.webp"
+dest_files=["res://.godot/imported/skeleton.webp-f0a66b1554064db93b1e0aadff174315.ctex"]
 
 [params]
 

@@ -21,7 +21,7 @@ func _physics_process(delta):
 		move_and_slide()
 		check_for_towers()
 	else:
-		# Logic for destroying tower would go here if we do that
+		# Logic for destroying mother tower would go here if we do that
 		pass
 
 func check_for_towers():
