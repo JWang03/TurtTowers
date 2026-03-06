@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://cmuoto6fjqtrl"]
 
-[ext_resource type="Texture2D" uid="uid://cre7gw3yqm71l" path="res://Images/Gemini_Generated_Image_s9d2dps9d2dps9d2.png" id="1_06t4h"]
-[ext_resource type="Script" uid="uid://7is4vhd752f6" path="res://settings.gd" id="2_fu7sn"]
-[ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Images/image-removebg-preview.png" id="3_jix8l"]
+[ext_resource type="Texture2D" uid="uid://cre7gw3yqm71l" path="res://Images/HomeUI.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://cs0eavru7btjc" path="res://main_menu.gd" id="1_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Images/SettingsMenu.png" id="3_jix8l"]
+[ext_resource type="AudioStream" uid="uid://b4ivihcqewi1a" path="res://SPALEXMA - We Are Charlie Kirk.mp3" id="4_jix8l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06t4h"]
 
@@ -16,49 +17,6 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlkkf"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qe12f"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qtwp"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dy7ct"]
-
-[sub_resource type="Animation" id="Animation_glbon"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../ColorRect:color:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0.5882353]
-}
-
-[sub_resource type="Animation" id="Animation_nlkkf"]
-resource_name = "popup"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../ColorRect:color:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(-0.8333333, 0.29999995),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0.5882353, 150.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qe12f"]
-_data = {
-&"RESET": SubResource("Animation_glbon"),
-&"popup": SubResource("Animation_nlkkf")
-}
-
 [node name="MainMenu" type="Control" unique_id=1211162565]
 layout_mode = 3
 anchors_preset = 15
@@ -66,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fu7sn")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1170316964]
 layout_mode = 1
@@ -78,33 +37,32 @@ texture = ExtResource("1_06t4h")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1286605004]
+[node name="StartGame" type="Button" parent="." unique_id=1512135169]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="StartGame" type="Button" parent="VBoxContainer" unique_id=1512135169]
-layout_mode = 2
+offset_right = 1152.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_06t4h")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_fu7sn")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_jix8l")
 
-[node name="Towers" type="Button" parent="VBoxContainer" unique_id=984938724]
-layout_mode = 2
+[node name="Towers" type="Button" parent="." unique_id=984938724]
+layout_mode = 0
+offset_right = 1152.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7vrkn")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_glbon")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_nlkkf")
 
-[node name="Settings" type="Button" parent="VBoxContainer" unique_id=267498840]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_qe12f")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_8qtwp")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_dy7ct")
-script = ExtResource("2_fu7sn")
+[node name="Settings" type="Button" parent="." unique_id=267498840]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 482.0
+offset_top = 363.0
+offset_right = 643.0
+offset_bottom = 413.0
+size_flags_vertical = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=374831580]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=472727133]
+[node name="Darkener" type="ColorRect" parent="CanvasLayer" unique_id=472727133]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -112,7 +70,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=965433223]
+[node name="SettingsMenu" type="TextureRect" parent="CanvasLayer" unique_id=965433223]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -126,6 +84,50 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_jix8l")
 
+[node name="HSlider" type="HSlider" parent="CanvasLayer/SettingsMenu" unique_id=875006373]
+layout_mode = 0
+offset_left = 250.5
+offset_top = 1.5
+offset_right = 518.5
+offset_bottom = 246.0
+min_value = 0.001
+max_value = 1.0
+step = 0.1
+value = 0.501
+
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer/SettingsMenu" unique_id=411955268]
+layout_mode = 0
+offset_left = 332.5
+offset_top = 101.5
+offset_right = 525.5
+offset_bottom = 282.5
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/SettingsMenu" unique_id=558514119]
+layout_mode = 0
+offset_left = 353.5
+offset_top = 221.5
+offset_right = 521.5
+offset_bottom = 241.5
+text_overrun_behavior = 5
+fit_to_longest_item = false
+item_count = 4
+popup/item_0/text = "Default"
+popup/item_0/id = 0
+popup/item_1/text = "Protanopia"
+popup/item_1/id = 1
+popup/item_2/text = "Deuteranopia"
+popup/item_2/id = 2
+popup/item_3/text = "Tritanopia"
+popup/item_3/id = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/SettingsMenu" unique_id=2092980879]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 275.5
+offset_top = 324.5
+offset_right = 399.5
+offset_bottom = 352.5
+
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1881847834]
 anchors_preset = 8
 anchor_left = 0.5
@@ -136,5 +138,11 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/PanelContainer" unique_id=682179295]
-libraries/ = SubResource("AnimationLibrary_qe12f")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=678204691]
+stream = ExtResource("4_jix8l")
+autoplay = true
+
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="value_changed" from="CanvasLayer/SettingsMenu/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="item_selected" from="CanvasLayer/SettingsMenu/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="CanvasLayer/SettingsMenu/Button" to="." method="_on_button_pressed"]
