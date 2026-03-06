@@ -1,30 +1,45 @@
 extends TileMapLayer
 
-@export var tower_scene: PackedScene = preload("res://Towers.tscn")
+@export var tower_container: Node2D
+@onready var build_manager = get_node("/root/Game/BuildManager")
 
-func _unhandled_input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		# Mouse global -> local
-		var mouse_local_pos: Vector2 = to_local(event.position)
+var occupied_cells := {}
 
-		# Local -> cell coords
-		var cell: Vector2i = local_to_map(mouse_local_pos)
+func _ready() -> void:
+	visible = false
+	build_manager.selection_changed.connect(_on_selection_changed)
 
-		# Cell -> local position of the cell's top-left (or origin point)
-		var cell_local_origin: Vector2 = map_to_local(cell)
+func _on_selection_changed(selected_scene) -> void:
+	visible = selected_scene != null
+	print("grid visible: ", visible)
 
-		# Center of the cell (in local space)
-		# For a standard rectangular tilemap, tile_set.tile_size is the correct offset.
-		var tile_size: Vector2 = Vector2(tile_set.tile_size)
-		var spawn_local_pos: Vector2 = cell_local_origin + (tile_size * 0.5)
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		print("click detected by grid script")
 
-		# Spawn tower as a child of the same parent as the tilemap (so it doesn't get "tilemap-transformed" weirdly)
-		var tower := tower_scene.instantiate() as Node2D
-		get_parent().add_child(tower)
+		if build_manager.selected_scene == null:
+			print("no tower selected")
+			return
 
-		# Convert local -> global for correct placement in the scene
-		tower.global_position = to_global(spawn_local_pos)
-		
-		
+		var mouse_local: Vector2 = get_local_mouse_position()
+		var cell: Vector2i = local_to_map(mouse_local)
+		print("clicked cell: ", cell)
 
-		print("Placed tower at cell: ", cell, " world pos: ", tower.global_position)
+		if occupied_cells.has(cell):
+			print("cell already occupied")
+			return
+
+		var cell_local_center: Vector2 = map_to_local(cell)
+		var cell_global_center: Vector2 = to_global(cell_local_center)
+		var spawn_pos: Vector2 = tower_container.to_local(cell_global_center)
+
+		var tower = build_manager.selected_scene.instantiate()
+
+		if tower is Node2D:
+			tower_container.add_child(tower)
+			tower.position = spawn_pos
+			occupied_cells[cell] = true
+			print("tower placed at cell ", cell)
+			build_manager.clear()
+		else:
+			print("selected scene is not a Node2D")

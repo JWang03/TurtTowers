@@ -5,6 +5,6 @@
 [node name="Node2D" type="Node2D" unique_id=1971713890]
 
 [node name="Tower" type="Sprite2D" parent="." unique_id=751730162]
-position = Vector2(-26, -25.999996)
+position = Vector2(1.9073486e-06, -3.8146973e-06)
 scale = Vector2(0.3046875, 0.28515625)
 texture = ExtResource("1_dgsde")
