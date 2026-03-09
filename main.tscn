@@ -1,11 +1,8 @@
 [gd_scene format=3 uid="uid://bvxmunixoeuva"]
 
 [ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="1_h2yge"]
-[ext_resource type="PackedScene" uid="uid://dmhok8tovvxvc" path="res://Towers/bomber_tower.tscn" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://chrw513jgpe4e" path="res://Towers/bomb.tscn" id="3_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://d2l8b5nykdqdg" path="res://Towers/godzilla_tower.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://do17203pjxuim" path="res://Towers/bullet_tower.tscn" id="5_7mycd"]
-[ext_resource type="PackedScene" uid="uid://bkhy7b8leu076" path="res://Towers/bullet.tscn" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://cgc1rpmolx0r2" path="res://Towers/blackhole_tower.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://edrg4d8mihvl" path="res://Towers/blackhole.tscn" id="3_1bvp3"]
 
 [node name="Node2D" type="Node2D" unique_id=1520096501]
 
@@ -14,33 +11,11 @@ position = Vector2(128, 36)
 zoom = Vector2(5, 5)
 
 [node name="zombie" parent="." unique_id=1281579997 instance=ExtResource("1_h2yge")]
-position = Vector2(222, 37)
+position = Vector2(223, -4)
 
-[node name="zombie2" parent="." unique_id=79694088 instance=ExtResource("1_h2yge")]
-position = Vector2(233, 21)
+[node name="zombie7" parent="." unique_id=491599385 instance=ExtResource("1_h2yge")]
+position = Vector2(206, -4)
 
-[node name="zombie3" parent="." unique_id=796587448 instance=ExtResource("1_h2yge")]
-position = Vector2(211, -15)
-
-[node name="zombie4" parent="." unique_id=847557659 instance=ExtResource("1_h2yge")]
-position = Vector2(168, -14)
-
-[node name="godzilla_tower" parent="." unique_id=1995404457 instance=ExtResource("3_h2yge")]
-position = Vector2(31, 81)
-
-[node name="bomber_tower" parent="." unique_id=1895806784 instance=ExtResource("2_h2yge")]
-position = Vector2(73, 85)
-bomb_scene = ExtResource("3_1bvp3")
-
-[node name="Bullet_tower" parent="." unique_id=1404473068 instance=ExtResource("5_7mycd")]
-position = Vector2(204, 92)
-bullet_scene = ExtResource("6_272bh")
-
-[node name="zombie5" parent="." unique_id=2144710181 instance=ExtResource("1_h2yge")]
-position = Vector2(205, 13)
-
-[node name="zombie6" parent="." unique_id=193423160 instance=ExtResource("1_h2yge")]
-position = Vector2(161, 22)
-
-[node name="zombie7" parent="." unique_id=660912838 instance=ExtResource("1_h2yge")]
-position = Vector2(180, 49)
+[node name="blackhole_tower" parent="." unique_id=1108750261 instance=ExtResource("2_h2yge")]
+position = Vector2(40, 79)
+black_hole_scene = ExtResource("3_1bvp3")

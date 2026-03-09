@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://edrg4d8mihvl"]
+
+[ext_resource type="Script" uid="uid://pqb5fil0dxwd" path="res://Towers/blackhole.gd" id="1_rv61l"]
+[ext_resource type="Texture2D" uid="uid://qx2wiwyjqv24" path="res://textures/vortex.webp" id="2_rv61l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ivaat"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ncgot"]
+radius = 52.03845
+
+[node name="blackhole" type="Area2D" unique_id=17030689]
+script = ExtResource("1_rv61l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=425402491]
+shape = SubResource("CircleShape2D_ivaat")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1223330176]
+position = Vector2(-1.4210855e-14, -1.1920929e-07)
+scale = Vector2(0.05142857, 0.048571426)
+texture = ExtResource("2_rv61l")
+
+[node name="ExplosionArea" type="Area2D" parent="." unique_id=1945823170]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=1447819925]
+shape = SubResource("CircleShape2D_ncgot")

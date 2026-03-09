@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var damage: float = 25
+@export var damage: float = 3
 @export var friction: float = 0.1
 @onready var explosion_area = $ExplosionArea
 

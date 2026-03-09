@@ -7,7 +7,7 @@
 radius = 136.0
 height = 358.0
 
-[node name="bomber_tower" type="StaticBody2D" unique_id=1895806784]
+[node name="bomber_tower" type="StaticBody2D" unique_id=460392742]
 script = ExtResource("1_jymjt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1146264973]
@@ -19,7 +19,7 @@ texture = ExtResource("2_jymjt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1904485298]
 position = Vector2(-2, 1)
-rotation = -3.1415927
+rotation = 3.1415925
 shape = SubResource("CapsuleShape2D_5hxg4")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=633119419]
