@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://draxeqjwqh1ws"
-path="res://.godot/imported/Gemini_Generated_Image_g8fk2ag8fk2ag8fk.png-a828fd7358088a56cf5d906a95a416d9.ctex"
+uid="uid://slcvimbaw84e"
+path="res://.godot/imported/BlueTrack.png-973681dd833f9fb3b5831d465ea72112.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Gemini_Generated_Image_g8fk2ag8fk2ag8fk.png"
-dest_files=["res://.godot/imported/Gemini_Generated_Image_g8fk2ag8fk2ag8fk.png-a828fd7358088a56cf5d906a95a416d9.ctex"]
+source_file="res://BlueTrack.png"
+dest_files=["res://.godot/imported/BlueTrack.png-973681dd833f9fb3b5831d465ea72112.ctex"]
 
 [params]
 
