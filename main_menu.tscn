@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cs0eavru7btjc" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Shader" uid="uid://qwjefknosa0f" path="res://main_menu.gdshader" id="2_glbon"]
 [ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Images/SettingsMenu.png" id="3_jix8l"]
+[ext_resource type="Texture2D" uid="uid://xd8eqpgvjx3d" path="res://Images/MapSelection.png" id="3_nlkkf"]
 [ext_resource type="AudioStream" uid="uid://b4ivihcqewi1a" path="res://SPALEXMA - We Are Charlie Kirk.mp3" id="4_jix8l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06t4h"]
@@ -65,8 +66,33 @@ offset_right = 643.0
 offset_bottom = 413.0
 size_flags_vertical = 4
 
+[node name="MapSelection" type="CanvasLayer" parent="." unique_id=280550618]
+
+[node name="Darkener" type="ColorRect" parent="MapSelection" unique_id=472727133]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="TextureRect" type="TextureRect" parent="MapSelection" unique_id=1629645748]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -441.0
+offset_top = -265.75
+offset_right = 441.0
+offset_bottom = 265.75
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_nlkkf")
+
 [node name="ColorblindLayer" type="CanvasLayer" parent="." unique_id=59880908]
 layer = 100
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="ColorblindLayer" unique_id=1398956715]
 material = SubResource("ShaderMaterial_nlkkf")
@@ -78,14 +104,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=374831580]
-
-[node name="Darkener" type="ColorRect" parent="CanvasLayer" unique_id=472727133]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.5882353)
+visible = false
 
 [node name="SettingsMenu" type="TextureRect" parent="CanvasLayer" unique_id=965433223]
 anchors_preset = 8
