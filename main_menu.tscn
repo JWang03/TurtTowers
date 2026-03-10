@@ -170,16 +170,6 @@ offset_top = 324.5
 offset_right = 399.5
 offset_bottom = 352.5
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1881847834]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1e-05, 1e-05)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=678204691]
 stream = ExtResource("4_jix8l")
 autoplay = true
