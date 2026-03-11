@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wgtpugqiaaqq"
-path="res://.godot/imported/beach.png-8caf50a786675f03162fc0a3e7736b53.ctex"
+path="res://.godot/imported/beach.png-3c77311af0c0cd61e601d9ff15c76e2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/beach.png"
-dest_files=["res://.godot/imported/beach.png-8caf50a786675f03162fc0a3e7736b53.ctex"]
+source_file="res://beach.png"
+dest_files=["res://.godot/imported/beach.png-3c77311af0c0cd61e601d9ff15c76e2f.ctex"]
 
 [params]
 

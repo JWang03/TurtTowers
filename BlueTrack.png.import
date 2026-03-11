@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c451qigpgmcvd"
-path="res://.godot/imported/BlueTrack.png-ea07ecafc3c280ee386082eef446be55.ctex"
+path="res://.godot/imported/BlueTrack.png-973681dd833f9fb3b5831d465ea72112.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/BlueTrack.png"
-dest_files=["res://.godot/imported/BlueTrack.png-ea07ecafc3c280ee386082eef446be55.ctex"]
+source_file="res://BlueTrack.png"
+dest_files=["res://.godot/imported/BlueTrack.png-973681dd833f9fb3b5831d465ea72112.ctex"]
 
 [params]
 
