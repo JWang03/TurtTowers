@@ -5,6 +5,7 @@
 
 [node name="Node2D" type="Node2D" unique_id=293985009]
 script = ExtResource("1_5exoo")
+speed = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=300712393]
 scale = Vector2(0.3, 0.3)

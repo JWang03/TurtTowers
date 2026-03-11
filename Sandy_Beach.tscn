@@ -47,7 +47,7 @@ sources/0 = SubResource("TileSetAtlasSource_jjf6g")
 [sub_resource type="Curve2D" id="Curve2D_je2ct"]
 bake_interval = 0.01
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 837, 123, 0, 0, 0, 0, 835, 241, 0, 0, 0, 0, 83, 241, 0, 0, 0, 0, 84, 404, 0, 0, 0, 0, 189, 404, 0, 0, 0, 0, 188, 352, 0, 0, 0, 0, 831, 354, 0, 0, 0, 0, 834, 465, 0, 0, 0, 0, 731, 465, 0, 0, 0, 0, 728, 570, 0, 0, 0, 0, 567, 571, 0, 0, 0, 0, 566, 459, 0, 0, 0, 0, 350, 457, 0, 0, 0, 0, 349, 513, 0, 0, 0, 0, -4, 515)
+"points": PackedVector2Array(0, 0, 0, 0, 837, 123, 0, 0, 0, 0, 835, 241, 0, 0, 0, 0, 83, 241, 0, 0, 0, 0, 84, 404, 0, 0, 0, 0, 189, 404, 0, 0, 0, 0, 188, 352, 0, 0, 0, 0, 831, 354, 0, 0, 0, 0, 834, 465, 0, 0, 0, 0, 731, 465, 0, 0, 0, 0, 728, 570, 0, 0, 0, 0, 567, 571, 0, 0, 0, 0, 566, 459, 0, 0, 0, 0, 350, 457, 0, 0, 0, 0, 349, 513, 0, 0, 0, 0, -85, 515)
 }
 point_count = 15
 
@@ -84,6 +84,8 @@ scale = Vector2(0.65767044, 0.8567708)
 texture = ExtResource("4_ckwcc")
 
 [node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
+z_index = 4096
+z_as_relative = false
 position = Vector2(113.75001, 325.49997)
 scale = Vector2(2.0044248, 1.9548193)
 texture = ExtResource("5_50yat")

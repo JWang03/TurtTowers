@@ -2,7 +2,7 @@ extends Node
 
 @export var enemy_scene: PackedScene
 @export var enemy_path: Path2D
-var spawnrate = 100
+var spawnrate = 50
 var count
 func spawn_enemy():
 	if enemy_scene == null or enemy_path == null:
@@ -18,8 +18,7 @@ func spawn_enemy():
 
 	follow.progress = 0.0
 	
-	if follow.progress_ratio >= .95:
-		follow.queue_free()
+	
 func _ready():
 	spawn_enemy()
 	count = 1
