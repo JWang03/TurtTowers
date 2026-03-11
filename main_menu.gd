@@ -13,14 +13,21 @@ var master_bus = AudioServer.get_bus_index("Master")
 @onready var colorblind_filter = $ColorblindLayer/ColorRect
 
 # References to the dropdown menus based on your Scene Tree
-@onready var colorblind_dropdown = $CanvasLayer/SettingsMenu/OptionButton
-@onready var fullscreen_dropdown = $CanvasLayer/SettingsMenu/Fullscreen
+@onready var colorblind_dropdown = $CanvasLayer/SettingsMenu/CBButton
+
+@onready var fullscreen_dropdown = $CanvasLayer/SettingsMenu/FullscreenButton
+
+# NEW: Map Selection Variables
+@onready var map_overlay = $MapSelectionLayer
+@onready var map_selector = $MapSelectionLayer/MapSelector
+@onready var map_darkener = $MapSelectionLayer/Darkener
 
 
 # --- BUILT-IN FUNCTIONS ---
 func _ready():
 	# Keep the settings menu hidden on start
 	overlay.hide()
+	map_overlay.hide()
 	
 	# Force the colorblind dropdown to visually select the first option ("Default")
 	if colorblind_dropdown:
@@ -42,7 +49,6 @@ func _ready():
 
 # --- SIGNAL FUNCTIONS ---
 func _on_settings_pressed():
-	print("The settings button was clicked!") 
 	# 1. Show the layer
 	overlay.show()
 	
@@ -80,7 +86,7 @@ func _on_button_pressed() -> void:
 	tween.chain().tween_callback(overlay.hide)
 
 
-func _on_h_slider_value_changed(value: float) -> void:
+func _on_volume_slider_value_changed(value: float) -> void:
 	# Convert the 0.0-1.0 slider value to Decibels, and apply it to the Master Bus
 	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value))
 	
@@ -106,3 +112,28 @@ func _on_fullscreen_item_selected(index: int) -> void:
 		2:
 			# Exclusive Fullscreen
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+
+
+# NEW: Map Selection Signals (Connect your signals to these!)
+func _on_start_game_pressed() -> void:
+	map_overlay.show()
+	
+	# Set pivot to center so it grows from the middle
+	map_selector.pivot_offset = map_selector.size / 2
+	map_selector.scale = Vector2.ZERO 
+	map_darkener.modulate.a = 0         
+	
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(map_darkener, "modulate:a", 1.0, 0.2)
+	tween.tween_property(map_selector, "scale", Vector2.ONE, 0.3)\
+		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_OUT)
+
+
+func _on_close_map_selection_pressed() -> void:
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(map_darkener, "modulate:a", 0.0, 0.2)
+	tween.tween_property(map_selector, "scale", Vector2.ZERO, 0.2)\
+		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_IN)
+	tween.chain().tween_callback(map_overlay.hide)
