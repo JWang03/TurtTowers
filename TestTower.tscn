@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://yaw7tgbmm1oo"]
 
 [ext_resource type="Script" uid="uid://bnh4ng3koa77w" path="res://towers.gd" id="1_1xh7j"]
-[ext_resource type="Texture2D" uid="uid://cdulbqdc6andn" path="res://icon.svg" id="1_dgsde"]
+[ext_resource type="Texture2D" uid="uid://dggga64t3o57u" path="res://icon.svg" id="1_dgsde"]
 
 [node name="Node2D" type="Node2D" unique_id=1971713890]
 script = ExtResource("1_1xh7j")

@@ -1,12 +1,14 @@
 [gd_scene format=4 uid="uid://cdpevfwoy7y1r"]
 
-[ext_resource type="Texture2D" uid="uid://c20spv8jjyteo" path="res://tile54.png" id="1_je2ct"]
+[ext_resource type="Texture2D" uid="uid://bfaepla21qfgr" path="res://tile54.png" id="1_je2ct"]
 [ext_resource type="Script" uid="uid://c7qark202ovo" path="res://grid.gd" id="2_lsk4j"]
-[ext_resource type="Texture2D" uid="uid://slcvimbaw84e" path="res://BlueTrack.png" id="3_ai02a"]
-[ext_resource type="Texture2D" uid="uid://dx6atlv3kx63n" path="res://beach.png" id="4_ckwcc"]
-[ext_resource type="Texture2D" uid="uid://dj3ipubx28qlc" path="res://mothershell.png" id="5_50yat"]
+[ext_resource type="Texture2D" uid="uid://c451qigpgmcvd" path="res://BlueTrack.png" id="3_ai02a"]
+[ext_resource type="Texture2D" uid="uid://wgtpugqiaaqq" path="res://beach.png" id="4_ckwcc"]
+[ext_resource type="Texture2D" uid="uid://7kvkhhfaf07o" path="res://mothershell.png" id="5_50yat"]
 [ext_resource type="Script" uid="uid://byowlyow01qce" path="res://build_manager.gd" id="6_rjrdg"]
+[ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://wave_spawner.gd" id="7_ai02a"]
 [ext_resource type="Script" uid="uid://cdtvqlomh6nso" path="res://shop_panel.gd" id="7_dwuir"]
+[ext_resource type="PackedScene" uid="uid://sjmpbya05shd" path="res://TestEnemy.tscn" id="8_ckwcc"]
 [ext_resource type="PackedScene" uid="uid://yaw7tgbmm1oo" path="res://TestTower.tscn" id="8_j0j5x"]
 [ext_resource type="Script" uid="uid://n800asycp1sd" path="res://bomb_tower.gd" id="9_saejb"]
 [ext_resource type="Script" uid="uid://b110lgne0ntlx" path="res://currency_manager.gd" id="10_yrnad"]
@@ -41,6 +43,13 @@ texture_region_size = Vector2i(54, 54)
 [sub_resource type="TileSet" id="TileSet_hngk1"]
 tile_size = Vector2i(54, 54)
 sources/0 = SubResource("TileSetAtlasSource_jjf6g")
+
+[sub_resource type="Curve2D" id="Curve2D_je2ct"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 837, 123, 0, 0, 0, 0, 835, 241, 0, 0, 0, 0, 83, 241, 0, 0, 0, 0, 84, 404, 0, 0, 0, 0, 189, 404, 0, 0, 0, 0, 188, 352, 0, 0, 0, 0, 831, 354, 0, 0, 0, 0, 834, 465, 0, 0, 0, 0, 731, 465, 0, 0, 0, 0, 728, 570, 0, 0, 0, 0, 567, 571, 0, 0, 0, 0, 566, 459, 0, 0, 0, 0, 350, 457, 0, 0, 0, 0, 349, 513, 0, 0, 0, 0, -4, 515)
+}
+point_count = 15
 
 [sub_resource type="SystemFont" id="SystemFont_dj0d7"]
 
@@ -81,6 +90,15 @@ texture = ExtResource("5_50yat")
 
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("6_rjrdg")
+
+[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path")]
+script = ExtResource("7_ai02a")
+enemy_scene = ExtResource("8_ckwcc")
+enemy_path = NodePath("../EnemyPath")
+
+[node name="EnemyPath" type="Path2D" parent="." unique_id=367750900]
+position = Vector2(228, 0)
+curve = SubResource("Curve2D_je2ct")
 
 [node name="UI" type="Control" parent="." unique_id=533628969]
 layout_mode = 3
