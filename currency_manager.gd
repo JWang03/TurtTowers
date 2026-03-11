@@ -3,6 +3,7 @@ extends Node
 var shellings: int = 100
 
 @onready var label = $"../ShellingsLabel"
+
 func update_label():
 	label.text = str(shellings)
 func _ready():

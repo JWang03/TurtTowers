@@ -2,7 +2,7 @@ extends TileMapLayer
 
 @export var tower_container: Node2D
 @onready var build_manager = get_node("/root/Game/BuildManager")
-
+@onready var currency_manager = get_node("/root/Game/UI/CurrencyManager")
 
 var occupied_cells := {}
 var ghost_tower: Node2D = null
@@ -45,6 +45,8 @@ func can_place_on_cell(cell: Vector2i) -> bool:
 	if tile_data == null:
 		return false
 	return tile_data.get_custom_data("placeable")
+func affordable(cost) -> bool:
+	return currency_manager.shellings >= cost
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		print("click detected by grid script")
@@ -66,12 +68,15 @@ func _input(event: InputEvent) -> void:
 		var spawn_pos: Vector2 = tower_container.to_local(cell_global_center)
 
 		var tower = build_manager.selected_scene.instantiate()
-		if can_place_on_cell(cell)==true:
-			if tower is Node2D:
-				tower_container.add_child(tower)
-				tower.position = spawn_pos
-				occupied_cells[cell] = true
-				print("tower placed at cell ", cell)
-				build_manager.clear()
+		var cost = tower.cost
+		if can_place_on_cell(cell):
+			if affordable(cost):
+				if tower is Node2D:
+					currency_manager.spend_shellings(cost)
+					tower_container.add_child(tower)
+					tower.position = spawn_pos
+					occupied_cells[cell] = true
+					print("tower placed at cell ", cell)
+					build_manager.clear()
 		else:
-			print("selected scene is not a Node2D")
+			print("Cannot place.")
