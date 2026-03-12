@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deqfh0pt5gqaj"
-path="res://.godot/imported/skeleton.webp-f0a66b1554064db93b1e0aadff174315.ctex"
+uid="uid://c0170p0fx5c71"
+path="res://.godot/imported/electric_tower.png-5bf1cc026df96b9de3b91c5be9528992.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/skeleton.webp"
-dest_files=["res://.godot/imported/skeleton.webp-f0a66b1554064db93b1e0aadff174315.ctex"]
+source_file="res://textures/electric_tower.png"
+dest_files=["res://.godot/imported/electric_tower.png-5bf1cc026df96b9de3b91c5be9528992.ctex"]
 
 [params]
 

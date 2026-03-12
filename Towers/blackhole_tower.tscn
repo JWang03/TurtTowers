@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cgc1rpmolx0r2"]
 
 [ext_resource type="Script" uid="uid://cvjn7p4megwga" path="res://Towers/blackhole_tower.gd" id="1_am03q"]
-[ext_resource type="Texture2D" uid="uid://dle54wl0eyk7d" path="res://textures/blackhole.webp" id="2_ioyj4"]
+[ext_resource type="Texture2D" uid="uid://dm7enetgaq6lt" path="res://textures/blackhole_tower.png" id="2_k14q5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bx0g"]
 radius = 131.01526
@@ -19,9 +19,9 @@ script = ExtResource("1_am03q")
 shape = SubResource("CircleShape2D_3bx0g")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1645368667]
-position = Vector2(5.9604645e-08, 0)
-scale = Vector2(0.08789061, 0.0890625)
-texture = ExtResource("2_ioyj4")
+position = Vector2(-0.49999714, -1.0000026)
+scale = Vector2(0.134, 0.112)
+texture = ExtResource("2_k14q5")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=455257045]
-polygon = PackedVector2Array(-18, -8, -11, -17, 4, -20, 14, -15, 26, -12, 21, 1, 9, 16, -6, 18, -21, 20, -26, 17, -18, 7)
+polygon = PackedVector2Array(-13, -12, -2, -18, 14, -14, 18, 13, 14, 15, -19, 15, -19, -2)

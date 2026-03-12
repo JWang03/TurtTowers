@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dle54wl0eyk7d"
-path="res://.godot/imported/blackhole.webp-b6ddfbe023347170fe080e387d92e6a3.ctex"
+uid="uid://dfn5jcvs8yoxa"
+path="res://.godot/imported/bullet_tower.png-a2d4119825bd1a295f7d550c30eaeb0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/blackhole.webp"
-dest_files=["res://.godot/imported/blackhole.webp-b6ddfbe023347170fe080e387d92e6a3.ctex"]
+source_file="res://textures/bullet_tower.png"
+dest_files=["res://.godot/imported/bullet_tower.png-a2d4119825bd1a295f7d550c30eaeb0e.ctex"]
 
 [params]
 

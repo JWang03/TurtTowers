@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dmhok8tovvxvc"]
 
 [ext_resource type="Script" uid="uid://hhw5oyil6c63" path="res://Towers/bomber_tower.gd" id="1_jymjt"]
-[ext_resource type="Texture2D" uid="uid://deqfh0pt5gqaj" path="res://textures/skeleton.webp" id="2_jymjt"]
+[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="2_jymjt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5hxg4"]
 radius = 136.0
@@ -11,20 +11,21 @@ height = 358.0
 script = ExtResource("1_jymjt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1146264973]
-position = Vector2(5.9604645e-08, 0)
-scale = Vector2(0.074999996, 0.076)
+position = Vector2(-9.536743e-07, 4.7683716e-07)
+scale = Vector2(0.0955, 0.092)
 texture = ExtResource("2_jymjt")
 
 [node name="Range" type="Area2D" parent="." unique_id=554261266]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1904485298]
-position = Vector2(-2, 1)
+position = Vector2(0, 1)
 rotation = 3.1415925
 shape = SubResource("CapsuleShape2D_5hxg4")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=633119419]
+position = Vector2(-13, -12)
 
 [node name="Timer" type="Timer" parent="." unique_id=579226311]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=994742222]
-polygon = PackedVector2Array(-4, -14, -8, -12, -10, -8, -9, -4, -9, 1, -9, 5, -9, 12, -5, 12, -3, 12, 0, 15, 11, 12, 6, 8, 1, 4, 1, -3, 5, -6, 6, -10, 5, -13)
+polygon = PackedVector2Array(-16, -14, 3, -15, 16, -2, 12, 15, 7, 18, -7, 17, -9, 7, -18, -10)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsixlgyot7f5u"
-path="res://.godot/imported/Godzilla_idle.webp-0692405ff3d35137ec4329c370c68203.ctex"
+uid="uid://c41yx6lp4mrtb"
+path="res://.godot/imported/godzilla_tower.png-06e657ad42c8ed3ac977323dabf9e475.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Godzilla_idle.webp"
-dest_files=["res://.godot/imported/Godzilla_idle.webp-0692405ff3d35137ec4329c370c68203.ctex"]
+source_file="res://textures/godzilla_tower.png"
+dest_files=["res://.godot/imported/godzilla_tower.png-06e657ad42c8ed3ac977323dabf9e475.ctex"]
 
 [params]
 

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b0ux31ymkvdun"]
+
+[ext_resource type="Script" uid="uid://cnyoaw7mml56s" path="res://Towers/electric_tower.gd" id="1_favj8"]
+[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="2_5x71x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m4wxm"]
+radius = 185.13239
+
+[node name="electric_tower" type="StaticBody2D" unique_id=1495198832]
+script = ExtResource("1_favj8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=132394118]
+position = Vector2(73.65747, 91.24466)
+scale = Vector2(0.48563218, 0.41808254)
+polygon = PackedVector2Array(-188.73846, -254.12364, -174.32426, -273.2586, -135.2, -273.2586, -108.43076, -232.59679, -104.31242, -189.54309, -135.2, -160.84064, -176.38342, -165.62437, -194.91599, -201.50246)
+
+[node name="Timer" type="Timer" parent="." unique_id=328428747]
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=869406447]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778361217]
+position = Vector2(-1, 3.8146973e-06)
+scale = Vector2(0.13599995, 0.123999976)
+texture = ExtResource("2_5x71x")
+
+[node name="Range" type="Area2D" parent="." unique_id=523734005]
+position = Vector2(-1, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1599555359]
+position = Vector2(2, -2)
+shape = SubResource("CircleShape2D_m4wxm")

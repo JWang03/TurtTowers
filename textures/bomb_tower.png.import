@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://esw40sfr2q65"
-path="res://.godot/imported/magictower.png-7341ede885e001f277c9f86c8f86db0a.ctex"
+uid="uid://d1obmgjtm21w3"
+path="res://.godot/imported/bomb_tower.png-f978c2c8f66bc6cc2082ec8ae529f4c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/magictower.png"
-dest_files=["res://.godot/imported/magictower.png-7341ede885e001f277c9f86c8f86db0a.ctex"]
+source_file="res://textures/bomb_tower.png"
+dest_files=["res://.godot/imported/bomb_tower.png-f978c2c8f66bc6cc2082ec8ae529f4c6.ctex"]
 
 [params]
 

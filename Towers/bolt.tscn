@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://mia3lqillr0i"]
+
+[ext_resource type="Script" uid="uid://jttbw8cc7tdn" path="res://Towers/bolt.gd" id="1_bewd0"]
+
+[node name="bolt" type="Line2D" unique_id=142256825]
+width = 2.0
+default_color = Color(0.14901961, 1, 1, 1)
+script = ExtResource("1_bewd0")
