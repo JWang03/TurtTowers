@@ -2,7 +2,7 @@ extends Node
 
 var shellings: int = 100
 
-@onready var label = $"../ShellingsLabel"
+@onready var label = $"../Money/ShellingsLabel"
 
 func update_label():
 	label.text = str(shellings)
