@@ -26,8 +26,12 @@ func _ready():
 	map_overlay.hide()
 		
 	# Sets colorblindness to none at start
-	if colorblind_filter:
-		colorblind_filter.material.set_shader_parameter("mode", 0)
+	if colorblind_dropdown:
+		colorblind_dropdown.selected = 0
+	
+	# Sets screen to window at start
+	if fullscreen_dropdown:
+		fullscreen_dropdown.selected = 0
 		
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
