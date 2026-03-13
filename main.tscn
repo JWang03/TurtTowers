@@ -25,4 +25,4 @@ position = Vector2(223, -4)
 position = Vector2(206, -4)
 
 [node name="electric_tower" parent="." unique_id=1495198832 instance=ExtResource("2_0xm2m")]
-position = Vector2(31, 74)
+position = Vector2(27, 82)
