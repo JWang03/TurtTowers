@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var bullet_scene: PackedScene 
+#@export var bullet_scene: PackedScene 
 @export var fire_rate: float = 0.2
 
 @onready var muzzle = $Muzzle
@@ -8,6 +8,8 @@ extends StaticBody2D
 @onready var detection_area = $Range
 
 var targets_in_range: Array = []
+
+var bullet_scene = preload("res://Towers/bullet.tscn")
 
 func _ready():
 	print("searching")

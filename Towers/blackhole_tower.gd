@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var black_hole_scene: PackedScene
+#@export var black_hole_scene: PackedScene
 @export var fire_rate: float = 3.0
 @export var pull_offset: float = 80.0
 
@@ -9,6 +9,8 @@ extends StaticBody2D
 @onready var detection_area = $Range
 
 var targets_in_range: Array = []
+
+var black_hole_scene = preload("res://Towers/blackhole.tscn")
 
 func _ready():
 	timer.wait_time = fire_rate

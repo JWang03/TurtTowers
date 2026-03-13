@@ -1,13 +1,15 @@
 extends StaticBody2D
 
-@export var bomb_scene: PackedScene
-@export var fire_rate: float = 0.2
+#@export var bomb_scene: PackedScene
+@export var fire_rate: float = 5
 
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer
 @onready var detection_area = $Range
 
 var targets_in_range: Array = []
+
+var bomb_scene = preload("res://Towers/bomb.tscn")
 
 func _ready():
 	timer.wait_time = fire_rate
