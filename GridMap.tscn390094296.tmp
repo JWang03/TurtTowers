@@ -1,0 +1,57 @@
+[gd_scene format=4 uid="uid://cdpevfwoy7y1r"]
+
+[ext_resource type="Script" uid="uid://c7qark202ovo" path="res://grid.gd" id="2_8orcg"]
+[ext_resource type="Texture2D" uid="uid://bbii0nxra8llb" path="res://Tile108.png" id="2_60pjt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8orcg"]
+texture_region_size = Vector2i(81, 81)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jl37b"]
+texture = ExtResource("2_60pjt")
+texture_region_size = Vector2i(108, 108)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_60pjt"]
+tile_size = Vector2i(108, 108)
+sources/0 = SubResource("TileSetAtlasSource_8orcg")
+sources/1 = SubResource("TileSetAtlasSource_jl37b")
+
+[node name="Node2D" type="Node2D" unique_id=2110147607]
+
+[node name="Grid" type="TileMapLayer" parent="." unique_id=1928809463]
+modulate = Color(1, 1, 1, 0.3019608)
+show_behind_parent = true
+top_level = true
+light_mask = 0
+position = Vector2(-36, 0)
+tile_map_data = PackedByteArray("AAAEAAAAAQAAAAAAAAAEAAEAAQAAAAAAAAAEAAIAAQAAAAAAAAAEAAMAAQAAAAAAAAAEAAQAAQAAAAAAAAAEAAUAAQAAAAAAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAUAAQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAAGAAUAAQAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAHAAMAAQAAAAAAAAAHAAQAAQAAAAAAAAAHAAUAAQAAAAAAAAAIAAAAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAAIAAMAAQAAAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAADAAQAAQAAAAAAAAADAAUAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQAAAAAAAAACAAUAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_60pjt")
+rendering_quadrant_size = 64
+script = ExtResource("2_8orcg")
+
+[node name="Towers" type="Node2D" parent="." unique_id=1926755714]

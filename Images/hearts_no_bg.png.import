@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dilaxrokla2a8"
-path="res://.godot/imported/blackhole_tower.png-4a2528aea5613dbbd1c821d1970c60f2.ctex"
+uid="uid://c43l2x13u6e1n"
+path="res://.godot/imported/hearts_no_bg.png-56c2ef9064c0758b6443c74f2c527174.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/blackhole_tower.png"
-dest_files=["res://.godot/imported/blackhole_tower.png-4a2528aea5613dbbd1c821d1970c60f2.ctex"]
+source_file="res://Images/hearts_no_bg.png"
+dest_files=["res://.godot/imported/hearts_no_bg.png-56c2ef9064c0758b6443c74f2c527174.ctex"]
 
 [params]
 

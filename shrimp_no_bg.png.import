@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dilaxrokla2a8"
-path="res://.godot/imported/blackhole_tower.png-4a2528aea5613dbbd1c821d1970c60f2.ctex"
+uid="uid://cu0qdmxuiyd4u"
+path="res://.godot/imported/shrimp_no_bg.png-3b90ec4d31c84d74960313e01b973a00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/blackhole_tower.png"
-dest_files=["res://.godot/imported/blackhole_tower.png-4a2528aea5613dbbd1c821d1970c60f2.ctex"]
+source_file="res://shrimp_no_bg.png"
+dest_files=["res://.godot/imported/shrimp_no_bg.png-3b90ec4d31c84d74960313e01b973a00.ctex"]
 
 [params]
 
