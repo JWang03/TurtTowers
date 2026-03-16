@@ -1,6 +1,27 @@
-[gd_scene format=3 uid="uid://4y83imenyuqe"]
+[gd_scene format=3 uid="uid://cmuoto6fjqtrl"]
 
-[ext_resource type="Texture2D" uid="uid://cre7gw3yqm71l" path="res://Images/Gemini_Generated_Image_s9d2dps9d2dps9d2.png" id="1_06t4h"]
+[ext_resource type="Texture2D" path="res://Images/HomeUI.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://dro44f06d5lbk" path="res://main_menu.gd" id="1_fu7sn"]
+[ext_resource type="Shader" uid="uid://n6ke5aympnfe" path="res://main_menu.gdshader" id="2_glbon"]
+[ext_resource type="Texture2D" path="res://Images/SettingsMenu.png" id="3_jix8l"]
+[ext_resource type="Texture2D" path="res://Images/MapSelection.png" id="3_nlkkf"]
+[ext_resource type="AudioStream" path="res://SPALEXMA - We Are Charlie Kirk.mp3" id="4_jix8l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06t4h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jix8l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vrkn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlkkf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlkkf"]
+shader = ExtResource("2_glbon")
+shader_parameter/mode = 0
 
 [node name="MainMenu" type="Control" unique_id=1211162565]
 layout_mode = 3
@@ -9,6 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fu7sn")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1170316964]
 layout_mode = 1
@@ -43,27 +65,22 @@ size_flags_vertical = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="StartGame" type="Button" parent="." unique_id=1512135169]
-layout_mode = 0
-offset_left = 464.0
-offset_top = 222.0
-offset_right = 655.0
-offset_bottom = 278.0
+layout_mode = 1
+offset_left = 465.0
+offset_top = 221.0
+offset_right = 653.0
+offset_bottom = 276.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_06t4h")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jix8l")
 
 [node name="Towers" type="Button" parent="." unique_id=984938724]
 layout_mode = 0
-offset_left = 477.0
-offset_top = 295.0
-offset_right = 642.0
-offset_bottom = 347.0
+offset_right = 1152.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7vrkn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_glbon")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nlkkf")
 
-<<<<<<< Updated upstream
-[node name="Settings" type="Button" parent="." unique_id=267498840]
-layout_mode = 0
-offset_left = 478.0
-offset_top = 363.0
-offset_right = 643.0
-offset_bottom = 415.0
-=======
 [node name="MapSelectionLayer" type="CanvasLayer" parent="." unique_id=280550618]
 visible = false
 
@@ -207,4 +224,3 @@ parameters/looping = true
 [connection signal="item_selected" from="CanvasLayer/SettingsMenu/FullscreenButton" to="." method="_on_fullscreen_item_selected"]
 [connection signal="item_selected" from="CanvasLayer/SettingsMenu/CBButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="CanvasLayer/SettingsMenu/Button" to="." method="_on_button_pressed"]
->>>>>>> Stashed changes
