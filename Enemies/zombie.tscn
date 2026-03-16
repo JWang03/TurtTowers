@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cp5mfxulgq6d7"]
+
+[ext_resource type="Script" uid="uid://cn7wpo6rhjlw6" path="res://Enemies/zombie.gd" id="1_uiaus"]
+[ext_resource type="Texture2D" uid="uid://nkub0mc5sjn7" path="res://textures/a-retro-styled-pixel-art-illustration-of-a-zombie-with-torn-clothing-png.png" id="2_roy8y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_roy8y"]
+radius = 6.0
+
+[node name="zombie" type="CharacterBody2D" unique_id=1281579997 groups=["zombies"]]
+script = ExtResource("1_uiaus")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=119066751]
+shape = SubResource("CircleShape2D_roy8y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=521221063]
+position = Vector2(0.9999943, -0.9999962)
+scale = Vector2(0.04571437, 0.06428571)
+texture = ExtResource("2_roy8y")

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bvxmunixoeuva"]
+
+[ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dmhok8tovvxvc" path="res://Towers/bomber_tower.tscn" id="2_h2yge"]
+
+[node name="Node2D" type="Node2D" unique_id=1520096501]
+
+[node name="zombie2" parent="." unique_id=1281579997 instance=ExtResource("1_h2yge")]
+position = Vector2(184, 2)
+
+[node name="zombie3" parent="." unique_id=1349659962 instance=ExtResource("1_h2yge")]
+position = Vector2(199, 24)
+
+[node name="zombie4" parent="." unique_id=1331520867 instance=ExtResource("1_h2yge")]
+position = Vector2(219, 45)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=665358203]
+position = Vector2(118, 35)
+zoom = Vector2(5, 5)
+
+[node name="zombie" parent="." unique_id=227985631 instance=ExtResource("1_h2yge")]
+position = Vector2(223, -4)
+
+[node name="zombie7" parent="." unique_id=491599385 instance=ExtResource("1_h2yge")]
+position = Vector2(206, -4)
+
+[node name="bomber_tower" parent="." unique_id=460392742 instance=ExtResource("2_h2yge")]
+position = Vector2(24, 75)

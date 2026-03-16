@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://d2l8b5nykdqdg"]
+
+[ext_resource type="Script" uid="uid://dgxr68ccu5gtv" path="res://Towers/godzilla_tower.gd" id="1_gth0i"]
+[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="2_qwdvh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_smrgo"]
+radius = 206.06067
+
+[node name="godzilla_tower" type="StaticBody2D" unique_id=1995404457]
+collision_mask = 2
+script = ExtResource("1_gth0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2040546846]
+position = Vector2(0, 2.3841858e-07)
+scale = Vector2(0.12511112, 0.11046153)
+texture = ExtResource("2_qwdvh")
+
+[node name="Range" type="Area2D" parent="." unique_id=714734738]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1521837545]
+position = Vector2(-5, -3)
+shape = SubResource("CircleShape2D_smrgo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=503136149]
+polygon = PackedVector2Array(-8, -10, 0, -14, 10, -8, 14, 8, 6, 14, -9, 13, -13, 5)
+
+[node name="Head" type="Marker2D" parent="." unique_id=1071233640]
+position = Vector2(-4, -3)
+
+[node name="RayCast2D" type="RayCast2D" parent="Head" unique_id=1585913964]
+target_position = Vector2(1000, 0)
+
+[node name="Line2D" type="Line2D" parent="Head" unique_id=1080183175]
+points = PackedVector2Array(0, 0, 1000, 0)
+width = 5.0
+default_color = Color(0.105882354, 1, 1, 1)

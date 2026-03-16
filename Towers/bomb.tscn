@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://chrw513jgpe4e"]
+
+[ext_resource type="Script" uid="uid://d1lk604lcq3yq" path="res://Towers/bomb.gd" id="1_4fn8o"]
+[ext_resource type="Texture2D" uid="uid://bqbasqdtj27nk" path="res://textures/bomb.png" id="2_nfxiy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4fn8o"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nfxiy"]
+radius = 37.01351
+
+[node name="bomb" type="Area2D" unique_id=390304399]
+monitoring = false
+script = ExtResource("1_4fn8o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=192317914]
+shape = SubResource("CircleShape2D_4fn8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=366769589]
+position = Vector2(-2.3841858e-07, -0.9999995)
+scale = Vector2(0.05142857, 0.048571426)
+texture = ExtResource("2_nfxiy")
+
+[node name="ExplosionArea" type="Area2D" parent="." unique_id=426235846]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=1090634795]
+shape = SubResource("CircleShape2D_nfxiy")

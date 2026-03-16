@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dmhok8tovvxvc"]
+
+[ext_resource type="Script" uid="uid://hhw5oyil6c63" path="res://Towers/bomber_tower.gd" id="1_jymjt"]
+[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="2_jymjt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5hxg4"]
+radius = 136.0
+height = 358.0
+
+[node name="bomber_tower" type="StaticBody2D" unique_id=460392742]
+script = ExtResource("1_jymjt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1146264973]
+position = Vector2(-9.536743e-07, 4.7683716e-07)
+scale = Vector2(0.0955, 0.092)
+texture = ExtResource("2_jymjt")
+
+[node name="Range" type="Area2D" parent="." unique_id=554261266]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1904485298]
+position = Vector2(0, 1)
+rotation = 3.1415925
+shape = SubResource("CapsuleShape2D_5hxg4")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=633119419]
+position = Vector2(-13, -12)
+
+[node name="Timer" type="Timer" parent="." unique_id=579226311]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=994742222]
+polygon = PackedVector2Array(-16, -14, 3, -15, 16, -2, 12, 15, 7, 18, -7, 17, -9, 7, -18, -10)

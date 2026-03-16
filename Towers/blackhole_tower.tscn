@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cgc1rpmolx0r2"]
+
+[ext_resource type="Script" uid="uid://cvjn7p4megwga" path="res://Towers/blackhole_tower.gd" id="1_am03q"]
+[ext_resource type="Texture2D" uid="uid://dm7enetgaq6lt" path="res://textures/blackhole_tower.png" id="2_k14q5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3bx0g"]
+radius = 131.01526
+
+[node name="blackhole_tower" type="StaticBody2D" unique_id=1108750261]
+script = ExtResource("1_am03q")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=106421023]
+
+[node name="Timer" type="Timer" parent="." unique_id=1311606670]
+
+[node name="Range" type="Area2D" parent="." unique_id=1758506453]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1695071641]
+shape = SubResource("CircleShape2D_3bx0g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1645368667]
+position = Vector2(-0.49999714, -1.0000026)
+scale = Vector2(0.134, 0.112)
+texture = ExtResource("2_k14q5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=455257045]
+polygon = PackedVector2Array(-13, -12, -2, -18, 14, -14, 18, 13, 14, 15, -19, 15, -19, -2)
