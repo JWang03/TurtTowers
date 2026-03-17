@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dm13ghtbjbtl3" path="res://Images/MapSelection.png" id="3_nlkkf"]
 [ext_resource type="AudioStream" uid="uid://b4ivihcqewi1a" path="res://SPALEXMA - We Are Charlie Kirk.mp3" id="4_jix8l"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06t4h"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jix8l"]
@@ -44,14 +42,22 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="StartGame" type="Button" parent="." unique_id=1512135169]
+self_modulate = Color(0, 0, 0, 0)
 layout_mode = 1
 offset_left = 465.0
 offset_top = 221.0
 offset_right = 653.0
 offset_bottom = 276.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_06t4h")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_fu7sn")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_jix8l")
+
+[node name="Settings" type="Button" parent="." unique_id=1513501099]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 480.0
+offset_top = 365.0
+offset_right = 642.0
+offset_bottom = 418.0
 
 [node name="Towers" type="Button" parent="." unique_id=984938724]
 layout_mode = 0
@@ -60,16 +66,8 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_7vrkn")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_glbon")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_nlkkf")
 
-[node name="Settings" type="Button" parent="." unique_id=267498840]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 482.0
-offset_top = 363.0
-offset_right = 643.0
-offset_bottom = 413.0
-size_flags_vertical = 4
-
 [node name="MapSelectionLayer" type="CanvasLayer" parent="." unique_id=280550618]
+visible = false
 
 [node name="Darkener" type="ColorRect" parent="MapSelectionLayer" unique_id=472727133]
 anchors_preset = 15
@@ -97,6 +95,7 @@ texture = ExtResource("3_nlkkf")
 layer = 100
 
 [node name="ColorRect" type="ColorRect" parent="ColorblindLayer" unique_id=1398956715]
+visible = false
 material = SubResource("ShaderMaterial_nlkkf")
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,6 +105,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=374831580]
+visible = false
 
 [node name="Darkener" type="ColorRect" parent="CanvasLayer" unique_id=1942308797]
 anchors_preset = 15

@@ -13,7 +13,11 @@ config_version=5
 config/name="TurtTowers"
 run/main_scene="uid://cmuoto6fjqtrl"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+
+[display]
+
+window/size/mode=4
+window/stretch/mode="canvas_items"
 
 [physics]
 
