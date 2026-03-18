@@ -1,11 +1,12 @@
-extends Button
+extends TextureButton
 
+@export var tower_scene: PackedScene
+@onready var build_manager = get_node("/root/Game/BuildManager")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pressed.connect(_on_pressed)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_pressed() -> void:
+	build_manager.select(tower_scene)
+	release_focus()
+	print("tower selected: ", name)

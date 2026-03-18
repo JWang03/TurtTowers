@@ -4,6 +4,7 @@ extends StaticBody2D
 @export var max_bounces = 6
 @export var jump_range = 150.0
 @export var attack_cooldown = 1.5
+@export var cost: float = 25
 
 @onready var detection_area = $Range
 @onready var attack_timer = $Timer

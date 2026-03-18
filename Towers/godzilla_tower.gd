@@ -4,6 +4,7 @@ extends StaticBody2D
 @export var rotation_speed: float = 5.0
 @export var wobble_strength: float = 1.0
 @export var wobble_speed: float = 50.0
+@export var cost: float = 25
 
 @onready var head = $Head
 @onready var laser_ray = $Head/RayCast2D

@@ -6,7 +6,7 @@ extends StaticBody2D
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer
 @onready var detection_area = $Range
-
+@export var cost: float = 25
 var targets_in_range: Array = []
 
 var bomb_scene = preload("res://Towers/bomb.tscn")

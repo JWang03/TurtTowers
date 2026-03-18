@@ -2,7 +2,7 @@ extends StaticBody2D
 
 #@export var bullet_scene: PackedScene 
 @export var fire_rate: float = 0.2
-
+@export var cost: float = 25
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer
 @onready var detection_area = $Range
@@ -22,7 +22,6 @@ func _ready():
 
 func _on_zombie_entered(body):
 	if body.is_in_group("zombies"):
-		print("Zombie Detected")
 		targets_in_range.append(body)
 		if timer.is_stopped():
 			shoot()
@@ -36,9 +35,9 @@ func _on_zombie_exited(body):
 		timer.stop()
 
 func shoot():
-	print("Shoot function called")
+	
 	if bullet_scene and not targets_in_range.is_empty():
-		print("Spawning bullet")
+		
 		var target = targets_in_range[0]
 		var bullet = bullet_scene.instantiate()
 		get_tree().current_scene.add_child(bullet)
