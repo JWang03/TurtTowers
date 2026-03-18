@@ -106,3 +106,19 @@ func _on_close_map_selection_pressed() -> void:
 		.set_ease(Tween.EASE_IN)
 		
 	tween.chain().tween_callback(map_overlay.hide)
+
+# temp for closing
+func _input(event):
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_ESCAPE:
+			if event.alt_pressed:
+				# Alt + Escape: Quit the game entirely
+				get_tree().quit()
+			else:
+				# Escape ONLY: Close the Start/Map Menu if it's open
+				if map_overlay.visible:
+					_on_close_map_selection_pressed()
+					
+				# Bonus: You can also let Escape close the Settings menu!
+				elif overlay.visible:
+					_on_button_pressed()
