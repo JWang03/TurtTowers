@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cmuoto6fjqtrl"]
 
-[ext_resource type="Texture2D" uid="uid://cre7gw3yqm71l" path="res://Images/HomeUI.png" id="1_06t4h"]
-[ext_resource type="Script" uid="uid://cs0eavru7btjc" path="res://main_menu.gd" id="1_fu7sn"]
-[ext_resource type="Shader" uid="uid://qwjefknosa0f" path="res://main_menu.gdshader" id="2_glbon"]
-[ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Images/SettingsMenu.png" id="3_jix8l"]
-[ext_resource type="Texture2D" uid="uid://cs1etvy6xd1ik" path="res://Images/MapSelection.png" id="3_nlkkf"]
-[ext_resource type="AudioStream" uid="uid://b4ivihcqewi1a" path="res://SPALEXMA - We Are Charlie Kirk.mp3" id="4_jix8l"]
+[ext_resource type="Texture2D" uid="uid://cre7gw3yqm71l" path="res://Menu/Images/HomeUI.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://cs0eavru7btjc" path="res://Menu/main_menu.gd" id="1_fu7sn"]
+[ext_resource type="Shader" uid="uid://qwjefknosa0f" path="res://Menu/main_menu.gdshader" id="2_glbon"]
+[ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Menu/Images/SettingsMenu.png" id="3_jix8l"]
+[ext_resource type="Texture2D" uid="uid://cs1etvy6xd1ik" path="res://Menu/Images/MapSelection.png" id="3_nlkkf"]
+[ext_resource type="AudioStream" uid="uid://b4ivihcqewi1a" path="res://Menu/SPALEXMA - We Are Charlie Kirk.mp3" id="4_jix8l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
@@ -77,7 +77,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
-[node name="MapSelector" type="TextureRect" parent="MapSelectionLayer" unique_id=1054531690]
+[node name="MapSelector" type="TextureButton" parent="MapSelectionLayer" unique_id=348844679]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -89,8 +89,8 @@ offset_right = 331.0
 offset_bottom = 226.25
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_nlkkf")
-expand_mode = 1
+texture_normal = ExtResource("3_nlkkf")
+ignore_texture_size = true
 stretch_mode = 6
 
 [node name="ColorblindLayer" type="CanvasLayer" parent="." unique_id=59880908]
@@ -207,6 +207,7 @@ parameters/looping = true
 
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MapSelectionLayer/MapSelector" to="." method="_on_map_selector_pressed"]
 [connection signal="value_changed" from="CanvasLayer/SettingsMenu/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="item_selected" from="CanvasLayer/SettingsMenu/FullscreenButton" to="." method="_on_fullscreen_item_selected"]
 [connection signal="item_selected" from="CanvasLayer/SettingsMenu/CBButton" to="." method="_on_option_button_item_selected"]

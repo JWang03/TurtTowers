@@ -14,6 +14,7 @@ var master_bus = AudioServer.get_bus_index("Master")
 @onready var colorblind_filter = $ColorblindLayer/ColorRect
 
 # Map Selection Nodes 
+# (Make sure $MapSelectionLayer/MapSelector is now your TextureButton!)
 @onready var map_overlay = $MapSelectionLayer
 @onready var map_selector = $MapSelectionLayer/MapSelector
 @onready var map_darkener = $MapSelectionLayer/Darkener
@@ -106,6 +107,11 @@ func _on_close_map_selection_pressed() -> void:
 		.set_ease(Tween.EASE_IN)
 		
 	tween.chain().tween_callback(map_overlay.hide)
+
+
+func _on_map_selector_pressed() -> void:
+	get_tree().change_scene_to_file("res://SandyShores/Scenes/Sandy_Beach.tscn")
+
 
 # temp for closing
 func _input(event):
