@@ -2,7 +2,7 @@ extends StaticBody2D
 
 #@export var black_hole_scene: PackedScene
 @export var fire_rate: float = 3.0
-@export var pull_offset: float = 80.0
+@export var pull_offset: float = 4000.0
 
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer

@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var speed: float = 500.0
-@export var damage: int = 1
+@export var speed: float = 1000.0
+@export var damage: int = 5
 
 func _ready():
 	body_entered.connect(_on_body_entered)

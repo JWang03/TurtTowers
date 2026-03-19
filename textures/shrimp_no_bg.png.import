@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c451qigpgmcvd"
-path="res://.godot/imported/BlueTrack.png-973681dd833f9fb3b5831d465ea72112.ctex"
+uid="uid://cu0qdmxuiyd4u"
+path="res://.godot/imported/shrimp_no_bg.png-aded54cf400217f73c408f0930cb45f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BlueTrack.png"
-dest_files=["res://.godot/imported/BlueTrack.png-973681dd833f9fb3b5831d465ea72112.ctex"]
+source_file="res://textures/shrimp_no_bg.png"
+dest_files=["res://.godot/imported/shrimp_no_bg.png-aded54cf400217f73c408f0930cb45f0.ctex"]
 
 [params]
 
