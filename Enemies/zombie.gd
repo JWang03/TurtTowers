@@ -3,11 +3,12 @@ extends CharacterBody2D
 @export var speed: float = 100.0 
 @export var health: float = 50.0
 @export var attack_damage: int = 1
+@export var damage = 5
 
 @onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 @onready var ray_cast = $RayCast2D 
-@export var damage = 5
 @onready var loss_conditions = get_node("/root/Game/UI/LossConditions")
+@onready var currency = get_node("/root/Game/UI/CurrencyManager")
 
 
 func _ready():
@@ -40,4 +41,5 @@ func take_damage(amount):
 
 func die():
 	# Add loot drop here
+	currency.add_shellings(2)
 	queue_free()
