@@ -1,9 +1,10 @@
 extends Node
 
+@onready var play_button = get_node("/root/Game/UI/Start_Pause/PlayButton")
 @export var enemy_scene: PackedScene
 @export var enemy_path: Path2D
 var spawnrate = 50
-var count
+var count = 1
 func spawn_enemy():
 	if enemy_scene == null or enemy_path == null:
 		print("Missing enemy scene or enemy path")
@@ -20,9 +21,9 @@ func spawn_enemy():
 	
 	
 func _ready():
-	spawn_enemy()
-	count = 1
+	pass
 func _process(delta: float) -> void:
-	if count % spawnrate == 0:
-		spawn_enemy()
-	count+=1
+	if play_button.playing == true:
+		if count % spawnrate == 0:
+			spawn_enemy()
+		count+=1
