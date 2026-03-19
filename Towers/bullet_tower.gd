@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 #@export var bullet_scene: PackedScene 
-@export var fire_rate: float = 0.2
+@export var fire_rate: float = 0.3
 @export var cost: float = 25
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer
