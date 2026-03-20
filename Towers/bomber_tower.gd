@@ -9,7 +9,7 @@ extends StaticBody2D
 @export var cost: float = 25
 @onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 var targets_in_range: Array = []
-
+var is_placed := false
 var bomb_scene = preload("res://Towers/bomb.tscn")
 
 func _ready():
@@ -34,7 +34,9 @@ func _on_zombie_exited(body):
 
 func shoot():
 	if starter.playing == true:
-		if bomb_scene and not targets_in_range.is_empty():
+		if is_placed == false:
+			return
+		elif bomb_scene and not targets_in_range.is_empty():
 			var target = targets_in_range[0]
 			var bomb = bomb_scene.instantiate()
 			

@@ -12,28 +12,31 @@ extends StaticBody2D
 @onready var laser_line = $Head/Line2D
 @onready var range_area = $Range
 
+var is_placed := false
 var target_zombie: CharacterBody2D = null
 
 func _process(delta):
 	if starter.playing == true:
-		update_target()
-		
-		if target_zombie and is_instance_valid(target_zombie):
-			head.look_at(target_zombie.global_position)
-			
-			laser_ray.force_raycast_update()
-			
-			if laser_ray.is_colliding():
-				var hit_collider = laser_ray.get_collider()
-				if hit_collider.is_in_group("zombies"):
-					show_beam(laser_ray.get_collision_point())
-					hit_collider.take_damage(damage_per_second * delta)
+		if is_placed == false:
+			return
+		else:
+			update_target()
+			if target_zombie and is_instance_valid(target_zombie):
+				head.look_at(target_zombie.global_position)
+				
+				laser_ray.force_raycast_update()
+				
+				if laser_ray.is_colliding():
+					var hit_collider = laser_ray.get_collider()
+					if hit_collider.is_in_group("zombies"):
+						show_beam(laser_ray.get_collision_point())
+						hit_collider.take_damage(damage_per_second * delta)
+					else:
+						hide_beam()
 				else:
 					hide_beam()
 			else:
 				hide_beam()
-		else:
-			hide_beam()
 	#update_target()
 	#
 	#if target_zombie and is_instance_valid(target_zombie):

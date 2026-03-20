@@ -10,7 +10,7 @@ extends StaticBody2D
 @onready var detection_area = $Range
 @export var cost: float = 25
 var targets_in_range: Array = []
-
+var is_placed := false
 var black_hole_scene = preload("res://Towers/blackhole.tscn")
 
 func _ready():
@@ -34,7 +34,9 @@ func _on_zombie_exited(body):
 
 func shoot():
 	if starter.playing == true:
-		if black_hole_scene and not targets_in_range.is_empty():
+		if is_placed == false:
+			return
+		elif black_hole_scene and not targets_in_range.is_empty():
 			var target = targets_in_range[0]
 			if not is_instance_valid(target): return
 			

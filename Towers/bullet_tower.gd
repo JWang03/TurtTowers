@@ -10,7 +10,7 @@ extends StaticBody2D
 var targets_in_range: Array = []
 
 var bullet_scene = preload("res://Towers/bullet.tscn")
-
+var is_placed := false
 func _ready():
 	print("searching")
 	timer.wait_time = fire_rate
@@ -36,7 +36,9 @@ func _on_zombie_exited(body):
 
 func shoot():
 	if starter.playing == true:
-		if bullet_scene and not targets_in_range.is_empty():
+		if is_placed == false:
+			return
+		elif bullet_scene and not targets_in_range.is_empty():
 			
 			var target = targets_in_range[0]
 			var bullet = bullet_scene.instantiate()

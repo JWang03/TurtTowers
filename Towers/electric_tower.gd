@@ -11,6 +11,7 @@ extends StaticBody2D
 @onready var attack_timer = $Timer
 @onready var shoot_point = $Muzzle
 
+var is_placed := false
 var lightning_scene = preload("res://Towers/bolt.tscn")
 
 func _ready():
@@ -29,12 +30,15 @@ func _ready():
 
 func _on_tower_heartbeat():
 	if starter.playing == true:
-		print("signal received")
-		var targets = find_chain_targets()
-		if targets.size() > 0:
-			execute_chain_attack(targets)
+		if is_placed == false:
+			return
 		else:
-			print("no zombies in range yet")
+			print("signal received")
+			var targets = find_chain_targets()
+			if targets.size() > 0:
+				execute_chain_attack(targets)
+			else:
+				print("no zombies in range yet")
 #func _ready():
 	#print("tower ready")
 	#attack_timer.wait_time = attack_cooldown
