@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bpm6aiqhw60bo"]
+
+[ext_resource type="Script" uid="uid://bsqcpev3ak5f6" path="res://settings.gd" id="1_2js5j"]
+
+[node name="GlobalSettings" type="CanvasLayer" unique_id=781587082]
+layer = 676767
+script = ExtResource("1_2js5j")
+
+[node name="MenuPanel" type="Control" parent="." unique_id=2088479672]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

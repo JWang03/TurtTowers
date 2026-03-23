@@ -97,7 +97,6 @@ stretch_mode = 6
 layer = 100
 
 [node name="ColorRect" type="ColorRect" parent="ColorblindLayer" unique_id=1398956715]
-visible = false
 material = SubResource("ShaderMaterial_nlkkf")
 anchors_preset = 15
 anchor_right = 1.0

@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c43l2x13u6e1n" path="res://textures/hearts_no_bg.png" id="15_rjrdg"]
 [ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="16_ci5cp"]
 [ext_resource type="Script" uid="uid://cfxxtgfammudk" path="res://SandyShores/Scripts/death_screen.gd" id="16_dwuir"]
+[ext_resource type="Texture2D" uid="uid://da4573ymcncmd" path="res://Settings.png" id="25_sxldm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_je2ct")
@@ -312,3 +313,20 @@ offset_right = 437.0
 offset_bottom = 362.0
 theme_override_font_sizes/font_size = 64
 text = "You Lose Idiot"
+
+[node name="Settings" type="Control" parent="UI" unique_id=1132231876]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GearButton" type="TextureButton" parent="UI/Settings" unique_id=1389892020]
+z_index = 4096
+z_as_relative = false
+layout_mode = 0
+offset_left = -6.0
+offset_top = -7.0
+offset_right = 50.0
+offset_bottom = 44.0
+texture_normal = ExtResource("25_sxldm")
+ignore_texture_size = true
+stretch_mode = 6
