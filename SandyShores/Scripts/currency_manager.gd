@@ -16,9 +16,3 @@ func add_shellings(amount: int):
 func spend_shellings(amount: int):
 	shellings -= amount
 	update_label()
-
-
-	
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		add_shellings(10)
