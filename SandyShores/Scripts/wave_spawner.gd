@@ -6,7 +6,6 @@ var spawnrate = 50
 var count
 func spawn_enemy():
 	if enemy_scene == null or enemy_path == null:
-		print("Missing enemy scene or enemy path")
 		return
 
 	var follow = PathFollow2D.new()
