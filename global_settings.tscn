@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bsqcpev3ak5f6" path="res://settings.gd" id="1_2js5j"]
 [ext_resource type="Shader" uid="uid://qwjefknosa0f" path="res://Menu/main_menu.gdshader" id="2_qjeld"]
+[ext_resource type="AudioStream" uid="uid://b4ivihcqewi1a" path="res://Menu/SPALEXMA - We Are Charlie Kirk.mp3" id="3_music"]
+[ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Menu/Images/SettingsMenu.png" id="4_settingstex"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c3be5"]
 shader = ExtResource("2_qjeld")
@@ -9,6 +11,7 @@ shader_parameter/mode = 0
 
 [node name="GlobalSettings" type="CanvasLayer" unique_id=781587082]
 layer = 676767
+process_mode = 3
 script = ExtResource("1_2js5j")
 
 [node name="ColorblindFilter" type="ColorRect" parent="." unique_id=829955368]
@@ -20,9 +23,112 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=100000001]
+stream = ExtResource("3_music")
+autoplay = true
+parameters/looping = true
+
 [node name="MenuPanel" type="Control" parent="." unique_id=2088479672]
 visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Darkener" type="ColorRect" parent="MenuPanel" unique_id=100000002]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588)
+
+[node name="SettingsMenu" type="TextureRect" parent="MenuPanel" unique_id=100000003]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.5
+offset_top = -185.5
+offset_right = 336.5
+offset_bottom = 185.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_settingstex")
+
+[node name="VolumeSlider" type="HSlider" parent="MenuPanel/SettingsMenu" unique_id=100000004]
+layout_mode = 0
+offset_left = 250.5
+offset_top = 1.5
+offset_right = 518.5
+offset_bottom = 242.5
+min_value = 0.001
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="FullscreenButton" type="OptionButton" parent="MenuPanel/SettingsMenu" unique_id=100000005]
+custom_minimum_size = Vector2(168, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -326.5
+offset_top = -190.5
+offset_right = -151.5
+offset_bottom = -165.5
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+autowrap_trim_flags = 192
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen (Borderless)"
+popup/item_1/id = 1
+popup/item_2/text = "Exclusive Fullscreen"
+popup/item_2/id = 2
+
+[node name="CBButton" type="OptionButton" parent="MenuPanel/SettingsMenu" unique_id=100000006]
+custom_minimum_size = Vector2(168, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -326.5
+offset_top = -152.5
+offset_right = -151.5
+offset_bottom = -127.5
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+autowrap_trim_flags = 192
+item_count = 4
+popup/item_0/text = "Default"
+popup/item_0/id = 0
+popup/item_1/text = "Protanopia"
+popup/item_1/id = 1
+popup/item_2/text = "Deuteranopia"
+popup/item_2/id = 2
+popup/item_3/text = "Tritanopia"
+popup/item_3/id = 3
+
+[node name="CloseButton" type="Button" parent="MenuPanel/SettingsMenu" unique_id=100000007]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 275.5
+offset_top = 324.5
+offset_right = 399.5
+offset_bottom = 352.5
+
+[connection signal="value_changed" from="MenuPanel/SettingsMenu/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="item_selected" from="MenuPanel/SettingsMenu/FullscreenButton" to="." method="_on_fullscreen_item_selected"]
+[connection signal="item_selected" from="MenuPanel/SettingsMenu/CBButton" to="." method="_on_colorblind_dropdown_item_selected"]
+[connection signal="pressed" from="MenuPanel/SettingsMenu/CloseButton" to="." method="_on_close_button_pressed"]

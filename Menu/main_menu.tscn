@@ -5,7 +5,6 @@
 [ext_resource type="Shader" uid="uid://qwjefknosa0f" path="res://Menu/main_menu.gdshader" id="2_glbon"]
 [ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Menu/Images/SettingsMenu.png" id="3_jix8l"]
 [ext_resource type="Texture2D" uid="uid://cs1etvy6xd1ik" path="res://Menu/Images/MapSelection.png" id="3_nlkkf"]
-[ext_resource type="AudioStream" uid="uid://b4ivihcqewi1a" path="res://Menu/SPALEXMA - We Are Charlie Kirk.mp3" id="4_jix8l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
@@ -198,11 +197,6 @@ offset_left = 275.5
 offset_top = 324.5
 offset_right = 399.5
 offset_bottom = 352.5
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=678204691]
-stream = ExtResource("4_jix8l")
-autoplay = true
-parameters/looping = true
 
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]

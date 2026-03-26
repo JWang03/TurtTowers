@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="16_ci5cp"]
 [ext_resource type="Script" uid="uid://cfxxtgfammudk" path="res://SandyShores/Scripts/death_screen.gd" id="16_dwuir"]
 [ext_resource type="Texture2D" uid="uid://da4573ymcncmd" path="res://Settings.png" id="25_sxldm"]
+[ext_resource type="Script" path="res://SandyShores/Scripts/settings_button.gd" id="26_settbtn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_je2ct")
@@ -330,3 +331,6 @@ offset_bottom = 44.0
 texture_normal = ExtResource("25_sxldm")
 ignore_texture_size = true
 stretch_mode = 6
+script = ExtResource("26_settbtn")
+
+[connection signal="pressed" from="UI/Settings/GearButton" to="UI/Settings/GearButton" method="_on_pressed"]
