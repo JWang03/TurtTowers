@@ -11,4 +11,3 @@ func _ready():
 func _on_place_tower_button_pressed():
 	build_manager.select(tower_scene)
 	button.release_focus()
-	print("tower selected")

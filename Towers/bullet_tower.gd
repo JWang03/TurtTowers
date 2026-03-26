@@ -12,7 +12,6 @@ var targets_in_range: Array = []
 var bullet_scene = preload("res://Towers/bullet.tscn")
 
 func _ready():
-	print("searching")
 	timer.wait_time = fire_rate
 	timer.one_shot = false
 	
@@ -45,8 +44,6 @@ func shoot():
 		bullet.global_position = muzzle.global_position
 		
 		bullet.look_at(target.global_position)
-	else:
-		print("no bullet scene")
 	#if bullet_scene:
 		#var bullet = bullet_scene.instantiate()
 		#get_tree().current_scene.add_child(bullet)

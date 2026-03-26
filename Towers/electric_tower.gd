@@ -27,12 +27,9 @@ func _ready():
 	#attack_timer.start()
 
 func _on_tower_heartbeat():
-	print("signal received")
 	var targets = find_chain_targets()
 	if targets.size() > 0:
 		execute_chain_attack(targets)
-	else:
-		print("no zombies in range yet")
 #func _ready():
 	#print("tower ready")
 	#attack_timer.wait_time = attack_cooldown

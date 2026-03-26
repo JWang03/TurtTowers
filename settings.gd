@@ -12,7 +12,7 @@ var _is_animating: bool = false
 signal settings_updated
 
 @onready var menu_panel = $MenuPanel
-@onready var colorblind_filter = $ColorblindFilter
+@onready var colorblind_filter = $FilterLayer/ColorblindFilter
 @onready var music_player = $MusicPlayer
 @onready var darkener = $MenuPanel/Darkener
 @onready var settings_rect = $MenuPanel/SettingsMenu
