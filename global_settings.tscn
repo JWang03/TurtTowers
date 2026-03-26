@@ -15,7 +15,7 @@ process_mode = 3
 script = ExtResource("1_2js5j")
 
 [node name="FilterLayer" type="CanvasLayer" parent="." unique_id=900000001]
-layer = 50
+layer = 200
 process_mode = 3
 
 [node name="ColorblindFilter" type="ColorRect" parent="FilterLayer" unique_id=829955368]
