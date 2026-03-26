@@ -1,8 +1,5 @@
 extends Control
 
-# Audio
-var master_bus = AudioServer.get_bus_index("Master")
-
 # Settings Menu Nodes
 @onready var overlay = $CanvasLayer
 @onready var menu_panel = $CanvasLayer/SettingsMenu
@@ -11,7 +8,7 @@ var master_bus = AudioServer.get_bus_index("Master")
 # Colorblindness Nodes
 @onready var colorblind_dropdown = $CanvasLayer/SettingsMenu/CBButton
 @onready var fullscreen_dropdown = $CanvasLayer/SettingsMenu/FullscreenButton
-@onready var colorblind_filter = $ColorblindLayer/ColorRect
+@onready var volume_slider = $CanvasLayer/SettingsMenu/VolumeSlider
 
 # Map Selection Nodes 
 # (Make sure $MapSelectionLayer/MapSelector is now your TextureButton!)
@@ -25,16 +22,14 @@ func _ready():
 	# Hide all UI overlays at start
 	overlay.hide()
 	map_overlay.hide()
-		
-	# Sets colorblindness to none at start
+
+	# Sync UI controls to GlobalSettings state so changes persist across scenes
 	if colorblind_dropdown:
-		colorblind_dropdown.selected = 0
-	
-	# Sets screen to window at start
+		colorblind_dropdown.selected = GlobalSettings.colorblind_mode
 	if fullscreen_dropdown:
-		fullscreen_dropdown.selected = 0
-		
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		fullscreen_dropdown.selected = GlobalSettings.fullscreen_mode
+	if volume_slider:
+		volume_slider.value = GlobalSettings.volume_value
 
 
 # Settings Menu Function
@@ -65,22 +60,15 @@ func _on_button_pressed() -> void:
 
 
 func _on_volume_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value))
-	# Hard mute if the slider is basically at zero
-	AudioServer.set_bus_mute(master_bus, value < 0.05)
+	GlobalSettings.set_volume(value)
 
 
 func _on_option_button_item_selected(index: int) -> void:
-	# Passes the 0-3 index straight to the shader uniform
-	if colorblind_filter:
-		colorblind_filter.material.set_shader_parameter("mode", index)
+	GlobalSettings.set_colorblind(index)
 
 
 func _on_fullscreen_item_selected(index: int) -> void:
-	match index:
-		0: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		1: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		2: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	GlobalSettings.set_fullscreen(index)
 
 
 # Map Selection Function
