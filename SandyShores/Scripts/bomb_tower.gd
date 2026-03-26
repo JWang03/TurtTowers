@@ -9,4 +9,3 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	build_manager.select(tower_scene)
 	release_focus()
-	print("tower selected: ", name)

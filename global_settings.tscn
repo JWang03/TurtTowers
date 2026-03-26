@@ -10,11 +10,15 @@ shader = ExtResource("2_qjeld")
 shader_parameter/mode = 0
 
 [node name="GlobalSettings" type="CanvasLayer" unique_id=781587082]
-layer = 676767
+layer = 128
 process_mode = 3
 script = ExtResource("1_2js5j")
 
-[node name="ColorblindFilter" type="ColorRect" parent="." unique_id=829955368]
+[node name="FilterLayer" type="CanvasLayer" parent="." unique_id=900000001]
+layer = 50
+process_mode = 3
+
+[node name="ColorblindFilter" type="ColorRect" parent="FilterLayer" unique_id=829955368]
 material = SubResource("ShaderMaterial_c3be5")
 anchors_preset = 15
 anchor_right = 1.0
