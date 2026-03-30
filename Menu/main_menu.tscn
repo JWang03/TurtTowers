@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cs0eavru7btjc" path="res://Menu/main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Shader" uid="uid://qwjefknosa0f" path="res://Menu/main_menu.gdshader" id="2_glbon"]
 [ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Menu/Images/SettingsMenu.png" id="3_jix8l"]
-[ext_resource type="Texture2D" uid="uid://cs1etvy6xd1ik" path="res://Menu/Images/MapSelection.png" id="3_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://cs1etvy6xd1ik" path="res://Menu/Images/SandyShores.png" id="3_nlkkf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
