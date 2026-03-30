@@ -10,11 +10,22 @@ extends Control
 @onready var fullscreen_dropdown = $CanvasLayer/SettingsMenu/FullscreenButton
 @onready var volume_slider = $CanvasLayer/SettingsMenu/VolumeSlider
 
-# Map Selection Nodes 
-# (Make sure $MapSelectionLayer/MapSelector is now your TextureButton!)
+# Map Selection Nodes
 @onready var map_overlay = $MapSelectionLayer
-@onready var map_selector = $MapSelectionLayer/MapSelector
+@onready var map_panel = $MapSelectionLayer/MapPanel
+@onready var map_selector = $MapSelectionLayer/MapPanel/MapSelector
+@onready var map_name_label = $MapSelectionLayer/MapPanel/MapNameLabel
 @onready var map_darkener = $MapSelectionLayer/Darkener
+
+# Map data
+var map_textures: Array = []
+var map_names: Array = ["Sandy Shores", "Checkers", "Abstract"]
+var map_scenes: Array = [
+	"res://SandyShores/Scenes/Sandy_Beach.tscn",
+	null,
+	null
+]
+var current_map_index: int = 0
 
 
 # Initialization
@@ -23,6 +34,15 @@ func _ready():
 	overlay.hide()
 	map_overlay.hide()
 
+	# Load map textures
+	map_textures = [
+		preload("res://Menu/Images/SandyShores.png"),
+		preload("res://Menu/Images/Checkers.png"),
+		preload("res://Menu/Images/Abstract.png")
+	]
+	assert(map_textures.size() == map_names.size() and map_names.size() == map_scenes.size(), \
+		"Map data arrays must have the same length")
+
 	# Sync UI controls to GlobalSettings state so changes persist across scenes
 	if colorblind_dropdown:
 		colorblind_dropdown.selected = GlobalSettings.colorblind_mode
@@ -30,6 +50,11 @@ func _ready():
 		fullscreen_dropdown.selected = GlobalSettings.fullscreen_mode
 	if volume_slider:
 		volume_slider.value = GlobalSettings.volume_value
+
+
+func _update_map_display():
+	map_selector.texture_normal = map_textures[current_map_index]
+	map_name_label.text = map_names[current_map_index]
 
 
 # Settings Menu Function
@@ -71,18 +96,20 @@ func _on_fullscreen_item_selected(index: int) -> void:
 	GlobalSettings.set_fullscreen(index)
 
 
-# Map Selection Function
+# Map Selection Functions
 func _on_start_game_pressed() -> void:
+	current_map_index = 0
+	_update_map_display()
 	map_overlay.show()
 	
 	# Center pivot for the popup bounce animation
-	map_selector.pivot_offset = map_selector.size / 2
-	map_selector.scale = Vector2.ZERO 
+	map_panel.pivot_offset = map_panel.size / 2
+	map_panel.scale = Vector2.ZERO 
 	map_darkener.modulate.a = 0         
 	
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(map_darkener, "modulate:a", 1.0, 0.2)
-	tween.tween_property(map_selector, "scale", Vector2.ONE, 0.3)\
+	tween.tween_property(map_panel, "scale", Vector2.ONE, 0.3)\
 		.set_trans(Tween.TRANS_BACK)\
 		.set_ease(Tween.EASE_OUT)
 
@@ -90,15 +117,27 @@ func _on_start_game_pressed() -> void:
 func _on_close_map_selection_pressed() -> void:
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(map_darkener, "modulate:a", 0.0, 0.2)
-	tween.tween_property(map_selector, "scale", Vector2.ZERO, 0.2)\
+	tween.tween_property(map_panel, "scale", Vector2.ZERO, 0.2)\
 		.set_trans(Tween.TRANS_BACK)\
 		.set_ease(Tween.EASE_IN)
 		
 	tween.chain().tween_callback(map_overlay.hide)
 
 
+func _on_left_arrow_pressed() -> void:
+	current_map_index = (current_map_index - 1 + map_names.size()) % map_names.size()
+	_update_map_display()
+
+
+func _on_right_arrow_pressed() -> void:
+	current_map_index = (current_map_index + 1) % map_names.size()
+	_update_map_display()
+
+
 func _on_map_selector_pressed() -> void:
-	get_tree().change_scene_to_file("res://SandyShores/Scenes/Sandy_Beach.tscn")
+	var scene_path = map_scenes[current_map_index]
+	if scene_path != null:
+		get_tree().change_scene_to_file(scene_path)
 
 
 # temp for closing
