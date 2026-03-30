@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bfaepla21qfgr" path="res://textures/tile54.png" id="1_ndx66"]
 [ext_resource type="Script" uid="uid://c7qark202ovo" path="res://SandyShores/Scripts/grid.gd" id="2_r1ppn"]
 [ext_resource type="Texture2D" uid="uid://c451qigpgmcvd" path="res://textures/BlueTrack.png" id="3_qnun0"]
-[ext_resource type="Texture2D" uid="uid://dutucnn26hbeb" path="res://textures/Gemini_Generated_Image_m4hb0mm4hb0mm4hb.png" id="4_ndx66"]
+[ext_resource type="Texture2D" uid="uid://dtd7hamgbkfne" path="res://textures/Gemini_Generated_Image_jdzuttjdzuttjdzu.png" id="3_r1ppn"]
 [ext_resource type="Texture2D" uid="uid://7kvkhhfaf07o" path="res://textures/mothershell.png" id="5_8ssj6"]
+[ext_resource type="Texture2D" uid="uid://cuij4jh3gwfxn" path="res://textures/temple.png" id="5_qnun0"]
 [ext_resource type="Script" uid="uid://byowlyow01qce" path="res://SandyShores/Scripts/build_manager.gd" id="6_op2ha"]
 [ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://SandyShores/Scripts/wave_spawner.gd" id="7_m5biy"]
 [ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="8_heg8e"]
@@ -51,11 +52,11 @@ sources/0 = SubResource("TileSetAtlasSource_ulshj")
 [sub_resource type="TileSet" id="TileSet_hngk1"]
 tile_size = Vector2i(54, 54)
 
-[sub_resource type="Curve2D" id="Curve2D_ndx66"]
+[sub_resource type="Curve2D" id="Curve2D_r1ppn"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 469, 233, 0, 0, 0, 0, 470, 287, 0, 0, 0, 0, 600, 295, 0, 0, 0, 0, 673, 324, 0, 0, 0, 0, 735, 271, 0, 0, 0, 0, 793, 273, 0, 0, 0, 0, 797, 545, 0, 0, 0, 0, 130, 553, 0, 0, 0, 0, 128, 91, 0, 0, 0, 0, 632, 94, 0, 0, 0, 0, 636, 161, 0, 0, 0, 0, 215, 173, 0, 0, 0, 0, 218, 461, 0, 0, 0, 0, 701, 467, 0, 0, 0, 0, 708, 348, 0, 0, 0, 0, 599, 314, 0, 0, 0, 0, 444, 304, 0, 0, 0, 0, 439, 237)
+"points": PackedVector2Array(0, 0, 0, 0, 362.25558, 428.2516, 0, 0, 0, 0, 371, 592, 0, 0, 0, 0, 684, 594, 0, 0, 0, 0, 674.56775, 425.3023, 0, 0, 0, 0, 99.20068, 430.611, 0, 0, 0, 0, 92.912506, 326.20718, 0, 0, 0, 0, 358.0635, 325.02747)
 }
-point_count = 18
+point_count = 7
 
 [sub_resource type="SystemFont" id="SystemFont_dj0d7"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -74,6 +75,7 @@ z_as_relative = false
 [node name="TowerContainer" type="Node2D" parent="." unique_id=966425866]
 
 [node name="Grid" type="TileMapLayer" parent="." unique_id=1928809463 node_paths=PackedStringArray("tower_container")]
+visible = false
 modulate = Color(1, 1, 1, 0.3019608)
 show_behind_parent = true
 top_level = true
@@ -89,12 +91,11 @@ tower_container = NodePath("../TowerContainer")
 position = Vector2(229, 0)
 tile_set = SubResource("TileSet_hngk1")
 
-[node name="Temple" type="Sprite2D" parent="." unique_id=1801378851]
-z_index = -1000
-z_as_relative = false
-position = Vector2(689, 324)
-scale = Vector2(0.75162333, 0.75000006)
-texture = ExtResource("4_ndx66")
+[node name="Background" type="Sprite2D" parent="." unique_id=308524242]
+z_index = -1
+position = Vector2(688.00006, 323.5)
+scale = Vector2(0.7564935, 0.74884266)
+texture = ExtResource("3_r1ppn")
 
 [node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
 z_index = 4096
@@ -103,6 +104,19 @@ position = Vector2(111.25001, 325.49997)
 scale = Vector2(1.9601772, 1.9548193)
 texture = ExtResource("5_8ssj6")
 
+[node name="EnemyPath" type="Path2D" parent="." unique_id=367750900]
+z_index = 4096
+position = Vector2(259.34534, -413.03223)
+scale = Vector2(0.9541735, 1.6953405)
+curve = SubResource("Curve2D_r1ppn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1142197630]
+z_index = 1
+z_as_relative = false
+position = Vector2(608.5, 364.5)
+scale = Vector2(1.6259998, 1.422)
+texture = ExtResource("5_qnun0")
+
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("6_op2ha")
 
@@ -110,10 +124,6 @@ script = ExtResource("6_op2ha")
 script = ExtResource("7_m5biy")
 enemy_scene = ExtResource("8_heg8e")
 enemy_path = NodePath("../EnemyPath")
-
-[node name="EnemyPath" type="Path2D" parent="." unique_id=367750900]
-position = Vector2(228, 0)
-curve = SubResource("Curve2D_ndx66")
 
 [node name="UI" type="Control" parent="." unique_id=533628969]
 layout_mode = 3
