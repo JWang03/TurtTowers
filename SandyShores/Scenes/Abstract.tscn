@@ -3,13 +3,20 @@
 [ext_resource type="Texture2D" uid="uid://bfaepla21qfgr" path="res://textures/tile54.png" id="1_gvbs8"]
 [ext_resource type="Script" uid="uid://c7qark202ovo" path="res://SandyShores/Scripts/grid.gd" id="2_yqa5h"]
 [ext_resource type="Texture2D" uid="uid://c451qigpgmcvd" path="res://textures/BlueTrack.png" id="3_nhrcp"]
+[ext_resource type="Texture2D" uid="uid://ym3u26vdpw1g" path="res://textures/BL_CornerTrack.png" id="4_ft65p"]
 [ext_resource type="Texture2D" uid="uid://7kvkhhfaf07o" path="res://textures/mothershell.png" id="5_8l8c0"]
+[ext_resource type="Texture2D" uid="uid://b8sdoqhbwaax3" path="res://textures/BR_CornerTrack.png" id="5_gr430"]
 [ext_resource type="Texture2D" uid="uid://so1cunwi21ay" path="res://Towers/Abstract.png" id="5_gvbs8"]
 [ext_resource type="Script" uid="uid://byowlyow01qce" path="res://SandyShores/Scripts/build_manager.gd" id="6_06ii1"]
+[ext_resource type="Texture2D" uid="uid://cyhitvs4oq60n" path="res://textures/HorizontalTrack.png" id="6_sdjqy"]
+[ext_resource type="Texture2D" uid="uid://b8ybomgsu8vbw" path="res://textures/TL_CornerTrack.png" id="7_av1he"]
 [ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://SandyShores/Scripts/wave_spawner.gd" id="7_ft65p"]
+[ext_resource type="Texture2D" uid="uid://dpi7r0s3xuhfj" path="res://textures/TR_CornerTrack.png" id="8_bi50h"]
 [ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="8_gr430"]
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="9_sdjqy"]
+[ext_resource type="Texture2D" uid="uid://bvxowy6twy0ua" path="res://textures/VerticalTrack.png" id="9_w4stb"]
 [ext_resource type="Script" uid="uid://n800asycp1sd" path="res://SandyShores/Scripts/bomb_tower.gd" id="10_av1he"]
+[ext_resource type="Texture2D" uid="uid://dkq3xoffiscor" path="res://textures/CenterTrack.png" id="10_gr430"]
 [ext_resource type="PackedScene" uid="uid://dmhok8tovvxvc" path="res://Towers/bomber_tower.tscn" id="11_bi50h"]
 [ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="12_w4stb"]
 [ext_resource type="PackedScene" uid="uid://do17203pjxuim" path="res://Towers/bullet_tower.tscn" id="13_r0ofv"]
@@ -55,16 +62,57 @@ texture_region_size = Vector2i(54, 54)
 0:1/0 = 0
 0:2/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r0ofv"]
+texture = ExtResource("4_ft65p")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f2y8k"]
+texture = ExtResource("5_gr430")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gdn63"]
+texture = ExtResource("6_sdjqy")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8audr"]
+texture = ExtResource("7_av1he")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fwthh"]
+texture = ExtResource("8_bi50h")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a4xci"]
+texture = ExtResource("9_w4stb")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdjqy"]
+texture = ExtResource("10_gr430")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_hngk1"]
 tile_size = Vector2i(54, 54)
 sources/0 = SubResource("TileSetAtlasSource_jjf6g")
+sources/1 = SubResource("TileSetAtlasSource_r0ofv")
+sources/2 = SubResource("TileSetAtlasSource_f2y8k")
+sources/3 = SubResource("TileSetAtlasSource_gdn63")
+sources/4 = SubResource("TileSetAtlasSource_8audr")
+sources/5 = SubResource("TileSetAtlasSource_fwthh")
+sources/6 = SubResource("TileSetAtlasSource_a4xci")
+sources/7 = SubResource("TileSetAtlasSource_sdjqy")
 
-[sub_resource type="Curve2D" id="Curve2D_je2ct"]
-bake_interval = 0.01
+[sub_resource type="Curve2D" id="Curve2D_ft65p"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 837, 123, 0, 0, 0, 0, 835, 241, 0, 0, 0, 0, 83, 241, 0, 0, 0, 0, 84, 404, 0, 0, 0, 0, 189, 404, 0, 0, 0, 0, 188, 352, 0, 0, 0, 0, 831, 354, 0, 0, 0, 0, 834, 465, 0, 0, 0, 0, 731, 465, 0, 0, 0, 0, 728, 570, 0, 0, 0, 0, 567, 571, 0, 0, 0, 0, 566, 459, 0, 0, 0, 0, 350, 457, 0, 0, 0, 0, 349, 513, 0, 0, 0, 0, -85, 515)
+"points": PackedVector2Array(0, 0, 0, 0, 514, -15, 0, 0, 0, 0, 514, 296, 0, 0, 0, 0, 83, 296, 0, 0, 0, 0, 80, 24, 0, 0, 0, 0, 350, 24, 0, 0, 0, 0, 352, 406, 0, 0, 0, 0, 620, 404, 0, 0, 0, 0, 620, 245, 0, 0, 0, 0, 835, 242, 0, 0, 0, 0, 836, 514, 0, 0, 0, 0, 672, 514, 0, 0, 0, 0, 670, 568, 0, 0, 0, 0, -30, 568)
 }
-point_count = 15
+point_count = 13
 
 [sub_resource type="SystemFont" id="SystemFont_dj0d7"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -83,13 +131,12 @@ z_as_relative = false
 [node name="TowerContainer" type="Node2D" parent="." unique_id=966425866]
 
 [node name="Grid" type="TileMapLayer" parent="." unique_id=1928809463 node_paths=PackedStringArray("tower_container")]
-visible = false
 modulate = Color(1, 1, 1, 0.3019608)
 show_behind_parent = true
 top_level = true
 light_mask = 0
-position = Vector2(175, 0)
-tile_map_data = PackedByteArray("AAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAACAAoAAAAAAAAAAAACAAsAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAkAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAABAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAADAAYAAAAAAAAAAAAPAAoAAAAAAAAAAAARAAsAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAgAAAAAAAAAAAANAAkAAAAAAAAAAAA=")
+position = Vector2(180, 0)
+tile_map_data = PackedByteArray("AAABAAkAAAAAAAAAAAABAAgAAAAAAAAAAAABAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAARAAgAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAMAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAACAAkAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAARAAkAAAAAAAAAAAARAAcAAAAAAAAAAAARAAYAAAAAAAAAAAARAAUAAAAAAAAAAAARAAQAAAAAAAAAAAALAAQAAAAAAAAAAAALAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAALAAUAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAALAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAANAAIAAAAAAAAAAAAOAAIAAAAAAAAAAAAPAAIAAAAAAAAAAAAQAAIAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAAQAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAALAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_jjf6g")
 rendering_quadrant_size = 64
 script = ExtResource("2_yqa5h")
@@ -97,20 +144,20 @@ tower_container = NodePath("../TowerContainer")
 
 [node name="Track" type="TileMapLayer" parent="." unique_id=1103271999]
 position = Vector2(229, 0)
-tile_map_data = PackedByteArray("AAD//wQAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAALAAoAAAAAAAAAAAALAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAcAAAAAAAAAAAAAAAcAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAJAAAABgAAAAAAAAAJAAEABgAAAAAAAAAJAAIABgAAAAAAAAAJAAMABgAAAAAAAAAJAAQABgAAAAAAAAAJAAUAAgAAAAAAAAAIAAUAAwAAAAAAAAAHAAUAAwAAAAAAAAAGAAUABwAAAAAAAAAEAAUAAwAAAAAAAAAGAAYABgAAAAAAAAAGAAcAAQAAAAAAAAAHAAcAAwAAAAAAAAAIAAcAAwAAAAAAAAAJAAcAAwAAAAAAAAAKAAcAAwAAAAAAAAAFAAUAAwAAAAAAAAADAAUAAwAAAAAAAAACAAUAAwAAAAAAAAABAAUAAQAAAAAAAAABAAQABgAAAAAAAAABAAIABgAAAAAAAAABAAMABgAAAAAAAAABAAEABgAAAAAAAAABAAAABAAAAAAAAAACAAAAAwAAAAAAAAADAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAAFAAAAAwAAAAAAAAAGAAAABQAAAAAAAAAGAAEABgAAAAAAAAAGAAIABgAAAAAAAAAGAAMABgAAAAAAAAAGAAQABgAAAAAAAAAJAP//BgAAAAAAAAAPAAYABgAAAAAAAAAPAAcABgAAAAAAAAAPAAgABgAAAAAAAAAPAAkAAgAAAAAAAAAOAAkAAwAAAAAAAAANAAkAAwAAAAAAAAAMAAkABAAAAAAAAAAMAAoAAgAAAAAAAAALAAoAAwAAAAAAAAAKAAoAAwAAAAAAAAAIAAoAAwAAAAAAAAAJAAoAAwAAAAAAAAAHAAoAAwAAAAAAAAAGAAoAAwAAAAAAAAAFAAoAAwAAAAAAAAAEAAoAAwAAAAAAAAADAAoAAwAAAAAAAAACAAoAAwAAAAAAAAAAAAoAAwAAAAAAAAABAAoAAwAAAAAAAAD//woAAwAAAAAAAAALAAcAAgAAAAAAAAALAAYABgAAAAAAAAALAAUABgAAAAAAAAALAAQABAAAAAAAAAAMAAQAAwAAAAAAAAANAAQAAwAAAAAAAAAOAAQAAwAAAAAAAAAPAAQABQAAAAAAAAAPAAUABgAAAAAAAAA=")
 tile_set = SubResource("TileSet_hngk1")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=722634766]
+[node name="AbstractBG" type="Sprite2D" parent="." unique_id=722634766]
 z_index = -1
-position = Vector2(693, 320.50003)
-scale = Vector2(0.48229167, 0.6046297)
+position = Vector2(769.99994, 320.50003)
+scale = Vector2(0.57083327, 0.6046297)
 texture = ExtResource("5_gvbs8")
 
 [node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
 z_index = 4096
 z_as_relative = false
-position = Vector2(113.75001, 325.49997)
-scale = Vector2(2.0044248, 1.9548193)
+position = Vector2(117.250015, 325.49997)
+scale = Vector2(2.066372, 1.9548193)
 texture = ExtResource("5_8l8c0")
 
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
@@ -122,9 +169,8 @@ enemy_scene = ExtResource("8_gr430")
 enemy_path = NodePath("../EnemyPath")
 
 [node name="EnemyPath" type="Path2D" parent="." unique_id=367750900]
-visible = false
 position = Vector2(228, 0)
-curve = SubResource("Curve2D_je2ct")
+curve = SubResource("Curve2D_ft65p")
 
 [node name="UI" type="Control" parent="." unique_id=533628969]
 layout_mode = 3
@@ -146,9 +192,9 @@ z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.044843048
-anchor_top = -0.013867488
-anchor_right = 0.05381166
+anchor_left = -0.07174888
+anchor_top = -0.024653314
+anchor_right = 0.076233186
 anchor_bottom = 0.009244992
 offset_left = 10.0
 offset_top = 47.0
@@ -166,10 +212,10 @@ z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.013452915
-anchor_top = 0.29583976
-anchor_right = 0.013452915
-anchor_bottom = 0.29583976
+anchor_left = -0.08071749
+anchor_top = 0.2758089
+anchor_right = 0.10313901
+anchor_bottom = 0.3174114
 offset_left = 10.0
 offset_top = 47.0
 offset_right = 54.0
@@ -186,10 +232,10 @@ z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2600897
-anchor_top = 0.11248074
-anchor_right = 0.47982064
-anchor_bottom = 0.16178736
+anchor_left = 0.22869955
+anchor_top = 0.09707242
+anchor_right = 0.5605381
+anchor_bottom = 0.17873652
 offset_left = 10.0
 offset_top = 47.0
 offset_right = 54.0
@@ -206,9 +252,9 @@ z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.044843048
+anchor_left = -0.058295965
 anchor_top = 0.124807395
-anchor_right = 0.058295965
+anchor_right = 0.08520179
 anchor_bottom = 0.1540832
 offset_left = 10.0
 offset_top = 47.0
@@ -226,10 +272,10 @@ z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.34080717
-anchor_top = -0.009244992
-anchor_right = 0.42600897
-anchor_bottom = 0.0030816642
+anchor_left = 0.28699553
+anchor_top = -0.018489985
+anchor_right = 0.50672644
+anchor_bottom = 0.018489985
 offset_left = 10.0
 offset_top = 47.0
 offset_right = 54.0
@@ -257,6 +303,7 @@ offset_left = 109.0
 offset_top = 29.0
 offset_right = 208.0
 offset_bottom = 96.0
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = SubResource("SystemFont_dj0d7")
 theme_override_font_sizes/font_size = 48
 text = "100"
@@ -283,6 +330,7 @@ offset_left = 95.0
 offset_top = 46.0
 offset_right = 226.0
 offset_bottom = 106.0
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = SubResource("SystemFont_dwuir")
 theme_override_font_sizes/font_size = 48
 text = "100"
