@@ -38,8 +38,8 @@ func take_damage(amount):
 	print("zombie took: ", amount, "from ", get_stack()[1].source)
 	health -= amount
 	modulate = Color.RED
-	await get_tree().create_timer(0.1).timeout
-	modulate = Color.WHITE
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
 	
 	if health <= 0:
 		die()

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bvxmunixoeuva"]
+
+[ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://enemies/zombie.tscn" id="2_2g53n"]
+[ext_resource type="PackedScene" uid="uid://hovc6xdbesyd" path="res://Towers/holy_crusader.tscn" id="2_i5wha"]
+[ext_resource type="PackedScene" uid="uid://bcepi076o27tl" path="res://enemies/plastic_ring.tscn" id="3_2g53n"]
+
+[node name="Node2D" type="Node2D" unique_id=1520096501]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=665358203]
+position = Vector2(118, 35)
+zoom = Vector2(5, 5)
+
+[node name="zombie" parent="." unique_id=1777494260 instance=ExtResource("2_2g53n")]
+position = Vector2(179, 3)
+
+[node name="zombie2" parent="." unique_id=1607784064 instance=ExtResource("2_2g53n")]
+position = Vector2(209, 22)
+
+[node name="Plastic_Ring" parent="." unique_id=375995335 instance=ExtResource("3_2g53n")]
+position = Vector2(191, 64)
+
+[node name="Plastic_Ring2" parent="." unique_id=1456532797 instance=ExtResource("3_2g53n")]
+position = Vector2(212, -11)
+
+[node name="Holy_Crusader" parent="." unique_id=313196950 instance=ExtResource("2_i5wha")]
+position = Vector2(37, 70)
+
+[node name="Holy_Crusader2" parent="." unique_id=1679684955 instance=ExtResource("2_i5wha")]
+position = Vector2(80, 3)

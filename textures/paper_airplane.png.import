@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7kvkhhfaf07o"
-path="res://.godot/imported/mothershell.png-95fa7773ce1c21410226c4481d1d47ae.ctex"
+uid="uid://cl53dg7b75ecr"
+path="res://.godot/imported/paper_airplane.png-bb4dfe2240d74ab0bdd3ea0d83380868.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mothershell.png"
-dest_files=["res://.godot/imported/mothershell.png-95fa7773ce1c21410226c4481d1d47ae.ctex"]
+source_file="res://textures/paper_airplane.png"
+dest_files=["res://.godot/imported/paper_airplane.png-bb4dfe2240d74ab0bdd3ea0d83380868.ctex"]
 
 [params]
 

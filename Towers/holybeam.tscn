@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cob215sck1f85"]
+
+[ext_resource type="Script" uid="uid://dix3k1h8den0p" path="res://Towers/holybeam.gd" id="1_7d6ki"]
+[ext_resource type="Texture2D" uid="uid://uch2jnwlxhhm" path="res://textures/image-removebg-preview (8).png" id="2_e4tn0"]
+[ext_resource type="Texture2D" uid="uid://c3wlbysmfdqxb" path="res://textures/image-removebg-preview (9).png" id="3_6hts1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fx3lx"]
+radius = 17.0
+
+[sub_resource type="Gradient" id="Gradient_6hts1"]
+offsets = PackedFloat32Array(0, 0.46732026, 1)
+colors = PackedColorArray(0.8666667, 0.8352941, 0.08235294, 1, 0.92941177, 0.28627452, 0.02745098, 1, 1, 1, 1, 0.6313726)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iu23p"]
+gradient = SubResource("Gradient_6hts1")
+
+[sub_resource type="Curve" id="Curve_b510y"]
+_data = [Vector2(0.010752678, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jyg38"]
+curve = SubResource("Curve_b510y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v1i0y"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 30.039999
+initial_velocity_max = 75.0
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_jyg38")
+color_ramp = SubResource("GradientTexture1D_iu23p")
+turbulence_noise_scale = 8.845
+
+[node name="holybeam" type="Area2D" unique_id=1466942269]
+z_index = 2
+script = ExtResource("1_7d6ki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1223502182]
+shape = SubResource("CircleShape2D_fx3lx")
+
+[node name="BeamSprite" type="Sprite2D" parent="." unique_id=1325529391]
+z_index = 10
+position = Vector2(0, -51.000004)
+scale = Vector2(0.17225, 0.32575002)
+texture = ExtResource("2_e4tn0")
+
+[node name="TelegraphSprite" type="Sprite2D" parent="." unique_id=413133457]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1.1920929e-07, 0)
+scale = Vector2(0.029166669, 0.03162055)
+texture = ExtResource("3_6hts1")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=302395692]
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_v1i0y")

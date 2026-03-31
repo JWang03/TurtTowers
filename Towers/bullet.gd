@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var speed: float = 500.0
-@export var damage: int = 1
+@export var speed: float = 1000
+@export var damage: int = 2
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -16,6 +16,5 @@ func _on_body_entered(body):
 		
 		queue_free()
 
-# this deletes bullets off screen
 func _on_screen_exited():
 	queue_free()

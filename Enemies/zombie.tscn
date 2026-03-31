@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cp5mfxulgq6d7"]
 
-[ext_resource type="Script" uid="uid://cn7wpo6rhjlw6" path="res://Enemies/zombie.gd" id="1_uiaus"]
+[ext_resource type="Script" uid="uid://cn7wpo6rhjlw6" path="res://enemies/zombie.gd" id="1_uiaus"]
 [ext_resource type="Texture2D" uid="uid://nkub0mc5sjn7" path="res://textures/a-retro-styled-pixel-art-illustration-of-a-zombie-with-torn-clothing-png.png" id="2_roy8y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_roy8y"]
