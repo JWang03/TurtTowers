@@ -6,6 +6,8 @@ extends CharacterBody2D
 
 @onready var ray_cast = $RayCast2D 
 
+var speed_modifier: float = 1.0
+
 var is_eating: bool = false
 
 func _ready():
@@ -17,7 +19,7 @@ func _ready():
 
 func _physics_process(delta):
 	if not is_eating:
-		velocity.x = speed
+		velocity.x = speed * speed_modifier
 		move_and_slide()
 		check_for_towers()
 	else:

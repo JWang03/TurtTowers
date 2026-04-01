@@ -19,7 +19,6 @@ func die():
 
 func spawn_children():
 	if not child_enemy_scene:
-		print("Warning: No child_enemy_scene assigned!")
 		return
 		
 	for i in range(spawn_count):
