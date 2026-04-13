@@ -134,6 +134,8 @@ func _on_map_selector_pressed() -> void:
 	var scene_path = map_scenes[current_map_index]
 	if scene_path != null:
 		get_tree().change_scene_to_file(scene_path)
+	else:
+		push_warning("%s is not playable yet." % map_names[current_map_index])
 
 
 # temp for closing
