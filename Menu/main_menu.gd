@@ -19,9 +19,10 @@ extends Control
 
 # Map data
 var map_textures: Array = []
-var map_names: Array = ["Sandy Shores", "Checkers", "Abstract"]
+var map_names: Array = ["Sandy Shores", "Abstract", "Checkers", "Temple"]
 var map_scenes: Array = [
 	"res://SandyShores/Scenes/Sandy_Beach.tscn",
+	null,
 	null,
 	null
 ]
@@ -35,9 +36,10 @@ func _ready():
 
 	# Load map textures
 	map_textures = [
-		preload("res://Menu/Images/SandyShores.png"),
-		preload("res://Menu/Images/Checkers.png"),
-		preload("res://Menu/Images/Abstract.png")
+		preload("res://Menu/Images/Maps/SandyShores.png"),
+		preload("res://Menu/Images/Maps/Abstract.png"),
+		preload("res://Menu/Images/Maps/Checkers.png"),
+		preload("res://Menu/Images/Maps/Temple.jpg")
 	]
 	assert(map_textures.size() == map_names.size() and map_names.size() == map_scenes.size(), \
 		"Map data arrays must have the same length")
@@ -51,8 +53,10 @@ func _ready():
 		volume_slider.value = GlobalSettings.volume_value
 
 func _update_map_display():
-	map_selector.texture_normal = map_textures[current_map_index]
-	map_name_label.text = map_names[current_map_index]
+	if map_selector:
+		map_selector.texture_normal = map_textures[current_map_index]
+	if map_name_label:
+		map_name_label.text = map_names[current_map_index]
 
 # Settings Menu Function
 func _on_settings_pressed():
