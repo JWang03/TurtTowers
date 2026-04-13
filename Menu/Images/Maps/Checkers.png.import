@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs1etvy6xd1ik"
-path="res://.godot/imported/SandyShores.png-75697b0e3bb0601e2ea03548134ea019.ctex"
+uid="uid://ef52ieubwqp2"
+path="res://.godot/imported/Checkers.png-6798d04bb1abc0ecdf0f4d1bc1426a0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Menu/Images/SandyShores.png"
-dest_files=["res://.godot/imported/SandyShores.png-75697b0e3bb0601e2ea03548134ea019.ctex"]
+source_file="res://Menu/Images/Maps/Checkers.png"
+dest_files=["res://.godot/imported/Checkers.png-6798d04bb1abc0ecdf0f4d1bc1426a0f.ctex"]
 
 [params]
 

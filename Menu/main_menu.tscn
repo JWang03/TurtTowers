@@ -5,8 +5,6 @@
 [ext_resource type="Shader" uid="uid://qwjefknosa0f" path="res://Menu/main_menu.gdshader" id="2_glbon"]
 [ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Menu/Images/SettingsMenu.png" id="3_jix8l"]
 [ext_resource type="Texture2D" uid="uid://cs1etvy6xd1ik" path="res://Menu/Images/SandyShores.png" id="3_nlkkf"]
-[ext_resource type="Texture2D" uid="uid://ohfgd6tu8moo" path="res://Menu/Images/Checkers.png" id="4_checkers"]
-[ext_resource type="Texture2D" uid="uid://23xok0t475lj" path="res://Menu/Images/Abstract.png" id="5_abstract"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
@@ -68,7 +66,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_glbon")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_nlkkf")
 
 [node name="MapSelectionLayer" type="CanvasLayer" parent="." unique_id=280550618]
-visible = false
 
 [node name="Darkener" type="ColorRect" parent="MapSelectionLayer" unique_id=472727133]
 anchors_preset = 15
@@ -79,6 +76,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
 [node name="MapPanel" type="Control" parent="MapSelectionLayer" unique_id=612345678]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -92,24 +90,21 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MapSelector" type="TextureButton" parent="MapSelectionLayer/MapPanel" unique_id=348844679]
-layout_mode = 0
-offset_left = 95.0
-offset_top = 30.0
-offset_right = 645.0
-offset_bottom = 380.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -195.0
+offset_right = 290.5
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("3_nlkkf")
 ignore_texture_size = true
 stretch_mode = 6
-
-[node name="MapNameLabel" type="Label" parent="MapSelectionLayer/MapPanel" unique_id=723456789]
-layout_mode = 0
-offset_left = 95.0
-offset_top = 388.0
-offset_right = 645.0
-offset_bottom = 432.0
-theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
-text = "Sandy Shores"
 
 [node name="LeftArrow" type="Button" parent="MapSelectionLayer/MapPanel" unique_id=834567890]
 layout_mode = 0
@@ -117,8 +112,8 @@ offset_left = 10.0
 offset_top = 165.0
 offset_right = 85.0
 offset_bottom = 245.0
-text = "<"
 theme_override_font_sizes/font_size = 32
+text = "<"
 
 [node name="RightArrow" type="Button" parent="MapSelectionLayer/MapPanel" unique_id=945678901]
 layout_mode = 0
@@ -126,8 +121,8 @@ offset_left = 655.0
 offset_top = 165.0
 offset_right = 730.0
 offset_bottom = 245.0
-text = ">"
 theme_override_font_sizes/font_size = 32
+text = ">"
 
 [node name="CloseMapSelection" type="Button" parent="MapSelectionLayer/MapPanel" unique_id=156789012]
 layout_mode = 0

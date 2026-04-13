@@ -27,7 +27,6 @@ var map_scenes: Array = [
 ]
 var current_map_index: int = 0
 
-
 # Initialization
 func _ready():
 	# Hide all UI overlays at start
@@ -51,11 +50,9 @@ func _ready():
 	if volume_slider:
 		volume_slider.value = GlobalSettings.volume_value
 
-
 func _update_map_display():
 	map_selector.texture_normal = map_textures[current_map_index]
 	map_name_label.text = map_names[current_map_index]
-
 
 # Settings Menu Function
 func _on_settings_pressed():
@@ -72,7 +69,6 @@ func _on_settings_pressed():
 		.set_trans(Tween.TRANS_BACK)\
 		.set_ease(Tween.EASE_OUT)
 
-
 func _on_button_pressed() -> void:
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(darkener, "modulate:a", 0.0, 0.2)
@@ -83,18 +79,14 @@ func _on_button_pressed() -> void:
 	# Wait for animation to finish before hiding the layer
 	tween.chain().tween_callback(overlay.hide)
 
-
 func _on_volume_slider_value_changed(value: float) -> void:
 	GlobalSettings.set_volume(value)
-
 
 func _on_option_button_item_selected(index: int) -> void:
 	GlobalSettings.set_colorblind(index)
 
-
 func _on_fullscreen_item_selected(index: int) -> void:
 	GlobalSettings.set_fullscreen(index)
-
 
 # Map Selection Functions
 func _on_start_game_pressed() -> void:
