@@ -1,8 +1,5 @@
 extends Control
 
-# Audio
-var master_bus = AudioServer.get_bus_index("Master")
-
 # Settings Menu Nodes
 @onready var overlay = $CanvasLayer
 @onready var menu_panel = $CanvasLayer/SettingsMenu
@@ -11,31 +8,55 @@ var master_bus = AudioServer.get_bus_index("Master")
 # Colorblindness Nodes
 @onready var colorblind_dropdown = $CanvasLayer/SettingsMenu/CBButton
 @onready var fullscreen_dropdown = $CanvasLayer/SettingsMenu/FullscreenButton
-@onready var colorblind_filter = $ColorblindLayer/ColorRect
+@onready var volume_slider = $CanvasLayer/SettingsMenu/VolumeSlider
 
-# Map Selection Nodes 
-# (Make sure $MapSelectionLayer/MapSelector is now your TextureButton!)
+# Map Selection Nodes
 @onready var map_overlay = $MapSelectionLayer
-@onready var map_selector = $MapSelectionLayer/MapSelector
+@onready var map_panel = $MapSelectionLayer/MapPanel
+@onready var map_selector = $MapSelectionLayer/MapPanel/MapSelector
+@onready var map_name_label = $MapSelectionLayer/MapPanel/MapNameLabel
 @onready var map_darkener = $MapSelectionLayer/Darkener
 
+# Map data
+var map_textures: Array = []
+var map_names: Array = ["Sandy Shores", "Abstract", "Checkers", "Temple"]
+var map_scenes: Array = [
+	"res://SandyShores/Scenes/Sandy_Beach.tscn",
+	null,
+	null,
+	null
+]
+var current_map_index: int = 0
 
 # Initialization
 func _ready():
 	# Hide all UI overlays at start
 	overlay.hide()
 	map_overlay.hide()
-		
-	# Sets colorblindness to none at start
-	if colorblind_dropdown:
-		colorblind_dropdown.selected = 0
-	
-	# Sets screen to window at start
-	if fullscreen_dropdown:
-		fullscreen_dropdown.selected = 0
-		
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
+	# Load map textures
+	map_textures = [
+		preload("res://Menu/Images/Maps/SandyShores.png"),
+		preload("res://Menu/Images/Maps/Abstract.png"),
+		preload("res://Menu/Images/Maps/Checkers.png"),
+		preload("res://Menu/Images/Maps/Temple.jpg")
+	]
+	assert(map_textures.size() == map_names.size() and map_names.size() == map_scenes.size(), \
+		"Map data arrays must have the same length")
+
+	# Sync UI controls to GlobalSettings state so changes persist across scenes
+	if colorblind_dropdown:
+		colorblind_dropdown.selected = GlobalSettings.colorblind_mode
+	if fullscreen_dropdown:
+		fullscreen_dropdown.selected = GlobalSettings.fullscreen_mode
+	if volume_slider:
+		volume_slider.value = GlobalSettings.volume_value
+
+func _update_map_display():
+	if map_selector:
+		map_selector.texture_normal = map_textures[current_map_index]
+	if map_name_label:
+		map_name_label.text = map_names[current_map_index]
 
 # Settings Menu Function
 func _on_settings_pressed():
@@ -52,7 +73,6 @@ func _on_settings_pressed():
 		.set_trans(Tween.TRANS_BACK)\
 		.set_ease(Tween.EASE_OUT)
 
-
 func _on_button_pressed() -> void:
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(darkener, "modulate:a", 0.0, 0.2)
@@ -63,38 +83,29 @@ func _on_button_pressed() -> void:
 	# Wait for animation to finish before hiding the layer
 	tween.chain().tween_callback(overlay.hide)
 
-
 func _on_volume_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value))
-	# Hard mute if the slider is basically at zero
-	AudioServer.set_bus_mute(master_bus, value < 0.05)
-
+	GlobalSettings.set_volume(value)
 
 func _on_option_button_item_selected(index: int) -> void:
-	# Passes the 0-3 index straight to the shader uniform
-	if colorblind_filter:
-		colorblind_filter.material.set_shader_parameter("mode", index)
-
+	GlobalSettings.set_colorblind(index)
 
 func _on_fullscreen_item_selected(index: int) -> void:
-	match index:
-		0: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		1: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		2: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	GlobalSettings.set_fullscreen(index)
 
-
-# Map Selection Function
+# Map Selection Functions
 func _on_start_game_pressed() -> void:
+	current_map_index = 0
+	_update_map_display()
 	map_overlay.show()
 	
 	# Center pivot for the popup bounce animation
-	map_selector.pivot_offset = map_selector.size / 2
-	map_selector.scale = Vector2.ZERO 
+	map_panel.pivot_offset = map_panel.size / 2
+	map_panel.scale = Vector2.ZERO 
 	map_darkener.modulate.a = 0         
 	
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(map_darkener, "modulate:a", 1.0, 0.2)
-	tween.tween_property(map_selector, "scale", Vector2.ONE, 0.3)\
+	tween.tween_property(map_panel, "scale", Vector2.ONE, 0.3)\
 		.set_trans(Tween.TRANS_BACK)\
 		.set_ease(Tween.EASE_OUT)
 
@@ -102,15 +113,29 @@ func _on_start_game_pressed() -> void:
 func _on_close_map_selection_pressed() -> void:
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(map_darkener, "modulate:a", 0.0, 0.2)
-	tween.tween_property(map_selector, "scale", Vector2.ZERO, 0.2)\
+	tween.tween_property(map_panel, "scale", Vector2.ZERO, 0.2)\
 		.set_trans(Tween.TRANS_BACK)\
 		.set_ease(Tween.EASE_IN)
 		
 	tween.chain().tween_callback(map_overlay.hide)
 
 
+func _on_left_arrow_pressed() -> void:
+	current_map_index = (current_map_index - 1 + map_names.size()) % map_names.size()
+	_update_map_display()
+
+
+func _on_right_arrow_pressed() -> void:
+	current_map_index = (current_map_index + 1) % map_names.size()
+	_update_map_display()
+
+
 func _on_map_selector_pressed() -> void:
-	get_tree().change_scene_to_file("res://SandyShores/Scenes/Sandy_Beach.tscn")
+	var scene_path = map_scenes[current_map_index]
+	if scene_path != null:
+		get_tree().change_scene_to_file(scene_path)
+	else:
+		push_warning("%s is not playable yet." % map_names[current_map_index])
 
 
 # temp for closing

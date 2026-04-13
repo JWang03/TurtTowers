@@ -12,7 +12,6 @@ var targets_in_range: Array = []
 var bullet_scene = preload("res://Towers/bullet.tscn")
 var is_placed := false
 func _ready():
-	print("searching")
 	timer.wait_time = fire_rate
 	timer.one_shot = false
 	

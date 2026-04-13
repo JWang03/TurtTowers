@@ -4,8 +4,7 @@
 [ext_resource type="Script" uid="uid://cs0eavru7btjc" path="res://Menu/main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Shader" uid="uid://qwjefknosa0f" path="res://Menu/main_menu.gdshader" id="2_glbon"]
 [ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Menu/Images/SettingsMenu.png" id="3_jix8l"]
-[ext_resource type="Texture2D" uid="uid://cs1etvy6xd1ik" path="res://Menu/Images/MapSelection.png" id="3_nlkkf"]
-[ext_resource type="AudioStream" uid="uid://b4ivihcqewi1a" path="res://Menu/SPALEXMA - We Are Charlie Kirk.mp3" id="4_jix8l"]
+[ext_resource type="Texture2D" uid="uid://igbigqabkd3d" path="res://Menu/Images/Maps/SandyShores.png" id="3_nlkkf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
@@ -16,6 +15,18 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlkkf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_map_border"]
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.98039216, 0.9607843, 0.8, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nlkkf"]
 shader = ExtResource("2_glbon")
@@ -67,7 +78,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_glbon")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_nlkkf")
 
 [node name="MapSelectionLayer" type="CanvasLayer" parent="." unique_id=280550618]
-visible = false
 
 [node name="Darkener" type="ColorRect" parent="MapSelectionLayer" unique_id=472727133]
 anchors_preset = 15
@@ -77,24 +87,109 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
-[node name="MapSelector" type="TextureButton" parent="MapSelectionLayer" unique_id=348844679]
+[node name="MapPanel" type="Control" parent="MapSelectionLayer" unique_id=612345678]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -331.0
-offset_top = -226.25
-offset_right = 331.0
-offset_bottom = 226.25
+offset_left = -370.0
+offset_top = -250.0
+offset_right = 370.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapBorder" type="Panel" parent="MapSelectionLayer/MapPanel" unique_id=492818237]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -195.0
+offset_right = 290.5
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_map_border")
+
+[node name="MapSelector" type="TextureButton" parent="MapSelectionLayer/MapPanel" unique_id=348844679]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.5
+offset_top = -187.0
+offset_right = 282.5
+offset_bottom = 187.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("3_nlkkf")
 ignore_texture_size = true
 stretch_mode = 6
 
+[node name="LeftArrow" type="Button" parent="MapSelectionLayer/MapPanel" unique_id=834567890]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -72.5
+offset_right = 75.0
+offset_bottom = 72.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "<"
+flat = true
+
+[node name="RightArrow" type="Button" parent="MapSelectionLayer/MapPanel" unique_id=945678901]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -72.5
+offset_bottom = 72.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = ">"
+flat = true
+
+[node name="CloseMapSelection" type="Button" parent="MapSelectionLayer/MapPanel" unique_id=156789012]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 35.0
+grow_horizontal = 0
+text = "X"
+
+[node name="MapNameLabel" type="Label" parent="MapSelectionLayer/MapPanel" unique_id=241739655]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.5
+offset_top = 7.5
+offset_right = 225.5
+offset_bottom = 117.5
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Sandy Shores"
+horizontal_alignment = 1
+
 [node name="ColorblindLayer" type="CanvasLayer" parent="." unique_id=59880908]
 layer = 100
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="ColorblindLayer" unique_id=1398956715]
 material = SubResource("ShaderMaterial_nlkkf")
@@ -199,14 +294,12 @@ offset_top = 324.5
 offset_right = 399.5
 offset_bottom = 352.5
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=678204691]
-stream = ExtResource("4_jix8l")
-autoplay = true
-parameters/looping = true
-
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MapSelectionLayer/MapSelector" to="." method="_on_map_selector_pressed"]
+[connection signal="pressed" from="MapSelectionLayer/MapPanel/MapSelector" to="." method="_on_map_selector_pressed"]
+[connection signal="pressed" from="MapSelectionLayer/MapPanel/LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="MapSelectionLayer/MapPanel/RightArrow" to="." method="_on_right_arrow_pressed"]
+[connection signal="pressed" from="MapSelectionLayer/MapPanel/CloseMapSelection" to="." method="_on_close_map_selection_pressed"]
 [connection signal="value_changed" from="CanvasLayer/SettingsMenu/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="item_selected" from="CanvasLayer/SettingsMenu/FullscreenButton" to="." method="_on_fullscreen_item_selected"]
 [connection signal="item_selected" from="CanvasLayer/SettingsMenu/CBButton" to="." method="_on_option_button_item_selected"]
