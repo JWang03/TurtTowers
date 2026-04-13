@@ -1,0 +1,441 @@
+[gd_scene format=4 uid="uid://begc6qceuos0k"]
+
+[ext_resource type="Texture2D" uid="uid://bfaepla21qfgr" path="res://textures/tile54.png" id="1_oydsv"]
+[ext_resource type="Script" uid="uid://c7qark202ovo" path="res://SandyShores/Scripts/grid.gd" id="2_j8vkp"]
+[ext_resource type="Texture2D" uid="uid://c451qigpgmcvd" path="res://textures/BlueTrack.png" id="3_unwgr"]
+[ext_resource type="Texture2D" uid="uid://drgufdyo5wc3k" path="res://textures/CheckersBottomTrack.png" id="5_kcfff"]
+[ext_resource type="Texture2D" uid="uid://3v2jhv1liekj" path="res://textures/CheckersLeftTrack.png" id="5_snrqj"]
+[ext_resource type="Texture2D" uid="uid://d3tgc3pjqjcsl" path="res://textures/CheckersMiddleTrack.png" id="6_l2t5c"]
+[ext_resource type="Texture2D" uid="uid://b5rghbxpplnc0" path="res://textures/CheckersTopTrack.png" id="7_oydsv"]
+[ext_resource type="Texture2D" uid="uid://dxi1dmo1j7p5n" path="res://textures/CheckersRightTrack.png" id="7_sre1k"]
+[ext_resource type="Texture2D" uid="uid://dvsh41ugecyis" path="res://textures/CheckersBottomRTrack.png" id="8_oydsv"]
+[ext_resource type="Texture2D" uid="uid://wp837fmo6ava" path="res://textures/CheckersTopMTrack.png" id="9_3pea1"]
+[ext_resource type="Texture2D" uid="uid://bx10e0u1vyavm" path="res://textures/CheckersTopLTrack.png" id="9_j8vkp"]
+[ext_resource type="Texture2D" uid="uid://bpn5ecqfxcbme" path="res://textures/BlackTile.png" id="10_j8vkp"]
+[ext_resource type="Texture2D" uid="uid://c15dw006dy701" path="res://textures/WhiteTile.png" id="11_unwgr"]
+[ext_resource type="Texture2D" uid="uid://7kvkhhfaf07o" path="res://textures/mothershell.png" id="11_vbuyy"]
+[ext_resource type="Script" uid="uid://byowlyow01qce" path="res://SandyShores/Scripts/build_manager.gd" id="12_b0jmt"]
+[ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://SandyShores/Scripts/wave_spawner.gd" id="13_6jpsd"]
+[ext_resource type="Texture2D" uid="uid://8po2py1glr3o" path="res://textures/CheckersBottomMTrack.png" id="13_bvp73"]
+[ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="14_3fwag"]
+[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="15_fqsee"]
+[ext_resource type="Script" uid="uid://n800asycp1sd" path="res://SandyShores/Scripts/bomb_tower.gd" id="16_68ie1"]
+[ext_resource type="PackedScene" uid="uid://dmhok8tovvxvc" path="res://Towers/bomber_tower.tscn" id="17_t6tie"]
+[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="18_kbjh2"]
+[ext_resource type="PackedScene" uid="uid://do17203pjxuim" path="res://Towers/bullet_tower.tscn" id="19_vs0qa"]
+[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="20_g86uu"]
+[ext_resource type="PackedScene" uid="uid://d2l8b5nykdqdg" path="res://Towers/godzilla_tower.tscn" id="21_vwh3y"]
+[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="22_u5hhm"]
+[ext_resource type="PackedScene" uid="uid://cgc1rpmolx0r2" path="res://Towers/blackhole_tower.tscn" id="23_xnuqq"]
+[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="24_aml8x"]
+[ext_resource type="PackedScene" uid="uid://b0ux31ymkvdun" path="res://Towers/electric_tower.tscn" id="25_ym06y"]
+[ext_resource type="Script" uid="uid://b110lgne0ntlx" path="res://SandyShores/Scripts/currency_manager.gd" id="26_s5fmm"]
+[ext_resource type="Texture2D" uid="uid://cu0qdmxuiyd4u" path="res://textures/shrimp_no_bg.png" id="27_fsdnh"]
+[ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://SandyShores/Scripts/loss_conditions.gd" id="28_07yl6"]
+[ext_resource type="Texture2D" uid="uid://c43l2x13u6e1n" path="res://textures/hearts_no_bg.png" id="29_ssqjk"]
+[ext_resource type="Script" uid="uid://cfxxtgfammudk" path="res://SandyShores/Scripts/death_screen.gd" id="30_vfoi3"]
+[ext_resource type="Texture2D" uid="uid://c5dersis5dsos" path="res://textures/PlayButton.png" id="31_hy1vn"]
+[ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="32_seqo6"]
+[ext_resource type="Texture2D" uid="uid://djk3jttptdl7f" path="res://textures/PauseButton.png" id="33_i4qxd"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
+texture = ExtResource("1_oydsv")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jjf6g"]
+tile_size = Vector2i(54, 54)
+custom_data_layer_0/name = "placeable"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_ulshj")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vfxb8"]
+texture = ExtResource("10_j8vkp")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_snrqj"]
+texture = ExtResource("11_unwgr")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_04iuq"]
+texture = ExtResource("5_snrqj")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ueo25"]
+texture = ExtResource("6_l2t5c")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbuyy"]
+texture = ExtResource("7_sre1k")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b0jmt"]
+texture = ExtResource("9_j8vkp")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6jpsd"]
+texture = ExtResource("9_3pea1")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j8vkp"]
+texture = ExtResource("5_kcfff")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_unwgr"]
+texture = ExtResource("6_l2t5c")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sre1k"]
+texture = ExtResource("7_oydsv")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3pea1"]
+texture = ExtResource("8_oydsv")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bvp73"]
+texture = ExtResource("9_j8vkp")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3fwag"]
+texture = ExtResource("13_bvp73")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fqsee"]
+texture = ExtResource("8_oydsv")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_68ie1"]
+texture = ExtResource("5_kcfff")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_sre1k"]
+tile_size = Vector2i(54, 54)
+sources/0 = SubResource("TileSetAtlasSource_vfxb8")
+sources/1 = SubResource("TileSetAtlasSource_snrqj")
+sources/2 = SubResource("TileSetAtlasSource_j8vkp")
+sources/3 = SubResource("TileSetAtlasSource_unwgr")
+sources/4 = SubResource("TileSetAtlasSource_sre1k")
+sources/5 = SubResource("TileSetAtlasSource_3pea1")
+sources/6 = SubResource("TileSetAtlasSource_bvp73")
+sources/7 = SubResource("TileSetAtlasSource_3fwag")
+sources/8 = SubResource("TileSetAtlasSource_fqsee")
+sources/9 = SubResource("TileSetAtlasSource_68ie1")
+sources/10 = SubResource("TileSetAtlasSource_04iuq")
+sources/11 = SubResource("TileSetAtlasSource_ueo25")
+sources/12 = SubResource("TileSetAtlasSource_vbuyy")
+sources/13 = SubResource("TileSetAtlasSource_b0jmt")
+sources/14 = SubResource("TileSetAtlasSource_6jpsd")
+
+[sub_resource type="Curve2D" id="Curve2D_wlj2d"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 379, -5, 0, 0, 0, 0, 897, 515, 0, 0, 0, 0, 792, 625, 0, 0, 0, 0, 304, 137, 0, 0, 0, 0, 194, 248, 0, 0, 0, 0, 464, 515, 0, 0, 0, 0, 359, 623, 0, 0, 0, 0, -27, 239)
+}
+point_count = 8
+
+[sub_resource type="SystemFont" id="SystemFont_dj0d7"]
+font_names = PackedStringArray("Comic Sans MS")
+font_weight = 700
+hinting = 2
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_dwuir"]
+font_names = PackedStringArray("Comic Sans MS")
+font_weight = 700
+
+[node name="Game" type="Node2D" unique_id=2110147607]
+z_index = -100
+z_as_relative = false
+
+[node name="TowerContainer" type="Node2D" parent="." unique_id=966425866]
+
+[node name="Grid" type="TileMapLayer" parent="." unique_id=1928809463 node_paths=PackedStringArray("tower_container")]
+modulate = Color(1, 1, 1, 0.3019608)
+show_behind_parent = true
+top_level = true
+light_mask = 0
+position = Vector2(18, 0)
+tile_map_data = PackedByteArray("AAAEAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAGAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAEAAcAAAAAAAAAAAAKAAkAAAAAAAAAAAAJAAgAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAkAAAAAAAAAAAANAAoAAAAAAAAAAAAMAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAoAAAAAAAAAAAAVAAgAAAAAAAAAAAAUAAcAAAAAAAAAAAATAAYAAAAAAAAAAAASAAUAAAAAAAAAAAARAAQAAAAAAAAAAAAQAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAARAAIAAAAAAAAAAAASAAMAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAUAAAAAAAAAAAAVAAYAAAAAAAAAAAAVAAQAAAAAAAAAAAAUAAMAAAAAAAAAAAATAAIAAAAAAAAAAAAVAAIAAAAAAAAAAAASAAkAAAAAAAAAAAARAAgAAAAAAAAAAAAQAAcAAAAAAAAAAAAPAAYAAAAAAAAAAAAOAAUAAAAAAAAAAAANAAQAAAAAAAAAAAAMAAMAAAAAAAAAAAALAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAAJAAAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_jjf6g")
+rendering_quadrant_size = 64
+script = ExtResource("2_j8vkp")
+tower_container = NodePath("../TowerContainer")
+
+[node name="Chessboard" type="TileMapLayer" parent="." unique_id=612561705]
+z_index = -5
+position = Vector2(18, 0)
+tile_map_data = PackedByteArray("AAAEAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAATAAEAAAAAAAAAAAASAAIAAAAAAAAAAAARAAMAAAAAAAAAAAAQAAQABAAAAAAAAAAPAAUAAgAAAAAAAAAOAAYABAAAAAAAAAANAAcAAgAAAAAAAAAMAAgABAAAAAAAAAAJAAsAAgAAAAAAAAAHAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAoAAAAAAAAAAAAIAAoAAgAAAAAAAAANAAsAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAoAAgAAAAAAAAARAAsAAgAAAAAAAAASAAoADgAAAAAAAAATAAsABQAAAAAAAAAUAAoABQAAAAAAAAAVAAsAAAAAAAAAAFAVAAkAAAAAAAAAAFAVAAcAAAAAAAAAAFAVAAUAAAAAAAAAAFAVAAMAAAAAAAAAAFAVAAEAAAAAAAAAAFAUAAIAAAAAAAAAAFATAAMAAAAAAAAAAFAUAAQAAAAAAAAAAFATAAUAAAAAAAAAAFASAAQAAAAAAAAAAFARAAUABAAAAAAAAAASAAYABAAAAAAAAAAUAAYAAAAAAAAAAFATAAcABAAAAAAAAAAUAAgABAAAAAAAAAATAAkADAAAAAAAAAASAAgAAgAAAAAAAAARAAcAAgAAAAAAAAARAAkABAAAAAAAAAAQAAgABAAAAAAAAAAQAAYAAgAAAAAAAAAPAAcABAAAAAAAAAAOAAgAAgAAAAAAAAAPAAkAAgAAAAAAAAANAAkAAAAAAAAAAAAEAAoAAAAAAAAAAFAEAAgAAAAAAAAAAFAEAAYAAgAAAAAAAAAEAAQABAAAAAAAAAAEAAIAAAAAAAAAAFAFAAEAAAAAAAAAAFAFAAMAAAAAAAAAAFAFAAcAAgAAAAAAAAAFAAkAAAAAAAAAAFAHAAkAAgAAAAAAAAAJAAkABAAAAAAAAAAKAAgAAgAAAAAAAAAIAAgABAAAAAAAAAAGAAgAAgAAAAAAAAAHAAcABAAAAAAAAAAJAAcAAgAAAAAAAAALAAcABAAAAAAAAAAMAAYAAgAAAAAAAAAKAAYABAAAAAAAAAAIAAYAAgAAAAAAAAAHAAUAAgAAAAAAAAAJAAUABAAAAAAAAAALAAUAAgAAAAAAAAANAAUABAAAAAAAAAAOAAQAAgAAAAAAAAAMAAQABAAAAAAAAAAKAAQAAgAAAAAAAAAIAAQACgAAAAAAAAAGAAQAAAAAAAAAAAAHAAMABgAAAAAAAAAJAAMABwAAAAAAAAALAAMABAAAAAAAAAANAAMAAgAAAAAAAAAPAAMABAAAAAAAAAAQAAIAAAAAAAAAAFAOAAIABAAAAAAAAAAMAAIAAgAAAAAAAAAKAAIABAAAAAAAAAAIAAIABgAAAAAAAAAGAAIAAAAAAAAAAFAHAAEAAAAAAAAAAFAGAAAAAAAAAAAAAFAIAAAAAAAAAAAAAFAJAAEAAAAAAAAAAFAKAAAAAgAAAAAAAAALAAEAAgAAAAAAAAAMAAAABAAAAAAAAAANAAEABAAAAAAAAAAOAAAAAAAAAAAAAFAPAAEAAAAAAAAAAFAQAAAAAAAAAAAAAFARAAEAAAAAAAAAAFASAAAAAAAAAAAAAFAEAAsAAQAAAAAAAAAFAAoAAQAAAAAAAAAEAAkAAQAAAAAAAAAFAAgAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAYAAwAAAAAAAAAEAAUAAwAAAAAAAAAFAAQAAQAAAAAAAAAEAAMAAQAAAAAAAAAFAAIAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAIAAMAAwAAAAAAAAAJAAQAAQAAAAAAAAAKAAUAAQAAAAAAAAALAAYAAQAAAAAAAAAMAAcAAQAAAAAAAAAIAAUAAwAAAAAAAAAJAAYAAwAAAAAAAAAKAAcAAwAAAAAAAAAHAAQAAwAAAAAAAAAGAAMAAQAAAAAAAAAGAAUAAQAAAAAAAAAHAAYAAQAAAAAAAAAGAAcAAwAAAAAAAAAHAAgAAwAAAAAAAAAGAAkAAQAAAAAAAAAHAAoAAQAAAAAAAAAGAAsAAQAAAAAAAAAIAAsAAQAAAAAAAAAIAAkAAwAAAAAAAAAIAAcAAQAAAAAAAAAJAAgAAQAAAAAAAAAKAAkAAQAAAAAAAAAJAAoAAwAAAAAAAAAMAAsAAQAAAAAAAAALAAoAAwAAAAAAAAAMAAkAAwAAAAAAAAALAAgAAwAAAAAAAAANAAgAAQAAAAAAAAAOAAkAAQAAAAAAAAAPAAoAAQAAAAAAAAAQAAsAAQAAAAAAAAAOAAsAAQAAAAAAAAANAAoAAQAAAAAAAAASAAsAAwAAAAAAAAAUAAsAAQAAAAAAAAAVAAoAAQAAAAAAAAATAAoACwAAAAAAAAARAAoAAwAAAAAAAAAUAAkACwAAAAAAAAASAAkAAQAAAAAAAAAQAAkAAwAAAAAAAAAPAAgAAwAAAAAAAAARAAgAAQAAAAAAAAATAAgACwAAAAAAAAAVAAgAAQAAAAAAAAAUAAcAAQAAAAAAAAASAAcAAwAAAAAAAAAQAAcAAQAAAAAAAAAOAAcAAwAAAAAAAAANAAYAAwAAAAAAAAAMAAUAAwAAAAAAAAALAAQAAwAAAAAAAAAKAAMAAwAAAAAAAAAJAAIAAwAAAAAAAAAIAAEAAQAAAAAAAAAHAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAEAAQAAAAAAAAALAAIAAQAAAAAAAAALAAAAAwAAAAAAAAAMAAEAAwAAAAAAAAANAAIAAwAAAAAAAAAMAAMAAQAAAAAAAAANAAQAAQAAAAAAAAAOAAUAAQAAAAAAAAAPAAYAAQAAAAAAAAARAAYAAwAAAAAAAAATAAYAAQAAAAAAAAAVAAYAAQAAAAAAAAAVAAQAAQAAAAAAAAAVAAIAAQAAAAAAAAAVAAAAAQAAAAAAAAAUAAEAAQAAAAAAAAATAAAAAQAAAAAAAAATAAIAAQAAAAAAAAAUAAMAAQAAAAAAAAAUAAUAAQAAAAAAAAATAAQAAQAAAAAAAAASAAUAAQAAAAAAAAAQAAUAAwAAAAAAAAAPAAQAAwAAAAAAAAAOAAMAAwAAAAAAAAANAAAAAQAAAAAAAAAOAAEAAQAAAAAAAAAPAAAAAQAAAAAAAAAQAAEAAQAAAAAAAAAPAAIAAQAAAAAAAAAQAAMAAQAAAAAAAAARAAQAAQAAAAAAAAASAAMAAQAAAAAAAAARAAIAAQAAAAAAAAASAAEAAQAAAAAAAAARAAAAAQAAAAAAAAAFAAUABAAAAAAAAAAGAAYABAAAAAAAAAALAAsABQAAAAAAAAAMAAoABQAAAAAAAAAKAAsAAwAAAAAAAAAKAAoADgAAAAAAAAALAAkADAAAAAAAAAA=")
+tile_set = SubResource("TileSet_sre1k")
+
+[node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
+z_index = 4096
+z_as_relative = false
+position = Vector2(116.25001, 325.49997)
+scale = Vector2(2.1, 2.004)
+texture = ExtResource("11_vbuyy")
+
+[node name="BuildManager" type="Node" parent="." unique_id=2047673092]
+script = ExtResource("12_b0jmt")
+
+[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path")]
+script = ExtResource("13_6jpsd")
+enemy_scene = ExtResource("14_3fwag")
+enemy_path = NodePath("../EnemyPath")
+
+[node name="EnemyPath" type="Path2D" parent="." unique_id=367750900]
+position = Vector2(228, 0)
+curve = SubResource("Curve2D_wlj2d")
+
+[node name="UI" type="Control" parent="." unique_id=533628969]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 1149.0
+offset_bottom = 646.0
+
+[node name="ShopPanel" type="Control" parent="UI" unique_id=827478311]
+anchors_preset = 0
+offset_left = 7.0
+offset_top = -1.0
+offset_right = 230.0
+offset_bottom = 648.0
+
+[node name="BombButton" type="TextureButton" parent="UI/ShopPanel" unique_id=2072775595]
+z_index = 4096
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.08071749
+anchor_top = -0.03697997
+anchor_right = 0.05381166
+anchor_bottom = 0.009244992
+offset_left = 10.0
+offset_top = 47.0
+offset_right = 54.0
+offset_bottom = 95.0
+texture_normal = ExtResource("15_fqsee")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("16_68ie1")
+tower_scene = ExtResource("17_t6tie")
+metadata/_edit_use_anchors_ = true
+
+[node name="BulletButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1555913598]
+z_index = 4096
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.076233186
+anchor_top = 0.2773497
+anchor_right = 0.076233186
+anchor_bottom = 0.3081664
+offset_left = 10.0
+offset_top = 47.0
+offset_right = 54.0
+offset_bottom = 95.0
+texture_normal = ExtResource("18_kbjh2")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("16_68ie1")
+tower_scene = ExtResource("19_vs0qa")
+metadata/_edit_use_anchors_ = true
+
+[node name="GodzillaButton" type="TextureButton" parent="UI/ShopPanel" unique_id=626692531]
+z_index = 4096
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21973094
+anchor_top = 0.08320493
+anchor_right = 0.5560538
+anchor_bottom = 0.17873652
+offset_left = 10.0
+offset_top = 47.0
+offset_right = 54.0
+offset_bottom = 95.0
+texture_normal = ExtResource("20_g86uu")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("16_68ie1")
+tower_scene = ExtResource("21_vwh3y")
+metadata/_edit_use_anchors_ = true
+
+[node name="BlackHoleButton" type="TextureButton" parent="UI/ShopPanel" unique_id=142497050]
+z_index = 4096
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.07174888
+anchor_top = 0.10785824
+anchor_right = 0.058295965
+anchor_bottom = 0.1540832
+offset_left = 10.0
+offset_top = 47.0
+offset_right = 54.0
+offset_bottom = 95.0
+texture_normal = ExtResource("22_u5hhm")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("16_68ie1")
+tower_scene = ExtResource("23_xnuqq")
+metadata/_edit_use_anchors_ = true
+
+[node name="ElectricButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1909256770]
+z_index = 4096
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.31390134
+anchor_top = -0.029275808
+anchor_right = 0.4573991
+anchor_bottom = 0.0030816642
+offset_left = 10.0
+offset_top = 47.0
+offset_right = 54.0
+offset_bottom = 95.0
+texture_normal = ExtResource("24_aml8x")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("16_68ie1")
+tower_scene = ExtResource("25_ym06y")
+metadata/_edit_use_anchors_ = true
+
+[node name="CurrencyManager" type="Node" parent="UI" unique_id=219739025]
+script = ExtResource("26_s5fmm")
+
+[node name="Money" type="Control" parent="UI" unique_id=1732714314]
+anchors_preset = 0
+offset_left = 942.0
+offset_top = -19.0
+offset_right = 1181.0
+offset_bottom = 102.0
+
+[node name="ShellingsLabel" type="Label" parent="UI/Money" unique_id=2071042031]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 29.0
+offset_right = 208.0
+offset_bottom = 96.0
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("SystemFont_dj0d7")
+theme_override_font_sizes/font_size = 48
+text = "100"
+
+[node name="Shrimp" type="Sprite2D" parent="UI/Money" unique_id=892181832]
+z_index = 1096
+position = Vector2(67, 64.99999)
+scale = Vector2(0.28175774, 0.23780484)
+texture = ExtResource("27_fsdnh")
+
+[node name="LossConditions" type="Node" parent="UI" unique_id=300026466]
+script = ExtResource("28_07yl6")
+
+[node name="Lives" type="Control" parent="UI" unique_id=1545277758]
+anchors_preset = 0
+offset_left = 774.0
+offset_top = -34.0
+offset_right = 993.0
+offset_bottom = 112.0
+
+[node name="LivesLabel" type="Label" parent="UI/Lives" unique_id=707430476]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 46.0
+offset_right = 226.0
+offset_bottom = 106.0
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("SystemFont_dwuir")
+theme_override_font_sizes/font_size = 48
+text = "100"
+
+[node name="HeartsNoBg" type="Sprite2D" parent="UI/Lives" unique_id=560389045]
+position = Vector2(56, 77)
+scale = Vector2(0.26033974, 0.27710044)
+texture = ExtResource("29_ssqjk")
+
+[node name="DeathScreen" type="Control" parent="UI" unique_id=2058731793]
+visible = false
+anchors_preset = 0
+offset_left = 540.0
+offset_right = 935.0
+offset_bottom = 636.0
+script = ExtResource("30_vfoi3")
+
+[node name="TextureRect" type="TextureRect" parent="UI/DeathScreen" unique_id=1184378150]
+layout_mode = 0
+offset_left = -62.0
+offset_top = 25.0
+offset_right = 484.0
+offset_bottom = 611.0
+texture = ExtResource("3_unwgr")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="UI/DeathScreen" unique_id=1809529702]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 274.0
+offset_right = 437.0
+offset_bottom = 362.0
+theme_override_font_sizes/font_size = 64
+text = "You Lose Idiot"
+
+[node name="Start_Pause" type="Control" parent="UI" unique_id=1647321012]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayButton" type="TextureButton" parent="UI/Start_Pause" unique_id=735464196]
+z_index = 4096
+z_as_relative = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 577.0
+offset_right = 72.0
+offset_bottom = 646.0
+texture_normal = ExtResource("31_hy1vn")
+ignore_texture_size = true
+stretch_mode = 6
+script = ExtResource("32_seqo6")
+play_texture = ExtResource("31_hy1vn")
+pause_texture = ExtResource("33_i4qxd")

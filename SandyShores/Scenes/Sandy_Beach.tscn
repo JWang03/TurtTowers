@@ -24,8 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://c43l2x13u6e1n" path="res://textures/hearts_no_bg.png" id="15_rjrdg"]
 [ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="16_ci5cp"]
 [ext_resource type="Script" uid="uid://cfxxtgfammudk" path="res://SandyShores/Scripts/death_screen.gd" id="16_dwuir"]
-[ext_resource type="Texture2D" uid="uid://da4573ymcncmd" path="res://Settings.png" id="25_sxldm"]
-[ext_resource type="Script" path="res://SandyShores/Scripts/settings_button.gd" id="26_settbtn"]
+[ext_resource type="Texture2D" uid="uid://c5dersis5dsos" path="res://textures/PlayButton.png" id="25_sxldm"]
+[ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="26_etoju"]
+[ext_resource type="Texture2D" uid="uid://djk3jttptdl7f" path="res://textures/PauseButton.png" id="27_ci5cp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_je2ct")
@@ -86,7 +87,7 @@ modulate = Color(1, 1, 1, 0.3019608)
 show_behind_parent = true
 top_level = true
 light_mask = 0
-position = Vector2(175, 0)
+position = Vector2(180, 0)
 tile_map_data = PackedByteArray("AAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAACAAoAAAAAAAAAAAACAAsAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAkAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAABAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAADAAYAAAAAAAAAAAAPAAoAAAAAAAAAAAARAAsAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAgAAAAAAAAAAAANAAkAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_jjf6g")
 rendering_quadrant_size = 64
@@ -95,7 +96,7 @@ tower_container = NodePath("../TowerContainer")
 
 [node name="Track" type="TileMapLayer" parent="." unique_id=1103271999]
 position = Vector2(229, 0)
-tile_map_data = PackedByteArray("AAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAACAAkAAAAAAAAAAAABAAkAAAAAAAAAAAAAAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAANAAkAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAALAAEAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAACAAkAAAAAAAAAAAABAAkAAAAAAAAAAAAAAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAANAAkAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_hngk1")
 
 [node name="Beach" type="Sprite2D" parent="." unique_id=1801378851]
@@ -108,8 +109,8 @@ texture = ExtResource("4_ckwcc")
 [node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
 z_index = 4096
 z_as_relative = false
-position = Vector2(113.75001, 325.49997)
-scale = Vector2(2.0044248, 1.9548193)
+position = Vector2(116.75001, 325.49997)
+scale = Vector2(2.0575223, 1.9548193)
 texture = ExtResource("5_50yat")
 
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
@@ -144,9 +145,9 @@ z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.044843048
-anchor_top = -0.013867488
-anchor_right = 0.05381166
+anchor_left = -0.09417041
+anchor_top = -0.03697997
+anchor_right = 0.089686096
 anchor_bottom = 0.009244992
 offset_left = 10.0
 offset_top = 47.0
@@ -164,10 +165,10 @@ z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.013452915
-anchor_top = 0.29583976
-anchor_right = 0.013452915
-anchor_bottom = 0.29583976
+anchor_left = -0.031390134
+anchor_top = 0.2896764
+anchor_right = 0.05381166
+anchor_bottom = 0.3127889
 offset_left = 10.0
 offset_top = 47.0
 offset_right = 54.0
@@ -184,10 +185,10 @@ z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2600897
-anchor_top = 0.11248074
-anchor_right = 0.47982064
-anchor_bottom = 0.16178736
+anchor_left = 0.20179372
+anchor_top = 0.08936826
+anchor_right = 0.57847536
+anchor_bottom = 0.18335901
 offset_left = 10.0
 offset_top = 47.0
 offset_right = 54.0
@@ -204,10 +205,10 @@ z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.044843048
-anchor_top = 0.124807395
-anchor_right = 0.058295965
-anchor_bottom = 0.1540832
+anchor_left = -0.09865471
+anchor_top = 0.11248074
+anchor_right = 0.11659193
+anchor_bottom = 0.16024654
 offset_left = 10.0
 offset_top = 47.0
 offset_right = 54.0
@@ -224,10 +225,10 @@ z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.34080717
-anchor_top = -0.009244992
-anchor_right = 0.42600897
-anchor_bottom = 0.0030816642
+anchor_left = 0.31390134
+anchor_top = -0.018489985
+anchor_right = 0.4529148
+anchor_bottom = 0.009244992
 offset_left = 10.0
 offset_top = 47.0
 offset_right = 54.0
@@ -255,6 +256,7 @@ offset_left = 109.0
 offset_top = 29.0
 offset_right = 208.0
 offset_bottom = 96.0
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = SubResource("SystemFont_dj0d7")
 theme_override_font_sizes/font_size = 48
 text = "100"
@@ -281,6 +283,7 @@ offset_left = 95.0
 offset_top = 46.0
 offset_right = 226.0
 offset_bottom = 106.0
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = SubResource("SystemFont_dwuir")
 theme_override_font_sizes/font_size = 48
 text = "100"
@@ -315,22 +318,22 @@ offset_bottom = 362.0
 theme_override_font_sizes/font_size = 64
 text = "You Lose Idiot"
 
-[node name="Settings" type="Control" parent="UI" unique_id=1132231876]
+[node name="Start_Pause" type="Control" parent="UI" unique_id=1647321012]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="GearButton" type="TextureButton" parent="UI/Settings" unique_id=1389892020]
+[node name="PlayButton" type="TextureButton" parent="UI/Start_Pause" unique_id=735464196]
 z_index = 4096
 z_as_relative = false
 layout_mode = 0
-offset_left = -6.0
-offset_top = -7.0
-offset_right = 50.0
-offset_bottom = 44.0
+offset_left = 1.0
+offset_top = 577.0
+offset_right = 72.0
+offset_bottom = 646.0
 texture_normal = ExtResource("25_sxldm")
 ignore_texture_size = true
 stretch_mode = 6
-script = ExtResource("26_settbtn")
-
-[connection signal="pressed" from="UI/Settings/GearButton" to="UI/Settings/GearButton" method="_on_pressed"]
+script = ExtResource("26_etoju")
+play_texture = ExtResource("25_sxldm")
+pause_texture = ExtResource("27_ci5cp")

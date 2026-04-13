@@ -1,6 +1,7 @@
 extends Control
 
 @onready var loss_condition = get_node("../LossConditions")
+@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false # Replace with function body.
@@ -10,3 +11,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if loss_condition.is_alive(loss_condition.lives) == false:
 		visible = true
+		starter.playing = false

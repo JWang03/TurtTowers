@@ -3,7 +3,7 @@ extends TileMapLayer
 @export var tower_container: Node2D
 @onready var build_manager = get_node("/root/Game/BuildManager")
 @onready var currency_manager = get_node("/root/Game/UI/CurrencyManager")
-
+@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 var occupied_cells := {}
 var ghost_tower: Node2D = null
 
@@ -50,6 +50,9 @@ func affordable(cost) -> bool:
 	return currency_manager.shellings >= cost
 	
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		build_manager.clear()
+
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 
 		if build_manager.selected_scene == null:
@@ -73,5 +76,6 @@ func _input(event: InputEvent) -> void:
 					currency_manager.spend_shellings(cost)
 					tower_container.add_child(tower)
 					tower.position = spawn_pos
+					tower.is_placed = true
 					occupied_cells[cell] = true
 					build_manager.clear()
