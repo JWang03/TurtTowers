@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
-@export var speed: float = -10.0 
+@export var speed: float = 100.0 
 @export var health: float = 50.0
 @export var attack_damage: int = 1
+@export var damage = 5
 
+@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 @onready var ray_cast = $RayCast2D 
+@onready var loss_conditions = get_node("/root/Game/UI/LossConditions")
+@onready var currency = get_node("/root/Game/UI/CurrencyManager")
 
-var speed_modifier: float = 1.0
-
-var is_eating: bool = false
 
 func _ready():
 	add_to_group("zombies")
@@ -17,35 +18,28 @@ func _ready():
 		ray_cast.enabled = true
 		ray_cast.target_position = Vector2(-20, 0) 
 
-func _physics_process(delta):
-	if not is_eating:
-		velocity.x = speed * speed_modifier
-		move_and_slide()
-		check_for_towers()
-	else:
-		# Logic for destroying mother tower would go here if we do that
-		pass
 
-func check_for_towers():
-	if ray_cast and ray_cast.is_colliding():
-		var collider = ray_cast.get_collider()
-		if collider.is_in_group("towers"):
-			start_eating(collider)
 
-func start_eating(tower):
-	is_eating = true
-	print("Eating tower!")
-
+func _process(delta):
+	if starter.playing == true:
+		var follow = get_parent()
+		if follow is PathFollow2D:
+			follow.progress += speed * delta
+		
+			var path_length = follow.get_parent().curve.get_baked_length()
+			if follow.progress >= path_length:
+				follow.queue_free()
+				loss_conditions.spend_lives(damage)
 func take_damage(amount):
-	print("zombie took: ", amount, "from ", get_stack()[1].source)
 	health -= amount
 	modulate = Color.RED
-	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
+	await get_tree().create_timer(0.1).timeout
+	modulate = Color.WHITE
 	
 	if health <= 0:
 		die()
 
 func die():
 	# Add loot drop here
+	currency.add_shellings(2)
 	queue_free()
