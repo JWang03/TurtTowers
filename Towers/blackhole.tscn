@@ -17,7 +17,7 @@ shape = SubResource("CircleShape2D_ivaat")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1223330176]
 position = Vector2(-1.4210855e-14, -1.1920929e-07)
-scale = Vector2(0.104, 0.1)
+scale = Vector2(0.05142857, 0.048571426)
 texture = ExtResource("2_rv61l")
 
 [node name="ExplosionArea" type="Area2D" parent="." unique_id=1945823170]

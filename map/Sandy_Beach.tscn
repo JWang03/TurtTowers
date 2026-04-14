@@ -1,0 +1,214 @@
+[gd_scene format=4 uid="uid://cdpevfwoy7y1r"]
+
+[ext_resource type="Texture2D" uid="uid://bfaepla21qfgr" path="res://map/tile54.png" id="1_je2ct"]
+[ext_resource type="Script" uid="uid://c7qark202ovo" path="res://map/grid.gd" id="2_lsk4j"]
+[ext_resource type="Texture2D" uid="uid://c451qigpgmcvd" path="res://map/BlueTrack.png" id="3_ai02a"]
+[ext_resource type="Texture2D" uid="uid://wgtpugqiaaqq" path="res://map/beach.png" id="4_ckwcc"]
+[ext_resource type="Texture2D" uid="uid://7kvkhhfaf07o" path="res://map/mothershell.png" id="5_50yat"]
+[ext_resource type="Script" uid="uid://byowlyow01qce" path="res://map/build_manager.gd" id="6_rjrdg"]
+[ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://map/wave_spawner.gd" id="7_ai02a"]
+[ext_resource type="Script" uid="uid://cdtvqlomh6nso" path="res://map/shop_panel.gd" id="7_dwuir"]
+[ext_resource type="PackedScene" uid="uid://sjmpbya05shd" path="res://map/TestEnemy.tscn" id="8_ckwcc"]
+[ext_resource type="PackedScene" uid="uid://yaw7tgbmm1oo" path="res://map/TestTower.tscn" id="8_j0j5x"]
+[ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://map/loss_conditions.gd" id="9_50yat"]
+[ext_resource type="Script" uid="uid://b110lgne0ntlx" path="res://map/currency_manager.gd" id="10_yrnad"]
+[ext_resource type="Texture2D" uid="uid://cu0qdmxuiyd4u" path="res://map/shrimp_no_bg.png" id="13_ckwcc"]
+[ext_resource type="Texture2D" uid="uid://c43l2x13u6e1n" path="res://Images/hearts_no_bg.png" id="15_rjrdg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
+texture = ExtResource("1_je2ct")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jjf6g"]
+tile_size = Vector2i(54, 54)
+custom_data_layer_0/name = "placeable"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_ulshj")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjf6g"]
+texture = ExtResource("3_ai02a")
+texture_region_size = Vector2i(54, 54)
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hngk1"]
+tile_size = Vector2i(54, 54)
+sources/0 = SubResource("TileSetAtlasSource_jjf6g")
+
+[sub_resource type="Curve2D" id="Curve2D_je2ct"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 837, 123, 0, 0, 0, 0, 835, 241, 0, 0, 0, 0, 83, 241, 0, 0, 0, 0, 84, 404, 0, 0, 0, 0, 189, 404, 0, 0, 0, 0, 188, 352, 0, 0, 0, 0, 831, 354, 0, 0, 0, 0, 834, 465, 0, 0, 0, 0, 731, 465, 0, 0, 0, 0, 728, 570, 0, 0, 0, 0, 567, 571, 0, 0, 0, 0, 566, 459, 0, 0, 0, 0, 350, 457, 0, 0, 0, 0, 349, 513, 0, 0, 0, 0, -85, 515)
+}
+point_count = 15
+
+[sub_resource type="GDScript" id="GDScript_rjrdg"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="SystemFont" id="SystemFont_dj0d7"]
+font_names = PackedStringArray("Comic Sans MS")
+font_weight = 700
+hinting = 2
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_dwuir"]
+font_names = PackedStringArray("Comic Sans MS")
+font_weight = 700
+
+[node name="Game" type="Node2D" unique_id=2110147607]
+z_index = -100
+z_as_relative = false
+
+[node name="TowerContainer" type="Node2D" parent="." unique_id=966425866]
+
+[node name="Grid" type="TileMapLayer" parent="." unique_id=1928809463 node_paths=PackedStringArray("tower_container")]
+modulate = Color(1, 1, 1, 0.3019608)
+show_behind_parent = true
+top_level = true
+light_mask = 0
+position = Vector2(175, 0)
+tile_map_data = PackedByteArray("AAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAACAAoAAAAAAAAAAAACAAsAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAkAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAABAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAADAAYAAAAAAAAAAAAPAAoAAAAAAAAAAAARAAsAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAgAAAAAAAAAAAANAAkAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_jjf6g")
+rendering_quadrant_size = 64
+script = ExtResource("2_lsk4j")
+tower_container = NodePath("../TowerContainer")
+
+[node name="Track" type="TileMapLayer" parent="." unique_id=1103271999]
+position = Vector2(229, 0)
+tile_map_data = PackedByteArray("AAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAACAAkAAAAAAAAAAAABAAkAAAAAAAAAAAAAAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAANAAkAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAALAAEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_hngk1")
+
+[node name="Beach" type="Sprite2D" parent="." unique_id=1801378851]
+z_index = -1000
+z_as_relative = false
+position = Vector2(692, 327.00006)
+scale = Vector2(0.65767044, 0.8567708)
+texture = ExtResource("4_ckwcc")
+
+[node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
+z_index = 4096
+z_as_relative = false
+position = Vector2(113.75001, 325.49997)
+scale = Vector2(2.0044248, 1.9548193)
+texture = ExtResource("5_50yat")
+
+[node name="BuildManager" type="Node" parent="." unique_id=2047673092]
+script = ExtResource("6_rjrdg")
+
+[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path")]
+script = ExtResource("7_ai02a")
+enemy_scene = ExtResource("8_ckwcc")
+enemy_path = NodePath("../EnemyPath")
+
+[node name="EnemyPath" type="Path2D" parent="." unique_id=367750900]
+position = Vector2(228, 0)
+curve = SubResource("Curve2D_je2ct")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath" unique_id=178002741]
+position = Vector2(837, 123)
+rotation = 1.5877439
+rotates = false
+
+[node name="enemy" parent="EnemyPath" unique_id=2064316582 instance=ExtResource("8_ckwcc")]
+
+[node name="UI" type="Control" parent="." unique_id=533628969]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3.0
+offset_top = -3.0
+offset_right = 1154.0
+offset_bottom = 642.0
+
+[node name="ShopPanel" type="Control" parent="UI" unique_id=827478311]
+anchors_preset = 0
+offset_left = 7.0
+offset_top = -1.0
+offset_right = 230.0
+offset_bottom = 648.0
+script = ExtResource("7_dwuir")
+tower_scene = ExtResource("8_j0j5x")
+
+[node name="PlaceTowerButton" type="Button" parent="UI/ShopPanel" unique_id=154995897]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.004484305
+anchor_right = 0.004484305
+offset_left = 10.0
+offset_top = 47.0
+offset_right = 54.0
+offset_bottom = 95.0
+script = SubResource("GDScript_rjrdg")
+metadata/_edit_use_anchors_ = true
+
+[node name="CurrencyManager" type="Node" parent="UI" unique_id=219739025]
+script = ExtResource("10_yrnad")
+
+[node name="Money" type="Control" parent="UI" unique_id=1732714314]
+anchors_preset = 0
+offset_left = 942.0
+offset_top = -19.0
+offset_right = 1181.0
+offset_bottom = 102.0
+
+[node name="ShellingsLabel" type="Label" parent="UI/Money" unique_id=2071042031]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 29.0
+offset_right = 208.0
+offset_bottom = 96.0
+theme_override_fonts/font = SubResource("SystemFont_dj0d7")
+theme_override_font_sizes/font_size = 48
+text = "100"
+
+[node name="Shrimp" type="Sprite2D" parent="UI/Money" unique_id=892181832]
+z_index = 1096
+position = Vector2(67, 64.99999)
+scale = Vector2(0.28175774, 0.23780484)
+texture = ExtResource("13_ckwcc")
+
+[node name="LossConditions" type="Node" parent="UI" unique_id=300026466]
+script = ExtResource("9_50yat")
+
+[node name="Lives" type="Control" parent="UI" unique_id=1545277758]
+anchors_preset = 0
+offset_left = 774.0
+offset_top = -34.0
+offset_right = 993.0
+offset_bottom = 112.0
+
+[node name="LivesLabel" type="Label" parent="UI/Lives" unique_id=707430476]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 46.0
+offset_right = 226.0
+offset_bottom = 106.0
+theme_override_fonts/font = SubResource("SystemFont_dwuir")
+theme_override_font_sizes/font_size = 48
+text = "100"
+
+[node name="HeartsNoBg" type="Sprite2D" parent="UI/Lives" unique_id=560389045]
+position = Vector2(56, 77)
+scale = Vector2(0.26033974, 0.27710044)
+texture = ExtResource("15_rjrdg")

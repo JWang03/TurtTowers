@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://sjmpbya05shd"]
+
+[ext_resource type="Script" uid="uid://dutgfmsm4exqu" path="res://map/test_enemy.gd" id="1_5exoo"]
+[ext_resource type="Texture2D" uid="uid://nkub0mc5sjn7" path="res://textures/a-retro-styled-pixel-art-illustration-of-a-zombie-with-torn-clothing-png.png" id="2_hxebd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hxebd"]
+radius = 8.0
+
+[node name="enemy" type="CharacterBody2D" unique_id=2064316582]
+script = ExtResource("1_5exoo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=300712393]
+position = Vector2(-2.2737368e-13, -2.0000005)
+rotation = -1.5707964
+scale = Vector2(0.10964287, 0.11392858)
+texture = ExtResource("2_hxebd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1197736563]
+shape = SubResource("CircleShape2D_hxebd")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1408423362]
+target_position = Vector2(-100, 0)

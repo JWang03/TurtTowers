@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cadutt0miju36"]
+
+[ext_resource type="Script" uid="uid://vye7tubjb3ps" path="res://Towers/time_tower.gd" id="1_1apqp"]
+[ext_resource type="Texture2D" uid="uid://duvpbwm5vcfnq" path="res://textures/image-removebg-preview (7).png" id="2_kvvrj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1khan"]
+radius = 24.020824
+
+[node name="time_tower" type="StaticBody2D" unique_id=116641254]
+script = ExtResource("1_1apqp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1106551512]
+position = Vector2(-4.7683716e-07, 1.9073486e-06)
+scale = Vector2(0.053247713, 0.028183004)
+texture = ExtResource("2_kvvrj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1508704887]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1757723954]
+shape = SubResource("CircleShape2D_1khan")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1950440903]
+polygon = PackedVector2Array(-6, -5, 0, -9, 7, -6, 8, 5, 4, 8, -3, 8, -9, 4)

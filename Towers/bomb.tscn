@@ -7,7 +7,7 @@
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nfxiy"]
-radius = 94.00532
+radius = 37.01351
 
 [node name="bomb" type="Area2D" unique_id=390304399]
 monitoring = false
@@ -17,7 +17,8 @@ script = ExtResource("1_4fn8o")
 shape = SubResource("CircleShape2D_4fn8o")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=366769589]
-scale = Vector2(0.088571414, 0.08142856)
+position = Vector2(-2.3841858e-07, -0.9999995)
+scale = Vector2(0.05142857, 0.048571426)
 texture = ExtResource("2_nfxiy")
 
 [node name="ExplosionArea" type="Area2D" parent="." unique_id=426235846]

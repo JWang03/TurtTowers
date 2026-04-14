@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://itfva5ofdnmj"]
+
+[ext_resource type="Script" uid="uid://i7kaaj5di5pm" path="res://enemies/buff_range.gd" id="1_yxw5x"]
+[ext_resource type="Texture2D" uid="uid://btfjjgfs4cy4s" path="res://textures/poison_gas.png" id="2_yxw5x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yynto"]
+radius = 55.00909
+
+[node name="buff_range" type="Area2D" unique_id=101611681]
+script = ExtResource("1_yxw5x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1876895683]
+self_modulate = Color(1, 1, 1, 0.44313726)
+position = Vector2(2.499997, 7.000001)
+scale = Vector2(0.5751879, 0.6146789)
+texture = ExtResource("2_yxw5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1447650286]
+shape = SubResource("CircleShape2D_yynto")
+
+[node name="Timer" type="Timer" parent="." unique_id=1832188349]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

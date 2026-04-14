@@ -11,18 +11,9 @@ config_version=5
 [application]
 
 config/name="TurtTowers"
-run/main_scene="uid://cmuoto6fjqtrl"
+run/main_scene="uid://cdpevfwoy7y1r"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
-
-[autoload]
-
-GlobalSettings="*uid://bpm6aiqhw60bo"
-
-[display]
-
-window/size/mode=3
-window/stretch/mode="canvas_items"
 
 [physics]
 
