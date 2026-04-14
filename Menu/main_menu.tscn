@@ -1,0 +1,306 @@
+[gd_scene format=3 uid="uid://cmuoto6fjqtrl"]
+
+[ext_resource type="Texture2D" uid="uid://cre7gw3yqm71l" path="res://Menu/Images/HomeUI.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://cs0eavru7btjc" path="res://Menu/main_menu.gd" id="1_fu7sn"]
+[ext_resource type="Shader" uid="uid://qwjefknosa0f" path="res://Menu/main_menu.gdshader" id="2_glbon"]
+[ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Menu/Images/SettingsMenu.png" id="3_jix8l"]
+[ext_resource type="Texture2D" uid="uid://igbigqabkd3d" path="res://Menu/Images/Maps/SandyShores.png" id="3_nlkkf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jix8l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vrkn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlkkf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_map_border"]
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.98039216, 0.9607843, 0.8, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlkkf"]
+shader = ExtResource("2_glbon")
+shader_parameter/mode = 0
+
+[node name="MainMenu" type="Control" unique_id=1211162565]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fu7sn")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1170316964]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_06t4h")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="StartGame" type="Button" parent="." unique_id=1512135169]
+self_modulate = Color(0, 0, 0, 0)
+layout_mode = 1
+offset_left = 465.0
+offset_top = 221.0
+offset_right = 653.0
+offset_bottom = 276.0
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jix8l")
+
+[node name="Settings" type="Button" parent="." unique_id=1513501099]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 480.0
+offset_top = 365.0
+offset_right = 642.0
+offset_bottom = 418.0
+
+[node name="Towers" type="Button" parent="." unique_id=984938724]
+layout_mode = 0
+offset_right = 1152.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7vrkn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_glbon")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nlkkf")
+
+[node name="MapSelectionLayer" type="CanvasLayer" parent="." unique_id=280550618]
+
+[node name="Darkener" type="ColorRect" parent="MapSelectionLayer" unique_id=472727133]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="MapPanel" type="Control" parent="MapSelectionLayer" unique_id=612345678]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -370.0
+offset_top = -250.0
+offset_right = 370.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapBorder" type="Panel" parent="MapSelectionLayer/MapPanel" unique_id=492818237]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -195.0
+offset_right = 290.5
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_map_border")
+
+[node name="MapSelector" type="TextureButton" parent="MapSelectionLayer/MapPanel" unique_id=348844679]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.5
+offset_top = -187.0
+offset_right = 282.5
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_nlkkf")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="LeftArrow" type="Button" parent="MapSelectionLayer/MapPanel" unique_id=834567890]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -72.5
+offset_right = 75.0
+offset_bottom = 72.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "<"
+flat = true
+
+[node name="RightArrow" type="Button" parent="MapSelectionLayer/MapPanel" unique_id=945678901]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -72.5
+offset_bottom = 72.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = ">"
+flat = true
+
+[node name="CloseMapSelection" type="Button" parent="MapSelectionLayer/MapPanel" unique_id=156789012]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 35.0
+grow_horizontal = 0
+text = "X"
+
+[node name="MapNameLabel" type="Label" parent="MapSelectionLayer/MapPanel" unique_id=241739655]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.5
+offset_top = 7.5
+offset_right = 225.5
+offset_bottom = 117.5
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Sandy Shores"
+horizontal_alignment = 1
+
+[node name="ColorblindLayer" type="CanvasLayer" parent="." unique_id=59880908]
+layer = 100
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="ColorblindLayer" unique_id=1398956715]
+material = SubResource("ShaderMaterial_nlkkf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=374831580]
+visible = false
+
+[node name="Darkener" type="ColorRect" parent="CanvasLayer" unique_id=1942308797]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="SettingsMenu" type="TextureRect" parent="CanvasLayer" unique_id=965433223]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.5
+offset_top = -185.5
+offset_right = 336.5
+offset_bottom = 185.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_jix8l")
+
+[node name="VolumeSlider" type="HSlider" parent="CanvasLayer/SettingsMenu" unique_id=875006373]
+layout_mode = 0
+offset_left = 250.5
+offset_top = 1.5
+offset_right = 518.5
+offset_bottom = 242.5
+min_value = 0.001
+max_value = 1.0
+step = 0.1
+value = 0.501
+
+[node name="FullscreenButton" type="OptionButton" parent="CanvasLayer/SettingsMenu" unique_id=873207580]
+custom_minimum_size = Vector2(168, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -326.5
+offset_top = -190.5
+offset_right = -151.5
+offset_bottom = -165.5
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+autowrap_trim_flags = 192
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen (Borderless)"
+popup/item_1/id = 1
+popup/item_2/text = "Exclusive Fullscreen"
+popup/item_2/id = 2
+
+[node name="CBButton" type="OptionButton" parent="CanvasLayer/SettingsMenu" unique_id=558514119]
+custom_minimum_size = Vector2(168, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -326.5
+offset_top = -152.5
+offset_right = -151.5
+offset_bottom = -127.5
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+autowrap_trim_flags = 192
+item_count = 4
+popup/item_0/text = "Default"
+popup/item_0/id = 0
+popup/item_1/text = "Protanopia"
+popup/item_1/id = 1
+popup/item_2/text = "Deuteranopia"
+popup/item_2/id = 2
+popup/item_3/text = "Tritanopia"
+popup/item_3/id = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/SettingsMenu" unique_id=2092980879]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 275.5
+offset_top = 324.5
+offset_right = 399.5
+offset_bottom = 352.5
+
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MapSelectionLayer/MapPanel/MapSelector" to="." method="_on_map_selector_pressed"]
+[connection signal="pressed" from="MapSelectionLayer/MapPanel/LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="MapSelectionLayer/MapPanel/RightArrow" to="." method="_on_right_arrow_pressed"]
+[connection signal="pressed" from="MapSelectionLayer/MapPanel/CloseMapSelection" to="." method="_on_close_map_selection_pressed"]
+[connection signal="value_changed" from="CanvasLayer/SettingsMenu/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="item_selected" from="CanvasLayer/SettingsMenu/FullscreenButton" to="." method="_on_fullscreen_item_selected"]
+[connection signal="item_selected" from="CanvasLayer/SettingsMenu/CBButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="CanvasLayer/SettingsMenu/Button" to="." method="_on_button_pressed"]

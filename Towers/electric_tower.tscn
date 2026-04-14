@@ -19,8 +19,7 @@ polygon = PackedVector2Array(-188.73846, -254.12364, -174.32426, -273.2586, -146
 [node name="Muzzle" type="Marker2D" parent="." unique_id=869406447]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778361217]
-position = Vector2(9.536743e-07, 9.536743e-07)
-scale = Vector2(0.07799997, 0.07)
+scale = Vector2(0.17175001, 0.148)
 texture = ExtResource("2_5x71x")
 
 [node name="Range" type="Area2D" parent="." unique_id=523734005]
