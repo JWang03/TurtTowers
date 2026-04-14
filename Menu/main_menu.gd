@@ -22,9 +22,9 @@ var map_textures: Array = []
 var map_names: Array = ["Sandy Shores", "Abstract", "Checkers", "Temple"]
 var map_scenes: Array = [
 	"res://SandyShores/Scenes/Sandy_Beach.tscn",
-	null,
-	null,
-	null
+	"res://SandyShores/Scenes/Abstract.tscn",
+	"res://SandyShores/Scenes/Checkers.tscn",
+	"res://SandyShores/Scenes/Turtle_Temple.tscn"
 ]
 var current_map_index: int = 0
 
