@@ -124,6 +124,8 @@ subpixel_positioning = 0
 font_names = PackedStringArray("Comic Sans MS")
 font_weight = 700
 
+[sub_resource type="SystemFont" id="SystemFont_ft65p"]
+
 [node name="Game" type="Node2D" unique_id=2110147607]
 z_index = -100
 z_as_relative = false
@@ -163,10 +165,13 @@ texture = ExtResource("5_8l8c0")
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("6_06ii1")
 
-[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path")]
+[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path", "wave_label")]
 script = ExtResource("7_ft65p")
-enemy_scene = ExtResource("8_gr430")
 enemy_path = NodePath("../EnemyPath")
+wave_label = NodePath("../UI/Waves/WaveLabel")
+enemy1 = ExtResource("8_gr430")
+enemy2 = ExtResource("8_gr430")
+enemy3 = ExtResource("8_gr430")
 
 [node name="EnemyPath" type="Path2D" parent="." unique_id=367750900]
 position = Vector2(228, 0)
@@ -385,3 +390,20 @@ stretch_mode = 6
 script = ExtResource("26_ro4ig")
 play_texture = ExtResource("25_v0o1d")
 pause_texture = ExtResource("27_o8s8s")
+
+[node name="Waves" type="Control" parent="UI" unique_id=1119237567]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WaveLabel" type="Label" parent="UI/Waves" unique_id=593411649]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 1.0
+offset_right = 370.0
+offset_bottom = 64.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = SubResource("SystemFont_ft65p")
+theme_override_font_sizes/font_size = 20
+text = "Wave 1/10
+"

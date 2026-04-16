@@ -7,9 +7,9 @@ extends CharacterBody2D
 
 @onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 @onready var ray_cast = $RayCast2D 
-@onready var loss_conditions = get_node("/root/Game/UI/LossConditions")
-@onready var currency = get_node("/root/Game/UI/CurrencyManager")
-
+@onready var loss_conditions = get_node("/root/Game/UI/HUD/LossConditions")
+@onready var currency = get_node("/root/Game/UI/HUD/CurrencyManager")
+@onready var wave_manager = null
 
 func _ready():
 	add_to_group("zombies")
@@ -29,6 +29,8 @@ func _process(delta):
 			var path_length = follow.get_parent().curve.get_baked_length()
 			if follow.progress >= path_length:
 				follow.queue_free()
+				if wave_manager != null:
+					wave_manager.enemy_removed()
 				loss_conditions.spend_lives(damage)
 func take_damage(amount):
 	health -= amount
@@ -42,4 +44,6 @@ func take_damage(amount):
 func die():
 	# Add loot drop here
 	currency.add_shellings(2)
+	if wave_manager != null:
+		wave_manager.enemy_removed()
 	queue_free()
