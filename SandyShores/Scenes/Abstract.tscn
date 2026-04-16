@@ -156,8 +156,8 @@ texture = ExtResource("5_gvbs8")
 [node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
 z_index = 4096
 z_as_relative = false
-position = Vector2(117.250015, 325.49997)
-scale = Vector2(2.066372, 1.9548193)
+position = Vector2(117.250015, 325)
+scale = Vector2(2.066372, 1.9578313)
 texture = ExtResource("5_8l8c0")
 
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]

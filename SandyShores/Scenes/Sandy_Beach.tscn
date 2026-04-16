@@ -109,8 +109,8 @@ texture = ExtResource("4_ckwcc")
 [node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
 z_index = 4096
 z_as_relative = false
-position = Vector2(116.75001, 325.49997)
-scale = Vector2(2.0575223, 1.9548193)
+position = Vector2(116.75001, 324.99997)
+scale = Vector2(2.0575223, 1.9578313)
 texture = ExtResource("5_50yat")
 
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]

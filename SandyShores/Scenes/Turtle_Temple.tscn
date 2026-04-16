@@ -101,8 +101,8 @@ texture = ExtResource("3_r1ppn")
 [node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
 z_index = 4096
 z_as_relative = false
-position = Vector2(111.25001, 325.49997)
-scale = Vector2(1.9601772, 1.9548193)
+position = Vector2(111.25001, 324.99997)
+scale = Vector2(1.9601772, 1.9578313)
 texture = ExtResource("5_8ssj6")
 
 [node name="Temple" type="Sprite2D" parent="." unique_id=1142197630]

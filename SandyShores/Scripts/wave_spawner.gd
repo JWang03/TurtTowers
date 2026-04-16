@@ -5,7 +5,7 @@ extends Node
 @export var enemy_path: Path2D
 var spawnrate = 50
 var count = 1
-func spawn_enemy():
+func spawn_enemy(scene: PackedScene):
 	if enemy_scene == null or enemy_path == null:
 		return
 

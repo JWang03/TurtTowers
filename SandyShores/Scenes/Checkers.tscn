@@ -210,8 +210,8 @@ tile_set = SubResource("TileSet_sre1k")
 [node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
 z_index = 4096
 z_as_relative = false
-position = Vector2(116.25001, 325.49997)
-scale = Vector2(2.1, 2.004)
+position = Vector2(116.25001, 327.08197)
+scale = Vector2(2.1, 1.9944696)
 texture = ExtResource("11_vbuyy")
 
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
