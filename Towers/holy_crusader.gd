@@ -2,11 +2,12 @@ extends Node2D
 
 @export var fire_rate: float = 0.0001
 @export var damage: int = 100
-
+@export var cost: int = 20
+@export var is_placed: bool = false
 @onready var range_area = $Range
 @onready var collision_shape = $Range/CollisionShape2D
 @onready var timer = $Timer
-
+@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 var beam_scene = preload("res://towers/holybeam.tscn")
 var targets_in_range: Array = []
 var rng = RandomNumberGenerator.new()
@@ -40,16 +41,17 @@ func _on_timer_timeout():
 		timer.stop()
 
 func smite():
-	var shape = collision_shape.shape
-	if shape is CircleShape2D:
-		var radius = shape.radius
-		
-		var angle = rng.randf_range(0, TAU)
-		var dist = sqrt(rng.randf()) * radius
-		var offset = Vector2(cos(angle), sin(angle)) * dist
-		var spawn_pos = global_position + offset
-		
-		spawn_beam(spawn_pos)
+	if starter.playing == true:
+		var shape = collision_shape.shape
+		if shape is CircleShape2D:
+			var radius = shape.radius
+			
+			var angle = rng.randf_range(0, TAU)
+			var dist = sqrt(rng.randf()) * radius
+			var offset = Vector2(cos(angle), sin(angle)) * dist
+			var spawn_pos = global_position + offset
+			
+			spawn_beam(spawn_pos)
 
 func spawn_beam(pos: Vector2):
 	var beam = beam_scene.instantiate()

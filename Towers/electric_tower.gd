@@ -4,11 +4,14 @@ extends StaticBody2D
 @export var max_bounces = 6
 @export var jump_range = 150.0
 @export var attack_cooldown = 1.5
+@export var cost: float = 25
 
+@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 @onready var detection_area = $Range
 @onready var attack_timer = $Timer
 @onready var shoot_point = $Muzzle
 
+var is_placed := false
 var lightning_scene = preload("res://Towers/bolt.tscn")
 
 func _ready():
@@ -26,12 +29,16 @@ func _ready():
 	#attack_timer.start()
 
 func _on_tower_heartbeat():
-	print("signal received")
-	var targets = find_chain_targets()
-	if targets.size() > 0:
-		execute_chain_attack(targets)
-	else:
-		print("no zombies in range yet")
+	if starter.playing == true:
+		if is_placed == false:
+			return
+		else:
+			print("signal received")
+			var targets = find_chain_targets()
+			if targets.size() > 0:
+				execute_chain_attack(targets)
+			else:
+				print("no zombies in range yet")
 #func _ready():
 	#print("tower ready")
 	#attack_timer.wait_time = attack_cooldown
