@@ -16,6 +16,7 @@ func _process(_delta):
 
 func explode():
 	exploded = true
+	print("bomb settled")
 	
 	await get_tree().physics_frame 
 	

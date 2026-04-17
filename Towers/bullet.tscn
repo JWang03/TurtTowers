@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bkhy7b8leu076"]
 
 [ext_resource type="Script" uid="uid://c8qrnbc56o7o8" path="res://Towers/bullet.gd" id="1_v7oki"]
-[ext_resource type="Texture2D" uid="uid://yxrqjjhaj5x7" path="res://textures/blue fireball.png" id="2_v8qja"]
+[ext_resource type="Texture2D" uid="uid://b8t4eru8u62or" path="res://textures/image-removebg-preview (4).png" id="2_38w3b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4vbm"]
-radius = 4.0
-height = 20.0
+radius = 1.0
+height = 8.0
 
 [node name="Bullet" type="Area2D" unique_id=518468080]
 script = ExtResource("1_v7oki")
@@ -15,6 +15,5 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_t4vbm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=360126120]
-position = Vector2(2.3841858e-07, 0)
-scale = Vector2(0.034539472, 0.05263158)
-texture = ExtResource("2_v8qja")
+scale = Vector2(0.13165075, 0.1003672)
+texture = ExtResource("2_38w3b")

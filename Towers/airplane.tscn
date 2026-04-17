@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://c3mseujdrscnf"]
+
+[ext_resource type="Script" uid="uid://bnhxeoqfg1ye0" path="res://Towers/airplane.gd" id="1_k6v5m"]
+[ext_resource type="Texture2D" uid="uid://38e3k6dy7y1m" path="res://textures/F-15-Fighter-Jet.png" id="2_k6v5m"]
+
+[sub_resource type="Curve2D" id="Curve2D_mmx3w"]
+_data = {
+"points": PackedVector2Array(1.6385887, 8.192944, -1.6385887, -8.192944, -794.7882, 562.8572, -16.087963, 13.70456, 16.087963, -13.70456, -792.6669, 532.45154, -5.0647287, -6.8522806, 5.0647287, 6.8522806, -761.5542, 533.8658, 9.980495, -9.6825695, -9.980495, 9.6825695, -762.2613, 562.8572, 0, 0, 0, 0, -794.7882, 562.8572, 0, 0, 0, 0, -794.7882, 562.8572)
+}
+point_count = 6
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ybvld"]
+radius = 38.01441
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6v5m"]
+size = Vector2(187, 190)
+
+[node name="airplane" type="CharacterBody2D" unique_id=490440668]
+collision_layer = 2
+script = ExtResource("1_k6v5m")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1448541128]
+position = Vector2(-287.99988, -1907)
+rotation = 0.7853982
+scale = Vector2(-1.9987422, 2.0924315)
+curve = SubResource("Curve2D_mmx3w")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1502422107]
+position = Vector2(-794.7882, 562.8572)
+rotation = -1.7681948
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=1787003691]
+z_index = 10
+rotation = 1.4957472
+scale = Vector2(0.024727752, 0.024419948)
+texture = ExtResource("2_k6v5m")
+
+[node name="Muzzle" type="Marker2D" parent="Path2D/PathFollow2D" unique_id=1544948797]
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="Range" type="Area2D" parent="Path2D/PathFollow2D" unique_id=1304591663]
+scale = Vector2(1.0000001, 1.0000001)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Range" unique_id=1637112143]
+shape = SubResource("CircleShape2D_ybvld")
+
+[node name="Timer" type="Timer" parent="." unique_id=788975722]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1049036621]
+position = Vector2(2.5, 14)
+shape = SubResource("RectangleShape2D_k6v5m")
+disabled = true
+
+[connection signal="body_entered" from="Path2D/PathFollow2D/Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Path2D/PathFollow2D/Range" to="." method="_on_range_body_exited"]

@@ -1,17 +1,18 @@
 extends StaticBody2D
 
 #@export var bullet_scene: PackedScene 
-@export var fire_rate: float = 0.3
-@export var cost: float = 25
+@export var fire_rate: float = 0.2
+
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer
 @onready var detection_area = $Range
-@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
+
 var targets_in_range: Array = []
 
 var bullet_scene = preload("res://Towers/bullet.tscn")
-var is_placed := false
+
 func _ready():
+	print("searching")
 	timer.wait_time = fire_rate
 	timer.one_shot = false
 	
@@ -21,6 +22,7 @@ func _ready():
 
 func _on_zombie_entered(body):
 	if body.is_in_group("zombies"):
+		print("Zombie Detected")
 		targets_in_range.append(body)
 		if timer.is_stopped():
 			shoot()
@@ -34,20 +36,18 @@ func _on_zombie_exited(body):
 		timer.stop()
 
 func shoot():
-	if starter.playing == true:
-		if is_placed == false:
-			return
-		elif bullet_scene and not targets_in_range.is_empty():
-			
-			var target = targets_in_range[0]
-			var bullet = bullet_scene.instantiate()
-			get_tree().current_scene.add_child(bullet)
-			
-			bullet.global_position = muzzle.global_position
-			
-			bullet.look_at(target.global_position)
-		else:
-			print("no bullet scene")
+	print("Shoot function called")
+	if bullet_scene and not targets_in_range.is_empty():
+		print("Spawning bullet")
+		var target = targets_in_range[0]
+		var bullet = bullet_scene.instantiate()
+		get_tree().current_scene.add_child(bullet)
+		
+		bullet.global_position = muzzle.global_position
+		
+		bullet.look_at(target.global_position)
+	else:
+		print("no bullet scene")
 	#if bullet_scene:
 		#var bullet = bullet_scene.instantiate()
 		#get_tree().current_scene.add_child(bullet)
