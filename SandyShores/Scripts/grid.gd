@@ -2,7 +2,7 @@ extends TileMapLayer
 
 @export var tower_container: Node2D
 @onready var build_manager = get_node("/root/Game/BuildManager")
-@onready var currency_manager = get_node("/root/Game/UI/CurrencyManager")
+@onready var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 @onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 var occupied_cells := {}
 var ghost_tower: Node2D = null

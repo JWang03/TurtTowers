@@ -7,7 +7,6 @@ layer = 676767
 script = ExtResource("1_bvb5x")
 
 [node name="MenuPanel" type="Control" parent="." unique_id=2088479672]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

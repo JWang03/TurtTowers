@@ -183,6 +183,8 @@ subpixel_positioning = 0
 font_names = PackedStringArray("Comic Sans MS")
 font_weight = 700
 
+[sub_resource type="SystemFont" id="SystemFont_vfxb8"]
+
 [node name="Game" type="Node2D" unique_id=2110147607]
 z_index = -100
 z_as_relative = false
@@ -210,17 +212,20 @@ tile_set = SubResource("TileSet_sre1k")
 [node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
 z_index = 4096
 z_as_relative = false
-position = Vector2(116.25001, 325.49997)
-scale = Vector2(2.1, 2.004)
+position = Vector2(116.25001, 327.08197)
+scale = Vector2(2.1, 1.9944696)
 texture = ExtResource("11_vbuyy")
 
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("12_b0jmt")
 
-[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path")]
+[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path", "wave_label")]
 script = ExtResource("13_6jpsd")
-enemy_scene = ExtResource("14_3fwag")
 enemy_path = NodePath("../EnemyPath")
+wave_label = NodePath("../UI/Waves/WaveLabel")
+enemy1 = ExtResource("14_3fwag")
+enemy2 = ExtResource("14_3fwag")
+enemy3 = ExtResource("14_3fwag")
 
 [node name="EnemyPath" type="Path2D" parent="." unique_id=367750900]
 position = Vector2(228, 0)
@@ -395,7 +400,6 @@ scale = Vector2(0.26033974, 0.27710044)
 texture = ExtResource("29_ssqjk")
 
 [node name="DeathScreen" type="Control" parent="UI" unique_id=2058731793]
-visible = false
 anchors_preset = 0
 offset_left = 540.0
 offset_right = 935.0
@@ -439,3 +443,20 @@ stretch_mode = 6
 script = ExtResource("32_seqo6")
 play_texture = ExtResource("31_hy1vn")
 pause_texture = ExtResource("33_i4qxd")
+
+[node name="Waves" type="Control" parent="UI" unique_id=2035162226]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WaveLabel" type="Label" parent="UI/Waves" unique_id=192560540]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 1.0
+offset_right = 370.0
+offset_bottom = 64.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = SubResource("SystemFont_vfxb8")
+theme_override_font_sizes/font_size = 20
+text = "Wave 1/10
+"
