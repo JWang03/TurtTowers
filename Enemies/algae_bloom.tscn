@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cooltchipc56w"]
+
+[ext_resource type="Script" uid="uid://cg17fio0m0vrk" path="res://enemies/algae_bloom.gd" id="1_2120d"]
+[ext_resource type="Texture2D" uid="uid://y1vphwcqibru" path="res://textures/slime_monster.png" id="2_xdvb6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bl6jy"]
+
+[node name="algae_bloom" type="CharacterBody2D" unique_id=1560590545]
+script = ExtResource("1_2120d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1417486434]
+shape = SubResource("CircleShape2D_bl6jy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1614674759]
+position = Vector2(-2.3841858e-07, -1.999999)
+scale = Vector2(0.12591238, 0.12815125)
+texture = ExtResource("2_xdvb6")
