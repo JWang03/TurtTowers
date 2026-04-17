@@ -78,6 +78,8 @@ subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_ci5cp"]
 
+[sub_resource type="SystemFont" id="SystemFont_7x53i"]
+
 [node name="Game" type="Node2D" unique_id=2110147607]
 z_index = -100
 z_as_relative = false
@@ -267,8 +269,8 @@ pause_texture = ExtResource("27_ci5cp")
 
 [node name="HUD" type="Control" parent="UI" unique_id=1358710275]
 anchors_preset = 0
-offset_left = 408.0
-offset_top = -19.0
+offset_left = 951.0
+offset_top = -17.0
 offset_right = 982.0
 offset_bottom = 99.0
 
@@ -280,7 +282,7 @@ offset_right = 200.0
 offset_bottom = 138.0
 color = Color(0, 0.5372549, 0, 1)
 
-[node name="TextureRect" type="ColorRect" parent="UI/HUD" unique_id=1754926059]
+[node name="ColorRect2" type="ColorRect" parent="UI/HUD" unique_id=1754926059]
 layout_mode = 0
 offset_left = -162.0
 offset_top = 28.0
@@ -356,31 +358,42 @@ offset_bottom = 145.0
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = SubResource("SystemFont_ci5cp")
 theme_override_font_sizes/font_size = 20
-text = "
+text = " Wave 0/10
 "
 
 [node name="DeathScreen" type="Control" parent="UI" unique_id=2058731793]
-visible = false
 anchors_preset = 0
 offset_left = 540.0
+offset_top = -43.0
 offset_right = 935.0
 offset_bottom = 636.0
 script = ExtResource("16_dwuir")
 
-[node name="TextureRect" type="TextureRect" parent="UI/DeathScreen" unique_id=1184378150]
+[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen" unique_id=1644698598]
 layout_mode = 0
-offset_left = -62.0
-offset_top = 25.0
-offset_right = 484.0
-offset_bottom = 611.0
-texture = ExtResource("3_ai02a")
-expand_mode = 1
+offset_left = -158.0
+offset_top = 204.0
+offset_right = 461.0
+offset_bottom = 561.0
+color = Color(0, 0.5372549, 0, 1)
 
-[node name="Label" type="Label" parent="UI/DeathScreen" unique_id=1809529702]
+[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen/ColorRect" unique_id=811911442]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 274.0
-offset_right = 437.0
-offset_bottom = 362.0
-theme_override_font_sizes/font_size = 64
-text = "You Lose Idiot"
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 340.0
+color = Color(0.38039216, 0.7176471, 0.29803923, 1)
+
+[node name="Label" type="Label" parent="UI/DeathScreen/ColorRect/ColorRect" unique_id=1809529702]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 10.0
+offset_right = 569.0
+offset_bottom = 228.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = SubResource("SystemFont_7x53i")
+theme_override_font_sizes/font_size = 48
+text = "You failed to defend 
+the mothershell from
+a pollutant ambush!"

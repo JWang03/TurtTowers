@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bfaepla21qfgr" path="res://textures/tile54.png" id="1_oydsv"]
 [ext_resource type="Script" uid="uid://c7qark202ovo" path="res://SandyShores/Scripts/grid.gd" id="2_j8vkp"]
-[ext_resource type="Texture2D" uid="uid://c451qigpgmcvd" path="res://textures/BlueTrack.png" id="3_unwgr"]
 [ext_resource type="Texture2D" uid="uid://drgufdyo5wc3k" path="res://textures/CheckersBottomTrack.png" id="5_kcfff"]
 [ext_resource type="Texture2D" uid="uid://3v2jhv1liekj" path="res://textures/CheckersLeftTrack.png" id="5_snrqj"]
 [ext_resource type="Texture2D" uid="uid://d3tgc3pjqjcsl" path="res://textures/CheckersMiddleTrack.png" id="6_l2t5c"]
@@ -173,17 +172,19 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="SystemFont" id="SystemFont_dj0d7"]
+[sub_resource type="SystemFont" id="SystemFont_vfxb8"]
+font_names = PackedStringArray("Comic Sans MS")
+font_weight = 700
+
+[sub_resource type="SystemFont" id="SystemFont_snrqj"]
 font_names = PackedStringArray("Comic Sans MS")
 font_weight = 700
 hinting = 2
 subpixel_positioning = 0
 
-[sub_resource type="SystemFont" id="SystemFont_dwuir"]
-font_names = PackedStringArray("Comic Sans MS")
-font_weight = 700
+[sub_resource type="SystemFont" id="SystemFont_sre1k"]
 
-[sub_resource type="SystemFont" id="SystemFont_vfxb8"]
+[sub_resource type="SystemFont" id="SystemFont_3pea1"]
 
 [node name="Game" type="Node2D" unique_id=2110147607]
 z_index = -100
@@ -222,7 +223,7 @@ script = ExtResource("12_b0jmt")
 [node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path", "wave_label")]
 script = ExtResource("13_6jpsd")
 enemy_path = NodePath("../EnemyPath")
-wave_label = NodePath("../UI/Waves/WaveLabel")
+wave_label = NodePath("")
 enemy1 = ExtResource("14_3fwag")
 enemy2 = ExtResource("14_3fwag")
 enemy3 = ExtResource("14_3fwag")
@@ -231,7 +232,7 @@ enemy3 = ExtResource("14_3fwag")
 position = Vector2(228, 0)
 curve = SubResource("Curve2D_wlj2d")
 
-[node name="UI" type="Control" parent="." unique_id=533628969]
+[node name="UI" type="Control" parent="." unique_id=1935363181]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -2.0
@@ -239,21 +240,21 @@ offset_top = 1.0
 offset_right = 1149.0
 offset_bottom = 646.0
 
-[node name="ShopPanel" type="Control" parent="UI" unique_id=827478311]
+[node name="ShopPanel" type="Control" parent="UI" unique_id=1945201413]
 anchors_preset = 0
 offset_left = 7.0
 offset_top = -1.0
 offset_right = 230.0
 offset_bottom = 648.0
 
-[node name="BombButton" type="TextureButton" parent="UI/ShopPanel" unique_id=2072775595]
+[node name="BombButton" type="TextureButton" parent="UI/ShopPanel" unique_id=47857674]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.08071749
+anchor_left = -0.09417041
 anchor_top = -0.03697997
-anchor_right = 0.05381166
+anchor_right = 0.089686096
 anchor_bottom = 0.009244992
 offset_left = 10.0
 offset_top = 47.0
@@ -266,15 +267,15 @@ script = ExtResource("16_68ie1")
 tower_scene = ExtResource("17_t6tie")
 metadata/_edit_use_anchors_ = true
 
-[node name="BulletButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1555913598]
+[node name="BulletButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1859657415]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.076233186
-anchor_top = 0.2773497
-anchor_right = 0.076233186
-anchor_bottom = 0.3081664
+anchor_left = -0.031390134
+anchor_top = 0.2896764
+anchor_right = 0.05381166
+anchor_bottom = 0.3127889
 offset_left = 10.0
 offset_top = 47.0
 offset_right = 54.0
@@ -286,15 +287,15 @@ script = ExtResource("16_68ie1")
 tower_scene = ExtResource("19_vs0qa")
 metadata/_edit_use_anchors_ = true
 
-[node name="GodzillaButton" type="TextureButton" parent="UI/ShopPanel" unique_id=626692531]
+[node name="GodzillaButton" type="TextureButton" parent="UI/ShopPanel" unique_id=975020452]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.21973094
-anchor_top = 0.08320493
-anchor_right = 0.5560538
-anchor_bottom = 0.17873652
+anchor_left = 0.20179372
+anchor_top = 0.08936826
+anchor_right = 0.57847536
+anchor_bottom = 0.18335901
 offset_left = 10.0
 offset_top = 47.0
 offset_right = 54.0
@@ -306,15 +307,15 @@ script = ExtResource("16_68ie1")
 tower_scene = ExtResource("21_vwh3y")
 metadata/_edit_use_anchors_ = true
 
-[node name="BlackHoleButton" type="TextureButton" parent="UI/ShopPanel" unique_id=142497050]
+[node name="BlackHoleButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1894649626]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.07174888
-anchor_top = 0.10785824
-anchor_right = 0.058295965
-anchor_bottom = 0.1540832
+anchor_left = -0.09865471
+anchor_top = 0.11248074
+anchor_right = 0.11659193
+anchor_bottom = 0.16024654
 offset_left = 10.0
 offset_top = 47.0
 offset_right = 54.0
@@ -326,15 +327,15 @@ script = ExtResource("16_68ie1")
 tower_scene = ExtResource("23_xnuqq")
 metadata/_edit_use_anchors_ = true
 
-[node name="ElectricButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1909256770]
+[node name="ElectricButton" type="TextureButton" parent="UI/ShopPanel" unique_id=616292276]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.31390134
-anchor_top = -0.029275808
-anchor_right = 0.4573991
-anchor_bottom = 0.0030816642
+anchor_top = -0.018489985
+anchor_right = 0.4529148
+anchor_bottom = 0.009244992
 offset_left = 10.0
 offset_top = 47.0
 offset_right = 54.0
@@ -346,90 +347,12 @@ script = ExtResource("16_68ie1")
 tower_scene = ExtResource("25_ym06y")
 metadata/_edit_use_anchors_ = true
 
-[node name="CurrencyManager" type="Node" parent="UI" unique_id=219739025]
-script = ExtResource("26_s5fmm")
-
-[node name="Money" type="Control" parent="UI" unique_id=1732714314]
-anchors_preset = 0
-offset_left = 942.0
-offset_top = -19.0
-offset_right = 1181.0
-offset_bottom = 102.0
-
-[node name="ShellingsLabel" type="Label" parent="UI/Money" unique_id=2071042031]
-layout_mode = 0
-offset_left = 109.0
-offset_top = 29.0
-offset_right = 208.0
-offset_bottom = 96.0
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = SubResource("SystemFont_dj0d7")
-theme_override_font_sizes/font_size = 48
-text = "100"
-
-[node name="Shrimp" type="Sprite2D" parent="UI/Money" unique_id=892181832]
-z_index = 1096
-position = Vector2(67, 64.99999)
-scale = Vector2(0.28175774, 0.23780484)
-texture = ExtResource("27_fsdnh")
-
-[node name="LossConditions" type="Node" parent="UI" unique_id=300026466]
-script = ExtResource("28_07yl6")
-
-[node name="Lives" type="Control" parent="UI" unique_id=1545277758]
-anchors_preset = 0
-offset_left = 774.0
-offset_top = -34.0
-offset_right = 993.0
-offset_bottom = 112.0
-
-[node name="LivesLabel" type="Label" parent="UI/Lives" unique_id=707430476]
-layout_mode = 0
-offset_left = 95.0
-offset_top = 46.0
-offset_right = 226.0
-offset_bottom = 106.0
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = SubResource("SystemFont_dwuir")
-theme_override_font_sizes/font_size = 48
-text = "100"
-
-[node name="HeartsNoBg" type="Sprite2D" parent="UI/Lives" unique_id=560389045]
-position = Vector2(56, 77)
-scale = Vector2(0.26033974, 0.27710044)
-texture = ExtResource("29_ssqjk")
-
-[node name="DeathScreen" type="Control" parent="UI" unique_id=2058731793]
-anchors_preset = 0
-offset_left = 540.0
-offset_right = 935.0
-offset_bottom = 636.0
-script = ExtResource("30_vfoi3")
-
-[node name="TextureRect" type="TextureRect" parent="UI/DeathScreen" unique_id=1184378150]
-layout_mode = 0
-offset_left = -62.0
-offset_top = 25.0
-offset_right = 484.0
-offset_bottom = 611.0
-texture = ExtResource("3_unwgr")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="UI/DeathScreen" unique_id=1809529702]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 274.0
-offset_right = 437.0
-offset_bottom = 362.0
-theme_override_font_sizes/font_size = 64
-text = "You Lose Idiot"
-
-[node name="Start_Pause" type="Control" parent="UI" unique_id=1647321012]
+[node name="Start_Pause" type="Control" parent="UI" unique_id=604565584]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PlayButton" type="TextureButton" parent="UI/Start_Pause" unique_id=735464196]
+[node name="PlayButton" type="TextureButton" parent="UI/Start_Pause" unique_id=940860777]
 z_index = 4096
 z_as_relative = false
 layout_mode = 0
@@ -444,19 +367,133 @@ script = ExtResource("32_seqo6")
 play_texture = ExtResource("31_hy1vn")
 pause_texture = ExtResource("33_i4qxd")
 
-[node name="Waves" type="Control" parent="UI" unique_id=2035162226]
+[node name="HUD" type="Control" parent="UI" unique_id=651257473]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 951.0
+offset_top = -17.0
+offset_right = 982.0
+offset_bottom = 99.0
 
-[node name="WaveLabel" type="Label" parent="UI/Waves" unique_id=192560540]
+[node name="ColorRect" type="ColorRect" parent="UI/HUD" unique_id=1031118642]
 layout_mode = 0
-offset_left = 243.0
-offset_top = 1.0
-offset_right = 370.0
-offset_bottom = 64.0
+offset_left = -169.0
+offset_top = 21.0
+offset_right = 200.0
+offset_bottom = 138.0
+color = Color(0, 0.5372549, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="UI/HUD" unique_id=393692211]
+layout_mode = 0
+offset_left = -162.0
+offset_top = 28.0
+offset_right = 193.0
+offset_bottom = 131.0
+color = Color(0.38103804, 0.717417, 0.29669756, 1)
+
+[node name="Lives" type="Control" parent="UI/HUD" unique_id=11270580]
+anchors_preset = 0
+offset_left = -168.0
+offset_top = -15.0
+offset_right = 51.0
+offset_bottom = 131.0
+
+[node name="LivesLabel" type="Label" parent="UI/HUD/Lives" unique_id=1036817120]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 51.0
+offset_right = 221.0
+offset_bottom = 118.0
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = SubResource("SystemFont_vfxb8")
+theme_override_font_sizes/font_size = 48
+text = "100"
+
+[node name="HeartsNoBg" type="Sprite2D" parent="UI/HUD/Lives" unique_id=655914672]
+position = Vector2(53, 89)
+scale = Vector2(0.26033974, 0.27710044)
+texture = ExtResource("29_ssqjk")
+
+[node name="CurrencyManager" type="Node" parent="UI/HUD" unique_id=1084368077]
+script = ExtResource("26_s5fmm")
+
+[node name="Money" type="Control" parent="UI/HUD" unique_id=1352379412]
+anchors_preset = 0
+offset_left = -11.0
+offset_right = 228.0
+offset_bottom = 121.0
+
+[node name="ShellingsLabel" type="Label" parent="UI/HUD/Money" unique_id=392328403]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 34.0
+offset_right = 208.0
+offset_bottom = 101.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = SubResource("SystemFont_snrqj")
+theme_override_font_sizes/font_size = 48
+text = "100"
+
+[node name="Shrimp" type="Sprite2D" parent="UI/HUD/Money" unique_id=613345546]
+z_index = 1096
+position = Vector2(74, 68.00001)
+scale = Vector2(0.25461596, 0.21375337)
+texture = ExtResource("27_fsdnh")
+
+[node name="LossConditions" type="Node" parent="UI/HUD" unique_id=1582747184]
+script = ExtResource("28_07yl6")
+
+[node name="Waves" type="Control" parent="UI/HUD" unique_id=1851638031]
+anchors_preset = 0
+offset_left = -705.0
+offset_top = 19.0
+offset_right = -545.0
+offset_bottom = 66.0
+
+[node name="WaveLabel" type="Label" parent="UI/HUD/Waves" unique_id=1603334933]
+layout_mode = 0
+offset_left = 662.0
+offset_top = 82.0
+offset_right = 798.0
+offset_bottom = 145.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = SubResource("SystemFont_sre1k")
 theme_override_font_sizes/font_size = 20
-text = "Wave 1/10
+text = " Wave 0/10
 "
+
+[node name="DeathScreen" type="Control" parent="UI" unique_id=1334197360]
+anchors_preset = 0
+offset_left = 540.0
+offset_top = -43.0
+offset_right = 935.0
+offset_bottom = 636.0
+script = ExtResource("30_vfoi3")
+
+[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen" unique_id=603571463]
+layout_mode = 0
+offset_left = -158.0
+offset_top = 204.0
+offset_right = 461.0
+offset_bottom = 561.0
+color = Color(0, 0.5372549, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen/ColorRect" unique_id=254311362]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 340.0
+color = Color(0.38039216, 0.7176471, 0.29803923, 1)
+
+[node name="Label" type="Label" parent="UI/DeathScreen/ColorRect/ColorRect" unique_id=1364367553]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 10.0
+offset_right = 569.0
+offset_bottom = 228.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = SubResource("SystemFont_3pea1")
+theme_override_font_sizes/font_size = 48
+text = "You failed to defend 
+the mothershell from
+a pollutant ambush!"
