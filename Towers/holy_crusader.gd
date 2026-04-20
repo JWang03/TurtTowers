@@ -21,18 +21,20 @@ func _ready():
 	timer.timeout.connect(_on_timer_timeout)
 
 func _on_zombie_entered(body):
-	if body.is_in_group("zombies"):
-		targets_in_range.append(body)
-		if timer.is_stopped():
-			smite()
-			timer.start()
+	if is_placed:
+		if body.is_in_group("zombies"):
+			targets_in_range.append(body)
+			if timer.is_stopped():
+				smite()
+				timer.start()
 
 func _on_zombie_exited(body):
-	if body in targets_in_range:
-		targets_in_range.erase(body)
-	
-	if targets_in_range.is_empty():
-		timer.stop()
+	if is_placed:
+		if body in targets_in_range:
+			targets_in_range.erase(body)
+		
+		if targets_in_range.is_empty():
+			timer.stop()
 
 func _on_timer_timeout():
 	if not targets_in_range.is_empty():

@@ -1,7 +1,7 @@
 extends "res://enemies/zombie.gd"
 
 var buff_scene = preload("res://enemies/buff_range.tscn")
-
+var speed_modifier: float = 1.0
 func _ready():
 	super._ready()
 	
@@ -13,7 +13,7 @@ func _process(delta):
 	if starter.playing == true:
 		var follow = get_parent()
 		if follow is PathFollow2D:
-			follow.progress += speed * delta
+			follow.progress += speed * delta * speed_modifier
 		
 			var path_length = follow.get_parent().curve.get_baked_length()
 			if follow.progress >= path_length:
@@ -31,18 +31,19 @@ func take_damage(amount):
 		die()
 
 func die():
-	# Add loot drop here
 	currency.add_shellings(2)
 	if wave_manager != null:
 		wave_manager.enemy_removed()
-	queue_free()
+
 	spawn_buff()
+	queue_free()
 
 
 func spawn_buff():
-	if not buff_scene:
+	if buff_scene == null:
 		return
 	
 	var buff = buff_scene.instantiate()
-	buff.global_position = self.global_position
-	get_parent().add_child(buff)
+	buff.global_position = global_position
+	
+	get_tree().current_scene.add_child(buff)

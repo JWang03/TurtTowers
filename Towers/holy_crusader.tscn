@@ -8,6 +8,8 @@ radius = 140.28899
 
 [node name="Holy_Crusader" type="StaticBody2D" unique_id=313196950]
 script = ExtResource("1_l2hnx")
+fire_rate = 1.5
+damage = 50
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2047579765]
 polygon = PackedVector2Array(-10, -23, 4, -13, 17, 10, 18, 18, 10, 21, -9, 20, -15, 14, -18, -17)
@@ -18,7 +20,7 @@ polygon = PackedVector2Array(-10, -23, 4, -13, 17, 10, 18, 18, 10, 21, -9, 20, -
 shape = SubResource("CircleShape2D_o0eas")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=308754279]
-scale = Vector2(0.03759764, 0.042154945)
+scale = Vector2(0.07434082, 0.06386312)
 texture = ExtResource("2_rdfw7")
 
 [node name="Timer" type="Timer" parent="." unique_id=951220569]
