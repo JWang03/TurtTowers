@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cjcwdf8okmhbj"]
 
-[ext_resource type="Script" uid="uid://1qos4pedwq4d" path="res://enemies/cans.gd" id="1_7igey"]
+[ext_resource type="Script" uid="uid://1qos4pedwq4d" path="res://Enemies/cans.gd" id="1_7igey"]
 [ext_resource type="Texture2D" uid="uid://bsctqd4i2o8lr" path="res://textures/image-removebg-preview (5).png" id="2_rbm2v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_58wcm"]
@@ -14,6 +14,6 @@ script = ExtResource("1_7igey")
 shape = SubResource("CapsuleShape2D_58wcm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=772143741]
-position = Vector2(4.7683716e-07, 9.536743e-07)
-scale = Vector2(0.059615385, 0.05982145)
+position = Vector2(0, -4.7683716e-07)
+scale = Vector2(0.11826922, 0.10491073)
 texture = ExtResource("2_rbm2v")
