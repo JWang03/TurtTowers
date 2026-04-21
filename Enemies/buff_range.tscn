@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://itfva5ofdnmj"]
 
-[ext_resource type="Script" uid="uid://i7kaaj5di5pm" path="res://enemies/buff_range.gd" id="1_yxw5x"]
+[ext_resource type="Script" uid="uid://i7kaaj5di5pm" path="res://Enemies/buff_range.gd" id="1_yxw5x"]
 [ext_resource type="Texture2D" uid="uid://btfjjgfs4cy4s" path="res://textures/poison_gas.png" id="2_yxw5x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yynto"]
@@ -8,6 +8,7 @@ radius = 55.00909
 
 [node name="buff_range" type="Area2D" unique_id=101611681]
 script = ExtResource("1_yxw5x")
+speed_boost_factor = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1876895683]
 self_modulate = Color(1, 1, 1, 0.44313726)
