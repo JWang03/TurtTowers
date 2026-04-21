@@ -1,5 +1,4 @@
 extends "res://enemies/zombie.gd"
-var speed_modifier
 func _ready():
 	super._ready()
 	
