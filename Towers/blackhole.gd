@@ -1,9 +1,9 @@
 extends Area2D
 
-@export var pull_strength: float = 500.0
+@export var pull_strength: float = 900.0
 @export var duration: float = 3.0
 @export var friction: float = 0.08
-@export var damage_per_second: float = 5.0
+@export var damage_per_second: float = 10.0
 
 @onready var pull_area = $ExplosionArea
 

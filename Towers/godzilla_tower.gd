@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var damage_per_second: float = 10
+@export var damage_per_second: float = 30
 @export var rotation_speed: float = 5.0
 @export var wobble_strength: float = 1.0
 @export var wobble_speed: float = 50.0

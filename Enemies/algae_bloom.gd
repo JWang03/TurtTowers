@@ -1,7 +1,6 @@
 extends "res://enemies/zombie.gd"
 
 var buff_scene = preload("res://enemies/buff_range.tscn")
-var speed_modifier: float = 1.0
 func _ready():
 	super._ready()
 	
@@ -23,6 +22,7 @@ func _process(delta):
 				loss_conditions.spend_lives(damage)
 func take_damage(amount):
 	health -= amount
+	health_bar.update(health, max_health)
 	modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	modulate = Color.WHITE

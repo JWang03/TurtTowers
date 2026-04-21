@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bsfmnmobl876p"]
+
+[ext_resource type="Script" uid="uid://d1drfgy6cnv0e" path="res://health_bar.gd" id="1_ypcvb"]
+
+[node name="Node2D" type="Node2D" unique_id=675420143]
+script = ExtResource("1_ypcvb")
+
+[node name="Background" type="ColorRect" parent="." unique_id=489769584]
+offset_right = 45.0
+offset_bottom = 4.0
+color = Color(0.32024416, 0.32024416, 0.32024413, 1)
+
+[node name="Fill" type="ColorRect" parent="." unique_id=165336062]
+offset_right = 46.0
+offset_bottom = 4.0
+color = Color(17.77716, 0, 0, 1)

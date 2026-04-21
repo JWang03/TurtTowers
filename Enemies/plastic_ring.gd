@@ -2,7 +2,6 @@ extends "res://enemies/zombie.gd"
 
 @export var spawn_count: int = 6
 @export var scatter_range: float = 40.0
-var speed_modifier = 1.0
 var child_enemy_scene = preload("res://enemies/cans.tscn")
 
 func _ready():
@@ -28,7 +27,14 @@ func _process(delta):
 func die():
 	spawn_children()
 	super.die()
-
+func take_damage(amount):
+	health -= amount
+	health_bar.update(health, max_health)
+	modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	modulate = Color.WHITE
+	if health <= 0:
+		die()
 func spawn_children():
 	if child_enemy_scene == null:
 		return
