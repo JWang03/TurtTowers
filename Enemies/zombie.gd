@@ -14,7 +14,7 @@ extends CharacterBody2D
 @export var max_health: float = 100.0
 var health: float = max_health
 @onready var health_bar = $HealthBar  # or preload and add manually
-const HEALTH_BAR = preload("res://HealthBar.tscn")
+const HEALTH_BAR = preload("res://SandyShores/Scenes/HealthBar.tscn")
 
 func _ready():
 	add_to_group("zombies")
