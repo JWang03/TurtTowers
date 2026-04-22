@@ -2,6 +2,9 @@ extends Node2D
 
 @export var fire_rate: float = 0.0001
 @export var damage: int = 100
+@export var cost: int = 5
+@export var is_placed: bool = false
+
 
 @onready var range_area = $Range
 @onready var collision_shape = $Range/CollisionShape2D

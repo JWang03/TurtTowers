@@ -3,6 +3,10 @@ extends StaticBody2D
 #@export var bomb_scene: PackedScene
 @export var fire_rate: float = 5
 
+@export var cost: int = 5
+@export var is_placed: bool = false
+
+
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer
 @onready var detection_area = $Range
@@ -31,16 +35,36 @@ func _on_zombie_exited(body):
 	if targets_in_range.is_empty():
 		timer.stop()
 
+#func shoot():
+	#if bomb_scene and not targets_in_range.is_empty():
+		#var target = targets_in_range.filter(func(t): return is_instance_valid(t) and !t.get("is_stealth")).front()
+		##var target = targets_in_range[0]
+		#var bomb = bomb_scene.instantiate()
+		#
+		#get_tree().current_scene.add_child(bomb)
+		#bomb.global_position = muzzle.global_position
+		#
+		#bomb.target_pos = target.global_position
+		#
+
 func shoot():
 	if bomb_scene and not targets_in_range.is_empty():
-		var target = targets_in_range[0]
+		var valid_targets = targets_in_range.filter(func(t): 
+			return is_instance_valid(t) and t.get("is_stealth") != true
+		)
+		
+		if valid_targets.is_empty():
+			print("No visible targets, skipping shot")
+			return
+			
+		var target = valid_targets[0]
+		
+		print("Spawning bomb")
 		var bomb = bomb_scene.instantiate()
-		
 		get_tree().current_scene.add_child(bomb)
+		
 		bomb.global_position = muzzle.global_position
-		
 		bomb.target_pos = target.global_position
-		
 
 func _on_timer_timeout():
 	if not targets_in_range.is_empty():

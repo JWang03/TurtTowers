@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var fire_rate: float = 0.05
 @export var spread_count: int = 24
 @export var spread_angle: float = 15
+@export var cost: int = 5
+@export var is_placed: bool = false
+
 
 @onready var path_follow = $Path2D/PathFollow2D
 @onready var muzzle = $Path2D/PathFollow2D/Muzzle

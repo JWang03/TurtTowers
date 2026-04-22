@@ -4,6 +4,9 @@ extends StaticBody2D
 @export var rotation_speed: float = 5.0
 @export var wobble_strength: float = 1.0
 @export var wobble_speed: float = 50.0
+@export var cost: int = 5
+@export var is_placed: bool = false
+
 
 @onready var head = $Head
 @onready var laser_ray = $Head/RayCast2D
@@ -46,11 +49,24 @@ func _process(delta):
 	#else:
 		#hide_beam()
 
+#func update_target():
+	#var bodies = range_area.get_overlapping_bodies()
+	#var zombies = []
+	#for b in bodies:
+		#if b.is_in_group("zombies"):
+			#zombies.append(b)
+	#
+	#if zombies.size() > 0:
+		#zombies.sort_custom(func(a, b): return a.global_position.x < b.global_position.x)
+		#target_zombie = zombies[0]
+	#else:
+		#target_zombie = null
 func update_target():
 	var bodies = range_area.get_overlapping_bodies()
 	var zombies = []
+	
 	for b in bodies:
-		if b.is_in_group("zombies"):
+		if b.is_in_group("zombies") and b.get("is_stealth") != true:
 			zombies.append(b)
 	
 	if zombies.size() > 0:

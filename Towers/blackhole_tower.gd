@@ -4,6 +4,10 @@ extends StaticBody2D
 @export var fire_rate: float = 3.0
 @export var pull_offset: float = 80.0
 
+@export var is_placed: bool = false
+
+@export var cost: int = 5
+
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer
 @onready var detection_area = $Range
@@ -33,7 +37,8 @@ func _on_zombie_exited(body):
 
 func shoot():
 	if black_hole_scene and not targets_in_range.is_empty():
-		var target = targets_in_range[0]
+		var target = targets_in_range.filter(func(t): return is_instance_valid(t) and !t.get("is_stealth")).front()
+		#var target = targets_in_range[0]
 		if not is_instance_valid(target): return
 		
 		var bh = black_hole_scene.instantiate()

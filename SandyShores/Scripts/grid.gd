@@ -73,9 +73,9 @@ func _input(event: InputEvent) -> void:
 		if can_place_on_cell(cell):
 			if affordable(cost):
 				if tower is Node2D:
+					tower.is_placed = true
 					currency_manager.spend_shellings(cost)
 					tower_container.add_child(tower)
 					tower.position = spawn_pos
-					tower.is_placed = true
 					occupied_cells[cell] = true
 					build_manager.clear()
