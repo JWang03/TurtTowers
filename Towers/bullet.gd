@@ -5,6 +5,13 @@ extends Area2D
 
 func _ready():
 	body_entered.connect(_on_body_entered)
+	$VisibleOnScreenNotifier2D.screen_exited.connect(_on_screen_exited)
+
+func activate(pos: Vector2, rot: float):
+	global_position = pos
+	global_rotation = rot
+	show()
+	process_mode = Node.PROCESS_MODE_INHERIT
 
 func _process(delta):
 	position += transform.x * speed * delta
@@ -13,9 +20,7 @@ func _on_body_entered(body):
 	if body.is_in_group("zombies"):
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
-		
-		queue_free()
+	BulletPool.return_bullet(self)
 
-# this deletes bullets off screen
 func _on_screen_exited():
-	queue_free()
+	BulletPool.return_bullet(self)

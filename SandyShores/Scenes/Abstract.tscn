@@ -172,9 +172,10 @@ texture = ExtResource("5_8l8c0")
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("6_06ii1")
 
-[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path")]
+[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path", "wave_label")]
 script = ExtResource("7_ft65p")
 enemy_path = NodePath("../EnemyPath")
+wave_label = NodePath("../UI/DeathScreen/ColorRect/ColorRect/Label")
 enemy1 = ExtResource("15_r0ofv")
 enemy2 = ExtResource("8_gr430")
 enemy3 = ExtResource("8_gr430")

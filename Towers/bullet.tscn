@@ -18,3 +18,5 @@ shape = SubResource("CapsuleShape2D_t4vbm")
 position = Vector2(2.3841858e-07, 0)
 scale = Vector2(0.034539472, 0.05263158)
 texture = ExtResource("2_v8qja")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=815112013]

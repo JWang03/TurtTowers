@@ -30,12 +30,11 @@ func shoot():
 	if starter.playing == true:
 		if is_placed:
 			var start_angle = -(spread_angle * (spread_count - 1)) / 2.0
-		
+			
 			for i in range(spread_count):
-				var b = bullet_scene.instantiate()
-				get_tree().current_scene.add_child(b)
-				
-				b.global_position = muzzle.global_position
+				var b = BulletPool.get_bullet()
+				if b == null:
+					continue
 				
 				var shot_rotation = muzzle.global_rotation + deg_to_rad(start_angle + (i * spread_angle))
-				b.global_rotation = shot_rotation
+				b.activate(muzzle.global_position, shot_rotation)

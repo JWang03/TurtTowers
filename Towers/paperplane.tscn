@@ -36,8 +36,8 @@ rotation = 0.83396745
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=1787003691]
 z_index = 10
-position = Vector2(-1.6723747, 0.85922265)
-scale = Vector2(0.09106756, 0.10095935)
+position = Vector2(0.1402452, -0.28202558)
+scale = Vector2(0.11191265, 0.09152443)
 texture = ExtResource("2_cltxp")
 
 [node name="Muzzle" type="Marker2D" parent="Path2D/PathFollow2D" unique_id=1544948797]
