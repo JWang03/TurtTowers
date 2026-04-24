@@ -1,20 +1,7 @@
 [gd_scene format=3 uid="uid://ccvttsxemdlkc"]
 
-[ext_resource type="PackedScene" uid="uid://do17203pjxuim" path="res://Towers/bullet_tower.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://cooltchipc56w" path="res://enemies/algae_bloom.tscn" id="2_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://chk7xpr8woiu3" path="res://shield_enemy.tscn" id="2_h2yge"]
-
 [node name="Node2D" type="Node2D" unique_id=1520096501]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=665358203]
 position = Vector2(113, 66)
 zoom = Vector2(5, 5)
-
-[node name="shield_enemy" parent="." unique_id=1352054960 instance=ExtResource("2_h2yge")]
-position = Vector2(19, 94)
-
-[node name="algae_bloom" parent="." unique_id=1560590545 instance=ExtResource("2_1bvp3")]
-position = Vector2(38, 95)
-
-[node name="Bullet_tower" parent="." unique_id=1404473068 instance=ExtResource("2_0xm2m")]
-position = Vector2(212, 112)

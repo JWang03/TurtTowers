@@ -1,4 +1,4 @@
-extends "res://enemies/original_zombie.gd"
+extends "res://enemies/zombie.gd"
 
 var buff_scene = preload("res://enemies/buff_range.tscn")
 

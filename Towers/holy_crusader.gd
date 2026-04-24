@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var fire_rate: float = 0.0001
+@export var fire_rate: float = 0.5
 @export var damage: int = 100
 @export var cost: int = 5
 @export var is_placed: bool = false

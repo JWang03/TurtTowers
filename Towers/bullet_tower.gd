@@ -70,7 +70,6 @@
 extends StaticBody2D
 
 @export var fire_rate: float = 0.2
-@export var cost: int = 5
 @export var is_placed: bool = false
 
 @onready var muzzle = $Muzzle
@@ -79,11 +78,10 @@ extends StaticBody2D
 
 var targets_in_range: Array = []
 var bullet_scene = preload("res://Towers/bullet.tscn")
+var cost: int = 5
 
 func _ready():
 	timer.wait_time = fire_rate
-	timer.one_shot = false
-	
 	detection_area.body_entered.connect(_on_zombie_entered)
 	detection_area.body_exited.connect(_on_zombie_exited)
 	timer.timeout.connect(_on_timer_timeout)
@@ -96,13 +94,13 @@ func _on_zombie_entered(body):
 			timer.start()
 
 func _on_zombie_exited(body):
-	if body in targets_in_range:
-		targets_in_range.erase(body)
+	targets_in_range.erase(body)
 	if targets_in_range.is_empty():
 		timer.stop()
 
 func get_valid_target():
 	targets_in_range = targets_in_range.filter(func(t): return is_instance_valid(t))
+	
 	for target in targets_in_range:
 		if target.get("is_stealth") == true:
 			continue
@@ -118,34 +116,18 @@ func get_shield_provider(zombie):
 				return p
 	return null
 
-#func attempt_shot():
-	#var target = get_valid_target()
-	#
-	#if target and bullet_scene:
-		#var shield_provider = get_shield_provider(target)
-		#
-		#var final_target = shield_provider if shield_provider else target
-		#
-		#var bullet = bullet_scene.instantiate()
-		#get_tree().current_scene.add_child(bullet)
-		#bullet.global_position = muzzle.global_position
-		#bullet.look_at(final_target.global_position)
-		#
-		#if bullet.has_method("set_hit_target"):
-			#bullet.set_hit_target(final_target)
-			#
-	#elif targets_in_range.is_empty():
-		#timer.stop()
-
 func attempt_shot():
 	var target = get_valid_target()
 	
 	if target and bullet_scene:
 		var shield_provider = get_shield_provider(target)
+		
 		var final_target = shield_provider if shield_provider else target
+		
 		var bullet = bullet_scene.instantiate()
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = muzzle.global_position
+		
 		bullet.look_at(final_target.global_position)
 
 		if bullet.has_method("set_hit_target"):

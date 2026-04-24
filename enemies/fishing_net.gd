@@ -1,4 +1,4 @@
-extends "res://enemies/original_zombie.gd"
+extends "res://enemies/zombie.gd"
 
 @export var stealth_alpha: float = 0.2
 @export var stealth_duration: float = 2

@@ -10,7 +10,7 @@ func _ready():
 	super._ready()
 	
 	health = 100
-	speed = -3.0
+	speed = 3.0
 	attack_damage = 20
 
 func die():

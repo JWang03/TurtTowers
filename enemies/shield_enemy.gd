@@ -1,4 +1,4 @@
-extends "res://enemies/original_zombie.gd"
+extends "res://enemies/zombie.gd"
 
 @export var shield_health: float = 50
 @export var shield_radius: float = 60.0
@@ -10,6 +10,8 @@ var is_shield_active: bool = false
 
 func _ready():
 	super._ready()
+	add_to_group("shield_mobs")
+	
 	health = 20
 	speed = 5
 	shield_node.monitoring = false
@@ -18,7 +20,7 @@ func _ready():
 	start_shield_timer()
 
 func start_shield_timer():
-	await get_tree().create_timer(randf_range(2.0,5.0)).timeout
+	await get_tree().create_timer(randf_range(0.5,8.0)).timeout
 	deploy_shield()
 
 func deploy_shield():
@@ -34,9 +36,11 @@ func deploy_shield():
 
 func take_shield_damage(amount):
 	shield_health -= amount
+	# Feedback effect
 	shield_sprite.modulate = Color(2, 2, 2, 1) 
 	await get_tree().create_timer(0.05).timeout
-	shield_sprite.modulate = Color(1, 1, 1, 0.6)
+	if is_instance_valid(shield_sprite):
+		shield_sprite.modulate = Color(1, 1, 1, 0.6)
 	
 	if shield_health <= 0:
 		break_shield()
@@ -45,6 +49,7 @@ func break_shield():
 	is_shield_active = false
 	shield_node.monitoring = false
 	shield_node.visible = false
+	shield_health = 50 
 	start_shield_timer()
 
 func take_damage(amount):

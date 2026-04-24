@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://nkub0mc5sjn7" path="res://textures/a-retro-styled-pixel-art-illustration-of-a-zombie-with-torn-clothing-png.png" id="2_1nppv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vp0qn"]
-radius = 6.0
+radius = 13.152946
 
 [node name="original_zombie" type="CharacterBody2D" unique_id=533937776]
 script = ExtResource("1_dy1k8")

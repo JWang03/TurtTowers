@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b1kfgh08ooy8q"]
+
+[ext_resource type="Texture2D" uid="uid://bejlijf2sgwta" path="res://textures/Screenshot_2026-04-24_105455-removebg-preview.png" id="1_10ahm"]
+[ext_resource type="Script" uid="uid://tslldj6dfhgf" path="res://enemies/oil_spill.gd" id="1_c73b7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c73b7"]
+radius = 16.0
+height = 68.0
+
+[node name="oil_spill" type="CharacterBody2D" unique_id=631868406]
+script = ExtResource("1_c73b7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1078212856]
+scale = Vector2(0.41111112, 0.37704918)
+texture = ExtResource("1_10ahm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=733989902]
+position = Vector2(-7, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_c73b7")

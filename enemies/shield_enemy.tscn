@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chk7xpr8woiu3"]
 
-[ext_resource type="Script" uid="uid://b781vvhbs7kjk" path="res://shield_enemy.gd" id="1_117e8"]
+[ext_resource type="Script" uid="uid://b781vvhbs7kjk" path="res://enemies/shield_enemy.gd" id="1_117e8"]
 [ext_resource type="Texture2D" uid="uid://uurebpnhfhqf" path="res://textures/image-removebg-preview (14).png" id="2_15ep3"]
 [ext_resource type="Texture2D" uid="uid://dqvsef5yvkf6k" path="res://textures/image-removebg-preview (13).png" id="2_evmg5"]
 

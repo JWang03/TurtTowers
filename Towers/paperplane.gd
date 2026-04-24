@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 @export var flight_speed: float = 45.0
 @export var fire_rate: float = 0.05
-@export var spread_count: int = 24
-@export var spread_angle: float = 15
+@export var spread_count: int = 4
+@export var spread_angle: float = 5
 @export var cost: int = 5
 @export var is_placed: bool = false
 

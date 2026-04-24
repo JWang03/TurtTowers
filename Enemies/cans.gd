@@ -3,7 +3,7 @@ extends "res://enemies/zombie.gd"
 func _ready():
 	super._ready()
 	
-	speed = -55.0
+	speed = 55.0
 	health = 11.0
 	attack_damage = 1
 	

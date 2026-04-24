@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var speed: float = -10.0 
-@export var health: float = 50.0
+@export var speed: float = 5.0 
+@export var health: float = 70.0
 @export var attack_damage: int = 1
 
 @onready var ray_cast = $RayCast2D 
