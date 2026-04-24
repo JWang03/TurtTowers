@@ -19,6 +19,11 @@ extends Control
 
 # Towers Menu Nodes
 @onready var tower_overlay = $TowersLayer
+@onready var tower_darkener = $TowersLayer/Darkener
+@onready var tower_cards = [
+	$TowersLayer/"1", $TowersLayer/"2", $TowersLayer/"3", 
+	$TowersLayer/"4", $TowersLayer/"5", $TowersLayer/"6"
+]
 
 # Map data
 var map_textures: Array = []
@@ -37,6 +42,10 @@ func _ready():
 	settings_overlay.hide()
 	map_overlay.hide()
 	tower_overlay.hide()
+	
+	# Ensure tower cards are prepped for animation
+	for card in tower_cards:
+		card.scale = Vector2.ZERO
 
 	# Load map textures
 	map_textures = [
@@ -137,18 +146,54 @@ func _on_map_selector_pressed() -> void:
 	else:
 		push_warning("%s is not playable yet." % map_names[current_map_index])
 
+# Towers Menu Functions
 func _on_towers_pressed() -> void:
 	tower_overlay.show()
+	tower_darkener.modulate.a = 0
 	
+	var tween = create_tween().set_parallel(true)
+	
+	# Fade in the darkener
+	tween.tween_property(tower_darkener, "modulate:a", 1.0, 0.2)
+	
+	# Animate cards with a slight stagger/delay for each
+	for i in range(tower_cards.size()):
+		var card = tower_cards[i]
+		card.pivot_offset = card.size / 2
+		card.scale = Vector2.ZERO
+		
+		# Create a secondary tween for the individual card bounce
+		var card_tween = create_tween()
+		card_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		
+		# Delay each card by 0.05 seconds multiplied by its index
+		card_tween.tween_interval(i * 0.05)
+		card_tween.tween_property(card, "scale", Vector2.ONE, 0.3)
 
-# temp for closing
+func _on_close_towers_pressed() -> void:
+	var tween = create_tween().set_parallel(true)
+	
+	# Fade out darkener
+	tween.tween_property(tower_darkener, "modulate:a", 0.0, 0.2)
+	
+	# Shrink all cards simultaneously
+	for card in tower_cards:
+		tween.tween_property(card, "scale", Vector2.ZERO, 0.2)\
+			.set_trans(Tween.TRANS_BACK)\
+			.set_ease(Tween.EASE_IN)
+			
+	tween.chain().tween_callback(tower_overlay.hide)
+
+# Input handling for closing menus
 func _input(event):
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_ESCAPE:
 			if event.alt_pressed:
 				get_tree().quit()
 			else:
-				if map_overlay.visible:
+				if tower_overlay.visible:
+					_on_close_towers_pressed()
+				elif map_overlay.visible:
 					_on_close_map_selection_pressed()
 				elif settings_overlay.visible:
 					_on_button_pressed()

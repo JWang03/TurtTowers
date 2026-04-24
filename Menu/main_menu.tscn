@@ -17,11 +17,15 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jix8l"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vrkn"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fduiw"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgse8"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlkkf"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o4wy8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqyvv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8x2t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_map_border"]
 draw_center = false
@@ -87,12 +91,18 @@ offset_bottom = 418.0
 
 [node name="Towers" type="Button" parent="." unique_id=984938724]
 layout_mode = 0
-offset_right = 1152.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_7vrkn")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_glbon")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_nlkkf")
+offset_left = 477.0
+offset_top = 298.0
+offset_right = 645.0
+offset_bottom = 346.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fduiw")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cgse8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o4wy8")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dqyvv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_m8x2t")
 
 [node name="MapSelectionLayer" type="CanvasLayer" parent="." unique_id=280550618]
+visible = false
 
 [node name="Darkener" type="ColorRect" parent="MapSelectionLayer" unique_id=472727133]
 anchors_preset = 15
@@ -204,6 +214,7 @@ horizontal_alignment = 1
 
 [node name="ColorblindLayer" type="CanvasLayer" parent="." unique_id=59880908]
 layer = 100
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="ColorblindLayer" unique_id=1398956715]
 material = SubResource("ShaderMaterial_nlkkf")
@@ -215,6 +226,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="SettingsLayer" type="CanvasLayer" parent="." unique_id=374831580]
+visible = false
 
 [node name="Darkener" type="ColorRect" parent="SettingsLayer" unique_id=1942308797]
 anchors_preset = 15
@@ -327,7 +339,6 @@ color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
 [node name="NameLabel" type="Label" parent="TowersLayer/1" unique_id=101010101]
 layout_mode = 0
-offset_left = 0.0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
@@ -350,7 +361,6 @@ color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
 [node name="NameLabel" type="Label" parent="TowersLayer/2" unique_id=202020202]
 layout_mode = 0
-offset_left = 0.0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
@@ -373,7 +383,6 @@ color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
 [node name="NameLabel" type="Label" parent="TowersLayer/3" unique_id=303030303]
 layout_mode = 0
-offset_left = 0.0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
@@ -396,7 +405,6 @@ color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
 [node name="NameLabel" type="Label" parent="TowersLayer/4" unique_id=404040404]
 layout_mode = 0
-offset_left = 0.0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
@@ -419,7 +427,6 @@ color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
 [node name="NameLabel" type="Label" parent="TowersLayer/5" unique_id=505050505]
 layout_mode = 0
-offset_left = 0.0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
@@ -442,7 +449,6 @@ color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
 [node name="NameLabel" type="Label" parent="TowersLayer/6" unique_id=606060606]
 layout_mode = 0
-offset_left = 0.0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
