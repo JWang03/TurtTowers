@@ -1,5 +1,5 @@
 extends Node2D
-@export var fire_rate: float = .0001
+@export var fire_rate: float = .2
 @export var damage: int = 100
 @export var cost: int = 20
 @export var is_placed: bool = false

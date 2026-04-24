@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_vedim"]
 radius = 158.0
 
-[node name="Bullet_tower" type="StaticBody2D" unique_id=1404473068]
+[node name="Bullet_tower" type="StaticBody2D" unique_id=1649409067]
 script = ExtResource("1_v0an6")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1053606515]
@@ -24,5 +24,5 @@ shape = SubResource("CircleShape2D_vedim")
 
 [node name="Timer" type="Timer" parent="." unique_id=923314776]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=708224847]
-polygon = PackedVector2Array(-9, -9, 0, -11, 5, -8, 6, -4, 10, 0, 9, 6, 4, 10, -6, 10, -9, 3)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1882854089]
+polygon = PackedVector2Array(3, 33, 24, 30, 24, -18, -26, -22, -16, 31)

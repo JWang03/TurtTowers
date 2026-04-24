@@ -58,7 +58,8 @@ shape = SubResource("RectangleShape2D_k6v5m")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=601826289]
-scale = Vector2(0.15808824, 0.14909092)
+position = Vector2(-1.2499985, 1.2500014)
+scale = Vector2(0.16727942, 0.15818183)
 texture = ExtResource("3_g7pya")
 
 [connection signal="body_entered" from="Path2D/PathFollow2D/Range" to="." method="_on_range_body_entered"]
