@@ -18,12 +18,18 @@ var master_bus = AudioServer.get_bus_index("Master")
 @onready var map_selector = $MapSelectionLayer/MapSelector
 @onready var map_darkener = $MapSelectionLayer/Darkener
 
+# Towers Menu Nodes
+@onready var towers_overlay = $TowersLayer
+@onready var towers_panel = $TowersLayer/TowersPanel
+@onready var towers_darkener = $TowersLayer/Darkener
+
 
 # Initialization
 func _ready():
 	# Hide all UI overlays at start
 	overlay.hide()
 	map_overlay.hide()
+	towers_overlay.hide()
 		
 	# Sets colorblindness to none at start
 	if colorblind_dropdown:
@@ -131,3 +137,38 @@ func _on_close_map_selection_pressed() -> void:
 	tween.chain().tween_callback(map_overlay.hide)
 	tween.tween_callback(map_selector.hide)
 	tween.tween_callback(map_darkener.hide)
+
+
+# Towers Menu Functions
+func _on_towers_pressed() -> void:
+	towers_darkener.mouse_filter = Control.MOUSE_FILTER_STOP
+	towers_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+
+	towers_overlay.show()
+	towers_panel.show()
+	towers_darkener.show()
+
+	towers_panel.pivot_offset = towers_panel.size / 2
+	towers_panel.scale = Vector2.ZERO
+	towers_darkener.modulate.a = 0
+
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(towers_darkener, "modulate:a", 1.0, 0.2)
+	tween.tween_property(towers_panel, "scale", Vector2.ONE, 0.3)\
+		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_OUT)
+
+
+func _on_close_towers_pressed() -> void:
+	towers_darkener.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	towers_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(towers_darkener, "modulate:a", 0.0, 0.2)
+	tween.tween_property(towers_panel, "scale", Vector2.ZERO, 0.2)\
+		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_IN)
+
+	tween.chain().tween_callback(towers_overlay.hide)
+	tween.tween_callback(towers_panel.hide)
+	tween.tween_callback(towers_darkener.hide)
