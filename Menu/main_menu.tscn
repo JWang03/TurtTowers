@@ -319,11 +319,21 @@ color = Color(0, 0, 0, 0.5882353)
 
 [node name="1" type="ColorRect" parent="TowersLayer" unique_id=130209667]
 material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 235.0
-offset_top = 142.0
-offset_right = 422.0
-offset_bottom = 366.0
+offset_left = 266.0
+offset_top = 85.0
+offset_right = 453.0
+offset_bottom = 309.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/1" unique_id=101010101]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 5.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 14
+text = "Bomb Tower"
+horizontal_alignment = 1
 
 [node name="BombTower" type="Sprite2D" parent="TowersLayer/1" unique_id=613190859]
 position = Vector2(103, 112.000015)
@@ -332,11 +342,21 @@ texture = ExtResource("7_cn2sd")
 
 [node name="2" type="ColorRect" parent="TowersLayer" unique_id=1321598397]
 material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 465.0
-offset_top = 141.0
-offset_right = 652.0
-offset_bottom = 365.0
+offset_left = 483.0
+offset_top = 85.0
+offset_right = 670.0
+offset_bottom = 309.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/2" unique_id=202020202]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 5.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 14
+text = "Electric Tower"
+horizontal_alignment = 1
 
 [node name="ElectricTower" type="Sprite2D" parent="TowersLayer/2" unique_id=1083541443]
 position = Vector2(75, 110)
@@ -345,18 +365,21 @@ texture = ExtResource("8_ywk15")
 
 [node name="3" type="ColorRect" parent="TowersLayer" unique_id=2013696268]
 material = SubResource("ShaderMaterial_cn2sd")
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -446.0
-offset_top = -500.0
-offset_right = -259.0
-offset_bottom = -276.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 700.0
+offset_top = 85.0
+offset_right = 887.0
+offset_bottom = 309.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/3" unique_id=303030303]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 5.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 14
+text = "Blackhole Tower"
+horizontal_alignment = 1
 
 [node name="BlackholeTower" type="Sprite2D" parent="TowersLayer/3" unique_id=1263058208]
 position = Vector2(95, 119)
@@ -365,11 +388,21 @@ texture = ExtResource("9_ws7s4")
 
 [node name="4" type="ColorRect" parent="TowersLayer" unique_id=1003340736]
 material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 244.0
-offset_top = 376.0
-offset_right = 431.0
-offset_bottom = 600.0
+offset_left = 266.0
+offset_top = 339.0
+offset_right = 453.0
+offset_bottom = 563.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/4" unique_id=404040404]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 5.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 14
+text = "Godzilla Tower"
+horizontal_alignment = 1
 
 [node name="GodzillaTower" type="Sprite2D" parent="TowersLayer/4" unique_id=673475163]
 position = Vector2(90, 125)
@@ -378,11 +411,21 @@ texture = ExtResource("10_fduiw")
 
 [node name="5" type="ColorRect" parent="TowersLayer" unique_id=1479644517]
 material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 468.0
-offset_top = 384.0
-offset_right = 655.0
-offset_bottom = 608.0
+offset_left = 483.0
+offset_top = 339.0
+offset_right = 670.0
+offset_bottom = 563.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/5" unique_id=505050505]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 5.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 14
+text = "Bullet Tower"
+horizontal_alignment = 1
 
 [node name="BulletTower" type="Sprite2D" parent="TowersLayer/5" unique_id=372846596]
 position = Vector2(87.999985, 131.99998)
@@ -391,11 +434,21 @@ texture = ExtResource("11_fduiw")
 
 [node name="6" type="ColorRect" parent="TowersLayer" unique_id=831493604]
 material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 705.0
-offset_top = 380.0
-offset_right = 892.0
-offset_bottom = 604.0
+offset_left = 700.0
+offset_top = 339.0
+offset_right = 887.0
+offset_bottom = 563.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/6" unique_id=606060606]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 5.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 14
+text = "Paper Airplane"
+horizontal_alignment = 1
 
 [node name="PaperAirplane" type="Sprite2D" parent="TowersLayer/6" unique_id=1811139515]
 position = Vector2(82.000015, 125.00001)
