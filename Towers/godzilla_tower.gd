@@ -106,7 +106,6 @@ extends StaticBody2D
 @onready var laser_line = $Head/Line2D
 @onready var range_area = $Range
 
-var is_placed := false
 var target_zombie: CharacterBody2D = null
 
 func _process(delta):
@@ -114,32 +113,32 @@ func _process(delta):
 		if is_placed == false:
 			return
 		else:
-      update_target()
+			update_target()
 
-      if target_zombie and is_instance_valid(target_zombie):
-        head.look_at(target_zombie.global_position)
-        laser_ray.force_raycast_update()
+			if target_zombie and is_instance_valid(target_zombie):
+				head.look_at(target_zombie.global_position)
+				laser_ray.force_raycast_update()
 
-        if laser_ray.is_colliding():
-          var hit_collider = laser_ray.get_collider()
+		if laser_ray.is_colliding():
+			var hit_collider = laser_ray.get_collider()
 
-          if hit_collider.is_in_group("zombies"):
-            # --- SHIELD REDIRECTION LOGIC ---
-            var shield_provider = get_shield_provider(hit_collider)
-            var final_damage_target = shield_provider if shield_provider else hit_collider
+			if hit_collider.is_in_group("zombies"):
+			# --- SHIELD REDIRECTION LOGIC ---
+				var shield_provider = get_shield_provider(hit_collider)
+				var final_damage_target = shield_provider if shield_provider else hit_collider
 
-            # Show beam hitting the zombie (or you could calculate the shield edge)
-            show_beam(laser_ray.get_collision_point())
+			# Show beam hitting the zombie (or you could calculate the shield edge)
+				show_beam(laser_ray.get_collision_point())
 
-            # Apply damage over time
-            if final_damage_target.has_method("take_damage"):
-              final_damage_target.take_damage(damage_per_second * delta)
-          else:
-            hide_beam()
-        else:
-          hide_beam()
-      else:
-        hide_beam()
+			# Apply damage over time
+				if final_damage_target.has_method("take_damage"):
+					final_damage_target.take_damage(damage_per_second * delta)
+				else:
+					hide_beam()
+			else:
+				hide_beam()
+		else:
+			hide_beam()
 
 func update_target():
 	var bodies = range_area.get_overlapping_bodies()

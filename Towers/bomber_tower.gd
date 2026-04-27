@@ -81,9 +81,7 @@ extends StaticBody2D
 @export var cost: float = 25
 @onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 var targets_in_range: Array = []
-var is_placed := false
 var bomb_scene = preload("res://Towers/bomb.tscn")
-var cost: int = 5
 
 func _ready():
 	timer.wait_time = fire_rate
@@ -116,23 +114,23 @@ func shoot():
 	if starter.playing == true:
 		if is_placed == false:
 			return
-    elif bomb_scene and not targets_in_range.is_empty():
-      var valid_targets = targets_in_range.filter(func(t): 
-        return t.get("is_stealth") != true
-      )
+		elif bomb_scene and not targets_in_range.is_empty():
+			var valid_targets = targets_in_range.filter(func(t): 
+				return t.get("is_stealth") != true
+			)
 
-      if valid_targets.is_empty(): return
+			if valid_targets.is_empty(): return
 
-      var target = valid_targets[0]
+			var target = valid_targets[0]
 
-      var shield_provider = get_shield_provider(target)
-      var final_target = shield_provider if shield_provider else target
+			var shield_provider = get_shield_provider(target)
+			var final_target = shield_provider if shield_provider else target
 
-      var bomb = bomb_scene.instantiate()
-      get_tree().current_scene.add_child(bomb)
+			var bomb = bomb_scene.instantiate()
+			get_tree().current_scene.add_child(bomb)
 
-      bomb.global_position = muzzle.global_position
-      bomb.target_pos = final_target.global_position
+			bomb.global_position = muzzle.global_position
+			bomb.target_pos = final_target.global_position
 
 func _on_timer_timeout():
 	shoot()

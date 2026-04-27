@@ -114,7 +114,6 @@ extends StaticBody2D
 @onready var attack_timer = $Timer
 @onready var shoot_point = $Muzzle
 
-var is_placed := false
 var lightning_scene = preload("res://Towers/bolt.tscn")
 
 func _ready():

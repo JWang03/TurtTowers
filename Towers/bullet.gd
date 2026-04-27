@@ -23,7 +23,7 @@ extends Area2D
 
 @export var speed: float = 1000.0
 @export var damage: int = 5
-
+var target_node = null
 func _ready():
 	body_entered.connect(_on_body_entered)
 	$VisibleOnScreenNotifier2D.screen_exited.connect(_on_screen_exited)
@@ -36,7 +36,7 @@ func activate(pos: Vector2, rot: float):
 
 func _physics_process(delta):
 	position += transform.x * speed * delta
-
+	
 func set_hit_target(node):
 	target_node = node
 
@@ -69,4 +69,4 @@ func get_shield_provider(zombie):
 
 
 func _on_screen_exited():
-	BulletPool.return_bullet(self)
+	queue_free()

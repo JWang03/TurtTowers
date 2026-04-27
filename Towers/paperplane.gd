@@ -34,9 +34,8 @@ func shoot():
 			var start_angle = -(spread_angle * (spread_count - 1)) / 2.0
 			
 			for i in range(spread_count):
-				var b = BulletPool.get_bullet()
-				if b == null:
-					continue
+				var b = bullet_scene.instantiate()
+				get_tree().root.add_child(b)
 				
 				var shot_rotation = muzzle.global_rotation + deg_to_rad(start_angle + (i * spread_angle))
 				b.activate(muzzle.global_position, shot_rotation)

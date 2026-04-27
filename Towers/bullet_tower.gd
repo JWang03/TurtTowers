@@ -80,7 +80,6 @@ var targets_in_range: Array = []
 var bullet_scene = preload("res://Towers/bullet.tscn")
 var cost: int = 5
 
-var is_placed := false
 func _ready():
 	timer.wait_time = fire_rate
 	detection_area.body_entered.connect(_on_zombie_entered)
@@ -130,21 +129,21 @@ func attempt_shot():
 		bullet.global_position = muzzle.global_position
 		
 		bullet.look_at(final_target.global_position)
-func shoot():
-	if starter.playing == true:
-		if is_placed == false:
-			return
-		elif bullet_scene and not targets_in_range.is_empty():
-			
-			var target = targets_in_range[0]
-			var bullet = bullet_scene.instantiate()
-			get_tree().current_scene.add_child(bullet)
-			
-			bullet.global_position = muzzle.global_position
-			
-			bullet.look_at(target.global_position)
-		else:
-			print("no bullet scene")
+#func shoot():
+	#if starter.playing == true:
+		#if is_placed == false:
+			#return
+		#elif bullet_scene and not targets_in_range.is_empty():
+			#
+			#var target = targets_in_range[0]
+			#var bullet = bullet_scene.instantiate()
+			#get_tree().current_scene.add_child(bullet)
+			#
+			#bullet.global_position = muzzle.global_position
+			#
+			#bullet.look_at(target.global_position)
+		#else:
+			#print("no bullet scene")
 	#if bullet_scene:
 		#var bullet = bullet_scene.instantiate()
 		#get_tree().current_scene.add_child(bullet)
