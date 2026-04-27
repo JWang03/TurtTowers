@@ -5,6 +5,7 @@ extends Area2D
 @export var friction: float = 0.08
 @export var damage_per_second: float = 10.0
 
+
 @onready var pull_area = $ExplosionArea
 
 var target_pos: Vector2

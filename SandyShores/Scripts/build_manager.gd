@@ -1,6 +1,8 @@
 extends Node
 class_name BuildManager
 
+@export var is_placed: bool = false
+
 signal selection_changed(selected_scene)
 
 var selected_scene: PackedScene = null

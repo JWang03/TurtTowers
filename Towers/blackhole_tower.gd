@@ -4,6 +4,10 @@ extends StaticBody2D
 @export var fire_rate: float = 3.0
 @export var pull_offset: float = 4000.0
 
+@export var is_placed: bool = false
+
+@export var cost: int = 5
+
 @onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer
@@ -36,17 +40,18 @@ func shoot():
 	if starter.playing == true:
 		if is_placed == false:
 			return
-		elif black_hole_scene and not targets_in_range.is_empty():
-			var target = targets_in_range[0]
-			if not is_instance_valid(target): return
-			
-			var bh = black_hole_scene.instantiate()
-			
-			var spawn_destination = target.global_position 
-			
-			get_tree().current_scene.add_child(bh)
-			bh.global_position = muzzle.global_position
-			bh.target_pos = spawn_destination
+    elif black_hole_scene and not targets_in_range.is_empty():
+      var target = targets_in_range.filter(func(t): return is_instance_valid(t) and !t.get("is_stealth")).front()
+      #var target = targets_in_range[0]
+      if not is_instance_valid(target): return
+
+      var bh = black_hole_scene.instantiate()
+
+      var spawn_destination = target.global_position 
+
+      get_tree().current_scene.add_child(bh)
+      bh.global_position = muzzle.global_position
+      bh.target_pos = spawn_destination
 #func shoot():
 	#if black_hole_scene and not targets_in_range.is_empty():
 		#var target = targets_in_range[0]

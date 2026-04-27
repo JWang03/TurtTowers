@@ -3,6 +3,9 @@ extends CharacterBody2D
 @export var flight_speed: float = 15.0
 @export var rotation_speed: float = 5.0
 @export var fire_rate: float = 0.2
+@export var cost: int = 5
+@export var is_placed: bool = false
+
 
 var target: Node2D = null
 var enemies_in_range: Array = []
