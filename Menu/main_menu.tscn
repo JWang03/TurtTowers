@@ -329,26 +329,57 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
+[node name="LeftArrow" type="Button" parent="TowersLayer" unique_id=727303500]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.105000004
+anchor_bottom = 0.5
+offset_left = 195.0
+offset_top = -72.0
+offset_right = 149.04
+offset_bottom = 73.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "<"
+flat = true
+
+[node name="RightArrow" type="Button" parent="TowersLayer" unique_id=389936466]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -78.0
+offset_right = -197.0
+offset_bottom = 67.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = ">"
+flat = true
+
 [node name="1" type="ColorRect" parent="TowersLayer" unique_id=130209667]
 material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 266.0
-offset_top = 85.0
-offset_right = 453.0
-offset_bottom = 309.0
+offset_left = 267.0
+offset_top = 87.0
+offset_right = 454.0
+offset_bottom = 311.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
 [node name="NameLabel" type="Label" parent="TowersLayer/1" unique_id=101010101]
 layout_mode = 0
-offset_top = 5.0
+offset_left = -3.0
+offset_top = 2.0
 offset_right = 187.0
-offset_bottom = 35.0
-theme_override_font_sizes/font_size = 14
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 20
 text = "Bomb Tower"
 horizontal_alignment = 1
 
 [node name="BombTower" type="Sprite2D" parent="TowersLayer/1" unique_id=613190859]
-position = Vector2(103, 112.000015)
-scale = Vector2(0.48800004, 0.50949997)
+position = Vector2(95, 119)
+scale = Vector2(0.45, 0.47)
 texture = ExtResource("7_cn2sd")
 
 [node name="2" type="ColorRect" parent="TowersLayer" unique_id=1321598397]
@@ -364,13 +395,13 @@ layout_mode = 0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 20
 text = "Electric Tower"
 horizontal_alignment = 1
 
 [node name="ElectricTower" type="Sprite2D" parent="TowersLayer/2" unique_id=1083541443]
-position = Vector2(75, 110)
-scale = Vector2(0.48900002, 0.5325)
+position = Vector2(88, 125)
+scale = Vector2(0.42, 0.457)
 texture = ExtResource("8_ywk15")
 
 [node name="3" type="ColorRect" parent="TowersLayer" unique_id=2013696268]
@@ -386,13 +417,13 @@ layout_mode = 0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 20
 text = "Blackhole Tower"
 horizontal_alignment = 1
 
 [node name="BlackholeTower" type="Sprite2D" parent="TowersLayer/3" unique_id=1263058208]
-position = Vector2(95, 119)
-scale = Vector2(0.57699996, 0.626)
+position = Vector2(92, 124)
+scale = Vector2(0.55, 0.597)
 texture = ExtResource("9_ws7s4")
 
 [node name="4" type="ColorRect" parent="TowersLayer" unique_id=1003340736]
@@ -408,13 +439,13 @@ layout_mode = 0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 20
 text = "Godzilla Tower"
 horizontal_alignment = 1
 
 [node name="GodzillaTower" type="Sprite2D" parent="TowersLayer/4" unique_id=673475163]
 position = Vector2(90, 125)
-scale = Vector2(0.68099993, 0.697)
+scale = Vector2(0.7, 0.716)
 texture = ExtResource("10_fduiw")
 
 [node name="5" type="ColorRect" parent="TowersLayer" unique_id=1479644517]
@@ -430,13 +461,13 @@ layout_mode = 0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 20
 text = "Bullet Tower"
 horizontal_alignment = 1
 
 [node name="BulletTower" type="Sprite2D" parent="TowersLayer/5" unique_id=372846596]
 position = Vector2(87.999985, 131.99998)
-scale = Vector2(0.60787493, 0.475375)
+scale = Vector2(0.6, 0.469)
 texture = ExtResource("11_fduiw")
 
 [node name="6" type="ColorRect" parent="TowersLayer" unique_id=831493604]
@@ -452,14 +483,14 @@ layout_mode = 0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 20
 text = "Paper Airplane"
 horizontal_alignment = 1
 
 [node name="PaperAirplane" type="Sprite2D" parent="TowersLayer/6" unique_id=1811139515]
 position = Vector2(82.000015, 125.00001)
 rotation = -0.60613
-scale = Vector2(0.7141595, 0.87551486)
+scale = Vector2(0.7, 0.859)
 texture = ExtResource("12_cgse8")
 
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]

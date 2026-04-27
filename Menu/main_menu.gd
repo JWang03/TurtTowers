@@ -197,3 +197,11 @@ func _input(event):
 					_on_close_map_selection_pressed()
 				elif settings_overlay.visible:
 					_on_button_pressed()
+
+
+func _on_left_tower_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_right_tower_pressed() -> void:
+	pass # Replace with function body.
