@@ -24,6 +24,13 @@ extends Control
 	$TowersLayer/"1", $TowersLayer/"2", $TowersLayer/"3", 
 	$TowersLayer/"4", $TowersLayer/"5", $TowersLayer/"6"
 ]
+@onready var tower_cards_page2 = [
+	$TowersLayer/"7", $TowersLayer/"8", $TowersLayer/"9",
+	$TowersLayer/"10", $TowersLayer/"11", $TowersLayer/"12"
+]
+
+var current_tower_page: int = 0
+var total_tower_pages: int = 2
 
 # Map data
 var map_textures: Array = []
@@ -45,6 +52,8 @@ func _ready():
 	
 	# Ensure tower cards are prepped for animation
 	for card in tower_cards:
+		card.scale = Vector2.ZERO
+	for card in tower_cards_page2:
 		card.scale = Vector2.ZERO
 
 	# Load map textures
@@ -150,38 +159,44 @@ func _on_map_selector_pressed() -> void:
 func _on_towers_pressed() -> void:
 	tower_overlay.show()
 	tower_darkener.modulate.a = 0
-	
+	current_tower_page = 0
+
 	var tween = create_tween().set_parallel(true)
-	
+
 	# Fade in the darkener
 	tween.tween_property(tower_darkener, "modulate:a", 1.0, 0.2)
-	
-	# Animate cards with a slight stagger/delay for each
+
+	# Reset page 2 cards so they are hidden
+	for card in tower_cards_page2:
+		card.pivot_offset = card.size / 2
+		card.scale = Vector2.ZERO
+
+	# Animate page 1 cards with a slight stagger/delay for each
 	for i in range(tower_cards.size()):
 		var card = tower_cards[i]
 		card.pivot_offset = card.size / 2
 		card.scale = Vector2.ZERO
-		
+
 		# Create a secondary tween for the individual card bounce
 		var card_tween = create_tween()
 		card_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-		
+
 		# Delay each card by 0.05 seconds multiplied by its index
 		card_tween.tween_interval(i * 0.05)
 		card_tween.tween_property(card, "scale", Vector2.ONE, 0.3)
 
 func _on_close_towers_pressed() -> void:
 	var tween = create_tween().set_parallel(true)
-	
+
 	# Fade out darkener
 	tween.tween_property(tower_darkener, "modulate:a", 0.0, 0.2)
-	
-	# Shrink all cards simultaneously
-	for card in tower_cards:
+
+	# Shrink all cards (both pages) simultaneously
+	for card in tower_cards + tower_cards_page2:
 		tween.tween_property(card, "scale", Vector2.ZERO, 0.2)\
 			.set_trans(Tween.TRANS_BACK)\
 			.set_ease(Tween.EASE_IN)
-			
+
 	tween.chain().tween_callback(tower_overlay.hide)
 
 # Input handling for closing menus
@@ -200,8 +215,37 @@ func _input(event):
 
 
 func _on_left_tower_pressed() -> void:
-	pass # Replace with function body.
+	var new_page = (current_tower_page - 1 + total_tower_pages) % total_tower_pages
+	_switch_tower_page(new_page)
 
 
 func _on_right_tower_pressed() -> void:
-	pass # Replace with function body.
+	var new_page = (current_tower_page + 1) % total_tower_pages
+	_switch_tower_page(new_page)
+
+
+func _switch_tower_page(new_page: int) -> void:
+	if new_page == current_tower_page:
+		return
+
+	var current_cards = tower_cards if current_tower_page == 0 else tower_cards_page2
+	var new_cards = tower_cards if new_page == 0 else tower_cards_page2
+
+	# Shrink the current page's cards out
+	var out_tween = create_tween().set_parallel(true)
+	for card in current_cards:
+		out_tween.tween_property(card, "scale", Vector2.ZERO, 0.2)\
+			.set_trans(Tween.TRANS_BACK)\
+			.set_ease(Tween.EASE_IN)
+
+	current_tower_page = new_page
+
+	# Animate the new page's cards in with stagger (after the out animation)
+	for i in range(new_cards.size()):
+		var card = new_cards[i]
+		card.pivot_offset = card.size / 2
+		card.scale = Vector2.ZERO
+		var card_tween = create_tween()
+		card_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		card_tween.tween_interval(0.2 + i * 0.05)
+		card_tween.tween_property(card, "scale", Vector2.ONE, 0.3)
