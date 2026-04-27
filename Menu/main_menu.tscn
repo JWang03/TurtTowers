@@ -45,11 +45,11 @@ shader_parameter/mode = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cn2sd"]
 shader = ExtResource("6_rw3mj")
-shader_parameter/top_color = Color(0.72, 0.9, 0.76, 1)
-shader_parameter/bottom_color = Color(0.09, 0.65, 0.49, 1)
-shader_parameter/radius = 0.1
-shader_parameter/border_width = 0.02
-shader_parameter/border_color = Color(0.05, 0.35, 0.3, 1)
+shader_parameter/top_color = Color(0.22, 0.72, 0.18, 1)
+shader_parameter/bottom_color = Color(0.08, 0.45, 0.12, 1)
+shader_parameter/radius = 0.15
+shader_parameter/border_width = 0.025
+shader_parameter/border_color = Color(0.05, 0.22, 0.07, 1)
 
 [node name="MainMenu" type="Control" unique_id=1211162565]
 layout_mode = 3
@@ -102,7 +102,6 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dqyvv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_m8x2t")
 
 [node name="MapSelectionLayer" type="CanvasLayer" parent="." unique_id=280550618]
-visible = false
 
 [node name="Darkener" type="ColorRect" parent="MapSelectionLayer" unique_id=472727133]
 anchors_preset = 15
@@ -167,6 +166,7 @@ offset_top = -72.5
 offset_right = 75.0
 offset_bottom = 72.5
 grow_vertical = 2
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 100
 text = "<"
 flat = true
@@ -183,6 +183,7 @@ offset_top = -72.5
 offset_bottom = 72.5
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 100
 text = ">"
 flat = true
@@ -208,6 +209,7 @@ offset_top = 7.5
 offset_right = 225.5
 offset_bottom = 117.5
 grow_horizontal = 2
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 30
 text = "Sandy Shores"
 horizontal_alignment = 1
@@ -320,6 +322,7 @@ offset_right = 399.5
 offset_bottom = 352.5
 
 [node name="TowersLayer" type="CanvasLayer" parent="." unique_id=1277460239]
+visible = false
 
 [node name="Darkener" type="ColorRect" parent="TowersLayer" unique_id=608754605]
 anchors_preset = 15
@@ -338,6 +341,7 @@ offset_top = -72.5
 offset_right = 265.0
 offset_bottom = 72.5
 grow_vertical = 2
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 100
 text = "<"
 flat = true
@@ -354,6 +358,7 @@ offset_right = -197.0
 offset_bottom = 72.5
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 100
 text = ">"
 flat = true
@@ -364,7 +369,7 @@ offset_left = 267.0
 offset_top = 87.0
 offset_right = 454.0
 offset_bottom = 311.0
-color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+color = Color(0.922642, 0.11762213, 0.19775996, 1)
 
 [node name="NameLabel" type="Label" parent="TowersLayer/1" unique_id=101010101]
 layout_mode = 0
@@ -372,6 +377,7 @@ offset_left = -3.0
 offset_top = 2.0
 offset_right = 187.0
 offset_bottom = 30.0
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
 text = "Bomb Tower"
 horizontal_alignment = 1
@@ -394,6 +400,7 @@ layout_mode = 0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
 text = "Electric Tower"
 horizontal_alignment = 1
@@ -416,6 +423,7 @@ layout_mode = 0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
 text = "Blackhole Tower"
 horizontal_alignment = 1
@@ -438,6 +446,7 @@ layout_mode = 0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
 text = "Godzilla Tower"
 horizontal_alignment = 1
@@ -460,13 +469,14 @@ layout_mode = 0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
 text = "Bullet Tower"
 horizontal_alignment = 1
 
 [node name="BulletTower" type="Sprite2D" parent="TowersLayer/5" unique_id=372846596]
-position = Vector2(87.999985, 131.99998)
-scale = Vector2(0.576, 0.45)
+position = Vector2(93, 126.999985)
+scale = Vector2(0.489, 0.4845)
 texture = ExtResource("11_fduiw")
 
 [node name="6" type="ColorRect" parent="TowersLayer" unique_id=831493604]
@@ -482,6 +492,7 @@ layout_mode = 0
 offset_top = 5.0
 offset_right = 187.0
 offset_bottom = 35.0
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
 text = "Paper Airplane"
 horizontal_alignment = 1
