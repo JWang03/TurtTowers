@@ -21,14 +21,18 @@
 # bullet.gd
 extends Area2D
 
-@export var speed: float = 500.0
-@export var damage: float = 2.0
-
-var target_node = null 
+@export var speed: float = 1000.0
+@export var damage: int = 5
 
 func _ready():
-	if not body_entered.is_connected(_on_body_entered):
-		body_entered.connect(_on_body_entered)
+	body_entered.connect(_on_body_entered)
+	$VisibleOnScreenNotifier2D.screen_exited.connect(_on_screen_exited)
+
+func activate(pos: Vector2, rot: float):
+	global_position = pos
+	global_rotation = rot
+	show()
+	process_mode = Node.PROCESS_MODE_INHERIT
 
 func _physics_process(delta):
 	position += transform.x * speed * delta
@@ -62,3 +66,7 @@ func get_shield_provider(zombie):
 			if dist <= p.shield_radius:
 				return p
 	return null
+
+
+func _on_screen_exited():
+	BulletPool.return_bullet(self)

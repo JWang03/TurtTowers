@@ -11,7 +11,7 @@ extends CharacterBody2D
 @onready var path_follow = $Path2D/PathFollow2D
 @onready var muzzle = $Path2D/PathFollow2D/Muzzle
 @onready var shoot_timer = $Timer
-
+@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 var bullet_scene = preload("res://Towers/bullet.tscn")
 
 func _ready():
@@ -29,13 +29,14 @@ func _on_shoot_timer_timeout():
 	shoot()
 
 func shoot():
-	var start_angle = -(spread_angle * (spread_count - 1)) / 2.0
-	
-	for i in range(spread_count):
-		var b = bullet_scene.instantiate()
-		get_tree().current_scene.add_child(b)
-		
-		b.global_position = muzzle.global_position
-		
-		var shot_rotation = muzzle.global_rotation + deg_to_rad(start_angle + (i * spread_angle))
-		b.global_rotation = shot_rotation
+	if starter.playing == true:
+		if is_placed:
+			var start_angle = -(spread_angle * (spread_count - 1)) / 2.0
+			
+			for i in range(spread_count):
+				var b = BulletPool.get_bullet()
+				if b == null:
+					continue
+				
+				var shot_rotation = muzzle.global_rotation + deg_to_rad(start_angle + (i * spread_angle))
+				b.activate(muzzle.global_position, shot_rotation)

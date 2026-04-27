@@ -19,6 +19,10 @@ size = Vector2(187, 190)
 [node name="paperplane" type="CharacterBody2D" unique_id=490440668]
 collision_layer = 2
 script = ExtResource("1_jaf4s")
+flight_speed = 30.0
+fire_rate = 0.2
+spread_count = 4
+spread_angle = 30.0
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1448541128]
 position = Vector2(-492.99994, -1751)
@@ -32,8 +36,8 @@ rotation = 0.83396745
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=1787003691]
 z_index = 10
-position = Vector2(-0.87456965, 0.16185331)
-scale = Vector2(0.04675563, 0.05914569)
+position = Vector2(0.1402452, -0.28202558)
+scale = Vector2(0.11191265, 0.09152443)
 texture = ExtResource("2_cltxp")
 
 [node name="Muzzle" type="Marker2D" parent="Path2D/PathFollow2D" unique_id=1544948797]
@@ -54,7 +58,8 @@ shape = SubResource("RectangleShape2D_k6v5m")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=601826289]
-scale = Vector2(0.095588244, 0.087272726)
+position = Vector2(-1.2499985, 1.2500014)
+scale = Vector2(0.16727942, 0.15818183)
 texture = ExtResource("3_g7pya")
 
 [connection signal="body_entered" from="Path2D/PathFollow2D/Range" to="." method="_on_range_body_entered"]

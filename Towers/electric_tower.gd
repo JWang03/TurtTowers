@@ -109,10 +109,12 @@ extends StaticBody2D
 @export var cost: int = 5
 @export var is_placed: bool = false
 
+@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 @onready var detection_area = $Range
 @onready var attack_timer = $Timer
 @onready var shoot_point = $Muzzle
 
+var is_placed := false
 var lightning_scene = preload("res://Towers/bolt.tscn")
 
 func _ready():
@@ -130,9 +132,30 @@ func get_shield_provider(zombie):
 	return null
 
 func _on_tower_heartbeat():
-	var targets = find_chain_targets()
-	if targets.size() > 0:
-		execute_chain_attack(targets)
+	if starter.playing == true:
+		if is_placed == false:
+			return
+		else:
+			print("signal received")
+			var targets = find_chain_targets()
+			if targets.size() > 0:
+				execute_chain_attack(targets)
+			else:
+				print("no zombies in range yet")
+#func _ready():
+	#print("tower ready")
+	#attack_timer.wait_time = attack_cooldown
+	#attack_timer.start()
+	#print("Timer started. Waiting ", attack_cooldown, " seconds...")
+
+#func _on_attack_timer_timeout():
+	#print("timer fired")
+	#var targets = find_chain_targets()
+	#print("Found ", targets.size(), " enemies in range.")
+	#if targets.size() > 0:
+		#execute_chain_attack(targets)
+	#else:
+		#print("no enemy detected")
 
 func find_chain_targets():
 	var chain = []

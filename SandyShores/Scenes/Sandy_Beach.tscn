@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://7kvkhhfaf07o" path="res://textures/mothershell.png" id="5_50yat"]
 [ext_resource type="Script" uid="uid://byowlyow01qce" path="res://SandyShores/Scripts/build_manager.gd" id="6_rjrdg"]
 [ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://SandyShores/Scripts/wave_spawner.gd" id="7_ai02a"]
-[ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://enemies/zombie.tscn" id="8_n7wjj"]
+[ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="8_vjk8x"]
 [ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://SandyShores/Scripts/loss_conditions.gd" id="9_50yat"]
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="9_h2mqj"]
 [ext_resource type="PackedScene" uid="uid://cooltchipc56w" path="res://enemies/algae_bloom.tscn" id="9_n7wjj"]
@@ -26,6 +26,10 @@
 [ext_resource type="Texture2D" uid="uid://c43l2x13u6e1n" path="res://textures/hearts_no_bg.png" id="15_rjrdg"]
 [ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="16_ci5cp"]
 [ext_resource type="Script" uid="uid://cfxxtgfammudk" path="res://SandyShores/Scripts/death_screen.gd" id="16_dwuir"]
+[ext_resource type="Texture2D" uid="uid://cl53dg7b75ecr" path="res://textures/paper_airplane.png" id="21_xwwnh"]
+[ext_resource type="PackedScene" uid="uid://cfxko1b87aspq" path="res://Towers/paperplane.tscn" id="22_vjk8x"]
+[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="23_fr0rq"]
+[ext_resource type="PackedScene" uid="uid://hovc6xdbesyd" path="res://Towers/holy_crusader.tscn" id="24_1dk7f"]
 [ext_resource type="Texture2D" uid="uid://c5dersis5dsos" path="res://textures/PlayButton.png" id="25_sxldm"]
 [ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="26_etoju"]
 [ext_resource type="Texture2D" uid="uid://djk3jttptdl7f" path="res://textures/PauseButton.png" id="27_ci5cp"]
@@ -101,7 +105,7 @@ script = ExtResource("2_lsk4j")
 tower_container = NodePath("../TowerContainer")
 
 [node name="Track" type="TileMapLayer" parent="." unique_id=1103271999]
-position = Vector2(229, 0)
+position = Vector2(234, 0)
 tile_map_data = PackedByteArray("AAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAACAAkAAAAAAAAAAAABAAkAAAAAAAAAAAAAAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAANAAkAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_hngk1")
 
@@ -153,101 +157,106 @@ offset_bottom = 648.0
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.09417041
-anchor_top = -0.03697997
-anchor_right = 0.089686096
-anchor_bottom = 0.009244992
-offset_left = 10.0
-offset_top = 47.0
-offset_right = 54.0
-offset_bottom = 95.0
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 20.0
+offset_right = 212.0
+offset_bottom = 90.0
 texture_normal = ExtResource("9_h2mqj")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("10_evw7n")
-metadata/_edit_use_anchors_ = true
 
 [node name="BulletButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1555913598]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.031390134
-anchor_top = 0.2896764
-anchor_right = 0.05381166
-anchor_bottom = 0.3127889
-offset_left = 10.0
-offset_top = 47.0
-offset_right = 54.0
-offset_bottom = 95.0
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 110.0
+offset_right = 212.0
+offset_bottom = 180.0
 texture_normal = ExtResource("12_sxldm")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("11_c26fn")
-metadata/_edit_use_anchors_ = true
 
 [node name="GodzillaButton" type="TextureButton" parent="UI/ShopPanel" unique_id=626692531]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.20179372
-anchor_top = 0.08936826
-anchor_right = 0.57847536
-anchor_bottom = 0.18335901
-offset_left = 10.0
-offset_top = 47.0
-offset_right = 54.0
-offset_bottom = 95.0
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 200.0
+offset_right = 212.0
+offset_bottom = 270.0
 texture_normal = ExtResource("14_etoju")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("12_hxeer")
-metadata/_edit_use_anchors_ = true
 
 [node name="BlackHoleButton" type="TextureButton" parent="UI/ShopPanel" unique_id=142497050]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.09865471
-anchor_top = 0.11248074
-anchor_right = 0.11659193
-anchor_bottom = 0.16024654
-offset_left = 10.0
-offset_top = 47.0
-offset_right = 54.0
-offset_bottom = 95.0
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 290.0
+offset_right = 212.0
+offset_bottom = 360.0
 texture_normal = ExtResource("16_ci5cp")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("13_amh5n")
-metadata/_edit_use_anchors_ = true
 
 [node name="ElectricButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1909256770]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.31390134
-anchor_top = -0.018489985
-anchor_right = 0.4529148
-anchor_bottom = 0.009244992
-offset_left = 10.0
-offset_top = 47.0
-offset_right = 54.0
-offset_bottom = 95.0
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 380.0
+offset_right = 212.0
+offset_bottom = 450.0
 texture_normal = ExtResource("15_fuskk")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("14_ebpuc")
-metadata/_edit_use_anchors_ = true
+
+[node name="Paperplane" type="TextureButton" parent="UI/ShopPanel" unique_id=1225356948]
+z_index = 4096
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 470.0
+offset_right = 212.0
+offset_bottom = 540.0
+texture_normal = ExtResource("21_xwwnh")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("9_saejb")
+tower_scene = ExtResource("22_vjk8x")
+
+[node name="Holy Crusader" type="TextureButton" parent="UI/ShopPanel" unique_id=298904766]
+z_index = 4096
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 560.0
+offset_right = 212.0
+offset_bottom = 630.0
+texture_normal = ExtResource("23_fr0rq")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("9_saejb")
+tower_scene = ExtResource("24_1dk7f")
 
 [node name="Start_Pause" type="Control" parent="UI" unique_id=1647321012]
 anchors_preset = 0

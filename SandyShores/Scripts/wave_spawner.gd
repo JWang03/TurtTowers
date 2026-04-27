@@ -80,6 +80,7 @@ func spawn_enemy(scene: PackedScene, speed_mult: float = 1.0) -> void:
 		return
 	
 	var follow := PathFollow2D.new()
+	follow.rotates = false
 	follow.loop = false
 	enemy_path.add_child(follow)
 	
@@ -121,7 +122,7 @@ func get_wave_data(wave_num: int) -> Array:
 			]
 		3:
 			return [
-				{"scene": enemy1, "count": 20, "delay": 0.8, "speed_mult": 1.2}
+				{"scene": enemy1, "count": 20, "delay": 0.4, "speed_mult": 1.2}
 			]
 		4:
 			return [

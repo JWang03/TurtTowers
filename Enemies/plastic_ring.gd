@@ -1,9 +1,7 @@
 extends "res://enemies/zombie.gd"
 
-#@export var child_enemy_scene: PackedScene 
 @export var spawn_count: int = 6
 @export var scatter_range: float = 40.0
-
 var child_enemy_scene = preload("res://enemies/cans.tscn")
 
 func _ready():
@@ -13,36 +11,56 @@ func _ready():
 	speed = 3.0
 	attack_damage = 20
 
+func _process(delta):
+	if starter.playing == true:
+		var follow = get_parent()
+		if follow is PathFollow2D:
+			follow.progress += speed * delta * speed_modifier
+		
+			var path_length = follow.get_parent().curve.get_baked_length()
+			if follow.progress >= path_length:
+				follow.queue_free()
+				if wave_manager != null:
+					wave_manager.enemy_removed()
+				loss_conditions.spend_lives(attack_damage)
+
 func die():
 	spawn_children()
 	super.die()
-
+func take_damage(amount):
+	health -= amount
+	health_bar.update(health, max_health)
+	modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	modulate = Color.WHITE
+	if health <= 0:
+		die()
 func spawn_children():
-	if not child_enemy_scene:
+	if child_enemy_scene == null:
 		return
-		
+	
+	var parent_follow = get_parent()
+	if parent_follow == null or !(parent_follow is PathFollow2D):
+		return
+	
+	var path = parent_follow.get_parent()
+	if path == null or !(path is Path2D):
+		return
+	
+	var death_progress = parent_follow.progress
+	
 	for i in range(spawn_count):
+		var new_follow = PathFollow2D.new()
+		new_follow.loop = false
+		path.add_child(new_follow)
+		
+		# Put each child at the death point, with a tiny forward offset
+		new_follow.progress = death_progress + i * 8.0
+		
 		var can = child_enemy_scene.instantiate()
-		get_parent().add_child(can)
-		can.global_position = self.global_position
-		
-		can.is_eating = true 
-		
-		var random_direction = Vector2(randf_range(-1, 1), randf_range(-0.5, 0.5)).normalized()
-		var target_pos = can.global_position + (random_direction * randf_range(20, scatter_range))
-		
-		var tween = can.create_tween()
-		tween.set_parallel(true)
-		
-		tween.tween_property(can, "global_position", target_pos, 0.3)\
-			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		new_follow.add_child(can)
 		
 		can.scale = Vector2(0.5, 0.5)
-		tween.tween_property(can, "scale", Vector2(1, 1), 0.3)\
+		var tween = can.create_tween()
+		tween.tween_property(can, "scale", Vector2(1, 1), 0.3) \
 			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-		
-		tween.finished.connect(
-			func():
-				if is_instance_valid(can):
-					can.is_eating = false
-		)
