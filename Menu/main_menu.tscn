@@ -5,16 +5,27 @@
 [ext_resource type="Shader" uid="uid://qwjefknosa0f" path="res://Menu/main_menu.gdshader" id="2_glbon"]
 [ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Menu/Images/SettingsMenu.png" id="3_jix8l"]
 [ext_resource type="Texture2D" uid="uid://igbigqabkd3d" path="res://Menu/Images/Maps/SandyShores.png" id="3_nlkkf"]
+[ext_resource type="Shader" uid="uid://csheady12o671" path="res://Menu/gradient.gdshader" id="6_rw3mj"]
+[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="7_cn2sd"]
+[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="8_ywk15"]
+[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="9_ws7s4"]
+[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="10_fduiw"]
+[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="11_fduiw"]
+[ext_resource type="Texture2D" uid="uid://cl53dg7b75ecr" path="res://textures/paper_airplane.png" id="12_cgse8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jix8l"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vrkn"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fduiw"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgse8"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlkkf"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o4wy8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqyvv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8x2t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_map_border"]
 draw_center = false
@@ -31,6 +42,14 @@ corner_radius_bottom_left = 8
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nlkkf"]
 shader = ExtResource("2_glbon")
 shader_parameter/mode = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cn2sd"]
+shader = ExtResource("6_rw3mj")
+shader_parameter/top_color = Color(0.72, 0.9, 0.76, 1)
+shader_parameter/bottom_color = Color(0.09, 0.65, 0.49, 1)
+shader_parameter/radius = 0.1
+shader_parameter/border_width = 0.02
+shader_parameter/border_color = Color(0.05, 0.35, 0.3, 1)
 
 [node name="MainMenu" type="Control" unique_id=1211162565]
 layout_mode = 3
@@ -72,12 +91,18 @@ offset_bottom = 418.0
 
 [node name="Towers" type="Button" parent="." unique_id=984938724]
 layout_mode = 0
-offset_right = 1152.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_7vrkn")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_glbon")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_nlkkf")
+offset_left = 477.0
+offset_top = 298.0
+offset_right = 645.0
+offset_bottom = 346.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fduiw")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cgse8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o4wy8")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dqyvv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_m8x2t")
 
 [node name="MapSelectionLayer" type="CanvasLayer" parent="." unique_id=280550618]
+visible = false
 
 [node name="Darkener" type="ColorRect" parent="MapSelectionLayer" unique_id=472727133]
 anchors_preset = 15
@@ -200,10 +225,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=374831580]
+[node name="SettingsLayer" type="CanvasLayer" parent="." unique_id=374831580]
 visible = false
 
-[node name="Darkener" type="ColorRect" parent="CanvasLayer" unique_id=1942308797]
+[node name="Darkener" type="ColorRect" parent="SettingsLayer" unique_id=1942308797]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -211,7 +236,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
-[node name="SettingsMenu" type="TextureRect" parent="CanvasLayer" unique_id=965433223]
+[node name="SettingsMenu" type="TextureRect" parent="SettingsLayer" unique_id=965433223]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -225,7 +250,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_jix8l")
 
-[node name="VolumeSlider" type="HSlider" parent="CanvasLayer/SettingsMenu" unique_id=875006373]
+[node name="VolumeSlider" type="HSlider" parent="SettingsLayer/SettingsMenu" unique_id=875006373]
 layout_mode = 0
 offset_left = 250.5
 offset_top = 1.5
@@ -236,7 +261,7 @@ max_value = 1.0
 step = 0.1
 value = 0.501
 
-[node name="FullscreenButton" type="OptionButton" parent="CanvasLayer/SettingsMenu" unique_id=873207580]
+[node name="FullscreenButton" type="OptionButton" parent="SettingsLayer/SettingsMenu" unique_id=873207580]
 custom_minimum_size = Vector2(168, 20)
 layout_mode = 1
 anchors_preset = 3
@@ -260,7 +285,7 @@ popup/item_1/id = 1
 popup/item_2/text = "Exclusive Fullscreen"
 popup/item_2/id = 2
 
-[node name="CBButton" type="OptionButton" parent="CanvasLayer/SettingsMenu" unique_id=558514119]
+[node name="CBButton" type="OptionButton" parent="SettingsLayer/SettingsMenu" unique_id=558514119]
 custom_minimum_size = Vector2(168, 20)
 layout_mode = 1
 anchors_preset = 3
@@ -286,7 +311,7 @@ popup/item_2/id = 2
 popup/item_3/text = "Tritanopia"
 popup/item_3/id = 3
 
-[node name="Button" type="Button" parent="CanvasLayer/SettingsMenu" unique_id=2092980879]
+[node name="Button" type="Button" parent="SettingsLayer/SettingsMenu" unique_id=2092980879]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 275.5
@@ -294,13 +319,187 @@ offset_top = 324.5
 offset_right = 399.5
 offset_bottom = 352.5
 
+[node name="TowersLayer" type="CanvasLayer" parent="." unique_id=1277460239]
+
+[node name="Darkener" type="ColorRect" parent="TowersLayer" unique_id=608754605]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="LeftArrow" type="Button" parent="TowersLayer" unique_id=727303500]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 200.0
+offset_top = -72.5
+offset_right = 265.0
+offset_bottom = 72.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "<"
+flat = true
+
+[node name="RightArrow" type="Button" parent="TowersLayer" unique_id=389936466]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -72.5
+offset_right = -197.0
+offset_bottom = 72.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = ">"
+flat = true
+
+[node name="1" type="ColorRect" parent="TowersLayer" unique_id=130209667]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 267.0
+offset_top = 87.0
+offset_right = 454.0
+offset_bottom = 311.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/1" unique_id=101010101]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 2.0
+offset_right = 187.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 20
+text = "Bomb Tower"
+horizontal_alignment = 1
+
+[node name="BombTower" type="Sprite2D" parent="TowersLayer/1" unique_id=613190859]
+position = Vector2(95, 119)
+scale = Vector2(0.45, 0.47)
+texture = ExtResource("7_cn2sd")
+
+[node name="2" type="ColorRect" parent="TowersLayer" unique_id=1321598397]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 483.0
+offset_top = 85.0
+offset_right = 670.0
+offset_bottom = 309.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/2" unique_id=202020202]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 20
+text = "Electric Tower"
+horizontal_alignment = 1
+
+[node name="ElectricTower" type="Sprite2D" parent="TowersLayer/2" unique_id=1083541443]
+position = Vector2(88, 125)
+scale = Vector2(0.42, 0.457)
+texture = ExtResource("8_ywk15")
+
+[node name="3" type="ColorRect" parent="TowersLayer" unique_id=2013696268]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 700.0
+offset_top = 85.0
+offset_right = 887.0
+offset_bottom = 309.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/3" unique_id=303030303]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 20
+text = "Blackhole Tower"
+horizontal_alignment = 1
+
+[node name="BlackholeTower" type="Sprite2D" parent="TowersLayer/3" unique_id=1263058208]
+position = Vector2(92, 124)
+scale = Vector2(0.55, 0.597)
+texture = ExtResource("9_ws7s4")
+
+[node name="4" type="ColorRect" parent="TowersLayer" unique_id=1003340736]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 266.0
+offset_top = 339.0
+offset_right = 453.0
+offset_bottom = 563.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/4" unique_id=404040404]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 20
+text = "Godzilla Tower"
+horizontal_alignment = 1
+
+[node name="GodzillaTower" type="Sprite2D" parent="TowersLayer/4" unique_id=673475163]
+position = Vector2(90, 125)
+scale = Vector2(0.7, 0.716)
+texture = ExtResource("10_fduiw")
+
+[node name="5" type="ColorRect" parent="TowersLayer" unique_id=1479644517]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 483.0
+offset_top = 339.0
+offset_right = 670.0
+offset_bottom = 563.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/5" unique_id=505050505]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 20
+text = "Bullet Tower"
+horizontal_alignment = 1
+
+[node name="BulletTower" type="Sprite2D" parent="TowersLayer/5" unique_id=372846596]
+position = Vector2(87.999985, 131.99998)
+scale = Vector2(0.576, 0.45)
+texture = ExtResource("11_fduiw")
+
+[node name="6" type="ColorRect" parent="TowersLayer" unique_id=831493604]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 700.0
+offset_top = 339.0
+offset_right = 887.0
+offset_bottom = 563.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/6" unique_id=606060606]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 20
+text = "Paper Airplane"
+horizontal_alignment = 1
+
+[node name="PaperAirplane" type="Sprite2D" parent="TowersLayer/6" unique_id=1811139515]
+position = Vector2(82.000015, 125.00001)
+rotation = -0.60613
+scale = Vector2(0.7, 0.859)
+texture = ExtResource("12_cgse8")
+
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Towers" to="." method="_on_towers_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/MapSelector" to="." method="_on_map_selector_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/LeftArrow" to="." method="_on_left_arrow_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/RightArrow" to="." method="_on_right_arrow_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/CloseMapSelection" to="." method="_on_close_map_selection_pressed"]
-[connection signal="value_changed" from="CanvasLayer/SettingsMenu/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
-[connection signal="item_selected" from="CanvasLayer/SettingsMenu/FullscreenButton" to="." method="_on_fullscreen_item_selected"]
-[connection signal="item_selected" from="CanvasLayer/SettingsMenu/CBButton" to="." method="_on_option_button_item_selected"]
-[connection signal="pressed" from="CanvasLayer/SettingsMenu/Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="SettingsLayer/SettingsMenu/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="item_selected" from="SettingsLayer/SettingsMenu/FullscreenButton" to="." method="_on_fullscreen_item_selected"]
+[connection signal="item_selected" from="SettingsLayer/SettingsMenu/CBButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="SettingsLayer/SettingsMenu/Button" to="." method="_on_button_pressed"]
