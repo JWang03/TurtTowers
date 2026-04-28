@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ddw3bbxr5kcrw"]
+
+[ext_resource type="Script" uid="uid://dq36j5gvvelsg" path="res://turttttt.gd" id="1_4mnfb"]
+[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="2_3djqi"]
+
+[node name="Area2D" type="Area2D" unique_id=2055387956]
+script = ExtResource("1_4mnfb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1618151517]
+scale = Vector2(0.1, 0.1)
+
+[node name="Turt^3Sahur" type="Sprite2D" parent="." unique_id=545081231]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_3djqi")
