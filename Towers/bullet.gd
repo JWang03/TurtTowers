@@ -41,18 +41,18 @@ func set_hit_target(node):
 	target_node = node
 
 func _on_body_entered(body):
-	print("Bullet physically touched: ", body.name)
+	
 	
 	if body.is_in_group("zombies"):
-		print("Body is in zombie group")
+		
 		
 		var shield_provider = get_shield_provider(body)
 		
 		if shield_provider != null:
-			print("Shield detected. Damaging shield.")
+			
 			shield_provider.take_damage(damage)
 		else:
-			print("No shield. Damaging zombie.")
+			
 			if body.has_method("take_damage"):
 				body.take_damage(damage)
 		
