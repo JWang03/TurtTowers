@@ -39,30 +39,30 @@ func shoot():
 	if starter.playing == true:
 		if is_placed == false:
 			return
-	elif black_hole_scene and not targets_in_range.is_empty():
-		var target = targets_in_range.filter(func(t): return is_instance_valid(t) and !t.get("is_stealth")).front()
-	  #var target = targets_in_range[0]
-		if not is_instance_valid(target): return
+		elif black_hole_scene and not targets_in_range.is_empty():
+			var target = targets_in_range.filter(func(t): return is_instance_valid(t) and !t.get("is_stealth")).front()
+		  #var target = targets_in_range[0]
+			if not is_instance_valid(target): return
 
-		var bh = black_hole_scene.instantiate()
+			var bh = black_hole_scene.instantiate()
 
-		var spawn_destination = target.global_position 
+			var spawn_destination = target.global_position 
 
-		get_tree().current_scene.add_child(bh)
-		bh.global_position = muzzle.global_position
-		bh.target_pos = spawn_destination
-#func shoot():
-	#if black_hole_scene and not targets_in_range.is_empty():
-		#var target = targets_in_range[0]
-		#var bh = black_hole_scene.instantiate()
-		#
-		#var behind_vector = Vector2(-1, 0) * pull_offset 
-		#var spawn_destination = target.global_position + behind_vector
-		#
-		#get_tree().current_scene.add_child(bh)
-		#bh.global_position = muzzle.global_position
-		#
-		#bh.target_pos = spawn_destination
+			get_tree().current_scene.add_child(bh)
+			bh.global_position = muzzle.global_position
+			bh.target_pos = spawn_destination
+	#func shoot():
+		#if black_hole_scene and not targets_in_range.is_empty():
+			#var target = targets_in_range[0]
+			#var bh = black_hole_scene.instantiate()
+			#
+			#var behind_vector = Vector2(-1, 0) * pull_offset 
+			#var spawn_destination = target.global_position + behind_vector
+			#
+			#get_tree().current_scene.add_child(bh)
+			#bh.global_position = muzzle.global_position
+			#
+			#bh.target_pos = spawn_destination
 
 func _on_timer_timeout():
 	if not targets_in_range.is_empty():

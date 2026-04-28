@@ -117,18 +117,19 @@ func get_shield_provider(zombie):
 	return null
 
 func attempt_shot():
-	var target = get_valid_target()
-	
-	if target and bullet_scene:
-		var shield_provider = get_shield_provider(target)
+	if is_placed:
+		var target = get_valid_target()
 		
-		var final_target = shield_provider if shield_provider else target
-		
-		var bullet = bullet_scene.instantiate()
-		get_tree().current_scene.add_child(bullet)
-		bullet.global_position = muzzle.global_position
-		
-		bullet.look_at(final_target.global_position)
+		if target and bullet_scene:
+			var shield_provider = get_shield_provider(target)
+			
+			var final_target = shield_provider if shield_provider else target
+			
+			var bullet = bullet_scene.instantiate()
+			get_tree().current_scene.add_child(bullet)
+			bullet.global_position = muzzle.global_position
+			
+			bullet.look_at(final_target.global_position)
 #func shoot():
 	#if starter.playing == true:
 		#if is_placed == false:
@@ -149,8 +150,8 @@ func attempt_shot():
 		#get_tree().current_scene.add_child(bullet)
 		#bullet.global_position = muzzle.global_position
 
-		if bullet.has_method("set_hit_target"):
-			bullet.set_hit_target(final_target)
+			if bullet.has_method("set_hit_target"):
+				bullet.set_hit_target(final_target)
 	
 	elif targets_in_range.is_empty():
 		timer.stop()
