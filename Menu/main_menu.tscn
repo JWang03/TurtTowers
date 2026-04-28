@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://qwjefknosa0f" path="res://Menu/main_menu.gdshader" id="2_glbon"]
 [ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Menu/Images/SettingsMenu.png" id="3_jix8l"]
 [ext_resource type="Texture2D" uid="uid://igbigqabkd3d" path="res://Menu/Images/Maps/SandyShores.png" id="3_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="4_o4wy8"]
 [ext_resource type="Shader" uid="uid://csheady12o671" path="res://Menu/gradient.gdshader" id="6_rw3mj"]
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="7_cn2sd"]
 [ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="8_ywk15"]
@@ -12,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="10_fduiw"]
 [ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="11_fduiw"]
 [ext_resource type="Texture2D" uid="uid://cl53dg7b75ecr" path="res://textures/paper_airplane.png" id="12_cgse8"]
+[ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://exit_button.tres" id="13_o4wy8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
@@ -26,6 +28,38 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqyvv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8x2t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4wy8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4wy8"]
+bg_color = Color(0.15145922, 0.624006, 0.7498557, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqyvv"]
+bg_color = Color(0.29860103, 0.78883344, 0.9306045, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_map_border"]
 draw_center = false
@@ -125,6 +159,20 @@ offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Return" type="Button" parent="MapSelectionLayer/MapPanel" unique_id=1400672802]
+material = SubResource("ShaderMaterial_o4wy8")
+layout_mode = 0
+offset_left = -194.0
+offset_top = -64.0
+offset_right = -132.0
+offset_bottom = -6.0
+theme_override_styles/normal = ExtResource("13_o4wy8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o4wy8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dqyvv")
+icon = ExtResource("4_o4wy8")
+icon_alignment = 1
+expand_icon = true
+
 [node name="MapBorder" type="Panel" parent="MapSelectionLayer/MapPanel" unique_id=492818237]
 layout_mode = 1
 anchors_preset = 8
@@ -168,6 +216,9 @@ offset_bottom = 72.5
 grow_vertical = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = ExtResource("13_o4wy8")
+theme_override_styles/pressed = ExtResource("13_o4wy8")
+theme_override_styles/hover = ExtResource("13_o4wy8")
 text = "<"
 flat = true
 
@@ -187,17 +238,6 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 100
 text = ">"
 flat = true
-
-[node name="CloseMapSelection" type="Button" parent="MapSelectionLayer/MapPanel" unique_id=156789012]
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 35.0
-grow_horizontal = 0
-text = "X"
 
 [node name="MapNameLabel" type="Label" parent="MapSelectionLayer/MapPanel" unique_id=241739655]
 layout_mode = 1
@@ -518,7 +558,6 @@ offset_right = 187.0
 offset_bottom = 35.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = ""
 horizontal_alignment = 1
 
 [node name="8" type="ColorRect" parent="TowersLayer" unique_id=888888888]
@@ -536,7 +575,6 @@ offset_right = 187.0
 offset_bottom = 35.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = ""
 horizontal_alignment = 1
 
 [node name="9" type="ColorRect" parent="TowersLayer" unique_id=999999999]
@@ -554,7 +592,6 @@ offset_right = 187.0
 offset_bottom = 35.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = ""
 horizontal_alignment = 1
 
 [node name="10" type="ColorRect" parent="TowersLayer" unique_id=101001001]
@@ -572,7 +609,6 @@ offset_right = 187.0
 offset_bottom = 35.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = ""
 horizontal_alignment = 1
 
 [node name="11" type="ColorRect" parent="TowersLayer" unique_id=111011101]
@@ -590,7 +626,6 @@ offset_right = 187.0
 offset_bottom = 35.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = ""
 horizontal_alignment = 1
 
 [node name="12" type="ColorRect" parent="TowersLayer" unique_id=121012101]
@@ -608,19 +643,18 @@ offset_right = 187.0
 offset_bottom = 35.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = ""
 horizontal_alignment = 1
 
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Towers" to="." method="_on_towers_pressed"]
-[connection signal="pressed" from="TowersLayer/LeftArrow" to="." method="_on_left_tower_pressed"]
-[connection signal="pressed" from="TowersLayer/RightArrow" to="." method="_on_right_tower_pressed"]
+[connection signal="pressed" from="MapSelectionLayer/MapPanel/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/MapSelector" to="." method="_on_map_selector_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/LeftArrow" to="." method="_on_left_arrow_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/RightArrow" to="." method="_on_right_arrow_pressed"]
-[connection signal="pressed" from="MapSelectionLayer/MapPanel/CloseMapSelection" to="." method="_on_close_map_selection_pressed"]
 [connection signal="value_changed" from="SettingsLayer/SettingsMenu/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="item_selected" from="SettingsLayer/SettingsMenu/FullscreenButton" to="." method="_on_fullscreen_item_selected"]
 [connection signal="item_selected" from="SettingsLayer/SettingsMenu/CBButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="SettingsLayer/SettingsMenu/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TowersLayer/LeftArrow" to="." method="_on_left_tower_pressed"]
+[connection signal="pressed" from="TowersLayer/RightArrow" to="." method="_on_right_tower_pressed"]

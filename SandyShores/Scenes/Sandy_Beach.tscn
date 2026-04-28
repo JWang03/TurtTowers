@@ -5,8 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://c451qigpgmcvd" path="res://textures/BlueTrack.png" id="3_ai02a"]
 [ext_resource type="Texture2D" uid="uid://wgtpugqiaaqq" path="res://textures/beach.png" id="4_ckwcc"]
 [ext_resource type="Texture2D" uid="uid://7kvkhhfaf07o" path="res://textures/mothershell.png" id="5_50yat"]
+[ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="6_b4hrs"]
 [ext_resource type="Script" uid="uid://byowlyow01qce" path="res://SandyShores/Scripts/build_manager.gd" id="6_rjrdg"]
+[ext_resource type="Texture2D" uid="uid://dil5b5bgf4wxt" path="res://textures/Gemini_Generated_Image_wqw7rhwqw7rhwqw7-removebg-preview.png" id="7_6cp8d"]
 [ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://SandyShores/Scripts/wave_spawner.gd" id="7_ai02a"]
+[ext_resource type="Script" uid="uid://cy5j1efrjxakf" path="res://SandyShores/Scenes/settings.gd" id="8_6cp8d"]
 [ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="8_vjk8x"]
 [ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://SandyShores/Scripts/loss_conditions.gd" id="9_50yat"]
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="9_h2mqj"]
@@ -33,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://c5dersis5dsos" path="res://textures/PlayButton.png" id="25_sxldm"]
 [ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="26_etoju"]
 [ext_resource type="Texture2D" uid="uid://djk3jttptdl7f" path="res://textures/PauseButton.png" id="27_ci5cp"]
+[ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://exit_button.tres" id="34_fr0rq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_je2ct")
@@ -64,6 +68,38 @@ texture_region_size = Vector2i(54, 54)
 [sub_resource type="TileSet" id="TileSet_hngk1"]
 tile_size = Vector2i(54, 54)
 sources/0 = SubResource("TileSetAtlasSource_jjf6g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1dk7f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4hrs"]
+bg_color = Color(0.15145922, 0.624006, 0.7498557, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cp8d"]
+bg_color = Color(0.29860103, 0.78883344, 0.9306045, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_je2ct"]
 bake_interval = 0.01
@@ -116,10 +152,39 @@ position = Vector2(692, 327.00006)
 scale = Vector2(0.65767044, 0.8567708)
 texture = ExtResource("4_ckwcc")
 
-[node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
+[node name="Return" type="Button" parent="." unique_id=153955805]
+z_index = 1000
+material = SubResource("ShaderMaterial_1dk7f")
+offset_left = 167.0
+offset_top = 585.0
+offset_right = 225.0
+offset_bottom = 641.0
+theme_override_styles/normal = ExtResource("34_fr0rq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b4hrs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6cp8d")
+icon = ExtResource("6_b4hrs")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Settings" type="Button" parent="." unique_id=452133295]
 z_index = 4096
+material = SubResource("ShaderMaterial_1dk7f")
+offset_left = 159.0
+offset_top = 10.0
+offset_right = 212.0
+offset_bottom = 58.0
+theme_override_styles/normal = ExtResource("34_fr0rq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b4hrs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6cp8d")
+icon = ExtResource("7_6cp8d")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("8_6cp8d")
+
+[node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
+z_index = 5
 z_as_relative = false
-position = Vector2(116.75001, 324.99997)
+position = Vector2(2.9999924, 485)
 scale = Vector2(2.0575223, 1.9578313)
 texture = ExtResource("5_50yat")
 
@@ -141,27 +206,26 @@ curve = SubResource("Curve2D_je2ct")
 [node name="UI" type="Control" parent="." unique_id=533628969]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -2.0
+offset_left = 525.0
 offset_top = 1.0
 offset_right = 1149.0
-offset_bottom = 646.0
+offset_bottom = 650.0
 
 [node name="ShopPanel" type="Control" parent="UI" unique_id=827478311]
 anchors_preset = 0
 offset_left = 7.0
 offset_top = -1.0
-offset_right = 230.0
+offset_right = 157.0
 offset_bottom = 648.0
 
 [node name="BombButton" type="TextureButton" parent="UI/ShopPanel" unique_id=2072775595]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 20.0
-offset_right = 212.0
-offset_bottom = 90.0
+offset_left = -68.0
+offset_top = 27.0
+offset_right = 132.0
+offset_bottom = 97.0
 texture_normal = ExtResource("9_h2mqj")
 ignore_texture_size = true
 stretch_mode = 5
@@ -172,11 +236,10 @@ tower_scene = ExtResource("10_evw7n")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 110.0
-offset_right = 212.0
-offset_bottom = 180.0
+offset_left = 92.0
+offset_top = 35.0
+offset_right = 153.0
+offset_bottom = 105.0
 texture_normal = ExtResource("12_sxldm")
 ignore_texture_size = true
 stretch_mode = 5
@@ -187,11 +250,10 @@ tower_scene = ExtResource("11_c26fn")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 200.0
-offset_right = 212.0
-offset_bottom = 270.0
+offset_left = -65.0
+offset_top = 125.0
+offset_right = 135.0
+offset_bottom = 195.0
 texture_normal = ExtResource("14_etoju")
 ignore_texture_size = true
 stretch_mode = 5
@@ -202,11 +264,10 @@ tower_scene = ExtResource("12_hxeer")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 290.0
-offset_right = 212.0
-offset_bottom = 360.0
+offset_left = 22.0
+offset_top = 123.0
+offset_right = 222.0
+offset_bottom = 193.0
 texture_normal = ExtResource("16_ci5cp")
 ignore_texture_size = true
 stretch_mode = 5
@@ -217,11 +278,10 @@ tower_scene = ExtResource("13_amh5n")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 380.0
-offset_right = 212.0
-offset_bottom = 450.0
+offset_left = -69.0
+offset_top = 223.0
+offset_right = 131.0
+offset_bottom = 293.0
 texture_normal = ExtResource("15_fuskk")
 ignore_texture_size = true
 stretch_mode = 5
@@ -232,11 +292,10 @@ tower_scene = ExtResource("14_ebpuc")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 470.0
-offset_right = 212.0
-offset_bottom = 540.0
+offset_left = 16.0
+offset_top = 223.0
+offset_right = 216.0
+offset_bottom = 293.0
 texture_normal = ExtResource("21_xwwnh")
 ignore_texture_size = true
 stretch_mode = 5
@@ -247,11 +306,10 @@ tower_scene = ExtResource("22_vjk8x")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 560.0
-offset_right = 212.0
-offset_bottom = 630.0
+offset_left = -63.0
+offset_top = 314.0
+offset_right = 137.0
+offset_bottom = 384.0
 texture_normal = ExtResource("23_fr0rq")
 ignore_texture_size = true
 stretch_mode = 5

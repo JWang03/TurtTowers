@@ -1,6 +1,7 @@
 extends CanvasLayer
 
-const DEFAULT_VOLUME: float = 0.5
+# Changed default to 0.0
+const DEFAULT_VOLUME: float = 0.0 
 const MENU_FADE_DURATION: float = 0.2
 const MENU_SCALE_DURATION: float = 0.3
 
@@ -25,6 +26,10 @@ var master_bus = AudioServer.get_bus_index("Master")
 func _ready():
 	menu_panel.hide()
 	update_filter_shader()
+	
+	# Initialize volume to zero on startup
+	set_volume(DEFAULT_VOLUME)
+	
 	# Start background music if not already playing
 	if music_player and not music_player.playing:
 		music_player.play()
@@ -77,6 +82,7 @@ func set_colorblind(index: int):
 func set_volume(value: float):
 	volume_value = value
 	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value))
+	# Ensures the bus is muted if the value is near zero
 	AudioServer.set_bus_mute(master_bus, value < 0.05)
 
 func set_fullscreen(index: int):

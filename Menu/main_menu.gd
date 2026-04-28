@@ -39,7 +39,7 @@ var map_scenes: Array = [
 	"res://SandyShores/Scenes/Sandy_Beach.tscn",
 	"res://SandyShores/Scenes/Abstract.tscn",
 	"res://SandyShores/Scenes/Checkers.tscn",
-	"res://SandyShores/Scenes/Turtle_Temple.tscn"
+    "res://SandyShores/Scenes/Turtle_Temple.tscn"
 ]
 var current_map_index: int = 0
 
@@ -131,15 +131,6 @@ func _on_start_game_pressed() -> void:
 		.set_trans(Tween.TRANS_BACK)\
 		.set_ease(Tween.EASE_OUT)
 
-func _on_close_map_selection_pressed() -> void:
-	var tween = create_tween().set_parallel(true)
-	tween.tween_property(map_darkener, "modulate:a", 0.0, 0.2)
-	tween.tween_property(map_panel, "scale", Vector2.ZERO, 0.2)\
-		.set_trans(Tween.TRANS_BACK)\
-		.set_ease(Tween.EASE_IN)
-		
-	tween.chain().tween_callback(map_overlay.hide)
-
 func _on_left_arrow_pressed() -> void:
 	current_map_index = (current_map_index - 1 + map_names.size()) % map_names.size()
 	_update_map_display()
@@ -154,6 +145,16 @@ func _on_map_selector_pressed() -> void:
 		get_tree().change_scene_to_file(scene_path)
 	else:
 		push_warning("%s is not playable yet." % map_names[current_map_index])
+
+func _on_return_pressed() -> void:
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(map_darkener, "modulate:a", 0.0, 0.2)
+	tween.tween_property(map_panel, "scale", Vector2.ZERO, 0.2)\
+		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_IN)
+		
+	# Wait for animation to finish before hiding the map layer
+	tween.chain().tween_callback(map_overlay.hide)
 
 # Towers Menu Functions
 func _on_towers_pressed() -> void:
@@ -208,10 +209,10 @@ func _input(event):
 			else:
 				if tower_overlay.visible:
 					_on_close_towers_pressed()
-				elif map_overlay.visible:
-					_on_close_map_selection_pressed()
 				elif settings_overlay.visible:
 					_on_button_pressed()
+				elif map_overlay.visible:
+					_on_return_pressed()
 
 
 func _on_left_tower_pressed() -> void:
