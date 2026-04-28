@@ -19,11 +19,16 @@
 [ext_resource type="Texture2D" uid="uid://dkq3xoffiscor" path="res://textures/CenterTrack.png" id="10_gr430"]
 [ext_resource type="PackedScene" uid="uid://dmhok8tovvxvc" path="res://Towers/bomber_tower.tscn" id="11_bi50h"]
 [ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="12_w4stb"]
+[ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://exit_button.tres" id="13_a4xci"]
 [ext_resource type="PackedScene" uid="uid://do17203pjxuim" path="res://Towers/bullet_tower.tscn" id="13_r0ofv"]
 [ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="14_f2y8k"]
+[ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="14_gctuh"]
+[ext_resource type="Script" uid="uid://ckfrd7gva57ou" path="res://SandyShores/Scenes/return.gd" id="15_6kmh5"]
 [ext_resource type="PackedScene" uid="uid://d2l8b5nykdqdg" path="res://Towers/godzilla_tower.tscn" id="15_gdn63"]
 [ext_resource type="PackedScene" uid="uid://bcepi076o27tl" path="res://Enemies/plastic_ring.tscn" id="15_r0ofv"]
 [ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="16_8audr"]
+[ext_resource type="Texture2D" uid="uid://dil5b5bgf4wxt" path="res://textures/Gemini_Generated_Image_wqw7rhwqw7rhwqw7-removebg-preview.png" id="16_mhcsl"]
+[ext_resource type="Script" uid="uid://cy5j1efrjxakf" path="res://SandyShores/Scenes/settings.gd" id="17_60ikt"]
 [ext_resource type="PackedScene" uid="uid://cgc1rpmolx0r2" path="res://Towers/blackhole_tower.tscn" id="17_fwthh"]
 [ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="18_a4xci"]
 [ext_resource type="PackedScene" uid="uid://b0ux31ymkvdun" path="res://Towers/electric_tower.tscn" id="19_gctuh"]
@@ -113,6 +118,70 @@ sources/5 = SubResource("TileSetAtlasSource_fwthh")
 sources/6 = SubResource("TileSetAtlasSource_a4xci")
 sources/7 = SubResource("TileSetAtlasSource_sdjqy")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpuwm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_086hf"]
+bg_color = Color(0.15145922, 0.624006, 0.7498557, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0o1d"]
+bg_color = Color(0.29860103, 0.78883344, 0.9306045, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ro4ig"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8s8s"]
+bg_color = Color(0.15145922, 0.624006, 0.7498557, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtd81"]
+bg_color = Color(0.29860103, 0.78883344, 0.9306045, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
 [sub_resource type="Curve2D" id="Curve2D_ft65p"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 514, -15, 0, 0, 0, 0, 514, 296, 0, 0, 0, 0, 83, 296, 0, 0, 0, 0, 80, 24, 0, 0, 0, 0, 350, 24, 0, 0, 0, 0, 352, 406, 0, 0, 0, 0, 620, 404, 0, 0, 0, 0, 620, 245, 0, 0, 0, 0, 835, 242, 0, 0, 0, 0, 836, 514, 0, 0, 0, 0, 672, 514, 0, 0, 0, 0, 670, 568, 0, 0, 0, 0, -30, 568)
@@ -169,6 +238,36 @@ position = Vector2(117.250015, 325)
 scale = Vector2(2.066372, 1.9578313)
 texture = ExtResource("5_8l8c0")
 
+[node name="Return" type="Button" parent="Mothershell" unique_id=1545005244]
+z_index = 4096
+material = SubResource("ShaderMaterial_fpuwm")
+offset_left = 22.0
+offset_top = 133.0
+offset_right = 52.0
+offset_bottom = 163.0
+theme_override_styles/normal = ExtResource("13_a4xci")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_086hf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_v0o1d")
+icon = ExtResource("14_gctuh")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("15_6kmh5")
+
+[node name="Settings" type="Button" parent="Mothershell" unique_id=1139406464]
+z_index = 4096
+material = SubResource("ShaderMaterial_ro4ig")
+offset_left = -16.0
+offset_top = 133.0
+offset_right = 14.0
+offset_bottom = 163.0
+theme_override_styles/normal = ExtResource("13_a4xci")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o8s8s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jtd81")
+icon = ExtResource("16_mhcsl")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("17_60ikt")
+
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("6_06ii1")
 
@@ -203,11 +302,10 @@ offset_bottom = 648.0
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 20.0
-offset_right = 212.0
-offset_bottom = 90.0
+offset_left = -10.0
+offset_top = 28.0
+offset_right = 71.0
+offset_bottom = 98.0
 texture_normal = ExtResource("9_sdjqy")
 ignore_texture_size = true
 stretch_mode = 5
@@ -218,11 +316,10 @@ tower_scene = ExtResource("11_bi50h")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 110.0
-offset_right = 212.0
-offset_bottom = 180.0
+offset_left = 88.0
+offset_top = 34.0
+offset_right = 154.0
+offset_bottom = 104.0
 texture_normal = ExtResource("12_w4stb")
 ignore_texture_size = true
 stretch_mode = 5
@@ -233,11 +330,10 @@ tower_scene = ExtResource("13_r0ofv")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 200.0
-offset_right = 212.0
-offset_bottom = 270.0
+offset_left = -19.0
+offset_top = 104.0
+offset_right = 80.0
+offset_bottom = 208.0
 texture_normal = ExtResource("14_f2y8k")
 ignore_texture_size = true
 stretch_mode = 5
@@ -248,11 +344,10 @@ tower_scene = ExtResource("15_gdn63")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 290.0
-offset_right = 212.0
-offset_bottom = 360.0
+offset_left = 81.0
+offset_top = 126.0
+offset_right = 161.0
+offset_bottom = 196.0
 texture_normal = ExtResource("16_8audr")
 ignore_texture_size = true
 stretch_mode = 5
@@ -263,11 +358,10 @@ tower_scene = ExtResource("17_fwthh")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 380.0
-offset_right = 212.0
-offset_bottom = 450.0
+offset_left = -8.0
+offset_top = 228.0
+offset_right = 68.0
+offset_bottom = 298.0
 texture_normal = ExtResource("18_a4xci")
 ignore_texture_size = true
 stretch_mode = 5
@@ -278,11 +372,10 @@ tower_scene = ExtResource("19_gctuh")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 470.0
-offset_right = 212.0
-offset_bottom = 540.0
+offset_left = 11.0
+offset_top = 225.0
+offset_right = 211.0
+offset_bottom = 295.0
 texture_normal = ExtResource("27_w4stb")
 ignore_texture_size = true
 stretch_mode = 5
@@ -293,11 +386,10 @@ tower_scene = ExtResource("28_r0ofv")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 560.0
-offset_right = 212.0
-offset_bottom = 630.0
+offset_left = -64.0
+offset_top = 315.0
+offset_right = 136.0
+offset_bottom = 385.0
 texture_normal = ExtResource("29_f2y8k")
 ignore_texture_size = true
 stretch_mode = 5

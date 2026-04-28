@@ -1,4 +1,4 @@
 extends Button
 
-func _on_pressed():
-	GlobalSettings.open_settings()
+func _pressed():
+	GlobalSettings.toggle_menu()
