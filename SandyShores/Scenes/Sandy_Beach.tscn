@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dil5b5bgf4wxt" path="res://textures/Gemini_Generated_Image_wqw7rhwqw7rhwqw7-removebg-preview.png" id="7_6cp8d"]
 [ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://SandyShores/Scripts/wave_spawner.gd" id="7_ai02a"]
 [ext_resource type="Script" uid="uid://cy5j1efrjxakf" path="res://SandyShores/Scenes/settings.gd" id="8_6cp8d"]
+[ext_resource type="Script" uid="uid://ckfrd7gva57ou" path="res://SandyShores/Scenes/return.gd" id="8_em8d2"]
 [ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="8_vjk8x"]
 [ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://SandyShores/Scripts/loss_conditions.gd" id="9_50yat"]
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="9_h2mqj"]
@@ -152,27 +153,35 @@ position = Vector2(692, 327.00006)
 scale = Vector2(0.65767044, 0.8567708)
 texture = ExtResource("4_ckwcc")
 
-[node name="Return" type="Button" parent="." unique_id=153955805]
-z_index = 1000
+[node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
+z_index = -1
+z_as_relative = false
+position = Vector2(113.99999, 325)
+scale = Vector2(2.0575223, 1.9578313)
+texture = ExtResource("5_50yat")
+
+[node name="Return" type="Button" parent="Mothershell" unique_id=153955805]
+z_index = 4096
 material = SubResource("ShaderMaterial_1dk7f")
-offset_left = 167.0
-offset_top = 585.0
-offset_right = 225.0
-offset_bottom = 641.0
+offset_left = 22.0
+offset_top = 133.0
+offset_right = 52.0
+offset_bottom = 163.0
 theme_override_styles/normal = ExtResource("34_fr0rq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b4hrs")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6cp8d")
 icon = ExtResource("6_b4hrs")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("8_em8d2")
 
-[node name="Settings" type="Button" parent="." unique_id=452133295]
+[node name="Settings" type="Button" parent="Mothershell" unique_id=452133295]
 z_index = 4096
 material = SubResource("ShaderMaterial_1dk7f")
-offset_left = 159.0
-offset_top = 10.0
-offset_right = 212.0
-offset_bottom = 58.0
+offset_left = -16.0
+offset_top = 133.0
+offset_right = 14.0
+offset_bottom = 163.0
 theme_override_styles/normal = ExtResource("34_fr0rq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b4hrs")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6cp8d")
@@ -180,13 +189,6 @@ icon = ExtResource("7_6cp8d")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("8_6cp8d")
-
-[node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
-z_index = 5
-z_as_relative = false
-position = Vector2(2.9999924, 485)
-scale = Vector2(2.0575223, 1.9578313)
-texture = ExtResource("5_50yat")
 
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("6_rjrdg")
@@ -222,10 +224,10 @@ offset_bottom = 648.0
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -68.0
-offset_top = 27.0
-offset_right = 132.0
-offset_bottom = 97.0
+offset_left = -533.0
+offset_top = 30.0
+offset_right = -453.0
+offset_bottom = 100.0
 texture_normal = ExtResource("9_h2mqj")
 ignore_texture_size = true
 stretch_mode = 5
@@ -236,9 +238,9 @@ tower_scene = ExtResource("10_evw7n")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = 92.0
+offset_left = -435.0
 offset_top = 35.0
-offset_right = 153.0
+offset_right = -374.0
 offset_bottom = 105.0
 texture_normal = ExtResource("12_sxldm")
 ignore_texture_size = true
@@ -250,10 +252,10 @@ tower_scene = ExtResource("11_c26fn")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -65.0
-offset_top = 125.0
-offset_right = 135.0
-offset_bottom = 195.0
+offset_left = -542.0
+offset_top = 109.0
+offset_right = -450.0
+offset_bottom = 204.0
 texture_normal = ExtResource("14_etoju")
 ignore_texture_size = true
 stretch_mode = 5
@@ -264,10 +266,10 @@ tower_scene = ExtResource("12_hxeer")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = 22.0
-offset_top = 123.0
-offset_right = 222.0
-offset_bottom = 193.0
+offset_left = -451.0
+offset_top = 125.0
+offset_right = -369.0
+offset_bottom = 195.0
 texture_normal = ExtResource("16_ci5cp")
 ignore_texture_size = true
 stretch_mode = 5
@@ -278,10 +280,10 @@ tower_scene = ExtResource("13_amh5n")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -69.0
-offset_top = 223.0
-offset_right = 131.0
-offset_bottom = 293.0
+offset_left = -539.0
+offset_top = 231.0
+offset_right = -454.0
+offset_bottom = 301.0
 texture_normal = ExtResource("15_fuskk")
 ignore_texture_size = true
 stretch_mode = 5
@@ -292,10 +294,10 @@ tower_scene = ExtResource("14_ebpuc")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = 16.0
-offset_top = 223.0
-offset_right = 216.0
-offset_bottom = 293.0
+offset_left = -450.0
+offset_top = 229.0
+offset_right = -373.0
+offset_bottom = 299.0
 texture_normal = ExtResource("21_xwwnh")
 ignore_texture_size = true
 stretch_mode = 5
@@ -306,9 +308,9 @@ tower_scene = ExtResource("22_vjk8x")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -63.0
+offset_left = -532.0
 offset_top = 314.0
-offset_right = 137.0
+offset_right = -455.0
 offset_bottom = 384.0
 texture_normal = ExtResource("23_fr0rq")
 ignore_texture_size = true
@@ -325,10 +327,10 @@ offset_bottom = 40.0
 z_index = 4096
 z_as_relative = false
 layout_mode = 0
-offset_left = 1.0
-offset_top = 577.0
-offset_right = 72.0
-offset_bottom = 646.0
+offset_left = -527.0
+offset_top = 579.0
+offset_right = -457.0
+offset_bottom = 649.0
 texture_normal = ExtResource("25_sxldm")
 ignore_texture_size = true
 stretch_mode = 6
@@ -345,18 +347,18 @@ offset_bottom = 99.0
 
 [node name="ColorRect" type="ColorRect" parent="UI/HUD" unique_id=1219117608]
 layout_mode = 0
-offset_left = -169.0
-offset_top = 21.0
-offset_right = 200.0
-offset_bottom = 138.0
+offset_left = -701.875
+offset_top = 19.0
+offset_right = -332.875
+offset_bottom = 136.0
 color = Color(0, 0.5372549, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="UI/HUD" unique_id=1754926059]
 layout_mode = 0
-offset_left = -162.0
-offset_top = 28.0
-offset_right = 193.0
-offset_bottom = 131.0
+offset_left = -694.875
+offset_top = 26.0
+offset_right = -339.875
+offset_bottom = 129.0
 color = Color(0.38103804, 0.717417, 0.29669756, 1)
 
 [node name="Lives" type="Control" parent="UI/HUD" unique_id=1545277758]
@@ -368,17 +370,17 @@ offset_bottom = 131.0
 
 [node name="LivesLabel" type="Label" parent="UI/HUD/Lives" unique_id=707430476]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 51.0
-offset_right = 221.0
-offset_bottom = 118.0
+offset_left = -442.875
+offset_top = 49.0
+offset_right = -311.875
+offset_bottom = 116.0
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = SubResource("SystemFont_dwuir")
 theme_override_font_sizes/font_size = 48
 text = "100"
 
 [node name="HeartsNoBg" type="Sprite2D" parent="UI/HUD/Lives" unique_id=560389045]
-position = Vector2(53, 89)
+position = Vector2(-479.875, 87)
 scale = Vector2(0.26033974, 0.27710044)
 texture = ExtResource("15_rjrdg")
 
@@ -393,10 +395,10 @@ offset_bottom = 121.0
 
 [node name="ShellingsLabel" type="Label" parent="UI/HUD/Money" unique_id=2071042031]
 layout_mode = 0
-offset_left = 109.0
-offset_top = 34.0
-offset_right = 208.0
-offset_bottom = 101.0
+offset_left = -423.875
+offset_top = 32.0
+offset_right = -324.875
+offset_bottom = 99.0
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = SubResource("SystemFont_dj0d7")
 theme_override_font_sizes/font_size = 48
@@ -404,7 +406,7 @@ text = "100"
 
 [node name="Shrimp" type="Sprite2D" parent="UI/HUD/Money" unique_id=892181832]
 z_index = 1096
-position = Vector2(74, 68.00001)
+position = Vector2(-458.87506, 66.00001)
 scale = Vector2(0.25461596, 0.21375337)
 texture = ExtResource("13_ckwcc")
 
@@ -420,10 +422,10 @@ offset_bottom = 66.0
 
 [node name="WaveLabel" type="Label" parent="UI/HUD/Waves" unique_id=254140960]
 layout_mode = 0
-offset_left = 662.0
-offset_top = 82.0
-offset_right = 798.0
-offset_bottom = 145.0
+offset_left = 129.125
+offset_top = 80.0
+offset_right = 265.125
+offset_bottom = 143.0
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = SubResource("SystemFont_ci5cp")
 theme_override_font_sizes/font_size = 20
@@ -440,10 +442,10 @@ script = ExtResource("16_dwuir")
 
 [node name="ColorRect" type="ColorRect" parent="UI/DeathScreen" unique_id=1644698598]
 layout_mode = 0
-offset_left = -158.0
-offset_top = 204.0
-offset_right = 461.0
-offset_bottom = 561.0
+offset_left = -690.0
+offset_top = 227.0
+offset_right = -71.0
+offset_bottom = 584.0
 color = Color(0, 0.5372549, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="UI/DeathScreen/ColorRect" unique_id=811911442]
