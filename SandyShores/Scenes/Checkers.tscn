@@ -22,7 +22,7 @@
 [ext_resource type="Script" uid="uid://n800asycp1sd" path="res://SandyShores/Scripts/bomb_tower.gd" id="16_68ie1"]
 [ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="16_fqsee"]
 [ext_resource type="PackedScene" uid="uid://bcepi076o27tl" path="res://Enemies/plastic_ring.tscn" id="17_04iuq"]
-[ext_resource type="Script" uid="uid://ckfrd7gva57ou" path="res://SandyShores/Scenes/return.gd" id="17_68ie1"]
+[ext_resource type="Script" path="res://SandyShores/Scenes/return.gd" id="17_68ie1"]
 [ext_resource type="PackedScene" uid="uid://dmhok8tovvxvc" path="res://Towers/bomber_tower.tscn" id="17_t6tie"]
 [ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="18_kbjh2"]
 [ext_resource type="Texture2D" uid="uid://dil5b5bgf4wxt" path="res://textures/Gemini_Generated_Image_wqw7rhwqw7rhwqw7-removebg-preview.png" id="18_t6tie"]
@@ -176,6 +176,12 @@ sources/12 = SubResource("TileSetAtlasSource_vbuyy")
 sources/13 = SubResource("TileSetAtlasSource_b0jmt")
 sources/14 = SubResource("TileSetAtlasSource_6jpsd")
 
+[sub_resource type="Curve2D" id="Curve2D_wlj2d"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 379, -5, 0, 0, 0, 0, 897, 515, 0, 0, 0, 0, 792, 625, 0, 0, 0, 0, 304, 137, 0, 0, 0, 0, 194, 248, 0, 0, 0, 0, 464, 515, 0, 0, 0, 0, 359, 623, 0, 0, 0, 0, -27, 239)
+}
+point_count = 8
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vs0qa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g86uu"]
@@ -207,12 +213,6 @@ corner_radius_bottom_left = 12
 shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
 shadow_size = 3
 shadow_offset = Vector2(1, 1)
-
-[sub_resource type="Curve2D" id="Curve2D_wlj2d"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 379, -5, 0, 0, 0, 0, 897, 515, 0, 0, 0, 0, 792, 625, 0, 0, 0, 0, 304, 137, 0, 0, 0, 0, 194, 248, 0, 0, 0, 0, 464, 515, 0, 0, 0, 0, 359, 623, 0, 0, 0, 0, -27, 239)
-}
-point_count = 8
 
 [sub_resource type="SystemFont" id="SystemFont_b0jmt"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -253,41 +253,11 @@ tile_map_data = PackedByteArray("AAAEAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAATAAEAAAAAAAA
 tile_set = SubResource("TileSet_sre1k")
 
 [node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
-z_index = 4096
+z_index = 5
 z_as_relative = false
 position = Vector2(116.25001, 327.08197)
-scale = Vector2(2.1, 1.9944696)
+scale = Vector2(2.1, 1.994)
 texture = ExtResource("11_vbuyy")
-
-[node name="Return" type="Button" parent="Mothershell" unique_id=813070281]
-z_index = 4096
-material = SubResource("ShaderMaterial_vs0qa")
-offset_left = 22.0
-offset_top = 133.0
-offset_right = 52.0
-offset_bottom = 163.0
-theme_override_styles/normal = ExtResource("15_3fwag")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_g86uu")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vwh3y")
-icon = ExtResource("16_fqsee")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("17_68ie1")
-
-[node name="Settings" type="Button" parent="Mothershell" unique_id=1283622670]
-z_index = 4096
-material = SubResource("ShaderMaterial_vs0qa")
-offset_left = -16.0
-offset_top = 133.0
-offset_right = 14.0
-offset_bottom = 163.0
-theme_override_styles/normal = ExtResource("15_3fwag")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_g86uu")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vwh3y")
-icon = ExtResource("18_t6tie")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("19_kbjh2")
 
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("12_b0jmt")
@@ -304,19 +274,52 @@ position = Vector2(228, 0)
 curve = SubResource("Curve2D_wlj2d")
 
 [node name="UI" type="Control" parent="." unique_id=399414800]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
-offset_left = -2.0
+offset_left = -4.0
 offset_top = 1.0
 offset_right = 1149.0
 offset_bottom = 646.0
 
+[node name="Settings" type="Button" parent="UI" unique_id=1283622670]
+z_index = 4096
+material = SubResource("ShaderMaterial_vs0qa")
+layout_mode = 0
+offset_left = 92.0
+offset_top = 589.0
+offset_right = 142.0
+offset_bottom = 639.0
+theme_override_styles/normal = ExtResource("15_3fwag")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g86uu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vwh3y")
+icon = ExtResource("18_t6tie")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("19_kbjh2")
+
+[node name="Return" type="Button" parent="UI" unique_id=813070281]
+z_index = 4096
+material = SubResource("ShaderMaterial_vs0qa")
+layout_mode = 0
+offset_left = 164.0
+offset_top = 588.0
+offset_right = 214.0
+offset_bottom = 638.0
+theme_override_styles/normal = ExtResource("15_3fwag")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g86uu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vwh3y")
+icon = ExtResource("16_fqsee")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("17_68ie1")
+
 [node name="ShopPanel" type="Control" parent="UI" unique_id=34457697]
 anchors_preset = 0
-offset_left = 7.0
-offset_top = -1.0
-offset_right = 230.0
-offset_bottom = 648.0
+offset_left = 9.0
+offset_top = 5.0
+offset_right = 232.0
+offset_bottom = 576.0
 
 [node name="BombButton" type="TextureButton" parent="UI/ShopPanel" unique_id=583883519]
 z_index = 4096

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dil5b5bgf4wxt" path="res://textures/Gemini_Generated_Image_wqw7rhwqw7rhwqw7-removebg-preview.png" id="7_6cp8d"]
 [ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://SandyShores/Scripts/wave_spawner.gd" id="7_ai02a"]
 [ext_resource type="Script" uid="uid://cy5j1efrjxakf" path="res://SandyShores/Scenes/settings.gd" id="8_6cp8d"]
-[ext_resource type="Script" uid="uid://ckfrd7gva57ou" path="res://SandyShores/Scenes/return.gd" id="8_em8d2"]
+[ext_resource type="Script" path="res://SandyShores/Scenes/return.gd" id="8_em8d2"]
 [ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="8_vjk8x"]
 [ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://SandyShores/Scripts/loss_conditions.gd" id="9_50yat"]
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="9_h2mqj"]
@@ -434,10 +434,10 @@ text = " Wave 0/10
 
 [node name="DeathScreen" type="Control" parent="UI" unique_id=2058731793]
 anchors_preset = 0
-offset_left = 540.0
-offset_top = -43.0
-offset_right = 935.0
-offset_bottom = 636.0
+offset_left = 544.0
+offset_top = -40.0
+offset_right = 939.0
+offset_bottom = 639.0
 script = ExtResource("16_dwuir")
 
 [node name="ColorRect" type="ColorRect" parent="UI/DeathScreen" unique_id=1644698598]

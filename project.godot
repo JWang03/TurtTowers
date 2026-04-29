@@ -25,6 +25,10 @@ BulletPool="*uid://bqbaf1mrnr1pc"
 window/size/mode=3
 window/stretch/mode="canvas_items"
 
+[gui]
+
+theme/custom_font="uid://csyqjjtdck41e"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
