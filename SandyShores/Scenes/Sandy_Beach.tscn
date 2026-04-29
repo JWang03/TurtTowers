@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://c5dersis5dsos" path="res://textures/PlayButton.png" id="25_sxldm"]
 [ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="26_etoju"]
 [ext_resource type="Texture2D" uid="uid://djk3jttptdl7f" path="res://textures/PauseButton.png" id="27_ci5cp"]
+[ext_resource type="Script" uid="uid://dx2vojrrp3e6u" path="res://SandyShores/Scenes/upgrade_panel.gd" id="34_fr0rq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_je2ct")
@@ -401,3 +402,105 @@ theme_override_font_sizes/font_size = 48
 text = "You failed to defend 
 the mothershell from
 a pollutant ambush!"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI" unique_id=429296001]
+
+[node name="UpgradePanel" type="Control" parent="UI/CanvasLayer" unique_id=23123582]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 315.0
+offset_right = 234.0
+offset_bottom = 580.0
+script = ExtResource("34_fr0rq")
+
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/UpgradePanel" unique_id=836714586]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -230.0
+offset_right = 228.0
+offset_bottom = 227.0
+color = Color(0, 0.5372549, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/UpgradePanel/ColorRect" unique_id=1110127999]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 18.0
+offset_right = 220.0
+offset_bottom = 438.0
+color = Color(0.38039216, 0.7176471, 0.29803923, 1)
+
+[node name="TowerName" type="Label" parent="UI/CanvasLayer/UpgradePanel" unique_id=1130705609]
+layout_mode = 0
+offset_left = 14.0
+offset_top = -214.0
+offset_right = 211.0
+offset_bottom = -169.0
+theme_override_font_sizes/font_size = 32
+text = "Tower Name"
+
+[node name="sell_button" type="Button" parent="UI/CanvasLayer/UpgradePanel" unique_id=1612515102]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 143.0
+offset_right = 205.0
+offset_bottom = 198.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CanvasLayer/UpgradePanel" unique_id=386539843]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -151.0
+offset_right = 216.0
+offset_bottom = 135.0
+alignment = 1
+
+[node name="LeftButtons" type="VBoxContainer" parent="UI/CanvasLayer/UpgradePanel/HBoxContainer" unique_id=869421668]
+layout_mode = 2
+
+[node name="LeftPathLabel" type="Label" parent="UI/CanvasLayer/UpgradePanel/HBoxContainer/LeftButtons" unique_id=198013755]
+layout_mode = 2
+text = "Left
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="left_top" type="Button" parent="UI/CanvasLayer/UpgradePanel/HBoxContainer/LeftButtons" unique_id=220101626]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="left_top2" type="Button" parent="UI/CanvasLayer/UpgradePanel/HBoxContainer/LeftButtons" unique_id=694950800]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="left_top3" type="Button" parent="UI/CanvasLayer/UpgradePanel/HBoxContainer/LeftButtons" unique_id=1006637613]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="RightButtons" type="VBoxContainer" parent="UI/CanvasLayer/UpgradePanel/HBoxContainer" unique_id=1571578415]
+layout_mode = 2
+
+[node name="RightPathLabel" type="Label" parent="UI/CanvasLayer/UpgradePanel/HBoxContainer/RightButtons" unique_id=446780497]
+layout_mode = 2
+text = "Right
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="right_top" type="Button" parent="UI/CanvasLayer/UpgradePanel/HBoxContainer/RightButtons" unique_id=2047437289]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="right_top2" type="Button" parent="UI/CanvasLayer/UpgradePanel/HBoxContainer/RightButtons" unique_id=684597646]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="right_top3" type="Button" parent="UI/CanvasLayer/UpgradePanel/HBoxContainer/RightButtons" unique_id=1543264882]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/HBoxContainer/LeftButtons/left_top" to="UI/CanvasLayer/UpgradePanel" method="_on_left_upgrade_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/HBoxContainer/LeftButtons/left_top2" to="UI/CanvasLayer/UpgradePanel" method="_on_left_upgrade_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/HBoxContainer/LeftButtons/left_top3" to="UI/CanvasLayer/UpgradePanel" method="_on_left_upgrade_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/HBoxContainer/RightButtons/right_top" to="UI/CanvasLayer/UpgradePanel" method="_on_right_upgrade_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/HBoxContainer/RightButtons/right_top2" to="UI/CanvasLayer/UpgradePanel" method="_on_right_upgrade_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/HBoxContainer/RightButtons/right_top3" to="UI/CanvasLayer/UpgradePanel" method="_on_right_upgrade_pressed"]

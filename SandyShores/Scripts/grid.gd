@@ -50,9 +50,12 @@ func affordable(cost) -> bool:
 	return currency_manager.shellings >= cost
 	
 func _input(event: InputEvent) -> void:
+	if build_manager.selected_scene == null:
+		Signal_Bus.tower_deselected.emit()
+		return
 	if Input.is_action_just_pressed("ui_cancel"):
 		build_manager.clear()
-
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 
 		if build_manager.selected_scene == null:
@@ -79,3 +82,11 @@ func _input(event: InputEvent) -> void:
 					tower.position = spawn_pos
 					occupied_cells[cell] = true
 					build_manager.clear()
+
+
+func _on_left_top_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_left_top_2_pressed() -> void:
+	pass # Replace with function body.
