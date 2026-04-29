@@ -20,7 +20,9 @@ var game_finished: bool = false
 
 
 func _process(delta: float) -> void:
-	if play_button.playing and not game_started and not game_finished:
+	if game_started or game_finished:
+		return
+	if play_button and play_button.playing:
 		start_game()
 
 
@@ -52,9 +54,8 @@ func start_next_wave() -> void:
 	var wave_data = get_wave_data(current_wave)
 	await spawn_wave(wave_data)
 	
-	# Wait until every enemy from this wave is dead/despawned
 	while enemies_alive > 0:
-		await get_tree().process_frame
+		await get_tree().create_timer(0.1).timeout
 	
 	print("Wave ", current_wave, " cleared")
 	wave_running = false
@@ -90,13 +91,8 @@ func spawn_enemy(scene: PackedScene, speed_mult: float = 1.0) -> void:
 	follow.progress = 0.0
 	enemies_alive += 1
 	
-	# Give the enemy a reference back to this manager
-	# In your enemy script, make a variable called:
-	# var wave_manager = null
 	enemy.set("wave_manager", self)
 	
-	# Multiply enemy speed if that variable exists in the enemy scene
-	# In your enemy script, make sure there is a speed variable
 	if enemy.get("speed") != null:
 		enemy.set("speed", enemy.get("speed") * speed_mult)
 
