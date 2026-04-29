@@ -32,7 +32,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4wy8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4wy8"]
-bg_color = Color(0.15145922, 0.624006, 0.7498557, 1)
+bg_color = Color(1, 0.41960785, 0.41960785, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -47,7 +47,7 @@ shadow_size = 3
 shadow_offset = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqyvv"]
-bg_color = Color(0.29860103, 0.78883344, 0.9306045, 1)
+bg_color = Color(0.8, 0.101960786, 0.101960786, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -244,11 +244,11 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -224.5
-offset_top = 7.5
-offset_right = 225.5
-offset_bottom = 117.5
+offset_left = -140.0
+offset_right = 60.0
+offset_bottom = 31.0
 grow_horizontal = 2
+scale = Vector2(1.5, 1.5)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 30
 text = "Sandy Shores"

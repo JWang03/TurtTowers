@@ -35,11 +35,11 @@
 [ext_resource type="Script" uid="uid://b110lgne0ntlx" path="res://SandyShores/Scripts/currency_manager.gd" id="20_6kmh5"]
 [ext_resource type="Texture2D" uid="uid://cu0qdmxuiyd4u" path="res://textures/shrimp_no_bg.png" id="21_mhcsl"]
 [ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://SandyShores/Scripts/loss_conditions.gd" id="22_60ikt"]
+[ext_resource type="Texture2D" uid="uid://cf3ilal0r2oba" path="res://textures/Resume.png" id="22_gctuh"]
 [ext_resource type="Texture2D" uid="uid://c43l2x13u6e1n" path="res://textures/hearts_no_bg.png" id="23_fpuwm"]
 [ext_resource type="Script" uid="uid://cfxxtgfammudk" path="res://SandyShores/Scripts/death_screen.gd" id="24_086hf"]
-[ext_resource type="Texture2D" uid="uid://c5dersis5dsos" path="res://textures/PlayButton.png" id="25_v0o1d"]
+[ext_resource type="Texture2D" uid="uid://dvxhwiq86ypku" path="res://textures/Pause.png" id="24_a4xci"]
 [ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="26_ro4ig"]
-[ext_resource type="Texture2D" uid="uid://djk3jttptdl7f" path="res://textures/PauseButton.png" id="27_o8s8s"]
 [ext_resource type="Texture2D" uid="uid://cl53dg7b75ecr" path="res://textures/paper_airplane.png" id="27_w4stb"]
 [ext_resource type="PackedScene" uid="uid://cfxko1b87aspq" path="res://Towers/paperplane.tscn" id="28_r0ofv"]
 [ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="29_f2y8k"]
@@ -118,39 +118,61 @@ sources/5 = SubResource("TileSetAtlasSource_fwthh")
 sources/6 = SubResource("TileSetAtlasSource_a4xci")
 sources/7 = SubResource("TileSetAtlasSource_sdjqy")
 
+[sub_resource type="Curve2D" id="Curve2D_ft65p"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 514, -15, 0, 0, 0, 0, 514, 296, 0, 0, 0, 0, 83, 296, 0, 0, 0, 0, 80, 24, 0, 0, 0, 0, 350, 24, 0, 0, 0, 0, 352, 406, 0, 0, 0, 0, 620, 404, 0, 0, 0, 0, 620, 245, 0, 0, 0, 0, 835, 242, 0, 0, 0, 0, 836, 514, 0, 0, 0, 0, 672, 514, 0, 0, 0, 0, 670, 568, 0, 0, 0, 0, -30, 568)
+}
+point_count = 13
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fpuwm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_086hf"]
-bg_color = Color(0.15145922, 0.624006, 0.7498557, 1)
+bg_color = Color(1, 0.41960785, 0.41960785, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
-shadow_size = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0o1d"]
-bg_color = Color(0.29860103, 0.78883344, 0.9306045, 1)
+bg_color = Color(0.8, 0.101960786, 0.101960786, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
-shadow_size = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ro4ig"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gctuh"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.14017555, 0.72387505, 0.875489, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8s8s"]
 bg_color = Color(0.15145922, 0.624006, 0.7498557, 1)
@@ -182,11 +204,23 @@ shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
 shadow_size = 3
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="Curve2D" id="Curve2D_ft65p"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 514, -15, 0, 0, 0, 0, 514, 296, 0, 0, 0, 0, 83, 296, 0, 0, 0, 0, 80, 24, 0, 0, 0, 0, 350, 24, 0, 0, 0, 0, 352, 406, 0, 0, 0, 0, 620, 404, 0, 0, 0, 0, 620, 245, 0, 0, 0, 0, 835, 242, 0, 0, 0, 0, 836, 514, 0, 0, 0, 0, 672, 514, 0, 0, 0, 0, 670, 568, 0, 0, 0, 0, -30, 568)
-}
-point_count = 13
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4xci"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.14017555, 0.72387505, 0.875489, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_8audr"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -232,41 +266,11 @@ scale = Vector2(0.57083327, 0.6046297)
 texture = ExtResource("5_gvbs8")
 
 [node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
-z_index = 4096
+z_index = -1
 z_as_relative = false
-position = Vector2(117.250015, 325)
+position = Vector2(117.25, 322)
 scale = Vector2(2.066372, 1.9578313)
 texture = ExtResource("5_8l8c0")
-
-[node name="Return" type="Button" parent="Mothershell" unique_id=1545005244]
-z_index = 4096
-material = SubResource("ShaderMaterial_fpuwm")
-offset_left = 22.0
-offset_top = 133.0
-offset_right = 52.0
-offset_bottom = 163.0
-theme_override_styles/normal = ExtResource("13_a4xci")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_086hf")
-theme_override_styles/hover = SubResource("StyleBoxFlat_v0o1d")
-icon = ExtResource("14_gctuh")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("15_6kmh5")
-
-[node name="Settings" type="Button" parent="Mothershell" unique_id=1139406464]
-z_index = 4096
-material = SubResource("ShaderMaterial_ro4ig")
-offset_left = -16.0
-offset_top = 133.0
-offset_right = 14.0
-offset_bottom = 163.0
-theme_override_styles/normal = ExtResource("13_a4xci")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o8s8s")
-theme_override_styles/hover = SubResource("StyleBoxFlat_jtd81")
-icon = ExtResource("16_mhcsl")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("17_60ikt")
 
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("6_06ii1")
@@ -291,7 +295,85 @@ offset_top = 1.0
 offset_right = 1149.0
 offset_bottom = 646.0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=1273429995]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 573.0
+offset_right = 230.0
+offset_bottom = 643.0
+alignment = 1
+
+[node name="Return" type="Button" parent="UI/HBoxContainer" unique_id=1545005244]
+z_index = 4096
+material = SubResource("ShaderMaterial_fpuwm")
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("13_a4xci")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_086hf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_v0o1d")
+icon = ExtResource("14_gctuh")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("15_6kmh5")
+
+[node name="Settings" type="Button" parent="UI/HBoxContainer" unique_id=1139406464]
+z_index = 4096
+material = SubResource("ShaderMaterial_ro4ig")
+custom_minimum_size = Vector2(70, 30)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_gctuh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o8s8s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jtd81")
+icon = ExtResource("16_mhcsl")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("17_60ikt")
+
+[node name="PlayButton" type="Button" parent="UI/HBoxContainer" unique_id=1305984033]
+z_index = 4096
+material = SubResource("ShaderMaterial_ro4ig")
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_a4xci")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o8s8s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jtd81")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("26_ro4ig")
+
+[node name="Resume" type="TextureRect" parent="UI/HBoxContainer/PlayButton" unique_id=783885209]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -28.0
+offset_right = 626.0
+offset_bottom = 341.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("22_gctuh")
+
+[node name="Pause" type="TextureRect" parent="UI/HBoxContainer/PlayButton" unique_id=440238901]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 7.0
+offset_right = 661.0
+offset_bottom = 376.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("24_a4xci")
+
+[node name="GUI_buttons" type="Control" parent="UI" unique_id=2113421431]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="ShopPanel" type="Control" parent="UI" unique_id=291765242]
+visible = false
 anchors_preset = 0
 offset_left = 7.0
 offset_top = -1.0
@@ -395,26 +477,6 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("10_av1he")
 tower_scene = ExtResource("30_gdn63")
-
-[node name="Start_Pause" type="Control" parent="UI" unique_id=753098550]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PlayButton" type="TextureButton" parent="UI/Start_Pause" unique_id=2099047299]
-z_index = 4096
-z_as_relative = false
-layout_mode = 0
-offset_left = 1.0
-offset_top = 577.0
-offset_right = 72.0
-offset_bottom = 646.0
-texture_normal = ExtResource("25_v0o1d")
-ignore_texture_size = true
-stretch_mode = 6
-script = ExtResource("26_ro4ig")
-play_texture = ExtResource("25_v0o1d")
-pause_texture = ExtResource("27_o8s8s")
 
 [node name="HUD" type="Control" parent="UI" unique_id=638042007]
 anchors_preset = 0

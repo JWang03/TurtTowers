@@ -1,6 +1,6 @@
 extends Node
 
-@onready var play_button = get_node("/root/Game/UI/Start_Pause/PlayButton")
+@onready var play_button = get_node("/root/Game/UI/HBoxContainer/PlayButton")
 
 @export var enemy_path: Path2D
 @export var wave_label: Label
