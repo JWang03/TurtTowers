@@ -50,16 +50,18 @@ func affordable(cost) -> bool:
 	return currency_manager.shellings >= cost
 	
 func _input(event: InputEvent) -> void:
-	if build_manager.selected_scene == null:
-		Signal_Bus.tower_deselected.emit()
-		return
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		build_manager.clear()
 	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-
 		if build_manager.selected_scene == null:
-			return
+			var upgrade_panel = get_node("/root/Game/UI/CanvasLayer/UpgradePanel")
+			if upgrade_panel.visible and upgrade_panel.get_global_rect().has_point(event.position):
+				return
+			else:
+				Signal_Bus.tower_deselected.emit()
+				return
 
 		var mouse_local: Vector2 = get_local_mouse_position()
 		var cell: Vector2i = local_to_map(mouse_local)

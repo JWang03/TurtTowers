@@ -22,7 +22,7 @@ func _ready():
 func _input(event):
 	if not is_placed:
 		return
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var mouse_pos = get_global_mouse_position()
 		var space = get_world_2d().direct_space_state
 		var query = PhysicsPointQueryParameters2D.new()
@@ -123,6 +123,8 @@ var right_level = 0
 var chosen_branch = ""
 
 func purchase_upgrade(branch: String):
+	print("purchase_upgrade called, branch: ", branch)
+	print("chosen_branch: ", chosen_branch)
 	if chosen_branch == "":
 		chosen_branch = branch
 	elif chosen_branch != branch:

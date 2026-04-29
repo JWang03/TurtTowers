@@ -59,6 +59,7 @@ func populate(tower):
 
 func _on_left_upgrade_pressed():
 	print("current_tower: ", current_tower)
+	print("left pressed, current_tower: ", current_tower)
 	if current_tower:
 		current_tower.purchase_upgrade("left")
 		populate(current_tower)

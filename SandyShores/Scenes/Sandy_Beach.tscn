@@ -497,6 +497,7 @@ layout_mode = 2
 [node name="right_top3" type="Button" parent="UI/CanvasLayer/UpgradePanel/HBoxContainer/RightButtons" unique_id=1543264882]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
+action_mode = 0
 
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/HBoxContainer/LeftButtons/left_top" to="UI/CanvasLayer/UpgradePanel" method="_on_left_upgrade_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/HBoxContainer/LeftButtons/left_top2" to="UI/CanvasLayer/UpgradePanel" method="_on_left_upgrade_pressed"]
