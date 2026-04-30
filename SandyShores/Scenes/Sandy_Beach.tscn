@@ -34,10 +34,9 @@
 [ext_resource type="PackedScene" uid="uid://cfxko1b87aspq" path="res://Towers/paperplane.tscn" id="22_vjk8x"]
 [ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="23_fr0rq"]
 [ext_resource type="PackedScene" uid="uid://hovc6xdbesyd" path="res://Towers/holy_crusader.tscn" id="24_1dk7f"]
-[ext_resource type="Texture2D" uid="uid://c5dersis5dsos" path="res://textures/PlayButton.png" id="25_sxldm"]
 [ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="26_etoju"]
-[ext_resource type="Texture2D" uid="uid://djk3jttptdl7f" path="res://textures/PauseButton.png" id="27_ci5cp"]
-[ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://exit_button.tres" id="34_fr0rq"]
+[ext_resource type="Texture2D" uid="uid://cf3ilal0r2oba" path="res://textures/Resume.png" id="36_6cp8d"]
+[ext_resource type="Texture2D" uid="uid://dvxhwiq86ypku" path="res://textures/Pause.png" id="37_em8d2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_je2ct")
@@ -70,38 +69,6 @@ texture_region_size = Vector2i(54, 54)
 tile_size = Vector2i(54, 54)
 sources/0 = SubResource("TileSetAtlasSource_jjf6g")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1dk7f"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4hrs"]
-bg_color = Color(0.15145922, 0.624006, 0.7498557, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
-shadow_size = 3
-shadow_offset = Vector2(1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cp8d"]
-bg_color = Color(0.29860103, 0.78883344, 0.9306045, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
-shadow_size = 3
-shadow_offset = Vector2(1, 1)
-
 [sub_resource type="Curve2D" id="Curve2D_je2ct"]
 bake_interval = 0.01
 _data = {
@@ -122,6 +89,152 @@ subpixel_positioning = 0
 [sub_resource type="SystemFont" id="SystemFont_ci5cp"]
 
 [sub_resource type="SystemFont" id="SystemFont_7x53i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_thmc0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i72ex"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0.23137255, 0.23137255, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kv1k"]
+bg_color = Color(1, 0.41960785, 0.41960785, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15gwj"]
+bg_color = Color(0.8, 0.101960786, 0.101960786, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kpf84"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ux3bf"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.14017555, 0.72387505, 0.875489, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0r82o"]
+bg_color = Color(0.08235294, 0.49803922, 0.627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_as63w"]
+bg_color = Color(0.101960786, 0.6156863, 0.7490196, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axmsp"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.08627451, 0.6392157, 0.2901961, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fosoi"]
+bg_color = Color(0.08627451, 0.39607844, 0.20392157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rm2u3"]
+bg_color = Color(0.08235294, 0.5019608, 0.23921569, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
 
 [node name="Game" type="Node2D" unique_id=2110147607]
 z_index = -100
@@ -146,49 +259,19 @@ position = Vector2(234, 0)
 tile_map_data = PackedByteArray("AAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAACAAkAAAAAAAAAAAABAAkAAAAAAAAAAAAAAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAANAAkAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_hngk1")
 
+[node name="Mothershell" type="Sprite2D" parent="." unique_id=1183750392]
+z_index = -1
+z_as_relative = false
+position = Vector2(117.25, 322)
+scale = Vector2(2.066372, 1.9578313)
+texture = ExtResource("5_50yat")
+
 [node name="Beach" type="Sprite2D" parent="." unique_id=1801378851]
 z_index = -1000
 z_as_relative = false
 position = Vector2(692, 327.00006)
 scale = Vector2(0.65767044, 0.8567708)
 texture = ExtResource("4_ckwcc")
-
-[node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
-z_index = -1
-z_as_relative = false
-position = Vector2(113.99999, 325)
-scale = Vector2(2.0575223, 1.9578313)
-texture = ExtResource("5_50yat")
-
-[node name="Return" type="Button" parent="Mothershell" unique_id=153955805]
-z_index = 4096
-material = SubResource("ShaderMaterial_1dk7f")
-offset_left = 22.0
-offset_top = 133.0
-offset_right = 52.0
-offset_bottom = 163.0
-theme_override_styles/normal = ExtResource("34_fr0rq")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_b4hrs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6cp8d")
-icon = ExtResource("6_b4hrs")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("8_em8d2")
-
-[node name="Settings" type="Button" parent="Mothershell" unique_id=452133295]
-z_index = 4096
-material = SubResource("ShaderMaterial_1dk7f")
-offset_left = -16.0
-offset_top = 133.0
-offset_right = 14.0
-offset_bottom = 163.0
-theme_override_styles/normal = ExtResource("34_fr0rq")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_b4hrs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6cp8d")
-icon = ExtResource("7_6cp8d")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("8_6cp8d")
 
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("6_rjrdg")
@@ -317,26 +400,6 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("24_1dk7f")
-
-[node name="Start_Pause" type="Control" parent="UI" unique_id=1647321012]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PlayButton" type="TextureButton" parent="UI/Start_Pause" unique_id=735464196]
-z_index = 4096
-z_as_relative = false
-layout_mode = 0
-offset_left = -527.0
-offset_top = 579.0
-offset_right = -457.0
-offset_bottom = 649.0
-texture_normal = ExtResource("25_sxldm")
-ignore_texture_size = true
-stretch_mode = 6
-script = ExtResource("26_etoju")
-play_texture = ExtResource("25_sxldm")
-pause_texture = ExtResource("27_ci5cp")
 
 [node name="HUD" type="Control" parent="UI" unique_id=1358710275]
 anchors_preset = 0
@@ -468,3 +531,74 @@ theme_override_font_sizes/font_size = 48
 text = "You failed to defend 
 the mothershell from
 a pollutant ambush!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1277878406]
+custom_minimum_size = Vector2(0, 20)
+offset_left = 7.0
+offset_top = 573.0
+offset_right = 227.0
+offset_bottom = 643.0
+alignment = 1
+
+[node name="Return" type="Button" parent="HBoxContainer" unique_id=512677593]
+z_index = 4096
+material = SubResource("ShaderMaterial_thmc0")
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_i72ex")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3kv1k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_15gwj")
+icon = ExtResource("6_b4hrs")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("8_em8d2")
+
+[node name="Settings" type="Button" parent="HBoxContainer" unique_id=503421202]
+z_index = 4096
+material = SubResource("ShaderMaterial_kpf84")
+custom_minimum_size = Vector2(70, 30)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ux3bf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0r82o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_as63w")
+icon = ExtResource("7_6cp8d")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("8_6cp8d")
+
+[node name="PlayButton" type="Button" parent="HBoxContainer" unique_id=1519406390]
+z_index = 4096
+material = SubResource("ShaderMaterial_kpf84")
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_axmsp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fosoi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rm2u3")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("26_etoju")
+
+[node name="Resume" type="TextureRect" parent="HBoxContainer/PlayButton" unique_id=1533339704]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -28.0
+offset_right = 626.0
+offset_bottom = 341.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("36_6cp8d")
+
+[node name="Pause" type="TextureRect" parent="HBoxContainer/PlayButton" unique_id=1063660407]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 7.0
+offset_right = 661.0
+offset_bottom = 376.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("37_em8d2")

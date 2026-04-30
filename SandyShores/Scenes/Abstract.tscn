@@ -19,11 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://dkq3xoffiscor" path="res://textures/CenterTrack.png" id="10_gr430"]
 [ext_resource type="PackedScene" uid="uid://dmhok8tovvxvc" path="res://Towers/bomber_tower.tscn" id="11_bi50h"]
 [ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="12_w4stb"]
-[ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://exit_button.tres" id="13_a4xci"]
 [ext_resource type="PackedScene" uid="uid://do17203pjxuim" path="res://Towers/bullet_tower.tscn" id="13_r0ofv"]
 [ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="14_f2y8k"]
 [ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="14_gctuh"]
-[ext_resource type="Script" uid="uid://ckfrd7gva57ou" path="res://SandyShores/Scenes/return.gd" id="15_6kmh5"]
+[ext_resource type="Script" path="res://SandyShores/Scenes/return.gd" id="15_6kmh5"]
 [ext_resource type="PackedScene" uid="uid://d2l8b5nykdqdg" path="res://Towers/godzilla_tower.tscn" id="15_gdn63"]
 [ext_resource type="PackedScene" uid="uid://bcepi076o27tl" path="res://Enemies/plastic_ring.tscn" id="15_r0ofv"]
 [ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="16_8audr"]
@@ -126,6 +125,24 @@ point_count = 13
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fpuwm"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwthh"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0.23137255, 0.23137255, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_086hf"]
 bg_color = Color(1, 0.41960785, 0.41960785, 1)
 border_width_left = 2
@@ -175,7 +192,7 @@ shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8s8s"]
-bg_color = Color(0.15145922, 0.624006, 0.7498557, 1)
+bg_color = Color(0.08235294, 0.49803922, 0.627451, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -190,7 +207,7 @@ shadow_size = 3
 shadow_offset = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtd81"]
-bg_color = Color(0.29860103, 0.78883344, 0.9306045, 1)
+bg_color = Color(0.101960786, 0.6156863, 0.7490196, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -209,7 +226,7 @@ content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
 content_margin_bottom = 2.0
-bg_color = Color(0.14017555, 0.72387505, 0.875489, 1)
+bg_color = Color(0.08627451, 0.6392157, 0.2901961, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -220,6 +237,36 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6kmh5"]
+bg_color = Color(0.08627451, 0.39607844, 0.20392157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhcsl"]
+bg_color = Color(0.08235294, 0.5019608, 0.23921569, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
 shadow_offset = Vector2(1, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_8audr"]
@@ -309,7 +356,7 @@ z_index = 4096
 material = SubResource("ShaderMaterial_fpuwm")
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-theme_override_styles/normal = ExtResource("13_a4xci")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fwthh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_086hf")
 theme_override_styles/hover = SubResource("StyleBoxFlat_v0o1d")
 icon = ExtResource("14_gctuh")
@@ -336,8 +383,8 @@ material = SubResource("ShaderMaterial_ro4ig")
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_a4xci")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o8s8s")
-theme_override_styles/hover = SubResource("StyleBoxFlat_jtd81")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6kmh5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mhcsl")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("26_ro4ig")
@@ -373,7 +420,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ShopPanel" type="Control" parent="UI" unique_id=291765242]
-visible = false
 anchors_preset = 0
 offset_left = 7.0
 offset_top = -1.0

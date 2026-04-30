@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="11_fduiw"]
 [ext_resource type="Texture2D" uid="uid://cl53dg7b75ecr" path="res://textures/paper_airplane.png" id="12_cgse8"]
 [ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://exit_button.tres" id="13_o4wy8"]
+[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="15_dqyvv"]
+[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="16_m8x2t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
@@ -145,6 +147,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
+[node name="Return" type="Button" parent="MapSelectionLayer" unique_id=1400672802]
+material = SubResource("ShaderMaterial_o4wy8")
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 72.0
+offset_bottom = 70.0
+theme_override_styles/normal = ExtResource("13_o4wy8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o4wy8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dqyvv")
+icon = ExtResource("4_o4wy8")
+icon_alignment = 1
+expand_icon = true
+
 [node name="MapPanel" type="Control" parent="MapSelectionLayer" unique_id=612345678]
 layout_mode = 3
 anchors_preset = 8
@@ -158,20 +173,6 @@ offset_right = 370.0
 offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Return" type="Button" parent="MapSelectionLayer/MapPanel" unique_id=1400672802]
-material = SubResource("ShaderMaterial_o4wy8")
-layout_mode = 0
-offset_left = -194.0
-offset_top = -64.0
-offset_right = -132.0
-offset_bottom = -6.0
-theme_override_styles/normal = ExtResource("13_o4wy8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o4wy8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dqyvv")
-icon = ExtResource("4_o4wy8")
-icon_alignment = 1
-expand_icon = true
 
 [node name="MapBorder" type="Panel" parent="MapSelectionLayer/MapPanel" unique_id=492818237]
 layout_mode = 1
@@ -372,6 +373,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
+[node name="ReturnTowers" type="Button" parent="TowersLayer" unique_id=1651348533]
+material = SubResource("ShaderMaterial_o4wy8")
+offset_left = 12.0
+offset_top = 11.0
+offset_right = 72.0
+offset_bottom = 71.0
+theme_override_styles/normal = ExtResource("13_o4wy8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o4wy8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dqyvv")
+icon = ExtResource("4_o4wy8")
+icon_alignment = 1
+expand_icon = true
+
 [node name="LeftArrow" type="Button" parent="TowersLayer" unique_id=727303500]
 anchors_preset = 4
 anchor_top = 0.5
@@ -558,7 +572,13 @@ offset_right = 187.0
 offset_bottom = 35.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
+text = "Holy Crusader"
 horizontal_alignment = 1
+
+[node name="HolyCrusader" type="Sprite2D" parent="TowersLayer/7" unique_id=1133539019]
+position = Vector2(91, 128)
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("15_dqyvv")
 
 [node name="8" type="ColorRect" parent="TowersLayer" unique_id=888888888]
 material = SubResource("ShaderMaterial_cn2sd")
@@ -575,7 +595,13 @@ offset_right = 187.0
 offset_bottom = 35.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
+text = "Turt Sahur"
 horizontal_alignment = 1
+
+[node name="Turt^3Sahur" type="Sprite2D" parent="TowersLayer/8" unique_id=334133041]
+position = Vector2(91, 107)
+scale = Vector2(0.43, 0.43)
+texture = ExtResource("16_m8x2t")
 
 [node name="9" type="ColorRect" parent="TowersLayer" unique_id=999999999]
 material = SubResource("ShaderMaterial_cn2sd")
@@ -648,7 +674,7 @@ horizontal_alignment = 1
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Towers" to="." method="_on_towers_pressed"]
-[connection signal="pressed" from="MapSelectionLayer/MapPanel/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="MapSelectionLayer/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/MapSelector" to="." method="_on_map_selector_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/LeftArrow" to="." method="_on_left_arrow_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/RightArrow" to="." method="_on_right_arrow_pressed"]
@@ -656,5 +682,6 @@ horizontal_alignment = 1
 [connection signal="item_selected" from="SettingsLayer/SettingsMenu/FullscreenButton" to="." method="_on_fullscreen_item_selected"]
 [connection signal="item_selected" from="SettingsLayer/SettingsMenu/CBButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="SettingsLayer/SettingsMenu/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TowersLayer/ReturnTowers" to="." method="_on_return_towers_pressed"]
 [connection signal="pressed" from="TowersLayer/LeftArrow" to="." method="_on_left_tower_pressed"]
 [connection signal="pressed" from="TowersLayer/RightArrow" to="." method="_on_right_tower_pressed"]

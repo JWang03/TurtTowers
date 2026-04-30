@@ -16,10 +16,14 @@ extends Control
 @onready var map_selector = $MapSelectionLayer/MapPanel/MapSelector
 @onready var map_name_label = $MapSelectionLayer/MapPanel/MapNameLabel
 @onready var map_darkener = $MapSelectionLayer/Darkener
+@onready var map_return_button = $MapSelectionLayer/Return
 
 # Towers Menu Nodes
 @onready var tower_overlay = $TowersLayer
 @onready var tower_darkener = $TowersLayer/Darkener
+@onready var tower_return_button = $TowersLayer/ReturnTowers
+@onready var tower_left_arrow = $TowersLayer/LeftArrow
+@onready var tower_right_arrow = $TowersLayer/RightArrow
 @onready var tower_cards = [
 	$TowersLayer/"1", $TowersLayer/"2", $TowersLayer/"3", 
 	$TowersLayer/"4", $TowersLayer/"5", $TowersLayer/"6"
@@ -39,9 +43,13 @@ var map_scenes: Array = [
 	"res://SandyShores/Scenes/Sandy_Beach.tscn",
 	"res://SandyShores/Scenes/Abstract.tscn",
 	"res://SandyShores/Scenes/Checkers.tscn",
-    "res://SandyShores/Scenes/Turtle_Temple.tscn"
+	"res://SandyShores/Scenes/Turtle_Temple.tscn"
 ]
 var current_map_index: int = 0
+
+# Button origins
+var map_return_origin: Vector2
+var tower_return_origin: Vector2
 
 # Initialization
 func _ready():
@@ -49,12 +57,14 @@ func _ready():
 	settings_overlay.hide()
 	map_overlay.hide()
 	tower_overlay.hide()
-	
-	# Ensure tower cards are prepped for animation
+
+	# Ensure tower cards and arrows are prepped for animation
 	for card in tower_cards:
 		card.scale = Vector2.ZERO
 	for card in tower_cards_page2:
 		card.scale = Vector2.ZERO
+	tower_left_arrow.scale = Vector2.ZERO
+	tower_right_arrow.scale = Vector2.ZERO
 
 	# Load map textures
 	map_textures = [
@@ -74,21 +84,24 @@ func _ready():
 	if volume_slider:
 		volume_slider.value = GlobalSettings.volume_value
 
+	# Store button origins
+	map_return_origin = map_return_button.position
+	tower_return_origin = tower_return_button.position
+
 func _update_map_display():
 	if map_selector:
 		map_selector.texture_normal = map_textures[current_map_index]
 	if map_name_label:
 		map_name_label.text = map_names[current_map_index]
 
-# Settings Menu Function
+# Settings Menu Functions
 func _on_settings_pressed():
 	settings_overlay.show()
-	
-	# Center pivot for the popup bounce animation
+
 	menu_panel.pivot_offset = menu_panel.size / 2
-	menu_panel.scale = Vector2.ZERO 
-	darkener.modulate.a = 0         
-	
+	menu_panel.scale = Vector2.ZERO
+	darkener.modulate.a = 0
+
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(darkener, "modulate:a", 1.0, 0.2)
 	tween.tween_property(menu_panel, "scale", Vector2.ONE, 0.3)\
@@ -101,8 +114,7 @@ func _on_button_pressed() -> void:
 	tween.tween_property(menu_panel, "scale", Vector2.ZERO, 0.2)\
 		.set_trans(Tween.TRANS_BACK)\
 		.set_ease(Tween.EASE_IN)
-		
-	# Wait for animation to finish before hiding the layer
+
 	tween.chain().tween_callback(settings_overlay.hide)
 
 func _on_volume_slider_value_changed(value: float) -> void:
@@ -119,16 +131,21 @@ func _on_start_game_pressed() -> void:
 	current_map_index = 0
 	_update_map_display()
 	map_overlay.show()
-	
-	# Center pivot for the popup bounce animation
+
+	# Slide return button in from left
+	map_return_button.position.x = map_return_origin.x - 200
+
 	map_panel.pivot_offset = map_panel.size / 2
-	map_panel.scale = Vector2.ZERO 
-	map_darkener.modulate.a = 0         
-	
+	map_panel.scale = Vector2.ZERO
+	map_darkener.modulate.a = 0
+
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(map_darkener, "modulate:a", 1.0, 0.2)
 	tween.tween_property(map_panel, "scale", Vector2.ONE, 0.3)\
 		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_OUT)
+	tween.tween_property(map_return_button, "position:x", map_return_origin.x, 0.35)\
+		.set_trans(Tween.TRANS_CUBIC)\
 		.set_ease(Tween.EASE_OUT)
 
 func _on_left_arrow_pressed() -> void:
@@ -152,8 +169,10 @@ func _on_return_pressed() -> void:
 	tween.tween_property(map_panel, "scale", Vector2.ZERO, 0.2)\
 		.set_trans(Tween.TRANS_BACK)\
 		.set_ease(Tween.EASE_IN)
-		
-	# Wait for animation to finish before hiding the map layer
+	tween.tween_property(map_return_button, "position:x", map_return_origin.x - 200, 0.2)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_IN)
+
 	tween.chain().tween_callback(map_overlay.hide)
 
 # Towers Menu Functions
@@ -162,37 +181,62 @@ func _on_towers_pressed() -> void:
 	tower_darkener.modulate.a = 0
 	current_tower_page = 0
 
+	# Slide return button in from left
+	tower_return_button.position.x = tower_return_origin.x - 200
+
+	# Reset arrows for bounce animation
+	tower_left_arrow.pivot_offset = tower_left_arrow.size / 2
+	tower_left_arrow.scale = Vector2.ZERO
+	tower_right_arrow.pivot_offset = tower_right_arrow.size / 2
+	tower_right_arrow.scale = Vector2.ZERO
+
 	var tween = create_tween().set_parallel(true)
-
-	# Fade in the darkener
 	tween.tween_property(tower_darkener, "modulate:a", 1.0, 0.2)
+	tween.tween_property(tower_return_button, "position:x", tower_return_origin.x, 0.35)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_OUT)
 
-	# Reset page 2 cards so they are hidden
+	# Bounce arrows in like cards
+	var left_tween = create_tween()
+	left_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	left_tween.tween_interval(0.1)
+	left_tween.tween_property(tower_left_arrow, "scale", Vector2.ONE, 0.3)
+
+	var right_tween = create_tween()
+	right_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	right_tween.tween_interval(0.15)
+	right_tween.tween_property(tower_right_arrow, "scale", Vector2.ONE, 0.3)
+
+	# Reset page 2 cards
 	for card in tower_cards_page2:
 		card.pivot_offset = card.size / 2
 		card.scale = Vector2.ZERO
 
-	# Animate page 1 cards with a slight stagger/delay for each
+	# Animate page 1 cards with stagger
 	for i in range(tower_cards.size()):
 		var card = tower_cards[i]
 		card.pivot_offset = card.size / 2
 		card.scale = Vector2.ZERO
 
-		# Create a secondary tween for the individual card bounce
 		var card_tween = create_tween()
 		card_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-
-		# Delay each card by 0.05 seconds multiplied by its index
 		card_tween.tween_interval(i * 0.05)
 		card_tween.tween_property(card, "scale", Vector2.ONE, 0.3)
 
 func _on_close_towers_pressed() -> void:
 	var tween = create_tween().set_parallel(true)
 
-	# Fade out darkener
 	tween.tween_property(tower_darkener, "modulate:a", 0.0, 0.2)
+	tween.tween_property(tower_return_button, "position:x", tower_return_origin.x - 200, 0.2)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_IN)
+	tween.tween_property(tower_left_arrow, "scale", Vector2.ZERO, 0.2)\
+		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_IN)
+	tween.tween_property(tower_right_arrow, "scale", Vector2.ZERO, 0.2)\
+		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_IN)
 
-	# Shrink all cards (both pages) simultaneously
 	for card in tower_cards + tower_cards_page2:
 		tween.tween_property(card, "scale", Vector2.ZERO, 0.2)\
 			.set_trans(Tween.TRANS_BACK)\
@@ -214,16 +258,13 @@ func _input(event):
 				elif map_overlay.visible:
 					_on_return_pressed()
 
-
 func _on_left_tower_pressed() -> void:
 	var new_page = (current_tower_page - 1 + total_tower_pages) % total_tower_pages
 	_switch_tower_page(new_page)
 
-
 func _on_right_tower_pressed() -> void:
 	var new_page = (current_tower_page + 1) % total_tower_pages
 	_switch_tower_page(new_page)
-
 
 func _switch_tower_page(new_page: int) -> void:
 	if new_page == current_tower_page:
@@ -232,7 +273,6 @@ func _switch_tower_page(new_page: int) -> void:
 	var current_cards = tower_cards if current_tower_page == 0 else tower_cards_page2
 	var new_cards = tower_cards if new_page == 0 else tower_cards_page2
 
-	# Shrink the current page's cards out
 	var out_tween = create_tween().set_parallel(true)
 	for card in current_cards:
 		out_tween.tween_property(card, "scale", Vector2.ZERO, 0.2)\
@@ -241,7 +281,6 @@ func _switch_tower_page(new_page: int) -> void:
 
 	current_tower_page = new_page
 
-	# Animate the new page's cards in with stagger (after the out animation)
 	for i in range(new_cards.size()):
 		var card = new_cards[i]
 		card.pivot_offset = card.size / 2
@@ -250,3 +289,22 @@ func _switch_tower_page(new_page: int) -> void:
 		card_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 		card_tween.tween_interval(0.2 + i * 0.05)
 		card_tween.tween_property(card, "scale", Vector2.ONE, 0.3)
+
+func _on_return_towers_pressed() -> void:
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(tower_darkener, "modulate:a", 0.0, 0.2)
+	tween.tween_property(tower_return_button, "position:x", tower_return_origin.x - 200, 0.2)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_IN)
+	tween.tween_property(tower_left_arrow, "scale", Vector2.ZERO, 0.2)\
+		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_IN)
+	tween.tween_property(tower_right_arrow, "scale", Vector2.ZERO, 0.2)\
+		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_IN)
+	for card in tower_cards + tower_cards_page2:
+		tween.tween_property(card, "scale", Vector2.ZERO, 0.2)\
+			.set_trans(Tween.TRANS_BACK)\
+			.set_ease(Tween.EASE_IN)
+
+	tween.chain().tween_callback(tower_overlay.hide)
