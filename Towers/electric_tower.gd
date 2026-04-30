@@ -6,7 +6,7 @@ extends StaticBody2D
 @export var attack_cooldown = 1.5
 @export var cost: float = 25
 
-@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
+@onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
 @onready var detection_area = $Range
 @onready var attack_timer = $Timer
 @onready var shoot_point = $Muzzle

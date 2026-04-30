@@ -7,7 +7,7 @@ extends StaticBody2D
 @onready var timer = $Timer
 @onready var detection_area = $Range
 @export var cost: float = 25
-@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
+@onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
 var targets_in_range: Array = []
 var is_placed := false
 var bomb_scene = preload("res://Towers/bomb.tscn")
