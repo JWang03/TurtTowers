@@ -3,12 +3,31 @@
 [ext_resource type="Script" uid="uid://dq36j5gvvelsg" path="res://Towers/turttttt.gd" id="1_mbxih"]
 [ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="2_e4fiv"]
 
-[node name="Area2D" type="Area2D" unique_id=2055387956]
+[sub_resource type="CircleShape2D" id="CircleShape2D_turt1"]
+radius = 120.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_turt1"]
+points = PackedVector2Array(-8, -10, 0, -14, 10, -8, 14, 8, 6, 14, -9, 13, -13, 5)
+
+[node name="turttttt" type="StaticBody2D" unique_id=2055387956]
+collision_mask = 2
 script = ExtResource("1_mbxih")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1618151517]
-scale = Vector2(0.1, 0.1)
-
-[node name="Turt^3Sahur" type="Sprite2D" parent="." unique_id=545081231]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=545081231]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_e4fiv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1618151517]
+shape = SubResource("ConvexPolygonShape2D_turt1")
+
+[node name="Range" type="Area2D" parent="." unique_id=714734738]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1521837545]
+shape = SubResource("CircleShape2D_turt1")
+
+[node name="Head" type="Marker2D" parent="." unique_id=1071233640]
+
+[node name="Timer" type="Timer" parent="." unique_id=328428747]
+wait_time = 1.0
+one_shot = false
+
