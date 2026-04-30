@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://btwem1yvxgacj"]
 
 [ext_resource type="Script" uid="uid://dq36j5gvvelsg" path="res://Towers/turttttt.gd" id="1_mbxih"]
-[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="2_e4fiv"]
+[ext_resource type="Texture2D" uid="uid://ctarv37negb7v" path="res://textures/Sahur.png" id="2_sahur"]
+[ext_resource type="Texture2D" uid="uid://b4ml2exo21fbf" path="res://textures/Bat.png" id="3_bat"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_turt1"]
 radius = 120.0
@@ -13,9 +14,17 @@ points = PackedVector2Array(-8, -10, 0, -14, 10, -8, 14, 8, 6, 14, -9, 13, -13, 
 collision_mask = 2
 script = ExtResource("1_mbxih")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=545081231]
+[node name="SahurSprite" type="Sprite2D" parent="." unique_id=545081231]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_e4fiv")
+texture = ExtResource("2_sahur")
+
+[node name="BatPivot" type="Node2D" parent="." unique_id=607341820]
+position = Vector2(6, -8)
+
+[node name="BatSprite" type="Sprite2D" parent="BatPivot" unique_id=607341821]
+scale = Vector2(0.08, 0.08)
+offset = Vector2(0, -12)
+texture = ExtResource("3_bat")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1618151517]
 shape = SubResource("ConvexPolygonShape2D_turt1")
@@ -24,8 +33,6 @@ shape = SubResource("ConvexPolygonShape2D_turt1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1521837545]
 shape = SubResource("CircleShape2D_turt1")
-
-[node name="Head" type="Marker2D" parent="." unique_id=1071233640]
 
 [node name="Timer" type="Timer" parent="." unique_id=328428747]
 wait_time = 1.0
