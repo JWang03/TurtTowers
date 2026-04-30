@@ -99,7 +99,7 @@ func _on_timer_timeout():
 	attempt_shot()
 
 #Upgrading:
-var tower_name = "Soldier Turtle"
+var tower_name = "Soldier Turt"
 var upgrades = {
 	"left": {
 		"name": "Machine Gunner Path",
@@ -123,12 +123,22 @@ var right_level = 0
 var chosen_branch = ""
 
 func purchase_upgrade(branch: String):
-	print("purchase_upgrade called, branch: ", branch)
-	print("chosen_branch: ", chosen_branch)
 	if chosen_branch == "":
 		chosen_branch = branch
 	elif chosen_branch != branch:
 		return
+	
+	var cost = 0
+	if branch == "left":
+		cost = upgrades["left"]["tiers"][left_level]["cost"]
+	elif branch == "right":
+		cost = upgrades["right"]["tiers"][right_level]["cost"]
+	
+	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
+	if currency_manager.shellings < cost:
+		return
+	currency_manager.spend_shellings(cost)
+	
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1

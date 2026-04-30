@@ -71,6 +71,8 @@ func _on_right_upgrade_pressed():
 
 func _on_sell_pressed():
 	if current_tower:
+		var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
+		currency_manager.add_shellings(current_tower.cost / 2)
 		current_tower.queue_free()
 		current_tower = null
 		visible = false

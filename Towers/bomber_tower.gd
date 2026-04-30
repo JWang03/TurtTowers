@@ -79,6 +79,8 @@ extends StaticBody2D
 @onready var timer = $Timer
 @onready var detection_area = $Range
 @export var cost: float = 25
+var damage_multiplier = 1.0
+var double_shot = false
 @onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
 var targets_in_range: Array = []
 var bomb_scene = preload("res://Towers/bomb.tscn")
@@ -127,6 +129,7 @@ func shoot():
 			var final_target = shield_provider if shield_provider else target
 
 			var bomb = bomb_scene.instantiate()
+			bomb.damage *= damage_multiplier
 			get_tree().current_scene.add_child(bomb)
 
 			bomb.global_position = muzzle.global_position
@@ -134,3 +137,78 @@ func shoot():
 
 func _on_timer_timeout():
 	shoot()
+func _input(event):
+	if not is_placed:
+		return
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var mouse_pos = get_global_mouse_position()
+		var space = get_world_2d().direct_space_state
+		var query = PhysicsPointQueryParameters2D.new()
+		query.position = mouse_pos
+		query.collide_with_bodies = true
+		var results = space.intersect_point(query)
+		for result in results:
+			if result["collider"] == self:
+				Signal_Bus.tower_selected.emit(self)
+				break
+#Upgrading:
+var tower_name = "Soldier Turt"
+var upgrades = {
+	"left": {
+		"name": "Machine Gunner Path",
+		"tiers": [
+			{"label": "+25% Fire Rate", "cost": 75},
+			{"label": "+50% Fire Rate", "cost": 150},
+			{"label": "Double Shot", "cost": 300}
+		]
+	},
+	"right": {
+		"name": "Sniper Path",
+		"tiers": [
+			{"label": "1.5x Range", "cost": 100},
+			{"label": "3x Damage, .33x Fire Rate", "cost": 200},
+			{"label": "Unlimited Range", "cost": 500}
+		]
+	}
+}
+var left_level = 0
+var right_level = 0
+var chosen_branch = ""
+
+func purchase_upgrade(branch: String):
+	if chosen_branch == "":
+		chosen_branch = branch
+	elif chosen_branch != branch:
+		return
+	
+	var cost = 0
+	if branch == "left":
+		cost = upgrades["left"]["tiers"][left_level]["cost"]
+	elif branch == "right":
+		cost = upgrades["right"]["tiers"][right_level]["cost"]
+	
+	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
+	if currency_manager.shellings < cost:
+		return
+	currency_manager.spend_shellings(cost)
+	
+	if branch == "left":
+		apply_left_upgrade()
+		left_level += 1
+	elif branch == "right":
+		apply_right_upgrade()
+		right_level += 1
+
+func apply_left_upgrade():
+	match left_level:
+		0: fire_rate *= .8
+		1: fire_rate *= .667
+		2: double_shot = true
+
+func apply_right_upgrade():
+	match right_level:
+		0: detection_area.scale *= 1.5
+		1:
+			damage_multiplier *= 3.0
+			fire_rate *= 0.33
+		2: detection_area.scale *= 20

@@ -412,6 +412,8 @@ offset_left = 1.0
 offset_top = 315.0
 offset_right = 234.0
 offset_bottom = 580.0
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
 script = ExtResource("34_fr0rq")
 
 [node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/UpgradePanel" unique_id=836714586]
@@ -475,6 +477,7 @@ layout_mode = 2
 [node name="left_top3" type="Button" parent="UI/CanvasLayer/UpgradePanel/HBoxContainer/LeftButtons" unique_id=1006637613]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
+action_mode = 0
 
 [node name="RightButtons" type="VBoxContainer" parent="UI/CanvasLayer/UpgradePanel/HBoxContainer" unique_id=1571578415]
 layout_mode = 2
@@ -499,6 +502,7 @@ custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 action_mode = 0
 
+[connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/sell_button" to="UI/CanvasLayer/UpgradePanel" method="_on_sell_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/HBoxContainer/LeftButtons/left_top" to="UI/CanvasLayer/UpgradePanel" method="_on_left_upgrade_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/HBoxContainer/LeftButtons/left_top2" to="UI/CanvasLayer/UpgradePanel" method="_on_left_upgrade_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/HBoxContainer/LeftButtons/left_top3" to="UI/CanvasLayer/UpgradePanel" method="_on_left_upgrade_pressed"]
