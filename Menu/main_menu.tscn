@@ -548,7 +548,7 @@ offset_right = 187.0
 offset_bottom = 35.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Paper Airplane"
+text = "Ace Tower"
 horizontal_alignment = 1
 
 [node name="PaperAirplane" type="Sprite2D" parent="TowersLayer/6" unique_id=1811139515]
