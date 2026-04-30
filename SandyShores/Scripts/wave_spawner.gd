@@ -1,6 +1,6 @@
 extends Node
 
-@onready var play_button = get_node("/root/Game/UI/HBoxContainer/PlayButton")
+@onready var play_button = get_tree().current_scene.find_child("PlayButton", true, false)
 
 @export var enemy_path: Path2D
 @export var wave_label: Label

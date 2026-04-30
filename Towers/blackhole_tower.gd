@@ -4,7 +4,7 @@ extends StaticBody2D
 @export var fire_rate: float = 3.0
 @export var pull_offset: float = 4000.0
 
-@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
+@onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer
 @onready var detection_area = $Range

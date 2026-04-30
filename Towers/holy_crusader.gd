@@ -5,7 +5,7 @@ extends Node2D
 @export var is_placed: bool = false
 @onready var range_area = $Range
 @onready var collision_shape = $Range/CollisionShape2D
-@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
+@onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
 var beam_scene = preload("res://towers/holybeam.tscn")
 var targets_in_range: Array = []
 var rng = RandomNumberGenerator.new()

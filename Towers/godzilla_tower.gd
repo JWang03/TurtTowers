@@ -6,7 +6,7 @@ extends StaticBody2D
 @export var wobble_speed: float = 50.0
 @export var cost: float = 25
 
-@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
+@onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
 @onready var head = $Head
 @onready var laser_ray = $Head/RayCast2D
 @onready var laser_line = $Head/Line2D

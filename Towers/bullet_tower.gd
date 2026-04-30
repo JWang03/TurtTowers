@@ -6,7 +6,7 @@ extends StaticBody2D
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer
 @onready var detection_area = $Range
-@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
+@onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
 var targets_in_range: Array = []
 
 var bullet_scene = preload("res://Towers/bullet.tscn")

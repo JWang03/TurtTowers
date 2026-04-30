@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var damage = 5
 @export var speed_modifier = 1.0
 
-@onready var starter = get_node("/root/Game/UI/HBoxContainer/PlayButton")
+@onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
 @onready var ray_cast = $RayCast2D 
 @onready var loss_conditions = get_node("/root/Game/UI/HUD/LossConditions")
 @onready var currency = get_node("/root/Game/UI/HUD/CurrencyManager")
