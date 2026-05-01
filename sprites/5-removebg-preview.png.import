@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://so1cunwi21ay"
-path="res://.godot/imported/Abstract.png-2eb5768310f62eaf949cd98442c4dea5.ctex"
+uid="uid://cr2ibyj6b3i3l"
+path="res://.godot/imported/5-removebg-preview.png-54ce0849865151bc94390e0a58bc0f13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Towers/Abstract.png"
-dest_files=["res://.godot/imported/Abstract.png-2eb5768310f62eaf949cd98442c4dea5.ctex"]
+source_file="res://sprites/5-removebg-preview.png"
+dest_files=["res://.godot/imported/5-removebg-preview.png-54ce0849865151bc94390e0a58bc0f13.ctex"]
 
 [params]
 

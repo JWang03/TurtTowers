@@ -3,12 +3,40 @@
 [ext_resource type="Script" uid="uid://dq36j5gvvelsg" path="res://Towers/turttttt.gd" id="1_mbxih"]
 [ext_resource type="Texture2D" uid="uid://ctarv37negb7v" path="res://textures/Sahur.png" id="2_sahur"]
 [ext_resource type="Texture2D" uid="uid://b4ml2exo21fbf" path="res://textures/Bat.png" id="3_bat"]
+[ext_resource type="Texture2D" uid="uid://di2u03btw5mqq" path="res://sprites/Gen-4_Turbo_-_The_character_s_right_arm_slowly_raises_the_baseball_bat_from_its_resting_position_at_001.jpg" id="4_7xjsm"]
+[ext_resource type="Texture2D" uid="uid://c3hl3y58iyolc" path="res://sprites/Gen-4_Turbo_-_The_character_s_right_arm_slowly_raises_the_baseball_bat_from_its_resting_position_at_002.jpg" id="5_g1nug"]
+[ext_resource type="Texture2D" uid="uid://dwmmk4jcabus4" path="res://sprites/Gen-4_Turbo_-_The_character_s_right_arm_slowly_raises_the_baseball_bat_from_its_resting_position_at_003.jpg" id="6_3ngs3"]
+[ext_resource type="Texture2D" uid="uid://dq7hwexu2v4qo" path="res://sprites/Gen-4_Turbo_-_The_character_s_right_arm_slowly_raises_the_baseball_bat_from_its_resting_position_at_004.jpg" id="7_xppt0"]
+[ext_resource type="Texture2D" uid="uid://qdtdh2ub8y8l" path="res://sprites/Gen-4_Turbo_-_The_character_s_right_arm_slowly_raises_the_baseball_bat_from_its_resting_position_at_010.jpg" id="8_ohgqo"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_turt1"]
+points = PackedVector2Array(-8, -10, 0, -14, 10, -8, 14, 8, 6, 14, -9, 13, -13, 5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_turt1"]
 radius = 120.0
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_turt1"]
-points = PackedVector2Array(-8, -10, 0, -14, 10, -8, 14, 8, 6, 14, -9, 13, -13, 5)
+[sub_resource type="SpriteFrames" id="SpriteFrames_7hqp1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7xjsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g1nug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3ngs3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xppt0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ohgqo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="turttttt" type="StaticBody2D" unique_id=2055387956]
 collision_mask = 2
@@ -22,9 +50,10 @@ texture = ExtResource("2_sahur")
 position = Vector2(6, -8)
 
 [node name="BatSprite" type="Sprite2D" parent="BatPivot" unique_id=607341821]
+position = Vector2(-23, 33)
 scale = Vector2(0.08, 0.08)
-offset = Vector2(0, -12)
 texture = ExtResource("3_bat")
+offset = Vector2(0, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1618151517]
 shape = SubResource("ConvexPolygonShape2D_turt1")
@@ -35,6 +64,6 @@ shape = SubResource("ConvexPolygonShape2D_turt1")
 shape = SubResource("CircleShape2D_turt1")
 
 [node name="Timer" type="Timer" parent="." unique_id=328428747]
-wait_time = 1.0
-one_shot = false
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1481270462]
+sprite_frames = SubResource("SpriteFrames_7hqp1")

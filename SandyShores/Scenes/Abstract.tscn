@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ym3u26vdpw1g" path="res://textures/BL_CornerTrack.png" id="4_ft65p"]
 [ext_resource type="Texture2D" uid="uid://7kvkhhfaf07o" path="res://textures/mothershell.png" id="5_8l8c0"]
 [ext_resource type="Texture2D" uid="uid://b8sdoqhbwaax3" path="res://textures/BR_CornerTrack.png" id="5_gr430"]
-[ext_resource type="Texture2D" uid="uid://so1cunwi21ay" path="res://Towers/Abstract.png" id="5_gvbs8"]
+[ext_resource type="Texture2D" uid="uid://b26webspvxsri" path="res://textures/Abstract.png" id="5_gvbs8"]
 [ext_resource type="Script" uid="uid://byowlyow01qce" path="res://SandyShores/Scripts/build_manager.gd" id="6_06ii1"]
 [ext_resource type="Texture2D" uid="uid://cyhitvs4oq60n" path="res://textures/HorizontalTrack.png" id="6_sdjqy"]
 [ext_resource type="Texture2D" uid="uid://b8ybomgsu8vbw" path="res://textures/TL_CornerTrack.png" id="7_av1he"]
@@ -122,6 +122,20 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 514, -15, 0, 0, 0, 0, 514, 296, 0, 0, 0, 0, 83, 296, 0, 0, 0, 0, 80, 24, 0, 0, 0, 0, 350, 24, 0, 0, 0, 0, 352, 406, 0, 0, 0, 0, 620, 404, 0, 0, 0, 0, 620, 245, 0, 0, 0, 0, 835, 242, 0, 0, 0, 0, 836, 514, 0, 0, 0, 0, 672, 514, 0, 0, 0, 0, 670, 568, 0, 0, 0, 0, -30, 568)
 }
 point_count = 13
+
+[sub_resource type="SystemFont" id="SystemFont_8audr"]
+font_names = PackedStringArray("Comic Sans MS")
+font_weight = 700
+
+[sub_resource type="SystemFont" id="SystemFont_fwthh"]
+font_names = PackedStringArray("Comic Sans MS")
+font_weight = 700
+hinting = 2
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_a4xci"]
+
+[sub_resource type="SystemFont" id="SystemFont_gctuh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fpuwm"]
 
@@ -269,20 +283,6 @@ shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
 shadow_size = 3
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="SystemFont" id="SystemFont_8audr"]
-font_names = PackedStringArray("Comic Sans MS")
-font_weight = 700
-
-[sub_resource type="SystemFont" id="SystemFont_fwthh"]
-font_names = PackedStringArray("Comic Sans MS")
-font_weight = 700
-hinting = 2
-subpixel_positioning = 0
-
-[sub_resource type="SystemFont" id="SystemFont_a4xci"]
-
-[sub_resource type="SystemFont" id="SystemFont_gctuh"]
-
 [node name="Game" type="Node2D" unique_id=2110147607]
 z_index = -100
 z_as_relative = false
@@ -341,78 +341,6 @@ offset_left = -2.0
 offset_top = 1.0
 offset_right = 1149.0
 offset_bottom = 646.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=1273429995]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 0
-offset_left = 10.0
-offset_top = 573.0
-offset_right = 230.0
-offset_bottom = 643.0
-alignment = 1
-
-[node name="Return" type="Button" parent="UI/HBoxContainer" unique_id=1545005244]
-z_index = 4096
-material = SubResource("ShaderMaterial_fpuwm")
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_fwthh")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_086hf")
-theme_override_styles/hover = SubResource("StyleBoxFlat_v0o1d")
-icon = ExtResource("14_gctuh")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("15_6kmh5")
-
-[node name="Settings" type="Button" parent="UI/HBoxContainer" unique_id=1139406464]
-z_index = 4096
-material = SubResource("ShaderMaterial_ro4ig")
-custom_minimum_size = Vector2(70, 30)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_gctuh")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o8s8s")
-theme_override_styles/hover = SubResource("StyleBoxFlat_jtd81")
-icon = ExtResource("16_mhcsl")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("17_60ikt")
-
-[node name="PlayButton" type="Button" parent="UI/HBoxContainer" unique_id=1305984033]
-z_index = 4096
-material = SubResource("ShaderMaterial_ro4ig")
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_a4xci")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_6kmh5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_mhcsl")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("26_ro4ig")
-
-[node name="Resume" type="TextureRect" parent="UI/HBoxContainer/PlayButton" unique_id=783885209]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -28.0
-offset_right = 626.0
-offset_bottom = 341.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("22_gctuh")
-
-[node name="Pause" type="TextureRect" parent="UI/HBoxContainer/PlayButton" unique_id=440238901]
-layout_mode = 0
-offset_left = -16.0
-offset_top = 7.0
-offset_right = 661.0
-offset_bottom = 376.0
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("24_a4xci")
 
 [node name="GUI_buttons" type="Control" parent="UI" unique_id=2113421431]
 anchors_preset = 0
@@ -654,3 +582,75 @@ theme_override_font_sizes/font_size = 48
 text = "You failed to defend 
 the mothershell from
 a pollutant ambush!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=1273429995]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 573.0
+offset_right = 230.0
+offset_bottom = 643.0
+alignment = 1
+
+[node name="Return" type="Button" parent="UI/HBoxContainer" unique_id=1545005244]
+z_index = 4096
+material = SubResource("ShaderMaterial_fpuwm")
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_fwthh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_086hf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_v0o1d")
+icon = ExtResource("14_gctuh")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("15_6kmh5")
+
+[node name="Settings" type="Button" parent="UI/HBoxContainer" unique_id=1139406464]
+z_index = 4096
+material = SubResource("ShaderMaterial_ro4ig")
+custom_minimum_size = Vector2(70, 30)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_gctuh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o8s8s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jtd81")
+icon = ExtResource("16_mhcsl")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("17_60ikt")
+
+[node name="PlayButton" type="Button" parent="UI/HBoxContainer" unique_id=1305984033]
+z_index = 4096
+material = SubResource("ShaderMaterial_ro4ig")
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_a4xci")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6kmh5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mhcsl")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("26_ro4ig")
+
+[node name="Resume" type="TextureRect" parent="UI/HBoxContainer/PlayButton" unique_id=783885209]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -28.0
+offset_right = 626.0
+offset_bottom = 341.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("22_gctuh")
+
+[node name="Pause" type="TextureRect" parent="UI/HBoxContainer/PlayButton" unique_id=440238901]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 7.0
+offset_right = 661.0
+offset_bottom = 376.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("24_a4xci")
