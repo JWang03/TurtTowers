@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+var progress: float:
+	get:
+		return get_parent().progress if get_parent() is PathFollow2D else 0.0
+
 @export var speed: float = 100.0 
 @export var attack_damage: int = 1
 @export var damage = 5

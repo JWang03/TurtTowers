@@ -7,13 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://7kvkhhfaf07o" path="res://textures/mothershell.png" id="5_50yat"]
 [ext_resource type="Script" uid="uid://byowlyow01qce" path="res://SandyShores/Scripts/build_manager.gd" id="6_rjrdg"]
 [ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://SandyShores/Scripts/wave_spawner.gd" id="7_ai02a"]
-[ext_resource type="PackedScene" uid="uid://b1kfgh08ooy8q" path="res://Enemies/oil_spill.tscn" id="8_vjk8x"]
+[ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://enemies/zombie.tscn" id="8_fr0rq"]
 [ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://SandyShores/Scripts/loss_conditions.gd" id="9_50yat"]
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="9_h2mqj"]
-[ext_resource type="PackedScene" uid="uid://cooltchipc56w" path="res://Enemies/algae_bloom.tscn" id="9_n7wjj"]
+[ext_resource type="PackedScene" uid="uid://cooltchipc56w" path="res://enemies/algae_bloom.tscn" id="9_n7wjj"]
 [ext_resource type="Script" uid="uid://n800asycp1sd" path="res://SandyShores/Scripts/bomb_tower.gd" id="9_saejb"]
+[ext_resource type="PackedScene" uid="uid://chk7xpr8woiu3" path="res://enemies/shield_enemy.tscn" id="10_1dk7f"]
 [ext_resource type="PackedScene" uid="uid://dmhok8tovvxvc" path="res://Towers/bomber_tower.tscn" id="10_evw7n"]
-[ext_resource type="PackedScene" uid="uid://bcepi076o27tl" path="res://Enemies/plastic_ring.tscn" id="10_lut2n"]
+[ext_resource type="Script" uid="uid://cjt186qnocwu8" path="res://SandyShores/Scenes/tower_targeting.gd" id="10_vjk8x"]
 [ext_resource type="Script" uid="uid://b110lgne0ntlx" path="res://SandyShores/Scripts/currency_manager.gd" id="10_yrnad"]
 [ext_resource type="PackedScene" uid="uid://do17203pjxuim" path="res://Towers/bullet_tower.tscn" id="11_c26fn"]
 [ext_resource type="PackedScene" uid="uid://d2l8b5nykdqdg" path="res://Towers/godzilla_tower.tscn" id="12_hxeer"]
@@ -130,9 +131,9 @@ script = ExtResource("6_rjrdg")
 script = ExtResource("7_ai02a")
 enemy_path = NodePath("../EnemyPath")
 wave_label = NodePath("../UI/HUD/Waves/WaveLabel")
-enemy1 = ExtResource("8_vjk8x")
+enemy1 = ExtResource("8_fr0rq")
 enemy2 = ExtResource("9_n7wjj")
-enemy3 = ExtResource("10_lut2n")
+enemy3 = ExtResource("10_1dk7f")
 
 [node name="EnemyPath" type="Path2D" parent="." unique_id=367750900]
 position = Vector2(228, 0)
@@ -146,12 +147,28 @@ offset_top = 1.0
 offset_right = 1149.0
 offset_bottom = 646.0
 
+[node name="targeting" type="Control" parent="UI" unique_id=1441167793]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="tower_targeting" type="Button" parent="UI/targeting" unique_id=1695660404]
+z_index = 4096
+z_as_relative = false
+layout_mode = 0
+offset_left = 282.0
+offset_top = 41.0
+offset_right = 493.0
+offset_bottom = 160.0
+text = "tower targeting
+"
+script = ExtResource("10_vjk8x")
+
 [node name="ShopPanel" type="Control" parent="UI" unique_id=827478311]
 anchors_preset = 0
 offset_left = 7.0
-offset_top = -1.0
 offset_right = 230.0
-offset_bottom = 648.0
+offset_bottom = 649.0
 
 [node name="BombButton" type="TextureButton" parent="UI/ShopPanel" unique_id=2072775595]
 z_index = 4096
