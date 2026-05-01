@@ -9,6 +9,7 @@ extends StaticBody2D
 @onready var range_area = $Range
 @onready var bat_pivot = $BatPivot
 @onready var attack_timer = $Timer
+@onready var anim_sprite = $AnimatedSprite2D
 
 const BAT_REST_ROTATION: float = -0.8
 const BAT_SWING_ROTATION: float = 0.8
@@ -59,6 +60,7 @@ func swing_bat(target):
 	if bat_swinging:
 		return
 	bat_swinging = true
+	anim_sprite.play()
 	if current_slow_target and current_slow_target != target:
 		clear_slow_effect(current_slow_target)
 	current_slow_target = target
@@ -66,8 +68,10 @@ func swing_bat(target):
 	tween.tween_property(bat_pivot, "rotation", BAT_SWING_ROTATION, 0.15)
 	tween.tween_callback(_apply_hit.bind(target))
 	tween.tween_property(bat_pivot, "rotation", BAT_REST_ROTATION, 0.2)
-	tween.tween_callback(func(): bat_swinging = false)
-	tween.finished.connect(func(): bat_swinging = false)
+	tween.tween_callback(func():
+		bat_swinging = false
+		anim_sprite.stop()
+	)
 
 func _apply_hit(target):
 	if not is_instance_valid(target):
