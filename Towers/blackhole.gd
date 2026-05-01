@@ -39,35 +39,27 @@ func pull_entities(delta):
 		if not body.is_in_group("zombies"):
 			continue
 
-		# The enemy is a PathFollow2D or is a child of one —
-		# walk up the tree to find the PathFollow2D owner
 		var follower = get_path_follower(body)
 		if follower == null:
 			continue
 
 		var dist = global_position.distance_to(body.global_position)
 
-		# Sample a small step forward and backward along the path
-		# to determine which direction moves the enemy closer to the hole
 		var step = pull_strength * delta
 		var progress_forward  = follower.progress + step
 		var progress_backward = follower.progress - step
 
-		var path = follower.get_parent() # the Path2D
-		# Clamp to path bounds
+		var path = follower.get_parent()
 		var path_len = path.curve.get_baked_length()
 		progress_forward  = clamp(progress_forward,  0.0, path_len)
 		progress_backward = clamp(progress_backward, 0.0, path_len)
 
-		# Sample world positions at each candidate progress value
 		var pos_forward  = path.to_global(path.curve.sample_baked(progress_forward))
 		var pos_backward = path.to_global(path.curve.sample_baked(progress_backward))
 
 		var dist_forward  = global_position.distance_to(pos_forward)
 		var dist_backward = global_position.distance_to(pos_backward)
 
-		# Move whichever direction brings the enemy closer,
-		# scaled by proximity so it accelerates as it gets sucked in
 		var proximity_scale = pull_strength / max(dist, 1.0)
 		var actual_step = proximity_scale * delta
 
@@ -79,8 +71,6 @@ func pull_entities(delta):
 		if body.has_method("take_damage"):
 			body.take_damage(damage_per_second * delta)
 
-# Walk up the scene tree from the body to find a PathFollow2D.
-# Handles both "body IS the follower" and "body is a child of the follower".
 func get_path_follower(body: Node) -> PathFollow2D:
 	var node = body
 	while node != null:
