@@ -148,8 +148,8 @@ func purchase_upgrade(branch: String):
 
 func apply_left_upgrade():
 	match left_level:
-		0: fire_rate *= 1.25
-		1: fire_rate *= 1.5
+		0: fire_rate *= .8
+		1: fire_rate *= .667
 		2: double_shot = true
 
 func apply_right_upgrade():
@@ -157,5 +157,5 @@ func apply_right_upgrade():
 		0: detection_area.scale *= 1.5
 		1:
 			damage_multiplier *= 3.0
-			fire_rate *= 0.33
+			fire_rate *= 3
 		2: detection_area.scale *= 20

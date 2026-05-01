@@ -1,25 +1,20 @@
 extends Control
-
 var current_tower = null
-
 func _ready():
 	visible = false
 	Signal_Bus.tower_selected.connect(_on_tower_selected)
 	Signal_Bus.tower_deselected.connect(_on_tower_deselected)
-
 func _on_tower_selected(tower):
 	current_tower = tower
 	populate(tower)
 	visible = true
-
 func _on_tower_deselected():
 	current_tower = null
 	visible = false
-
 func populate(tower):
-	$TowerName.text = tower.tower_name
-	$HBoxContainer/LeftButtons/LeftPathLabel.text = tower.upgrades["left"]["name"]
-	$HBoxContainer/RightButtons/RightPathLabel.text = tower.upgrades["right"]["name"]
+	$VBoxContainer/TowerName.text = tower.tower_name
+	$VBoxContainer/HBoxContainer/LeftButtons/LeftPathLabel.text = tower.upgrades["left"]["name"]
+	$VBoxContainer/HBoxContainer/RightButtons/RightPathLabel.text = tower.upgrades["right"]["name"]
 	
 	var left_tiers = tower.upgrades["left"]["tiers"]
 	var right_tiers = tower.upgrades["right"]["tiers"]
@@ -28,7 +23,7 @@ func populate(tower):
 	var right_locked = tower.chosen_branch == "left"
 	
 	for i in range(3):
-		var btn = $HBoxContainer/LeftButtons.get_child(i + 1)
+		var btn = $VBoxContainer/HBoxContainer/LeftButtons.get_child(i + 1)
 		if left_locked:
 			btn.text = "Locked"
 			btn.disabled = true
@@ -43,7 +38,7 @@ func populate(tower):
 			btn.disabled = true
 	
 	for i in range(3):
-		var btn = $HBoxContainer/RightButtons.get_child(i + 1)
+		var btn = $VBoxContainer/HBoxContainer/RightButtons.get_child(i + 1)
 		if right_locked:
 			btn.text = "Locked"
 			btn.disabled = true
@@ -56,19 +51,14 @@ func populate(tower):
 		else:
 			btn.text = right_tiers[i]["label"]
 			btn.disabled = true
-
 func _on_left_upgrade_pressed():
-	print("current_tower: ", current_tower)
-	print("left pressed, current_tower: ", current_tower)
 	if current_tower:
 		current_tower.purchase_upgrade("left")
 		populate(current_tower)
-
 func _on_right_upgrade_pressed():
 	if current_tower:
 		current_tower.purchase_upgrade("right")
 		populate(current_tower)
-
 func _on_sell_pressed():
 	if current_tower:
 		var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")

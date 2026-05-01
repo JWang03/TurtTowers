@@ -152,18 +152,18 @@ func _input(event):
 				Signal_Bus.tower_selected.emit(self)
 				break
 #Upgrading:
-var tower_name = "Soldier Turt"
+var tower_name = "Demolition Turt"
 var upgrades = {
 	"left": {
-		"name": "Machine Gunner Path",
+		"name": "Cluster Bomber",
 		"tiers": [
-			{"label": "+25% Fire Rate", "cost": 75},
-			{"label": "+50% Fire Rate", "cost": 150},
-			{"label": "Double Shot", "cost": 300}
+			{"label": "+1 Bomb", "cost": 75},
+			{"label": "+1 Bomb", "cost": 150},
+			{"label": "+1 Bomb", "cost": 300}
 		]
 	},
 	"right": {
-		"name": "Sniper Path",
+		"name": "Missile Menace",
 		"tiers": [
 			{"label": "1.5x Range", "cost": 100},
 			{"label": "3x Damage, .33x Fire Rate", "cost": 200},
