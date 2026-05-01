@@ -3,11 +3,21 @@
 [ext_resource type="Script" uid="uid://dq36j5gvvelsg" path="res://Towers/turttttt.gd" id="1_mbxih"]
 [ext_resource type="Texture2D" uid="uid://ctarv37negb7v" path="res://textures/Sahur.png" id="2_sahur"]
 [ext_resource type="Texture2D" uid="uid://b4ml2exo21fbf" path="res://textures/Bat.png" id="3_bat"]
-[ext_resource type="Texture2D" uid="uid://di2u03btw5mqq" path="res://sprites/Gen-4_Turbo_-_The_character_s_right_arm_slowly_raises_the_baseball_bat_from_its_resting_position_at_001.jpg" id="4_7xjsm"]
-[ext_resource type="Texture2D" uid="uid://c3hl3y58iyolc" path="res://sprites/Gen-4_Turbo_-_The_character_s_right_arm_slowly_raises_the_baseball_bat_from_its_resting_position_at_002.jpg" id="5_g1nug"]
-[ext_resource type="Texture2D" uid="uid://dwmmk4jcabus4" path="res://sprites/Gen-4_Turbo_-_The_character_s_right_arm_slowly_raises_the_baseball_bat_from_its_resting_position_at_003.jpg" id="6_3ngs3"]
-[ext_resource type="Texture2D" uid="uid://dq7hwexu2v4qo" path="res://sprites/Gen-4_Turbo_-_The_character_s_right_arm_slowly_raises_the_baseball_bat_from_its_resting_position_at_004.jpg" id="7_xppt0"]
-[ext_resource type="Texture2D" uid="uid://qdtdh2ub8y8l" path="res://sprites/Gen-4_Turbo_-_The_character_s_right_arm_slowly_raises_the_baseball_bat_from_its_resting_position_at_010.jpg" id="8_ohgqo"]
+[ext_resource type="Texture2D" uid="uid://i5kkuyhrulpa" path="res://sprites/1-removebg-preview.png" id="4_6eigc"]
+[ext_resource type="Texture2D" uid="uid://8gxpxc018vtd" path="res://sprites/2-removebg-preview.png" id="5_wv6h1"]
+[ext_resource type="Texture2D" uid="uid://bclo1xv8usmwp" path="res://sprites/3-removebg-preview.png" id="6_d5kuh"]
+[ext_resource type="Texture2D" uid="uid://cyxv8hy0xaly6" path="res://sprites/4-removebg-preview.png" id="7_1lncr"]
+[ext_resource type="Texture2D" uid="uid://cr2ibyj6b3i3l" path="res://sprites/5-removebg-preview.png" id="8_ykqb0"]
+[ext_resource type="Texture2D" uid="uid://bjyqdx8ea1mii" path="res://sprites/6-removebg-preview.png" id="9_gibmd"]
+[ext_resource type="Texture2D" uid="uid://rf4p1ep4yslm" path="res://sprites/7-removebg-preview.png" id="10_k1eqq"]
+[ext_resource type="Texture2D" uid="uid://cilho7oktbp8v" path="res://sprites/8-removebg-preview.png" id="11_i1gqn"]
+[ext_resource type="Texture2D" uid="uid://c7bvejixutpsy" path="res://sprites/9-removebg-preview.png" id="12_pgfde"]
+[ext_resource type="Texture2D" uid="uid://xknfce0iuhlb" path="res://sprites/10-removebg-preview.png" id="13_aj0bg"]
+[ext_resource type="Texture2D" uid="uid://up6052wmy53y" path="res://sprites/11-removebg-preview.png" id="14_qs6rc"]
+[ext_resource type="Texture2D" uid="uid://cmg315db6lyeq" path="res://sprites/12-removebg-preview.png" id="15_1gti6"]
+[ext_resource type="Texture2D" uid="uid://b4pdsc4p3v484" path="res://sprites/13-removebg-preview.png" id="16_6mcci"]
+[ext_resource type="Texture2D" uid="uid://cyw3pxd6r5765" path="res://sprites/14-removebg-preview.png" id="17_ltapi"]
+[ext_resource type="Texture2D" uid="uid://cledx1aeam3ju" path="res://sprites/15-removebg-preview.png" id="18_vtqc8"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_turt1"]
 points = PackedVector2Array(-8, -10, 0, -14, 10, -8, 14, 8, 6, 14, -9, 13, -13, 5)
@@ -19,19 +29,64 @@ radius = 120.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_7xjsm")
+"texture": ExtResource("4_6eigc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_g1nug")
+"texture": ExtResource("5_wv6h1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_3ngs3")
+"texture": ExtResource("6_d5kuh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_xppt0")
+"texture": ExtResource("7_1lncr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_ohgqo")
+"texture": ExtResource("8_ykqb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gibmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_k1eqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_i1gqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pgfde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_aj0bg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qs6rc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1gti6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6mcci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ltapi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_vtqc8")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": true,
 "name": &"default",
@@ -67,3 +122,5 @@ shape = SubResource("CircleShape2D_turt1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1481270462]
 sprite_frames = SubResource("SpriteFrames_7hqp1")
+frame = 1
+frame_progress = 0.82216555
