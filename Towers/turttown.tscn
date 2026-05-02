@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://67hd02tun5we"]
+
+[node name="turttown" type="StaticBody2D" unique_id=1028192946]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1634713713]
