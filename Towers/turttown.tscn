@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://67hd02tun5we"]
 
-[ext_resource type="Script" uid="uid://c8turttown0gd1" path="res://Towers/turttown.gd" id="1_trttwn"]
-[ext_resource type="Texture2D" uid="uid://ctarv37negb7v" path="res://textures/Sahur.png" id="2_trttwn"]
+[ext_resource type="Script" path="res://Towers/turttown.gd" id="1_trttwn"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/image-removebg-preview.png" id="2_b8dax"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
 radius = 18.0
@@ -14,14 +14,13 @@ script = ExtResource("1_trttwn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1634713713]
 scale = Vector2(0.12, 0.12)
-texture = ExtResource("2_trttwn")
+texture = ExtResource("2_b8dax")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1028192947]
 shape = SubResource("CircleShape2D_body")
 
 [node name="Range" type="Area2D" parent="." unique_id=1028192948]
 collision_layer = 0
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1028192949]
 shape = SubResource("CircleShape2D_range")
