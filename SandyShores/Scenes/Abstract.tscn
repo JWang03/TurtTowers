@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ym3u26vdpw1g" path="res://textures/BL_CornerTrack.png" id="4_ft65p"]
 [ext_resource type="Texture2D" uid="uid://7kvkhhfaf07o" path="res://textures/mothershell.png" id="5_8l8c0"]
 [ext_resource type="Texture2D" uid="uid://b8sdoqhbwaax3" path="res://textures/BR_CornerTrack.png" id="5_gr430"]
-[ext_resource type="Texture2D" uid="uid://b26webspvxsri" path="res://textures/Abstract.png" id="5_gvbs8"]
+[ext_resource type="Texture2D" uid="uid://so1cunwi21ay" path="res://textures/Abstract.png" id="5_gvbs8"]
 [ext_resource type="Script" uid="uid://byowlyow01qce" path="res://SandyShores/Scripts/build_manager.gd" id="6_06ii1"]
 [ext_resource type="Texture2D" uid="uid://cyhitvs4oq60n" path="res://textures/HorizontalTrack.png" id="6_sdjqy"]
 [ext_resource type="Texture2D" uid="uid://b8ybomgsu8vbw" path="res://textures/TL_CornerTrack.png" id="7_av1he"]
@@ -43,6 +43,10 @@
 [ext_resource type="PackedScene" uid="uid://cfxko1b87aspq" path="res://Towers/paperplane.tscn" id="28_r0ofv"]
 [ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="29_f2y8k"]
 [ext_resource type="PackedScene" uid="uid://hovc6xdbesyd" path="res://Towers/holy_crusader.tscn" id="30_gdn63"]
+[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="32_mhcsl"]
+[ext_resource type="PackedScene" uid="uid://btwem1yvxgacj" path="res://Towers/turttttt.tscn" id="33_60ikt"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/image-removebg-preview.png" id="34_fpuwm"]
+[ext_resource type="PackedScene" uid="uid://67hd02tun5we" path="res://Towers/turttown.tscn" id="35_086hf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_gvbs8")
@@ -451,6 +455,34 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("10_av1he")
 tower_scene = ExtResource("30_gdn63")
+
+[node name="Turttttt" type="TextureButton" parent="UI/ShopPanel" unique_id=1951857114]
+z_index = 4096
+z_as_relative = false
+layout_mode = 0
+offset_left = 83.0
+offset_top = 318.0
+offset_right = 155.0
+offset_bottom = 379.0
+texture_normal = ExtResource("32_mhcsl")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("10_av1he")
+tower_scene = ExtResource("33_60ikt")
+
+[node name="TurtTown" type="TextureButton" parent="UI/ShopPanel" unique_id=1416132382]
+z_index = 4096
+z_as_relative = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 420.0
+offset_right = 72.0
+offset_bottom = 470.0
+texture_normal = ExtResource("34_fpuwm")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("10_av1he")
+tower_scene = ExtResource("35_086hf")
 
 [node name="HUD" type="Control" parent="UI" unique_id=638042007]
 anchors_preset = 0

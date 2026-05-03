@@ -35,9 +35,10 @@
 [ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="23_fr0rq"]
 [ext_resource type="PackedScene" uid="uid://hovc6xdbesyd" path="res://Towers/holy_crusader.tscn" id="24_1dk7f"]
 [ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="25_turt"]
+[ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="26_etoju"]
 [ext_resource type="PackedScene" uid="uid://btwem1yvxgacj" path="res://Towers/turttttt.tscn" id="26_turt"]
 [ext_resource type="PackedScene" uid="uid://67hd02tun5we" path="res://Towers/turttown.tscn" id="27_turt"]
-[ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="26_etoju"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/image-removebg-preview.png" id="28_3kv1k"]
 [ext_resource type="Texture2D" uid="uid://cf3ilal0r2oba" path="res://textures/Resume.png" id="36_6cp8d"]
 [ext_resource type="Texture2D" uid="uid://dvxhwiq86ypku" path="res://textures/Pause.png" id="37_em8d2"]
 
@@ -408,10 +409,10 @@ tower_scene = ExtResource("24_1dk7f")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -450.0
-offset_top = 314.0
-offset_right = -373.0
-offset_bottom = 384.0
+offset_left = -446.0
+offset_top = 319.0
+offset_right = -374.0
+offset_bottom = 380.0
 texture_normal = ExtResource("25_turt")
 ignore_texture_size = true
 stretch_mode = 5
@@ -422,11 +423,11 @@ tower_scene = ExtResource("26_turt")
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -532.0
-offset_top = 393.0
-offset_right = -455.0
-offset_bottom = 463.0
-texture_normal = ExtResource("25_turt")
+offset_left = -528.0
+offset_top = 420.0
+offset_right = -458.0
+offset_bottom = 470.0
+texture_normal = ExtResource("28_3kv1k")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
