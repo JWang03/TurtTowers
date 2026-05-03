@@ -23,6 +23,7 @@ func _on_selection_changed(selected_scene) -> void:
 			ghost_tower = preview
 			tower_container.add_child(ghost_tower)
 			ghost_tower.modulate.a = 0.5
+
 func _process(_delta: float) -> void:
 	if ghost_tower == null:
 		return
