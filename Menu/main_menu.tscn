@@ -16,6 +16,7 @@
 [ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://exit_button.tres" id="13_o4wy8"]
 [ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="15_dqyvv"]
 [ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="16_m8x2t"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/image-removebg-preview.png" id="17_trttn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
@@ -619,7 +620,13 @@ offset_right = 187.0
 offset_bottom = 35.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
+text = "Turt Town"
 horizontal_alignment = 1
+
+[node name="TurtTown" type="Sprite2D" parent="TowersLayer/9" unique_id=9009]
+position = Vector2(91, 119)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("17_trttn")
 
 [node name="10" type="ColorRect" parent="TowersLayer" unique_id=101001001]
 material = SubResource("ShaderMaterial_cn2sd")

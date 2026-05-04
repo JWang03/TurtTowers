@@ -34,6 +34,10 @@
 [ext_resource type="Texture2D" uid="uid://c5dersis5dsos" path="res://textures/PlayButton.png" id="25_sxldm"]
 [ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="26_etoju"]
 [ext_resource type="Texture2D" uid="uid://djk3jttptdl7f" path="res://textures/PauseButton.png" id="27_ci5cp"]
+[ext_resource type="PackedScene" uid="uid://btwem1yvxgacj" path="res://Towers/turttttt.tscn" id="28_trtts"]
+[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="29_trtts"]
+[ext_resource type="PackedScene" uid="uid://67hd02tun5we" path="res://Towers/turttown.tscn" id="30_trtts"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/image-removebg-preview.png" id="31_trtts"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_je2ct")
@@ -267,6 +271,34 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("24_1dk7f")
+
+[node name="TurtSahurButton" type="TextureButton" parent="UI/ShopPanel" unique_id=9001]
+z_index = 4096
+z_as_relative = false
+layout_mode = 1
+offset_left = 87.0
+offset_top = 321.0
+offset_right = 154.0
+offset_bottom = 391.0
+texture_normal = ExtResource("29_trtts")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("9_saejb")
+tower_scene = ExtResource("28_trtts")
+
+[node name="TurtTownButton" type="TextureButton" parent="UI/ShopPanel" unique_id=9002]
+z_index = 4096
+z_as_relative = false
+layout_mode = 1
+offset_left = 4.0
+offset_top = 417.0
+offset_right = 68.0
+offset_bottom = 487.0
+texture_normal = ExtResource("31_trtts")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("9_saejb")
+tower_scene = ExtResource("30_trtts")
 
 [node name="Start_Pause" type="Control" parent="UI" unique_id=1647321012]
 anchors_preset = 0
