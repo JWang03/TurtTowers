@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://so1cunwi21ay"
-path="res://.godot/imported/Abstract.png-4c9e3c4aa81c42aece563f07839f0240.ctex"
+uid="uid://ctarv37negb7v"
+path="res://.godot/imported/Sahur.png-28ea979ada1a0358cfe5c225e3de5e2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Abstract.png"
-dest_files=["res://.godot/imported/Abstract.png-4c9e3c4aa81c42aece563f07839f0240.ctex"]
+source_file="res://textures/Sahur.png"
+dest_files=["res://.godot/imported/Sahur.png-28ea979ada1a0358cfe5c225e3de5e2e.ctex"]
 
 [params]
 

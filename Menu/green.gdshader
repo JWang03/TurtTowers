@@ -1,12 +1,12 @@
 shader_type canvas_item;
-// Natural leaf green — muted, warm, organic
-uniform vec4 top_color : source_color = vec4(0.22, 0.72, 0.18, 1.0);
-// Mid forest green, not too dark
-uniform vec4 bottom_color : source_color = vec4(0.08, 0.45, 0.12, 1.0);
+// Natural mid-tone red, warm and muted
+uniform vec4 top_color : source_color = vec4(0.55, 0.18, 0.18, 1.0);
+// Deep crimson/burgundy
+uniform vec4 bottom_color : source_color = vec4(0.25, 0.05, 0.05, 1.0);
 uniform float radius : hint_range(0.0, 0.5) = 0.15;
 uniform float border_width : hint_range(0.0, 0.1) = 0.025;
-// Slightly lighter border than before
-uniform vec4 border_color : source_color = vec4(0.05, 0.22, 0.07, 1.0);
+// Deep shadow border
+uniform vec4 border_color : source_color = vec4(0.12, 0.03, 0.03, 1.0);
 
 float rounded_box(vec2 center_uv, vec2 size, float r) {
     vec2 q = abs(center_uv) - size + r;

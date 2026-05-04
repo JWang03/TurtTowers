@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da4573ymcncmd"
-path="res://.godot/imported/Settings.png-53bc84bee7bcb980bb86f566683d22e9.ctex"
+uid="uid://b4ml2exo21fbf"
+path="res://.godot/imported/Bat.png-f79f186e9b5a519f707cd02bec541a27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Settings.png"
-dest_files=["res://.godot/imported/Settings.png-53bc84bee7bcb980bb86f566683d22e9.ctex"]
+source_file="res://textures/Bat.png"
+dest_files=["res://.godot/imported/Bat.png-f79f186e9b5a519f707cd02bec541a27.ctex"]
 
 [params]
 
