@@ -12,7 +12,7 @@ var damage_multiplier = 1.0
 var double_shot = false
 var occupied_cell: Vector2i
 var tilemap: TileMapLayer
-
+var hitscan = false
 func _ready():
 	set_process_input(true)
 	timer.wait_time = fire_rate
@@ -78,6 +78,8 @@ func attempt_shot():
 				for offset in offsets:
 					var bullet = bullet_scene.instantiate()
 					bullet.damage *= damage_multiplier
+					if hitscan:
+						bullet.speed *= 1000
 					get_tree().current_scene.add_child(bullet)
 					bullet.global_position = muzzle.global_position
 					bullet.look_at(final_target.global_position)
@@ -99,24 +101,25 @@ func attempt_shot():
 
 func _on_timer_timeout():
 	attempt_shot()
-
+func _process(delta: float) -> void:
+	timer.wait_time = fire_rate
 #Upgrading:
 var tower_name = "Soldier Turt"
 var upgrades = {
 	"left": {
 		"name": "Machine Gunner Path",
 		"tiers": [
-			{"label": "+25% Fire Rate", "cost": 75},
-			{"label": "+50% Fire Rate", "cost": 150},
+			{"label": "Faster Shooting", "cost": 75},
+			{"label": "Faster Shooting 2", "cost": 150},
 			{"label": "Double Shot", "cost": 300}
 		]
 	},
 	"right": {
 		"name": "Sniper Path",
 		"tiers": [
-			{"label": "1.5x Range", "cost": 100},
-			{"label": "3x Damage, .33x Fire Rate", "cost": 200},
-			{"label": "Unlimited Range", "cost": 500}
+			{"label": "Increased Range", "cost": 100},
+			{"label": "High Caliber Bullets", "cost": 200},
+			{"label": "Aimbot", "cost": 700}
 		]
 	}
 }
@@ -158,9 +161,11 @@ func apply_right_upgrade():
 	match right_level:
 		0: detection_area.scale *= 1.5
 		1:
-			damage_multiplier *= 3.0
-			fire_rate *= 3
-		2: detection_area.scale *= 20
+			damage_multiplier *= 15.0
+			fire_rate = 2
+		2: 
+			detection_area.scale *= 20
+			hitscan = true
 
 func sell() -> void:
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")

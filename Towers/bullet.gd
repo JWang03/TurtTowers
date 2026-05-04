@@ -35,10 +35,29 @@ func activate(pos: Vector2, rot: float):
 	process_mode = Node.PROCESS_MODE_INHERIT
 
 func _physics_process(delta):
+	if is_instance_valid(target_node):
+		look_at(target_node.global_position)
 	position += transform.x * speed * delta
 	
 func set_hit_target(node):
 	target_node = node
+	if is_instance_valid(node) and node.has_method("get_parent"):
+		var target_vel = Vector2.ZERO
+		# PathFollow2D moves the enemy, so we estimate velocity from its speed
+		if node.get("speed") != null and node.get("speed_modifier") != null:
+			var follow = node.get_parent()
+			if follow is PathFollow2D:
+				var dir = follow.get_parent().curve.get_point_position(1) - follow.get_parent().curve.get_point_position(0)
+				dir = dir.normalized()
+				target_vel = dir * node.speed * node.speed_modifier
+		
+		# Predict how long the bullet takes to reach the target
+		var dist = global_position.distance_to(node.global_position)
+		var travel_time = dist / speed
+		
+		# Aim at where they'll be
+		var predicted_pos = node.global_position + target_vel * travel_time
+		look_at(predicted_pos)
 
 func _on_body_entered(body):
 	
