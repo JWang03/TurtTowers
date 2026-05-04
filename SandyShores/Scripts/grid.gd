@@ -79,16 +79,13 @@ func _input(event: InputEvent) -> void:
 			if affordable(cost):
 				if tower is Node2D:
 					tower.is_placed = true
+					tower.occupied_cell = cell   # new
+					tower.tilemap = self         # new
 					currency_manager.spend_shellings(cost)
 					tower_container.add_child(tower)
 					tower.position = spawn_pos
 					occupied_cells[cell] = true
 					build_manager.clear()
 
-
-func _on_left_top_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_left_top_2_pressed() -> void:
-	pass # Replace with function body.
+func unoccupy_cell(cell: Vector2i) -> void:
+	occupied_cells.erase(cell)

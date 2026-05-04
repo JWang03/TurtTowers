@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://7kvkhhfaf07o" path="res://textures/mothershell.png" id="5_50yat"]
 [ext_resource type="Script" uid="uid://byowlyow01qce" path="res://SandyShores/Scripts/build_manager.gd" id="6_rjrdg"]
 [ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://SandyShores/Scripts/wave_spawner.gd" id="7_ai02a"]
-[ext_resource type="PackedScene" uid="uid://b1kfgh08ooy8q" path="res://Enemies/oil_spill.tscn" id="8_vjk8x"]
+[ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="8_fr0rq"]
 [ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://SandyShores/Scripts/loss_conditions.gd" id="9_50yat"]
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="9_h2mqj"]
 [ext_resource type="PackedScene" uid="uid://cooltchipc56w" path="res://Enemies/algae_bloom.tscn" id="9_n7wjj"]
@@ -144,7 +144,7 @@ script = ExtResource("6_rjrdg")
 script = ExtResource("7_ai02a")
 enemy_path = NodePath("../EnemyPath")
 wave_label = NodePath("../UI/HUD/Waves/WaveLabel")
-enemy1 = ExtResource("8_vjk8x")
+enemy1 = ExtResource("8_fr0rq")
 enemy2 = ExtResource("9_n7wjj")
 enemy3 = ExtResource("10_lut2n")
 

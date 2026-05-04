@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="2_jymjt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5hxg4"]
-radius = 136.0
-height = 358.0
+radius = 363.0
+height = 726.0
 
 [node name="bomber_tower" type="StaticBody2D" unique_id=460392742]
 script = ExtResource("1_jymjt")

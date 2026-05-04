@@ -10,6 +10,8 @@ var bullet_scene = preload("res://Towers/bullet.tscn")
 var cost: int = 5
 var damage_multiplier = 1.0
 var double_shot = false
+var occupied_cell: Vector2i
+var tilemap: TileMapLayer
 
 func _ready():
 	set_process_input(true)
@@ -159,3 +161,10 @@ func apply_right_upgrade():
 			damage_multiplier *= 3.0
 			fire_rate *= 3
 		2: detection_area.scale *= 20
+
+func sell() -> void:
+	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
+	currency_manager.add_shellings(cost / 2)
+	if tilemap:
+		tilemap.unoccupy_cell(occupied_cell)
+	queue_free()
