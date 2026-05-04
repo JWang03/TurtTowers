@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene format=3 uid="uid://btwem1yvxgacj"]
 
 [ext_resource type="Script" uid="uid://dq36j5gvvelsg" path="res://Towers/turttttt.gd" id="1_mbxih"]
@@ -15,6 +16,25 @@
 [ext_resource type="Texture2D" uid="uid://b4pdsc4p3v484" path="res://frames/13-removebg-preview.png" id="16_6mcci"]
 [ext_resource type="Texture2D" uid="uid://cyw3pxd6r5765" path="res://frames/14-removebg-preview.png" id="17_ltapi"]
 [ext_resource type="Texture2D" uid="uid://cledx1aeam3ju" path="res://frames/15-removebg-preview.png" id="18_vtqc8"]
+=======
+[gd_scene format=3 uid="uid://cwneo85q4to0x"]
+
+[ext_resource type="Script" path="res://Towers/turttttt.gd" id="1_mbxih"]
+[ext_resource type="Texture2D" path="res://frames/1-removebg-preview.png" id="4_6eigc"]
+[ext_resource type="Texture2D" path="res://frames/2-removebg-preview.png" id="5_wv6h1"]
+[ext_resource type="Texture2D" path="res://frames/3-removebg-preview.png" id="6_d5kuh"]
+[ext_resource type="Texture2D" path="res://frames/4-removebg-preview.png" id="7_1lncr"]
+[ext_resource type="Texture2D" path="res://frames/5-removebg-preview.png" id="8_ykqb0"]
+[ext_resource type="Texture2D" path="res://frames/6-removebg-preview.png" id="9_gibmd"]
+[ext_resource type="Texture2D" path="res://frames/7-removebg-preview.png" id="10_k1eqq"]
+[ext_resource type="Texture2D" path="res://frames/8-removebg-preview.png" id="11_i1gqn"]
+[ext_resource type="Texture2D" path="res://frames/9-removebg-preview.png" id="12_pgfde"]
+[ext_resource type="Texture2D" path="res://frames/10-removebg-preview.png" id="13_aj0bg"]
+[ext_resource type="Texture2D" path="res://frames/11-removebg-preview.png" id="14_qs6rc"]
+[ext_resource type="Texture2D" path="res://frames/13-removebg-preview.png" id="16_6mcci"]
+[ext_resource type="Texture2D" path="res://frames/14-removebg-preview.png" id="17_ltapi"]
+[ext_resource type="Texture2D" path="res://frames/15-removebg-preview.png" id="18_vtqc8"]
+>>>>>>> Stashed changes
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7hqp1"]
 animations = [{

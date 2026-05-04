@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 @export var playing := false
 
