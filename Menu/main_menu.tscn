@@ -138,6 +138,7 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dqyvv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_m8x2t")
 
 [node name="MapSelectionLayer" type="CanvasLayer" parent="." unique_id=280550618]
+visible = false
 
 [node name="Darkener" type="ColorRect" parent="MapSelectionLayer" unique_id=472727133]
 anchors_preset = 15
