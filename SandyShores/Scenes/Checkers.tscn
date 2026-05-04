@@ -41,10 +41,6 @@
 [ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="32_seqo6"]
 [ext_resource type="PackedScene" uid="uid://hovc6xdbesyd" path="res://Towers/holy_crusader.tscn" id="32_vbuyy"]
 [ext_resource type="Texture2D" uid="uid://djk3jttptdl7f" path="res://textures/PauseButton.png" id="33_i4qxd"]
-[ext_resource type="PackedScene" uid="uid://btwem1yvxgacj" path="res://Towers/turttttt.tscn" id="34_trtts"]
-[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="35_trtts"]
-[ext_resource type="PackedScene" uid="uid://67hd02tun5we" path="res://Towers/turttown.tscn" id="36_trtts"]
-[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/image-removebg-preview.png" id="37_trtts"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_oydsv")
@@ -229,10 +225,9 @@ texture = ExtResource("11_vbuyy")
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("12_b0jmt")
 
-[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path", "wave_label")]
+[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path")]
 script = ExtResource("13_6jpsd")
 enemy_path = NodePath("../EnemyPath")
-wave_label = NodePath("../UI/HUD/Waves/WaveLabel")
 enemy1 = ExtResource("17_04iuq")
 enemy2 = ExtResource("14_3fwag")
 enemy3 = ExtResource("14_3fwag")
@@ -353,34 +348,6 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("16_68ie1")
 tower_scene = ExtResource("32_vbuyy")
-
-[node name="TurtSahurButton" type="TextureButton" parent="UI/ShopPanel" unique_id=9005]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = 87.0
-offset_top = 321.0
-offset_right = 154.0
-offset_bottom = 391.0
-texture_normal = ExtResource("35_trtts")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("16_68ie1")
-tower_scene = ExtResource("34_trtts")
-
-[node name="TurtTownButton" type="TextureButton" parent="UI/ShopPanel" unique_id=9006]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = 4.0
-offset_top = 417.0
-offset_right = 68.0
-offset_bottom = 487.0
-texture_normal = ExtResource("37_trtts")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("16_68ie1")
-tower_scene = ExtResource("36_trtts")
 
 [node name="Start_Pause" type="Control" parent="UI" unique_id=587196339]
 anchors_preset = 0
