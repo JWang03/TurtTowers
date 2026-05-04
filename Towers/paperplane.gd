@@ -2,10 +2,12 @@ extends CharacterBody2D
 
 @export var flight_speed: float = 45.0
 @export var fire_rate: float = 0.05
-@export var spread_count: int = 24
-@export var spread_angle: float = 15
-@export var cost: int = 20
+@export var spread_count: int = 4
+@export var spread_angle: float = 5
+@export var cost: int = 5
 @export var is_placed: bool = false
+
+
 @onready var path_follow = $Path2D/PathFollow2D
 @onready var muzzle = $Path2D/PathFollow2D/Muzzle
 @onready var shoot_timer = $Timer
@@ -32,9 +34,8 @@ func shoot():
 			var start_angle = -(spread_angle * (spread_count - 1)) / 2.0
 			
 			for i in range(spread_count):
-				var b = BulletPool.get_bullet()
-				if b == null:
-					continue
+				var b = bullet_scene.instantiate()
+				get_tree().root.add_child(b)
 				
 				var shot_rotation = muzzle.global_rotation + deg_to_rad(start_angle + (i * spread_angle))
 				b.activate(muzzle.global_position, shot_rotation)

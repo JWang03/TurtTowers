@@ -13,8 +13,6 @@ func _ready():
 	beam_sprite.visible = false
 	particles.emitting = false
 	telegraph_sprite.modulate.a = 0.0
-	#telegraph_sprite.scale = Vector2(0.1, 0.1)
-	
 	play_strike_sequence()
 
 func play_strike_sequence():
@@ -32,13 +30,33 @@ func play_strike_sequence():
 	
 	tween.tween_property(beam_sprite, "modulate:a", 0, 1.0)
 	tween.parallel().tween_property(beam_sprite, "scale:x", 0.4, 1.8)
-	
-	#tween.tween_interval(1.0) 
 	tween.tween_callback(queue_free)
+
+func get_shield_provider(zombie):
+	var protectors = get_tree().get_nodes_in_group("shield_mobs")
+	for p in protectors:
+		if is_instance_valid(p) and p.get("is_shield_active"):
+			var dist = p.global_position.distance_to(zombie.global_position)
+			if dist <= p.shield_radius:
+				return p
+	return null
 
 func apply_damage():
 	await get_tree().physics_frame
 	var bodies = get_overlapping_bodies()
+	
+	var shields_hit = {} 
+
 	for body in bodies:
-		if body.is_in_group("zombies") and body.has_method("take_damage"):
-			body.take_damage(damage)
+		if body.is_in_group("zombies") and is_instance_valid(body):
+			var shield = get_shield_provider(body)
+			
+			if shield:
+				shields_hit[shield] = true 
+			else:
+				if body.has_method("take_damage"):
+					body.take_damage(damage)
+	
+	for shield in shields_hit.keys():
+		if is_instance_valid(shield):
+			shield.take_damage(damage)

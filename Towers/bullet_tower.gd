@@ -1,60 +1,48 @@
-extends StaticBody2D
+extends TowerBase
 
-#@export var bullet_scene: PackedScene 
-@export var fire_rate: float = 0.3
-@export var cost: float = 25
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer
-@onready var detection_area = $Range
-@onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
-var targets_in_range: Array = []
-
 var bullet_scene = preload("res://Towers/bullet.tscn")
-var is_placed := false
+
+@export var cost: float = 5.0
+
 func _ready():
+	super._ready()
+	fire_rate = 0.2
 	timer.wait_time = fire_rate
 	timer.one_shot = false
-	
-	detection_area.body_entered.connect(_on_zombie_entered)
-	detection_area.body_exited.connect(_on_zombie_exited)
 	timer.timeout.connect(_on_timer_timeout)
+	detection_area.body_entered.connect(_on_zombie_entered)
 
 func _on_zombie_entered(body):
 	if body.is_in_group("zombies"):
-		targets_in_range.append(body)
 		if timer.is_stopped():
-			shoot()
+			attempt_shot()
 			timer.start()
 
-func _on_zombie_exited(body):
-	if body in targets_in_range:
-		targets_in_range.erase(body)
-		
-	if targets_in_range.is_empty():
+func _on_timer_timeout():
+	attempt_shot()
+	if detection_area.has_overlapping_bodies():
+		if timer.is_stopped():
+			timer.start()
+	else:
 		timer.stop()
 
-func shoot():
-	if starter.playing == true:
-		if is_placed == false:
-			return
-		elif bullet_scene and not targets_in_range.is_empty():
-			
-			var target = targets_in_range[0]
-			var bullet = bullet_scene.instantiate()
-			get_tree().current_scene.add_child(bullet)
-			
-			bullet.global_position = muzzle.global_position
-			
-			bullet.look_at(target.global_position)
-		else:
-			print("no bullet scene")
-	#if bullet_scene:
-		#var bullet = bullet_scene.instantiate()
-		#get_tree().current_scene.add_child(bullet)
-		#bullet.global_position = muzzle.global_position
+func attempt_shot():
+	if not is_placed or not starter or not starter.playing:
+		timer.stop()
+		return
 
-func _on_timer_timeout():
-	if not targets_in_range.is_empty():
-		shoot()
+	var target = get_best_target()
+	
+	if target:
+		var shield_provider = get_shield_provider(target)
+		var final_target = shield_provider if shield_provider else target
+		var bullet = bullet_scene.instantiate()
+		get_tree().current_scene.add_child(bullet)
+		bullet.global_position = muzzle.global_position
+		bullet.look_at(final_target.global_position)
+		if bullet.has_method("set_hit_target"):
+			bullet.set_hit_target(final_target)
 	else:
 		timer.stop()

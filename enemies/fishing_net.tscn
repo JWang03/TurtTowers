@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ovsf704673l2"]
+
+[ext_resource type="Script" uid="uid://cf166xjce3bbh" path="res://enemies/fishing_net.gd" id="1_oomfo"]
+[ext_resource type="Texture2D" uid="uid://b371ikg20yode" path="res://textures/image-removebg-preview (12).png" id="2_lgm0b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mrrlx"]
+radius = 19.235384
+
+[node name="fishing_net" type="CharacterBody2D" unique_id=1901194948]
+script = ExtResource("1_oomfo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1638158401]
+shape = SubResource("CircleShape2D_mrrlx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=715632793]
+position = Vector2(0.9999924, -7.6293945e-06)
+scale = Vector2(0.1531065, 0.14701897)
+texture = ExtResource("2_lgm0b")

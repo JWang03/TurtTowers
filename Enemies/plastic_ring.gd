@@ -8,7 +8,7 @@ func _ready():
 	super._ready()
 	
 	health = 100
-	speed = 20.0
+	speed = 3.0
 	attack_damage = 20
 
 func _process(delta):
@@ -54,7 +54,6 @@ func spawn_children():
 		new_follow.loop = false
 		path.add_child(new_follow)
 		
-		# Put each child at the death point, with a tiny forward offset
 		new_follow.progress = death_progress + i * 8.0
 		
 		var can = child_enemy_scene.instantiate()

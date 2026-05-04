@@ -1,8 +1,11 @@
 extends Node2D
-@export var fire_rate: float = .2
+
+@export var fire_rate: float = 0.5
 @export var damage: int = 100
-@export var cost: int = 20
+@export var cost: int = 5
 @export var is_placed: bool = false
+
+
 @onready var range_area = $Range
 @onready var collision_shape = $Range/CollisionShape2D
 @onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)

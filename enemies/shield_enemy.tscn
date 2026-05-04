@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://chk7xpr8woiu3"]
+
+[ext_resource type="Script" uid="uid://b781vvhbs7kjk" path="res://enemies/shield_enemy.gd" id="1_117e8"]
+[ext_resource type="Texture2D" uid="uid://uurebpnhfhqf" path="res://textures/image-removebg-preview (14).png" id="2_15ep3"]
+[ext_resource type="Texture2D" uid="uid://dqvsef5yvkf6k" path="res://textures/image-removebg-preview (13).png" id="2_evmg5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_15ep3"]
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_evmg5"]
+radius = 12.0
+
+[node name="shield_enemy" type="CharacterBody2D" unique_id=1352054960]
+script = ExtResource("1_117e8")
+
+[node name="ShieldArea" type="Area2D" parent="." unique_id=1337643953]
+
+[node name="Sprite2D" type="Sprite2D" parent="ShieldArea" unique_id=41729973]
+scale = Vector2(0.3468935, 0.32384825)
+texture = ExtResource("2_15ep3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShieldArea" unique_id=1999692011]
+shape = SubResource("CircleShape2D_15ep3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1115373305]
+position = Vector2(0, -1)
+scale = Vector2(0.12391681, 0.12817553)
+texture = ExtResource("2_evmg5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1294808361]
+shape = SubResource("CircleShape2D_evmg5")
