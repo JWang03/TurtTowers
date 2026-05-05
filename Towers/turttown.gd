@@ -1,11 +1,12 @@
 extends StaticBody2D
 
-const SPEED_MULT := 3.0
-const RANGE_MULT := 10.0
-const TILE_SIZE := 54.0
-const ADJ_MULT := 1.5
-const MIN_WAIT := 0.01
-const RANGE_NODE := "Range"
+const ATTACK_SPEED_MULTIPLIER := 3.0   
+const ATTACK_RANGE_MULTIPLIER := 10.0  
+const TILE_SIZE := 54.0                
+const ADJACENCY_MULTIPLIER := 1.5      
+const SELF_EXCLUSION_THRESHOLD := 0.5  
+const RANGE_NODE_NAME := "Range"      
+const MIN_TIMER_WAIT := 0.01           
 
 @export var cost: float = 10
 
@@ -38,6 +39,12 @@ func _exit_tree() -> void:
 func _on_sibling_entered(node: Node) -> void:
 	call_deferred("_try_buff", node)
 
+func _is_adjacent(node: Node) -> bool:
+	if node is Node2D:
+		var dist := global_position.distance_to((node as Node2D).global_position)
+		return dist > SELF_EXCLUSION_THRESHOLD and dist <= TILE_SIZE * ADJACENCY_MULTIPLIER
+	return false
+
 func _try_buff(node: Node) -> void:
 	if node == self or not is_instance_valid(node) or not (node is Node2D):
 		return
@@ -58,44 +65,88 @@ func _on_tower_exiting(tower: Node) -> void:
 	_buffed.erase(tower)
 
 func _apply_buff(tower: Node) -> void:
-	var d := {}
+	if not is_instance_valid(tower):
+		return
 
-	var timer := _child_of_type(tower, Timer) as Timer
-	if timer:
-		d["timer"] = timer; d["orig_wait"] = timer.wait_time
-		timer.wait_time = max(timer.wait_time / SPEED_MULT, MIN_WAIT)
+	var adj_count: int = tower.get_meta("turttown_buff_count", 0)
+	tower.set_meta("turttown_buff_count", adj_count + 1)
 
-	var anim := _child_of_type(tower, AnimatedSprite2D) as AnimatedSprite2D
-	if anim:
-		d["anim"] = anim; d["orig_speed"] = anim.speed_scale
-		anim.speed_scale *= SPEED_MULT
+	if adj_count > 0:
+		_buffed_towers[tower] = {}
+		return
 
-	var fr = tower.get("fire_rate")
-	if fr != null and typeof(fr) in [TYPE_FLOAT, TYPE_INT]:
-		d["fr_node"] = tower; d["orig_fr"] = float(fr)
-		tower.set("fire_rate", max(float(fr) / SPEED_MULT, MIN_WAIT))
+	var buff_data := {}
 
-	var rng := tower.find_child(RANGE_NODE, true, false) as Area2D
-	if rng:
-		var cs := _child_of_type(rng, CollisionShape2D) as CollisionShape2D
-		if cs and cs.shape:
-			d["shape"] = cs
-			if cs.shape is CircleShape2D:
-				d["orig_r"] = cs.shape.radius; cs.shape.radius *= RANGE_MULT
-			elif cs.shape is CapsuleShape2D:
-				d["orig_cr"] = cs.shape.radius; cs.shape.radius *= RANGE_MULT
+	var attack_timer := _find_child_of_type(tower, Timer) as Timer
+	if attack_timer:
+		buff_data["timer"] = attack_timer
+		buff_data["original_wait_time"] = attack_timer.wait_time
+		attack_timer.wait_time = max(attack_timer.wait_time / ATTACK_SPEED_MULTIPLIER, MIN_TIMER_WAIT)
 
-	_buffed[tower] = d
-	tower.set_meta("turttown_buffed", true)
+	var anim_sprite := _find_child_of_type(tower, AnimatedSprite2D) as AnimatedSprite2D
+	if anim_sprite:
+		buff_data["anim_sprite"] = anim_sprite
+		buff_data["original_speed_scale"] = anim_sprite.speed_scale
+		anim_sprite.speed_scale *= ATTACK_SPEED_MULTIPLIER
+
+	var fire_rate = tower.get("fire_rate")
+	if fire_rate != null and typeof(fire_rate) in [TYPE_FLOAT, TYPE_INT]:
+		buff_data["fire_rate_node"] = tower
+		buff_data["original_fire_rate"] = float(fire_rate)
+		tower.set("fire_rate", max(float(fire_rate) / ATTACK_SPEED_MULTIPLIER, MIN_TIMER_WAIT))
+
+	var tower_range := tower.find_child(RANGE_NODE_NAME, true, false) as Area2D
+	if tower_range:
+		var collision_shape := _find_child_of_type(tower_range, CollisionShape2D) as CollisionShape2D
+		if collision_shape and collision_shape.shape:
+			_apply_radius_buff(collision_shape, buff_data)
+
+	_buffed_towers[tower] = buff_data
+	tower.set_meta("turttown_buff_data", buff_data)
+
+func _apply_radius_buff(collision_shape: CollisionShape2D, buff_data: Dictionary) -> void:
+	var shape := collision_shape.shape
+	buff_data["shape_node"] = collision_shape
+	if shape is CircleShape2D:
+		buff_data["original_radius"] = shape.radius
+		shape.radius *= ATTACK_RANGE_MULTIPLIER
+	elif shape is CapsuleShape2D:
+		buff_data["original_capsule_radius"] = shape.radius
+		shape.radius *= ATTACK_RANGE_MULTIPLIER
 
 func _remove_buff(tower: Node) -> void:
 	if not _buffed.has(tower):
 		return
 	var d: Dictionary = _buffed[tower]
 
-	var timer := d.get("timer") as Timer
-	if timer and is_instance_valid(timer):
-		timer.wait_time = d.get("orig_wait", timer.wait_time)
+	if not tower.has_meta("turttown_buff_count"):
+		push_error("turttown: turttown_buff_count missing for tower '%s' during buff removal" % tower.name)
+		_buffed_towers.erase(tower)
+		return
+	var adj_count: int = tower.get_meta("turttown_buff_count")
+	if adj_count <= 0:
+		push_error("turttown: turttown_buff_count is %d (expected ≥ 1) for tower '%s'" % [adj_count, tower.name])
+		tower.remove_meta("turttown_buff_count")
+		_buffed_towers.erase(tower)
+		return
+	var new_count := adj_count - 1
+	if new_count > 0:
+		tower.set_meta("turttown_buff_count", new_count)
+		_buffed_towers.erase(tower)
+		return
+
+	tower.remove_meta("turttown_buff_count")
+
+	if not tower.has_meta("turttown_buff_data"):
+		push_error("turttown: turttown_buff_data missing for tower '%s'; cannot restore original stats" % tower.name)
+		_buffed_towers.erase(tower)
+		return
+	var buff_data: Dictionary = tower.get_meta("turttown_buff_data")
+	tower.remove_meta("turttown_buff_data")
+
+	var attack_timer := buff_data.get("timer") as Timer
+	if attack_timer and is_instance_valid(attack_timer):
+		attack_timer.wait_time = buff_data.get("original_wait_time", attack_timer.wait_time)
 
 	var anim := d.get("anim") as AnimatedSprite2D
 	if anim and is_instance_valid(anim):

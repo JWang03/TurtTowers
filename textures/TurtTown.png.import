@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtd7hamgbkfne"
-path="res://.godot/imported/Gemini_Generated_Image_jdzuttjdzuttjdzu.png-a7704a97598e71ea77df070faf872510.ctex"
+uid="uid://hv3yv34vpybc"
+path="res://.godot/imported/TurtTown.png-e609bee9443bdd055940bf88dc35d95d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Gemini_Generated_Image_jdzuttjdzuttjdzu.png"
-dest_files=["res://.godot/imported/Gemini_Generated_Image_jdzuttjdzuttjdzu.png-a7704a97598e71ea77df070faf872510.ctex"]
+source_file="res://textures/TurtTown.png"
+dest_files=["res://.godot/imported/TurtTown.png-e609bee9443bdd055940bf88dc35d95d.ctex"]
 
 [params]
 

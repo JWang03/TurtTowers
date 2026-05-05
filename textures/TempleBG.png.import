@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dil5b5bgf4wxt"
-path="res://.godot/imported/Gemini_Generated_Image_wqw7rhwqw7rhwqw7-removebg-preview.png-2c58cae8479bf33dae4f94ee46c662ad.ctex"
+uid="uid://dtd7hamgbkfne"
+path="res://.godot/imported/TempleBG.png-c85376563a9d45c22d4300c8e46513b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Gemini_Generated_Image_wqw7rhwqw7rhwqw7-removebg-preview.png"
-dest_files=["res://.godot/imported/Gemini_Generated_Image_wqw7rhwqw7rhwqw7-removebg-preview.png-2c58cae8479bf33dae4f94ee46c662ad.ctex"]
+source_file="res://textures/TempleBG.png"
+dest_files=["res://.godot/imported/TempleBG.png-c85376563a9d45c22d4300c8e46513b3.ctex"]
 
 [params]
 

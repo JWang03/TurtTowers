@@ -7,7 +7,7 @@ enum TargetMode {FIRST, WEAKEST, STRONGEST, CLOSEST}
 @export var is_placed: bool = false 
 @export var fire_rate: float = 1.0
 
-@onready var starter = get_node_or_null("/root/Game/UI/Start_Pause/PlayButton")
+@onready var starter = get_node_or_null("/root/Game/UI/Buttons/PlayButton")
 @onready var detection_area = $Range
 
 func _ready():

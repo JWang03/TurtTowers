@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://67hd02tun5we"]
 
-[ext_resource type="Script" path="res://Towers/turttown.gd" id="1_trttwn"]
-[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/image-removebg-preview.png" id="2_b8dax"]
+[ext_resource type="Script" uid="uid://bc85idsdyqon5" path="res://Towers/turttown.gd" id="1_trttwn"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/TurtTown.png" id="2_b8dax"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
 radius = 18.0
@@ -13,6 +13,7 @@ radius = 81.0
 script = ExtResource("1_trttwn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1634713713]
+position = Vector2(0, -5.7)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("2_b8dax")
 
