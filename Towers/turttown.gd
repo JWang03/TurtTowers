@@ -79,6 +79,20 @@ func _apply_buff(tower: Node) -> void:
 	if not is_instance_valid(tower):
 		return
 
+	# Track how many Turttowns are currently buffing this tower.
+	# Only the first one applies the actual stat changes; subsequent ones
+	# just register themselves so the buff stays active as long as any
+	# Turttown remains adjacent.
+	var adj_count: int = tower.get_meta("turttown_buff_count", 0)
+	tower.set_meta("turttown_buff_count", adj_count + 1)
+
+	if adj_count > 0:
+		# Already buffed by another Turttown – register ourselves without
+		# re-applying stats (empty dict = "adjacency-only" entry; no stats to restore).
+		# Restoration data is stored centrally on the tower as metadata.
+		_buffed_towers[tower] = {}
+		return
+
 	var buff_data := {}
 
 	# --- Attack speed: Timer (bullet_tower, bomber_tower, blackhole_tower, electric_tower) ---
@@ -110,6 +124,9 @@ func _apply_buff(tower: Node) -> void:
 			_apply_radius_buff(collision_shape, buff_data)
 
 	_buffed_towers[tower] = buff_data
+	# Store restoration data on the tower itself so that whichever Turttown
+	# ends up being the last adjacent one can still restore the original stats.
+	tower.set_meta("turttown_buff_data", buff_data)
 
 func _apply_radius_buff(collision_shape: CollisionShape2D, buff_data: Dictionary) -> void:
 	var shape := collision_shape.shape
@@ -125,7 +142,34 @@ func _remove_buff(tower: Node) -> void:
 	if not _buffed_towers.has(tower):
 		return
 
-	var buff_data: Dictionary = _buffed_towers[tower]
+	# Decrement the shared adjacency counter.  Only restore stats when the
+	# very last adjacent Turttown is removed.
+	if not tower.has_meta("turttown_buff_count"):
+		push_error("turttown: turttown_buff_count missing for tower '%s' during buff removal" % tower.name)
+		_buffed_towers.erase(tower)
+		return
+	var adj_count: int = tower.get_meta("turttown_buff_count")
+	if adj_count <= 0:
+		# Metadata is inconsistent – clean up and bail out.
+		push_error("turttown: turttown_buff_count is %d (expected ≥ 1) for tower '%s'" % [adj_count, tower.name])
+		tower.remove_meta("turttown_buff_count")
+		_buffed_towers.erase(tower)
+		return
+	var new_count := adj_count - 1
+	if new_count > 0:
+		tower.set_meta("turttown_buff_count", new_count)
+		_buffed_towers.erase(tower)
+		return
+
+	tower.remove_meta("turttown_buff_count")
+
+	# Restoration data is stored on the tower so any Turttown can retrieve it.
+	if not tower.has_meta("turttown_buff_data"):
+		push_error("turttown: turttown_buff_data missing for tower '%s'; cannot restore original stats" % tower.name)
+		_buffed_towers.erase(tower)
+		return
+	var buff_data: Dictionary = tower.get_meta("turttown_buff_data")
+	tower.remove_meta("turttown_buff_data")
 
 	var attack_timer := buff_data.get("timer") as Timer
 	if attack_timer and is_instance_valid(attack_timer):
