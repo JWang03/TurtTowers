@@ -38,6 +38,8 @@
 [ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="29_trtts"]
 [ext_resource type="PackedScene" uid="uid://67hd02tun5we" path="res://Towers/turttown.tscn" id="30_trtts"]
 [ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/image-removebg-preview.png" id="31_trtts"]
+[ext_resource type="Script" uid="uid://cy5j1efrjxakf" path="res://SandyShores/Scenes/settings.gd" id="32_sandy"]
+[ext_resource type="Script" uid="uid://ckfrd7gva57ou" path="res://SandyShores/Scenes/return.gd" id="33_sandy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_je2ct")
@@ -308,6 +310,7 @@ offset_bottom = 40.0
 [node name="PlayButton" type="TextureButton" parent="UI/Start_Pause" unique_id=735464196]
 z_index = 4096
 z_as_relative = false
+process_mode = 3
 layout_mode = 0
 offset_left = 1.0
 offset_top = 577.0
@@ -319,6 +322,30 @@ stretch_mode = 6
 script = ExtResource("26_etoju")
 play_texture = ExtResource("25_sxldm")
 pause_texture = ExtResource("27_ci5cp")
+
+[node name="SettingsButton" type="Button" parent="UI/Start_Pause" unique_id=9010]
+z_index = 4096
+z_as_relative = false
+process_mode = 3
+layout_mode = 0
+offset_left = 74.0
+offset_top = 577.0
+offset_right = 145.0
+offset_bottom = 646.0
+text = "Settings"
+script = ExtResource("32_sandy")
+
+[node name="ReturnButton" type="Button" parent="UI/Start_Pause" unique_id=9011]
+z_index = 4096
+z_as_relative = false
+process_mode = 3
+layout_mode = 0
+offset_left = 147.0
+offset_top = 577.0
+offset_right = 218.0
+offset_bottom = 646.0
+text = "Return"
+script = ExtResource("33_sandy")
 
 [node name="HUD" type="Control" parent="UI" unique_id=1358710275]
 anchors_preset = 0
