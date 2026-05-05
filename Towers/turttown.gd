@@ -1,13 +1,12 @@
 extends StaticBody2D
 
-# Buff values applied to every directly adjacent tower (all 8 surrounding tiles)
-const ATTACK_SPEED_MULTIPLIER := 3.0   # wait_time / 3 = 3× faster attacks
-const ATTACK_RANGE_MULTIPLIER := 10.0  # range radius × 10
-const TILE_SIZE := 54.0                # actual TileSet tile size (pixels)
-const ADJACENCY_MULTIPLIER := 1.5      # TILE_SIZE × ADJACENCY_MULTIPLIER = adjacency radius
-const SELF_EXCLUSION_THRESHOLD := 0.5  # distances below this mean same position (i.e., self)
-const RANGE_NODE_NAME := "Range"       # name of the attack-range Area2D on each tower
-const MIN_TIMER_WAIT := 0.01           # floor for timer wait_time to prevent division-by-zero speed
+const ATTACK_SPEED_MULTIPLIER := 3.0   
+const ATTACK_RANGE_MULTIPLIER := 10.0  
+const TILE_SIZE := 54.0                
+const ADJACENCY_MULTIPLIER := 1.5      
+const SELF_EXCLUSION_THRESHOLD := 0.5  
+const RANGE_NODE_NAME := "Range"      
+const MIN_TIMER_WAIT := 0.01           
 
 @export var cost: float = 10
 
@@ -48,7 +47,6 @@ func _on_sibling_entered(node: Node) -> void:
 func _is_adjacent(node: Node) -> bool:
 	if node is Node2D:
 		var dist := global_position.distance_to((node as Node2D).global_position)
-		# > SELF_EXCLUSION_THRESHOLD excludes self; <= TILE_SIZE * ADJACENCY_MULTIPLIER covers all 8 neighbouring tiles
 		return dist > SELF_EXCLUSION_THRESHOLD and dist <= TILE_SIZE * ADJACENCY_MULTIPLIER
 	return false
 
@@ -59,7 +57,6 @@ func _try_buff(node: Node) -> void:
 		return
 	if not (node is Node2D):
 		return
-	# Skip ghost / unplaced placement-preview towers
 	var placed = node.get("is_placed")
 	if placed != null and placed == false:
 		return
@@ -79,44 +76,33 @@ func _apply_buff(tower: Node) -> void:
 	if not is_instance_valid(tower):
 		return
 
-	# Track how many Turttowns are currently buffing this tower.
-	# Only the first one applies the actual stat changes; subsequent ones
-	# just register themselves so the buff stays active as long as any
-	# Turttown remains adjacent.
 	var adj_count: int = tower.get_meta("turttown_buff_count", 0)
 	tower.set_meta("turttown_buff_count", adj_count + 1)
 
 	if adj_count > 0:
-		# Already buffed by another Turttown – register ourselves without
-		# re-applying stats (empty dict = "adjacency-only" entry; no stats to restore).
-		# Restoration data is stored centrally on the tower as metadata.
 		_buffed_towers[tower] = {}
 		return
 
 	var buff_data := {}
 
-	# --- Attack speed: Timer (bullet_tower, bomber_tower, blackhole_tower, electric_tower) ---
 	var attack_timer := _find_child_of_type(tower, Timer) as Timer
 	if attack_timer:
 		buff_data["timer"] = attack_timer
 		buff_data["original_wait_time"] = attack_timer.wait_time
 		attack_timer.wait_time = max(attack_timer.wait_time / ATTACK_SPEED_MULTIPLIER, MIN_TIMER_WAIT)
 
-	# --- Attack speed: AnimatedSprite2D speed_scale (turttttt) ---
 	var anim_sprite := _find_child_of_type(tower, AnimatedSprite2D) as AnimatedSprite2D
 	if anim_sprite:
 		buff_data["anim_sprite"] = anim_sprite
 		buff_data["original_speed_scale"] = anim_sprite.speed_scale
 		anim_sprite.speed_scale *= ATTACK_SPEED_MULTIPLIER
 
-	# --- Attack speed: fire_rate property (holy_crusader uses _process + fire_rate) ---
 	var fire_rate = tower.get("fire_rate")
 	if fire_rate != null and typeof(fire_rate) in [TYPE_FLOAT, TYPE_INT]:
 		buff_data["fire_rate_node"] = tower
 		buff_data["original_fire_rate"] = float(fire_rate)
 		tower.set("fire_rate", max(float(fire_rate) / ATTACK_SPEED_MULTIPLIER, MIN_TIMER_WAIT))
 
-	# --- Range: CircleShape2D / CapsuleShape2D inside a child named "Range" ---
 	var tower_range := tower.find_child(RANGE_NODE_NAME, true, false) as Area2D
 	if tower_range:
 		var collision_shape := _find_child_of_type(tower_range, CollisionShape2D) as CollisionShape2D
@@ -124,8 +110,6 @@ func _apply_buff(tower: Node) -> void:
 			_apply_radius_buff(collision_shape, buff_data)
 
 	_buffed_towers[tower] = buff_data
-	# Store restoration data on the tower itself so that whichever Turttown
-	# ends up being the last adjacent one can still restore the original stats.
 	tower.set_meta("turttown_buff_data", buff_data)
 
 func _apply_radius_buff(collision_shape: CollisionShape2D, buff_data: Dictionary) -> void:
@@ -142,15 +126,12 @@ func _remove_buff(tower: Node) -> void:
 	if not _buffed_towers.has(tower):
 		return
 
-	# Decrement the shared adjacency counter.  Only restore stats when the
-	# very last adjacent Turttown is removed.
 	if not tower.has_meta("turttown_buff_count"):
 		push_error("turttown: turttown_buff_count missing for tower '%s' during buff removal" % tower.name)
 		_buffed_towers.erase(tower)
 		return
 	var adj_count: int = tower.get_meta("turttown_buff_count")
 	if adj_count <= 0:
-		# Metadata is inconsistent – clean up and bail out.
 		push_error("turttown: turttown_buff_count is %d (expected ≥ 1) for tower '%s'" % [adj_count, tower.name])
 		tower.remove_meta("turttown_buff_count")
 		_buffed_towers.erase(tower)
@@ -163,7 +144,6 @@ func _remove_buff(tower: Node) -> void:
 
 	tower.remove_meta("turttown_buff_count")
 
-	# Restoration data is stored on the tower so any Turttown can retrieve it.
 	if not tower.has_meta("turttown_buff_data"):
 		push_error("turttown: turttown_buff_data missing for tower '%s'; cannot restore original stats" % tower.name)
 		_buffed_towers.erase(tower)
