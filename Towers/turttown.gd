@@ -1,12 +1,12 @@
 extends StaticBody2D
 
-const ATTACK_SPEED_MULTIPLIER := 3.0   
-const ATTACK_RANGE_MULTIPLIER := 10.0  
-const TILE_SIZE := 54.0                
-const ADJACENCY_MULTIPLIER := 1.5      
-const SELF_EXCLUSION_THRESHOLD := 0.5  
-const RANGE_NODE_NAME := "Range"      
-const MIN_TIMER_WAIT := 0.01           
+const ATTACK_SPEED_MULTIPLIER := 3.0
+const ATTACK_RANGE_MULTIPLIER := 10.0
+const TILE_SIZE := 54.0
+const ADJ_MULT := 1.5
+const SELF_EXCLUSION_THRESHOLD := 0.5
+const RANGE_NODE_NAME := "Range"
+const MIN_TIMER_WAIT := 0.01
 
 @export var cost: float = 10
 
@@ -39,12 +39,6 @@ func _exit_tree() -> void:
 func _on_sibling_entered(node: Node) -> void:
 	call_deferred("_try_buff", node)
 
-func _is_adjacent(node: Node) -> bool:
-	if node is Node2D:
-		var dist := global_position.distance_to((node as Node2D).global_position)
-		return dist > SELF_EXCLUSION_THRESHOLD and dist <= TILE_SIZE * ADJACENCY_MULTIPLIER
-	return false
-
 func _try_buff(node: Node) -> void:
 	if node == self or not is_instance_valid(node) or not (node is Node2D):
 		return
@@ -53,13 +47,21 @@ func _try_buff(node: Node) -> void:
 	var placed = node.get("is_placed")
 	if placed != null and placed == false:
 		return
+	# Guard: already buffed by another TurtTown
 	if node.has_meta("turttown_buffed"):
+		# Still track adjacency count so removal is balanced
+		var adj_count: int = node.get_meta("turttown_buff_count", 0)
+		node.set_meta("turttown_buff_count", adj_count + 1)
+		_buffed[node] = {}
+		if not node.tree_exiting.is_connected(_on_tower_exiting):
+			node.tree_exiting.connect(_on_tower_exiting.bind(node))
 		return
 	var dist := global_position.distance_to((node as Node2D).global_position)
-	if dist <= 0.5 or dist > TILE_SIZE * ADJ_MULT:
+	if dist <= SELF_EXCLUSION_THRESHOLD or dist > TILE_SIZE * ADJ_MULT:
 		return
 	_apply_buff(node)
-	node.tree_exiting.connect(_on_tower_exiting.bind(node))
+	if not node.tree_exiting.is_connected(_on_tower_exiting):
+		node.tree_exiting.connect(_on_tower_exiting.bind(node))
 
 func _on_tower_exiting(tower: Node) -> void:
 	_buffed.erase(tower)
@@ -68,12 +70,8 @@ func _apply_buff(tower: Node) -> void:
 	if not is_instance_valid(tower):
 		return
 
-	var adj_count: int = tower.get_meta("turttown_buff_count", 0)
-	tower.set_meta("turttown_buff_count", adj_count + 1)
-
-	if adj_count > 0:
-		_buffed_towers[tower] = {}
-		return
+	tower.set_meta("turttown_buff_count", 1)
+	tower.set_meta("turttown_buffed", true)  # FIX: was never set
 
 	var buff_data := {}
 
@@ -101,7 +99,7 @@ func _apply_buff(tower: Node) -> void:
 		if collision_shape and collision_shape.shape:
 			_apply_radius_buff(collision_shape, buff_data)
 
-	_buffed_towers[tower] = buff_data
+	_buffed[tower] = buff_data  # FIX: was _buffed_towers
 	tower.set_meta("turttown_buff_data", buff_data)
 
 func _apply_radius_buff(collision_shape: CollisionShape2D, buff_data: Dictionary) -> void:
@@ -117,30 +115,33 @@ func _apply_radius_buff(collision_shape: CollisionShape2D, buff_data: Dictionary
 func _remove_buff(tower: Node) -> void:
 	if not _buffed.has(tower):
 		return
-	var d: Dictionary = _buffed[tower]
 
 	if not tower.has_meta("turttown_buff_count"):
-		push_error("turttown: turttown_buff_count missing for tower '%s' during buff removal" % tower.name)
-		_buffed_towers.erase(tower)
+		push_error("turttown: turttown_buff_count missing for tower '%s'" % tower.name)
+		_buffed.erase(tower)
 		return
+
 	var adj_count: int = tower.get_meta("turttown_buff_count")
 	if adj_count <= 0:
-		push_error("turttown: turttown_buff_count is %d (expected ≥ 1) for tower '%s'" % [adj_count, tower.name])
+		push_error("turttown: turttown_buff_count is %d (expected >= 1) for tower '%s'" % [adj_count, tower.name])
 		tower.remove_meta("turttown_buff_count")
-		_buffed_towers.erase(tower)
+		_buffed.erase(tower)
 		return
+
 	var new_count := adj_count - 1
 	if new_count > 0:
 		tower.set_meta("turttown_buff_count", new_count)
-		_buffed_towers.erase(tower)
+		_buffed.erase(tower)
 		return
 
 	tower.remove_meta("turttown_buff_count")
 
 	if not tower.has_meta("turttown_buff_data"):
-		push_error("turttown: turttown_buff_data missing for tower '%s'; cannot restore original stats" % tower.name)
-		_buffed_towers.erase(tower)
+		push_error("turttown: turttown_buff_data missing for tower '%s'; cannot restore stats" % tower.name)
+		_buffed.erase(tower)
 		return
+
+	# FIX: read from buff_data (the meta), not from _buffed[tower] which may be empty {}
 	var buff_data: Dictionary = tower.get_meta("turttown_buff_data")
 	tower.remove_meta("turttown_buff_data")
 
@@ -148,26 +149,28 @@ func _remove_buff(tower: Node) -> void:
 	if attack_timer and is_instance_valid(attack_timer):
 		attack_timer.wait_time = buff_data.get("original_wait_time", attack_timer.wait_time)
 
-	var anim := d.get("anim") as AnimatedSprite2D
+	# FIX: key names now match what _apply_buff actually stored
+	var anim := buff_data.get("anim_sprite") as AnimatedSprite2D
 	if anim and is_instance_valid(anim):
-		anim.speed_scale = d.get("orig_speed", anim.speed_scale)
+		anim.speed_scale = buff_data.get("original_speed_scale", anim.speed_scale)
 
-	var fr_node = d.get("fr_node")
-	if fr_node != null and is_instance_valid(fr_node) and d.has("orig_fr"):
-		fr_node.set("fire_rate", d["orig_fr"])
+	var fr_node = buff_data.get("fire_rate_node")
+	if fr_node != null and is_instance_valid(fr_node) and buff_data.has("original_fire_rate"):
+		fr_node.set("fire_rate", buff_data["original_fire_rate"])
 
-	var cs := d.get("shape") as CollisionShape2D
+	var cs := buff_data.get("shape_node") as CollisionShape2D
 	if cs and is_instance_valid(cs) and cs.shape:
-		if cs.shape is CircleShape2D and d.has("orig_r"):
-			cs.shape.radius = d["orig_r"]
-		elif cs.shape is CapsuleShape2D and d.has("orig_cr"):
-			cs.shape.radius = d["orig_cr"]
+		if cs.shape is CircleShape2D and buff_data.has("original_radius"):
+			cs.shape.radius = buff_data["original_radius"]
+		elif cs.shape is CapsuleShape2D and buff_data.has("original_capsule_radius"):
+			cs.shape.radius = buff_data["original_capsule_radius"]
 
 	_buffed.erase(tower)
 	if is_instance_valid(tower) and tower.has_meta("turttown_buffed"):
 		tower.remove_meta("turttown_buffed")
 
-func _child_of_type(node: Node, type: Variant) -> Node:
+# FIX: renamed from _child_of_type to match all call sites
+func _find_child_of_type(node: Node, type: Variant) -> Node:
 	for child in node.get_children():
 		if is_instance_of(child, type):
 			return child
