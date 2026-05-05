@@ -518,6 +518,20 @@ stretch_mode = 5
 script = ExtResource("16_68ie1")
 tower_scene = ExtResource("35_kbjh2")
 
+[node name="TurtTown" type="TextureButton" parent="UI/ShopPanel" unique_id=200696978]
+z_index = 4096
+z_as_relative = false
+layout_mode = 0
+offset_left = -2.0
+offset_top = 412.0
+offset_right = 68.0
+offset_bottom = 462.0
+texture_normal = ExtResource("48_vs0qa")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("16_68ie1")
+tower_scene = ExtResource("49_g86uu")
+
 [node name="HUD" type="Control" parent="UI" unique_id=357985065]
 anchors_preset = 0
 offset_left = 951.0
@@ -649,15 +663,16 @@ text = "You failed to defend
 the mothershell from
 a pollutant ambush!"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2012178668]
+[node name="Buttons" type="HBoxContainer" parent="UI" unique_id=2012178668]
 custom_minimum_size = Vector2(0, 20)
-offset_left = 10.0
-offset_top = 573.0
-offset_right = 230.0
-offset_bottom = 643.0
+layout_mode = 0
+offset_left = 14.0
+offset_top = 572.0
+offset_right = 234.0
+offset_bottom = 642.0
 alignment = 1
 
-[node name="Return" type="Button" parent="HBoxContainer" unique_id=1441634628]
+[node name="Return" type="Button" parent="UI/Buttons" unique_id=1441634628]
 z_index = 4096
 material = SubResource("ShaderMaterial_fqsee")
 custom_minimum_size = Vector2(70, 0)
@@ -670,7 +685,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("17_68ie1")
 
-[node name="Settings" type="Button" parent="HBoxContainer" unique_id=619682024]
+[node name="Settings" type="Button" parent="UI/Buttons" unique_id=619682024]
 z_index = 4096
 material = SubResource("ShaderMaterial_vs0qa")
 custom_minimum_size = Vector2(70, 30)
@@ -683,7 +698,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("19_kbjh2")
 
-[node name="PlayButton" type="Button" parent="HBoxContainer" unique_id=1703970139]
+[node name="PlayButton" type="Button" parent="UI/Buttons" unique_id=1703970139]
 z_index = 4096
 material = SubResource("ShaderMaterial_vs0qa")
 custom_minimum_size = Vector2(70, 0)
@@ -695,7 +710,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("32_seqo6")
 
-[node name="Resume" type="TextureRect" parent="HBoxContainer/PlayButton" unique_id=1863065313]
+[node name="Resume" type="TextureRect" parent="UI/Buttons/PlayButton" unique_id=1863065313]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -711,7 +726,7 @@ grow_vertical = 2
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("44_6jpsd")
 
-[node name="Pause" type="TextureRect" parent="HBoxContainer/PlayButton" unique_id=349352224]
+[node name="Pause" type="TextureRect" parent="UI/Buttons/PlayButton" unique_id=349352224]
 layout_mode = 0
 offset_left = -16.0
 offset_top = 7.0
@@ -719,16 +734,3 @@ offset_right = 661.0
 offset_bottom = 376.0
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("45_3fwag")
-
-[node name="TurtTown" type="TextureButton" parent="." unique_id=200696978]
-z_index = 4096
-z_as_relative = false
-offset_left = 3.0
-offset_top = 418.0
-offset_right = 73.0
-offset_bottom = 468.0
-texture_normal = ExtResource("48_vs0qa")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("16_68ie1")
-tower_scene = ExtResource("49_g86uu")

@@ -1,11 +1,11 @@
 extends Button
 
 @export var playing := false
-@export var play_texture: Texture2D
-@export var pause_texture: Texture2D
+
+@onready var resume_icon = $Resume
+@onready var pause_icon = $Pause
 
 func _ready():
-	process_mode = Node.PROCESS_MODE_ALWAYS
 	pressed.connect(_on_button_pressed)
 	_update_icons()
 
@@ -19,7 +19,9 @@ func _process(delta):
 		_on_button_pressed()
 
 func _update_icons():
-	if play_texture and pause_texture:
-		texture_normal = pause_texture if playing else play_texture
+	if playing:
+		resume_icon.hide()
+		pause_icon.show()
 	else:
-		push_warning("PlayButton: play_texture or pause_texture is not assigned.")
+		resume_icon.show()
+		pause_icon.hide()

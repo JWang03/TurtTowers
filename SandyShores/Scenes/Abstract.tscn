@@ -141,9 +141,9 @@ subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_gctuh"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpuwm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhcsl"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwthh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60ikt"]
 content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
@@ -161,7 +161,7 @@ corner_radius_bottom_left = 10
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_086hf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpuwm"]
 bg_color = Color(1, 0.41960785, 0.41960785, 1)
 border_width_left = 2
 border_width_top = 2
@@ -175,7 +175,7 @@ corner_radius_bottom_left = 10
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0o1d"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_086hf"]
 bg_color = Color(0.8, 0.101960786, 0.101960786, 1)
 border_width_left = 2
 border_width_top = 2
@@ -189,9 +189,9 @@ corner_radius_bottom_left = 10
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ro4ig"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0o1d"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gctuh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro4ig"]
 content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
@@ -239,7 +239,7 @@ shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
 shadow_size = 3
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4xci"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4v1lx"]
 content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
@@ -257,7 +257,7 @@ corner_radius_bottom_left = 10
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6kmh5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eraor"]
 bg_color = Color(0.08627451, 0.39607844, 0.20392157, 1)
 border_width_left = 2
 border_width_top = 2
@@ -272,7 +272,7 @@ shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
 shadow_size = 3
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhcsl"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83rpp"]
 bg_color = Color(0.08235294, 0.5019608, 0.23921569, 1)
 border_width_left = 2
 border_width_top = 2
@@ -615,34 +615,34 @@ text = "You failed to defend
 the mothershell from
 a pollutant ambush!"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=1273429995]
+[node name="Buttons" type="HBoxContainer" parent="UI" unique_id=70214158]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 0
-offset_left = 10.0
-offset_top = 573.0
-offset_right = 230.0
-offset_bottom = 643.0
+offset_left = 14.0
+offset_top = 572.0
+offset_right = 234.0
+offset_bottom = 642.0
 alignment = 1
 
-[node name="Return" type="Button" parent="UI/HBoxContainer" unique_id=1545005244]
+[node name="Return" type="Button" parent="UI/Buttons" unique_id=2015005506]
 z_index = 4096
-material = SubResource("ShaderMaterial_fpuwm")
+material = SubResource("ShaderMaterial_mhcsl")
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_fwthh")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_086hf")
-theme_override_styles/hover = SubResource("StyleBoxFlat_v0o1d")
+theme_override_styles/normal = SubResource("StyleBoxFlat_60ikt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fpuwm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_086hf")
 icon = ExtResource("14_gctuh")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("15_6kmh5")
 
-[node name="Settings" type="Button" parent="UI/HBoxContainer" unique_id=1139406464]
+[node name="Settings" type="Button" parent="UI/Buttons" unique_id=1204535065]
 z_index = 4096
-material = SubResource("ShaderMaterial_ro4ig")
+material = SubResource("ShaderMaterial_v0o1d")
 custom_minimum_size = Vector2(70, 30)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_gctuh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ro4ig")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o8s8s")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jtd81")
 icon = ExtResource("16_mhcsl")
@@ -650,19 +650,19 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("17_60ikt")
 
-[node name="PlayButton" type="Button" parent="UI/HBoxContainer" unique_id=1305984033]
+[node name="PlayButton" type="Button" parent="UI/Buttons" unique_id=1570309630]
 z_index = 4096
-material = SubResource("ShaderMaterial_ro4ig")
+material = SubResource("ShaderMaterial_v0o1d")
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_a4xci")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_6kmh5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_mhcsl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4v1lx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eraor")
+theme_override_styles/hover = SubResource("StyleBoxFlat_83rpp")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("26_ro4ig")
 
-[node name="Resume" type="TextureRect" parent="UI/HBoxContainer/PlayButton" unique_id=783885209]
+[node name="Resume" type="TextureRect" parent="UI/Buttons/PlayButton" unique_id=324661314]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -678,7 +678,7 @@ grow_vertical = 2
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("22_gctuh")
 
-[node name="Pause" type="TextureRect" parent="UI/HBoxContainer/PlayButton" unique_id=440238901]
+[node name="Pause" type="TextureRect" parent="UI/Buttons/PlayButton" unique_id=301122217]
 layout_mode = 0
 offset_left = -16.0
 offset_top = 7.0
