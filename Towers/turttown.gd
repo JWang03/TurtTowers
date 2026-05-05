@@ -8,7 +8,7 @@ const SELF_EXCLUSION_THRESHOLD := 0.5
 const RANGE_NODE_NAME := "Range"
 const MIN_TIMER_WAIT := 0.01
 
-@export var cost: float = 10
+@export var cost: float = 100
 
 var is_placed := false:
 	set(value):
@@ -47,9 +47,7 @@ func _try_buff(node: Node) -> void:
 	var placed = node.get("is_placed")
 	if placed != null and placed == false:
 		return
-	# Guard: already buffed by another TurtTown
 	if node.has_meta("turttown_buffed"):
-		# Still track adjacency count so removal is balanced
 		var adj_count: int = node.get_meta("turttown_buff_count", 0)
 		node.set_meta("turttown_buff_count", adj_count + 1)
 		_buffed[node] = {}
@@ -71,7 +69,7 @@ func _apply_buff(tower: Node) -> void:
 		return
 
 	tower.set_meta("turttown_buff_count", 1)
-	tower.set_meta("turttown_buffed", true)  # FIX: was never set
+	tower.set_meta("turttown_buffed", true)
 
 	var buff_data := {}
 
@@ -99,7 +97,7 @@ func _apply_buff(tower: Node) -> void:
 		if collision_shape and collision_shape.shape:
 			_apply_radius_buff(collision_shape, buff_data)
 
-	_buffed[tower] = buff_data  # FIX: was _buffed_towers
+	_buffed[tower] = buff_data
 	tower.set_meta("turttown_buff_data", buff_data)
 
 func _apply_radius_buff(collision_shape: CollisionShape2D, buff_data: Dictionary) -> void:
@@ -141,7 +139,6 @@ func _remove_buff(tower: Node) -> void:
 		_buffed.erase(tower)
 		return
 
-	# FIX: read from buff_data (the meta), not from _buffed[tower] which may be empty {}
 	var buff_data: Dictionary = tower.get_meta("turttown_buff_data")
 	tower.remove_meta("turttown_buff_data")
 
@@ -149,7 +146,6 @@ func _remove_buff(tower: Node) -> void:
 	if attack_timer and is_instance_valid(attack_timer):
 		attack_timer.wait_time = buff_data.get("original_wait_time", attack_timer.wait_time)
 
-	# FIX: key names now match what _apply_buff actually stored
 	var anim := buff_data.get("anim_sprite") as AnimatedSprite2D
 	if anim and is_instance_valid(anim):
 		anim.speed_scale = buff_data.get("original_speed_scale", anim.speed_scale)
@@ -169,7 +165,6 @@ func _remove_buff(tower: Node) -> void:
 	if is_instance_valid(tower) and tower.has_meta("turttown_buffed"):
 		tower.remove_meta("turttown_buffed")
 
-# FIX: renamed from _child_of_type to match all call sites
 func _find_child_of_type(node: Node, type: Variant) -> Node:
 	for child in node.get_children():
 		if is_instance_of(child, type):
