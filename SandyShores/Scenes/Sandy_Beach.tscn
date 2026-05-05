@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dil5b5bgf4wxt" path="res://textures/Gemini_Generated_Image_wqw7rhwqw7rhwqw7-removebg-preview.png" id="7_6cp8d"]
 [ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://SandyShores/Scripts/wave_spawner.gd" id="7_ai02a"]
 [ext_resource type="Script" uid="uid://cy5j1efrjxakf" path="res://SandyShores/Scenes/settings.gd" id="8_6cp8d"]
-[ext_resource type="Script" path="res://SandyShores/Scenes/return.gd" id="8_em8d2"]
+[ext_resource type="Script" uid="uid://ckfrd7gva57ou" path="res://SandyShores/Scenes/return.gd" id="8_em8d2"]
 [ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="8_vjk8x"]
 [ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://SandyShores/Scripts/loss_conditions.gd" id="9_50yat"]
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="9_h2mqj"]
@@ -41,7 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/image-removebg-preview.png" id="28_3kv1k"]
 [ext_resource type="Texture2D" uid="uid://cf3ilal0r2oba" path="res://textures/Resume.png" id="36_6cp8d"]
 [ext_resource type="Texture2D" uid="uid://dvxhwiq86ypku" path="res://textures/Pause.png" id="37_em8d2"]
-[ext_resource type="Script" uid="uid://cjt186qnocwu8" path="res://SandyShores/Scenes/tower_targeting.gd" id="38_target"]
+[ext_resource type="Script" path="res://SandyShores/Scenes/tower_targeting.gd" id="38_target"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_je2ct")
@@ -300,6 +300,16 @@ offset_left = 525.0
 offset_top = 1.0
 offset_right = 1149.0
 offset_bottom = 650.0
+
+[node name="tower_targeting" type="Button" parent="UI" unique_id=1695660404]
+z_index = 4096
+layout_mode = 0
+offset_left = -279.0
+offset_top = 8.0
+offset_right = -125.0
+offset_bottom = 78.0
+text = "Global Mode: FIRST"
+script = ExtResource("38_target")
 
 [node name="ShopPanel" type="Control" parent="UI" unique_id=827478311]
 anchors_preset = 0
@@ -636,9 +646,3 @@ offset_right = 661.0
 offset_bottom = 376.0
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("37_em8d2")
-
-[node name="tower_targeting" type="Button" parent="UI/Buttons" unique_id=1695660404]
-z_index = 4096
-layout_mode = 2
-text = "Global Mode: FIRST"
-script = ExtResource("38_target")

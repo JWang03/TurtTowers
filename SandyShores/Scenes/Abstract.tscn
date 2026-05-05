@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://do17203pjxuim" path="res://Towers/bullet_tower.tscn" id="13_r0ofv"]
 [ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="14_f2y8k"]
 [ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="14_gctuh"]
-[ext_resource type="Script" path="res://SandyShores/Scenes/return.gd" id="15_6kmh5"]
+[ext_resource type="Script" uid="uid://ckfrd7gva57ou" path="res://SandyShores/Scenes/return.gd" id="15_6kmh5"]
 [ext_resource type="PackedScene" uid="uid://d2l8b5nykdqdg" path="res://Towers/godzilla_tower.tscn" id="15_gdn63"]
 [ext_resource type="PackedScene" uid="uid://bcepi076o27tl" path="res://Enemies/plastic_ring.tscn" id="15_r0ofv"]
 [ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="16_8audr"]
@@ -47,7 +47,7 @@
 [ext_resource type="PackedScene" uid="uid://btwem1yvxgacj" path="res://Towers/turttttt.tscn" id="33_60ikt"]
 [ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/image-removebg-preview.png" id="34_fpuwm"]
 [ext_resource type="PackedScene" uid="uid://67hd02tun5we" path="res://Towers/turttown.tscn" id="35_086hf"]
-[ext_resource type="Script" uid="uid://cjt186qnocwu8" path="res://SandyShores/Scenes/tower_targeting.gd" id="36_target"]
+[ext_resource type="Script" path="res://SandyShores/Scenes/tower_targeting.gd" id="36_target"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_gvbs8")
@@ -347,10 +347,15 @@ offset_top = 1.0
 offset_right = 1149.0
 offset_bottom = 646.0
 
-[node name="GUI_buttons" type="Control" parent="UI" unique_id=2113421431]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="tower_targeting" type="Button" parent="UI" unique_id=1695660405]
+z_index = 4096
+layout_mode = 0
+offset_left = 248.0
+offset_top = 17.0
+offset_right = 402.0
+offset_bottom = 87.0
+text = "Global Mode: FIRST"
+script = ExtResource("36_target")
 
 [node name="ShopPanel" type="Control" parent="UI" unique_id=291765242]
 anchors_preset = 0
@@ -687,9 +692,3 @@ offset_right = 661.0
 offset_bottom = 376.0
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("24_a4xci")
-
-[node name="tower_targeting" type="Button" parent="UI/Buttons" unique_id=1695660405]
-z_index = 4096
-layout_mode = 2
-text = "Global Mode: FIRST"
-script = ExtResource("36_target")
