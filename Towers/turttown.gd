@@ -1,13 +1,11 @@
 extends StaticBody2D
 
-# Buff values applied to every directly adjacent tower (all 8 surrounding tiles)
-const ATTACK_SPEED_MULTIPLIER := 3.0   # wait_time / 3 = 3× faster attacks
-const ATTACK_RANGE_MULTIPLIER := 10.0  # range radius × 10
-const TILE_SIZE := 54.0                # actual TileSet tile size (pixels)
-const ADJACENCY_MULTIPLIER := 1.5      # TILE_SIZE × ADJACENCY_MULTIPLIER = adjacency radius
-const SELF_EXCLUSION_THRESHOLD := 0.5  # distances below this mean same position (i.e., self)
-const RANGE_NODE_NAME := "Range"       # name of the attack-range Area2D on each tower
-const MIN_TIMER_WAIT := 0.01           # floor for timer wait_time to prevent division-by-zero speed
+const SPEED_MULT := 3.0
+const RANGE_MULT := 10.0
+const TILE_SIZE := 54.0
+const ADJ_MULT := 1.5
+const MIN_WAIT := 0.01
+const RANGE_NODE := "Range"
 
 @export var cost: float = 10
 
@@ -17,139 +15,108 @@ var is_placed := false:
 		if value:
 			call_deferred("_on_placed")
 
-var _buffed_towers: Dictionary = {}
+var _buffed: Dictionary = {}
 
 func _on_placed() -> void:
-	_scan_existing_towers()
 	var parent := get_parent()
-	if is_instance_valid(parent) and not parent.child_entered_tree.is_connected(_on_sibling_entered):
+	if not is_instance_valid(parent):
+		return
+	for child in parent.get_children():
+		_try_buff(child)
+	if not parent.child_entered_tree.is_connected(_on_sibling_entered):
 		parent.child_entered_tree.connect(_on_sibling_entered)
 
 func _exit_tree() -> void:
 	var parent := get_parent()
 	if is_instance_valid(parent) and parent.child_entered_tree.is_connected(_on_sibling_entered):
 		parent.child_entered_tree.disconnect(_on_sibling_entered)
-	for tower in _buffed_towers.keys():
+	for tower in _buffed.keys():
 		if is_instance_valid(tower):
 			_remove_buff(tower)
-	_buffed_towers.clear()
-
-func _scan_existing_towers() -> void:
-	var parent := get_parent()
-	if not is_instance_valid(parent):
-		return
-	for child in parent.get_children():
-		_try_buff(child)
+	_buffed.clear()
 
 func _on_sibling_entered(node: Node) -> void:
-	# Defer so the new tower has its position and is_placed set before we check it
 	call_deferred("_try_buff", node)
 
-func _is_adjacent(node: Node) -> bool:
-	if node is Node2D:
-		var dist := global_position.distance_to((node as Node2D).global_position)
-		# > SELF_EXCLUSION_THRESHOLD excludes self; <= TILE_SIZE * ADJACENCY_MULTIPLIER covers all 8 neighbouring tiles
-		return dist > SELF_EXCLUSION_THRESHOLD and dist <= TILE_SIZE * ADJACENCY_MULTIPLIER
-	return false
-
 func _try_buff(node: Node) -> void:
-	if node == self or not is_instance_valid(node):
+	if node == self or not is_instance_valid(node) or not (node is Node2D):
 		return
-	if node.is_in_group("zombies"):
+	if node.is_in_group("zombies") or _buffed.has(node):
 		return
-	if not (node is Node2D):
-		return
-	# Skip ghost / unplaced placement-preview towers
 	var placed = node.get("is_placed")
 	if placed != null and placed == false:
 		return
-	if _buffed_towers.has(node):
+	if node.has_meta("turttown_buffed"):
 		return
-	if not _is_adjacent(node):
+	var dist := global_position.distance_to((node as Node2D).global_position)
+	if dist <= 0.5 or dist > TILE_SIZE * ADJ_MULT:
 		return
 	_apply_buff(node)
-	if not node.tree_exiting.is_connected(_on_tower_exiting.bind(node)):
-		node.tree_exiting.connect(_on_tower_exiting.bind(node))
+	node.tree_exiting.connect(_on_tower_exiting.bind(node))
 
 func _on_tower_exiting(tower: Node) -> void:
-	# Tower is being freed – just drop it from the tracking dict
-	_buffed_towers.erase(tower)
+	_buffed.erase(tower)
 
 func _apply_buff(tower: Node) -> void:
-	if not is_instance_valid(tower):
-		return
+	var d := {}
 
-	var buff_data := {}
+	var timer := _child_of_type(tower, Timer) as Timer
+	if timer:
+		d["timer"] = timer; d["orig_wait"] = timer.wait_time
+		timer.wait_time = max(timer.wait_time / SPEED_MULT, MIN_WAIT)
 
-	# --- Attack speed: Timer (bullet_tower, bomber_tower, blackhole_tower, electric_tower) ---
-	var attack_timer := _find_child_of_type(tower, Timer) as Timer
-	if attack_timer:
-		buff_data["timer"] = attack_timer
-		buff_data["original_wait_time"] = attack_timer.wait_time
-		attack_timer.wait_time = max(attack_timer.wait_time / ATTACK_SPEED_MULTIPLIER, MIN_TIMER_WAIT)
+	var anim := _child_of_type(tower, AnimatedSprite2D) as AnimatedSprite2D
+	if anim:
+		d["anim"] = anim; d["orig_speed"] = anim.speed_scale
+		anim.speed_scale *= SPEED_MULT
 
-	# --- Attack speed: AnimatedSprite2D speed_scale (turttttt) ---
-	var anim_sprite := _find_child_of_type(tower, AnimatedSprite2D) as AnimatedSprite2D
-	if anim_sprite:
-		buff_data["anim_sprite"] = anim_sprite
-		buff_data["original_speed_scale"] = anim_sprite.speed_scale
-		anim_sprite.speed_scale *= ATTACK_SPEED_MULTIPLIER
+	var fr = tower.get("fire_rate")
+	if fr != null and typeof(fr) in [TYPE_FLOAT, TYPE_INT]:
+		d["fr_node"] = tower; d["orig_fr"] = float(fr)
+		tower.set("fire_rate", max(float(fr) / SPEED_MULT, MIN_WAIT))
 
-	# --- Attack speed: fire_rate property (holy_crusader uses _process + fire_rate) ---
-	var fire_rate = tower.get("fire_rate")
-	if fire_rate != null and typeof(fire_rate) in [TYPE_FLOAT, TYPE_INT]:
-		buff_data["fire_rate_node"] = tower
-		buff_data["original_fire_rate"] = float(fire_rate)
-		tower.set("fire_rate", max(float(fire_rate) / ATTACK_SPEED_MULTIPLIER, MIN_TIMER_WAIT))
+	var rng := tower.find_child(RANGE_NODE, true, false) as Area2D
+	if rng:
+		var cs := _child_of_type(rng, CollisionShape2D) as CollisionShape2D
+		if cs and cs.shape:
+			d["shape"] = cs
+			if cs.shape is CircleShape2D:
+				d["orig_r"] = cs.shape.radius; cs.shape.radius *= RANGE_MULT
+			elif cs.shape is CapsuleShape2D:
+				d["orig_cr"] = cs.shape.radius; cs.shape.radius *= RANGE_MULT
 
-	# --- Range: CircleShape2D / CapsuleShape2D inside a child named "Range" ---
-	var tower_range := tower.find_child(RANGE_NODE_NAME, true, false) as Area2D
-	if tower_range:
-		var collision_shape := _find_child_of_type(tower_range, CollisionShape2D) as CollisionShape2D
-		if collision_shape and collision_shape.shape:
-			_apply_radius_buff(collision_shape, buff_data)
-
-	_buffed_towers[tower] = buff_data
-
-func _apply_radius_buff(collision_shape: CollisionShape2D, buff_data: Dictionary) -> void:
-	var shape := collision_shape.shape
-	buff_data["shape_node"] = collision_shape
-	if shape is CircleShape2D:
-		buff_data["original_radius"] = shape.radius
-		shape.radius *= ATTACK_RANGE_MULTIPLIER
-	elif shape is CapsuleShape2D:
-		buff_data["original_capsule_radius"] = shape.radius
-		shape.radius *= ATTACK_RANGE_MULTIPLIER
+	_buffed[tower] = d
+	tower.set_meta("turttown_buffed", true)
 
 func _remove_buff(tower: Node) -> void:
-	if not _buffed_towers.has(tower):
+	if not _buffed.has(tower):
 		return
+	var d: Dictionary = _buffed[tower]
 
-	var buff_data: Dictionary = _buffed_towers[tower]
+	var timer := d.get("timer") as Timer
+	if timer and is_instance_valid(timer):
+		timer.wait_time = d.get("orig_wait", timer.wait_time)
 
-	var attack_timer := buff_data.get("timer") as Timer
-	if attack_timer and is_instance_valid(attack_timer):
-		attack_timer.wait_time = buff_data.get("original_wait_time", attack_timer.wait_time)
+	var anim := d.get("anim") as AnimatedSprite2D
+	if anim and is_instance_valid(anim):
+		anim.speed_scale = d.get("orig_speed", anim.speed_scale)
 
-	var anim_sprite := buff_data.get("anim_sprite") as AnimatedSprite2D
-	if anim_sprite and is_instance_valid(anim_sprite):
-		anim_sprite.speed_scale = buff_data.get("original_speed_scale", anim_sprite.speed_scale)
+	var fr_node = d.get("fr_node")
+	if fr_node != null and is_instance_valid(fr_node) and d.has("orig_fr"):
+		fr_node.set("fire_rate", d["orig_fr"])
 
-	var fire_rate_node = buff_data.get("fire_rate_node")
-	if fire_rate_node != null and is_instance_valid(fire_rate_node) and buff_data.has("original_fire_rate"):
-		fire_rate_node.set("fire_rate", buff_data["original_fire_rate"])
+	var cs := d.get("shape") as CollisionShape2D
+	if cs and is_instance_valid(cs) and cs.shape:
+		if cs.shape is CircleShape2D and d.has("orig_r"):
+			cs.shape.radius = d["orig_r"]
+		elif cs.shape is CapsuleShape2D and d.has("orig_cr"):
+			cs.shape.radius = d["orig_cr"]
 
-	var collision_shape := buff_data.get("shape_node") as CollisionShape2D
-	if collision_shape and is_instance_valid(collision_shape) and collision_shape.shape:
-		var shape := collision_shape.shape
-		if shape is CircleShape2D and buff_data.has("original_radius"):
-			shape.radius = buff_data["original_radius"]
-		elif shape is CapsuleShape2D and buff_data.has("original_capsule_radius"):
-			shape.radius = buff_data["original_capsule_radius"]
+	_buffed.erase(tower)
+	if is_instance_valid(tower) and tower.has_meta("turttown_buffed"):
+		tower.remove_meta("turttown_buffed")
 
-	_buffed_towers.erase(tower)
-
-func _find_child_of_type(node: Node, type: Variant) -> Node:
+func _child_of_type(node: Node, type: Variant) -> Node:
 	for child in node.get_children():
 		if is_instance_of(child, type):
 			return child
