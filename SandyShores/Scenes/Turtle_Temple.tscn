@@ -272,13 +272,6 @@ position = Vector2(600, 340.50006)
 scale = Vector2(1.5839999, 1.5180002)
 texture = ExtResource("5_qnun0")
 
-[node name="Start" type="Sprite2D" parent="Temple" unique_id=1746886607]
-z_index = 4096
-z_as_relative = false
-position = Vector2(-0.9166613, -45.454575)
-scale = Vector2(0.9789273, 0.9881421)
-texture = ExtResource("6_qnun0")
-
 [node name="EnemyPath" type="Path2D" parent="." unique_id=1497783405]
 z_index = 4096
 curve = SubResource("Curve2D_r1ppn")

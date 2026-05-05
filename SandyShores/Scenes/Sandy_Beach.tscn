@@ -434,6 +434,30 @@ stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("27_turt")
 
+[node name="SettingsButton" type="Button" parent="UI/Start_Pause" unique_id=9010]
+z_index = 4096
+z_as_relative = false
+process_mode = 3
+layout_mode = 0
+offset_left = 74.0
+offset_top = 577.0
+offset_right = 145.0
+offset_bottom = 646.0
+text = "Settings"
+script = ExtResource("32_sandy")
+
+[node name="ReturnButton" type="Button" parent="UI/Start_Pause" unique_id=9011]
+z_index = 4096
+z_as_relative = false
+process_mode = 3
+layout_mode = 0
+offset_left = 147.0
+offset_top = 577.0
+offset_right = 218.0
+offset_bottom = 646.0
+text = "Return"
+script = ExtResource("33_sandy")
+
 [node name="HUD" type="Control" parent="UI" unique_id=1358710275]
 anchors_preset = 0
 offset_left = 951.0
