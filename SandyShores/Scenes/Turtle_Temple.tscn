@@ -36,6 +36,8 @@
 [ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="29_trtts"]
 [ext_resource type="PackedScene" uid="uid://67hd02tun5we" path="res://Towers/turttown.tscn" id="30_trtts"]
 [ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/image-removebg-preview.png" id="31_trtts"]
+[ext_resource type="Script" uid="uid://cy5j1efrjxakf" path="res://SandyShores/Scenes/settings.gd" id="32_temple"]
+[ext_resource type="Script" uid="uid://ckfrd7gva57ou" path="res://SandyShores/Scenes/return.gd" id="33_temple"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_ndx66")
@@ -121,13 +123,6 @@ z_index = -1
 position = Vector2(600, 340.50006)
 scale = Vector2(1.5839999, 1.5180002)
 texture = ExtResource("5_qnun0")
-
-[node name="Start" type="Sprite2D" parent="Temple" unique_id=1746886607]
-z_index = 4096
-z_as_relative = false
-position = Vector2(-0.9166613, -45.454575)
-scale = Vector2(0.9789273, 0.9881421)
-texture = ExtResource("6_qnun0")
 
 [node name="EnemyPath" type="Path2D" parent="." unique_id=1497783405]
 z_index = 4096
@@ -293,6 +288,7 @@ offset_bottom = 40.0
 [node name="PlayButton" type="TextureButton" parent="UI/Start_Pause" unique_id=93877987]
 z_index = 4096
 z_as_relative = false
+process_mode = 3
 layout_mode = 0
 offset_left = 1.0
 offset_top = 577.0
@@ -304,6 +300,30 @@ stretch_mode = 6
 script = ExtResource("26_6bjis")
 play_texture = ExtResource("25_f2xfg")
 pause_texture = ExtResource("27_j54so")
+
+[node name="SettingsButton" type="Button" parent="UI/Start_Pause" unique_id=9012]
+z_index = 4096
+z_as_relative = false
+process_mode = 3
+layout_mode = 0
+offset_left = 74.0
+offset_top = 577.0
+offset_right = 145.0
+offset_bottom = 646.0
+text = "Settings"
+script = ExtResource("32_temple")
+
+[node name="ReturnButton" type="Button" parent="UI/Start_Pause" unique_id=9013]
+z_index = 4096
+z_as_relative = false
+process_mode = 3
+layout_mode = 0
+offset_left = 147.0
+offset_top = 577.0
+offset_right = 218.0
+offset_bottom = 646.0
+text = "Return"
+script = ExtResource("33_temple")
 
 [node name="HUD" type="Control" parent="UI" unique_id=1091559076]
 anchors_preset = 0
