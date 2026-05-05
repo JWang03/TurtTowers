@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/image-removebg-preview.png" id="28_3kv1k"]
 [ext_resource type="Texture2D" uid="uid://cf3ilal0r2oba" path="res://textures/Resume.png" id="36_6cp8d"]
 [ext_resource type="Texture2D" uid="uid://dvxhwiq86ypku" path="res://textures/Pause.png" id="37_em8d2"]
+[ext_resource type="Script" uid="uid://cjt186qnocwu8" path="res://SandyShores/Scenes/tower_targeting.gd" id="38_target"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_je2ct")
@@ -635,3 +636,9 @@ offset_right = 661.0
 offset_bottom = 376.0
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("37_em8d2")
+
+[node name="tower_targeting" type="Button" parent="UI/Buttons" unique_id=1695660404]
+z_index = 4096
+layout_mode = 2
+text = "Global Mode: FIRST"
+script = ExtResource("38_target")
