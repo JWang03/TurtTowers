@@ -8,7 +8,7 @@ const SELF_EXCLUSION_THRESHOLD := 0.5
 const RANGE_NODE_NAME := "Range"
 const MIN_TIMER_WAIT := 0.01
 
-@export var cost: float = 100
+@export var cost: float = 10
 
 var is_placed := false:
 	set(value):

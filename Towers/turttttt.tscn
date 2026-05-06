@@ -61,7 +61,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("18_vtqc8")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 20.0
 }]
@@ -79,8 +79,8 @@ script = ExtResource("1_mbxih")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1481270462]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_7hqp1")
-frame = 7
-frame_progress = 0.80410796
+frame = 13
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1618151517]
 shape = SubResource("ConvexPolygonShape2D_turt1")

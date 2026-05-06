@@ -1,18 +1,14 @@
 extends TowerBase
-
-@export var attack_damage: float = 5.0
+@export var attack_damage: float = 10.0
 @export var slow_factor: float = 0.2
 @export var cost: float = 25.0
-
 @onready var anim_sprite = $AnimatedSprite2D
-
 var current_slow_target = null
 
 func _ready():
 	super._ready()
-	anim_sprite.animation_looped.connect(_on_animation_looped)
+	anim_sprite.animation_finished.connect(_on_animation_finished)  # ← was animation_looped
 	anim_sprite.stop()
-	
 	detection_area.body_entered.connect(_on_body_entered)
 	detection_area.body_exited.connect(_on_body_exited)
 
@@ -25,7 +21,6 @@ func _on_body_exited(body):
 	if body == current_slow_target:
 		clear_slow_effect(body)
 		current_slow_target = null
-	
 	if not detection_area.has_overlapping_bodies():
 		anim_sprite.stop()
 
@@ -38,26 +33,23 @@ func _process(_delta):
 		else:
 			anim_sprite.stop()
 
-func _on_animation_looped():
+func _on_animation_finished():  # ← renamed from _on_animation_looped
 	if not starter or not starter.playing or not is_placed:
 		return
-		
 	var target = get_best_target()
 	if target:
 		_apply_hit(target)
+		anim_sprite.play()  # ← manually restart for next attack cycle
 	else:
 		anim_sprite.stop()
 
 func _apply_hit(target):
 	if not is_instance_valid(target):
 		return
-	
 	if target.has_method("take_damage"):
 		target.take_damage(attack_damage)
-	
 	if current_slow_target and current_slow_target != target and is_instance_valid(current_slow_target):
 		clear_slow_effect(current_slow_target)
-	
 	current_slow_target = target
 	if "speed_modifier" in target:
 		target.speed_modifier = slow_factor
