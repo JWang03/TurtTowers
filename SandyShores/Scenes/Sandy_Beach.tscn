@@ -39,6 +39,8 @@
 [ext_resource type="PackedScene" uid="uid://btwem1yvxgacj" path="res://Towers/turttttt.tscn" id="26_turt"]
 [ext_resource type="PackedScene" uid="uid://67hd02tun5we" path="res://Towers/turttown.tscn" id="27_turt"]
 [ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/TurtTown.png" id="28_3kv1k"]
+[ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://textures/image-removebg-preview (15).png" id="31_ux3bf"]
+[ext_resource type="PackedScene" uid="uid://db8mm2oj2u0hg" path="res://flamethrower_tower.tscn" id="32_0r82o"]
 [ext_resource type="Texture2D" uid="uid://cf3ilal0r2oba" path="res://textures/Resume.png" id="36_6cp8d"]
 [ext_resource type="Texture2D" uid="uid://dvxhwiq86ypku" path="res://textures/Pause.png" id="37_em8d2"]
 [ext_resource type="Script" uid="uid://cjt186qnocwu8" path="res://SandyShores/Scenes/tower_targeting.gd" id="38_target"]
@@ -443,6 +445,20 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("27_turt")
+
+[node name="Flamturter" type="TextureButton" parent="UI/ShopPanel" unique_id=241900444]
+z_index = 4096
+z_as_relative = false
+layout_mode = 1
+offset_left = -455.0
+offset_top = 418.0
+offset_right = -367.0
+offset_bottom = 477.0
+texture_normal = ExtResource("31_ux3bf")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("9_saejb")
+tower_scene = ExtResource("32_0r82o")
 
 [node name="HUD" type="Control" parent="UI" unique_id=1358710275]
 anchors_preset = 0
