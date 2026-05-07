@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://db8mm2oj2u0hg"]
+
+[ext_resource type="Script" uid="uid://yum22yjclc1b" path="res://flamethrower_tower.gd" id="1_s8bkm"]
+[ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://textures/image-removebg-preview (15).png" id="2_occl0"]
+[ext_resource type="Texture2D" uid="uid://gup15b7ijlle" path="res://frames/image-removebg-preview (28).png" id="3_k6h5b"]
+[ext_resource type="Texture2D" uid="uid://n5mlpynwoohr" path="res://frames/blank screen.png" id="3_le5yd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_le5yd"]
+radius = 12.0415945
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1nd11"]
+radius = 127.03543
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53enl"]
+atlas = ExtResource("3_k6h5b")
+region = Rect2(0, 0, 59, 253)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lo7q"]
+atlas = ExtResource("3_k6h5b")
+region = Rect2(59, 0, 59, 253)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ejwi"]
+atlas = ExtResource("3_k6h5b")
+region = Rect2(118, 0, 59, 253)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obn3q"]
+atlas = ExtResource("3_k6h5b")
+region = Rect2(177, 0, 59, 253)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mkdr"]
+atlas = ExtResource("3_k6h5b")
+region = Rect2(236, 0, 59, 253)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vnl3"]
+atlas = ExtResource("3_k6h5b")
+region = Rect2(295, 0, 59, 253)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0tyy"]
+atlas = ExtResource("3_k6h5b")
+region = Rect2(354, 0, 59, 253)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uawjr"]
+atlas = ExtResource("3_k6h5b")
+region = Rect2(413, 0, 59, 253)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g8iy"]
+atlas = ExtResource("3_k6h5b")
+region = Rect2(472, 0, 59, 253)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8utw4"]
+atlas = ExtResource("3_k6h5b")
+region = Rect2(531, 0, 59, 253)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xrte0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_le5yd")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_53enl")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_6lo7q")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_7ejwi")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_obn3q")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_3mkdr")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_3vnl3")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_d0tyy")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_uawjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g8iy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8utw4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="flamethrower_tower" type="StaticBody2D" unique_id=463736513]
+script = ExtResource("1_s8bkm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1428673578]
+position = Vector2(0, -2)
+scale = Vector2(0.2, 0.191)
+texture = ExtResource("2_occl0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1104320127]
+shape = SubResource("CircleShape2D_le5yd")
+
+[node name="Range" type="Area2D" parent="." unique_id=1388323695]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=517088756]
+shape = SubResource("CircleShape2D_1nd11")
+
+[node name="Head" type="Marker2D" parent="." unique_id=1030069258]
+position = Vector2(15, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Head" unique_id=1051787296]
+z_index = 4096
+z_as_relative = false
+position = Vector2(91.48514, -3.5516722)
+rotation = 1.5707964
+scale = Vector2(0.903021, 0.6410538)
+sprite_frames = SubResource("SpriteFrames_xrte0")
+frame_progress = 0.5517778
+
+[node name="FireDamageArea" type="Area2D" parent="Head" unique_id=470152181]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Head/FireDamageArea" unique_id=1045013435]
+position = Vector2(89, -2)
+polygon = PackedVector2Array(-77, 3, 27, -43, 26, 47)
+
+[node name="DamageTimer" type="Timer" parent="Head" unique_id=806964087]
