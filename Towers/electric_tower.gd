@@ -192,7 +192,7 @@ func grant_extra_life():
 var tower_name = "Mad Scienturt"
 var upgrades = {
 	"left": {
-		"name": "God of Thunder",
+		"name": "The Physicist",
 		"tiers": [
 			{"label": "Farther Chain Lightning", "cost": 75},
 			{"label": "Faster Shooting", "cost": 150},
@@ -202,9 +202,9 @@ var upgrades = {
 	"right": {
 		"name": "The Chemist",
 		"tiers": [
-			{"label": "Increased Damage to Nearby Towers", "cost": 100},
-			{"label": "Faster Shooting to Nearby Towers", "cost": 200},
-			{"label": "Synthesizes Extra Lives", "cost": 700}
+			{"label": "Increased Damage for Nearby Towers", "cost": 100},
+			{"label": "Faster Shooting for Nearby Towers", "cost": 200},
+			{"label": "Synthesize Extra Lives", "cost": 700}
 		]
 	}
 }

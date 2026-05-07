@@ -111,9 +111,9 @@ var upgrades = {
 	"right": {
 		"name": "Missile Menace",
 		"tiers": [
-			{"label": "Bombs become Missiles", "cost": 100},
-			{"label": "2x Range","cost": 200},
-			{"label": "2x Fire Rate", "cost": 300}
+			{"label": "Faster Fire", "cost": 100},
+			{"label": "Increased Range","cost": 200},
+			{"label": "Homing Missiles", "cost": 300}
 		]
 	}
 }
@@ -157,10 +157,10 @@ func apply_left_upgrade():
 
 func apply_right_upgrade():
 	match right_level:
-		0: bomb_scene = preload("res://Towers/missile.tscn")
-		1:
+		2: bomb_scene = preload("res://Towers/missile.tscn")
+		0:
 			fire_rate *= 0.5
-		2: detection_area.scale *= 2
+		1: detection_area.scale *= 2
 		
 func sell() -> void:
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")

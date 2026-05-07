@@ -107,7 +107,7 @@ func _process(delta: float) -> void:
 var tower_name = "Soldier Turt"
 var upgrades = {
 	"left": {
-		"name": "Machine Gunner Path",
+		"name": "Gunner",
 		"tiers": [
 			{"label": "Faster Shooting", "cost": 75},
 			{"label": "Faster Shooting 2", "cost": 150},
@@ -115,7 +115,7 @@ var upgrades = {
 		]
 	},
 	"right": {
-		"name": "Sniper Path",
+		"name": "Marksman",
 		"tiers": [
 			{"label": "Increased Range", "cost": 100},
 			{"label": "High Caliber Bullets", "cost": 200},
