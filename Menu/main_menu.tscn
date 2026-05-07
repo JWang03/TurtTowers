@@ -139,6 +139,7 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dqyvv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_m8x2t")
 
 [node name="MapSelectionLayer" type="CanvasLayer" parent="." unique_id=280550618]
+visible = false
 
 [node name="Darkener" type="ColorRect" parent="MapSelectionLayer" unique_id=472727133]
 anchors_preset = 15
@@ -364,9 +365,11 @@ offset_right = 399.5
 offset_bottom = 352.5
 
 [node name="TowersLayer" type="CanvasLayer" parent="." unique_id=1277460239]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="TowersLayer" unique_id=1070375472]
 visible = false
 
-[node name="Darkener" type="ColorRect" parent="TowersLayer" unique_id=608754605]
+[node name="Darkener" type="ColorRect" parent="TowersLayer/CanvasLayer" unique_id=608754605]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -374,18 +377,308 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
-[node name="ReturnTowers" type="Button" parent="TowersLayer" unique_id=1651348533]
-material = SubResource("ShaderMaterial_o4wy8")
-offset_left = 12.0
-offset_top = 11.0
-offset_right = 72.0
-offset_bottom = 71.0
-theme_override_styles/normal = ExtResource("13_o4wy8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o4wy8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dqyvv")
-icon = ExtResource("4_o4wy8")
-icon_alignment = 1
-expand_icon = true
+[node name="1" type="ColorRect" parent="TowersLayer/CanvasLayer" unique_id=130209667]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 267.0
+offset_top = 87.0
+offset_right = 454.0
+offset_bottom = 311.0
+color = Color(0.922642, 0.11762213, 0.19775996, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer/1" unique_id=101010101]
+layout_mode = 0
+offset_left = -3.0
+offset_right = 187.0
+offset_bottom = 28.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "Demolition Turt"
+horizontal_alignment = 1
+
+[node name="BombTower" type="Sprite2D" parent="TowersLayer/CanvasLayer/1" unique_id=613190859]
+position = Vector2(95, 119)
+scale = Vector2(0.45, 0.47)
+texture = ExtResource("7_cn2sd")
+
+[node name="2" type="ColorRect" parent="TowersLayer/CanvasLayer" unique_id=1321598397]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 483.0
+offset_top = 85.0
+offset_right = 670.0
+offset_bottom = 309.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer/2" unique_id=202020202]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 30.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "Mad Scienturt"
+horizontal_alignment = 1
+
+[node name="ElectricTower" type="Sprite2D" parent="TowersLayer/CanvasLayer/2" unique_id=1083541443]
+position = Vector2(88, 125)
+scale = Vector2(0.42, 0.457)
+texture = ExtResource("8_ywk15")
+
+[node name="3" type="ColorRect" parent="TowersLayer/CanvasLayer" unique_id=2013696268]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 700.0
+offset_top = 85.0
+offset_right = 887.0
+offset_bottom = 309.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer/3" unique_id=303030303]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 30.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "Blackhole Turt"
+horizontal_alignment = 1
+
+[node name="BlackholeTower" type="Sprite2D" parent="TowersLayer/CanvasLayer/3" unique_id=1263058208]
+position = Vector2(92, 124)
+scale = Vector2(0.55, 0.597)
+texture = ExtResource("9_ws7s4")
+
+[node name="4" type="ColorRect" parent="TowersLayer/CanvasLayer" unique_id=1003340736]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 266.0
+offset_top = 339.0
+offset_right = 453.0
+offset_bottom = 563.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer/4" unique_id=404040404]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 30.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "Lazer Turt"
+horizontal_alignment = 1
+
+[node name="GodzillaTower" type="Sprite2D" parent="TowersLayer/CanvasLayer/4" unique_id=673475163]
+position = Vector2(90, 125)
+scale = Vector2(0.7, 0.716)
+texture = ExtResource("10_fduiw")
+
+[node name="5" type="ColorRect" parent="TowersLayer/CanvasLayer" unique_id=1479644517]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 483.0
+offset_top = 339.0
+offset_right = 670.0
+offset_bottom = 563.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer/5" unique_id=505050505]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 30.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "Soldier Turt"
+horizontal_alignment = 1
+
+[node name="BulletTower" type="Sprite2D" parent="TowersLayer/CanvasLayer/5" unique_id=372846596]
+position = Vector2(93, 126.999985)
+scale = Vector2(0.489, 0.4845)
+texture = ExtResource("11_fduiw")
+
+[node name="6" type="ColorRect" parent="TowersLayer/CanvasLayer" unique_id=831493604]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 700.0
+offset_top = 339.0
+offset_right = 887.0
+offset_bottom = 563.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer/6" unique_id=606060606]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 30.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "Fighturt Jet"
+horizontal_alignment = 1
+
+[node name="PaperAirplane" type="Sprite2D" parent="TowersLayer/CanvasLayer/6" unique_id=1811139515]
+position = Vector2(82.000015, 125.00001)
+rotation = -0.60613
+scale = Vector2(0.7, 0.859)
+texture = ExtResource("12_cgse8")
+
+[node name="7" type="ColorRect" parent="TowersLayer/CanvasLayer" unique_id=777777777]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 267.0
+offset_top = 87.0
+offset_right = 454.0
+offset_bottom = 311.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer/7" unique_id=777777778]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 30.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "Holy Crusaturt"
+horizontal_alignment = 1
+
+[node name="HolyCrusader" type="Sprite2D" parent="TowersLayer/CanvasLayer/7" unique_id=1133539019]
+position = Vector2(91, 128)
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("15_dqyvv")
+
+[node name="8" type="ColorRect" parent="TowersLayer/CanvasLayer" unique_id=888888888]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 483.0
+offset_top = 85.0
+offset_right = 670.0
+offset_bottom = 309.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer/8" unique_id=888888889]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 30.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "Turt Sahur"
+horizontal_alignment = 1
+
+[node name="Turt^3Sahur" type="Sprite2D" parent="TowersLayer/CanvasLayer/8" unique_id=334133041]
+position = Vector2(91, 107)
+scale = Vector2(0.43, 0.43)
+texture = ExtResource("16_m8x2t")
+
+[node name="9" type="ColorRect" parent="TowersLayer/CanvasLayer" unique_id=999999999]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 700.0
+offset_top = 85.0
+offset_right = 887.0
+offset_bottom = 309.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer/9" unique_id=999999998]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 30.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "Turt Town"
+horizontal_alignment = 1
+
+[node name="TurtTown" type="Sprite2D" parent="TowersLayer/CanvasLayer/9" unique_id=9009]
+position = Vector2(96.99997, 106.999985)
+scale = Vector2(0.3746067, 0.3648128)
+texture = ExtResource("17_trttn")
+
+[node name="10" type="ColorRect" parent="TowersLayer/CanvasLayer" unique_id=101001001]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 266.0
+offset_top = 339.0
+offset_right = 453.0
+offset_bottom = 563.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer/10" unique_id=101101101]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 30.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "Placeholder"
+horizontal_alignment = 1
+
+[node name="11" type="ColorRect" parent="TowersLayer/CanvasLayer" unique_id=111011101]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 483.0
+offset_top = 339.0
+offset_right = 670.0
+offset_bottom = 563.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer/11" unique_id=111111112]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 30.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "Placeholder"
+horizontal_alignment = 1
+
+[node name="12" type="ColorRect" parent="TowersLayer/CanvasLayer" unique_id=121012101]
+material = SubResource("ShaderMaterial_cn2sd")
+offset_left = 700.0
+offset_top = 339.0
+offset_right = 887.0
+offset_bottom = 563.0
+color = Color(0.18431373, 0.6039216, 0.07450981, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer/12" unique_id=121112111]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 30.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "Placeholder"
+horizontal_alignment = 1
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="TowersLayer" unique_id=546907222]
+
+[node name="ColorRect" type="ColorRect" parent="TowersLayer/CanvasLayer2" unique_id=904651495]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="ColorRect" parent="TowersLayer/CanvasLayer2" unique_id=1070287755]
+material = SubResource("ShaderMaterial_cn2sd")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -158.0
+offset_right = 50.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+color = Color(0.922642, 0.11762213, 0.19775996, 1)
+
+[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer2/1" unique_id=943201336]
+layout_mode = 0
+offset_left = -3.0
+offset_right = 187.0
+offset_bottom = 28.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "Demolition Turt"
+horizontal_alignment = 1
+
+[node name="BombTower" type="Sprite2D" parent="TowersLayer/CanvasLayer2/1" unique_id=863172731]
+position = Vector2(95, 119)
+scale = Vector2(0.45, 0.47)
+texture = ExtResource("7_cn2sd")
+
+[node name="PanelContainer" type="PanelContainer" parent="TowersLayer/CanvasLayer2" unique_id=1252129441]
+offset_left = 147.0
+offset_top = 67.0
+offset_right = 404.0
+offset_bottom = 589.0
+
+[node name="PanelContainer2" type="PanelContainer" parent="TowersLayer/CanvasLayer2" unique_id=641427029]
+offset_left = 749.0
+offset_top = 58.0
+offset_right = 1006.0
+offset_bottom = 580.0
 
 [node name="LeftArrow" type="Button" parent="TowersLayer" unique_id=727303500]
 anchors_preset = 4
@@ -400,6 +693,19 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 100
 text = "<"
 flat = true
+
+[node name="ReturnTowers" type="Button" parent="TowersLayer" unique_id=1651348533]
+material = SubResource("ShaderMaterial_o4wy8")
+offset_left = 12.0
+offset_top = 11.0
+offset_right = 72.0
+offset_bottom = 71.0
+theme_override_styles/normal = ExtResource("13_o4wy8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o4wy8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dqyvv")
+icon = ExtResource("4_o4wy8")
+icon_alignment = 1
+expand_icon = true
 
 [node name="RightArrow" type="Button" parent="TowersLayer" unique_id=389936466]
 anchors_preset = 6
@@ -418,266 +724,6 @@ theme_override_font_sizes/font_size = 100
 text = ">"
 flat = true
 
-[node name="1" type="ColorRect" parent="TowersLayer" unique_id=130209667]
-material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 267.0
-offset_top = 87.0
-offset_right = 454.0
-offset_bottom = 311.0
-color = Color(0.922642, 0.11762213, 0.19775996, 1)
-
-[node name="NameLabel" type="Label" parent="TowersLayer/1" unique_id=101010101]
-layout_mode = 0
-offset_left = -3.0
-offset_top = 2.0
-offset_right = 187.0
-offset_bottom = 30.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 20
-text = "Bomb Tower"
-horizontal_alignment = 1
-
-[node name="BombTower" type="Sprite2D" parent="TowersLayer/1" unique_id=613190859]
-position = Vector2(95, 119)
-scale = Vector2(0.45, 0.47)
-texture = ExtResource("7_cn2sd")
-
-[node name="2" type="ColorRect" parent="TowersLayer" unique_id=1321598397]
-material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 483.0
-offset_top = 85.0
-offset_right = 670.0
-offset_bottom = 309.0
-color = Color(0.18431373, 0.6039216, 0.07450981, 1)
-
-[node name="NameLabel" type="Label" parent="TowersLayer/2" unique_id=202020202]
-layout_mode = 0
-offset_top = 5.0
-offset_right = 187.0
-offset_bottom = 35.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 20
-text = "Electric Tower"
-horizontal_alignment = 1
-
-[node name="ElectricTower" type="Sprite2D" parent="TowersLayer/2" unique_id=1083541443]
-position = Vector2(88, 125)
-scale = Vector2(0.42, 0.457)
-texture = ExtResource("8_ywk15")
-
-[node name="3" type="ColorRect" parent="TowersLayer" unique_id=2013696268]
-material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 700.0
-offset_top = 85.0
-offset_right = 887.0
-offset_bottom = 309.0
-color = Color(0.18431373, 0.6039216, 0.07450981, 1)
-
-[node name="NameLabel" type="Label" parent="TowersLayer/3" unique_id=303030303]
-layout_mode = 0
-offset_top = 5.0
-offset_right = 187.0
-offset_bottom = 35.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 20
-text = "Blackhole Tower"
-horizontal_alignment = 1
-
-[node name="BlackholeTower" type="Sprite2D" parent="TowersLayer/3" unique_id=1263058208]
-position = Vector2(92, 124)
-scale = Vector2(0.55, 0.597)
-texture = ExtResource("9_ws7s4")
-
-[node name="4" type="ColorRect" parent="TowersLayer" unique_id=1003340736]
-material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 266.0
-offset_top = 339.0
-offset_right = 453.0
-offset_bottom = 563.0
-color = Color(0.18431373, 0.6039216, 0.07450981, 1)
-
-[node name="NameLabel" type="Label" parent="TowersLayer/4" unique_id=404040404]
-layout_mode = 0
-offset_top = 5.0
-offset_right = 187.0
-offset_bottom = 35.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 20
-text = "Godzilla Tower"
-horizontal_alignment = 1
-
-[node name="GodzillaTower" type="Sprite2D" parent="TowersLayer/4" unique_id=673475163]
-position = Vector2(90, 125)
-scale = Vector2(0.7, 0.716)
-texture = ExtResource("10_fduiw")
-
-[node name="5" type="ColorRect" parent="TowersLayer" unique_id=1479644517]
-material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 483.0
-offset_top = 339.0
-offset_right = 670.0
-offset_bottom = 563.0
-color = Color(0.18431373, 0.6039216, 0.07450981, 1)
-
-[node name="NameLabel" type="Label" parent="TowersLayer/5" unique_id=505050505]
-layout_mode = 0
-offset_top = 5.0
-offset_right = 187.0
-offset_bottom = 35.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 20
-text = "Bullet Tower"
-horizontal_alignment = 1
-
-[node name="BulletTower" type="Sprite2D" parent="TowersLayer/5" unique_id=372846596]
-position = Vector2(93, 126.999985)
-scale = Vector2(0.489, 0.4845)
-texture = ExtResource("11_fduiw")
-
-[node name="6" type="ColorRect" parent="TowersLayer" unique_id=831493604]
-material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 700.0
-offset_top = 339.0
-offset_right = 887.0
-offset_bottom = 563.0
-color = Color(0.18431373, 0.6039216, 0.07450981, 1)
-
-[node name="NameLabel" type="Label" parent="TowersLayer/6" unique_id=606060606]
-layout_mode = 0
-offset_top = 5.0
-offset_right = 187.0
-offset_bottom = 35.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 20
-text = "Ace Tower"
-horizontal_alignment = 1
-
-[node name="PaperAirplane" type="Sprite2D" parent="TowersLayer/6" unique_id=1811139515]
-position = Vector2(82.000015, 125.00001)
-rotation = -0.60613
-scale = Vector2(0.7, 0.859)
-texture = ExtResource("12_cgse8")
-
-[node name="7" type="ColorRect" parent="TowersLayer" unique_id=777777777]
-material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 267.0
-offset_top = 87.0
-offset_right = 454.0
-offset_bottom = 311.0
-color = Color(0.18431373, 0.6039216, 0.07450981, 1)
-
-[node name="NameLabel" type="Label" parent="TowersLayer/7" unique_id=777777778]
-layout_mode = 0
-offset_top = 5.0
-offset_right = 187.0
-offset_bottom = 35.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 20
-text = "Holy Crusader"
-horizontal_alignment = 1
-
-[node name="HolyCrusader" type="Sprite2D" parent="TowersLayer/7" unique_id=1133539019]
-position = Vector2(91, 128)
-scale = Vector2(0.175, 0.175)
-texture = ExtResource("15_dqyvv")
-
-[node name="8" type="ColorRect" parent="TowersLayer" unique_id=888888888]
-material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 483.0
-offset_top = 85.0
-offset_right = 670.0
-offset_bottom = 309.0
-color = Color(0.18431373, 0.6039216, 0.07450981, 1)
-
-[node name="NameLabel" type="Label" parent="TowersLayer/8" unique_id=888888889]
-layout_mode = 0
-offset_top = 5.0
-offset_right = 187.0
-offset_bottom = 35.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 20
-text = "Turt Sahur"
-horizontal_alignment = 1
-
-[node name="Turt^3Sahur" type="Sprite2D" parent="TowersLayer/8" unique_id=334133041]
-position = Vector2(91, 107)
-scale = Vector2(0.43, 0.43)
-texture = ExtResource("16_m8x2t")
-
-[node name="9" type="ColorRect" parent="TowersLayer" unique_id=999999999]
-material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 700.0
-offset_top = 85.0
-offset_right = 887.0
-offset_bottom = 309.0
-color = Color(0.18431373, 0.6039216, 0.07450981, 1)
-
-[node name="NameLabel" type="Label" parent="TowersLayer/9" unique_id=999999998]
-layout_mode = 0
-offset_top = 5.0
-offset_right = 187.0
-offset_bottom = 35.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 20
-text = "Turt Town"
-horizontal_alignment = 1
-
-[node name="TurtTown" type="Sprite2D" parent="TowersLayer/9" unique_id=9009]
-position = Vector2(91, 119)
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("17_trttn")
-
-[node name="10" type="ColorRect" parent="TowersLayer" unique_id=101001001]
-material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 266.0
-offset_top = 339.0
-offset_right = 453.0
-offset_bottom = 563.0
-color = Color(0.18431373, 0.6039216, 0.07450981, 1)
-
-[node name="NameLabel" type="Label" parent="TowersLayer/10" unique_id=101101101]
-layout_mode = 0
-offset_top = 5.0
-offset_right = 187.0
-offset_bottom = 35.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 20
-horizontal_alignment = 1
-
-[node name="11" type="ColorRect" parent="TowersLayer" unique_id=111011101]
-material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 483.0
-offset_top = 339.0
-offset_right = 670.0
-offset_bottom = 563.0
-color = Color(0.18431373, 0.6039216, 0.07450981, 1)
-
-[node name="NameLabel" type="Label" parent="TowersLayer/11" unique_id=111111112]
-layout_mode = 0
-offset_top = 5.0
-offset_right = 187.0
-offset_bottom = 35.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 20
-horizontal_alignment = 1
-
-[node name="12" type="ColorRect" parent="TowersLayer" unique_id=121012101]
-material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 700.0
-offset_top = 339.0
-offset_right = 887.0
-offset_bottom = 563.0
-color = Color(0.18431373, 0.6039216, 0.07450981, 1)
-
-[node name="NameLabel" type="Label" parent="TowersLayer/12" unique_id=121112111]
-layout_mode = 0
-offset_top = 5.0
-offset_right = 187.0
-offset_bottom = 35.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 20
-horizontal_alignment = 1
-
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Towers" to="." method="_on_towers_pressed"]
@@ -689,6 +735,6 @@ horizontal_alignment = 1
 [connection signal="item_selected" from="SettingsLayer/SettingsMenu/FullscreenButton" to="." method="_on_fullscreen_item_selected"]
 [connection signal="item_selected" from="SettingsLayer/SettingsMenu/CBButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="SettingsLayer/SettingsMenu/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="TowersLayer/ReturnTowers" to="." method="_on_return_towers_pressed"]
 [connection signal="pressed" from="TowersLayer/LeftArrow" to="." method="_on_left_tower_pressed"]
+[connection signal="pressed" from="TowersLayer/ReturnTowers" to="." method="_on_return_towers_pressed"]
 [connection signal="pressed" from="TowersLayer/RightArrow" to="." method="_on_right_tower_pressed"]
