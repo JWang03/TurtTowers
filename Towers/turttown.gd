@@ -7,7 +7,8 @@ const ADJ_MULT := 1.5
 const SELF_EXCLUSION_THRESHOLD := 0.5
 const RANGE_NODE_NAME := "Range"
 const MIN_TIMER_WAIT := 0.01
-
+@export var occupied_cell: Vector2i
+@export var tilemap: TileMapLayer
 @export var cost: float = 100
 
 var is_placed := false:

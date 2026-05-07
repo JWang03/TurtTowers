@@ -4,16 +4,14 @@ extends TowerBase
 @export var max_bounces = 6
 @export var jump_range = 150.0
 @export var attack_cooldown = 1.5
-@export var cost: int = 30
-@export var is_placed: bool = false
+
 @export var buff_radius = 200.0
 @export var damage_buff_multiplier = 2
 @export var speed_buff_multiplier = 0.5
 
 @onready var attack_timer = $Timer
 @onready var shoot_point = $Muzzle
-var occupied_cell: Vector2i
-var tilemap: TileMapLayer
+
 var lightning_scene = preload("res://Towers/bolt.tscn")
 
 var buffed_towers_damage: Array = []
@@ -21,6 +19,7 @@ var buffed_towers_speed: Array = []
 
 func _ready():
 	super._ready()
+	cost = 25
 	attack_timer.wait_time = attack_cooldown
 	if !attack_timer.timeout.is_connected(_on_tower_heartbeat):
 		attack_timer.timeout.connect(_on_tower_heartbeat)
@@ -30,37 +29,22 @@ func _process(_delta):
 	if right_level >= 1:
 		update_aura()
 
-func get_shield_provider(zombie):
-	var protectors = get_tree().get_nodes_in_group("shield_mobs")
-	for p in protectors:
-		if is_instance_valid(p) and p.get("is_shield_active"):
-			if p.global_position.distance_to(zombie.global_position) <= p.shield_radius:
-				return p
-	return null
-
 func _on_tower_heartbeat():
 	if starter.playing == true:
 		if is_placed == false:
 			return
 		else:
-			print("signal received")
 			var targets = find_chain_targets()
 			if targets.size() > 0:
 				execute_chain_attack(targets)
-			else:
-				print("no zombies in range yet")
 
 func find_chain_targets():
 	var chain = []
-	
 	var first_target = get_best_target()
-	
 	if not first_target:
 		return chain
-
 	chain.append(first_target)
 	var current_target = first_target
-
 	for i in range(max_bounces - 1):
 		var next_target = find_next_jump(current_target, chain)
 		if next_target:
@@ -74,13 +58,11 @@ func find_next_jump(current, excluded):
 	var all_zombies = get_tree().get_nodes_in_group("zombies")
 	var best_next = null
 	var min_dist = jump_range
-
 	for zombie in all_zombies:
-		if !is_instance_valid(zombie) or zombie in excluded: 
+		if !is_instance_valid(zombie) or zombie in excluded:
 			continue
 		if zombie.get("is_stealth") == true:
 			continue
-		
 		var dist = current.global_position.distance_to(zombie.global_position)
 		if dist < min_dist:
 			min_dist = dist
@@ -105,30 +87,23 @@ func _input(event):
 func execute_chain_attack(targets):
 	var start_pos = shoot_point.global_position
 	var shields_hit_this_chain = {}
-
 	for target in targets:
 		if !is_instance_valid(target): continue
-		
 		var shield_provider = get_shield_provider(target)
 		var final_target = shield_provider if shield_provider else target
 		var target_pos = final_target.global_position
-		
 		var bolt = lightning_scene.instantiate()
 		get_tree().current_scene.add_child(bolt)
-		
 		if bolt.has_method("create_bolt"):
 			bolt.create_bolt(start_pos, target_pos)
-		
 		if shield_provider:
 			if !shields_hit_this_chain.has(shield_provider):
 				shield_provider.take_damage(attack_damage)
 				shields_hit_this_chain[shield_provider] = true
 		else:
 			target.take_damage(attack_damage)
-		
 		start_pos = target_pos
 
-# Aura buffing:
 func get_nearby_towers() -> Array:
 	var towers = []
 	for node in get_tree().get_nodes_in_group("towers"):
@@ -140,14 +115,12 @@ func get_nearby_towers() -> Array:
 func update_aura():
 	var nearby = get_nearby_towers()
 
-	# Remove damage buff from towers that left range
 	for tower in buffed_towers_damage.duplicate():
 		if tower not in nearby or !is_instance_valid(tower):
 			if "attack_damage" in tower:
 				tower.attack_damage /= damage_buff_multiplier
 			buffed_towers_damage.erase(tower)
 
-	# Remove speed buff from towers that left range
 	for tower in buffed_towers_speed.duplicate():
 		if tower not in nearby or !is_instance_valid(tower):
 			if "attack_cooldown" in tower:
@@ -156,7 +129,6 @@ func update_aura():
 					tower.get_node("Timer").wait_time = tower.attack_cooldown
 			buffed_towers_speed.erase(tower)
 
-	# Apply damage buff to newly in-range towers (tier 0+)
 	if right_level >= 1:
 		for tower in nearby:
 			if tower not in buffed_towers_damage:
@@ -168,7 +140,6 @@ func update_aura():
 					tower.damage_multiplier *= damage_buff_multiplier
 				buffed_towers_damage.append(tower)
 
-	# Apply speed buff to newly in-range towers (tier 2+)
 	if right_level >= 2:
 		for tower in nearby:
 			if tower not in buffed_towers_speed:
@@ -187,7 +158,6 @@ func grant_extra_life():
 	if life_manager and life_manager.has_method("add_lives"):
 		life_manager.add_lives(100)
 
-# Upgrading:
 var tower_name = "Mad Scienturt"
 var upgrades = {
 	"left": {
@@ -216,18 +186,15 @@ func purchase_upgrade(branch: String):
 		chosen_branch = branch
 	elif chosen_branch != branch:
 		return
-	
 	var ucost = 0
 	if branch == "left":
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
-	
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
 		return
 	currency_manager.spend_shellings(ucost)
-	
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
@@ -243,15 +210,11 @@ func apply_left_upgrade():
 
 func apply_right_upgrade():
 	match right_level:
-		0:
-			set_process(true)
-		1:
-			pass  # aura loop already running, speed buff picks up automatically
-		2:
-			grant_extra_life()
+		0: set_process(true)
+		1: pass
+		2: grant_extra_life()
 
 func sell() -> void:
-	# Clean up all active buffs before freeing
 	for tower in buffed_towers_damage:
 		if is_instance_valid(tower) and "attack_damage" in tower:
 			tower.attack_damage /= damage_buff_multiplier
@@ -260,9 +223,4 @@ func sell() -> void:
 			tower.attack_cooldown /= speed_buff_multiplier
 			if tower.has_node("Timer"):
 				tower.get_node("Timer").wait_time = tower.attack_cooldown
-
-	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
-	currency_manager.add_shellings(cost / 2)
-	if tilemap:
-		tilemap.unoccupy_cell(occupied_cell)
-	queue_free()
+	super.sell()

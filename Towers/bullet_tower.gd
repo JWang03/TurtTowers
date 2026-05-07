@@ -1,6 +1,3 @@
-extends StaticBody2D
-@export var fire_rate: float = 0.2
-@export var is_placed: bool = false
 extends TowerBase
 
 @onready var muzzle = $Muzzle
@@ -8,19 +5,18 @@ extends TowerBase
 var bullet_scene = preload("res://Towers/bullet.tscn")
 var damage_multiplier = 1.0
 var double_shot = false
-var occupied_cell: Vector2i
-var tilemap: TileMapLayer
 var hitscan = false
 
-@export var cost: float = 5.0
+
 
 func _ready():
 	super._ready()
+	cost = 25
 	fire_rate = 0.2
 	timer.wait_time = fire_rate
 	timer.one_shot = false
 	timer.timeout.connect(_on_timer_timeout)
-	detection_area.input_pickable = true
+	detection_area.body_entered.connect(_on_zombie_entered)
 
 func _input(event):
 	if not is_placed:
@@ -38,10 +34,9 @@ func _input(event):
 				break
 
 func _on_zombie_entered(body):
-	if body.is_in_group("zombies"):
-		if timer.is_stopped():
-			attempt_shot()
-			timer.start()
+	if body.is_in_group("zombies") and timer.is_stopped():
+		attempt_shot()
+		timer.start()
 
 func _on_timer_timeout():
 	attempt_shot()
@@ -51,62 +46,39 @@ func _on_timer_timeout():
 	else:
 		timer.stop()
 
-func get_valid_target():
-	targets_in_range = targets_in_range.filter(func(t): return is_instance_valid(t))
-	for target in targets_in_range:
-		if target.get("is_stealth") == true:
-			continue
-		return target
-	return null
-
-func get_shield_provider(zombie):
-	var protectors = get_tree().get_nodes_in_group("shield_mobs")
-	for p in protectors:
-		if is_instance_valid(p) and p.get("is_shield_active"):
-			var dist = p.global_position.distance_to(zombie.global_position)
-			if dist <= p.shield_radius:
-				return p
-	return null
-
 func attempt_shot():
-	if is_placed:
-		var target = get_valid_target()
-		
-		if target and bullet_scene:
-			var shield_provider = get_shield_provider(target)
-			var final_target = shield_provider if shield_provider else target
-			
-			if double_shot:
-				var offsets = [-5, 5]
-				for offset in offsets:
-					var bullet = bullet_scene.instantiate()
-					bullet.damage *= damage_multiplier
-					if hitscan:
-						bullet.speed *= 1000
-					get_tree().current_scene.add_child(bullet)
-					bullet.global_position = muzzle.global_position
-					bullet.look_at(final_target.global_position)
-					var perp = Vector2(-sin(bullet.rotation), cos(bullet.rotation))
-					bullet.global_position += perp * offset
-					if bullet.has_method("set_hit_target"):
-						bullet.set_hit_target(final_target)
-			else:
-				var bullet = bullet_scene.instantiate()
-				bullet.damage *= damage_multiplier
-				get_tree().current_scene.add_child(bullet)
-				bullet.global_position = muzzle.global_position
-				bullet.look_at(final_target.global_position)
-				if bullet.has_method("set_hit_target"):
-					bullet.set_hit_target(final_target)
-		
-		elif targets_in_range.is_empty():
-			timer.stop()
+	if not is_placed:
+		return
+	var target = get_best_target()
+	if not target or not bullet_scene:
+		return
 
-func _on_timer_timeout():
-	attempt_shot()
-func _process(delta: float) -> void:
+	var shield_provider = get_shield_provider(target)
+	var final_target = shield_provider if shield_provider else target
+
+	if double_shot:
+		for offset in [-5, 5]:
+			_fire_bullet(final_target, offset)
+	else:
+		_fire_bullet(final_target, 0)
+
+func _fire_bullet(final_target: Node2D, side_offset: float):
+	var bullet = bullet_scene.instantiate()
+	bullet.damage *= damage_multiplier
+	if hitscan:
+		bullet.speed *= 1000
+	get_tree().current_scene.add_child(bullet)
+	bullet.global_position = muzzle.global_position
+	bullet.look_at(final_target.global_position)
+	if side_offset != 0:
+		var perp = Vector2(-sin(bullet.rotation), cos(bullet.rotation))
+		bullet.global_position += perp * side_offset
+	if bullet.has_method("set_hit_target"):
+		bullet.set_hit_target(final_target)
+
+func _process(_delta: float) -> void:
 	timer.wait_time = fire_rate
-#Upgrading:
+
 var tower_name = "Soldier Turt"
 var upgrades = {
 	"left": {
@@ -135,18 +107,15 @@ func purchase_upgrade(branch: String):
 		chosen_branch = branch
 	elif chosen_branch != branch:
 		return
-	
-	var cost = 0
+	var ucost = 0
 	if branch == "left":
-		cost = upgrades["left"]["tiers"][left_level]["cost"]
+		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
-		cost = upgrades["right"]["tiers"][right_level]["cost"]
-	
+		ucost = upgrades["right"]["tiers"][right_level]["cost"]
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
-	if currency_manager.shellings < cost:
+	if currency_manager.shellings < ucost:
 		return
-	currency_manager.spend_shellings(cost)
-	
+	currency_manager.spend_shellings(ucost)
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
@@ -166,13 +135,6 @@ func apply_right_upgrade():
 		1:
 			damage_multiplier *= 15.0
 			fire_rate = 2
-		2: 
+		2:
 			detection_area.scale *= 20
 			hitscan = true
-
-func sell() -> void:
-	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
-	currency_manager.add_shellings(cost / 2)
-	if tilemap:
-		tilemap.unoccupy_cell(occupied_cell)
-	queue_free()

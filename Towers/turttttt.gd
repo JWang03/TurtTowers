@@ -2,7 +2,7 @@ extends TowerBase
 
 @export var attack_damage: float = 5.0
 @export var slow_factor: float = 0.2
-@export var cost: float = 25.0
+
 
 @onready var anim_sprite = $AnimatedSprite2D
 
@@ -10,6 +10,7 @@ var current_slow_target = null
 
 func _ready():
 	super._ready()
+	cost = 25
 	anim_sprite.animation_looped.connect(_on_animation_looped)
 	anim_sprite.stop()
 	

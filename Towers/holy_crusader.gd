@@ -1,12 +1,12 @@
 extends Node2D
 
+@export var occupied_cell: Vector2i
+@export var tilemap: TileMapLayer
 @export var fire_rate: float = 0.5
 @export var damage: int = 100
 @export var cost: int = 5
 @export var is_placed: bool = false
 var damage_multiplier = 1
-var occupied_cell: Vector2i
-var tilemap: TileMapLayer
 @onready var range_area = $Range
 @onready var collision_shape = $Range/CollisionShape2D
 @onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
@@ -163,10 +163,3 @@ func apply_right_upgrade():
 			fire_rate *= 1.5
 		2: 
 			aim = true
-
-func sell() -> void:
-	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
-	currency_manager.add_shellings(cost / 2)
-	if tilemap:
-		tilemap.unoccupy_cell(occupied_cell)
-	queue_free()
