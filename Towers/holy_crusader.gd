@@ -1,15 +1,13 @@
-extends Node2D
+extends TowerBase
 
-@export var occupied_cell: Vector2i
-@export var tilemap: TileMapLayer
-@export var fire_rate: float = 0.5
+
+
 @export var damage: int = 100
-@export var cost: int = 5
-@export var is_placed: bool = false
+
 var damage_multiplier = 1
 @onready var range_area = $Range
 @onready var collision_shape = $Range/CollisionShape2D
-@onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
+
 var beam_scene = preload("res://towers/holybeam.tscn")
 var targets_in_range: Array = []
 var rng = RandomNumberGenerator.new()
@@ -17,6 +15,9 @@ var time_since_last_shot: float = 0.0
 var aim = false
 
 func _ready():
+	super._ready()
+	cost = 25
+	fire_rate = 0.4
 	rng.randomize()
 	range_area.body_entered.connect(_on_zombie_entered)
 	range_area.body_exited.connect(_on_zombie_exited)

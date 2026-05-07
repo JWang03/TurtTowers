@@ -16,18 +16,17 @@ radius = 38.01441
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6v5m"]
 size = Vector2(187, 190)
 
-[node name="paperplane" type="CharacterBody2D" unique_id=490440668]
+[node name="paperplane" type="StaticBody2D" unique_id=75933418]
 collision_layer = 2
 script = ExtResource("1_jaf4s")
 flight_speed = 30.0
-fire_rate = 0.2
-spread_count = 4
 spread_angle = 30.0
+fire_rate = 0.2
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1448541128]
 position = Vector2(-492.99994, -1751)
-rotation = 0.7853982
-scale = Vector2(-1.9987422, 1.9118669)
+rotation = -2.3561945
+scale = Vector2(1.9987421, -1.9118668)
 curve = SubResource("Curve2D_mmx3w")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1502422107]
@@ -61,6 +60,3 @@ disabled = true
 position = Vector2(-1.2499985, 1.2500014)
 scale = Vector2(0.16727942, 0.15818183)
 texture = ExtResource("3_g7pya")
-
-[connection signal="body_entered" from="Path2D/PathFollow2D/Range" to="." method="_on_range_body_entered"]
-[connection signal="body_exited" from="Path2D/PathFollow2D/Range" to="." method="_on_range_body_exited"]

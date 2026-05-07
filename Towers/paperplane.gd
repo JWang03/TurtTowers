@@ -1,20 +1,21 @@
-extends CharacterBody2D
+extends TowerBase
 
 @export var flight_speed: float = 45.0
-@export var fire_rate: float = 0.05
+
 @export var spread_count: int = 4
 @export var spread_angle: float = 5
-@export var cost: int = 5
-@export var is_placed: bool = false
+
 
 
 @onready var path_follow = $Path2D/PathFollow2D
 @onready var muzzle = $Path2D/PathFollow2D/Muzzle
 @onready var shoot_timer = $Timer
-@onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
+
 var bullet_scene = preload("res://Towers/bullet.tscn")
 
 func _ready():
+	super._ready()
+	fire_rate = .1
 	shoot_timer.wait_time = fire_rate
 	shoot_timer.one_shot = false
 	

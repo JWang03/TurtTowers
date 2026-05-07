@@ -2,7 +2,6 @@ extends TowerBase
 
 @export var damage_per_tick: float = 5
 @export var damage_frequency: float = 0.15
-@export var cost = 2
 @onready var head = $Head
 @onready var flame_anim = $Head/AnimatedSprite2D
 @onready var fire_area = $Head/FireDamageArea
