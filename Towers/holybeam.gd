@@ -5,6 +5,7 @@ extends Area2D
 @onready var particles = $GPUParticles2D
 
 var damage: int = 100
+var target: Node2D = null  # set this from the tower when aim = true
 
 func set_damage(d: int):
 	damage = d
@@ -15,19 +16,24 @@ func _ready():
 	telegraph_sprite.modulate.a = 0.0
 	play_strike_sequence()
 
+func _process(_delta):
+	if target and is_instance_valid(target):
+		global_position = target.global_position
+
 func play_strike_sequence():
 	var tween = create_tween()
-	
+
 	tween.tween_property(telegraph_sprite, "modulate:a", 1.0, 1.0)
 	tween.parallel().tween_property(telegraph_sprite, "scale", Vector2(0.1, 0.1), 0.3)
-	
+
 	tween.tween_callback(func():
+		target = null  # stop tracking, lock in place
 		telegraph_sprite.visible = false
 		beam_sprite.visible = true
 		particles.emitting = true
 		apply_damage()
 	)
-	
+
 	tween.tween_property(beam_sprite, "modulate:a", 0, 1.0)
 	tween.parallel().tween_property(beam_sprite, "scale:x", 0.4, 1.8)
 	tween.tween_callback(queue_free)

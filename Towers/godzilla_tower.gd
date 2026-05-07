@@ -4,7 +4,7 @@ extends TowerBase
 @export var rotation_speed: float = 5.0
 @export var wobble_strength: float = 1.0
 @export var wobble_speed: float = 50.0
-@export var cost: int = 5
+
 
 @onready var head = $Head
 @onready var laser_ray = $Head/RayCast2D
@@ -14,6 +14,7 @@ var target_zombie: Node2D = null
 
 func _ready():
 	super._ready()
+	cost = 25
 	hide_beam()
 
 func _process(delta):

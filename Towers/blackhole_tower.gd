@@ -5,11 +5,12 @@ extends TowerBase
 
 var black_hole_scene = preload("res://Towers/blackhole.tscn")
 
-@export var cost: float = 25.0
+
 @export var lead_distance: float = 60.0
 
 func _ready():
 	super._ready()
+	cost = 25
 	fire_rate = 4.0 
 	timer.wait_time = fire_rate
 	timer.one_shot = false
