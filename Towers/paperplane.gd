@@ -11,7 +11,7 @@ extends CharacterBody2D
 @onready var path_follow = $Path2D/PathFollow2D
 @onready var muzzle = $Path2D/PathFollow2D/Muzzle
 @onready var shoot_timer = $Timer
-@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
+@onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
 var bullet_scene = preload("res://Towers/bullet.tscn")
 
 func _ready():

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://u18f1mfmaoyx"]
+
+[ext_resource type="Script" uid="uid://xqy57trr7g6e" path="res://towerbase.gd" id="1_m3t3g"]
+
+[node name="TowerBase" type="StaticBody2D" unique_id=835045612]
+script = ExtResource("1_m3t3g")
+target_priority = 2

@@ -1,23 +1,24 @@
 extends StaticBody2D
 @export var fire_rate: float = 0.2
 @export var is_placed: bool = false
+extends TowerBase
+
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer
-@onready var detection_area = $Range
-@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
-var targets_in_range: Array = []
 var bullet_scene = preload("res://Towers/bullet.tscn")
-var cost: int = 5
 var damage_multiplier = 1.0
 var double_shot = false
 var occupied_cell: Vector2i
 var tilemap: TileMapLayer
 var hitscan = false
+
+@export var cost: float = 5.0
+
 func _ready():
-	set_process_input(true)
+	super._ready()
+	fire_rate = 0.2
 	timer.wait_time = fire_rate
-	detection_area.body_entered.connect(_on_zombie_entered)
-	detection_area.body_exited.connect(_on_zombie_exited)
+	timer.one_shot = false
 	timer.timeout.connect(_on_timer_timeout)
 	detection_area.input_pickable = true
 
@@ -38,14 +39,16 @@ func _input(event):
 
 func _on_zombie_entered(body):
 	if body.is_in_group("zombies"):
-		targets_in_range.append(body)
 		if timer.is_stopped():
 			attempt_shot()
 			timer.start()
 
-func _on_zombie_exited(body):
-	targets_in_range.erase(body)
-	if targets_in_range.is_empty():
+func _on_timer_timeout():
+	attempt_shot()
+	if detection_area.has_overlapping_bodies():
+		if timer.is_stopped():
+			timer.start()
+	else:
 		timer.stop()
 
 func get_valid_target():

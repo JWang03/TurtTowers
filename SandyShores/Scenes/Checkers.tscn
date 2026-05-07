@@ -19,9 +19,13 @@
 [ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="14_3fwag"]
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="15_fqsee"]
 [ext_resource type="Script" uid="uid://n800asycp1sd" path="res://SandyShores/Scripts/bomb_tower.gd" id="16_68ie1"]
+[ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="16_fqsee"]
 [ext_resource type="PackedScene" uid="uid://bcepi076o27tl" path="res://Enemies/plastic_ring.tscn" id="17_04iuq"]
+[ext_resource type="Script" uid="uid://ckfrd7gva57ou" path="res://SandyShores/Scenes/return.gd" id="17_68ie1"]
 [ext_resource type="PackedScene" uid="uid://dmhok8tovvxvc" path="res://Towers/bomber_tower.tscn" id="17_t6tie"]
 [ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="18_kbjh2"]
+[ext_resource type="Texture2D" uid="uid://dil5b5bgf4wxt" path="res://textures/GearIcon.png" id="18_t6tie"]
+[ext_resource type="Script" uid="uid://cy5j1efrjxakf" path="res://SandyShores/Scenes/settings.gd" id="19_kbjh2"]
 [ext_resource type="PackedScene" uid="uid://do17203pjxuim" path="res://Towers/bullet_tower.tscn" id="19_vs0qa"]
 [ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="20_g86uu"]
 [ext_resource type="PackedScene" uid="uid://d2l8b5nykdqdg" path="res://Towers/godzilla_tower.tscn" id="21_vwh3y"]
@@ -36,11 +40,16 @@
 [ext_resource type="Texture2D" uid="uid://c43l2x13u6e1n" path="res://textures/hearts_no_bg.png" id="29_ssqjk"]
 [ext_resource type="PackedScene" uid="uid://cfxko1b87aspq" path="res://Towers/paperplane.tscn" id="30_04iuq"]
 [ext_resource type="Script" uid="uid://cfxxtgfammudk" path="res://SandyShores/Scripts/death_screen.gd" id="30_vfoi3"]
-[ext_resource type="Texture2D" uid="uid://c5dersis5dsos" path="res://textures/PlayButton.png" id="31_hy1vn"]
 [ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="31_ueo25"]
 [ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="32_seqo6"]
 [ext_resource type="PackedScene" uid="uid://hovc6xdbesyd" path="res://Towers/holy_crusader.tscn" id="32_vbuyy"]
-[ext_resource type="Texture2D" uid="uid://djk3jttptdl7f" path="res://textures/PauseButton.png" id="33_i4qxd"]
+[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="34_t6tie"]
+[ext_resource type="PackedScene" uid="uid://btwem1yvxgacj" path="res://Towers/turttttt.tscn" id="35_kbjh2"]
+[ext_resource type="Texture2D" uid="uid://cf3ilal0r2oba" path="res://textures/Resume.png" id="44_6jpsd"]
+[ext_resource type="Texture2D" uid="uid://dvxhwiq86ypku" path="res://textures/Pause.png" id="45_3fwag"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/TurtTown.png" id="48_vs0qa"]
+[ext_resource type="PackedScene" uid="uid://67hd02tun5we" path="res://Towers/turttown.tscn" id="49_g86uu"]
+[ext_resource type="Script" uid="uid://cjt186qnocwu8" path="res://SandyShores/Scenes/tower_targeting.gd" id="50_target"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulshj"]
 texture = ExtResource("1_oydsv")
@@ -177,19 +186,165 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="SystemFont" id="SystemFont_04iuq"]
+[sub_resource type="SystemFont" id="SystemFont_b0jmt"]
 font_names = PackedStringArray("Comic Sans MS")
 font_weight = 700
 
-[sub_resource type="SystemFont" id="SystemFont_ueo25"]
+[sub_resource type="SystemFont" id="SystemFont_6jpsd"]
 font_names = PackedStringArray("Comic Sans MS")
 font_weight = 700
 hinting = 2
 subpixel_positioning = 0
 
-[sub_resource type="SystemFont" id="SystemFont_vbuyy"]
+[sub_resource type="SystemFont" id="SystemFont_3fwag"]
 
-[sub_resource type="SystemFont" id="SystemFont_b0jmt"]
+[sub_resource type="SystemFont" id="SystemFont_fqsee"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fqsee"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68ie1"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0.23137255, 0.23137255, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6tie"]
+bg_color = Color(1, 0.41960785, 0.41960785, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbjh2"]
+bg_color = Color(0.8, 0.101960786, 0.101960786, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vs0qa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g86uu"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.14017555, 0.72387505, 0.875489, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwh3y"]
+bg_color = Color(0.08235294, 0.49803922, 0.627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5hhm"]
+bg_color = Color(0.101960786, 0.6156863, 0.7490196, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnuqq"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.08627451, 0.6392157, 0.2901961, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aml8x"]
+bg_color = Color(0.08627451, 0.39607844, 0.20392157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ym06y"]
+bg_color = Color(0.08235294, 0.5019608, 0.23921569, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
 
 [node name="Game" type="Node2D" unique_id=2110147607]
 z_index = -100
@@ -215,11 +370,11 @@ position = Vector2(18, 0)
 tile_map_data = PackedByteArray("AAAEAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAATAAEAAAAAAAAAAAASAAIAAAAAAAAAAAARAAMAAAAAAAAAAAAQAAQABAAAAAAAAAAPAAUAAgAAAAAAAAAOAAYABAAAAAAAAAANAAcAAgAAAAAAAAAMAAgABAAAAAAAAAAJAAsAAgAAAAAAAAAHAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAoAAAAAAAAAAAAIAAoAAgAAAAAAAAANAAsAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAoAAgAAAAAAAAARAAsAAgAAAAAAAAASAAoADgAAAAAAAAATAAsABQAAAAAAAAAUAAoABQAAAAAAAAAVAAsAAAAAAAAAAFAVAAkAAAAAAAAAAFAVAAcAAAAAAAAAAFAVAAUAAAAAAAAAAFAVAAMAAAAAAAAAAFAVAAEAAAAAAAAAAFAUAAIAAAAAAAAAAFATAAMAAAAAAAAAAFAUAAQAAAAAAAAAAFATAAUAAAAAAAAAAFASAAQAAAAAAAAAAFARAAUABAAAAAAAAAASAAYABAAAAAAAAAAUAAYAAAAAAAAAAFATAAcABAAAAAAAAAAUAAgABAAAAAAAAAATAAkADAAAAAAAAAASAAgAAgAAAAAAAAARAAcAAgAAAAAAAAARAAkABAAAAAAAAAAQAAgABAAAAAAAAAAQAAYAAgAAAAAAAAAPAAcABAAAAAAAAAAOAAgAAgAAAAAAAAAPAAkAAgAAAAAAAAANAAkAAAAAAAAAAAAEAAoAAAAAAAAAAFAEAAgAAAAAAAAAAFAEAAYAAgAAAAAAAAAEAAQABAAAAAAAAAAEAAIAAAAAAAAAAFAFAAEAAAAAAAAAAFAFAAMAAAAAAAAAAFAFAAcAAgAAAAAAAAAFAAkAAAAAAAAAAFAHAAkAAgAAAAAAAAAJAAkABAAAAAAAAAAKAAgAAgAAAAAAAAAIAAgABAAAAAAAAAAGAAgAAgAAAAAAAAAHAAcABAAAAAAAAAAJAAcAAgAAAAAAAAALAAcABAAAAAAAAAAMAAYAAgAAAAAAAAAKAAYABAAAAAAAAAAIAAYAAgAAAAAAAAAHAAUAAgAAAAAAAAAJAAUABAAAAAAAAAALAAUAAgAAAAAAAAANAAUABAAAAAAAAAAOAAQAAgAAAAAAAAAMAAQABAAAAAAAAAAKAAQAAgAAAAAAAAAIAAQACgAAAAAAAAAGAAQAAAAAAAAAAAAHAAMABgAAAAAAAAAJAAMABwAAAAAAAAALAAMABAAAAAAAAAANAAMAAgAAAAAAAAAPAAMABAAAAAAAAAAQAAIAAAAAAAAAAFAOAAIABAAAAAAAAAAMAAIAAgAAAAAAAAAKAAIABAAAAAAAAAAIAAIABgAAAAAAAAAGAAIAAAAAAAAAAFAHAAEAAAAAAAAAAFAGAAAAAAAAAAAAAFAIAAAAAAAAAAAAAFAJAAEAAAAAAAAAAFAKAAAAAgAAAAAAAAALAAEAAgAAAAAAAAAMAAAABAAAAAAAAAANAAEABAAAAAAAAAAOAAAAAAAAAAAAAFAPAAEAAAAAAAAAAFAQAAAAAAAAAAAAAFARAAEAAAAAAAAAAFASAAAAAAAAAAAAAFAEAAsAAQAAAAAAAAAFAAoAAQAAAAAAAAAEAAkAAQAAAAAAAAAFAAgAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAYAAwAAAAAAAAAEAAUAAwAAAAAAAAAFAAQAAQAAAAAAAAAEAAMAAQAAAAAAAAAFAAIAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAIAAMAAwAAAAAAAAAJAAQAAQAAAAAAAAAKAAUAAQAAAAAAAAALAAYAAQAAAAAAAAAMAAcAAQAAAAAAAAAIAAUAAwAAAAAAAAAJAAYAAwAAAAAAAAAKAAcAAwAAAAAAAAAHAAQAAwAAAAAAAAAGAAMAAQAAAAAAAAAGAAUAAQAAAAAAAAAHAAYAAQAAAAAAAAAGAAcAAwAAAAAAAAAHAAgAAwAAAAAAAAAGAAkAAQAAAAAAAAAHAAoAAQAAAAAAAAAGAAsAAQAAAAAAAAAIAAsAAQAAAAAAAAAIAAkAAwAAAAAAAAAIAAcAAQAAAAAAAAAJAAgAAQAAAAAAAAAKAAkAAQAAAAAAAAAJAAoAAwAAAAAAAAAMAAsAAQAAAAAAAAALAAoAAwAAAAAAAAAMAAkAAwAAAAAAAAALAAgAAwAAAAAAAAANAAgAAQAAAAAAAAAOAAkAAQAAAAAAAAAPAAoAAQAAAAAAAAAQAAsAAQAAAAAAAAAOAAsAAQAAAAAAAAANAAoAAQAAAAAAAAASAAsAAwAAAAAAAAAUAAsAAQAAAAAAAAAVAAoAAQAAAAAAAAATAAoACwAAAAAAAAARAAoAAwAAAAAAAAAUAAkACwAAAAAAAAASAAkAAQAAAAAAAAAQAAkAAwAAAAAAAAAPAAgAAwAAAAAAAAARAAgAAQAAAAAAAAATAAgACwAAAAAAAAAVAAgAAQAAAAAAAAAUAAcAAQAAAAAAAAASAAcAAwAAAAAAAAAQAAcAAQAAAAAAAAAOAAcAAwAAAAAAAAANAAYAAwAAAAAAAAAMAAUAAwAAAAAAAAALAAQAAwAAAAAAAAAKAAMAAwAAAAAAAAAJAAIAAwAAAAAAAAAIAAEAAQAAAAAAAAAHAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAEAAQAAAAAAAAALAAIAAQAAAAAAAAALAAAAAwAAAAAAAAAMAAEAAwAAAAAAAAANAAIAAwAAAAAAAAAMAAMAAQAAAAAAAAANAAQAAQAAAAAAAAAOAAUAAQAAAAAAAAAPAAYAAQAAAAAAAAARAAYAAwAAAAAAAAATAAYAAQAAAAAAAAAVAAYAAQAAAAAAAAAVAAQAAQAAAAAAAAAVAAIAAQAAAAAAAAAVAAAAAQAAAAAAAAAUAAEAAQAAAAAAAAATAAAAAQAAAAAAAAATAAIAAQAAAAAAAAAUAAMAAQAAAAAAAAAUAAUAAQAAAAAAAAATAAQAAQAAAAAAAAASAAUAAQAAAAAAAAAQAAUAAwAAAAAAAAAPAAQAAwAAAAAAAAAOAAMAAwAAAAAAAAANAAAAAQAAAAAAAAAOAAEAAQAAAAAAAAAPAAAAAQAAAAAAAAAQAAEAAQAAAAAAAAAPAAIAAQAAAAAAAAAQAAMAAQAAAAAAAAARAAQAAQAAAAAAAAASAAMAAQAAAAAAAAARAAIAAQAAAAAAAAASAAEAAQAAAAAAAAARAAAAAQAAAAAAAAAFAAUABAAAAAAAAAAGAAYABAAAAAAAAAALAAsABQAAAAAAAAAMAAoABQAAAAAAAAAKAAsAAwAAAAAAAAAKAAoADgAAAAAAAAALAAkADAAAAAAAAAA=")
 tile_set = SubResource("TileSet_sre1k")
 
-[node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
-z_index = 4096
+[node name="Mothershell" type="Sprite2D" parent="." unique_id=996947768]
+z_index = -1
 z_as_relative = false
-position = Vector2(116.25001, 327.08197)
-scale = Vector2(2.1, 1.9944696)
+position = Vector2(117.25, 322)
+scale = Vector2(2.066372, 1.9578313)
 texture = ExtResource("11_vbuyy")
 
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
@@ -236,147 +391,166 @@ enemy3 = ExtResource("14_3fwag")
 position = Vector2(228, 0)
 curve = SubResource("Curve2D_wlj2d")
 
-[node name="UI" type="Control" parent="." unique_id=2067689505]
+[node name="UI" type="Control" parent="." unique_id=399414800]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
-offset_left = -2.0
+offset_left = -4.0
 offset_top = 1.0
 offset_right = 1149.0
 offset_bottom = 646.0
 
-[node name="ShopPanel" type="Control" parent="UI" unique_id=463183581]
-anchors_preset = 0
-offset_left = 7.0
-offset_top = -1.0
-offset_right = 230.0
-offset_bottom = 648.0
+[node name="tower_targeting" type="Button" parent="UI" unique_id=1695660406]
+z_index = 4096
+layout_mode = 0
+offset_left = 249.0
+offset_top = 9.0
+offset_right = 403.0
+offset_bottom = 79.0
+text = "Global Mode: FIRST"
+script = ExtResource("50_target")
 
-[node name="BombButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1681695075]
+[node name="ShopPanel" type="Control" parent="UI" unique_id=34457697]
+anchors_preset = 0
+offset_left = 9.0
+offset_top = 5.0
+offset_right = 232.0
+offset_bottom = 576.0
+
+[node name="BombButton" type="TextureButton" parent="UI/ShopPanel" unique_id=583883519]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -66.0
-offset_top = 31.0
-offset_right = 134.0
-offset_bottom = 101.0
+offset_left = -14.0
+offset_top = 29.0
+offset_right = 71.0
+offset_bottom = 99.0
 texture_normal = ExtResource("15_fqsee")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("16_68ie1")
 tower_scene = ExtResource("17_t6tie")
 
-[node name="BulletButton" type="TextureButton" parent="UI/ShopPanel" unique_id=921615965]
+[node name="BulletButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1583303171]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = 20.0
-offset_top = 35.0
-offset_right = 220.0
-offset_bottom = 105.0
+offset_left = 81.0
+offset_top = 27.0
+offset_right = 154.0
+offset_bottom = 97.0
 texture_normal = ExtResource("18_kbjh2")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("16_68ie1")
 tower_scene = ExtResource("19_vs0qa")
 
-[node name="GodzillaButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1782092134]
+[node name="GodzillaButton" type="TextureButton" parent="UI/ShopPanel" unique_id=418599302]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -5.0
-offset_top = 125.0
-offset_right = 66.0
-offset_bottom = 195.0
+offset_left = -14.0
+offset_top = 107.0
+offset_right = 74.0
+offset_bottom = 204.0
 texture_normal = ExtResource("20_g86uu")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("16_68ie1")
 tower_scene = ExtResource("21_vwh3y")
 
-[node name="BlackHoleButton" type="TextureButton" parent="UI/ShopPanel" unique_id=901089964]
+[node name="BlackHoleButton" type="TextureButton" parent="UI/ShopPanel" unique_id=431183056]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = 87.0
-offset_top = 125.0
-offset_right = 154.0
-offset_bottom = 195.0
+offset_left = 85.0
+offset_top = 121.0
+offset_right = 155.0
+offset_bottom = 191.0
 texture_normal = ExtResource("22_u5hhm")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("16_68ie1")
 tower_scene = ExtResource("23_xnuqq")
 
-[node name="ElectricButton" type="TextureButton" parent="UI/ShopPanel" unique_id=516395470]
+[node name="ElectricButton" type="TextureButton" parent="UI/ShopPanel" unique_id=966157593]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -5.0
-offset_top = 226.0
-offset_right = 67.0
-offset_bottom = 296.0
+offset_left = -3.0
+offset_top = 216.0
+offset_right = 70.0
+offset_bottom = 286.0
 texture_normal = ExtResource("24_aml8x")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("16_68ie1")
 tower_scene = ExtResource("25_ym06y")
 
-[node name="Paperplane" type="TextureButton" parent="UI/ShopPanel" unique_id=602776937]
+[node name="Paperplane" type="TextureButton" parent="UI/ShopPanel" unique_id=292980008]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = 65.0
-offset_top = 221.0
-offset_right = 151.0
-offset_bottom = 294.0
+offset_left = 70.0
+offset_top = 226.0
+offset_right = 160.0
+offset_bottom = 296.0
 texture_normal = ExtResource("29_bvp73")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("16_68ie1")
 tower_scene = ExtResource("30_04iuq")
 
-[node name="Holy Crusader" type="TextureButton" parent="UI/ShopPanel" unique_id=698366919]
+[node name="Holy Crusader" type="TextureButton" parent="UI/ShopPanel" unique_id=1096448704]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = 4.0
-offset_top = 321.0
+offset_left = -4.0
+offset_top = 306.0
 offset_right = 68.0
-offset_bottom = 391.0
+offset_bottom = 376.0
 texture_normal = ExtResource("31_ueo25")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("16_68ie1")
 tower_scene = ExtResource("32_vbuyy")
 
-[node name="Start_Pause" type="Control" parent="UI" unique_id=587196339]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PlayButton" type="TextureButton" parent="UI/Start_Pause" unique_id=891229253]
+[node name="Turttttt" type="TextureButton" parent="UI/ShopPanel" unique_id=1529100433]
 z_index = 4096
 z_as_relative = false
 layout_mode = 0
-offset_left = 1.0
-offset_top = 577.0
-offset_right = 72.0
-offset_bottom = 646.0
-texture_normal = ExtResource("31_hy1vn")
+offset_left = 83.0
+offset_top = 313.0
+offset_right = 155.0
+offset_bottom = 374.0
+texture_normal = ExtResource("34_t6tie")
 ignore_texture_size = true
-stretch_mode = 6
-script = ExtResource("32_seqo6")
-play_texture = ExtResource("31_hy1vn")
-pause_texture = ExtResource("33_i4qxd")
+stretch_mode = 5
+script = ExtResource("16_68ie1")
+tower_scene = ExtResource("35_kbjh2")
 
-[node name="HUD" type="Control" parent="UI" unique_id=290565485]
+[node name="TurtTown" type="TextureButton" parent="UI/ShopPanel" unique_id=200696978]
+z_index = 4096
+z_as_relative = false
+layout_mode = 0
+offset_left = -2.0
+offset_top = 412.0
+offset_right = 68.0
+offset_bottom = 462.0
+texture_normal = ExtResource("48_vs0qa")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("16_68ie1")
+tower_scene = ExtResource("49_g86uu")
+
+[node name="HUD" type="Control" parent="UI" unique_id=357985065]
 anchors_preset = 0
 offset_left = 951.0
 offset_top = -17.0
 offset_right = 982.0
 offset_bottom = 99.0
 
-[node name="ColorRect" type="ColorRect" parent="UI/HUD" unique_id=234818878]
+[node name="ColorRect" type="ColorRect" parent="UI/HUD" unique_id=1824969194]
 layout_mode = 0
 offset_left = -169.0
 offset_top = 21.0
@@ -384,7 +558,7 @@ offset_right = 200.0
 offset_bottom = 138.0
 color = Color(0, 0.5372549, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="UI/HUD" unique_id=1050363098]
+[node name="ColorRect2" type="ColorRect" parent="UI/HUD" unique_id=43621343]
 layout_mode = 0
 offset_left = -162.0
 offset_top = 28.0
@@ -392,78 +566,78 @@ offset_right = 193.0
 offset_bottom = 131.0
 color = Color(0.38103804, 0.717417, 0.29669756, 1)
 
-[node name="Lives" type="Control" parent="UI/HUD" unique_id=583017456]
+[node name="Lives" type="Control" parent="UI/HUD" unique_id=1140008186]
 anchors_preset = 0
 offset_left = -168.0
 offset_top = -15.0
 offset_right = 51.0
 offset_bottom = 131.0
 
-[node name="LivesLabel" type="Label" parent="UI/HUD/Lives" unique_id=257920980]
+[node name="LivesLabel" type="Label" parent="UI/HUD/Lives" unique_id=2075466542]
 layout_mode = 0
 offset_left = 90.0
 offset_top = 51.0
 offset_right = 221.0
 offset_bottom = 118.0
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = SubResource("SystemFont_04iuq")
+theme_override_fonts/font = SubResource("SystemFont_b0jmt")
 theme_override_font_sizes/font_size = 48
 text = "100"
 
-[node name="HeartsNoBg" type="Sprite2D" parent="UI/HUD/Lives" unique_id=1300562580]
+[node name="HeartsNoBg" type="Sprite2D" parent="UI/HUD/Lives" unique_id=1777053774]
 position = Vector2(53, 89)
 scale = Vector2(0.26033974, 0.27710044)
 texture = ExtResource("29_ssqjk")
 
-[node name="CurrencyManager" type="Node" parent="UI/HUD" unique_id=645174382]
+[node name="CurrencyManager" type="Node" parent="UI/HUD" unique_id=884148655]
 script = ExtResource("26_s5fmm")
 
-[node name="Money" type="Control" parent="UI/HUD" unique_id=1947126598]
+[node name="Money" type="Control" parent="UI/HUD" unique_id=356814886]
 anchors_preset = 0
 offset_left = -11.0
 offset_right = 228.0
 offset_bottom = 121.0
 
-[node name="ShellingsLabel" type="Label" parent="UI/HUD/Money" unique_id=39980963]
+[node name="ShellingsLabel" type="Label" parent="UI/HUD/Money" unique_id=1762193328]
 layout_mode = 0
 offset_left = 109.0
 offset_top = 34.0
 offset_right = 208.0
 offset_bottom = 101.0
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = SubResource("SystemFont_ueo25")
+theme_override_fonts/font = SubResource("SystemFont_6jpsd")
 theme_override_font_sizes/font_size = 48
 text = "100"
 
-[node name="Shrimp" type="Sprite2D" parent="UI/HUD/Money" unique_id=659793395]
+[node name="Shrimp" type="Sprite2D" parent="UI/HUD/Money" unique_id=1403499973]
 z_index = 1096
 position = Vector2(74, 68.00001)
 scale = Vector2(0.25461596, 0.21375337)
 texture = ExtResource("27_fsdnh")
 
-[node name="LossConditions" type="Node" parent="UI/HUD" unique_id=589859167]
+[node name="LossConditions" type="Node" parent="UI/HUD" unique_id=1331458105]
 script = ExtResource("28_07yl6")
 
-[node name="Waves" type="Control" parent="UI/HUD" unique_id=1603140751]
+[node name="Waves" type="Control" parent="UI/HUD" unique_id=567675129]
 anchors_preset = 0
 offset_left = -705.0
 offset_top = 19.0
 offset_right = -545.0
 offset_bottom = 66.0
 
-[node name="WaveLabel" type="Label" parent="UI/HUD/Waves" unique_id=715371591]
+[node name="WaveLabel" type="Label" parent="UI/HUD/Waves" unique_id=1147715651]
 layout_mode = 0
 offset_left = 662.0
 offset_top = 82.0
 offset_right = 798.0
 offset_bottom = 145.0
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = SubResource("SystemFont_vbuyy")
+theme_override_fonts/font = SubResource("SystemFont_3fwag")
 theme_override_font_sizes/font_size = 20
 text = " Wave 0/10
 "
 
-[node name="DeathScreen" type="Control" parent="UI" unique_id=1412870381]
+[node name="DeathScreen" type="Control" parent="UI" unique_id=1089260485]
 anchors_preset = 0
 offset_left = 540.0
 offset_top = -43.0
@@ -471,7 +645,7 @@ offset_right = 935.0
 offset_bottom = 636.0
 script = ExtResource("30_vfoi3")
 
-[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen" unique_id=909349067]
+[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen" unique_id=580897421]
 layout_mode = 0
 offset_left = -158.0
 offset_top = 204.0
@@ -479,7 +653,7 @@ offset_right = 461.0
 offset_bottom = 561.0
 color = Color(0, 0.5372549, 0, 1)
 
-[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen/ColorRect" unique_id=942542762]
+[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen/ColorRect" unique_id=294364421]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -487,15 +661,87 @@ offset_right = 600.0
 offset_bottom = 340.0
 color = Color(0.38039216, 0.7176471, 0.29803923, 1)
 
-[node name="Label" type="Label" parent="UI/DeathScreen/ColorRect/ColorRect" unique_id=2075850568]
+[node name="Label" type="Label" parent="UI/DeathScreen/ColorRect/ColorRect" unique_id=1180597715]
 layout_mode = 0
 offset_left = 47.0
 offset_top = 10.0
 offset_right = 569.0
 offset_bottom = 228.0
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = SubResource("SystemFont_b0jmt")
+theme_override_fonts/font = SubResource("SystemFont_fqsee")
 theme_override_font_sizes/font_size = 48
 text = "You failed to defend 
 the mothershell from
 a pollutant ambush!"
+
+[node name="Buttons" type="HBoxContainer" parent="UI" unique_id=2012178668]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 0
+offset_left = 14.0
+offset_top = 572.0
+offset_right = 234.0
+offset_bottom = 642.0
+alignment = 1
+
+[node name="Return" type="Button" parent="UI/Buttons" unique_id=1441634628]
+z_index = 4096
+material = SubResource("ShaderMaterial_fqsee")
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_68ie1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t6tie")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kbjh2")
+icon = ExtResource("16_fqsee")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("17_68ie1")
+
+[node name="Settings" type="Button" parent="UI/Buttons" unique_id=619682024]
+z_index = 4096
+material = SubResource("ShaderMaterial_vs0qa")
+custom_minimum_size = Vector2(70, 30)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_g86uu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vwh3y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u5hhm")
+icon = ExtResource("18_t6tie")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("19_kbjh2")
+
+[node name="PlayButton" type="Button" parent="UI/Buttons" unique_id=1703970139]
+z_index = 4096
+material = SubResource("ShaderMaterial_vs0qa")
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xnuqq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_aml8x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ym06y")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("32_seqo6")
+
+[node name="Resume" type="TextureRect" parent="UI/Buttons/PlayButton" unique_id=1863065313]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -28.0
+offset_right = 626.0
+offset_bottom = 341.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("44_6jpsd")
+
+[node name="Pause" type="TextureRect" parent="UI/Buttons/PlayButton" unique_id=349352224]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 7.0
+offset_right = 661.0
+offset_bottom = 376.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("45_3fwag")

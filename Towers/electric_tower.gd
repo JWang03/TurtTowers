@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends TowerBase
 
 @export var attack_damage = 10
 @export var max_bounces = 6
@@ -10,8 +10,6 @@ extends StaticBody2D
 @export var damage_buff_multiplier = 2
 @export var speed_buff_multiplier = 0.5
 
-@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
-@onready var detection_area = $Range
 @onready var attack_timer = $Timer
 @onready var shoot_point = $Muzzle
 var occupied_cell: Vector2i
@@ -22,10 +20,10 @@ var buffed_towers_damage: Array = []
 var buffed_towers_speed: Array = []
 
 func _ready():
-	set_process(false)
+	super._ready()
+	attack_timer.wait_time = attack_cooldown
 	if !attack_timer.timeout.is_connected(_on_tower_heartbeat):
 		attack_timer.timeout.connect(_on_tower_heartbeat)
-	attack_timer.wait_time = attack_cooldown
 	attack_timer.start()
 
 func _process(_delta):
@@ -54,17 +52,14 @@ func _on_tower_heartbeat():
 
 func find_chain_targets():
 	var chain = []
-	var zombies = detection_area.get_overlapping_bodies().filter(func(b): return b.is_in_group("zombies"))
 	
-	if zombies.size() == 0:
+	var first_target = get_best_target()
+	
+	if not first_target:
 		return chain
 
-	zombies.sort_custom(func(a, b): 
-		return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position)
-	)
-	
-	var current_target = zombies[0]
-	chain.append(current_target)
+	chain.append(first_target)
+	var current_target = first_target
 
 	for i in range(max_bounces - 1):
 		var next_target = find_next_jump(current_target, chain)
@@ -81,7 +76,10 @@ func find_next_jump(current, excluded):
 	var min_dist = jump_range
 
 	for zombie in all_zombies:
-		if zombie in excluded or !is_instance_valid(zombie): continue
+		if !is_instance_valid(zombie) or zombie in excluded: 
+			continue
+		if zombie.get("is_stealth") == true:
+			continue
 		
 		var dist = current.global_position.distance_to(zombie.global_position)
 		if dist < min_dist:
@@ -106,7 +104,6 @@ func _input(event):
 
 func execute_chain_attack(targets):
 	var start_pos = shoot_point.global_position
-	
 	var shields_hit_this_chain = {}
 
 	for target in targets:
@@ -118,7 +115,9 @@ func execute_chain_attack(targets):
 		
 		var bolt = lightning_scene.instantiate()
 		get_tree().current_scene.add_child(bolt)
-		bolt.create_bolt(start_pos, target_pos)
+		
+		if bolt.has_method("create_bolt"):
+			bolt.create_bolt(start_pos, target_pos)
 		
 		if shield_provider:
 			if !shields_hit_this_chain.has(shield_provider):

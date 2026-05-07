@@ -1,7 +1,7 @@
 extends Control
 
 @onready var loss_condition = get_node("../HUD/LossConditions")
-@onready var starter = get_node("/root/Game/UI/Start_Pause/PlayButton")
+@onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false # Replace with function body.
