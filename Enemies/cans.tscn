@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjcwdf8okmhbj"]
 
 [ext_resource type="Script" uid="uid://1qos4pedwq4d" path="res://Enemies/cans.gd" id="1_7igey"]
-[ext_resource type="Texture2D" uid="uid://bsctqd4i2o8lr" path="res://textures/image-removebg-preview (5).png" id="2_rbm2v"]
+[ext_resource type="Texture2D" uid="uid://bsctqd4i2o8lr" path="res://Textures/image-removebg-preview (5).png" id="2_rbm2v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_58wcm"]
 radius = 2.0

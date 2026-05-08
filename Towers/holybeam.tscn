@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cob215sck1f85"]
 
 [ext_resource type="Script" uid="uid://dix3k1h8den0p" path="res://Towers/holybeam.gd" id="1_7d6ki"]
-[ext_resource type="Texture2D" uid="uid://uch2jnwlxhhm" path="res://textures/image-removebg-preview (8).png" id="2_e4tn0"]
-[ext_resource type="Texture2D" uid="uid://c3wlbysmfdqxb" path="res://textures/image-removebg-preview (9).png" id="3_6hts1"]
+[ext_resource type="Texture2D" uid="uid://uch2jnwlxhhm" path="res://Textures/image-removebg-preview (8).png" id="2_e4tn0"]
+[ext_resource type="Texture2D" uid="uid://c3wlbysmfdqxb" path="res://Textures/image-removebg-preview (9).png" id="3_6hts1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fx3lx"]
 radius = 17.0

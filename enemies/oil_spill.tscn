@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1kfgh08ooy8q"]
 
-[ext_resource type="Texture2D" uid="uid://bejlijf2sgwta" path="res://textures/Screenshot_2026-04-24_105455-removebg-preview.png" id="1_10ahm"]
-[ext_resource type="Script" uid="uid://tslldj6dfhgf" path="res://enemies/oil_spill.gd" id="1_c73b7"]
+[ext_resource type="Texture2D" uid="uid://bejlijf2sgwta" path="res://Textures/Screenshot_2026-04-24_105455-removebg-preview.png" id="1_10ahm"]
+[ext_resource type="Script" uid="uid://tslldj6dfhgf" path="res://Enemies/oil_spill.gd" id="1_c73b7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c73b7"]
 radius = 16.0

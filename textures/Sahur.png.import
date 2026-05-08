@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctarv37negb7v"
-path="res://.godot/imported/Sahur.png-28ea979ada1a0358cfe5c225e3de5e2e.ctex"
+path="res://.godot/imported/Sahur.png-fccd4b7cee567035fe086217e0a95d8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Sahur.png"
-dest_files=["res://.godot/imported/Sahur.png-28ea979ada1a0358cfe5c225e3de5e2e.ctex"]
+source_file="res://Textures/Sahur.png"
+dest_files=["res://.godot/imported/Sahur.png-fccd4b7cee567035fe086217e0a95d8a.ctex"]
 
 [params]
 

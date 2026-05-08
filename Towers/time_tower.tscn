@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cadutt0miju36"]
 
 [ext_resource type="Script" uid="uid://vye7tubjb3ps" path="res://Towers/time_tower.gd" id="1_1apqp"]
-[ext_resource type="Texture2D" uid="uid://duvpbwm5vcfnq" path="res://textures/image-removebg-preview (7).png" id="2_kvvrj"]
+[ext_resource type="Texture2D" uid="uid://duvpbwm5vcfnq" path="res://Textures/image-removebg-preview (7).png" id="2_kvvrj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1khan"]
 radius = 24.020824
