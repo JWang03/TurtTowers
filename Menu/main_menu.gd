@@ -20,21 +20,24 @@ extends Control
 
 # Towers Menu Nodes
 @onready var tower_overlay = $TowersLayer
-@onready var tower_darkener = $TowersLayer/Darkener
+@onready var tower_darkener = $TowersLayer/CanvasLayer/Darkener
 @onready var tower_return_button = $TowersLayer/ReturnTowers
 @onready var tower_left_arrow = $TowersLayer/LeftArrow
 @onready var tower_right_arrow = $TowersLayer/RightArrow
 @onready var tower_cards = [
-	$TowersLayer/"1", $TowersLayer/"2", $TowersLayer/"3", 
-	$TowersLayer/"4", $TowersLayer/"5", $TowersLayer/"6"
+	$TowersLayer/CanvasLayer/"1", $TowersLayer/CanvasLayer/"2", $TowersLayer/CanvasLayer/"3",
+	$TowersLayer/CanvasLayer/"4", $TowersLayer/CanvasLayer/"5", $TowersLayer/CanvasLayer/"6"
 ]
 @onready var tower_cards_page2 = [
-	$TowersLayer/"7", $TowersLayer/"8", $TowersLayer/"9",
-	$TowersLayer/"10", $TowersLayer/"11", $TowersLayer/"12"
+	$TowersLayer/CanvasLayer/"7", $TowersLayer/CanvasLayer/"8", $TowersLayer/CanvasLayer/"9",
+	$TowersLayer/CanvasLayer/"10", $TowersLayer/CanvasLayer/"11", $TowersLayer/CanvasLayer/"12"
 ]
+@onready var turts_upgrades = $TowersLayer/TurtsUpgrades
 
 var current_tower_page: int = 0
 var total_tower_pages: int = 2
+const DEFAULT_PATH_1_COLOR := Color("e07b39")
+const DEFAULT_PATH_2_COLOR := Color("3a8fd4")
 
 # Map data
 var map_textures: Array = []
@@ -61,8 +64,14 @@ func _ready():
 	# Ensure tower cards and arrows are prepped for animation
 	for card in tower_cards:
 		card.scale = Vector2.ZERO
+		card.mouse_filter = Control.MOUSE_FILTER_STOP
+		if not card.gui_input.is_connected(_on_tower_card_gui_input):
+			card.gui_input.connect(_on_tower_card_gui_input.bind(card))
 	for card in tower_cards_page2:
 		card.scale = Vector2.ZERO
+		card.mouse_filter = Control.MOUSE_FILTER_STOP
+		if not card.gui_input.is_connected(_on_tower_card_gui_input):
+			card.gui_input.connect(_on_tower_card_gui_input.bind(card))
 	tower_left_arrow.scale = Vector2.ZERO
 	tower_right_arrow.scale = Vector2.ZERO
 
@@ -87,6 +96,95 @@ func _ready():
 	# Store button origins
 	map_return_origin = map_return_button.position
 	tower_return_origin = tower_return_button.position
+
+	if turts_upgrades:
+		turts_upgrades.visible = false
+
+func _on_tower_card_gui_input(event: InputEvent, card: Control) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		_open_turt_upgrades(card)
+
+func _open_turt_upgrades(card: Control) -> void:
+	if turts_upgrades == null:
+		return
+	var turt_data := _build_turt_data(card)
+	turts_upgrades.show_for_turt(turt_data)
+	turts_upgrades.visible = true
+
+func _build_turt_data(card: Control) -> Dictionary:
+	var turt_name := "Unknown Turt"
+	var turt_icon: Texture2D = null
+	var name_label := card.get_node_or_null("NameLabel")
+	if name_label is Label:
+		turt_name = name_label.text
+	for child in card.get_children():
+		if child is Sprite2D:
+			turt_icon = child.texture
+			break
+
+	var path_1 := [
+		{
+			"upgrade_name": "Sharpened Shell",
+			"tier": 1,
+			"description": "Improves attack precision and consistency.",
+			"cost": 100,
+			"is_purchased": false,
+			"is_locked": false
+		},
+		{
+			"upgrade_name": "Power Burst",
+			"tier": 2,
+			"description": "Boosts base damage for stronger hits.",
+			"cost": 220,
+			"is_purchased": false,
+			"is_locked": true
+		},
+		{
+			"upgrade_name": "Master Path",
+			"tier": 3,
+			"description": "Unlocks the top-end offensive branch.",
+			"cost": 450,
+			"is_purchased": false,
+			"is_locked": true
+		}
+	]
+	var path_2 := [
+		{
+			"upgrade_name": "Quick Paddle",
+			"tier": 1,
+			"description": "Increases attack cadence and responsiveness.",
+			"cost": 90,
+			"is_purchased": false,
+			"is_locked": false
+		},
+		{
+			"upgrade_name": "Adaptive Shell",
+			"tier": 2,
+			"description": "Adds utility to better handle crowded waves.",
+			"cost": 210,
+			"is_purchased": false,
+			"is_locked": true
+		},
+		{
+			"upgrade_name": "Elite Utility",
+			"tier": 3,
+			"description": "Specialized support effect for late waves.",
+			"cost": 430,
+			"is_purchased": false,
+			"is_locked": true
+		}
+	]
+
+	return {
+		"name": turt_name,
+		"icon": turt_icon,
+		"path_1_title": "Path 1",
+		"path_2_title": "Path 2",
+		"path_1_color": DEFAULT_PATH_1_COLOR,
+		"path_2_color": DEFAULT_PATH_2_COLOR,
+		"path_1": path_1,
+		"path_2": path_2
+	}
 
 func _update_map_display():
 	if map_selector:
