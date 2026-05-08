@@ -27,13 +27,13 @@ func _ready() -> void:
 func show_for_turt(turt_data: Dictionary) -> void:
 	clear_columns()
 
-	turt_name.text = str(turt_data.get("name", "Unknown Turt"))
+	turt_name.text = turt_data.get("name", "Unknown Turt")
 	turt_icon.texture = turt_data.get("icon", null)
 
 	var path_1_color: Color = turt_data.get("path_1_color", Color("e07b39"))
 	var path_2_color: Color = turt_data.get("path_2_color", Color("3a8fd4"))
-	path_1_header.text = str(turt_data.get("path_1_title", "Path 1"))
-	path_2_header.text = str(turt_data.get("path_2_title", "Path 2"))
+	path_1_header.text = turt_data.get("path_1_title", "Path 1")
+	path_2_header.text = turt_data.get("path_2_title", "Path 2")
 	path_1_header.modulate = path_1_color
 	path_2_header.modulate = path_2_color
 
@@ -55,9 +55,9 @@ func _populate_column(column: VBoxContainer, upgrades: Array, path_color: Color)
 		if card == null:
 			continue
 		card.path_accent = path_color
-		card.upgrade_name = str(upgrade_data.get("upgrade_name", "Upgrade"))
+		card.upgrade_name = upgrade_data.get("upgrade_name", "Upgrade")
 		card.tier = int(upgrade_data.get("tier", 1))
-		card.description = str(upgrade_data.get("description", ""))
+		card.description = upgrade_data.get("description", "")
 		card.cost = int(upgrade_data.get("cost", 0))
 		card.icon = upgrade_data.get("icon", turt_icon.texture)
 		card.is_purchased = bool(upgrade_data.get("is_purchased", false))

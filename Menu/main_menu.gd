@@ -127,7 +127,7 @@ func _open_turt_upgrades(card: Control) -> void:
 
 func _build_turt_data(card: Control) -> Dictionary:
 	var metadata: Dictionary = TOWER_METADATA.get(card.name, {})
-	var turt_name := str(metadata.get("name", "Unknown Turt"))
+	var turt_name: String = metadata.get("name", "Unknown Turt")
 	var turt_icon: Texture2D = metadata.get("icon", null)
 	var path_1 := _build_default_path_1(turt_name)
 	var path_2 := _build_default_path_2(turt_name)
