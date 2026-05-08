@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://SandyShores/Scripts/wave_spawner.gd" id="7_ai02a"]
 [ext_resource type="Script" uid="uid://cy5j1efrjxakf" path="res://SandyShores/Scenes/settings.gd" id="8_6cp8d"]
 [ext_resource type="Script" uid="uid://ckfrd7gva57ou" path="res://SandyShores/Scenes/return.gd" id="8_em8d2"]
+[ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="8_kpf84"]
 [ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://SandyShores/Scripts/loss_conditions.gd" id="9_50yat"]
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="9_h2mqj"]
 [ext_resource type="PackedScene" uid="uid://cooltchipc56w" path="res://enemies/algae_bloom.tscn" id="9_n7wjj"]
@@ -94,6 +95,18 @@ hinting = 2
 subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_ci5cp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpf84"]
+bg_color = Color(0.38039216, 0.7176471, 0.29803923, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0.5372549, 0, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
 
 [sub_resource type="SystemFont" id="SystemFont_7x53i"]
 
@@ -275,6 +288,7 @@ script = ExtResource("2_lsk4j")
 tower_container = NodePath("../TowerContainer")
 
 [node name="Track" type="TileMapLayer" parent="." unique_id=1103271999]
+z_index = -1
 position = Vector2(234, 0)
 tile_map_data = PackedByteArray("AAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAACAAkAAAAAAAAAAAABAAkAAAAAAAAAAAAAAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAANAAkAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_hngk1")
@@ -300,7 +314,7 @@ script = ExtResource("6_rjrdg")
 script = ExtResource("7_ai02a")
 enemy_path = NodePath("../EnemyPath")
 wave_label = NodePath("../UI/HUD/Waves/WaveLabel")
-enemy1 = ExtResource("9_n7wjj")
+enemy1 = ExtResource("8_kpf84")
 enemy2 = ExtResource("9_n7wjj")
 enemy3 = ExtResource("10_lut2n")
 
@@ -480,22 +494,6 @@ offset_top = -17.0
 offset_right = 982.0
 offset_bottom = 99.0
 
-[node name="ColorRect" type="ColorRect" parent="UI/HUD" unique_id=1219117608]
-layout_mode = 0
-offset_left = -701.875
-offset_top = 19.0
-offset_right = -332.875
-offset_bottom = 136.0
-color = Color(0, 0.5372549, 0, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="UI/HUD" unique_id=1754926059]
-layout_mode = 0
-offset_left = -694.875
-offset_top = 26.0
-offset_right = -339.875
-offset_bottom = 129.0
-color = Color(0.38103804, 0.717417, 0.29669756, 1)
-
 [node name="Lives" type="Control" parent="UI/HUD" unique_id=1545277758]
 anchors_preset = 0
 offset_left = -168.0
@@ -566,6 +564,15 @@ theme_override_fonts/font = SubResource("SystemFont_ci5cp")
 theme_override_font_sizes/font_size = 20
 text = " Wave 0/10
 "
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/HUD" unique_id=1996697415]
+z_index = -1
+layout_mode = 0
+offset_left = -719.0
+offset_top = 25.0
+offset_right = -325.0
+offset_bottom = 133.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kpf84")
 
 [node name="DeathScreen" type="Control" parent="UI" unique_id=2058731793]
 anchors_preset = 0
@@ -679,7 +686,7 @@ layout_mode = 2
 action_mode = 0
 
 [node name="sell_button" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer" unique_id=1612515102]
-custom_minimum_size = Vector2(10, 30)
+custom_minimum_size = Vector2(20, 10)
 layout_mode = 2
 text = "Sell"
 
