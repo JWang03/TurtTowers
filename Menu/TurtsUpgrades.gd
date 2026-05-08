@@ -66,6 +66,3 @@ func _populate_column(column: VBoxContainer, upgrades: Array, path_color: Color)
 
 func _on_close_pressed() -> void:
 	hide()
-	var tower_layer := get_parent()
-	if tower_layer is CanvasLayer:
-		tower_layer.visible = true
