@@ -630,11 +630,32 @@ horizontal_alignment = 1
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="TowersLayer" unique_id=546907222]
 
-[node name="ColorRect" type="ColorRect" parent="TowersLayer/CanvasLayer2" unique_id=904651495]
+[node name="Darkener" type="ColorRect" parent="TowersLayer/CanvasLayer2" unique_id=904651495]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="VBoxContainer" parent="TowersLayer/CanvasLayer2" unique_id=644217980]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -136.0
+offset_right = 227.0
+offset_bottom = 136.0
+grow_vertical = 2
+
+[node name="Right" type="VBoxContainer" parent="TowersLayer/CanvasLayer2" unique_id=1570486598]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -122.5
+offset_bottom = 122.5
+grow_horizontal = 0
 grow_vertical = 2
 
 [node name="1" type="ColorRect" parent="TowersLayer/CanvasLayer2" unique_id=1070287755]
@@ -667,18 +688,6 @@ horizontal_alignment = 1
 position = Vector2(95, 119)
 scale = Vector2(0.45, 0.47)
 texture = ExtResource("7_cn2sd")
-
-[node name="PanelContainer" type="PanelContainer" parent="TowersLayer/CanvasLayer2" unique_id=1252129441]
-offset_left = 147.0
-offset_top = 67.0
-offset_right = 404.0
-offset_bottom = 589.0
-
-[node name="PanelContainer2" type="PanelContainer" parent="TowersLayer/CanvasLayer2" unique_id=641427029]
-offset_left = 749.0
-offset_top = 58.0
-offset_right = 1006.0
-offset_bottom = 580.0
 
 [node name="LeftArrow" type="Button" parent="TowersLayer" unique_id=727303500]
 anchors_preset = 4
