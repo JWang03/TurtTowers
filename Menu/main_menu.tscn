@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://Textures/holy_crusader.png" id="15_dqyvv"]
 [ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://Textures/Turt^3 Sahur.png" id="16_m8x2t"]
 [ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://Textures/TurtTown.png" id="17_trttn"]
+[ext_resource type="PackedScene" path="res://Menu/TurtsUpgrades.tscn" id="18_ah3m5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
@@ -732,6 +733,8 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 100
 text = ">"
 flat = true
+
+[node name="TurtsUpgrades" parent="TowersLayer" instance=ExtResource("18_ah3m5")]
 
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
