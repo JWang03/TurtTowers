@@ -20,38 +20,21 @@ extends Control
 
 # Towers Menu Nodes
 @onready var tower_overlay = $TowersLayer
-@onready var tower_darkener = $TowersLayer/CanvasLayer/Darkener
+@onready var tower_darkener = $TowersLayer/Darkener
 @onready var tower_return_button = $TowersLayer/ReturnTowers
 @onready var tower_left_arrow = $TowersLayer/LeftArrow
 @onready var tower_right_arrow = $TowersLayer/RightArrow
 @onready var tower_cards = [
-	$TowersLayer/CanvasLayer/"1", $TowersLayer/CanvasLayer/"2", $TowersLayer/CanvasLayer/"3",
-	$TowersLayer/CanvasLayer/"4", $TowersLayer/CanvasLayer/"5", $TowersLayer/CanvasLayer/"6"
+	$TowersLayer/"1", $TowersLayer/"2", $TowersLayer/"3", 
+	$TowersLayer/"4", $TowersLayer/"5", $TowersLayer/"6"
 ]
 @onready var tower_cards_page2 = [
-	$TowersLayer/CanvasLayer/"7", $TowersLayer/CanvasLayer/"8", $TowersLayer/CanvasLayer/"9",
-	$TowersLayer/CanvasLayer/"10", $TowersLayer/CanvasLayer/"11", $TowersLayer/CanvasLayer/"12"
+	$TowersLayer/"7", $TowersLayer/"8", $TowersLayer/"9",
+	$TowersLayer/"10", $TowersLayer/"11", $TowersLayer/"12"
 ]
-@onready var turts_upgrades = $TowersLayer/TurtsUpgrades
 
 var current_tower_page: int = 0
 var total_tower_pages: int = 2
-const DEFAULT_OFFENSIVE_PATH_COLOR := Color("e07b39")
-const DEFAULT_UTILITY_PATH_COLOR := Color("3a8fd4")
-const TOWER_METADATA := {
-	"1": {"name": "Demolition Turt", "icon": preload("res://Textures/bomb_tower.png")},
-	"2": {"name": "Mad Scienturt", "icon": preload("res://Textures/electric_tower.png")},
-	"3": {"name": "Blackhole Turt", "icon": preload("res://Textures/blackhole_tower.png")},
-	"4": {"name": "Lazer Turt", "icon": preload("res://Textures/godzilla_tower.png")},
-	"5": {"name": "Soldier Turt", "icon": preload("res://Textures/bullet_tower.png")},
-	"6": {"name": "Fighturt Jet", "icon": preload("res://Textures/paper_airplane.png")},
-	"7": {"name": "Holy Crusaturt", "icon": preload("res://Textures/holy_crusader.png")},
-	"8": {"name": "Turt Sahur", "icon": preload("res://Textures/Turt^3 Sahur.png")},
-	"9": {"name": "Turt Town", "icon": preload("res://Textures/TurtTown.png")},
-	"10": {"name": "Placeholder", "icon": null},
-	"11": {"name": "Placeholder", "icon": null},
-	"12": {"name": "Placeholder", "icon": null}
-}
 
 # Map data
 var map_textures: Array = []
@@ -78,14 +61,8 @@ func _ready():
 	# Ensure tower cards and arrows are prepped for animation
 	for card in tower_cards:
 		card.scale = Vector2.ZERO
-		card.mouse_filter = Control.MOUSE_FILTER_STOP
-		if not card.gui_input.is_connected(_on_tower_card_gui_input):
-			card.gui_input.connect(_on_tower_card_gui_input.bind(card))
 	for card in tower_cards_page2:
 		card.scale = Vector2.ZERO
-		card.mouse_filter = Control.MOUSE_FILTER_STOP
-		if not card.gui_input.is_connected(_on_tower_card_gui_input):
-			card.gui_input.connect(_on_tower_card_gui_input.bind(card))
 	tower_left_arrow.scale = Vector2.ZERO
 	tower_right_arrow.scale = Vector2.ZERO
 
@@ -110,94 +87,6 @@ func _ready():
 	# Store button origins
 	map_return_origin = map_return_button.position
 	tower_return_origin = tower_return_button.position
-
-	if turts_upgrades:
-		turts_upgrades.visible = false
-
-func _on_tower_card_gui_input(event: InputEvent, card: Control) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		_open_turt_upgrades(card)
-
-func _open_turt_upgrades(card: Control) -> void:
-	if turts_upgrades == null:
-		return
-	var turt_data := _build_turt_data(card)
-	turts_upgrades.show_for_turt(turt_data)
-	turts_upgrades.visible = true
-
-func _build_turt_data(card: Control) -> Dictionary:
-	var metadata: Dictionary = TOWER_METADATA.get(card.name, {})
-	var turt_name: String = metadata.get("name", "Unknown Turt")
-	var turt_icon: Texture2D = metadata.get("icon", null)
-	var path_1 := _build_default_path_1(turt_name)
-	var path_2 := _build_default_path_2(turt_name)
-
-	return {
-		"name": turt_name,
-		"icon": turt_icon,
-		"path_1_title": "Path 1",
-		"path_2_title": "Path 2",
-		"path_1_color": DEFAULT_OFFENSIVE_PATH_COLOR,
-		"path_2_color": DEFAULT_UTILITY_PATH_COLOR,
-		"path_1": path_1,
-		"path_2": path_2
-	}
-
-func _build_default_path_1(turt_name: String) -> Array:
-	return [
-		{
-			"upgrade_name": "Sharpened Shell",
-			"tier": 1,
-			"description": "%s gains improved precision and consistency." % turt_name,
-			"cost": 100,
-			"is_purchased": false,
-			"is_locked": false
-		},
-		{
-			"upgrade_name": "Power Burst",
-			"tier": 2,
-			"description": "Boosts %s base damage for stronger hits." % turt_name,
-			"cost": 220,
-			"is_purchased": false,
-			"is_locked": true
-		},
-		{
-			"upgrade_name": "Master Path",
-			"tier": 3,
-			"description": "Unlocks %s's top-end offensive branch." % turt_name,
-			"cost": 450,
-			"is_purchased": false,
-			"is_locked": true
-		}
-	]
-
-func _build_default_path_2(turt_name: String) -> Array:
-	return [
-		{
-			"upgrade_name": "Quick Paddle",
-			"tier": 1,
-			"description": "Increases %s attack cadence and responsiveness." % turt_name,
-			"cost": 90,
-			"is_purchased": false,
-			"is_locked": false
-		},
-		{
-			"upgrade_name": "Adaptive Shell",
-			"tier": 2,
-			"description": "Adds utility to help %s handle crowded waves." % turt_name,
-			"cost": 210,
-			"is_purchased": false,
-			"is_locked": true
-		},
-		{
-			"upgrade_name": "Elite Utility",
-			"tier": 3,
-			"description": "Unlocks %s's late-wave support effect." % turt_name,
-			"cost": 430,
-			"is_purchased": false,
-			"is_locked": true
-		}
-	]
 
 func _update_map_display():
 	if map_selector:
