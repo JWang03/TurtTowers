@@ -1,6 +1,7 @@
 extends Control
 
 const TURTS_UPGRADES_SCENE := preload("res://Menu/TurtsUpgrades.tscn")
+const DEFAULT_TOWER_NAME := "Turt"
 
 # Settings Menu Nodes
 @onready var settings_overlay = $SettingsLayer
@@ -301,12 +302,12 @@ func _open_tower_upgrades(card: Control) -> void:
 	if not tower_upgrades:
 		return
 	var name_label := card.get_node_or_null("NameLabel")
-	var tower_name := "Turt"
+	var tower_name := DEFAULT_TOWER_NAME
 	if name_label:
 		tower_name = name_label.text
 	var tower_texture: Texture2D = null
 	for child in card.get_children():
-		if child is Sprite2D:
+		if child is Sprite2D or child is TextureRect:
 			tower_texture = child.texture
 			break
 	tower_upgrades.open_for_tower(tower_name, tower_texture)
