@@ -301,7 +301,9 @@ func _open_tower_upgrades(card: Control) -> void:
 	if not tower_upgrades:
 		return
 	var name_label := card.get_node_or_null("NameLabel")
-	var tower_name := name_label.text if name_label else "Turt"
+	var tower_name := "Turt"
+	if name_label:
+		tower_name = name_label.text
 	var tower_texture: Texture2D = null
 	for child in card.get_children():
 		if child is Sprite2D:
