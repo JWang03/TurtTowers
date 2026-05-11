@@ -67,21 +67,15 @@ func _ready():
 	tower_upgrades.layer = 2
 	tower_upgrades.hide()
 
-	for card in tower_cards:
+	for card in tower_cards + tower_cards_page2:
 		if card:
 			card.scale = Vector2.ZERO
-	for card in tower_cards_page2:
-		if card:
-			card.scale = Vector2.ZERO
+			card.mouse_filter = Control.MOUSE_FILTER_STOP
+			card.gui_input.connect(_on_tower_card_gui_input.bind(card))
 	if tower_left_arrow:
 		tower_left_arrow.scale = Vector2.ZERO
 	if tower_right_arrow:
 		tower_right_arrow.scale = Vector2.ZERO
-
-	for card in tower_cards + tower_cards_page2:
-		if card:
-			card.mouse_filter = Control.MOUSE_FILTER_STOP
-			card.gui_input.connect(_on_tower_card_gui_input.bind(card))
 
 	map_textures = [
 		preload("res://Menu/Images/Maps/SandyShores.png"),
