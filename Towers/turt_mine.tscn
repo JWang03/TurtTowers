@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dbsn3jat87miw"]
+
+[ext_resource type="Script" uid="uid://djki0cau6wp5s" path="res://Towers/turt_mine.gd" id="1_jo6x4"]
+[ext_resource type="Texture2D" uid="uid://cyxh85ymijmov" path="res://textures/image-removebg-preview (29).png" id="2_45rqd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8csn"]
+
+[node name="Area2D" type="Area2D" unique_id=2086307284]
+script = ExtResource("1_jo6x4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1763990721]
+position = Vector2(1.9073486e-06, -1)
+scale = Vector2(0.23809524, 0.26363638)
+texture = ExtResource("2_45rqd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1020752935]
+shape = SubResource("CircleShape2D_u8csn")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1244563741]
