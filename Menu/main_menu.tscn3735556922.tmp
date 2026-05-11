@@ -368,6 +368,7 @@ offset_bottom = 352.5
 visible = false
 
 [node name="Turts" type="CanvasLayer" parent="TowersLayer" unique_id=1070375472]
+visible = false
 
 [node name="Darkener" type="ColorRect" parent="TowersLayer/Turts" unique_id=608754605]
 anchors_preset = 15
@@ -659,9 +660,9 @@ theme_override_font_sizes/font_size = 20
 text = "Placeholder"
 horizontal_alignment = 1
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="TowersLayer" unique_id=546907222]
+[node name="Upgrades" type="CanvasLayer" parent="TowersLayer" unique_id=546907222]
 
-[node name="Darkener" type="ColorRect" parent="TowersLayer/CanvasLayer2" unique_id=1108978162]
+[node name="Darkener" type="ColorRect" parent="TowersLayer/Upgrades" unique_id=1108978162]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -669,7 +670,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
-[node name="Left" type="VBoxContainer" parent="TowersLayer/CanvasLayer2" unique_id=644217980]
+[node name="Left" type="VBoxContainer" parent="TowersLayer/Upgrades" unique_id=644217980]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -678,7 +679,16 @@ offset_right = 227.0
 offset_bottom = 136.0
 grow_vertical = 2
 
-[node name="Right" type="VBoxContainer" parent="TowersLayer/CanvasLayer2" unique_id=1570486598]
+[node name="TextureButton" type="TextureButton" parent="TowersLayer/Upgrades/Left" unique_id=976703595]
+layout_mode = 2
+
+[node name="TextureButton2" type="TextureButton" parent="TowersLayer/Upgrades/Left" unique_id=592091549]
+layout_mode = 2
+
+[node name="TextureButton3" type="TextureButton" parent="TowersLayer/Upgrades/Left" unique_id=1125285244]
+layout_mode = 2
+
+[node name="Right" type="VBoxContainer" parent="TowersLayer/Upgrades" unique_id=1570486598]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -690,7 +700,16 @@ offset_bottom = 122.5
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="1" type="ColorRect" parent="TowersLayer/CanvasLayer2" unique_id=1070287755]
+[node name="TextureButton" type="TextureButton" parent="TowersLayer/Upgrades/Right" unique_id=308310150]
+layout_mode = 2
+
+[node name="TextureButton2" type="TextureButton" parent="TowersLayer/Upgrades/Right" unique_id=1356695975]
+layout_mode = 2
+
+[node name="TextureButton3" type="TextureButton" parent="TowersLayer/Upgrades/Right" unique_id=335901966]
+layout_mode = 2
+
+[node name="1" type="ColorRect" parent="TowersLayer/Upgrades" unique_id=1070287755]
 material = SubResource("ShaderMaterial_cn2sd")
 anchors_preset = 8
 anchor_left = 0.5
@@ -706,7 +725,7 @@ grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 color = Color(0.922642, 0.11762213, 0.19775996, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/CanvasLayer2/1" unique_id=943201336]
+[node name="NameLabel" type="Label" parent="TowersLayer/Upgrades/1" unique_id=943201336]
 layout_mode = 0
 offset_left = -3.0
 offset_right = 187.0
@@ -716,7 +735,7 @@ theme_override_font_sizes/font_size = 20
 text = "Demolition Turt"
 horizontal_alignment = 1
 
-[node name="BombTower" type="Sprite2D" parent="TowersLayer/CanvasLayer2/1" unique_id=863172731]
+[node name="BombTower" type="Sprite2D" parent="TowersLayer/Upgrades/1" unique_id=863172731]
 position = Vector2(95, 119)
 scale = Vector2(0.45, 0.47)
 texture = ExtResource("7_cn2sd")

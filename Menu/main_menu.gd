@@ -1,6 +1,5 @@
 extends Control
 
-const TURTS_UPGRADES_SCENE := preload("res://Menu/TurtsUpgrades.tscn")
 const DEFAULT_TOWER_NAME := "Turt"
 
 # Settings Menu Nodes
