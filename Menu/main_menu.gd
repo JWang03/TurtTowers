@@ -1,5 +1,7 @@
 extends Control
 
+const TURTS_UPGRADES_SCENE := preload("res://Menu/TurtsUpgrades.tscn")
+
 # Settings Menu Nodes
 @onready var settings_overlay = $SettingsLayer
 @onready var menu_panel = $SettingsLayer/SettingsMenu
@@ -20,6 +22,7 @@ extends Control
 
 # Towers Menu Nodes
 @onready var tower_overlay = $TowersLayer
+@onready var tower_layer = $TowersLayer/Turts
 @onready var tower_darkener = $TowersLayer/Turts/Darkener
 @onready var tower_return_button = $TowersLayer/ReturnTowers
 @onready var tower_left_arrow = $TowersLayer/Turts/LeftArrow
@@ -35,6 +38,7 @@ extends Control
 
 var current_tower_page: int = 0
 var total_tower_pages: int = 2
+var tower_upgrades: TurtsUpgrades
 
 # Map data
 var map_textures: Array = []
@@ -56,6 +60,12 @@ func _ready():
 	settings_overlay.hide()
 	map_overlay.hide()
 	tower_overlay.hide()
+	tower_layer.hide()
+
+	tower_upgrades = TURTS_UPGRADES_SCENE.instantiate()
+	add_child(tower_upgrades)
+	tower_upgrades.layer = 2
+	tower_upgrades.hide()
 
 	for card in tower_cards:
 		if card:
@@ -67,6 +77,11 @@ func _ready():
 		tower_left_arrow.scale = Vector2.ZERO
 	if tower_right_arrow:
 		tower_right_arrow.scale = Vector2.ZERO
+
+	for card in tower_cards + tower_cards_page2:
+		if card:
+			card.mouse_filter = Control.MOUSE_FILTER_STOP
+			card.gui_input.connect(_on_tower_card_gui_input.bind(card))
 
 	map_textures = [
 		preload("res://Menu/Images/Maps/SandyShores.png"),
@@ -166,6 +181,7 @@ func _on_return_pressed() -> void:
 func _on_towers_pressed() -> void:
 	tower_darkener.show()
 	tower_overlay.show()
+	tower_layer.show()
 	tower_darkener.modulate.a = 0
 	current_tower_page = 0
 	tower_return_button.position.x = tower_return_origin.x - 200
@@ -204,6 +220,8 @@ func _on_towers_pressed() -> void:
 		card_tween.tween_property(card, "scale", Vector2.ONE, 0.3)
 
 func _on_close_towers_pressed() -> void:
+	if tower_upgrades and tower_upgrades.visible:
+		tower_upgrades.close()
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(tower_darkener, "modulate:a", 0.0, 0.2)
 	tween.tween_property(tower_return_button, "position:x", tower_return_origin.x - 200, 0.2)\
@@ -215,9 +233,12 @@ func _on_close_towers_pressed() -> void:
 	for card in tower_cards + tower_cards_page2:
 		tween.tween_property(card, "scale", Vector2.ZERO, 0.2)\
 			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	tween.chain().tween_callback(tower_layer.hide)
 	tween.chain().tween_callback(tower_overlay.hide)
 
 func _on_return_towers_pressed() -> void:
+	if tower_upgrades and tower_upgrades.visible:
+		tower_upgrades.close()
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(tower_darkener, "modulate:a", 0.0, 0.2)
 	tween.tween_property(tower_return_button, "position:x", tower_return_origin.x - 200, 0.2)\
@@ -229,6 +250,7 @@ func _on_return_towers_pressed() -> void:
 	for card in tower_cards + tower_cards_page2:
 		tween.tween_property(card, "scale", Vector2.ZERO, 0.2)\
 			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	tween.chain().tween_callback(tower_layer.hide)
 	tween.chain().tween_callback(tower_overlay.hide)
 
 func _input(event):
@@ -237,7 +259,9 @@ func _input(event):
 			if event.alt_pressed:
 				get_tree().quit()
 			else:
-				if tower_overlay.visible:
+				if tower_upgrades and tower_upgrades.visible:
+					tower_upgrades.close()
+				elif tower_overlay.visible:
 					_on_close_towers_pressed()
 				elif settings_overlay.visible:
 					_on_button_pressed()
@@ -274,3 +298,19 @@ func _switch_tower_page(new_page: int) -> void:
 		card_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 		card_tween.tween_interval(0.2 + i * 0.05)
 		card_tween.tween_property(card, "scale", Vector2.ONE, 0.3)
+
+func _on_tower_card_gui_input(event: InputEvent, card: Control) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		_open_tower_upgrades(card)
+
+func _open_tower_upgrades(card: Control) -> void:
+	if not tower_upgrades:
+		return
+	var name_label := card.get_node_or_null("NameLabel")
+	var tower_name := name_label.text if name_label else "Turt"
+	var tower_texture: Texture2D = null
+	for child in card.get_children():
+		if child is Sprite2D:
+			tower_texture = child.texture
+			break
+	tower_upgrades.open_for_tower(tower_name, tower_texture)
