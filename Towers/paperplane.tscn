@@ -13,9 +13,6 @@ point_count = 8
 [sub_resource type="CircleShape2D" id="CircleShape2D_ybvld"]
 radius = 38.01441
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6v5m"]
-size = Vector2(187, 190)
-
 [node name="paperplane" type="StaticBody2D" unique_id=75933418]
 collision_layer = 2
 script = ExtResource("1_jaf4s")
@@ -42,21 +39,21 @@ texture = ExtResource("2_cltxp")
 [node name="Muzzle" type="Marker2D" parent="Path2D/PathFollow2D" unique_id=1544948797]
 scale = Vector2(1.0000001, 1.0000001)
 
-[node name="Range" type="Area2D" parent="Path2D/PathFollow2D" unique_id=1304591663]
-scale = Vector2(1.0000001, 1.0000001)
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Range" unique_id=1637112143]
-position = Vector2(-0.36293793, 0.14836407)
-shape = SubResource("CircleShape2D_ybvld")
-
 [node name="Timer" type="Timer" parent="." unique_id=788975722]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1049036621]
-shape = SubResource("RectangleShape2D_k6v5m")
-disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=601826289]
 position = Vector2(-1.2499985, 1.2500014)
 scale = Vector2(0.16727942, 0.15818183)
 texture = ExtResource("3_g7pya")
+
+[node name="Range" type="Area2D" parent="." unique_id=1304591663]
+position = Vector2(14.271484, -73.271484)
+rotation = 3.115178
+scale = Vector2(1.9515707, -1.9599943)
+skew = -0.04421425
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1637112143]
+position = Vector2(-0.36293793, 0.1483612)
+scale = Vector2(0.99999994, 1)
+shape = SubResource("CircleShape2D_ybvld")

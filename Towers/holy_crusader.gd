@@ -147,7 +147,7 @@ func purchase_upgrade(branch: String):
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
-
+	refresh_range_indicator()
 func apply_left_upgrade():
 	match left_level:
 		0: fire_rate *= .67
