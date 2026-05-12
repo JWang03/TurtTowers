@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hv3yv34vpybc"
-path="res://.godot/imported/TurtTown.png-284a06cdfc8b21c03345dec618064458.ctex"
+path="res://.godot/imported/TurtTown.png-e609bee9443bdd055940bf88dc35d95d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/TurtTown.png"
-dest_files=["res://.godot/imported/TurtTown.png-284a06cdfc8b21c03345dec618064458.ctex"]
+source_file="res://textures/TurtTown.png"
+dest_files=["res://.godot/imported/TurtTown.png-e609bee9443bdd055940bf88dc35d95d.ctex"]
 
 [params]
 

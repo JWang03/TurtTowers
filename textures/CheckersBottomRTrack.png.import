@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvsh41ugecyis"
-path="res://.godot/imported/CheckersBottomRTrack.png-ee213daa6ef751478d5eff1c964a96e8.ctex"
+path="res://.godot/imported/CheckersBottomRTrack.png-f893c12e8a9c56a2e8520806f5b3b208.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/CheckersBottomRTrack.png"
-dest_files=["res://.godot/imported/CheckersBottomRTrack.png-ee213daa6ef751478d5eff1c964a96e8.ctex"]
+source_file="res://textures/CheckersBottomRTrack.png"
+dest_files=["res://.godot/imported/CheckersBottomRTrack.png-f893c12e8a9c56a2e8520806f5b3b208.ctex"]
 
 [params]
 
