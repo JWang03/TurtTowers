@@ -38,6 +38,9 @@ var _all_boxes: Array[UpgradeBox] = []
 func _ready() -> void:
 	sell_button.pressed.connect(_on_sell_button_pressed)
 	_all_boxes = path1_boxes + path2_boxes
+	for box in _all_boxes:
+		box.upgrade_clicked.connect(_on_upgrade_clicked)
+		box.upgrade_hovered.connect(_on_upgrade_hovered)
 	refresh_ui()
 
 func refresh_ui() -> void:
