@@ -3,13 +3,14 @@ extends CanvasLayer
 const UPGRADE_SCENE_PATH_TEMPLATE := "res://Menu/Upgrades/tower_%s_upgrades.tscn"
 const CARD_BUTTON_NAME := "CardButton"
 const BACK_BUTTON_NAME := "BackButton"
-const BACK_BUTTON_ICON_PATH := "res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png"
-const BACK_BUTTON_STYLE_PATH := "res://exit_button.tres"
+const BACK_BUTTON_ICON := preload("res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png")
+const BACK_BUTTON_STYLE := preload("res://exit_button.tres")
 
 @onready var upgrades_tree: CanvasLayer = get_parent().get_node_or_null("UpgradesTree")
 
 var current_upgrade_instance: Node
 var back_button: Button
+var upgrade_scene_cache: Dictionary = {}
 
 func _ready() -> void:
 	_setup_upgrades_tree()
@@ -60,8 +61,8 @@ func _open_tower_upgrades(card: Control) -> void:
 		return
 	var tower_id := card.name
 	var scene_path := UPGRADE_SCENE_PATH_TEMPLATE % tower_id
-	var packed_scene := load(scene_path)
-	if packed_scene is PackedScene:
+	var packed_scene := _get_upgrade_scene(scene_path)
+	if packed_scene:
 		_clear_current_upgrade()
 		current_upgrade_instance = packed_scene.instantiate()
 		upgrades_tree.add_child(current_upgrade_instance)
@@ -98,14 +99,21 @@ func _ensure_back_button() -> void:
 		back_button.pressed.connect(_on_back_pressed)
 
 func _style_back_button(button: Button) -> void:
-	var style_box := load(BACK_BUTTON_STYLE_PATH)
-	if style_box is StyleBox:
-		button.add_theme_stylebox_override("normal", style_box)
-	var icon_texture := load(BACK_BUTTON_ICON_PATH)
-	if icon_texture is Texture2D:
-		button.icon = icon_texture
+	if BACK_BUTTON_STYLE:
+		button.add_theme_stylebox_override("normal", BACK_BUTTON_STYLE)
+	if BACK_BUTTON_ICON:
+		button.icon = BACK_BUTTON_ICON
 		button.expand_icon = true
 		button.text = ""
+
+func _get_upgrade_scene(scene_path: String) -> PackedScene:
+	if upgrade_scene_cache.has(scene_path):
+		return upgrade_scene_cache[scene_path]
+	var packed_scene := load(scene_path)
+	if packed_scene is PackedScene:
+		upgrade_scene_cache[scene_path] = packed_scene
+		return packed_scene
+	return null
 
 func _on_back_pressed() -> void:
 	show_tower_cards()
