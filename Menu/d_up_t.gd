@@ -5,14 +5,14 @@ var group = ButtonGroup.new()
 # upgrade_data[path][index] = {name, icon}
 var upgrade_data = {
 	"left": [
-		{"name": "Double Barrel", "icon": "💣"},
-		{"name": "Napalm", "icon": "🔥"},
-		{"name": "MIRV", "icon": "💥"},
+		{"name": "+1 Bomb", "icon": "💣"},
+		{"name": "+1 Bomb", "icon": "💣"},
+		{"name": "+1 Bomb", "icon": "💣"},
 	],
 	"right": [
-		{"name": "Thick Shell", "icon": "🛡️"},
-		{"name": "Mortar", "icon": "🎯"},
-		{"name": "Nuke", "icon": "☢️"},
+		{"name": "Faster Fire", "icon": "🔥"},
+		{"name": "Increased Range", "icon": "🎯"},
+		{"name": "Homing Missiles", "icon": "🚀"},
 	]
 }
 
@@ -41,13 +41,13 @@ func _setup_path(path: VBoxContainer, data: Array) -> void:
 		var icon = Label.new()
 		icon.text = data[i]["icon"]
 		icon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		icon.add_theme_font_size_override("font_size", 24)
+		icon.add_theme_font_size_override("font_size", 50)
 		vbox.add_child(icon)
 		
 		# Name label
 		var label = Label.new()
 		label.text = data[i]["name"]
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		label.add_theme_font_size_override("font_size", 12)
+		label.add_theme_font_size_override("font_size", 24)
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD
 		vbox.add_child(label)

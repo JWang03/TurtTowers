@@ -1034,8 +1034,9 @@ offset_bottom = 115.0
 size_flags_vertical = 3
 mouse_filter = 2
 theme = ExtResource("21_qn1v7")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_tek0n")
-text = "PLACEHOLDER"
+text = "CLUSTER BOMBER"
 icon_alignment = 1
 expand_icon = true
 
@@ -1048,8 +1049,9 @@ offset_bottom = 115.0
 size_flags_vertical = 3
 mouse_filter = 2
 theme = ExtResource("21_qn1v7")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_32sed")
-text = "PLACEHOLDER"
+text = "MISSILE MENACE"
 icon_alignment = 1
 expand_icon = true
 
