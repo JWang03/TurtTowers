@@ -14,10 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="8_kpf84"]
 [ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://SandyShores/Scripts/loss_conditions.gd" id="9_50yat"]
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="9_h2mqj"]
-[ext_resource type="PackedScene" uid="uid://cooltchipc56w" path="res://enemies/algae_bloom.tscn" id="9_n7wjj"]
+[ext_resource type="PackedScene" uid="uid://cooltchipc56w" path="res://Enemies/algae_bloom.tscn" id="9_n7wjj"]
 [ext_resource type="Script" uid="uid://n800asycp1sd" path="res://SandyShores/Scripts/bomb_tower.gd" id="9_saejb"]
 [ext_resource type="PackedScene" uid="uid://dmhok8tovvxvc" path="res://Towers/bomber_tower.tscn" id="10_evw7n"]
-[ext_resource type="PackedScene" uid="uid://bcepi076o27tl" path="res://enemies/plastic_ring.tscn" id="10_lut2n"]
+[ext_resource type="PackedScene" uid="uid://bcepi076o27tl" path="res://Enemies/plastic_ring.tscn" id="10_lut2n"]
 [ext_resource type="Script" uid="uid://b110lgne0ntlx" path="res://SandyShores/Scripts/currency_manager.gd" id="10_yrnad"]
 [ext_resource type="PackedScene" uid="uid://do17203pjxuim" path="res://Towers/bullet_tower.tscn" id="11_c26fn"]
 [ext_resource type="PackedScene" uid="uid://d2l8b5nykdqdg" path="res://Towers/godzilla_tower.tscn" id="12_hxeer"]
@@ -40,7 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://67hd02tun5we" path="res://Towers/turttown.tscn" id="27_turt"]
 [ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/TurtTown.png" id="28_3kv1k"]
 [ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://textures/image-removebg-preview (15).png" id="31_ux3bf"]
-[ext_resource type="PackedScene" uid="uid://db8mm2oj2u0hg" path="res://flamethrower_tower.tscn" id="32_0r82o"]
+[ext_resource type="PackedScene" uid="uid://db8mm2oj2u0hg" path="res://Towers/flamethrower_tower.tscn" id="32_0r82o"]
 [ext_resource type="Texture2D" uid="uid://cf3ilal0r2oba" path="res://textures/Resume.png" id="36_6cp8d"]
 [ext_resource type="Texture2D" uid="uid://dvxhwiq86ypku" path="res://textures/Pause.png" id="37_em8d2"]
 [ext_resource type="Script" uid="uid://dx2vojrrp3e6u" path="res://SandyShores/Scenes/upgrade_panel.gd" id="37_ux3bf"]
@@ -288,7 +288,6 @@ script = ExtResource("2_lsk4j")
 tower_container = NodePath("../TowerContainer")
 
 [node name="Track" type="TileMapLayer" parent="." unique_id=1103271999]
-z_index = -1
 position = Vector2(234, 0)
 tile_map_data = PackedByteArray("AAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAACAAkAAAAAAAAAAAABAAkAAAAAAAAAAAAAAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAANAAkAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_hngk1")
@@ -495,6 +494,7 @@ offset_right = 982.0
 offset_bottom = 99.0
 
 [node name="Lives" type="Control" parent="UI/HUD" unique_id=1545277758]
+z_index = 1
 anchors_preset = 0
 offset_left = -168.0
 offset_top = -15.0
@@ -502,6 +502,8 @@ offset_right = 51.0
 offset_bottom = 131.0
 
 [node name="LivesLabel" type="Label" parent="UI/HUD/Lives" unique_id=707430476]
+z_index = 2
+z_as_relative = false
 layout_mode = 0
 offset_left = -442.875
 offset_top = 49.0
@@ -513,6 +515,8 @@ theme_override_font_sizes/font_size = 48
 text = "100"
 
 [node name="HeartsNoBg" type="Sprite2D" parent="UI/HUD/Lives" unique_id=560389045]
+z_index = 2
+z_as_relative = false
 position = Vector2(-479.875, 87)
 scale = Vector2(0.26033974, 0.27710044)
 texture = ExtResource("15_rjrdg")
@@ -521,12 +525,15 @@ texture = ExtResource("15_rjrdg")
 script = ExtResource("10_yrnad")
 
 [node name="Money" type="Control" parent="UI/HUD" unique_id=1732714314]
+z_index = 1
 anchors_preset = 0
 offset_left = -11.0
 offset_right = 228.0
 offset_bottom = 121.0
 
 [node name="ShellingsLabel" type="Label" parent="UI/HUD/Money" unique_id=2071042031]
+z_index = 2
+z_as_relative = false
 layout_mode = 0
 offset_left = -423.875
 offset_top = 32.0
@@ -554,6 +561,8 @@ offset_right = -545.0
 offset_bottom = 66.0
 
 [node name="WaveLabel" type="Label" parent="UI/HUD/Waves" unique_id=254140960]
+z_index = 2
+z_as_relative = false
 layout_mode = 0
 offset_left = 129.125
 offset_top = 80.0
@@ -566,7 +575,7 @@ text = " Wave 0/10
 "
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/HUD" unique_id=1996697415]
-z_index = -1
+z_index = 1
 layout_mode = 0
 offset_left = -719.0
 offset_top = 25.0

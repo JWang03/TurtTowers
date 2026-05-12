@@ -45,11 +45,11 @@ func _on_damage_tick():
 
 				if slow_active:
 					if "speed_modifier" in body:
-						body.speed_modifier = 0.4
+						body.speed_modifier = 0.6
 
 				if armor_shred_active:
 					if "damage_taken_multiplier" in body:
-						body.damage_taken_multiplier = 2.0
+						body.damage_taken_multiplier = 1.3
 
 				if flashpoint_active:
 					body.is_burning = true
