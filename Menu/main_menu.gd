@@ -1,10 +1,6 @@
 extends Control
 
-<<<<<<< HEAD
 const DEFAULT_TOWER_NAME := "Turt"
-
-=======
->>>>>>> cb6400c7d55f708618c088f86e156a928e3255b8
 # Settings Menu Nodes
 @onready var settings_overlay = $SettingsLayer
 @onready var menu_panel = $SettingsLayer/SettingsMenu
