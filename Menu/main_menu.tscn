@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://t0tqkn4slqu8" path="res://Menu/arrow.gd" id="18_tek0n"]
 [ext_resource type="Shader" uid="uid://df18vh8hlpx1q" path="res://Menu/towers2.gdshader" id="20_32sed"]
 [ext_resource type="Theme" uid="uid://boaafitswomev" path="res://upgrade_buttons.tres" id="21_qn1v7"]
+[ext_resource type="Script" uid="uid://cnf4l3fuhs1w3" path="res://Menu/turts.gd" id="22_turts"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
@@ -434,6 +435,7 @@ offset_bottom = 352.5
 
 [node name="Turts" type="CanvasLayer" parent="TowersLayer" unique_id=1070375472]
 visible = false
+script = ExtResource("22_turts")
 
 [node name="Darkener" type="ColorRect" parent="TowersLayer/Turts" unique_id=608754605]
 anchors_preset = 15
