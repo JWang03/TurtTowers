@@ -699,6 +699,11 @@ custom_minimum_size = Vector2(20, 10)
 layout_mode = 2
 text = "Sell"
 
+[node name="exit_button" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer" unique_id=1753132777]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+text = "Exit"
+
 [node name="Buttons" type="HBoxContainer" parent="UI" unique_id=1277878406]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 0
@@ -778,3 +783,4 @@ texture = ExtResource("37_em8d2")
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/RightButtons/right_top2" to="UI/CanvasLayer/UpgradePanel" method="_on_right_upgrade_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/RightButtons/right_top3" to="UI/CanvasLayer/UpgradePanel" method="_on_right_upgrade_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/VBoxContainer/sell_button" to="UI/CanvasLayer/UpgradePanel" method="_on_sell_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/VBoxContainer/exit_button" to="UI/CanvasLayer/UpgradePanel" method="_on_exit_pressed"]

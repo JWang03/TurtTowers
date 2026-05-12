@@ -64,3 +64,5 @@ func _on_sell_pressed():
 		current_tower.sell()
 		current_tower = null
 		visible = false
+func _on_exit_pressed() -> void:
+	Signal_Bus.tower_deselected.emit()

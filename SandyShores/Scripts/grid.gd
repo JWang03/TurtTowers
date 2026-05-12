@@ -89,3 +89,7 @@ func _input(event: InputEvent) -> void:
 
 func unoccupy_cell(cell: Vector2i) -> void:
 	occupied_cells.erase(cell)
+
+
+func _on_deselect_pressed() -> void:
+	pass # Replace with function body.
