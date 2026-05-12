@@ -45,7 +45,7 @@ func _ready() -> void:
 
 func refresh_ui() -> void:
 	tower_name_label.text = tower_name
-	sell_value_label.text = "Sell: $%03d" % sell_value
+	sell_value_label.text = "Sell: %s" % _format_price(sell_value)
 	_update_upgrade_boxes(1, path1_upgrades, path1_boxes)
 	_update_upgrade_boxes(2, path2_upgrades, path2_boxes)
 
@@ -79,7 +79,7 @@ func _on_upgrade_clicked(path: int, tier: int) -> void:
 	var upgrade_data := _get_upgrade_data(path, tier)
 	selected_upgrade = upgrade_data
 	selected_upgrade_name_label.text = upgrade_data["name"]
-	selected_upgrade_price_label.text = "$%d" % upgrade_data["price"]
+	selected_upgrade_price_label.text = _format_price(upgrade_data["price"])
 	_update_highlights(path, tier)
 	upgrade_selected.emit(path, tier)
 
@@ -99,3 +99,6 @@ func _update_highlights(selected_path: int, selected_tier: int) -> void:
 
 func _on_sell_button_pressed() -> void:
 	tower_sold.emit()
+
+func _format_price(value: int) -> String:
+	return "$%03d" % value
