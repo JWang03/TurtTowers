@@ -36,9 +36,6 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8x2t"]
 
-[sub_resource type="GDScript" id="GDScript_turts"]
-script/source = "extends CanvasLayer\n\nconst UPGRADE_SCENE_PATH_TEMPLATE := \"res://Menu/Upgrades/tower_%s_upgrades.tscn\"\nconst CARD_BUTTON_NAME := \"CardButton\"\nconst BACK_BUTTON_NAME := \"BackButton\"\nconst BACK_BUTTON_ICON := preload(\"res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png\")\nconst BACK_BUTTON_STYLE := preload(\"res://exit_button.tres\")\n\n@onready var upgrades_tree: CanvasLayer = get_parent().get_node_or_null(\"UpgradesTree\")\n\nvar current_upgrade_instance: Node\nvar back_button: Button\nvar upgrade_scene_cache: Dictionary = {}\n\nfunc _ready() -> void:\n\t_setup_upgrades_tree()\n\t_setup_card_buttons()\n\t_ensure_back_button()\n\tshow_tower_cards()\n\nfunc _setup_upgrades_tree() -> void:\n\tif not upgrades_tree:\n\t\tpush_error(\"UpgradesTree not found under TowersLayer.\")\n\t\treturn\n\tupgrades_tree.hide()\n\nfunc _setup_card_buttons() -> void:\n\tfor child in get_children():\n\t\tif child is Control and child.name.is_valid_int():\n\t\t\t_setup_card_button(child)\n\nfunc _setup_card_button(card: Control) -> void:\n\tvar button := card.get_node_or_null(CARD_BUTTON_NAME) as TextureButton\n\tif button == null:\n\t\tvar existing_children := card.get_children()\n\t\tbutton = TextureButton.new()\n\t\tbutton.name = CARD_BUTTON_NAME\n\t\tbutton.focus_mode = Control.FOCUS_NONE\n\t\tbutton.mouse_filter = Control.MOUSE_FILTER_STOP\n\t\tbutton.set_anchors_preset(Control.PRESET_FULL_RECT)\n\t\tbutton.offset_left = 0.0\n\t\tbutton.offset_top = 0.0\n\t\tbutton.offset_right = 0.0\n\t\tbutton.offset_bottom = 0.0\n\t\tbutton.texture_normal = null\n\t\tbutton.texture_hover = null\n\t\tbutton.texture_pressed = null\n\t\tbutton.texture_disabled = null\n\t\tcard.add_child(button)\n\t\tfor node in existing_children:\n\t\t\tnode.reparent(button, true)\n\tvar pressed_callable := _on_card_pressed.bind(card)\n\tif not button.pressed.is_connected(pressed_callable):\n\t\tbutton.pressed.connect(pressed_callable)\n\nfunc _on_card_pressed(card: Control) -> void:\n\t_open_tower_upgrades(card)\n\nfunc _open_tower_upgrades(card: Control) -> void:\n\tif not upgrades_tree:\n\t\treturn\n\tvar tower_id := card.name\n\tvar scene_path := UPGRADE_SCENE_PATH_TEMPLATE % tower_id\n\tvar packed_scene := _get_upgrade_scene(scene_path)\n\tif packed_scene:\n\t\t_clear_current_upgrade()\n\t\tcurrent_upgrade_instance = packed_scene.instantiate()\n\t\tupgrades_tree.add_child(current_upgrade_instance)\n\telse:\n\t\tpush_warning(\"Upgrade scene not found: %s\" % scene_path)\n\thide()\n\tupgrades_tree.show()\n\nfunc _clear_current_upgrade() -> void:\n\tif current_upgrade_instance and current_upgrade_instance.is_inside_tree():\n\t\tcurrent_upgrade_instance.queue_free()\n\tcurrent_upgrade_instance = null\n\nfunc _ensure_back_button() -> void:\n\tif not upgrades_tree:\n\t\treturn\n\tback_button = upgrades_tree.get_node_or_null(BACK_BUTTON_NAME) as Button\n\tif back_button == null:\n\t\tback_button = Button.new()\n\t\tback_button.name = BACK_BUTTON_NAME\n\t\tback_button.text = \"Back\"\n\t\tback_button.focus_mode = Control.FOCUS_NONE\n\t\tback_button.anchor_left = 0.0\n\t\tback_button.anchor_top = 0.0\n\t\tback_button.anchor_right = 0.0\n\t\tback_button.anchor_bottom = 0.0\n\t\tback_button.offset_left = 12.0\n\t\tback_button.offset_top = 12.0\n\t\tback_button.offset_right = 112.0\n\t\tback_button.offset_bottom = 52.0\n\t\t_style_back_button(back_button)\n\t\tupgrades_tree.add_child(back_button)\n\tif not back_button.pressed.is_connected(_on_back_pressed):\n\t\tback_button.pressed.connect(_on_back_pressed)\n\nfunc _style_back_button(button: Button) -> void:\n\tif BACK_BUTTON_STYLE:\n\t\tbutton.add_theme_stylebox_override(\"normal\", BACK_BUTTON_STYLE)\n\tif BACK_BUTTON_ICON:\n\t\tbutton.icon = BACK_BUTTON_ICON\n\t\tbutton.expand_icon = true\n\t\tbutton.text = \"\"\n\nfunc _get_upgrade_scene(scene_path: String) -> PackedScene:\n\tif upgrade_scene_cache.has(scene_path):\n\t\treturn upgrade_scene_cache[scene_path]\n\tvar packed_scene := load(scene_path)\n\tif packed_scene is PackedScene:\n\t\tupgrade_scene_cache[scene_path] = packed_scene\n\t\treturn packed_scene\n\treturn null\n\nfunc _on_back_pressed() -> void:\n\tshow_tower_cards()\n\nfunc show_tower_cards() -> void:\n\tif upgrades_tree:\n\t\tupgrades_tree.hide()\n\tshow()\n\t_clear_current_upgrade()\n\nfunc close_upgrades_if_open() -> bool:\n\tif upgrades_tree and upgrades_tree.visible:\n\t\tshow_tower_cards()\n\t\treturn true\n\treturn false\n"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4wy8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4wy8"]
@@ -86,6 +83,101 @@ corner_radius_bottom_left = 8
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nlkkf"]
 shader = ExtResource("2_glbon")
 shader_parameter/mode = 0
+
+[sub_resource type="GDScript" id="GDScript_turts"]
+script/source = "extends CanvasLayer
+
+const UPGRADE_SCENE_PATH_TEMPLATE := \"res://Menu/Upgrades/tower_%s_upgrades.tscn\"
+const CARD_BUTTON_NAME := \"CardButton\"
+
+@onready var upgrades_tree: CanvasLayer = get_parent().get_node_or_null(\"UpgradesTree\")
+
+var current_upgrade_instance: Node
+
+func _ready() -> void:
+	_setup_upgrades_tree()
+	_setup_card_buttons()
+	_connect_existing_back_button()
+	show_tower_cards()
+
+func _setup_upgrades_tree() -> void:
+	if not upgrades_tree:
+		push_error(\"UpgradesTree not found under TowersLayer.\")
+		return
+	upgrades_tree.hide()
+
+func _setup_card_buttons() -> void:
+	for child in get_children():
+		if child is Control and child.name.is_valid_int():
+			_setup_card_button(child)
+
+func _setup_card_button(card: Control) -> void:
+	var button := card.get_node_or_null(CARD_BUTTON_NAME) as TextureButton
+	if button == null:
+		var existing_children := card.get_children()
+		button = TextureButton.new()
+		button.name = CARD_BUTTON_NAME
+		button.focus_mode = Control.FOCUS_NONE
+		button.mouse_filter = Control.MOUSE_FILTER_STOP
+		button.set_anchors_preset(Control.PRESET_FULL_RECT)
+		button.offset_left = 0.0
+		button.offset_top = 0.0
+		button.offset_right = 0.0
+		button.offset_bottom = 0.0
+		button.texture_normal = null
+		button.texture_hover = null
+		button.texture_pressed = null
+		button.texture_disabled = null
+		card.add_child(button)
+		for node in existing_children:
+			node.reparent(button, true)
+	var pressed_callable := _on_card_pressed.bind(card)
+	if not button.pressed.is_connected(pressed_callable):
+		button.pressed.connect(pressed_callable)
+
+func _on_card_pressed(card: Control) -> void:
+	_open_tower_upgrades(card)
+
+func _open_tower_upgrades(card: Control) -> void:
+	if not upgrades_tree:
+		return
+	var tower_id := card.name
+	var scene_path := UPGRADE_SCENE_PATH_TEMPLATE % tower_id
+	var packed_scene := load(scene_path)
+	if packed_scene is PackedScene:
+		_clear_current_upgrade()
+		current_upgrade_instance = packed_scene.instantiate()
+		upgrades_tree.add_child(current_upgrade_instance)
+	else:
+		push_warning(\"Upgrade scene not found: %s\" % scene_path)
+	hide()
+	upgrades_tree.show()
+
+func _clear_current_upgrade() -> void:
+	if current_upgrade_instance and current_upgrade_instance.is_inside_tree():
+		current_upgrade_instance.queue_free()
+	current_upgrade_instance = null
+
+func _connect_existing_back_button() -> void:
+	var back_btn = get_parent().get_node_or_null(\"BackButton\")
+	if back_btn and not back_btn.pressed.is_connected(_on_back_pressed):
+		back_btn.pressed.connect(_on_back_pressed)
+
+func _on_back_pressed() -> void:
+	show_tower_cards()
+
+func show_tower_cards() -> void:
+	if upgrades_tree:
+		upgrades_tree.hide()
+	show()
+	_clear_current_upgrade()
+
+func close_upgrades_if_open() -> bool:
+	if upgrades_tree and upgrades_tree.visible:
+		show_tower_cards()
+		return true
+	return false
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cn2sd"]
 shader = ExtResource("6_rw3mj")
@@ -824,24 +916,25 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
 icon_alignment = 1
 expand_icon = true
 
-[node name="U2" type="Button" parent="TowersLayer/UpgradesTree/LeftPath" unique_id=842274791]
-material = SubResource("ShaderMaterial_o4wy8")
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o4wy8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dqyvv")
-icon_alignment = 1
-expand_icon = true
-
-[node name="U3" type="Button" parent="TowersLayer/UpgradesTree/LeftPath" unique_id=1059472410]
+[node name="U2" type="Button" parent="TowersLayer/UpgradesTree/LeftPath" unique_id=766573212]
 material = SubResource("ShaderMaterial_o4wy8")
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("21_qn1v7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o4wy8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dqyvv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="U3" type="Button" parent="TowersLayer/UpgradesTree/LeftPath" unique_id=411433089]
+material = SubResource("ShaderMaterial_o4wy8")
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("21_qn1v7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
 icon_alignment = 1
 expand_icon = true
 
@@ -859,36 +952,36 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 50
 
-[node name="U1" type="Button" parent="TowersLayer/UpgradesTree/RightPath" unique_id=756208462]
+[node name="U1" type="Button" parent="TowersLayer/UpgradesTree/RightPath" unique_id=1834009873]
 material = SubResource("ShaderMaterial_o4wy8")
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("21_qn1v7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o4wy8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dqyvv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
 icon_alignment = 1
 expand_icon = true
 
-[node name="U2" type="Button" parent="TowersLayer/UpgradesTree/RightPath" unique_id=1716873571]
+[node name="U2" type="Button" parent="TowersLayer/UpgradesTree/RightPath" unique_id=2017708627]
 material = SubResource("ShaderMaterial_o4wy8")
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("21_qn1v7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o4wy8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dqyvv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
 icon_alignment = 1
 expand_icon = true
 
-[node name="U3" type="Button" parent="TowersLayer/UpgradesTree/RightPath" unique_id=961776274]
+[node name="U3" type="Button" parent="TowersLayer/UpgradesTree/RightPath" unique_id=1555995101]
 material = SubResource("ShaderMaterial_o4wy8")
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("21_qn1v7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o4wy8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dqyvv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
 icon_alignment = 1
 expand_icon = true
 
