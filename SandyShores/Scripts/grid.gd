@@ -74,7 +74,8 @@ func _input(event: InputEvent) -> void:
 		var cell_global_center: Vector2 = to_global(cell_local_center)
 		var spawn_pos: Vector2 = tower_container.to_local(cell_global_center)
 		var tower = build_manager.selected_scene.instantiate()
-		var cost = tower.cost
+		tower_container.add_child(tower)  # _ready fires here, cost gets set
+		var cost = tower.cost              # now cost is correct
 		if can_place_on_cell(cell):
 			if affordable(cost):
 				if tower is Node2D:
@@ -82,12 +83,15 @@ func _input(event: InputEvent) -> void:
 					tower.occupied_cell = cell
 					tower.tilemap = self
 					currency_manager.spend_shellings(cost)
-					tower_container.add_child(tower)
 					tower.position = spawn_pos
 					occupied_cells[cell] = true
 					if tower.has_method("_on_placed"):
 						tower.call_deferred("_on_placed")
 					build_manager.clear()
+			else:
+				tower.queue_free()
+		else:
+			tower.queue_free()
 
 func unoccupy_cell(cell: Vector2i) -> void:
 	occupied_cells.erase(cell)

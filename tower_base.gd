@@ -8,7 +8,7 @@ enum TargetMode {FIRST, WEAKEST, STRONGEST, CLOSEST}
 @onready var detection_area = $Range
 @export var occupied_cell: Vector2i
 @export var tilemap: TileMapLayer
-@export var cost: float = 0.0
+@export var cost: float
 var range_fill: Polygon2D
 var range_indicator: Line2D
 
