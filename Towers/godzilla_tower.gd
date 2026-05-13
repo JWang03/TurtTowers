@@ -100,7 +100,7 @@ func _input(event):
 				Signal_Bus.tower_selected.emit(self)
 				break
 
-var tower_name = "Turtranosaurus Rex"
+var tower_name = "Turtosaurus Rex"
 var upgrades = {
 	"left": {
 		"name": "Twin Peaks",

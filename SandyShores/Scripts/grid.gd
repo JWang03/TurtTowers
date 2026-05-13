@@ -79,12 +79,14 @@ func _input(event: InputEvent) -> void:
 			if affordable(cost):
 				if tower is Node2D:
 					tower.is_placed = true
-					tower.occupied_cell = cell   # new
-					tower.tilemap = self         # new
+					tower.occupied_cell = cell
+					tower.tilemap = self
 					currency_manager.spend_shellings(cost)
 					tower_container.add_child(tower)
 					tower.position = spawn_pos
 					occupied_cells[cell] = true
+					if tower.has_method("_on_placed"):
+						tower.call_deferred("_on_placed")
 					build_manager.clear()
 
 func unoccupy_cell(cell: Vector2i) -> void:
