@@ -13,7 +13,7 @@ var damage_multiplier: float = 1.0
 
 func _ready():
 	super._ready()
-	cost = 20
+	cost = 50
 	fire_rate = 0.1
 	shoot_timer.wait_time = fire_rate
 	shoot_timer.one_shot = false

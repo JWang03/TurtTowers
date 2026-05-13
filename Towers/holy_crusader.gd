@@ -16,7 +16,7 @@ var aim = false
 
 func _ready():
 	super._ready()
-	cost = 25
+	cost = 50
 	fire_rate = 0.4
 	rng.randomize()
 	range_area.body_entered.connect(_on_zombie_entered)

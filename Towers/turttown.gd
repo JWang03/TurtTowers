@@ -26,7 +26,7 @@ var soldier_scene = preload("res://Towers/bullet_tower.tscn")
 
 func _ready():
 	super._ready()
-	cost = 100
+	cost = 200
 	income_timer = Timer.new()
 	income_timer.one_shot = false
 	income_timer.timeout.connect(_on_income_tick)

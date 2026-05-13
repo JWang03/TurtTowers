@@ -8,7 +8,7 @@ var max_targets: int = 1
 
 func _ready():
 	super._ready()
-	cost = 25
+	cost = 100
 	anim_sprite.animation_looped.connect(_on_animation_looped)
 	anim_sprite.stop()
 	detection_area.body_entered.connect(_on_body_entered)
