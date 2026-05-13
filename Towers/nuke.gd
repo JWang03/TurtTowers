@@ -36,6 +36,8 @@ func _on_impact():
 	if has_exploded: return
 	has_exploded = true
 
+	remove_from_group("towers")
+
 	if missile_sprite:
 		missile_sprite.hide()
 

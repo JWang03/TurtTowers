@@ -27,8 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://c43l2x13u6e1n" path="res://textures/hearts_no_bg.png" id="15_rjrdg"]
 [ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="16_ci5cp"]
 [ext_resource type="Script" uid="uid://cfxxtgfammudk" path="res://SandyShores/Scripts/death_screen.gd" id="16_dwuir"]
-[ext_resource type="Texture2D" uid="uid://cl53dg7b75ecr" path="res://textures/paper_airplane.png" id="21_xwwnh"]
-[ext_resource type="PackedScene" uid="uid://cfxko1b87aspq" path="res://Towers/paperplane.tscn" id="22_vjk8x"]
+[ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://textures/image-removebg-preview (34).png" id="20_as63w"]
+[ext_resource type="PackedScene" uid="uid://cfxko1b87aspq" path="res://Towers/Turt-22.tscn" id="22_vjk8x"]
 [ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="23_fr0rq"]
 [ext_resource type="PackedScene" uid="uid://hovc6xdbesyd" path="res://Towers/holy_crusader.tscn" id="24_1dk7f"]
 [ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="25_turt"]
@@ -84,6 +84,18 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 837, 123, 0, 0, 0, 0, 835, 241, 0, 0, 0, 0, 83, 241, 0, 0, 0, 0, 84, 404, 0, 0, 0, 0, 189, 404, 0, 0, 0, 0, 188, 352, 0, 0, 0, 0, 831, 354, 0, 0, 0, 0, 834, 465, 0, 0, 0, 0, 731, 465, 0, 0, 0, 0, 728, 570, 0, 0, 0, 0, 567, 571, 0, 0, 0, 0, 566, 459, 0, 0, 0, 0, 350, 457, 0, 0, 0, 0, 349, 513, 0, 0, 0, 0, -85, 515)
 }
 point_count = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jt4vf"]
+bg_color = Color(0.38039216, 0.7176471, 0.29803923, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0.5372549, 0, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
 
 [sub_resource type="SystemFont" id="SystemFont_dwuir"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -327,14 +339,20 @@ offset_top = 1.0
 offset_right = 1149.0
 offset_bottom = 650.0
 
-[node name="tower_targeting" type="Button" parent="UI" unique_id=1695660404]
-z_index = 4096
+[node name="TargetingPanel" type="PanelContainer" parent="UI" unique_id=528902499]
+z_index = 500
 layout_mode = 0
-offset_left = -279.0
-offset_top = 8.0
-offset_right = -125.0
-offset_bottom = 78.0
-text = "Global Mode: FIRST"
+offset_left = -285.0
+offset_top = 11.0
+offset_right = -162.0
+offset_bottom = 65.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jt4vf")
+
+[node name="tower_targeting" type="Button" parent="UI/TargetingPanel" unique_id=1695660404]
+z_index = 4096
+layout_mode = 2
+text = "Global Mode"
+flat = true
 script = ExtResource("38_target")
 
 [node name="ShopPanel" type="Control" parent="UI" unique_id=827478311]
@@ -414,15 +432,15 @@ stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("14_ebpuc")
 
-[node name="Paperplane" type="TextureButton" parent="UI/ShopPanel" unique_id=1225356948]
+[node name="Turt-22" type="TextureButton" parent="UI/ShopPanel" unique_id=1225356948]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -450.0
-offset_top = 229.0
-offset_right = -373.0
-offset_bottom = 299.0
-texture_normal = ExtResource("21_xwwnh")
+offset_left = -476.0
+offset_top = 205.0
+offset_right = -338.0
+offset_bottom = 320.0
+texture_normal = ExtResource("20_as63w")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
