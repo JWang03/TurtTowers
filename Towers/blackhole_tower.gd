@@ -144,8 +144,7 @@ func apply_left_upgrade():
 		0:
 			multi_hole_active = true
 			hole_count = 2
-			# weaker pull to compensate for more holes
-			hole_pull_multiplier = 0.5
+			hole_pull_multiplier = 0.7  # was 0.5
 			hole_scale_multiplier = 0.6
 		1:
 			hole_count = 3

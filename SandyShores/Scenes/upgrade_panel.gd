@@ -5,9 +5,12 @@ func _ready():
 	Signal_Bus.tower_selected.connect(_on_tower_selected)
 	Signal_Bus.tower_deselected.connect(_on_tower_deselected)
 func _on_tower_selected(tower):
-	current_tower = tower
-	populate(tower)
-	visible = true
+	if tower.has_meta("is_turtret"):
+		return  # don't show upgrades for turt-rets
+	else:
+		current_tower = tower
+		populate(tower)
+		visible = true
 func _on_tower_deselected():
 	current_tower = null
 	visible = false

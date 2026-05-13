@@ -12,17 +12,17 @@ func _ready() -> void:
 
 func _on_selection_changed(selected_scene) -> void:
 	visible = selected_scene != null
-
 	if ghost_tower:
 		ghost_tower.queue_free()
 		ghost_tower = null
-
 	if selected_scene != null:
 		var preview = selected_scene.instantiate()
 		if preview is Node2D:
 			ghost_tower = preview
 			tower_container.add_child(ghost_tower)
 			ghost_tower.modulate.a = 0.5
+			if ghost_tower.has_method("_show_range"):
+				ghost_tower._show_range()
 
 func _process(_delta: float) -> void:
 	if ghost_tower == null:

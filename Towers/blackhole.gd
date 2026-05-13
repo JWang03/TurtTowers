@@ -1,11 +1,10 @@
-# blackhole.gd
 extends Area2D
 
-@export var pull_strength: float = 900.0
+@export var pull_strength: float = 150.0
 @export var duration: float = 1.5
 @export var friction: float = 0.08
 @export var damage_per_second: float = 10.0
-var base_scale: float = 1.0  # set by tower before add_child
+var base_scale: float = 1.0
 var target_pos: Vector2
 var is_active: bool = false
 
@@ -36,22 +35,26 @@ func pull_entities(delta):
 		var follower = get_path_follower(body)
 		if follower == null:
 			continue
-		var dist = global_position.distance_to(body.global_position)
+
 		var path = follower.get_parent()
 		var path_len = path.curve.get_baked_length()
 
-		var proximity_scale = pull_strength / max(dist, 1.0)
-		var actual_step = proximity_scale * delta
+		# sample ahead in small steps to find which path point is closest to the black hole
+		var closest_progress = follower.progress
+		var closest_dist = global_position.distance_to(body.global_position)
+		var search_step = 10.0
+		for i in range(1, 30):
+			var test_progress = clamp(follower.progress - (search_step * i), 0.0, path_len)
+			var test_pos = path.to_global(path.curve.sample_baked(test_progress))
+			var test_dist = global_position.distance_to(test_pos)
+			if test_dist < closest_dist:
+				closest_dist = test_dist
+				closest_progress = test_progress
 
-		var progress_forward  = clamp(follower.progress + actual_step, 0.0, path_len)
-		var progress_backward = clamp(follower.progress - actual_step, 0.0, path_len)
-		var pos_forward  = path.to_global(path.curve.sample_baked(progress_forward))
-		var pos_backward = path.to_global(path.curve.sample_baked(progress_backward))
-
-		if global_position.distance_to(pos_forward) < global_position.distance_to(pos_backward):
-			follower.progress += actual_step
-		else:
-			follower.progress -= actual_step
+		# pull toward closest point, capped so it cant overshoot
+		var pull_step = pull_strength * delta
+		if closest_progress < follower.progress:
+			follower.progress = max(follower.progress - pull_step, closest_progress)
 
 		if body.has_method("take_damage"):
 			body.take_damage(damage_per_second * delta)
