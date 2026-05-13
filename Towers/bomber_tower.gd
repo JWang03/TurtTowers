@@ -76,7 +76,7 @@ func _input(event):
 				Signal_Bus.tower_selected.emit(self)
 				break
 
-var tower_name = "Demolition Turt"
+var tower_name = "TNTurt"
 var upgrades = {
 	"left": {
 		"name": "Cluster Bomber",
