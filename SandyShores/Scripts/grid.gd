@@ -1,15 +1,108 @@
-extends TileMapLayer
+#extends TileMapLayer
+#
+#@export var tower_container: Node2D
+#@onready var build_manager = get_node("/root/Game/BuildManager")
+#@onready var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
+#var occupied_cells := {}
+#var ghost_tower: Node2D = null
+#
+#func _ready() -> void:
+	#visible = false
+	#build_manager.selection_changed.connect(_on_selection_changed)
+#
+#func _on_selection_changed(selected_scene) -> void:
+	#visible = selected_scene != null
+#
+	#if ghost_tower:
+		#ghost_tower.queue_free()
+		#ghost_tower = null
+#
+	#if selected_scene != null:
+		#var preview = selected_scene.instantiate()
+		#if preview is Node2D:
+			#ghost_tower = preview
+			#tower_container.add_child(ghost_tower)
+			#ghost_tower.modulate.a = 0.5
+#
+#func _process(_delta: float) -> void:
+	#if ghost_tower == null:
+		#return
+#
+	#if build_manager.selected_scene == null:
+		#return
+#
+	#var mouse_local: Vector2 = get_local_mouse_position()
+	#var cell: Vector2i = local_to_map(mouse_local)
+#
+	#var cell_local_center: Vector2 = map_to_local(cell)
+	#var cell_global_center: Vector2 = to_global(cell_local_center)
+	#var ghost_pos: Vector2 = tower_container.to_local(cell_global_center)
+#
+	#ghost_tower.position = ghost_pos
+	#
+#func can_place_on_cell(cell: Vector2i) -> bool:
+	#var tile_data = get_cell_tile_data(cell)
+	#if tile_data == null:
+		#return false
+	#return tile_data.get_custom_data("placeable")
+	#
+#func affordable(cost) -> bool:
+	#return currency_manager.shellings >= cost
+	#
+#func _input(event: InputEvent) -> void:
+	#if Input.is_action_just_pressed("ui_cancel"):
+		#build_manager.clear()
+		#Signal_Bus.tower_deselected.emit()
+	#
+	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		#if build_manager.selected_scene == null:
+			#var upgrade_panel = get_node("/root/Game/UI/CanvasLayer/UpgradePanel")
+			#if upgrade_panel.visible:
+				#var panel_pos = upgrade_panel.get_global_transform_with_canvas().origin
+				#var panel_rect = Rect2(panel_pos, upgrade_panel.size)
+				#print("panel_rect: ", panel_rect)
+				#print("event.position: ", event.position)
+				#if panel_rect.has_point(event.position):
+					#return
+			#return
+		#
+		#var mouse_local: Vector2 = get_local_mouse_position()
+		#var cell: Vector2i = local_to_map(mouse_local)
+		#if occupied_cells.has(cell):
+			#return
+		#var cell_local_center: Vector2 = map_to_local(cell)
+		#var cell_global_center: Vector2 = to_global(cell_local_center)
+		#var spawn_pos: Vector2 = tower_container.to_local(cell_global_center)
+		#var tower = build_manager.selected_scene.instantiate()
+		#var cost = tower.cost
+		#if can_place_on_cell(cell):
+			#if affordable(cost):
+				#if tower is Node2D:
+					#tower.is_placed = true
+					#tower.occupied_cell = cell   # new
+					#tower.tilemap = self         # new
+					#currency_manager.spend_shellings(cost)
+					#tower_container.add_child(tower)
+					#tower.position = spawn_pos
+					#occupied_cells[cell] = true
+					#build_manager.clear()
+#
+#func unoccupy_cell(cell: Vector2i) -> void:
+	#occupied_cells.erase(cell)
 
+extends TileMapLayer
+ 
 @export var tower_container: Node2D
 @onready var build_manager = get_node("/root/Game/BuildManager")
 @onready var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
+ 
 var occupied_cells := {}
 var ghost_tower: Node2D = null
-
+ 
 func _ready() -> void:
 	visible = false
 	build_manager.selection_changed.connect(_on_selection_changed)
-
+ 
 func _on_selection_changed(selected_scene) -> void:
 	visible = selected_scene != null
 	if ghost_tower:
@@ -27,33 +120,29 @@ func _on_selection_changed(selected_scene) -> void:
 func _process(_delta: float) -> void:
 	if ghost_tower == null:
 		return
-
 	if build_manager.selected_scene == null:
 		return
-
 	var mouse_local: Vector2 = get_local_mouse_position()
 	var cell: Vector2i = local_to_map(mouse_local)
-
 	var cell_local_center: Vector2 = map_to_local(cell)
 	var cell_global_center: Vector2 = to_global(cell_local_center)
 	var ghost_pos: Vector2 = tower_container.to_local(cell_global_center)
-
 	ghost_tower.position = ghost_pos
-	
+ 
 func can_place_on_cell(cell: Vector2i) -> bool:
 	var tile_data = get_cell_tile_data(cell)
 	if tile_data == null:
 		return false
 	return tile_data.get_custom_data("placeable")
-	
+ 
 func affordable(cost) -> bool:
 	return currency_manager.shellings >= cost
-	
+ 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		build_manager.clear()
 		Signal_Bus.tower_deselected.emit()
-	
+ 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if build_manager.selected_scene == null:
 			var upgrade_panel = get_node("/root/Game/UI/CanvasLayer/UpgradePanel")
@@ -65,7 +154,7 @@ func _input(event: InputEvent) -> void:
 				if panel_rect.has_point(event.position):
 					return
 			return
-		
+ 
 		var mouse_local: Vector2 = get_local_mouse_position()
 		var cell: Vector2i = local_to_map(mouse_local)
 		if occupied_cells.has(cell):
@@ -83,7 +172,9 @@ func _input(event: InputEvent) -> void:
 					tower.occupied_cell = cell
 					tower.tilemap = self
 					currency_manager.spend_shellings(cost)
-					tower.position = spawn_pos
+					tower_container.add_child(tower)
+					tower.position = spawn_pos  # position set FIRST
+					tower.is_placed = true       # then mark placed
 					occupied_cells[cell] = true
 					if tower.has_method("_on_placed"):
 						tower.call_deferred("_on_placed")
@@ -93,5 +184,9 @@ func _input(event: InputEvent) -> void:
 		else:
 			tower.queue_free()
 
+					if tower.has_method("on_placed"):  # trigger nuke (and any future towers that need it)
+						tower.on_placed()
+ 
 func unoccupy_cell(cell: Vector2i) -> void:
 	occupied_cells.erase(cell)
+ 
