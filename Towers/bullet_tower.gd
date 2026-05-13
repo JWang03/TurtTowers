@@ -5,9 +5,7 @@ extends TowerBase
 var bullet_scene = preload("res://Towers/bullet.tscn")
 var damage_multiplier = 1.0
 var double_shot = false
-var hitscan = false
-
-
+var aimbot = false
 
 func _ready():
 	super._ready()
@@ -52,10 +50,8 @@ func attempt_shot():
 	var target = get_best_target()
 	if not target or not bullet_scene:
 		return
-
 	var shield_provider = get_shield_provider(target)
 	var final_target = shield_provider if shield_provider else target
-
 	if double_shot:
 		for offset in [-5, 5]:
 			_fire_bullet(final_target, offset)
@@ -65,8 +61,8 @@ func attempt_shot():
 func _fire_bullet(final_target: Node2D, side_offset: float):
 	var bullet = bullet_scene.instantiate()
 	bullet.damage *= damage_multiplier
-	if hitscan:
-		bullet.speed *= 1000
+	if aimbot:
+		bullet.speed *= 1.5
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = muzzle.global_position
 	bullet.look_at(final_target.global_position)
@@ -79,7 +75,7 @@ func _fire_bullet(final_target: Node2D, side_offset: float):
 func _process(_delta: float) -> void:
 	timer.wait_time = fire_rate
 
-var tower_name = "Soldier Turt"
+var tower_name = "The Lieturtant"
 var upgrades = {
 	"left": {
 		"name": "Gunner",
@@ -122,6 +118,7 @@ func purchase_upgrade(branch: String):
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
+	refresh_range_indicator()
 
 func apply_left_upgrade():
 	match left_level:
@@ -131,10 +128,16 @@ func apply_left_upgrade():
 
 func apply_right_upgrade():
 	match right_level:
-		0: detection_area.scale *= 1.5
+		0:
+			detection_area.scale *= 1.5
 		1:
-			damage_multiplier *= 15.0
-			fire_rate = 2
+			damage_multiplier *= 5.0
+			fire_rate *= 1.5
 		2:
-			detection_area.scale *= 20
-			hitscan = true
+			aimbot = true
+			detection_area.scale *= 2
+			damage_multiplier *= 3
+			fire_rate *= 2.2
+
+func sell() -> void:
+	super.sell()

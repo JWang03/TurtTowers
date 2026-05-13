@@ -114,7 +114,9 @@ func _on_selection_changed(selected_scene) -> void:
 			ghost_tower = preview
 			tower_container.add_child(ghost_tower)
 			ghost_tower.modulate.a = 0.5
- 
+			if ghost_tower.has_method("_show_range"):
+				ghost_tower._show_range()
+
 func _process(_delta: float) -> void:
 	if ghost_tower == null:
 		return
@@ -165,6 +167,7 @@ func _input(event: InputEvent) -> void:
 		if can_place_on_cell(cell):
 			if affordable(cost):
 				if tower is Node2D:
+					tower.is_placed = true
 					tower.occupied_cell = cell
 					tower.tilemap = self
 					currency_manager.spend_shellings(cost)
@@ -172,6 +175,8 @@ func _input(event: InputEvent) -> void:
 					tower.position = spawn_pos  # position set FIRST
 					tower.is_placed = true       # then mark placed
 					occupied_cells[cell] = true
+					if tower.has_method("_on_placed"):
+						tower.call_deferred("_on_placed")
 					build_manager.clear()
 					if tower.has_method("on_placed"):  # trigger nuke (and any future towers that need it)
 						tower.on_placed()

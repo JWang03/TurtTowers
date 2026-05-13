@@ -10,14 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://dil5b5bgf4wxt" path="res://textures/GearIcon.png" id="7_6cp8d"]
 [ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://SandyShores/Scripts/wave_spawner.gd" id="7_ai02a"]
 [ext_resource type="Script" uid="uid://cy5j1efrjxakf" path="res://SandyShores/Scenes/settings.gd" id="8_6cp8d"]
-[ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://enemies/zombie.tscn" id="8_axmsp"]
 [ext_resource type="Script" uid="uid://ckfrd7gva57ou" path="res://SandyShores/Scenes/return.gd" id="8_em8d2"]
+[ext_resource type="PackedScene" uid="uid://cp5mfxulgq6d7" path="res://Enemies/zombie.tscn" id="8_kpf84"]
 [ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://SandyShores/Scripts/loss_conditions.gd" id="9_50yat"]
 [ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="9_h2mqj"]
-[ext_resource type="PackedScene" uid="uid://cooltchipc56w" path="res://enemies/algae_bloom.tscn" id="9_n7wjj"]
+[ext_resource type="PackedScene" uid="uid://cooltchipc56w" path="res://Enemies/algae_bloom.tscn" id="9_n7wjj"]
 [ext_resource type="Script" uid="uid://n800asycp1sd" path="res://SandyShores/Scripts/bomb_tower.gd" id="9_saejb"]
 [ext_resource type="PackedScene" uid="uid://dmhok8tovvxvc" path="res://Towers/bomber_tower.tscn" id="10_evw7n"]
-[ext_resource type="PackedScene" uid="uid://bcepi076o27tl" path="res://enemies/plastic_ring.tscn" id="10_lut2n"]
+[ext_resource type="PackedScene" uid="uid://bcepi076o27tl" path="res://Enemies/plastic_ring.tscn" id="10_lut2n"]
 [ext_resource type="Script" uid="uid://b110lgne0ntlx" path="res://SandyShores/Scripts/currency_manager.gd" id="10_yrnad"]
 [ext_resource type="PackedScene" uid="uid://do17203pjxuim" path="res://Towers/bullet_tower.tscn" id="11_c26fn"]
 [ext_resource type="PackedScene" uid="uid://d2l8b5nykdqdg" path="res://Towers/godzilla_tower.tscn" id="12_hxeer"]
@@ -40,7 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://67hd02tun5we" path="res://Towers/turttown.tscn" id="27_turt"]
 [ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/TurtTown.png" id="28_3kv1k"]
 [ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://textures/image-removebg-preview (15).png" id="31_ux3bf"]
-[ext_resource type="PackedScene" uid="uid://db8mm2oj2u0hg" path="res://flamethrower_tower.tscn" id="32_0r82o"]
+[ext_resource type="PackedScene" uid="uid://db8mm2oj2u0hg" path="res://Towers/flamethrower_tower.tscn" id="32_0r82o"]
 [ext_resource type="Texture2D" uid="uid://djhx0xow36mcw" path="res://textures/image-removebg-preview (30).png" id="32_as63w"]
 [ext_resource type="PackedScene" uid="uid://d0wiw8h7x0umg" path="res://Towers/turt_factory.tscn" id="33_axmsp"]
 [ext_resource type="Texture2D" uid="uid://dr8x45h4e2lwn" path="res://textures/image-removebg-preview (31).png" id="35_rm2u3"]
@@ -99,6 +99,18 @@ hinting = 2
 subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_ci5cp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpf84"]
+bg_color = Color(0.38039216, 0.7176471, 0.29803923, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0.5372549, 0, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
 
 [sub_resource type="SystemFont" id="SystemFont_7x53i"]
 
@@ -305,7 +317,7 @@ script = ExtResource("6_rjrdg")
 script = ExtResource("7_ai02a")
 enemy_path = NodePath("../EnemyPath")
 wave_label = NodePath("../UI/HUD/Waves/WaveLabel")
-enemy1 = ExtResource("8_axmsp")
+enemy1 = ExtResource("8_kpf84")
 enemy2 = ExtResource("9_n7wjj")
 enemy3 = ExtResource("10_lut2n")
 
@@ -513,23 +525,8 @@ offset_top = -17.0
 offset_right = 982.0
 offset_bottom = 99.0
 
-[node name="ColorRect" type="ColorRect" parent="UI/HUD" unique_id=1219117608]
-layout_mode = 0
-offset_left = -701.875
-offset_top = 19.0
-offset_right = -332.875
-offset_bottom = 136.0
-color = Color(0, 0.5372549, 0, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="UI/HUD" unique_id=1754926059]
-layout_mode = 0
-offset_left = -694.875
-offset_top = 26.0
-offset_right = -339.875
-offset_bottom = 129.0
-color = Color(0.38103804, 0.717417, 0.29669756, 1)
-
 [node name="Lives" type="Control" parent="UI/HUD" unique_id=1545277758]
+z_index = 1
 anchors_preset = 0
 offset_left = -168.0
 offset_top = -15.0
@@ -537,6 +534,8 @@ offset_right = 51.0
 offset_bottom = 131.0
 
 [node name="LivesLabel" type="Label" parent="UI/HUD/Lives" unique_id=707430476]
+z_index = 2
+z_as_relative = false
 layout_mode = 0
 offset_left = -442.875
 offset_top = 49.0
@@ -548,6 +547,8 @@ theme_override_font_sizes/font_size = 48
 text = "100"
 
 [node name="HeartsNoBg" type="Sprite2D" parent="UI/HUD/Lives" unique_id=560389045]
+z_index = 2
+z_as_relative = false
 position = Vector2(-479.875, 87)
 scale = Vector2(0.26033974, 0.27710044)
 texture = ExtResource("15_rjrdg")
@@ -556,12 +557,15 @@ texture = ExtResource("15_rjrdg")
 script = ExtResource("10_yrnad")
 
 [node name="Money" type="Control" parent="UI/HUD" unique_id=1732714314]
+z_index = 1
 anchors_preset = 0
 offset_left = -11.0
 offset_right = 228.0
 offset_bottom = 121.0
 
 [node name="ShellingsLabel" type="Label" parent="UI/HUD/Money" unique_id=2071042031]
+z_index = 2
+z_as_relative = false
 layout_mode = 0
 offset_left = -423.875
 offset_top = 32.0
@@ -589,6 +593,8 @@ offset_right = -545.0
 offset_bottom = 66.0
 
 [node name="WaveLabel" type="Label" parent="UI/HUD/Waves" unique_id=254140960]
+z_index = 2
+z_as_relative = false
 layout_mode = 0
 offset_left = 129.125
 offset_top = 80.0
@@ -600,7 +606,18 @@ theme_override_font_sizes/font_size = 20
 text = " Wave 0/10
 "
 
+[node name="PanelContainer" type="PanelContainer" parent="UI/HUD" unique_id=1996697415]
+z_index = 1
+layout_mode = 0
+offset_left = -719.0
+offset_top = 25.0
+offset_right = -325.0
+offset_bottom = 133.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kpf84")
+
 [node name="DeathScreen" type="Control" parent="UI" unique_id=2058731793]
+z_index = 4096
+z_as_relative = false
 anchors_preset = 0
 offset_left = 544.0
 offset_top = -40.0
@@ -712,9 +729,14 @@ layout_mode = 2
 action_mode = 0
 
 [node name="sell_button" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer" unique_id=1612515102]
-custom_minimum_size = Vector2(10, 30)
+custom_minimum_size = Vector2(20, 10)
 layout_mode = 2
 text = "Sell"
+
+[node name="exit_button" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer" unique_id=1753132777]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+text = "Exit"
 
 [node name="Buttons" type="HBoxContainer" parent="UI" unique_id=1277878406]
 custom_minimum_size = Vector2(0, 20)
@@ -795,3 +817,4 @@ texture = ExtResource("37_em8d2")
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/RightButtons/right_top2" to="UI/CanvasLayer/UpgradePanel" method="_on_right_upgrade_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/RightButtons/right_top3" to="UI/CanvasLayer/UpgradePanel" method="_on_right_upgrade_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/VBoxContainer/sell_button" to="UI/CanvasLayer/UpgradePanel" method="_on_sell_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/VBoxContainer/exit_button" to="UI/CanvasLayer/UpgradePanel" method="_on_exit_pressed"]

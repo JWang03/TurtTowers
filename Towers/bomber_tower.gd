@@ -76,7 +76,7 @@ func _input(event):
 				Signal_Bus.tower_selected.emit(self)
 				break
 
-var tower_name = "Demolition Turt"
+var tower_name = "TNTurt"
 var upgrades = {
 	"left": {
 		"name": "Cluster Bomber",
@@ -119,6 +119,7 @@ func purchase_upgrade(branch: String):
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
+	refresh_range_indicator()
 
 func apply_left_upgrade():
 	match left_level:
