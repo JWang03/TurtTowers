@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cu0qdmxuiyd4u"
-path="res://.godot/imported/shrimp_no_bg.png-86acd2b962eea5d4ebad3426fef826e6.ctex"
+path="res://.godot/imported/shrimp_no_bg.png-aded54cf400217f73c408f0930cb45f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/shrimp_no_bg.png"
-dest_files=["res://.godot/imported/shrimp_no_bg.png-86acd2b962eea5d4ebad3426fef826e6.ctex"]
+source_file="res://textures/shrimp_no_bg.png"
+dest_files=["res://.godot/imported/shrimp_no_bg.png-aded54cf400217f73c408f0930cb45f0.ctex"]
 
 [params]
 
