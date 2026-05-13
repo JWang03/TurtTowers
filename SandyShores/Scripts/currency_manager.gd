@@ -13,6 +13,6 @@ func add_shellings(amount: int):
 	shellings += amount
 	update_label()
 
-func spend_shellings(amount: int):
+func spend_shellings(amount: float):
 	shellings -= amount
 	update_label()
