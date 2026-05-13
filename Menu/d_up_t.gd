@@ -31,8 +31,6 @@ var desc_box: Button
 func _ready() -> void:
 	$LeftPathLabel.text = upgrade_data["left"]["path_name"]
 	$RightPathLabel.text = upgrade_data["right"]["path_name"]
-	# ... rest of _ready
-
 	desc_box = $DescBox
 	print("DescBox: ", desc_box)
 	_setup_desc_box()
