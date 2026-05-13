@@ -17,7 +17,7 @@ var dual_beam: bool = false
 
 func _ready():
 	super._ready()
-	cost = 25
+	cost = 50
 	hide_beam()
 
 func _process(delta):

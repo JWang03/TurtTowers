@@ -1,6 +1,6 @@
 extends TowerBase
 
-@export var attack_damage = 10
+@export var attack_damage = 30
 @export var max_bounces = 6
 @export var jump_range = 150.0
 @export var attack_cooldown = 1.5
@@ -19,7 +19,7 @@ var buffed_towers_speed: Array = []
 
 func _ready():
 	super._ready()
-	cost = 25
+	cost = 50
 	attack_timer.wait_time = attack_cooldown
 	if !attack_timer.timeout.is_connected(_on_tower_heartbeat):
 		attack_timer.timeout.connect(_on_tower_heartbeat)

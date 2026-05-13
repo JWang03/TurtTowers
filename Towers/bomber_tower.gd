@@ -12,7 +12,7 @@ var bomb_scene = preload("res://Towers/bomb.tscn")
 
 func _ready():
 	super._ready()
-	
+	cost = 25
 	fire_rate = 2.0
 	timer.wait_time = fire_rate
 	timer.timeout.connect(_on_timer_timeout)

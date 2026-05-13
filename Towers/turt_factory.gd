@@ -19,7 +19,7 @@ var turt_health: int = 1
 
 func _ready():
 	super._ready()
-	cost = 30
+	cost = 100
 	path_node = get_tree().get_first_node_in_group("EnemyPath")
 	add_child(spawn_timer)
 	spawn_timer.wait_time = spawn_interval
