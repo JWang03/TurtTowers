@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cl53dg7b75ecr"
-path="res://.godot/imported/paper_airplane.png-bb4dfe2240d74ab0bdd3ea0d83380868.ctex"
+path="res://.godot/imported/paper_airplane.png-3d6f7ecad872cf657e9ddd0567779957.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/paper_airplane.png"
-dest_files=["res://.godot/imported/paper_airplane.png-bb4dfe2240d74ab0bdd3ea0d83380868.ctex"]
+source_file="res://Textures/paper_airplane.png"
+dest_files=["res://.godot/imported/paper_airplane.png-3d6f7ecad872cf657e9ddd0567779957.ctex"]
 
 [params]
 

@@ -59,6 +59,7 @@ func _ready():
 	map_overlay.hide()
 	tower_overlay.hide()
 	tower_layer.hide()
+	$TowersLayer/D_UP_T.hide()  # add this
 
 	for card in tower_cards + tower_cards_page2:
 		if card:
@@ -224,8 +225,10 @@ func _on_close_towers_pressed() -> void:
 	tween.chain().tween_callback(tower_overlay.hide)
 
 func _on_return_towers_pressed() -> void:
-	if tower_layer and tower_layer.has_method("show_tower_cards"):
-		tower_layer.show_tower_cards()
+	if tower_layer and tower_layer.has_method("close_upgrades_if_open"):
+		if tower_layer.close_upgrades_if_open():
+			return  # was on upgrades tree, just went back to cards — stop here
+	# otherwise close the whole tower overlay as normal
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(tower_darkener, "modulate:a", 0.0, 0.2)
 	tween.tween_property(tower_return_button, "position:x", tower_return_origin.x - 200, 0.2)\
@@ -286,3 +289,4 @@ func _switch_tower_page(new_page: int) -> void:
 		card_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 		card_tween.tween_interval(0.2 + i * 0.05)
 		card_tween.tween_property(card, "scale", Vector2.ONE, 0.3)
+		

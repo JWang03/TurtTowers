@@ -3,16 +3,22 @@ extends CanvasLayer
 var group = ButtonGroup.new()
 
 var upgrade_data = {
-	"left": [
-		{"name": "+1 Bomb", "icon": "💣", "desc": "Adds an extra bomb to each volley.", "price": 150},
-		{"name": "+1 Bomb", "icon": "💣", "desc": "Adds yet another bomb to each volley.", "price": 200},
-		{"name": "+1 Bomb", "icon": "💣", "desc": "Maximum bomb payload reached.", "price": 300},
-	],
-	"right": [
-		{"name": "Faster Fire", "icon": "🔥", "desc": "Increases fire rate by 20%.", "price": 175},
-		{"name": "Increased Range", "icon": "🎯", "desc": "Extends targeting range significantly.", "price": 225},
-		{"name": "Homing Missiles", "icon": "🚀", "desc": "Missiles track the nearest enemy.", "price": 400},
-	]
+	"left": {
+		"path_name": "CLUSTER BOMBER",
+		"upgrades": [
+			{"name": "+1 Bomb", "icon": "💣", "desc": "Adds an extra bomb to each volley.", "price": 150},
+			{"name": "+1 Bomb", "icon": "💣", "desc": "Adds yet another bomb to each volley.", "price": 200},
+			{"name": "+1 Bomb", "icon": "💣", "desc": "Maximum bomb payload reached.", "price": 300},
+		]
+	},
+	"right": {
+		"path_name": "MISSILE MENACE",
+		"upgrades": [
+			{"name": "Faster Fire", "icon": "🔥", "desc": "Increases fire rate by 20%.", "price": 175},
+			{"name": "Increased Range", "icon": "🎯", "desc": "Extends targeting range significantly.", "price": 225},
+			{"name": "Homing Missiles", "icon": "🚀", "desc": "Missiles track the nearest enemy.", "price": 400},
+		]
+	}
 }
 
 var desc_text_label: Label
@@ -23,16 +29,20 @@ var shown_y: float
 var desc_box: Button
 
 func _ready() -> void:
+	$LeftPathLabel.text = upgrade_data["left"]["path_name"]
+	$RightPathLabel.text = upgrade_data["right"]["path_name"]
+	# ... rest of _ready
+
 	desc_box = $DescBox
 	print("DescBox: ", desc_box)
 	_setup_desc_box()
-	_setup_path($LeftPath, upgrade_data["left"])
-	_setup_path($RightPath, upgrade_data["right"])
+	_setup_path($LeftPath, upgrade_data["left"]["upgrades"])
+	_setup_path($RightPath, upgrade_data["right"]["upgrades"])
 	await get_tree().process_frame
 	var vbox = desc_box.get_child(0)
 	vbox.position = Vector2(0, 10)
 	vbox.size = desc_box.size
-	vbox.custom_minimum_size = desc_box.size  # force it to be full height
+	vbox.custom_minimum_size = desc_box.size
 	shown_y = desc_box.position.y
 	hidden_y = shown_y - desc_box.size.y
 	desc_box.pivot_offset = Vector2(desc_box.size.x / 2, 0)
@@ -45,7 +55,6 @@ func _setup_desc_box() -> void:
 	desc_box.vertical_icon_alignment = VERTICAL_ALIGNMENT_CENTER
 
 	var vbox = VBoxContainer.new()
-	# Don't use anchors at all — we'll set size manually in _ready
 	vbox.position = Vector2.ZERO
 	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
 	vbox.add_theme_constant_override("separation", 4)

@@ -7,16 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://igbigqabkd3d" path="res://Menu/Images/Maps/SandyShores.png" id="3_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="4_o4wy8"]
 [ext_resource type="Shader" uid="uid://csheady12o671" path="res://Menu/gradient.gdshader" id="6_rw3mj"]
-[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="7_cn2sd"]
-[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="8_ywk15"]
-[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="9_ws7s4"]
-[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="10_fduiw"]
-[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="11_fduiw"]
-[ext_resource type="Texture2D" uid="uid://cl53dg7b75ecr" path="res://textures/paper_airplane.png" id="12_cgse8"]
+[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://Textures/bomb_tower.png" id="7_cn2sd"]
+[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://Textures/electric_tower.png" id="8_ywk15"]
+[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://Textures/blackhole_tower.png" id="9_ws7s4"]
+[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://Textures/godzilla_tower.png" id="10_fduiw"]
+[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://Textures/bullet_tower.png" id="11_fduiw"]
+[ext_resource type="Texture2D" uid="uid://cl53dg7b75ecr" path="res://Textures/paper_airplane.png" id="12_cgse8"]
 [ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://exit_button.tres" id="13_o4wy8"]
-[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="15_dqyvv"]
-[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="16_m8x2t"]
-[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/TurtTown.png" id="17_trttn"]
+[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://Textures/holy_crusader.png" id="15_dqyvv"]
+[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://Textures/Turt^3 Sahur.png" id="16_m8x2t"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://Textures/TurtTown.png" id="17_trttn"]
 [ext_resource type="Script" uid="uid://s5saegvx8blk" path="res://Menu/d_up_t.gd" id="18_32sed"]
 [ext_resource type="Shader" uid="uid://7ge7521o8ccw" path="res://Menu/towersui.gdshader" id="18_is5sc"]
 [ext_resource type="Script" uid="uid://t0tqkn4slqu8" path="res://Menu/arrow.gd" id="18_tek0n"]
@@ -92,26 +92,28 @@ const UPGRADE_SCENE_PATH_TEMPLATE := \"res://Menu/Upgrades/tower_%s_upgrades.tsc
 const CARD_BUTTON_NAME := \"CardButton\"
 
 @onready var upgrades_tree: CanvasLayer = get_parent().get_node_or_null(\"UpgradesTree\")
+@onready var d_up_t: CanvasLayer = get_parent().get_node_or_null(\"D_UP_T\")
 
 var current_upgrade_instance: Node
 
 func _ready() -> void:
+	print(\"d_up_t found: \", d_up_t)
 	_setup_upgrades_tree()
 	_setup_card_buttons()
 	_connect_existing_back_button()
 	show_tower_cards()
-
+	
 func _setup_upgrades_tree() -> void:
 	if not upgrades_tree:
 		push_error(\"UpgradesTree not found under TowersLayer.\")
 		return
 	upgrades_tree.hide()
-
+	
 func _setup_card_buttons() -> void:
 	for child in get_children():
 		if child is Control and child.name.is_valid_int():
 			_setup_card_button(child)
-
+			
 func _setup_card_button(card: Control) -> void:
 	var button := card.get_node_or_null(CARD_BUTTON_NAME) as TextureButton
 	if button == null:
@@ -135,12 +137,15 @@ func _setup_card_button(card: Control) -> void:
 	var pressed_callable := _on_card_pressed.bind(card)
 	if not button.pressed.is_connected(pressed_callable):
 		button.pressed.connect(pressed_callable)
-
+		
 func _on_card_pressed(card: Control) -> void:
 	_open_tower_upgrades(card)
-
+	
 func _open_tower_upgrades(card: Control) -> void:
+	if d_up_t:
+		d_up_t.show()
 	if not upgrades_tree:
+		hide()
 		return
 	var tower_id := card.name
 	var scene_path := UPGRADE_SCENE_PATH_TEMPLATE % tower_id
@@ -153,28 +158,30 @@ func _open_tower_upgrades(card: Control) -> void:
 		push_warning(\"Upgrade scene not found: %s\" % scene_path)
 	hide()
 	upgrades_tree.show()
-
+		
 func _clear_current_upgrade() -> void:
 	if current_upgrade_instance and current_upgrade_instance.is_inside_tree():
 		current_upgrade_instance.queue_free()
 	current_upgrade_instance = null
-
+	
 func _connect_existing_back_button() -> void:
 	var back_btn = get_parent().get_node_or_null(\"BackButton\")
 	if back_btn and not back_btn.pressed.is_connected(_on_back_pressed):
 		back_btn.pressed.connect(_on_back_pressed)
-
+		
 func _on_back_pressed() -> void:
 	show_tower_cards()
-
+	
 func show_tower_cards() -> void:
 	if upgrades_tree:
 		upgrades_tree.hide()
+	if d_up_t:
+		d_up_t.hide()
 	show()
 	_clear_current_upgrade()
-
+	
 func close_upgrades_if_open() -> bool:
-	if upgrades_tree and upgrades_tree.visible:
+	if d_up_t and d_up_t.visible:
 		show_tower_cards()
 		return true
 	return false
@@ -638,7 +645,7 @@ offset_right = 187.0
 offset_bottom = 28.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Demolition Turt"
+text = "TNTurt"
 horizontal_alignment = 1
 
 [node name="BombTower" type="Sprite2D" parent="TowersLayer/Turts/1" unique_id=613190859]
@@ -682,7 +689,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Blackhole Turt"
+text = "GraviTurt"
 horizontal_alignment = 1
 
 [node name="BlackholeTower" type="Sprite2D" parent="TowersLayer/Turts/3" unique_id=1263058208]
@@ -704,7 +711,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Lazer Turt"
+text = "Turtosaurous Rex"
 horizontal_alignment = 1
 
 [node name="GodzillaTower" type="Sprite2D" parent="TowersLayer/Turts/4" unique_id=673475163]
@@ -726,7 +733,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Soldier Turt"
+text = "LieuterTURTant"
 horizontal_alignment = 1
 
 [node name="BulletTower" type="Sprite2D" parent="TowersLayer/Turts/5" unique_id=372846596]
@@ -837,7 +844,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Placeholder"
+text = "Flameturter"
 horizontal_alignment = 1
 
 [node name="11" type="ColorRect" parent="TowersLayer/Turts" unique_id=111011101]
@@ -854,7 +861,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Placeholder"
+text = "Shell Facturtory"
 horizontal_alignment = 1
 
 [node name="12" type="ColorRect" parent="TowersLayer/Turts" unique_id=121012101]
@@ -939,7 +946,7 @@ offset_right = 187.0
 offset_bottom = 28.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Demolition Turt"
+text = "TNTurt"
 horizontal_alignment = 1
 
 [node name="BombTower" type="Sprite2D" parent="TowersLayer/D_UP_T/1" unique_id=863172731]
@@ -1051,7 +1058,6 @@ mouse_filter = 2
 theme = ExtResource("21_qn1v7")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_tek0n")
-text = "CLUSTER BOMBER"
 icon_alignment = 1
 expand_icon = true
 
@@ -1066,7 +1072,6 @@ mouse_filter = 2
 theme = ExtResource("21_qn1v7")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_32sed")
-text = "MISSILE MENACE"
 icon_alignment = 1
 expand_icon = true
 
@@ -1074,6 +1079,7 @@ expand_icon = true
 material = SubResource("ShaderMaterial_o4wy8")
 anchors_preset = -1
 anchor_left = 0.5
+anchor_top = -0.027777778
 anchor_right = 0.5
 anchor_bottom = -0.027777778
 offset_left = -125.0
