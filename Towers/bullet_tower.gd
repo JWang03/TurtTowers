@@ -11,7 +11,7 @@ var hitscan = false
 
 func _ready():
 	super._ready()
-	cost = 25
+	cost=25.0
 	fire_rate = 0.2
 	timer.wait_time = fire_rate
 	timer.one_shot = false
