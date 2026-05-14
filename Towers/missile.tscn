@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dd8h4j1kvgtxj"]
+
+[ext_resource type="Script" uid="uid://d3jd11kjfjklj" path="res://Towers/missile.gd" id="1_0uoyr"]
+[ext_resource type="Texture2D" uid="uid://btx2dc8ep5l6j" path="res://textures/missile.png" id="2_bqn2q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4fn8o"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nfxiy"]
+radius = 94.00532
+
+[node name="missile" type="Area2D" unique_id=390304399]
+monitoring = false
+script = ExtResource("1_0uoyr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=192317914]
+shape = SubResource("CircleShape2D_4fn8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=366769589]
+scale = Vector2(0.088571414, 0.08142856)
+texture = ExtResource("2_bqn2q")
+
+[node name="ExplosionArea" type="Area2D" parent="." unique_id=426235846]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=1090634795]
+shape = SubResource("CircleShape2D_nfxiy")

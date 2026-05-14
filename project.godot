@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalSettings="*uid://bpm6aiqhw60bo"
-BulletPool="*uid://bqbaf1mrnr1pc"
+Signal_Bus="*uid://db2d8304xnb2n"
 
 [display]
 

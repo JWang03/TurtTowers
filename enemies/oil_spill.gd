@@ -1,9 +1,9 @@
 extends "res://enemies/zombie.gd"
+  # override before _ready fires
 
 func _ready():
-	super._ready()
-	
+	max_health = 400.0
 	speed = 3.0
-	health = 400
 	attack_damage = 15
+	super._ready()
 	

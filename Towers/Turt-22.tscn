@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cfxko1b87aspq"]
 
-[ext_resource type="Script" uid="uid://bllpuwefehxwx" path="res://Towers/paperplane.gd" id="1_jaf4s"]
-[ext_resource type="Texture2D" uid="uid://cl53dg7b75ecr" path="res://Textures/paper_airplane.png" id="2_cltxp"]
-[ext_resource type="Texture2D" uid="uid://8ncarvs5d5hc" path="res://Textures/helipad.png" id="3_g7pya"]
+[ext_resource type="Script" uid="uid://bllpuwefehxwx" path="res://Towers/Turt-22.gd" id="1_jaf4s"]
+[ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://textures/image-removebg-preview (34).png" id="2_mxnku"]
+[ext_resource type="Texture2D" uid="uid://8ncarvs5d5hc" path="res://textures/helipad.png" id="3_g7pya"]
 
 [sub_resource type="Curve2D" id="Curve2D_mmx3w"]
 _data = {
@@ -13,21 +13,17 @@ point_count = 8
 [sub_resource type="CircleShape2D" id="CircleShape2D_ybvld"]
 radius = 38.01441
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6v5m"]
-size = Vector2(187, 190)
-
-[node name="paperplane" type="CharacterBody2D" unique_id=490440668]
+[node name="paperplane" type="StaticBody2D" unique_id=75933418]
 collision_layer = 2
 script = ExtResource("1_jaf4s")
 flight_speed = 30.0
-fire_rate = 0.2
-spread_count = 4
 spread_angle = 30.0
+fire_rate = 0.2
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1448541128]
 position = Vector2(-492.99994, -1751)
-rotation = 0.7853982
-scale = Vector2(-1.9987422, 1.9118669)
+rotation = -2.3561945
+scale = Vector2(1.9987421, -1.9118668)
 curve = SubResource("Curve2D_mmx3w")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1502422107]
@@ -37,30 +33,29 @@ rotation = 0.83396745
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=1787003691]
 z_index = 10
 position = Vector2(0.1402452, -0.28202558)
+rotation = 1.3631022
 scale = Vector2(0.11191265, 0.09152443)
-texture = ExtResource("2_cltxp")
+texture = ExtResource("2_mxnku")
 
 [node name="Muzzle" type="Marker2D" parent="Path2D/PathFollow2D" unique_id=1544948797]
+position = Vector2(9.249484, -1.6394339)
 scale = Vector2(1.0000001, 1.0000001)
-
-[node name="Range" type="Area2D" parent="Path2D/PathFollow2D" unique_id=1304591663]
-scale = Vector2(1.0000001, 1.0000001)
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Range" unique_id=1637112143]
-position = Vector2(-0.36293793, 0.14836407)
-shape = SubResource("CircleShape2D_ybvld")
 
 [node name="Timer" type="Timer" parent="." unique_id=788975722]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1049036621]
-shape = SubResource("RectangleShape2D_k6v5m")
-disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=601826289]
 position = Vector2(-1.2499985, 1.2500014)
 scale = Vector2(0.16727942, 0.15818183)
 texture = ExtResource("3_g7pya")
 
-[connection signal="body_entered" from="Path2D/PathFollow2D/Range" to="." method="_on_range_body_entered"]
-[connection signal="body_exited" from="Path2D/PathFollow2D/Range" to="." method="_on_range_body_exited"]
+[node name="Range" type="Area2D" parent="." unique_id=1304591663]
+position = Vector2(15.000008, -72)
+rotation = 3.115178
+scale = Vector2(1.9515707, -1.9599943)
+skew = -0.04421425
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1637112143]
+position = Vector2(0.47544098, -0.5240135)
+scale = Vector2(0.99999994, 1)
+shape = SubResource("CircleShape2D_ybvld")

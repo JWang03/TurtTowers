@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://d0wiw8h7x0umg"]
+
+[ext_resource type="Script" uid="uid://c6osmgro2bjul" path="res://Towers/turt_factory.gd" id="1_a6nrm"]
+[ext_resource type="Texture2D" uid="uid://djhx0xow36mcw" path="res://textures/image-removebg-preview (30).png" id="2_drv0h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t8176"]
+radius = 68.06615
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_drv0h"]
+radius = 18.027756
+
+[node name="turt_factory" type="StaticBody2D" unique_id=1699440667]
+script = ExtResource("1_a6nrm")
+
+[node name="Range" type="Area2D" parent="." unique_id=2028278944]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=64463602]
+shape = SubResource("CircleShape2D_t8176")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1940482789]
+position = Vector2(-1, -1)
+scale = Vector2(0.13484848, 0.12306508)
+texture = ExtResource("2_drv0h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1090461841]
+shape = SubResource("CircleShape2D_drv0h")

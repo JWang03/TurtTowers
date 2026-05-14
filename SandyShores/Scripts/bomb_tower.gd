@@ -1,9 +1,5 @@
 extends TextureButton
 
-@export var cost: int = 5
-@export var is_placed: bool = false
-
-
 @export var tower_scene: PackedScene
 @onready var build_manager = get_node("/root/Game/BuildManager")
 

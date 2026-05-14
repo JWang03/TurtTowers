@@ -1,13 +1,10 @@
 extends Area2D
 
-@export var pull_strength: float = 900.0
+@export var pull_strength: float = 150.0
 @export var duration: float = 1.5
 @export var friction: float = 0.08
 @export var damage_per_second: float = 10.0
-
-
-@onready var pull_area = $ExplosionArea
-
+var base_scale: float = 1.0
 var target_pos: Vector2
 var is_active: bool = false
 
@@ -22,51 +19,42 @@ func _process(delta):
 
 func activate_black_hole():
 	is_active = true
-
+	var target_scale = Vector2(1.5, 1.5) * base_scale
 	var t = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
-	t.tween_property(self, "scale", Vector2(1.5, 1.5), 0.5)
-
+	t.tween_property(self, "scale", target_scale, 0.5)
 	await get_tree().create_timer(duration).timeout
-
 	var t2 = create_tween()
 	t2.tween_property(self, "scale", Vector2.ZERO, 0.3)
 	t2.finished.connect(queue_free)
 
 func pull_entities(delta):
-	var bodies = pull_area.get_overlapping_bodies()
-
+	var bodies = $ExplosionArea.get_overlapping_bodies()
 	for body in bodies:
 		if not body.is_in_group("zombies"):
 			continue
-
 		var follower = get_path_follower(body)
 		if follower == null:
 			continue
 
-		var dist = global_position.distance_to(body.global_position)
-
-		var step = pull_strength * delta
-		var progress_forward  = follower.progress + step
-		var progress_backward = follower.progress - step
-
 		var path = follower.get_parent()
 		var path_len = path.curve.get_baked_length()
-		progress_forward  = clamp(progress_forward,  0.0, path_len)
-		progress_backward = clamp(progress_backward, 0.0, path_len)
 
-		var pos_forward  = path.to_global(path.curve.sample_baked(progress_forward))
-		var pos_backward = path.to_global(path.curve.sample_baked(progress_backward))
+		# sample ahead in small steps to find which path point is closest to the black hole
+		var closest_progress = follower.progress
+		var closest_dist = global_position.distance_to(body.global_position)
+		var search_step = 10.0
+		for i in range(1, 30):
+			var test_progress = clamp(follower.progress - (search_step * i), 0.0, path_len)
+			var test_pos = path.to_global(path.curve.sample_baked(test_progress))
+			var test_dist = global_position.distance_to(test_pos)
+			if test_dist < closest_dist:
+				closest_dist = test_dist
+				closest_progress = test_progress
 
-		var dist_forward  = global_position.distance_to(pos_forward)
-		var dist_backward = global_position.distance_to(pos_backward)
-
-		var proximity_scale = pull_strength / max(dist, 1.0)
-		var actual_step = proximity_scale * delta
-
-		if dist_forward < dist_backward:
-			follower.progress += actual_step
-		else:
-			follower.progress -= actual_step
+		# pull toward closest point, capped so it cant overshoot
+		var pull_step = pull_strength * delta
+		if closest_progress < follower.progress:
+			follower.progress = max(follower.progress - pull_step, closest_progress)
 
 		if body.has_method("take_damage"):
 			body.take_damage(damage_per_second * delta)

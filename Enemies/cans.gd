@@ -3,7 +3,7 @@ func _ready():
 	super._ready()
 	
 	speed_modifier = 1.0
-	speed = 40.0
+	speed = 200.0
 	health = 11.0
 	attack_damage = 1
 	
