@@ -93,8 +93,8 @@ animations = [{
 }]
 
 [node name="flamethrower_tower" type="StaticBody2D" unique_id=463736513]
-position = Vector2(0, -1)
 script = ExtResource("1_k6h5b")
+cost = 175.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1428673578]
 position = Vector2(0, -2)

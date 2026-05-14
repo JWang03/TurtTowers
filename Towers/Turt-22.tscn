@@ -19,6 +19,7 @@ script = ExtResource("1_jaf4s")
 flight_speed = 30.0
 spread_angle = 30.0
 fire_rate = 0.2
+cost = 200.0
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1448541128]
 position = Vector2(-492.99994, -1751)

@@ -9,6 +9,7 @@ radius = 206.06067
 [node name="godzilla_tower" type="StaticBody2D" unique_id=1995404457]
 collision_mask = 2
 script = ExtResource("1_gth0i")
+cost = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2040546846]
 position = Vector2(0, 2.3841858e-07)
@@ -37,12 +38,10 @@ target_position = Vector2(1000, 0)
 z_index = 3
 z_as_relative = false
 points = PackedVector2Array(0, 0, 1000, 0)
-width = 5.0
 default_color = Color(0.105882354, 1, 1, 1)
 
 [node name="Line2D2" type="Line2D" parent="Head" unique_id=1393349031]
 z_index = 3
 z_as_relative = false
 points = PackedVector2Array(0, 0, 1000, 0)
-width = 5.0
 default_color = Color(0.105882354, 1, 1, 1)

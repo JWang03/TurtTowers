@@ -376,19 +376,39 @@ stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("10_evw7n")
 
+[node name="Label" type="Label" parent="UI/ShopPanel/BombButton" unique_id=1711003244]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 56.0
+offset_right = 64.0
+offset_bottom = 73.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
 [node name="BulletButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1555913598]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -435.0
-offset_top = 35.0
-offset_right = -374.0
+offset_left = -441.0
+offset_top = 29.0
+offset_right = -373.0
 offset_bottom = 105.0
 texture_normal = ExtResource("12_sxldm")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("11_c26fn")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/BulletButton" unique_id=1122982567]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 58.0
+offset_right = 58.0
+offset_bottom = 75.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
 
 [node name="GodzillaButton" type="TextureButton" parent="UI/ShopPanel" unique_id=626692531]
 z_index = 4096
@@ -404,131 +424,231 @@ stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("12_hxeer")
 
+[node name="Label" type="Label" parent="UI/ShopPanel/GodzillaButton" unique_id=1438067373]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 65.0
+offset_right = 71.0
+offset_bottom = 82.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
 [node name="BlackHoleButton" type="TextureButton" parent="UI/ShopPanel" unique_id=142497050]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -451.0
-offset_top = 125.0
-offset_right = -369.0
-offset_bottom = 195.0
+offset_left = -465.0
+offset_top = 310.0
+offset_right = -359.0
+offset_bottom = 392.0
 texture_normal = ExtResource("16_ci5cp")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("13_amh5n")
 
+[node name="Label" type="Label" parent="UI/ShopPanel/BlackHoleButton" unique_id=894575385]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 58.0
+offset_right = 76.0
+offset_bottom = 75.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
 [node name="ElectricButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1909256770]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -539.0
-offset_top = 231.0
-offset_right = -454.0
-offset_bottom = 301.0
+offset_left = -537.0
+offset_top = 315.0
+offset_right = -452.0
+offset_bottom = 385.0
 texture_normal = ExtResource("15_fuskk")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("14_ebpuc")
 
+[node name="Label" type="Label" parent="UI/ShopPanel/ElectricButton" unique_id=562242574]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 54.0
+offset_right = 66.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
 [node name="Turt-22" type="TextureButton" parent="UI/ShopPanel" unique_id=1225356948]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -476.0
-offset_top = 205.0
-offset_right = -338.0
-offset_bottom = 320.0
+offset_left = -472.0
+offset_top = 218.0
+offset_right = -343.0
+offset_bottom = 306.0
 texture_normal = ExtResource("20_as63w")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("22_vjk8x")
 
+[node name="Label" type="Label" parent="UI/ShopPanel/Turt-22" unique_id=182700870]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 58.0
+offset_right = 88.0
+offset_bottom = 75.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
 [node name="Holy Crusader" type="TextureButton" parent="UI/ShopPanel" unique_id=298904766]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -532.0
-offset_top = 314.0
-offset_right = -455.0
-offset_bottom = 384.0
+offset_left = -451.0
+offset_top = 108.0
+offset_right = -362.0
+offset_bottom = 192.0
 texture_normal = ExtResource("23_fr0rq")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("24_1dk7f")
 
+[node name="Label" type="Label" parent="UI/ShopPanel/Holy Crusader" unique_id=131267522]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 64.0
+offset_right = 66.0
+offset_bottom = 81.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
 [node name="Turttttt" type="TextureButton" parent="UI/ShopPanel" unique_id=750123456]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
 offset_left = -446.0
-offset_top = 319.0
-offset_right = -374.0
-offset_bottom = 380.0
+offset_top = 411.0
+offset_right = -370.0
+offset_bottom = 482.0
 texture_normal = ExtResource("25_turt")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("26_turt")
 
+[node name="Label" type="Label" parent="UI/ShopPanel/Turttttt" unique_id=632795504]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 56.0
+offset_right = 64.0
+offset_bottom = 73.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
 [node name="TurtTown" type="TextureButton" parent="UI/ShopPanel" unique_id=750123457]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -528.0
-offset_top = 420.0
-offset_right = -458.0
-offset_bottom = 470.0
+offset_left = -535.0
+offset_top = 498.0
+offset_right = -453.0
+offset_bottom = 560.0
 texture_normal = ExtResource("28_3kv1k")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("27_turt")
 
+[node name="Label" type="Label" parent="UI/ShopPanel/TurtTown" unique_id=973921119]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 56.0
+offset_right = 64.0
+offset_bottom = 73.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
 [node name="Flamturter" type="TextureButton" parent="UI/ShopPanel" unique_id=241900444]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -455.0
-offset_top = 418.0
-offset_right = -367.0
-offset_bottom = 477.0
+offset_left = -537.0
+offset_top = 223.0
+offset_right = -449.0
+offset_bottom = 282.0
 texture_normal = ExtResource("31_ux3bf")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("32_0r82o")
 
+[node name="Label" type="Label" parent="UI/ShopPanel/Flamturter" unique_id=906333079]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 55.0
+offset_right = 71.0
+offset_bottom = 72.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
 [node name="turt_factory" type="TextureButton" parent="UI/ShopPanel" unique_id=303516847]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -525.0
-offset_top = 499.0
-offset_right = -461.0
-offset_bottom = 570.0
+offset_left = -528.0
+offset_top = 409.0
+offset_right = -464.0
+offset_bottom = 480.0
 texture_normal = ExtResource("32_as63w")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("33_axmsp")
 
+[node name="Label" type="Label" parent="UI/ShopPanel/turt_factory" unique_id=139299108]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 56.0
+offset_right = 64.0
+offset_bottom = 73.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
 [node name="nuke" type="TextureButton" parent="UI/ShopPanel" unique_id=258740529]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
-offset_left = -448.0
-offset_top = 503.0
-offset_right = -384.0
-offset_bottom = 574.0
+offset_left = -447.0
+offset_top = 500.0
+offset_right = -383.0
+offset_bottom = 570.0
 texture_normal = ExtResource("35_rm2u3")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("36_jt4vf")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/nuke" unique_id=1800522596]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 56.0
+offset_right = 64.0
+offset_bottom = 73.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
 
 [node name="HUD" type="Control" parent="UI" unique_id=1358710275]
 anchors_preset = 0
@@ -536,6 +656,9 @@ offset_left = 951.0
 offset_top = -17.0
 offset_right = 982.0
 offset_bottom = 99.0
+
+[node name="CurrencyManager" type="Node" parent="UI/HUD" unique_id=219739025]
+script = ExtResource("10_yrnad")
 
 [node name="Lives" type="Control" parent="UI/HUD" unique_id=1545277758]
 z_index = 1
@@ -564,9 +687,6 @@ z_as_relative = false
 position = Vector2(-479.875, 87)
 scale = Vector2(0.26033974, 0.27710044)
 texture = ExtResource("15_rjrdg")
-
-[node name="CurrencyManager" type="Node" parent="UI/HUD" unique_id=219739025]
-script = ExtResource("10_yrnad")
 
 [node name="Money" type="Control" parent="UI/HUD" unique_id=1732714314]
 z_index = 1
@@ -754,9 +874,9 @@ text = "Exit"
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 0
 offset_left = -518.0
-offset_top = 572.0
+offset_top = 574.0
 offset_right = -298.0
-offset_bottom = 642.0
+offset_bottom = 643.0
 alignment = 1
 
 [node name="Return" type="Button" parent="UI/Buttons" unique_id=512677593]

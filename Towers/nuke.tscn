@@ -170,6 +170,7 @@ animations = [{
 [node name="nuke" type="StaticBody2D" unique_id=345753950]
 collision_layer = 4
 script = ExtResource("1_tceaf")
+cost = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=52271223]
 z_index = 4096

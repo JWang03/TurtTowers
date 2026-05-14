@@ -33,6 +33,9 @@ func start_game() -> void:
 	game_started = true
 	await start_next_wave()
 
+func get_wave_bonus(wave: int) -> int:
+	return 15 + (wave * 8)
+
 func start_next_wave() -> void:
 	if current_wave >= max_waves:
 		game_finished = true
@@ -52,6 +55,11 @@ func start_next_wave() -> void:
 
 	while enemies_alive > 0:
 		await get_tree().create_timer(0.1).timeout
+
+	# wave cleared — pay out bonus here
+	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
+	if currency_manager:
+		currency_manager.add_shellings(get_wave_bonus(current_wave))
 
 	wave_running = false
 	await get_tree().create_timer(time_between_waves).timeout

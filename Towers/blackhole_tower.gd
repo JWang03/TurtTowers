@@ -14,7 +14,7 @@ var hole_duration_multiplier: float = 1.0
 
 func _ready():
 	super._ready()
-	cost = 75
+	cost = 225
 	fire_rate = 4.0
 	timer.wait_time = fire_rate
 	timer.one_shot = false

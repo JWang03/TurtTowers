@@ -19,7 +19,7 @@ var buffed_towers_speed: Array = []
 
 func _ready():
 	super._ready()
-	cost = 50
+	cost = 100
 	attack_timer.wait_time = attack_cooldown
 	if !attack_timer.timeout.is_connected(_on_tower_heartbeat):
 		attack_timer.timeout.connect(_on_tower_heartbeat)
