@@ -10,7 +10,7 @@ func _ready():
 	health = 100
 	speed = 3.0
 	attack_damage = 20
-
+	shelling_drop = 6
 func _process(delta):
 	if starter.playing == true:
 		var follow = get_parent()

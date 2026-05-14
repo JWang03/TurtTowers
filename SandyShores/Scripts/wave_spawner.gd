@@ -34,7 +34,7 @@ func start_game() -> void:
 	await start_next_wave()
 
 func get_wave_bonus(wave: int) -> int:
-	return 15 + (wave * 8)
+	return 15 + (wave * 5)
 
 func start_next_wave() -> void:
 	if current_wave >= max_waves:
