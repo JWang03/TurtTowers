@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cooltchipc56w"]
 
-[ext_resource type="Script" uid="uid://cg17fio0m0vrk" path="res://enemies/algae_bloom.gd" id="1_2120d"]
-[ext_resource type="Texture2D" uid="uid://y1vphwcqibru" path="res://textures/slime_monster.png" id="2_xdvb6"]
+[ext_resource type="Script" uid="uid://cg17fio0m0vrk" path="res://Enemies/algae_bloom.gd" id="1_2120d"]
+[ext_resource type="Texture2D" uid="uid://y1vphwcqibru" path="res://Textures/slime_monster.png" id="2_xdvb6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bl6jy"]
 

@@ -7,21 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://igbigqabkd3d" path="res://Menu/Images/Maps/SandyShores.png" id="3_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="4_o4wy8"]
 [ext_resource type="Shader" uid="uid://csheady12o671" path="res://Menu/gradient.gdshader" id="6_rw3mj"]
-[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="7_cn2sd"]
-[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="8_ywk15"]
-[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="9_ws7s4"]
-[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="10_fduiw"]
-[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="11_fduiw"]
-[ext_resource type="Texture2D" uid="uid://cl53dg7b75ecr" path="res://textures/paper_airplane.png" id="12_cgse8"]
+[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://Textures/bomb_tower.png" id="7_cn2sd"]
+[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://Textures/electric_tower.png" id="8_ywk15"]
+[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://Textures/blackhole_tower.png" id="9_ws7s4"]
+[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://Textures/godzilla_tower.png" id="10_fduiw"]
+[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://Textures/bullet_tower.png" id="11_fduiw"]
+[ext_resource type="Texture2D" uid="uid://cl53dg7b75ecr" path="res://Textures/paper_airplane.png" id="12_cgse8"]
 [ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://exit_button.tres" id="13_o4wy8"]
-[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="15_dqyvv"]
-[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="16_m8x2t"]
-[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/TurtTown.png" id="17_trttn"]
-[ext_resource type="Script" uid="uid://s5saegvx8blk" path="res://Menu/d_up_t.gd" id="18_32sed"]
-[ext_resource type="Shader" uid="uid://7ge7521o8ccw" path="res://Menu/towersui.gdshader" id="18_is5sc"]
-[ext_resource type="Script" uid="uid://t0tqkn4slqu8" path="res://Menu/arrow.gd" id="18_tek0n"]
-[ext_resource type="Shader" uid="uid://df18vh8hlpx1q" path="res://Menu/towers2.gdshader" id="20_32sed"]
-[ext_resource type="Theme" uid="uid://boaafitswomev" path="res://upgrade_buttons.tres" id="21_qn1v7"]
+[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://Textures/holy_crusader.png" id="15_dqyvv"]
+[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://Textures/Turt^3 Sahur.png" id="16_m8x2t"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://Textures/TurtTown.png" id="17_trttn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
@@ -85,117 +80,6 @@ corner_radius_bottom_left = 8
 shader = ExtResource("2_glbon")
 shader_parameter/mode = 0
 
-[sub_resource type="GDScript" id="GDScript_turts"]
-script/source = "extends CanvasLayer
-const UPGRADE_SCENE_PATH_TEMPLATE := \"res://Menu/Upgrades/tower_%s_upgrades.tscn\"
-const CARD_BUTTON_NAME := \"CardButton\"
-@onready var upgrades_tree: CanvasLayer = get_parent().get_node_or_null(\"UpgradesTree\")
-@onready var d_up_t: CanvasLayer = get_parent().get_node_or_null(\"D_UP_T\")
-var current_upgrade_instance: Node
-
-func _ready() -> void:
-	_setup_upgrades_tree()
-	_setup_card_buttons()
-	_connect_existing_back_button()
-	show_tower_cards()
-
-func _setup_upgrades_tree() -> void:
-	if upgrades_tree: upgrades_tree.hide()
-
-func _setup_card_buttons() -> void:
-	for child in get_children():
-		if child is Control and child.name.is_valid_int():
-			_setup_card_button(child)
-
-func _setup_card_button(card: Control) -> void:
-	var button := card.get_node_or_null(CARD_BUTTON_NAME) as TextureButton
-	if button == null:
-		button = TextureButton.new()
-		button.name = CARD_BUTTON_NAME
-		button.set_anchors_preset(Control.PRESET_FULL_RECT)
-		card.add_child(button)
-		for node in card.get_children():
-			if node != button: node.reparent(button, true)
-	
-	if not button.pressed.is_connected(_on_card_pressed):
-		button.pressed.connect(_on_card_pressed.bind(card))
-
-func _on_card_pressed(card: Control) -> void:
-	_open_tower_upgrades(card)
-
-func _open_tower_upgrades(card: Control) -> void:
-	if d_up_t:
-		d_up_t.show()
-		
-		var card_button = card.get_node_or_null(\"CardButton\")
-		
-		var orig_label = card_button.get_node_or_null(\"NameLabel\") if card_button else null
-		var orig_sprite: Sprite2D = null
-		if card_button:
-			for child in card_button.get_children():
-				if child is Sprite2D:
-					orig_sprite = child
-					break
-		
-		var turt_label = d_up_t.get_node_or_null(\"Turt/NameLabel\")
-		var turt_sprite = d_up_t.get_node_or_null(\"Turt/Turt\")
-		
-		if turt_label and orig_label:
-			turt_label.text = orig_label.text
-		
-		if turt_sprite and orig_sprite:
-			turt_sprite.texture = orig_sprite.texture
-			var card_node = d_up_t.get_node_or_null(\"Turt\")
-			if card_node and orig_sprite.texture:
-				var tex_size = orig_sprite.texture.get_size()
-				var card_size = card_node.size
-				var scale_x = (card_size.x * 0.95) / tex_size.x
-				var scale_y = (card_size.y * 0.95) / tex_size.y
-				var final_scale = min(scale_x, scale_y)
-				turt_sprite.scale = Vector2(final_scale, final_scale)
-				# Rotate airplane card specifically
-				if orig_label and orig_label.text == \"A\":
-					turt_sprite.rotation_degrees = -35.0
-				else:
-					turt_sprite.rotation_degrees = 0.0
-
-	var scene_path := UPGRADE_SCENE_PATH_TEMPLATE % card.name
-	var packed_scene := load(scene_path)
-	if packed_scene is PackedScene:
-		_clear_current_upgrade()
-		current_upgrade_instance = packed_scene.instantiate()
-		if d_up_t:
-			d_up_t.add_child(current_upgrade_instance)
-	
-	hide()
-	if d_up_t: d_up_t.show()
-
-func _clear_current_upgrade() -> void:
-	if current_upgrade_instance:
-		current_upgrade_instance.queue_free()
-		current_upgrade_instance = null
-
-func _on_back_pressed() -> void:
-	show_tower_cards()
-
-func show_tower_cards() -> void:
-	if upgrades_tree: upgrades_tree.hide()
-	if d_up_t: d_up_t.hide()
-	show()
-	_clear_current_upgrade()
-
-func close_upgrades_if_open() -> bool:
-	if d_up_t and d_up_t.visible:
-		show_tower_cards()
-		return true
-	return false
-
-func _connect_existing_back_button() -> void:
-	var back_btn = get_parent().get_node_or_null(\"BackButton\")
-	if back_btn and not back_btn.pressed.is_connected(_on_back_pressed):
-		back_btn.pressed.connect(_on_back_pressed)
-"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cn2sd"]
 shader = ExtResource("6_rw3mj")
 shader_parameter/top_color = Color(0.22, 0.72, 0.18, 1)
@@ -203,121 +87,6 @@ shader_parameter/bottom_color = Color(0.08, 0.45, 0.12, 1)
 shader_parameter/radius = 0.15
 shader_parameter/border_width = 0.025
 shader_parameter/border_color = Color(0.05, 0.22, 0.07, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lb8o0"]
-shader = ExtResource("18_is5sc")
-shader_parameter/speed = 0.3
-shader_parameter/scale = 6.0
-shader_parameter/brightness = 0.15
-shader_parameter/water_color = Color(0, 0.15, 0.3, 1)
-shader_parameter/caustic_color = Color(0.1, 0.6, 0.8, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmyal"]
-shader = ExtResource("20_32sed")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6v0gp"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
-bg_color = Color(0.101960786, 0.41960785, 0.22745098, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3764706, 1, 0.6666667, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-corner_detail = 16
-shadow_size = 1
-shadow_offset = Vector2(1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0ncs"]
-bg_color = Color(0.05882353, 0.27058825, 0.14509805, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.1882353, 0.8, 0.46666667, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 12
-corner_detail = 16
-shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
-shadow_size = 3
-shadow_offset = Vector2(1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqpxm"]
-bg_color = Color(0.16470589, 0.6039216, 0.32156864, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.5647059, 1, 0.8, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-corner_detail = 16
-shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
-shadow_size = 3
-shadow_offset = Vector2(1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tek0n"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
-bg_color = Color(0.72156864, 0.22745098, 0.0627451, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 0.46666667, 0, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-corner_detail = 16
-shadow_size = 1
-shadow_offset = Vector2(1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32sed"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
-bg_color = Color(0.72156864, 0.22745098, 0.0627451, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 0.46666667, 0, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-corner_detail = 16
-shadow_size = 1
-shadow_offset = Vector2(1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn1v7"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
-bg_color = Color(0.36078432, 0.18039216, 0.05490196, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.72156864, 0.5254902, 0.30588236, 1)
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 16
 
 [node name="MainMenu" type="Control" unique_id=1211162565]
 layout_mode = 3
@@ -596,9 +365,10 @@ offset_right = 399.5
 offset_bottom = 352.5
 
 [node name="TowersLayer" type="CanvasLayer" parent="." unique_id=1277460239]
+visible = false
 
 [node name="Turts" type="CanvasLayer" parent="TowersLayer" unique_id=1070375472]
-script = SubResource("GDScript_turts")
+visible = false
 
 [node name="Darkener" type="ColorRect" parent="TowersLayer/Turts" unique_id=608754605]
 anchors_preset = 15
@@ -654,7 +424,7 @@ offset_right = 187.0
 offset_bottom = 28.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "TNTurt"
+text = "Demolition Turt"
 horizontal_alignment = 1
 
 [node name="BombTower" type="Sprite2D" parent="TowersLayer/Turts/1" unique_id=613190859]
@@ -698,7 +468,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "GraviTurt"
+text = "Blackhole Turt"
 horizontal_alignment = 1
 
 [node name="BlackholeTower" type="Sprite2D" parent="TowersLayer/Turts/3" unique_id=1263058208]
@@ -720,7 +490,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Turtosaurous Rex"
+text = "Lazer Turt"
 horizontal_alignment = 1
 
 [node name="GodzillaTower" type="Sprite2D" parent="TowersLayer/Turts/4" unique_id=673475163]
@@ -742,7 +512,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "LieuterTURTant"
+text = "Soldier Turt"
 horizontal_alignment = 1
 
 [node name="BulletTower" type="Sprite2D" parent="TowersLayer/Turts/5" unique_id=372846596]
@@ -758,7 +528,7 @@ offset_right = 887.0
 offset_bottom = 563.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
-[node name="A" type="Label" parent="TowersLayer/Turts/6" unique_id=606060606]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/6" unique_id=606060606]
 layout_mode = 0
 offset_right = 187.0
 offset_bottom = 30.0
@@ -769,7 +539,7 @@ horizontal_alignment = 1
 
 [node name="PaperAirplane" type="Sprite2D" parent="TowersLayer/Turts/6" unique_id=1811139515]
 position = Vector2(82.000015, 125.00001)
-rotation = -0.61086524
+rotation = -0.60613
 scale = Vector2(0.7, 0.859)
 texture = ExtResource("12_cgse8")
 
@@ -853,7 +623,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Flameturter"
+text = "Placeholder"
 horizontal_alignment = 1
 
 [node name="11" type="ColorRect" parent="TowersLayer/Turts" unique_id=111011101]
@@ -870,7 +640,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Shell Facturtory"
+text = "Placeholder"
 horizontal_alignment = 1
 
 [node name="12" type="ColorRect" parent="TowersLayer/Turts" unique_id=121012101]
@@ -890,21 +660,9 @@ theme_override_font_sizes/font_size = 20
 text = "Placeholder"
 horizontal_alignment = 1
 
-[node name="D_UP_T" type="CanvasLayer" parent="TowersLayer" unique_id=546907222]
-script = ExtResource("18_32sed")
+[node name="Upgrades" type="CanvasLayer" parent="TowersLayer" unique_id=546907222]
 
-[node name="Arrow" type="Control" parent="TowersLayer/D_UP_T" unique_id=2131729710]
-z_index = 1000
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("18_tek0n")
-
-[node name="Darkener" type="ColorRect" parent="TowersLayer/D_UP_T" unique_id=944427218]
-material = SubResource("ShaderMaterial_lb8o0")
+[node name="Darkener" type="ColorRect" parent="TowersLayer/Upgrades" unique_id=1108978162]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -912,15 +670,25 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
-[node name="ColorRect" type="ColorRect" parent="TowersLayer/D_UP_T" unique_id=491647528]
-material = SubResource("ShaderMaterial_vmyal")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+[node name="Left" type="VBoxContainer" parent="TowersLayer/Upgrades" unique_id=644217980]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -136.0
+offset_right = 227.0
+offset_bottom = 136.0
 grow_vertical = 2
 
-[node name="Right" type="VBoxContainer" parent="TowersLayer/D_UP_T" unique_id=1570486598]
+[node name="TextureButton" type="TextureButton" parent="TowersLayer/Upgrades/Left" unique_id=976703595]
+layout_mode = 2
+
+[node name="TextureButton2" type="TextureButton" parent="TowersLayer/Upgrades/Left" unique_id=592091549]
+layout_mode = 2
+
+[node name="TextureButton3" type="TextureButton" parent="TowersLayer/Upgrades/Left" unique_id=1125285244]
+layout_mode = 2
+
+[node name="Right" type="VBoxContainer" parent="TowersLayer/Upgrades" unique_id=1570486598]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -932,168 +700,45 @@ offset_bottom = 122.5
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="LeftPath" type="VBoxContainer" parent="TowersLayer/D_UP_T" unique_id=917165360]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 125.0
-offset_top = -194.0
-offset_right = 375.0
-offset_bottom = 306.0
-grow_vertical = 2
-theme = ExtResource("21_qn1v7")
-theme_override_constants/separation = 50
-alignment = 1
-
-[node name="U1" type="Button" parent="TowersLayer/D_UP_T/LeftPath" unique_id=296488674]
-material = SubResource("ShaderMaterial_o4wy8")
+[node name="TextureButton" type="TextureButton" parent="TowersLayer/Upgrades/Right" unique_id=308310150]
 layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("21_qn1v7")
-theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
-icon_alignment = 2
-expand_icon = true
 
-[node name="U2" type="Button" parent="TowersLayer/D_UP_T/LeftPath" unique_id=766573212]
-material = SubResource("ShaderMaterial_o4wy8")
+[node name="TextureButton2" type="TextureButton" parent="TowersLayer/Upgrades/Right" unique_id=1356695975]
 layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("21_qn1v7")
-theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
-icon_alignment = 1
-expand_icon = true
 
-[node name="U3" type="Button" parent="TowersLayer/D_UP_T/LeftPath" unique_id=411433089]
-material = SubResource("ShaderMaterial_o4wy8")
+[node name="TextureButton3" type="TextureButton" parent="TowersLayer/Upgrades/Right" unique_id=335901966]
 layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("21_qn1v7")
-theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
-icon_alignment = 1
-expand_icon = true
 
-[node name="RightPath" type="VBoxContainer" parent="TowersLayer/D_UP_T" unique_id=505643610]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -360.0
-offset_top = -194.0
-offset_right = -110.0
-offset_bottom = 306.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_constants/separation = 50
-
-[node name="U1" type="Button" parent="TowersLayer/D_UP_T/RightPath" unique_id=1834009873]
-material = SubResource("ShaderMaterial_o4wy8")
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("21_qn1v7")
-theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
-icon_alignment = 1
-expand_icon = true
-
-[node name="U2" type="Button" parent="TowersLayer/D_UP_T/RightPath" unique_id=2017708627]
-material = SubResource("ShaderMaterial_o4wy8")
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("21_qn1v7")
-theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
-icon_alignment = 1
-expand_icon = true
-
-[node name="U3" type="Button" parent="TowersLayer/D_UP_T/RightPath" unique_id=1555995101]
-material = SubResource("ShaderMaterial_o4wy8")
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("21_qn1v7")
-theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
-icon_alignment = 1
-expand_icon = true
-
-[node name="LeftPathLabel" type="Button" parent="TowersLayer/D_UP_T" unique_id=1732566758]
-material = SubResource("ShaderMaterial_o4wy8")
-offset_left = 125.0
-offset_top = 15.0
-offset_right = 375.0
-offset_bottom = 115.0
-size_flags_vertical = 3
-mouse_filter = 2
-theme = ExtResource("21_qn1v7")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_tek0n")
-icon_alignment = 1
-expand_icon = true
-
-[node name="RightPathLabel" type="Button" parent="TowersLayer/D_UP_T" unique_id=929110308]
-material = SubResource("ShaderMaterial_o4wy8")
-offset_left = 792.0
-offset_top = 15.0
-offset_right = 1042.0
-offset_bottom = 115.0
-size_flags_vertical = 3
-mouse_filter = 2
-theme = ExtResource("21_qn1v7")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_32sed")
-icon_alignment = 1
-expand_icon = true
-
-[node name="DescBox" type="Button" parent="TowersLayer/D_UP_T" unique_id=624483457]
-material = SubResource("ShaderMaterial_o4wy8")
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = -0.027777778
-anchor_right = 0.5
-anchor_bottom = -0.027777778
-offset_left = -125.0
-offset_right = 125.0
-offset_bottom = 100.0
-grow_horizontal = 2
-size_flags_vertical = 3
-mouse_filter = 2
-theme = ExtResource("21_qn1v7")
-theme_override_constants/h_separation = 0
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_qn1v7")
-expand_icon = true
-metadata/_edit_use_anchors_ = true
-
-[node name="Turt" type="ColorRect" parent="TowersLayer/D_UP_T" unique_id=218538767]
+[node name="1" type="ColorRect" parent="TowersLayer/Upgrades" unique_id=1070287755]
 material = SubResource("ShaderMaterial_cn2sd")
-offset_left = 442.00003
-offset_top = 173.0
-offset_right = 629.0
-offset_bottom = 397.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -158.0
+offset_right = 50.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 color = Color(0.922642, 0.11762213, 0.19775996, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/D_UP_T/Turt" unique_id=1916422333]
+[node name="NameLabel" type="Label" parent="TowersLayer/Upgrades/1" unique_id=943201336]
 layout_mode = 0
 offset_left = -3.0
 offset_right = 187.0
 offset_bottom = 28.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
+text = "Demolition Turt"
 horizontal_alignment = 1
 
-[node name="Turt" type="Sprite2D" parent="TowersLayer/D_UP_T/Turt" unique_id=1230847423]
+[node name="BombTower" type="Sprite2D" parent="TowersLayer/Upgrades/1" unique_id=863172731]
 position = Vector2(95, 119)
 scale = Vector2(0.45, 0.47)
+texture = ExtResource("7_cn2sd")
 
 [node name="ReturnTowers" type="Button" parent="TowersLayer" unique_id=1651348533]
 material = SubResource("ShaderMaterial_o4wy8")
