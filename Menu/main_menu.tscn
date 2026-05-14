@@ -7,22 +7,22 @@
 [ext_resource type="Texture2D" uid="uid://igbigqabkd3d" path="res://Menu/Images/Maps/SandyShores.png" id="3_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="4_o4wy8"]
 [ext_resource type="Shader" uid="uid://csheady12o671" path="res://Menu/gradient.gdshader" id="6_rw3mj"]
-[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="7_cn2sd"]
-[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="8_ywk15"]
-[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="9_ws7s4"]
-[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="10_fduiw"]
-[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="11_fduiw"]
+[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://Textures/bomb_tower.png" id="7_cn2sd"]
+[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://Textures/electric_tower.png" id="8_ywk15"]
+[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://Textures/blackhole_tower.png" id="9_ws7s4"]
+[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://Textures/godzilla_tower.png" id="10_fduiw"]
+[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://Textures/bullet_tower.png" id="11_fduiw"]
 [ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://exit_button.tres" id="13_o4wy8"]
-[ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://textures/image-removebg-preview (34).png" id="14_6v0gp"]
-[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="15_dqyvv"]
-[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="16_m8x2t"]
-[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/TurtTown.png" id="17_trttn"]
-[ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://textures/image-removebg-preview (15).png" id="18_6v0gp"]
-[ext_resource type="Shader" path="res://Menu/towersui.gdshader" id="18_is5sc"]
-[ext_resource type="Script" path="res://Menu/arrow.gd" id="18_tek0n"]
-[ext_resource type="Texture2D" uid="uid://djhx0xow36mcw" path="res://textures/image-removebg-preview (30).png" id="19_a0ncs"]
-[ext_resource type="Shader" path="res://Menu/towers2.gdshader" id="20_32sed"]
-[ext_resource type="Texture2D" uid="uid://dr8x45h4e2lwn" path="res://textures/image-removebg-preview (31).png" id="20_fqpxm"]
+[ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://Textures/image-removebg-preview (34).png" id="14_6v0gp"]
+[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://Textures/holy_crusader.png" id="15_dqyvv"]
+[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://Textures/Turt^3 Sahur.png" id="16_m8x2t"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://Textures/TurtTown.png" id="17_trttn"]
+[ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://Textures/image-removebg-preview (15).png" id="18_6v0gp"]
+[ext_resource type="Shader" uid="uid://7ge7521o8ccw" path="res://Menu/towersui.gdshader" id="18_is5sc"]
+[ext_resource type="Script" uid="uid://t0tqkn4slqu8" path="res://Menu/arrow.gd" id="18_tek0n"]
+[ext_resource type="Texture2D" uid="uid://djhx0xow36mcw" path="res://Textures/image-removebg-preview (30).png" id="19_a0ncs"]
+[ext_resource type="Shader" uid="uid://df18vh8hlpx1q" path="res://Menu/towers2.gdshader" id="20_32sed"]
+[ext_resource type="Texture2D" uid="uid://dr8x45h4e2lwn" path="res://Textures/image-removebg-preview (31).png" id="20_fqpxm"]
 [ext_resource type="Script" uid="uid://ww178o82fnsd" path="res://Menu/upgrade_trees.gd" id="21_6v0gp"]
 [ext_resource type="Theme" uid="uid://boaafitswomev" path="res://upgrade_buttons.tres" id="21_qn1v7"]
 
@@ -90,21 +90,24 @@ shader_parameter/mode = 0
 
 [sub_resource type="GDScript" id="GDScript_turts"]
 script/source = "extends CanvasLayer
+
 const UPGRADE_SCENE_PATH_TEMPLATE := \"res://Menu/Upgrades/tower_%s_upgrades.tscn\"
 const CARD_BUTTON_NAME := \"CardButton\"
+
 @onready var upgrades_tree: CanvasLayer = get_parent().get_node_or_null(\"UpgradeTrees\")
+
 var current_upgrade_instance: Node
 
 func _ready() -> void:
 	_setup_card_buttons()
 	_connect_existing_back_button()
 	show_tower_cards()
-
+	
 func _setup_card_buttons() -> void:
 	for child in get_children():
 		if child is Control and child.name.is_valid_int():
 			_setup_card_button(child)
-
+			
 func _setup_card_button(card: Control) -> void:
 	var button := card.get_node_or_null(CARD_BUTTON_NAME) as TextureButton
 	if button == null:
@@ -116,29 +119,25 @@ func _setup_card_button(card: Control) -> void:
 			if node != button: node.reparent(button, true)
 	if not button.pressed.is_connected(_on_card_pressed):
 		button.pressed.connect(_on_card_pressed.bind(card))
-
+		
 func _on_card_pressed(card: Control) -> void:
 	_open_tower_upgrades(card)
-
+	
 func _open_tower_upgrades(card: Control) -> void:
 	if upgrades_tree:
 		upgrades_tree.show()
-
-		# Show only the matching animated sprite
 		var turt_parent = upgrades_tree.get_node_or_null(\"Turt\")
 		if turt_parent:
 			for i in range(1, 13):
 				var sprite = turt_parent.get_node_or_null(str(i))
 				if sprite:
 					sprite.visible = (str(i) == card.name)
-
 		var card_button = card.get_node_or_null(\"CardButton\")
 		var orig_label = card_button.get_node_or_null(\"NameLabel\") if card_button else null
 		var turt_label = upgrades_tree.get_node_or_null(\"Turt/NameLabel\")
 		if turt_label and orig_label:
 			turt_label.text = orig_label.text
 			upgrades_tree.load_tower_data(orig_label.text)
-
 	var scene_path := UPGRADE_SCENE_PATH_TEMPLATE % card.name
 	var packed_scene := load(scene_path)
 	if packed_scene is PackedScene:
@@ -148,26 +147,29 @@ func _open_tower_upgrades(card: Control) -> void:
 			upgrades_tree.add_child(current_upgrade_instance)
 	hide()
 	if upgrades_tree: upgrades_tree.show()
-
+	
 func _clear_current_upgrade() -> void:
 	if current_upgrade_instance:
 		current_upgrade_instance.queue_free()
 		current_upgrade_instance = null
-
+		
 func _on_back_pressed() -> void:
 	show_tower_cards()
-
+	
 func show_tower_cards() -> void:
-	if upgrades_tree: upgrades_tree.hide()
+	if upgrades_tree:
+		upgrades_tree.hide()
+		if upgrades_tree.has_method(\"reset_upgrades\"):
+			upgrades_tree.reset_upgrades()
 	show()
 	_clear_current_upgrade()
-
+	
 func close_upgrades_if_open() -> bool:
 	if upgrades_tree and upgrades_tree.visible:
 		show_tower_cards()
 		return true
 	return false
-
+	
 func _connect_existing_back_button() -> void:
 	var back_btn = get_parent().get_node_or_null(\"BackButton\")
 	if back_btn and not back_btn.pressed.is_connected(_on_back_pressed):
@@ -685,7 +687,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "GraviTurt"
+text = "Graviturt"
 horizontal_alignment = 1
 
 [node name="BlackholeTower" type="Sprite2D" parent="TowersLayer/Turts/3" unique_id=1263058208]
@@ -707,7 +709,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Turtosaurous Rex"
+text = "Turtosaurus Rex"
 horizontal_alignment = 1
 
 [node name="GodzillaTower" type="Sprite2D" parent="TowersLayer/Turts/4" unique_id=673475163]
@@ -729,7 +731,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "LieuterTURTant"
+text = "The Lieturtant"
 horizontal_alignment = 1
 
 [node name="BulletTower" type="Sprite2D" parent="TowersLayer/Turts/5" unique_id=372846596]
@@ -745,7 +747,7 @@ offset_right = 887.0
 offset_bottom = 563.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
-[node name="A" type="Label" parent="TowersLayer/Turts/6" unique_id=606060606]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/6" unique_id=606060606]
 layout_mode = 0
 offset_right = 187.0
 offset_bottom = 30.0
