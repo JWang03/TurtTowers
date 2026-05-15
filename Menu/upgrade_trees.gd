@@ -45,7 +45,7 @@ var all_tower_data = {
 			"upgrades": [
 				{"name": "Faster Shooting", "icon": "⚡", "desc": "Increases fire rate by 20%.", "price": 75},
 				{"name": "Faster Shooting 2", "icon": "⚡⚡", "desc": "Further increases fire rate.", "price": 150},
-				{"name": "Double Shot", "icon": "🔫", "desc": "Fires two bullets simultaneously.", "price": 300},
+				{"name": "Double Shot", "icon": "🔫🔫", "desc": "Fires two bullets simultaneously.", "price": 300},
 			]
 		},
 		"right": {
