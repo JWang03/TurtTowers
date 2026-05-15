@@ -2,202 +2,196 @@ extends CanvasLayer
 
 var group = ButtonGroup.new()
 
-var all_tower_data = {
+const TOWER_SCENES_BY_MENU_NAME := {
+	"TNTurt": "res://Towers/bomber_tower.tscn",
+	"Fighturt Jet": "res://Towers/Turt-22.tscn",
+	"The Lieturtant": "res://Towers/bullet_tower.tscn",
+	"Flameturter": "res://Towers/flamethrower_tower.tscn",
+	"Graviturt": "res://Towers/blackhole_tower.tscn",
+	"Mad Scienturt": "res://Towers/electric_tower.tscn",
+	"Turtosaurus Rex": "res://Towers/godzilla_tower.tscn",
+	"Holy Crusaturt": "res://Towers/holy_crusader.tscn",
+	"Shell Facturtory": "res://Towers/turt_factory.tscn",
+	"Turt Town": "res://Towers/turttown.tscn",
+	"Turt Sahur": "res://Towers/turttttt.tscn",
+}
+
+# Visual-only metadata. Branch names, upgrade names, and costs are read from
+# each tower scene's script through its `upgrades` dictionary.
+var upgrade_visual_data = {
 	"TNTurt": {
 		"left": {
-			"path_name": "CLUSTER BOMBER",
 			"upgrades": [
-				{"name": "+1 Bomb", "icon": "💣", "desc": "Fires two bombs at once.", "price": 75},
-				{"name": "+1 Bomb", "icon": "💣💣", "desc": "Fires three bombs at once.", "price": 150},
-				{"name": "+1 Bomb", "icon": "💣💣💣", "desc": "Fires four bombs at once.", "price": 300},
+				{"icon": "💣", "desc": "Fires two bombs at once."},
+				{"icon": "💣💣", "desc": "Fires three bombs at once."},
+				{"icon": "💣💣💣", "desc": "Fires four bombs at once."},
 			]
 		},
 		"right": {
-			"path_name": "MISSILE MENACE",
 			"upgrades": [
-				{"name": "Faster Fire", "icon": "🔥", "desc": "Doubles the fire rate.", "price": 100},
-				{"name": "Increased Range", "icon": "🎯", "desc": "Doubles the detection range.", "price": 200},
-				{"name": "Homing Missiles", "icon": "🚀", "desc": "Upgrades bombs to homing missiles.", "price": 300},
+				{"icon": "🔥", "desc": "Doubles the fire rate."},
+				{"icon": "🎯", "desc": "Doubles the detection range."},
+				{"icon": "🚀", "desc": "Upgrades bombs to homing missiles."},
 			]
 		}
 	},
 	"Fighturt Jet": {
 		"left": {
-			"path_name": "SPREAD",
 			"upgrades": [
-				{"name": "Wide Burst", "icon": "💥", "desc": "Widens the firing arc and increases projectile count to 8.", "price": 100},
-				{"name": "Hemisphere Fire", "icon": "🌎", "desc": "Fires a 180-degree burst of 12 projectiles.", "price": 250},
-				{"name": "Omnidirectional", "icon": "🪐", "desc": "Fires a massive 360-degree ring of 24 projectiles.", "price": 500},
+				{"icon": "💥", "desc": "Widens the firing arc and increases projectile count to 8."},
+				{"icon": "🌎", "desc": "Fires a 180-degree burst of 12 projectiles."},
+				{"icon": "🪐", "desc": "Fires a massive 360-degree ring of 24 projectiles."},
 			]
 		},
 		"right": {
-			"path_name": "FOCUSED FIRE",
 			"upgrades": [
-				{"name": "Faster Shooting", "icon": "⚡", "desc": "Tightens the spread and doubles the firing speed.", "price": 75},
-				{"name": "High Caliber", "icon": "💥", "desc": "Doubles bullet damage and focuses the stream further.", "price": 175},
-				{"name": "Railgun Mode", "icon": "🎯", "desc": "Condenses fire into a single high-damage bolt with extreme fire rate.", "price": 500},
+				{"icon": "⚡", "desc": "Tightens the spread and doubles the firing speed."},
+				{"icon": "💥", "desc": "Doubles bullet damage and focuses the stream further."},
+				{"icon": "🎯", "desc": "Condenses fire into a single high-damage bolt with extreme fire rate."},
 			]
 		}
 	},
 	"The Lieturtant": {
 		"left": {
-			"path_name": "GUNNER",
 			"upgrades": [
-				{"name": "Faster Shooting", "icon": "⚡", "desc": "Increases fire rate by 20%.", "price": 75},
-				{"name": "Faster Shooting 2", "icon": "⚡⚡", "desc": "Further increases fire rate.", "price": 150},
-				{"name": "Double Shot", "icon": "🔫🔫", "desc": "Fires two bullets simultaneously.", "price": 300},
+				{"icon": "⚡", "desc": "Increases fire rate by 20%."},
+				{"icon": "⚡⚡", "desc": "Further increases fire rate."},
+				{"icon": "🔫🔫", "desc": "Fires two bullets simultaneously."},
 			]
 		},
 		"right": {
-			"path_name": "MARKSMAN",
 			"upgrades": [
-				{"name": "Increased Range", "icon": "🎯", "desc": "Extends detection range by 50%.", "price": 100},
-				{"name": "High Caliber", "icon": "💥", "desc": "Bullets deal 5x damage.", "price": 200},
-				{"name": "Aimbot", "icon": "🏹", "desc": "Bullets track targets. Massive damage & range boost.", "price": 700},
+				{"icon": "🎯", "desc": "Extends detection range by 50%."},
+				{"icon": "💥", "desc": "Bullets deal 5x damage."},
+				{"icon": "🏹", "desc": "Bullets track targets. Massive damage & range boost."},
 			]
 		}
 	},
 	"Flameturter": {
 		"left": {
-			"path_name": "INFERNO",
 			"upgrades": [
-				{"name": "Hotter Flames", "icon": "🔥", "desc": "Doubles damage per tick.", "price": 75},
-				{"name": "Wider Spread", "icon": "🔥", "desc": "Fire area grows 50% larger.", "price": 150},
-				{"name": "Napalm", "icon": "💀", "desc": "Burning enemies spread fire on death.", "price": 300},
+				{"icon": "🔥", "desc": "Doubles damage per tick."},
+				{"icon": "🔥", "desc": "Fire area grows 50% larger."},
+				{"icon": "💀", "desc": "Burning enemies spread fire on death."},
 			]
 		},
 		"right": {
-			"path_name": "CROWD CONTROL",
 			"upgrades": [
-				{"name": "Scorched Earth", "icon": "🐢", "desc": "Flames slow enemies to 60% speed.", "price": 100},
-				{"name": "Weaken", "icon": "🛡️", "desc": "Burning enemies take 30% more damage.", "price": 200},
-				{"name": "Flashpoint", "icon": "☄️", "desc": "Enemies ignite and keep burning after leaving range.", "price": 700},
+				{"icon": "🐢", "desc": "Flames slow enemies to 60% speed."},
+				{"icon": "🛡️", "desc": "Burning enemies take 30% more damage."},
+				{"icon": "☄️", "desc": "Enemies ignite and keep burning after leaving range."},
 			]
 		}
 	},
 	"Graviturt": {
 		"left": {
-			"path_name": "SCATTER",
 			"upgrades": [
-				{"name": "Twin Holes", "icon": "🌀🌀", "desc": "Spawns 2 black holes per shot.", "price": 100},
-				{"name": "Triple Holes", "icon": "🌀🌀🌀", "desc": "Spawns 3 black holes per shot.", "price": 200},
-				{"name": "Hole Barrage", "icon": "♾️🌀", "desc": "Spawns 5 holes and fires 25% faster.", "price": 400},
+				{"icon": "🌀🌀", "desc": "Spawns 2 black holes per shot."},
+				{"icon": "🌀🌀🌀", "desc": "Spawns 3 black holes per shot."},
+				{"icon": "♾️🌀", "desc": "Spawns 5 holes and fires 25% faster."},
 			]
 		},
 		"right": {
-			"path_name": "SINGULARITY",
 			"upgrades": [
-				{"name": "Stronger Pull", "icon": "🌌", "desc": "Black holes pull enemies much harder.", "price": 100},
-				{"name": "Extended Duration", "icon": "⏳", "desc": "Black holes last twice as long.", "price": 250},
-				{"name": "Event Horizon", "icon": "⚫", "desc": "Massive pull strength, size, and duration.", "price": 600},
+				{"icon": "🌌", "desc": "Black holes pull enemies much harder."},
+				{"icon": "⏳", "desc": "Black holes last twice as long."},
+				{"icon": "⚫", "desc": "Massive pull strength, size, and duration."},
 			]
 		}
 	},
 	"Mad Scienturt": {
 		"left": {
-			"path_name": "THE PHYSICIST",
 			"upgrades": [
-				{"name": "Farther Chain", "icon": "⚡", "desc": "Lightning jumps further between enemies.", "price": 75},
-				{"name": "Faster Shooting", "icon": "⚡⚡", "desc": "Attack cooldown cut in half.", "price": 150},
-				{"name": "Farthest Chain", "icon": "💫⚡", "desc": "Lightning chain reaches 20 enemies.", "price": 300},
+				{"icon": "⚡", "desc": "Lightning jumps further between enemies."},
+				{"icon": "⚡⚡", "desc": "Attack cooldown cut in half."},
+				{"icon": "💫⚡", "desc": "Lightning chain reaches 20 enemies."},
 			]
 		},
 		"right": {
-			"path_name": "THE CHEMIST",
 			"upgrades": [
-				{"name": "Damage Aura", "icon": "💥🧪", "desc": "Nearby towers deal double damage.", "price": 100},
-				{"name": "Speed Aura", "icon": "💨🧪", "desc": "Nearby towers shoot twice as fast.", "price": 200},
-				{"name": "Extra Lives", "icon": "❤️", "desc": "Synthesizes 100 extra lives.", "price": 700},
+				{"icon": "💥🧪", "desc": "Nearby towers deal double damage."},
+				{"icon": "💨🧪", "desc": "Nearby towers shoot twice as fast."},
+				{"icon": "❤️", "desc": "Synthesizes 100 extra lives."},
 			]
 		}
 	},
 	"Turtosaurus Rex": {
 		"left": {
-			"path_name": "TWIN PEAKS",
 			"upgrades": [
-				{"name": "Wider Beam", "icon": "↔🦖", "desc": "Beam widens and deals 50% more damage.", "price": 75},
-				{"name": "Widest Beam", "icon": "↔↔🦖", "desc": "Beam widens further, more damage.", "price": 150},
-				{"name": "Dual Beam", "icon": "🦖⚡⚡", "desc": "Fires a second beam at another target.", "price": 300},
+				{"icon": "↔🦖", "desc": "Beam widens and deals 50% more damage."},
+				{"icon": "↔↔🦖", "desc": "Beam widens further, more damage."},
+				{"icon": "🦖⚡⚡", "desc": "Fires a second beam at another target."},
 			]
 		},
 		"right": {
-			"path_name": "ATOMIC",
 			"upgrades": [
-				{"name": "Supercharged", "icon": "⚡", "desc": "Doubles beam damage.", "price": 100},
-				{"name": "Critical Mass", "icon": "☢️", "desc": "Doubles beam damage again.", "price": 200},
-				{"name": "Meltdown", "icon": "💥", "desc": "Final doubling — maximum destruction.", "price": 700},
+				{"icon": "⚡", "desc": "Doubles beam damage."},
+				{"icon": "☢️", "desc": "Doubles beam damage again."},
+				{"icon": "💥", "desc": "Final doubling — maximum destruction."},
 			]
 		}
 	},
 	"Holy Crusaturt": {
 		"left": {
-			"path_name": "RADIANT FURY",
 			"upgrades": [
-				{"name": "Faster Attacks", "icon": "💨", "desc": "Smites 33% faster.", "price": 75},
-				{"name": "Increased Range", "icon": "🎯", "desc": "Detection range grows by 50%.", "price": 150},
-				{"name": "Frenzy", "icon": "⚡", "desc": "Attack speed doubled.", "price": 300},
+				{"icon": "💨", "desc": "Smites 33% faster."},
+				{"icon": "🎯", "desc": "Detection range grows by 50%."},
+				{"icon": "⚡", "desc": "Attack speed doubled."},
 			]
 		},
 		"right": {
-			"path_name": "DIVINE EYE",
 			"upgrades": [
-				{"name": "Stronger Beams", "icon": "🌟", "desc": "Beam damage doubled.", "price": 100},
-				{"name": "Ultra Beams", "icon": "💥🌟", "desc": "Beam damage doubled again.", "price": 200},
-				{"name": "Aim", "icon": "👁️", "desc": "Beams now target the furthest enemy.", "price": 700},
+				{"icon": "🌟", "desc": "Beam damage doubled."},
+				{"icon": "💥🌟", "desc": "Beam damage doubled again."},
+				{"icon": "👁️", "desc": "Beams now target the furthest enemy."},
 			]
 		}
 	},
 	"Shell Facturtory": {
 		"left": {
-			"path_name": "ASSEMBLY LINE",
 			"upgrades": [
-				{"name": "Faster Belt", "icon": "💨🐢", "desc": "Spawns turts 40% faster.", "price": 75},
-				{"name": "Double Line", "icon": "🐢🐢", "desc": "Spawns two turts at once.", "price": 175},
-				{"name": "Mass Production", "icon": "♾️🐢", "desc": "Extreme spawn speed with smaller turts.", "price": 400},
+				{"icon": "💨🐢", "desc": "Spawns turts 40% faster."},
+				{"icon": "🐢🐢", "desc": "Spawns two turts at once."},
+				{"icon": "♾️🐢", "desc": "Extreme spawn speed with smaller turts."},
 			]
 		},
 		"right": {
-			"path_name": "HEAVY SHELL",
 			"upgrades": [
-				{"name": "Reinforced Hull", "icon": "🛡️", "desc": "Turts have 3 HP and deal more damage.", "price": 100},
-				{"name": "Explosive Shell", "icon": "💥", "desc": "Turts explode on death.", "price": 250},
-				{"name": "Mega Turt", "icon": "💪", "desc": "Spawns one giant turt with 10 HP and massive damage.", "price": 600},
+				{"icon": "🛡️", "desc": "Turts have 3 HP and deal more damage."},
+				{"icon": "💥", "desc": "Turts explode on death."},
+				{"icon": "💪", "desc": "Spawns one giant turt with 10 HP and massive damage."},
 			]
 		}
 	},
 	"Turt Town": {
 		"left": {
-			"path_name": "TURT-RETS",
 			"upgrades": [
-				{"name": "Watchtower", "icon": "♜", "desc": "Spawns a mini turret nearby.", "price": 150},
-				{"name": "The Buddy System", "icon": "👥", "desc": "Spawns a second mini turret.", "price": 300},
-				{"name": "Fortified", "icon": "🏰", "desc": "Turrets shoot twice as fast. Buff radius doubled.", "price": 600},
+				{"icon": "♜", "desc": "Spawns a mini turret nearby."},
+				{"icon": "👥", "desc": "Spawns a second mini turret."},
+				{"icon": "🏰", "desc": "Turrets shoot twice as fast. Buff radius doubled."},
 			]
 		},
 		"right": {
-			"path_name": "ECONOMY",
 			"upgrades": [
-				{"name": "Tax Office", "icon": "💰", "desc": "Earns 20 shrimp every 8 seconds.", "price": 125},
-				{"name": "Trade Routes", "icon": "💰🛣️", "desc": "Earns 30 shrimp every 5 seconds.", "price": 275},
-				{"name": "Boom Town", "icon": "💰🏘️", "desc": "Earns 50 shrimp every 3 seconds. Instant +300.", "price": 650},
+				{"icon": "💰", "desc": "Earns 20 shrimp every 8 seconds."},
+				{"icon": "💰🛣️", "desc": "Earns 30 shrimp every 5 seconds."},
+				{"icon": "💰🏘️", "desc": "Earns 50 shrimp every 3 seconds. Instant +300."},
 			]
 		}
 	},
 	"Turt Sahur": {
 		"left": {
-			"path_name": "TUNG",
 			"upgrades": [
-				{"name": "Tung", "icon": "👅", "desc": "Attack speed doubled.", "price": 75},
-				{"name": "Tung^2", "icon": "👅👅", "desc": "Detection range grows 50%.", "price": 150},
-				{"name": "Tung^3", "icon": "👅👅👅", "desc": "Attack speed doubled again.", "price": 300},
+				{"icon": "👅", "desc": "Attack speed doubled."},
+				{"icon": "👅👅", "desc": "Detection range grows 50%."},
+				{"icon": "👅👅👅", "desc": "Attack speed doubled again."},
 			]
 		},
 		"right": {
-			"path_name": "LARP",
 			"upgrades": [
-				{"name": "Larp", "icon": "🐌", "desc": "Slow effect doubled in strength.", "price": 100},
-				{"name": "Larp^2", "icon": "🐌🐌", "desc": "Slows up to 3 enemies at once.", "price": 200},
-				{"name": "Larp^3", "icon": "🐌🐌🐌", "desc": "Slows up to 6 enemies at once.", "price": 700},
+				{"icon": "🐌", "desc": "Slow effect doubled in strength."},
+				{"icon": "🐌🐌", "desc": "Slows up to 3 enemies at once."},
+				{"icon": "🐌🐌🐌", "desc": "Slows up to 6 enemies at once."},
 			]
 		}
 	},
@@ -225,14 +219,71 @@ func _ready() -> void:
 	desc_box.modulate.a = 0.0
 
 func load_tower_data(tower_name: String) -> void:
-	if not all_tower_data.has(tower_name):
+	var live_data := _get_live_tower_data(tower_name)
+	if live_data.is_empty():
+		reset_upgrades()
 		return
-	var data = all_tower_data[tower_name]
-	$LeftPathLabel.text = data["left"]["path_name"]
-	$RightPathLabel.text = data["right"]["path_name"]
+
+	var visual_data = upgrade_visual_data.get(tower_name, {})
+	if visual_data.is_empty() and upgrade_visual_data.has(live_data.get("tower_name", "")):
+		visual_data = upgrade_visual_data[live_data["tower_name"]]
+
+	var data := _merge_live_and_visual_data(live_data, visual_data)
+	$LeftPathLabel.text = str(data["left"]["path_name"]).to_upper()
+	$RightPathLabel.text = str(data["right"]["path_name"]).to_upper()
 	group = ButtonGroup.new()
 	_setup_path($LeftPath, data["left"]["upgrades"])
 	_setup_path($RightPath, data["right"]["upgrades"])
+
+func _get_live_tower_data(menu_tower_name: String) -> Dictionary:
+	var scene_path = TOWER_SCENES_BY_MENU_NAME.get(menu_tower_name, "")
+	if scene_path == "":
+		return {}
+
+	var packed_scene := load(scene_path)
+	if not (packed_scene is PackedScene):
+		return {}
+
+	var tower = packed_scene.instantiate()
+	var live_data := {}
+	if "upgrades" in tower:
+		live_data["upgrades"] = tower.get("upgrades")
+	if "tower_name" in tower:
+		live_data["tower_name"] = tower.get("tower_name")
+	tower.free()
+
+	if not live_data.has("upgrades"):
+		return {}
+
+	return live_data
+
+func _merge_live_and_visual_data(live_data: Dictionary, visual_data: Dictionary) -> Dictionary:
+	var live_upgrades: Dictionary = live_data["upgrades"]
+	var merged := {
+		"left": _merge_branch_data(live_upgrades.get("left", {}), visual_data.get("left", {})),
+		"right": _merge_branch_data(live_upgrades.get("right", {}), visual_data.get("right", {}))
+	}
+	return merged
+
+func _merge_branch_data(live_branch: Dictionary, visual_branch: Dictionary) -> Dictionary:
+	var live_tiers: Array = live_branch.get("tiers", [])
+	var visual_tiers: Array = visual_branch.get("upgrades", [])
+	var merged_tiers := []
+
+	for i in range(live_tiers.size()):
+		var live_tier: Dictionary = live_tiers[i]
+		var visual_tier: Dictionary = visual_tiers[i] if i < visual_tiers.size() else {}
+		merged_tiers.append({
+			"name": live_tier.get("label", ""),
+			"price": live_tier.get("cost", 0),
+			"icon": visual_tier.get("icon", ""),
+			"desc": visual_tier.get("desc", "")
+		})
+
+	return {
+		"path_name": live_branch.get("name", ""),
+		"upgrades": merged_tiers
+	}
 
 func reset_upgrades() -> void:
 	$LeftPathLabel.text = ""
@@ -280,6 +331,7 @@ func _setup_path(path: VBoxContainer, data: Array) -> void:
 	var buttons = path.get_children()
 	for i in buttons.size():
 		var button: Button = buttons[i]
+		button.visible = i < data.size()
 		button.toggle_mode = true
 		button.button_group = group
 		button.button_pressed = false
@@ -293,6 +345,9 @@ func _setup_path(path: VBoxContainer, data: Array) -> void:
 
 		for child in button.get_children():
 			child.queue_free()
+
+		if i >= data.size():
+			continue
 
 		var vbox = VBoxContainer.new()
 		vbox.set_anchors_preset(Control.PRESET_FULL_RECT)

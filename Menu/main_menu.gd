@@ -1,15 +1,16 @@
 extends Control
 
 const DEFAULT_TOWER_NAME := "Turt"
+const TOWER_SCENE_AUTOSAVE_PATH := "user://tower_scene_autosave.json"
 # Settings Menu Nodes
 @onready var settings_overlay = $SettingsLayer
 @onready var menu_panel = $SettingsLayer/SettingsMenu
 @onready var darkener = $SettingsLayer/Darkener
 
 # Colorblindness Nodes
-@onready var colorblind_dropdown = $SettingsLayer/SettingsMenu/CBButton
-@onready var fullscreen_dropdown = $SettingsLayer/SettingsMenu/FullscreenButton
-@onready var volume_slider = $SettingsLayer/SettingsMenu/VolumeSlider
+@onready var colorblind_dropdown = $SettingsLayer/SettingsMenu.find_child("CBButton", true, false)
+@onready var fullscreen_dropdown = $SettingsLayer/SettingsMenu.find_child("FullscreenButton", true, false)
+@onready var volume_slider = $SettingsLayer/SettingsMenu.find_child("VolumeSlider", true, false)
 
 # Map Selection Nodes
 @onready var map_overlay = $MapSelectionLayer
@@ -149,10 +150,32 @@ func _on_right_arrow_pressed() -> void:
 
 func _on_map_selector_pressed() -> void:
 	var scene_path = map_scenes[current_map_index]
+	scene_path = _get_resume_scene(scene_path)
+
 	if scene_path != null:
 		get_tree().change_scene_to_file(scene_path)
 	else:
 		push_warning("%s is not playable yet." % map_names[current_map_index])
+
+func _get_resume_scene(default_scene_path: String) -> String:
+	if not FileAccess.file_exists(TOWER_SCENE_AUTOSAVE_PATH):
+		return default_scene_path
+
+	var autosave_file := FileAccess.open(TOWER_SCENE_AUTOSAVE_PATH, FileAccess.READ)
+	if autosave_file == null:
+		return default_scene_path
+
+	var parsed = JSON.parse_string(autosave_file.get_as_text())
+	if not (parsed is Dictionary):
+		return default_scene_path
+
+	var saved_scene_path: String = str(parsed.get("scene", default_scene_path))
+	if saved_scene_path != default_scene_path:
+		return default_scene_path
+	if not ResourceLoader.exists(saved_scene_path):
+		return default_scene_path
+
+	return saved_scene_path
 
 func _on_return_pressed() -> void:
 	var tween = create_tween().set_parallel(true)
