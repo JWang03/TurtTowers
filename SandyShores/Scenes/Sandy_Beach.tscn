@@ -650,18 +650,15 @@ theme_override_constants/outline_size = 8
 text = "$00"
 horizontal_alignment = 1
 
-[node name="HUD" type="Control" parent="UI" unique_id=1358710275]
-anchors_preset = 0
-offset_left = 951.0
-offset_top = -17.0
-offset_right = 982.0
-offset_bottom = 99.0
+[node name="HUD" type="Node2D" parent="UI" unique_id=1431358861]
+position = Vector2(900, -20)
 
 [node name="CurrencyManager" type="Node" parent="UI/HUD" unique_id=219739025]
 script = ExtResource("10_yrnad")
 
 [node name="Lives" type="Control" parent="UI/HUD" unique_id=1545277758]
 z_index = 1
+layout_mode = 3
 anchors_preset = 0
 offset_left = -168.0
 offset_top = -15.0
@@ -672,7 +669,7 @@ offset_bottom = 131.0
 z_index = 2
 z_as_relative = false
 layout_mode = 0
-offset_left = -442.875
+offset_left = -454.0
 offset_top = 49.0
 offset_right = -311.875
 offset_bottom = 116.0
@@ -684,12 +681,13 @@ text = "100"
 [node name="HeartsNoBg" type="Sprite2D" parent="UI/HUD/Lives" unique_id=560389045]
 z_index = 2
 z_as_relative = false
-position = Vector2(-479.875, 87)
-scale = Vector2(0.26033974, 0.27710044)
+position = Vector2(-490.00003, 82.437485)
+scale = Vector2(0.23042826, 0.25237134)
 texture = ExtResource("15_rjrdg")
 
 [node name="Money" type="Control" parent="UI/HUD" unique_id=1732714314]
 z_index = 1
+layout_mode = 3
 anchors_preset = 0
 offset_left = -11.0
 offset_right = 228.0
@@ -699,7 +697,7 @@ offset_bottom = 121.0
 z_index = 2
 z_as_relative = false
 layout_mode = 0
-offset_left = -423.875
+offset_left = -440.0
 offset_top = 32.0
 offset_right = -324.875
 offset_bottom = 99.0
@@ -710,14 +708,15 @@ text = "100"
 
 [node name="Shrimp" type="Sprite2D" parent="UI/HUD/Money" unique_id=892181832]
 z_index = 1096
-position = Vector2(-458.87506, 66.00001)
-scale = Vector2(0.25461596, 0.21375337)
+position = Vector2(-471.5313, 64.28126)
+scale = Vector2(0.21722679, 0.20443764)
 texture = ExtResource("13_ckwcc")
 
 [node name="LossConditions" type="Node" parent="UI/HUD" unique_id=300026466]
 script = ExtResource("9_50yat")
 
 [node name="Waves" type="Control" parent="UI/HUD" unique_id=884231617]
+layout_mode = 3
 anchors_preset = 0
 offset_left = -705.0
 offset_top = 19.0
@@ -740,10 +739,9 @@ text = " Wave 0/50
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/HUD" unique_id=1996697415]
 z_index = 1
-layout_mode = 0
 offset_left = -719.0
 offset_top = 25.0
-offset_right = -325.0
+offset_right = -300.0
 offset_bottom = 133.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kpf84")
 
