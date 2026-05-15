@@ -17,7 +17,7 @@ var dual_beam: bool = false
 
 func _ready():
 	super._ready()
-	cost = 50
+	cost = 100
 	hide_beam()
 
 func _process(delta):
@@ -30,23 +30,14 @@ func _process(delta):
 	if is_instance_valid(target_zombie):
 		head.look_at(target_zombie.global_position)
 		laser_ray.force_raycast_update()
-		if laser_ray.is_colliding():
-			var hit_collider = laser_ray.get_collider()
-			if hit_collider and hit_collider.is_in_group("zombies"):
-				var shield_provider = get_shield_provider(hit_collider)
-				var final_damage_target = shield_provider if shield_provider else hit_collider
-				show_beam(laser_ray.get_collision_point(), laser_line)
-				if final_damage_target.has_method("take_damage"):
-					final_damage_target.take_damage(damage_per_second * delta)
-			else:
-				show_beam(laser_ray.get_collision_point(), laser_line)
-		else:
-			laser_line.visible = false
+		var beam_end = laser_ray.is_colliding() if laser_ray.is_colliding() else target_zombie.global_position
+		var hit_point = laser_ray.get_collision_point() if laser_ray.is_colliding() else target_zombie.global_position
+		show_beam(hit_point, laser_line)
+		_damage_along_beam(global_position, target_zombie.global_position, delta)
 	else:
 		laser_line.visible = false
 
 	if dual_beam:
-		# find a second target that isn't the first
 		var bodies = detection_area.get_overlapping_bodies().filter(func(b):
 			return b.is_in_group("zombies") and b != target_zombie and b.get("is_stealth") != true
 		)
@@ -54,23 +45,31 @@ func _process(delta):
 			target_zombie2 = bodies[0]
 			laser_ray2.look_at(target_zombie2.global_position)
 			laser_ray2.force_raycast_update()
-			if laser_ray2.is_colliding():
-				var hit_collider2 = laser_ray2.get_collider()
-				if hit_collider2 and hit_collider2.is_in_group("zombies"):
-					var shield_provider2 = get_shield_provider(hit_collider2)
-					var final_damage_target2 = shield_provider2 if shield_provider2 else hit_collider2
-					show_beam(laser_ray2.get_collision_point(), laser_line2)
-					if final_damage_target2.has_method("take_damage"):
-						final_damage_target2.take_damage(damage_per_second * delta)
-				else:
-					show_beam(laser_ray2.get_collision_point(), laser_line2)
-			else:
-				laser_line2.visible = false
+			var hit_point2 = laser_ray2.get_collision_point() if laser_ray2.is_colliding() else target_zombie2.global_position
+			show_beam(hit_point2, laser_line2)
+			_damage_along_beam(global_position, target_zombie2.global_position, delta)
 		else:
 			laser_line2.visible = false
 			target_zombie2 = null
 	else:
 		laser_line2.visible = false
+
+func _damage_along_beam(beam_start: Vector2, beam_end: Vector2, delta: float):
+	var beam_width_threshold = (laser_line.width / 2.0) + 10.0
+	var bodies = detection_area.get_overlapping_bodies()
+	for body in bodies:
+		if not body.is_in_group("zombies") or not is_instance_valid(body):
+			continue
+		if body.get("is_stealth") == true:
+			continue
+		# check distance from enemy to the beam line
+		var closest = Geometry2D.get_closest_point_to_segment(body.global_position, beam_start, beam_end)
+		var dist = body.global_position.distance_to(closest)
+		if dist <= beam_width_threshold:
+			var shield_provider = get_shield_provider(body)
+			var final_target = shield_provider if shield_provider else body
+			if final_target.has_method("take_damage"):
+				final_target.take_damage(damage_per_second * delta)
 
 func show_beam(hit_pos: Vector2, line: Line2D):
 	line.visible = true

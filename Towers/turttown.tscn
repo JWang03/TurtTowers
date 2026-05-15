@@ -11,6 +11,7 @@ radius = 75.00667
 
 [node name="turttown" type="StaticBody2D" unique_id=1028192946]
 script = ExtResource("1_trttwn")
+cost = 350.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1634713713]
 position = Vector2(0, -5.7)

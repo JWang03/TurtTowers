@@ -11,12 +11,12 @@ enum TargetMode {FIRST, WEAKEST, STRONGEST, CLOSEST}
 @export var cost: float
 var range_fill: Polygon2D
 var range_indicator: Line2D
-
 func _ready():
 	add_to_group("towers")
 	_create_range_indicator()
 	Signal_Bus.tower_selected.connect(_on_tower_selected)
 	Signal_Bus.tower_deselected.connect(_on_tower_deselected)
+	
 
 func _create_range_indicator():
 	range_fill = Polygon2D.new()

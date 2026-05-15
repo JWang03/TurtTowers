@@ -16,7 +16,7 @@ func _ready():
 	speed = 5
 	shield_node.monitoring = false
 	shield_node.visible = false
-	
+	shelling_drop = 12
 	start_shield_timer()
 
 func start_shield_timer():

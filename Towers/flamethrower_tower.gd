@@ -14,7 +14,7 @@ var flashpoint_active: bool = false
 
 func _ready():
 	super._ready()
-	cost = 50
+	cost = 175
 	flame_anim.stop()
 	damage_timer.wait_time = damage_frequency
 	damage_timer.one_shot = false

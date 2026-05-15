@@ -8,6 +8,7 @@ radius = 131.01526
 
 [node name="blackhole_tower" type="StaticBody2D" unique_id=1108750261]
 script = ExtResource("1_am03q")
+cost = 225.0
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=106421023]
 

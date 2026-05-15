@@ -7,6 +7,7 @@ func _ready():
 	speed = 125.0
 	health = 40
 	attack_damage = 5.0
+	shelling_drop = 8
 
 func _process(delta):
 	if starter.playing == true:
@@ -31,7 +32,7 @@ func take_damage(amount):
 		die()
 
 func die():
-	currency.add_shellings(2)
+	currency.add_shellings(shelling_drop)
 	if wave_manager != null:
 		wave_manager.enemy_removed()
 
