@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://edrg4d8mihvl"]
 
 [ext_resource type="Script" uid="uid://pqb5fil0dxwd" path="res://Towers/blackhole.gd" id="1_rv61l"]
-[ext_resource type="Texture2D" uid="uid://qx2wiwyjqv24" path="res://textures/vortex.webp" id="2_rv61l"]
+[ext_resource type="Texture2D" uid="uid://qx2wiwyjqv24" path="res://Textures/vortex.webp" id="2_rv61l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivaat"]
 radius = 7.0

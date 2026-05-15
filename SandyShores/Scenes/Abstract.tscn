@@ -38,7 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://dvxhwiq86ypku" path="res://textures/Pause.png" id="24_a4xci"]
 [ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="26_ro4ig"]
 [ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://textures/image-removebg-preview (34).png" id="27_o8s8s"]
-[ext_resource type="PackedScene" uid="uid://cfxko1b87aspq" path="res://Towers/Turt-22.tscn" id="28_r0ofv"]
+[ext_resource type="PackedScene" path="res://Towers/Turt-22.tscn" id="28_r0ofv"]
 [ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="29_f2y8k"]
 [ext_resource type="PackedScene" uid="uid://hovc6xdbesyd" path="res://Towers/holy_crusader.tscn" id="30_gdn63"]
 [ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="32_mhcsl"]
@@ -713,6 +713,7 @@ the mothershell from
 a pollutant ambush!"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI" unique_id=594035940]
+visible = false
 
 [node name="UpgradePanel" type="PanelContainer" parent="UI/CanvasLayer" unique_id=247706186]
 offset_top = 135.0
