@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cgc1rpmolx0r2"]
 
 [ext_resource type="Script" uid="uid://cvjn7p4megwga" path="res://Towers/blackhole_tower.gd" id="1_am03q"]
-[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="2_k14q5"]
+[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://Textures/blackhole_tower.png" id="2_k14q5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bx0g"]
 radius = 131.01526

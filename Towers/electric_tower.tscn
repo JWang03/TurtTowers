@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b0ux31ymkvdun"]
 
 [ext_resource type="Script" uid="uid://cnyoaw7mml56s" path="res://Towers/electric_tower.gd" id="1_favj8"]
-[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="2_5x71x"]
+[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://Textures/electric_tower.png" id="2_5x71x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m4wxm"]
 radius = 143.0035

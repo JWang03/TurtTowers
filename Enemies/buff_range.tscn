@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://itfva5ofdnmj"]
 
 [ext_resource type="Script" uid="uid://i7kaaj5di5pm" path="res://Enemies/buff_range.gd" id="1_yxw5x"]
-[ext_resource type="Texture2D" uid="uid://btfjjgfs4cy4s" path="res://textures/poison_gas.png" id="2_yxw5x"]
+[ext_resource type="Texture2D" uid="uid://btfjjgfs4cy4s" path="res://Textures/poison_gas.png" id="2_yxw5x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yynto"]
 radius = 55.00909

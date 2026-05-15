@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://do17203pjxuim"]
 
 [ext_resource type="Script" uid="uid://dult7rfieqq8f" path="res://Towers/bullet_tower.gd" id="1_v0an6"]
-[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="2_v0an6"]
+[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://Textures/bullet_tower.png" id="2_v0an6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vedim"]
 radius = 158.0

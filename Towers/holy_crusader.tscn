@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://hovc6xdbesyd"]
 
 [ext_resource type="Script" uid="uid://b5w6mqry0siuw" path="res://Towers/holy_crusader.gd" id="1_l2hnx"]
-[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="2_rdfw7"]
+[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://Textures/holy_crusader.png" id="2_rdfw7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o0eas"]
 radius = 169.5671

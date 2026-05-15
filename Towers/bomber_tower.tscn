@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dmhok8tovvxvc"]
 
 [ext_resource type="Script" uid="uid://hhw5oyil6c63" path="res://Towers/bomber_tower.gd" id="1_jymjt"]
-[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="2_jymjt"]
+[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://Textures/bomb_tower.png" id="2_jymjt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jymjt"]
 radius = 120.0
