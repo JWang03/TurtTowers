@@ -6,22 +6,22 @@
 [ext_resource type="Texture2D" uid="uid://igbigqabkd3d" path="res://Menu/Images/Maps/SandyShores.png" id="3_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="4_o4wy8"]
 [ext_resource type="Shader" uid="uid://csheady12o671" path="res://Menu/gradient.gdshader" id="6_rw3mj"]
-[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="7_cn2sd"]
-[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="8_ywk15"]
-[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="9_ws7s4"]
-[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="10_fduiw"]
-[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="11_fduiw"]
+[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://Textures/bomb_tower.png" id="7_cn2sd"]
+[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://Textures/electric_tower.png" id="8_ywk15"]
+[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://Textures/blackhole_tower.png" id="9_ws7s4"]
+[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://Textures/godzilla_tower.png" id="10_fduiw"]
+[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://Textures/bullet_tower.png" id="11_fduiw"]
 [ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://exit_button.tres" id="13_o4wy8"]
-[ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://textures/image-removebg-preview (34).png" id="14_6v0gp"]
-[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="15_dqyvv"]
-[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="16_m8x2t"]
-[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/TurtTown.png" id="17_trttn"]
-[ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://textures/image-removebg-preview (15).png" id="18_6v0gp"]
+[ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://Textures/image-removebg-preview (34).png" id="14_6v0gp"]
+[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://Textures/holy_crusader.png" id="15_dqyvv"]
+[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://Textures/Turt^3 Sahur.png" id="16_m8x2t"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://Textures/TurtTown.png" id="17_trttn"]
+[ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://Textures/image-removebg-preview (15).png" id="18_6v0gp"]
 [ext_resource type="Shader" uid="uid://7ge7521o8ccw" path="res://Menu/towersui.gdshader" id="18_is5sc"]
 [ext_resource type="Script" uid="uid://t0tqkn4slqu8" path="res://Menu/arrow.gd" id="18_tek0n"]
-[ext_resource type="Texture2D" uid="uid://djhx0xow36mcw" path="res://textures/image-removebg-preview (30).png" id="19_a0ncs"]
+[ext_resource type="Texture2D" uid="uid://djhx0xow36mcw" path="res://Textures/image-removebg-preview (30).png" id="19_a0ncs"]
 [ext_resource type="Shader" uid="uid://df18vh8hlpx1q" path="res://Menu/towers2.gdshader" id="20_32sed"]
-[ext_resource type="Texture2D" uid="uid://dr8x45h4e2lwn" path="res://textures/image-removebg-preview (31).png" id="20_fqpxm"]
+[ext_resource type="Texture2D" uid="uid://dr8x45h4e2lwn" path="res://Textures/image-removebg-preview (31).png" id="20_fqpxm"]
 [ext_resource type="Script" uid="uid://ww178o82fnsd" path="res://Menu/upgrade_trees.gd" id="21_6v0gp"]
 [ext_resource type="Theme" uid="uid://boaafitswomev" path="res://upgrade_buttons.tres" id="21_qn1v7"]
 
@@ -83,6 +83,10 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlkkf"]
+shader = ExtResource("2_glbon")
+shader_parameter/mode = 0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_panel"]
 bg_color = Color(0.18, 0.52, 0.53, 0.96)
 border_width_left = 5
@@ -97,36 +101,8 @@ corner_radius_bottom_left = 8
 shadow_color = Color(0.02, 0.08, 0.09, 0.55)
 shadow_size = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_field"]
-bg_color = Color(0.06, 0.24, 0.26, 0.72)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.99, 0.82, 0.32, 0.65)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-content_margin_left = 12
-content_margin_top = 8
-content_margin_right = 12
-content_margin_bottom = 8
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_button"]
 bg_color = Color(0.99, 0.82, 0.32, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.06, 0.24, 0.26, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_button_hover"]
-bg_color = Color(1, 0.91, 0.47, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -149,9 +125,33 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlkkf"]
-shader = ExtResource("2_glbon")
-shader_parameter/mode = 0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_button_hover"]
+bg_color = Color(1, 0.91, 0.47, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.06, 0.24, 0.26, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_field"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.06, 0.24, 0.26, 0.72)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.99, 0.82, 0.32, 0.65)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="GDScript" id="GDScript_turts"]
 script/source = "extends CanvasLayer
@@ -579,22 +579,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_settings_panel")
 
-[node name="Margin" type="MarginContainer" parent="SettingsLayer/SettingsMenu"]
+[node name="Margin" type="MarginContainer" parent="SettingsLayer/SettingsMenu" unique_id=630281905]
 layout_mode = 2
 theme_override_constants/margin_left = 28
 theme_override_constants/margin_top = 22
 theme_override_constants/margin_right = 28
 theme_override_constants/margin_bottom = 22
 
-[node name="Content" type="VBoxContainer" parent="SettingsLayer/SettingsMenu/Margin"]
+[node name="Content" type="VBoxContainer" parent="SettingsLayer/SettingsMenu/Margin" unique_id=975809330]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Header" type="HBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content"]
+[node name="Header" type="HBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content" unique_id=1868137793]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Title" type="Label" parent="SettingsLayer/SettingsMenu/Margin/Content/Header"]
+[node name="Title" type="Label" parent="SettingsLayer/SettingsMenu/Margin/Content/Header" unique_id=9618431]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 0.96, 0.72, 1)
@@ -610,23 +610,23 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.04, 0.19, 0.2, 1)
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_settings_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_settings_button_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_settings_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_settings_button_hover")
 text = "X"
 
-[node name="Rows" type="VBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content"]
+[node name="Rows" type="VBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content" unique_id=2126154164]
 layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="VolumeRow" type="PanelContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows"]
+[node name="VolumeRow" type="PanelContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows" unique_id=258813080]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_settings_field")
 
-[node name="VolumeLayout" type="HBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/VolumeRow"]
+[node name="VolumeLayout" type="HBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/VolumeRow" unique_id=113242412]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="VolumeLabel" type="Label" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/VolumeRow/VolumeLayout"]
+[node name="VolumeLabel" type="Label" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/VolumeRow/VolumeLayout" unique_id=1626674376]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.96, 0.72, 1)
@@ -644,15 +644,15 @@ max_value = 1.0
 step = 0.05
 value = 0.501
 
-[node name="FullscreenRow" type="PanelContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows"]
+[node name="FullscreenRow" type="PanelContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows" unique_id=1728756337]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_settings_field")
 
-[node name="FullscreenLayout" type="HBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/FullscreenRow"]
+[node name="FullscreenLayout" type="HBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/FullscreenRow" unique_id=1606461916]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="FullscreenLabel" type="Label" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/FullscreenRow/FullscreenLayout"]
+[node name="FullscreenLabel" type="Label" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/FullscreenRow/FullscreenLayout" unique_id=1898143306]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.96, 0.72, 1)
@@ -669,8 +669,8 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.04, 0.19, 0.2, 1)
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_settings_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_settings_button_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_settings_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_settings_button_hover")
 item_count = 3
 popup/item_0/text = "Windowed"
 popup/item_0/id = 0
@@ -679,15 +679,15 @@ popup/item_1/id = 1
 popup/item_2/text = "Exclusive Fullscreen"
 popup/item_2/id = 2
 
-[node name="ColorblindRow" type="PanelContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows"]
+[node name="ColorblindRow" type="PanelContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows" unique_id=2089463676]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_settings_field")
 
-[node name="ColorblindLayout" type="HBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/ColorblindRow"]
+[node name="ColorblindLayout" type="HBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/ColorblindRow" unique_id=376497132]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="ColorblindLabel" type="Label" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/ColorblindRow/ColorblindLayout"]
+[node name="ColorblindLabel" type="Label" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/ColorblindRow/ColorblindLayout" unique_id=1109665126]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.96, 0.72, 1)
@@ -704,8 +704,8 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.04, 0.19, 0.2, 1)
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_settings_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_settings_button_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_settings_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_settings_button_hover")
 item_count = 4
 popup/item_0/text = "Default"
 popup/item_0/id = 0
@@ -1323,10 +1323,10 @@ expand_icon = true
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/MapSelector" to="." method="_on_map_selector_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/LeftArrow" to="." method="_on_left_arrow_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/RightArrow" to="." method="_on_right_arrow_pressed"]
+[connection signal="pressed" from="SettingsLayer/SettingsMenu/Margin/Content/Header/Button" to="." method="_on_button_pressed"]
 [connection signal="value_changed" from="SettingsLayer/SettingsMenu/Margin/Content/Rows/VolumeRow/VolumeLayout/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="item_selected" from="SettingsLayer/SettingsMenu/Margin/Content/Rows/FullscreenRow/FullscreenLayout/FullscreenButton" to="." method="_on_fullscreen_item_selected"]
 [connection signal="item_selected" from="SettingsLayer/SettingsMenu/Margin/Content/Rows/ColorblindRow/ColorblindLayout/CBButton" to="." method="_on_option_button_item_selected"]
-[connection signal="pressed" from="SettingsLayer/SettingsMenu/Margin/Content/Header/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TowersLayer/Turts/LeftArrow" to="." method="_on_left_tower_pressed"]
 [connection signal="pressed" from="TowersLayer/Turts/RightArrow" to="." method="_on_right_tower_pressed"]
 [connection signal="pressed" from="TowersLayer/ReturnTowers" to="." method="_on_return_towers_pressed"]

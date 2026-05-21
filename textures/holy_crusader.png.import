@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcscv41p2b6p1"
-path="res://.godot/imported/holy_crusader.png-e2ee7f705da1fbbe186f3f12356a3564.ctex"
+path="res://.godot/imported/holy_crusader.png-514332f89332bc29ca369e5f64109ecc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/holy_crusader.png"
-dest_files=["res://.godot/imported/holy_crusader.png-e2ee7f705da1fbbe186f3f12356a3564.ctex"]
+source_file="res://Textures/holy_crusader.png"
+dest_files=["res://.godot/imported/holy_crusader.png-514332f89332bc29ca369e5f64109ecc.ctex"]
 
 [params]
 
