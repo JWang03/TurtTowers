@@ -34,7 +34,7 @@ color_ramp = SubResource("GradientTexture1D_iu23p")
 turbulence_noise_scale = 8.845
 
 [node name="holybeam" type="Area2D" unique_id=1466942269]
-z_index = 2
+z_index = 4096
 script = ExtResource("1_7d6ki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1223502182]

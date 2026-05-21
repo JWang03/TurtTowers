@@ -1,16 +1,46 @@
-# blackhole_tower.gd
 extends TowerBase
 
 @onready var muzzle = $Muzzle
 @onready var timer = $Timer
-var black_hole_scene = preload("res://Towers/blackhole.tscn")
-@export var lead_distance: float = 60.0
+@onready var sprite = $Sprite2D
 
+var black_hole_scene = preload("res://Towers/blackhole.tscn")
+
+@export var scatter_path_sprite: Texture2D
+@export var singularity_path_sprite: Texture2D
+
+@export var lead_distance: float = 60.0
 var multi_hole_active: bool = false
 var hole_count: int = 1
 var hole_pull_multiplier: float = 1.0
 var hole_scale_multiplier: float = 1.0
 var hole_duration_multiplier: float = 1.0
+
+var left_level = 0
+var right_level = 0
+var chosen_branch = ""
+var tower_name = "Graviturt"
+
+var recoil_tween: Tween
+
+var upgrades = {
+	"left": {
+		"name": "Scatter",
+		"tiers": [
+			{"label": "Twin Holes", "cost": 100},
+			{"label": "Triple Holes", "cost": 200},
+			{"label": "Hole Barrage", "cost": 400}
+		]
+	},
+	"right": {
+		"name": "Singularity",
+		"tiers": [
+			{"label": "Stronger Pull", "cost": 100},
+			{"label": "Extended Duration", "cost": 250},
+			{"label": "Event Horizon", "cost": 600}
+		]
+	}
+}
 
 func _ready():
 	super._ready()
@@ -20,6 +50,24 @@ func _ready():
 	timer.one_shot = false
 	timer.timeout.connect(_on_timer_timeout)
 	detection_area.body_entered.connect(_on_zombie_entered)
+
+func _process(_delta: float) -> void:
+	timer.wait_time = fire_rate
+	
+	var target = get_best_target()
+	if target:
+		look_at(target.global_position)
+		
+		if sprite.texture == scatter_path_sprite or sprite.texture == singularity_path_sprite:
+			rotation += PI 
+		else:
+			rotation += PI 
+		
+		var angle = wrapf(rotation, -PI, PI)
+		if abs(angle) > PI / 2:
+			sprite.flip_v = true
+		else:
+			sprite.flip_v = false
 
 func _on_zombie_entered(body):
 	if body.is_in_group("zombies") and timer.is_stopped():
@@ -33,7 +81,7 @@ func _on_timer_timeout():
 		timer.stop()
 
 func attempt_shot():
-	if not is_placed or not starter or not starter.playing:
+	if not is_placed:
 		timer.stop()
 		return
 	var target = get_best_target()
@@ -41,21 +89,32 @@ func attempt_shot():
 		timer.stop()
 		return
 
+	if recoil_tween:
+		recoil_tween.kill()
+	recoil_tween = create_tween()
+	var recoil_dir = 12.0 if not sprite.flip_v else -12.0
+	recoil_tween.tween_property(sprite, "offset:y", recoil_dir, 0.05).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	recoil_tween.tween_property(sprite, "offset:y", 0.0, 0.15).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+
 	var follower = get_path_follower(target)
 	var path = follower.get_parent() if follower else null
 
 	if multi_hole_active and follower and path:
-		# spawn multiple holes spread across the path ahead of the target
 		var path_len = path.curve.get_baked_length()
 		var spacing = 80.0
+		
+		var half_spread = (spacing * (hole_count - 1)) / 2.0
+		var start_progress = follower.progress + lead_distance - half_spread
+		
 		for i in range(hole_count):
-			var future_progress = follower.progress + lead_distance + (spacing * i)
-			future_progress = min(future_progress, path_len)
+			var future_progress = start_progress + (spacing * i)
+			
+			future_progress = clamp(future_progress, 0, path_len)
+			
 			var local_pos = path.curve.sample_baked(future_progress)
 			var spawn_pos = path.to_global(local_pos)
 			_spawn_hole(spawn_pos)
 	else:
-		# single hole, aimed ahead
 		var spawn_pos = target.global_position
 		if follower and path:
 			var future_progress = follower.progress + lead_distance
@@ -94,50 +153,35 @@ func _input(event):
 			if result["collider"] == self:
 				Signal_Bus.tower_selected.emit(self)
 				break
-				
-var tower_name = "Graviturt"
-var upgrades = {
-	"left": {
-		"name": "Scatter",
-		"tiers": [
-			{"label": "Twin Holes", "cost": 100},
-			{"label": "Triple Holes", "cost": 200},
-			{"label": "Hole Barrage", "cost": 400}
-		]
-	},
-	"right": {
-		"name": "Singularity",
-		"tiers": [
-			{"label": "Stronger Pull", "cost": 100},
-			{"label": "Extended Duration", "cost": 250},
-			{"label": "Event Horizon", "cost": 600}
-		]
-	}
-}
-var left_level = 0
-var right_level = 0
-var chosen_branch = ""
 
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
 		return
+	
 	var ucost = 0
 	if branch == "left":
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
+		
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
 		return
+		
 	currency_manager.spend_shellings(ucost)
-	if chosen_branch == "":
-		chosen_branch = branch  # only set AFTER confirming purchase
+	
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
+		if left_level == 3 and scatter_path_sprite:
+			sprite.texture = scatter_path_sprite
+			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
+		if right_level == 3 and singularity_path_sprite:
+			sprite.texture = singularity_path_sprite
+			
 	refresh_range_indicator()
 
 func apply_left_upgrade():
@@ -145,7 +189,7 @@ func apply_left_upgrade():
 		0:
 			multi_hole_active = true
 			hole_count = 2
-			hole_pull_multiplier = 0.7  # was 0.5
+			hole_pull_multiplier = 0.7
 			hole_scale_multiplier = 0.6
 		1:
 			hole_count = 3

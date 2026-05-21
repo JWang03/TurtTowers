@@ -4,6 +4,9 @@ var turt_scene = preload("res://Towers/turt_mine.tscn")
 @export var spawn_interval: float = 0.4
 @export var search_radius: float = 120.0
 
+@export var mass_production_sprite: Texture2D
+@export var mega_turt_sprite: Texture2D
+
 var path_node: Path2D = null
 var spawn_offset: float = 0.0
 var factory_active: bool = false
@@ -16,6 +19,7 @@ var turt_scale_multiplier: float = 1.0
 var turt_health: int = 1
 
 @onready var spawn_timer: Timer = Timer.new()
+@onready var base_sprite = $Sprite2D 
 
 func _ready():
 	super._ready()
@@ -137,9 +141,13 @@ func purchase_upgrade(branch: String):
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
+		if left_level == 3 and mass_production_sprite:
+			base_sprite.texture = mass_production_sprite
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
+		if right_level == 3 and mega_turt_sprite:
+			base_sprite.texture = mega_turt_sprite
 	refresh_range_indicator()
 
 func apply_left_upgrade():

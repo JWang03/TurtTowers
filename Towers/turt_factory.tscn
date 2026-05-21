@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://d0wiw8h7x0umg"]
 
 [ext_resource type="Script" uid="uid://c6osmgro2bjul" path="res://Towers/turt_factory.gd" id="1_a6nrm"]
+[ext_resource type="Texture2D" uid="uid://daek5hdvdfbuw" path="res://textures/image-removebg-preview (55).png" id="2_cg8qi"]
 [ext_resource type="Texture2D" uid="uid://djhx0xow36mcw" path="res://textures/image-removebg-preview (30).png" id="2_drv0h"]
+[ext_resource type="Texture2D" uid="uid://dlo61uwiuqh27" path="res://textures/image-removebg-preview (54).png" id="3_501lu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t8176"]
 radius = 68.06615
@@ -10,8 +12,10 @@ radius = 68.06615
 radius = 18.027756
 
 [node name="turt_factory" type="StaticBody2D" unique_id=1699440667]
+z_index = 4096
 script = ExtResource("1_a6nrm")
-cost = 250.0
+mass_production_sprite = ExtResource("2_cg8qi")
+mega_turt_sprite = ExtResource("3_501lu")
 
 [node name="Range" type="Area2D" parent="." unique_id=2028278944]
 

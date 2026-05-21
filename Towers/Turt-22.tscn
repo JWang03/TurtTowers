@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cfxko1b87aspq"]
 
 [ext_resource type="Script" uid="uid://bllpuwefehxwx" path="res://Towers/Turt-22.gd" id="1_jaf4s"]
+[ext_resource type="Texture2D" uid="uid://bfdstwmpux07o" path="res://textures/image-removebg-preview (46).png" id="2_433y3"]
 [ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://textures/image-removebg-preview (34).png" id="2_mxnku"]
+[ext_resource type="Texture2D" uid="uid://bd8q54r5qvpwe" path="res://textures/image-removebg-preview (47).png" id="3_ctm21"]
 [ext_resource type="Texture2D" uid="uid://8ncarvs5d5hc" path="res://textures/helipad.png" id="3_g7pya"]
 
 [sub_resource type="Curve2D" id="Curve2D_mmx3w"]
@@ -18,6 +20,8 @@ collision_layer = 2
 script = ExtResource("1_jaf4s")
 flight_speed = 30.0
 spread_angle = 30.0
+omni_sprite = ExtResource("2_433y3")
+railgun_sprite = ExtResource("3_ctm21")
 fire_rate = 0.2
 cost = 200.0
 

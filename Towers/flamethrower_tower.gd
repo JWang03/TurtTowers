@@ -2,10 +2,15 @@ extends TowerBase
 
 @export var damage_per_tick: float = 5
 @export var damage_frequency: float = 0.15
+
+@export var napalm_sprite: Texture2D
+@export var flashpoint_sprite: Texture2D
+
 @onready var head = $Head
 @onready var flame_anim = $Head/AnimatedSprite2D
 @onready var fire_area = $Head/FireDamageArea
 @onready var damage_timer = $Head/DamageTimer
+@onready var base_sprite = $Sprite2D 
 
 var target_zombie: Node2D = null
 var slow_active: bool = false
@@ -66,7 +71,6 @@ func start_flame():
 func stop_flame():
 	flame_anim.stop()
 	damage_timer.stop()
-	# clear debuffs when flame stops
 	if slow_active or armor_shred_active:
 		for body in fire_area.get_overlapping_bodies():
 			if body.is_in_group("zombies") and is_instance_valid(body):
@@ -130,26 +134,27 @@ func purchase_upgrade(branch: String):
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
+		if left_level == 3 and napalm_sprite:
+			base_sprite.texture = napalm_sprite
+			base_sprite.scale = Vector2(0.13,0.13)
+			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
+		if right_level == 3 and flashpoint_sprite:
+			base_sprite.texture = flashpoint_sprite
+			base_sprite.scale = Vector2(0.13,0.13)
+			
 	refresh_range_indicator()
 
 func apply_left_upgrade():
 	match left_level:
-		0:
-			damage_per_tick *= 2.0
-		1:
-			fire_area.scale *= 1.5
-		2:
-			# Napalm handled in zombie script via is_burning
-			flashpoint_active = true
+		0: damage_per_tick *= 2.0
+		1: fire_area.scale *= 1.5
+		2: flashpoint_active = true
 
 func apply_right_upgrade():
 	match right_level:
-		0:
-			slow_active = true
-		1:
-			armor_shred_active = true
-		2:
-			flashpoint_active = true
+		0: slow_active = true
+		1: armor_shred_active = true
+		2: flashpoint_active = true

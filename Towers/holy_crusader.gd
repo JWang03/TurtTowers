@@ -1,12 +1,14 @@
 extends TowerBase
 
-
-
 @export var damage: int = 100
+
+@export var demonic_sprite: Texture2D
+@export var angelic_sprite: Texture2D
 
 var damage_multiplier = 1
 @onready var range_area = $Range
 @onready var collision_shape = $Range/CollisionShape2D
+@onready var sprite = $Sprite2D
 
 var beam_scene = preload("res://towers/holybeam.tscn")
 var targets_in_range: Array = []
@@ -44,15 +46,14 @@ func _on_zombie_exited(body):
 
 func smite():
 	var shape = collision_shape.shape
-	var spawn_pos: Vector2
-
+	
 	if shape is CircleShape2D:
 		var radius = shape.radius
 
 		if aim:
 			var target = _get_furthest_zombie()
 			if target:
-				spawn_beam(target.global_position, target)  # pass target
+				spawn_beam(target.global_position, target)
 			else:
 				var angle = rng.randf_range(0, TAU)
 				var dist = sqrt(rng.randf()) * radius
@@ -61,7 +62,6 @@ func smite():
 			var angle = rng.randf_range(0, TAU)
 			var dist = sqrt(rng.randf()) * radius
 			spawn_beam(global_position + Vector2(cos(angle), sin(angle)) * dist, null)
-		spawn_beam(spawn_pos)
 
 func _get_furthest_zombie() -> Node2D:
 	var furthest: Node2D = null
@@ -80,6 +80,14 @@ func spawn_beam(pos: Vector2, target: Node2D = null):
 	var beam = beam_scene.instantiate()
 	beam.damage *= damage_multiplier
 	beam.target = target
+	
+	if chosen_branch == "right" and right_level >= 3:
+		beam.beam_type = "angelic"
+	elif chosen_branch == "left" and left_level >= 3:
+		beam.beam_type = "demonic"
+	else:
+		beam.beam_type = "standard"
+		
 	get_tree().current_scene.add_child(beam)
 	beam.global_position = pos
 	if beam.has_method("set_damage"):
@@ -100,11 +108,10 @@ func _input(event):
 				Signal_Bus.tower_selected.emit(self)
 				break
 
-#Upgrading:
 var tower_name = "Holy Crusaturt"
 var upgrades = {
 	"left": {
-		"name": "Radiant Fury",
+		"name": "Demonic",
 		"tiers": [
 			{"label": "Faster Attacks", "cost": 75},
 			{"label": "Increased Range", "cost": 150},
@@ -112,7 +119,7 @@ var upgrades = {
 		]
 	},
 	"right": {
-		"name": "Divine Eye",
+		"name": "Angelic",
 		"tiers": [
 			{"label": "Stronger Beams", "cost": 100},
 			{"label": "Ultra-Powerful Beams", "cost": 200},
@@ -141,10 +148,19 @@ func purchase_upgrade(branch: String):
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
+		if left_level == 3 and demonic_sprite:
+			sprite.texture = demonic_sprite
+			sprite.scale = Vector2(0.2, 0.2)
+			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
+		if right_level == 3 and angelic_sprite:
+			sprite.texture = angelic_sprite
+			sprite.scale = Vector2(0.2, 0.2)
+			
 	refresh_range_indicator()
+
 func apply_left_upgrade():
 	match left_level:
 		0: fire_rate *= .67
