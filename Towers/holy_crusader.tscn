@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://hovc6xdbesyd"]
 
 [ext_resource type="Script" uid="uid://b5w6mqry0siuw" path="res://Towers/holy_crusader.gd" id="1_l2hnx"]
+[ext_resource type="Texture2D" uid="uid://d23a3nkxq1276" path="res://textures/image-removebg-preview (48).png" id="2_o0eas"]
 [ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="2_rdfw7"]
+[ext_resource type="Texture2D" uid="uid://dmol4f2b0mxb3" path="res://textures/image-removebg-preview (49).png" id="3_v5irv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o0eas"]
 radius = 169.5671
 
 [node name="Holy_Crusader" type="StaticBody2D" unique_id=313196950]
+z_index = 4096
 script = ExtResource("1_l2hnx")
+demonic_sprite = ExtResource("2_o0eas")
+angelic_sprite = ExtResource("3_v5irv")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2047579765]
 polygon = PackedVector2Array(-10, -23, 4, -13, 17, 10, 18, 18, 10, 21, -9, 20, -15, 14, -18, -17)

@@ -1,5 +1,14 @@
 extends TowerBase
 
+@onready var attack_timer = $Timer
+@onready var shoot_point = $Muzzle
+@onready var sprite = $Sprite2D
+
+var lightning_scene = preload("res://Towers/bolt.tscn")
+
+@export var physicist_sprite: Texture2D
+@export var chemist_sprite: Texture2D
+
 @export var attack_damage = 30
 @export var max_bounces = 6
 @export var jump_range = 150.0
@@ -9,13 +18,33 @@ extends TowerBase
 @export var damage_buff_multiplier = 2
 @export var speed_buff_multiplier = 0.5
 
-@onready var attack_timer = $Timer
-@onready var shoot_point = $Muzzle
-
-var lightning_scene = preload("res://Towers/bolt.tscn")
-
 var buffed_towers_damage: Array = []
 var buffed_towers_speed: Array = []
+var left_level = 0
+var right_level = 0
+var chosen_branch = ""
+var tower_name = "Mad Scienturt"
+
+var recoil_tween: Tween
+
+var upgrades = {
+	"left": {
+		"name": "The Physicist",
+		"tiers": [
+			{"label": "Farther Chain Lightning", "cost": 75},
+			{"label": "Faster Shooting", "cost": 150},
+			{"label": "Farthest Chain Lightning", "cost": 300}
+		]
+	},
+	"right": {
+		"name": "The Chemist",
+		"tiers": [
+			{"label": "Increased Damage for Nearby Towers", "cost": 100},
+			{"label": "Faster Shooting for Nearby Towers", "cost": 200},
+			{"label": "Synthesize Extra Lives", "cost": 700}
+		]
+	}
+}
 
 func _ready():
 	super._ready()
@@ -26,8 +55,25 @@ func _ready():
 	attack_timer.start()
 
 func _process(_delta):
+	attack_timer.wait_time = attack_cooldown
+	
 	if right_level >= 1:
 		update_aura()
+		
+	var target = get_best_target()
+	if target:
+		look_at(target.global_position)
+		
+		if sprite.texture == physicist_sprite or sprite.texture == chemist_sprite:
+			rotation += PI
+		else:
+			rotation += PI
+			
+		var angle = wrapf(rotation, -PI, PI)
+		if abs(angle) > PI / 2:
+			sprite.flip_v = true
+		else:
+			sprite.flip_v = false
 
 func _on_tower_heartbeat():
 	if starter.playing == true:
@@ -37,6 +83,37 @@ func _on_tower_heartbeat():
 			var targets = find_chain_targets()
 			if targets.size() > 0:
 				execute_chain_attack(targets)
+
+
+func execute_chain_attack(targets):
+	if recoil_tween:
+		recoil_tween.kill()
+	recoil_tween = create_tween()
+	var recoil_dir = 8.0 if not sprite.flip_v else -8.0
+	recoil_tween.tween_property(sprite, "offset:y", recoil_dir, 0.05).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	recoil_tween.tween_property(sprite, "offset:y", 0.0, 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+
+	var start_pos = shoot_point.global_position
+	var shields_hit_this_chain = {}
+	
+	for target in targets:
+		if !is_instance_valid(target): continue
+		var shield_provider = get_shield_provider(target)
+		var final_target = shield_provider if shield_provider else target
+		var target_pos = final_target.global_position
+		
+		var bolt = lightning_scene.instantiate()
+		get_tree().current_scene.add_child(bolt)
+		if bolt.has_method("create_bolt"):
+			bolt.create_bolt(start_pos, target_pos)
+			
+		if shield_provider:
+			if !shields_hit_this_chain.has(shield_provider):
+				shield_provider.take_damage(attack_damage)
+				shields_hit_this_chain[shield_provider] = true
+		else:
+			target.take_damage(attack_damage)
+		start_pos = target_pos
 
 func find_chain_targets():
 	var chain = []
@@ -69,40 +146,6 @@ func find_next_jump(current, excluded):
 			best_next = zombie
 	return best_next
 
-func _input(event):
-	if not is_placed:
-		return
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		var mouse_pos = get_global_mouse_position()
-		var space = get_world_2d().direct_space_state
-		var query = PhysicsPointQueryParameters2D.new()
-		query.position = mouse_pos
-		query.collide_with_bodies = true
-		var results = space.intersect_point(query)
-		for result in results:
-			if result["collider"] == self:
-				Signal_Bus.tower_selected.emit(self)
-				break
-
-func execute_chain_attack(targets):
-	var start_pos = shoot_point.global_position
-	var shields_hit_this_chain = {}
-	for target in targets:
-		if !is_instance_valid(target): continue
-		var shield_provider = get_shield_provider(target)
-		var final_target = shield_provider if shield_provider else target
-		var target_pos = final_target.global_position
-		var bolt = lightning_scene.instantiate()
-		get_tree().current_scene.add_child(bolt)
-		if bolt.has_method("create_bolt"):
-			bolt.create_bolt(start_pos, target_pos)
-		if shield_provider:
-			if !shields_hit_this_chain.has(shield_provider):
-				shield_provider.take_damage(attack_damage)
-				shields_hit_this_chain[shield_provider] = true
-		else:
-			target.take_damage(attack_damage)
-		start_pos = target_pos
 
 func get_nearby_towers() -> Array:
 	var towers = []
@@ -158,49 +201,37 @@ func grant_extra_life():
 	if life_manager and life_manager.has_method("add_lives"):
 		life_manager.add_lives(100)
 
-var tower_name = "Mad Scienturt"
-var upgrades = {
-	"left": {
-		"name": "The Physicist",
-		"tiers": [
-			{"label": "Farther Chain Lightning", "cost": 75},
-			{"label": "Faster Shooting", "cost": 150},
-			{"label": "Farthest Chain Lightning", "cost": 300}
-		]
-	},
-	"right": {
-		"name": "The Chemist",
-		"tiers": [
-			{"label": "Increased Damage for Nearby Towers", "cost": 100},
-			{"label": "Faster Shooting for Nearby Towers", "cost": 200},
-			{"label": "Synthesize Extra Lives", "cost": 700}
-		]
-	}
-}
-var left_level = 0
-var right_level = 0
-var chosen_branch = ""
 
 func purchase_upgrade(branch: String):
 	if chosen_branch == "":
 		chosen_branch = branch
 	elif chosen_branch != branch:
 		return
+		
 	var ucost = 0
 	if branch == "left":
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
+		
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
 		return
+		
 	currency_manager.spend_shellings(ucost)
+	
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
+		if left_level == 3 and physicist_sprite:
+			sprite.texture = physicist_sprite
+			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
+		if right_level == 3 and chemist_sprite:
+			sprite.texture = chemist_sprite
+			
 	refresh_range_indicator()
 
 func apply_left_upgrade():
@@ -214,6 +245,21 @@ func apply_right_upgrade():
 		0: set_process(true)
 		1: pass
 		2: grant_extra_life()
+
+func _input(event):
+	if not is_placed:
+		return
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var mouse_pos = get_global_mouse_position()
+		var space = get_world_2d().direct_space_state
+		var query = PhysicsPointQueryParameters2D.new()
+		query.position = mouse_pos
+		query.collide_with_bodies = true
+		var results = space.intersect_point(query)
+		for result in results:
+			if result["collider"] == self:
+				Signal_Bus.tower_selected.emit(self)
+				break
 
 func sell() -> void:
 	for tower in buffed_towers_damage:
