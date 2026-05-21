@@ -17,9 +17,9 @@ signal settings_updated
 @onready var music_player = $MusicPlayer
 @onready var darkener = $MenuPanel/Darkener
 @onready var settings_rect = $MenuPanel/SettingsMenu
-@onready var cb_dropdown = $MenuPanel/SettingsMenu/CBButton
-@onready var fs_dropdown = $MenuPanel/SettingsMenu/FullscreenButton
-@onready var vol_slider = $MenuPanel/SettingsMenu/VolumeSlider
+@onready var cb_dropdown = $MenuPanel/SettingsMenu.find_child("CBButton", true, false)
+@onready var fs_dropdown = $MenuPanel/SettingsMenu.find_child("FullscreenButton", true, false)
+@onready var vol_slider = $MenuPanel/SettingsMenu.find_child("VolumeSlider", true, false)
 
 var master_bus = AudioServer.get_bus_index("Master")
 
