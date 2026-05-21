@@ -75,7 +75,7 @@ func _fire_bullet(final_target: Node2D, side_offset: float):
 func _process(_delta: float) -> void:
 	timer.wait_time = fire_rate
 
-var tower_name = "The Lieturtant"
+var tower_name = "The Lieuturtant"
 var upgrades = {
 	"left": {
 		"name": "Gunner",
