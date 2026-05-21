@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c3mseujdrscnf"]
 
 [ext_resource type="Script" uid="uid://bnhxeoqfg1ye0" path="res://Towers/airplane.gd" id="1_k6v5m"]
-[ext_resource type="Texture2D" uid="uid://38e3k6dy7y1m" path="res://textures/F-15-Fighter-Jet.png" id="2_k6v5m"]
+[ext_resource type="Texture2D" uid="uid://38e3k6dy7y1m" path="res://Textures/F-15-Fighter-Jet.png" id="2_k6v5m"]
 
 [sub_resource type="Curve2D" id="Curve2D_mmx3w"]
 _data = {

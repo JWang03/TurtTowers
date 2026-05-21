@@ -18,7 +18,7 @@ var aim = false
 
 func _ready():
 	super._ready()
-	cost = 50
+	cost = 125
 	fire_rate = 0.4
 	rng.randomize()
 	range_area.body_entered.connect(_on_zombie_entered)
@@ -132,22 +132,19 @@ var right_level = 0
 var chosen_branch = ""
 
 func purchase_upgrade(branch: String):
-	if chosen_branch == "":
-		chosen_branch = branch
-	elif chosen_branch != branch:
+	if chosen_branch != "" and chosen_branch != branch:
 		return
-	
 	var ucost = 0
 	if branch == "left":
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
-	
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
 		return
 	currency_manager.spend_shellings(ucost)
-	
+	if chosen_branch == "":
+		chosen_branch = branch  # only set AFTER confirming purchase
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1

@@ -198,9 +198,7 @@ var upgrades = {
 }
 
 func purchase_upgrade(branch: String):
-	if chosen_branch == "":
-		chosen_branch = branch
-	elif chosen_branch != branch:
+	if chosen_branch != "" and chosen_branch != branch:
 		return
 	
 	var ucost = 0

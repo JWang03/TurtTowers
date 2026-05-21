@@ -23,6 +23,7 @@ spread_angle = 30.0
 omni_sprite = ExtResource("2_433y3")
 railgun_sprite = ExtResource("3_ctm21")
 fire_rate = 0.2
+cost = 200.0
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1448541128]
 position = Vector2(-492.99994, -1751)

@@ -130,9 +130,7 @@ func _fire_bullet(final_target: Node2D, side_offset: float):
 
 
 func purchase_upgrade(branch: String):
-	if chosen_branch == "":
-		chosen_branch = branch
-	elif chosen_branch != branch:
+	if chosen_branch != "" and chosen_branch != branch:
 		return
 		
 	var ucost = 0

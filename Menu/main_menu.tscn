@@ -3,20 +3,27 @@
 [ext_resource type="Texture2D" uid="uid://cre7gw3yqm71l" path="res://Menu/Images/HomeUI.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://cs0eavru7btjc" path="res://Menu/main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Shader" uid="uid://qwjefknosa0f" path="res://Menu/main_menu.gdshader" id="2_glbon"]
-[ext_resource type="Texture2D" uid="uid://i1juakbc7vns" path="res://Menu/Images/SettingsMenu.png" id="3_jix8l"]
 [ext_resource type="Texture2D" uid="uid://igbigqabkd3d" path="res://Menu/Images/Maps/SandyShores.png" id="3_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="4_o4wy8"]
 [ext_resource type="Shader" uid="uid://csheady12o671" path="res://Menu/gradient.gdshader" id="6_rw3mj"]
-[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="7_cn2sd"]
-[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="8_ywk15"]
-[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="9_ws7s4"]
-[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="10_fduiw"]
-[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="11_fduiw"]
-[ext_resource type="Texture2D" uid="uid://cl53dg7b75ecr" path="res://textures/paper_airplane.png" id="12_cgse8"]
+[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://Textures/bomb_tower.png" id="7_cn2sd"]
+[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://Textures/electric_tower.png" id="8_ywk15"]
+[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://Textures/blackhole_tower.png" id="9_ws7s4"]
+[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://Textures/godzilla_tower.png" id="10_fduiw"]
+[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://Textures/bullet_tower.png" id="11_fduiw"]
 [ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://exit_button.tres" id="13_o4wy8"]
-[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="15_dqyvv"]
-[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="16_m8x2t"]
-[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/TurtTown.png" id="17_trttn"]
+[ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://Textures/image-removebg-preview (34).png" id="14_6v0gp"]
+[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://Textures/holy_crusader.png" id="15_dqyvv"]
+[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://Textures/Turt^3 Sahur.png" id="16_m8x2t"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://Textures/TurtTown.png" id="17_trttn"]
+[ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://Textures/image-removebg-preview (15).png" id="18_6v0gp"]
+[ext_resource type="Shader" uid="uid://7ge7521o8ccw" path="res://Menu/towersui.gdshader" id="18_is5sc"]
+[ext_resource type="Script" uid="uid://t0tqkn4slqu8" path="res://Menu/arrow.gd" id="18_tek0n"]
+[ext_resource type="Texture2D" uid="uid://djhx0xow36mcw" path="res://Textures/image-removebg-preview (30).png" id="19_a0ncs"]
+[ext_resource type="Shader" uid="uid://df18vh8hlpx1q" path="res://Menu/towers2.gdshader" id="20_32sed"]
+[ext_resource type="Texture2D" uid="uid://dr8x45h4e2lwn" path="res://Textures/image-removebg-preview (31).png" id="20_fqpxm"]
+[ext_resource type="Script" uid="uid://ww178o82fnsd" path="res://Menu/upgrade_trees.gd" id="21_6v0gp"]
+[ext_resource type="Theme" uid="uid://boaafitswomev" path="res://upgrade_buttons.tres" id="21_qn1v7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
@@ -80,7 +87,284 @@ corner_radius_bottom_left = 8
 shader = ExtResource("2_glbon")
 shader_parameter/mode = 0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_panel"]
+bg_color = Color(0.18, 0.52, 0.53, 0.96)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.99, 0.82, 0.32, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.02, 0.08, 0.09, 0.55)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_button"]
+bg_color = Color(0.99, 0.82, 0.32, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.06, 0.24, 0.26, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_button_pressed"]
+bg_color = Color(0.84, 0.6, 0.18, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.06, 0.24, 0.26, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_button_hover"]
+bg_color = Color(1, 0.91, 0.47, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.06, 0.24, 0.26, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_field"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.06, 0.24, 0.26, 0.72)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.99, 0.82, 0.32, 0.65)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="GDScript" id="GDScript_turts"]
+script/source = "extends CanvasLayer
+
+const UPGRADE_SCENE_PATH_TEMPLATE := \"res://Menu/Upgrades/tower_%s_upgrades.tscn\"
+const CARD_BUTTON_NAME := \"CardButton\"
+
+@onready var upgrades_tree: CanvasLayer = get_parent().get_node_or_null(\"UpgradeTrees\")
+
+var current_upgrade_instance: Node
+
+func _ready() -> void:
+	_setup_card_buttons()
+	_connect_existing_back_button()
+	show_tower_cards()
+	
+func _setup_card_buttons() -> void:
+	for child in get_children():
+		if child is Control and child.name.is_valid_int():
+			_setup_card_button(child)
+			
+func _setup_card_button(card: Control) -> void:
+	var button := card.get_node_or_null(CARD_BUTTON_NAME) as TextureButton
+	if button == null:
+		button = TextureButton.new()
+		button.name = CARD_BUTTON_NAME
+		button.set_anchors_preset(Control.PRESET_FULL_RECT)
+		card.add_child(button)
+		for node in card.get_children():
+			if node != button: node.reparent(button, true)
+	if not button.pressed.is_connected(_on_card_pressed):
+		button.pressed.connect(_on_card_pressed.bind(card))
+		
+func _on_card_pressed(card: Control) -> void:
+	_open_tower_upgrades(card)
+	
+func _open_tower_upgrades(card: Control) -> void:
+	if upgrades_tree:
+		upgrades_tree.show()
+		var turt_parent = upgrades_tree.get_node_or_null(\"Turt\")
+		if turt_parent:
+			for i in range(1, 13):
+				var sprite = turt_parent.get_node_or_null(str(i))
+				if sprite:
+					sprite.visible = (str(i) == card.name)
+		var card_button = card.get_node_or_null(\"CardButton\")
+		var orig_label = card_button.get_node_or_null(\"NameLabel\") if card_button else null
+		var turt_label = upgrades_tree.get_node_or_null(\"Turt/NameLabel\")
+		if turt_label and orig_label:
+			turt_label.text = orig_label.text
+			upgrades_tree.load_tower_data(orig_label.text)
+	var scene_path := UPGRADE_SCENE_PATH_TEMPLATE % card.name
+	var packed_scene := load(scene_path)
+	if packed_scene is PackedScene:
+		_clear_current_upgrade()
+		current_upgrade_instance = packed_scene.instantiate()
+		if upgrades_tree:
+			upgrades_tree.add_child(current_upgrade_instance)
+	hide()
+	if upgrades_tree: upgrades_tree.show()
+	
+func _clear_current_upgrade() -> void:
+	if current_upgrade_instance:
+		current_upgrade_instance.queue_free()
+		current_upgrade_instance = null
+		
+func _on_back_pressed() -> void:
+	show_tower_cards()
+	
+func show_tower_cards() -> void:
+	if upgrades_tree:
+		upgrades_tree.hide()
+		if upgrades_tree.has_method(\"reset_upgrades\"):
+			upgrades_tree.reset_upgrades()
+	show()
+	_clear_current_upgrade()
+	
+func close_upgrades_if_open() -> bool:
+	if upgrades_tree and upgrades_tree.visible:
+		show_tower_cards()
+		return true
+	return false
+	
+func _connect_existing_back_button() -> void:
+	var back_btn = get_parent().get_node_or_null(\"BackButton\")
+	if back_btn and not back_btn.pressed.is_connected(_on_back_pressed):
+		back_btn.pressed.connect(_on_back_pressed)
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cn2sd"]
+shader = ExtResource("6_rw3mj")
+shader_parameter/top_color = Color(0.22, 0.72, 0.18, 1)
+shader_parameter/bottom_color = Color(0.08, 0.45, 0.12, 1)
+shader_parameter/radius = 0.15
+shader_parameter/border_width = 0.025
+shader_parameter/border_color = Color(0.05, 0.22, 0.07, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lb8o0"]
+shader = ExtResource("18_is5sc")
+shader_parameter/speed = 0.3
+shader_parameter/scale = 6.0
+shader_parameter/brightness = 0.15
+shader_parameter/water_color = Color(0, 0.15, 0.3, 1)
+shader_parameter/caustic_color = Color(0.1, 0.6, 0.8, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmyal"]
+shader = ExtResource("20_32sed")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6v0gp"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.101960786, 0.41960785, 0.22745098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3764706, 1, 0.6666667, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0ncs"]
+bg_color = Color(0.05882353, 0.27058825, 0.14509805, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1882353, 0.8, 0.46666667, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 12
+corner_detail = 16
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqpxm"]
+bg_color = Color(0.16470589, 0.6039216, 0.32156864, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5647059, 1, 0.8, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tek0n"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.72156864, 0.22745098, 0.0627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.46666667, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32sed"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.72156864, 0.22745098, 0.0627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.46666667, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn1v7"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.36078432, 0.18039216, 0.05490196, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.72156864, 0.5254902, 0.30588236, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 16
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6v0gp"]
 shader = ExtResource("6_rw3mj")
 shader_parameter/top_color = Color(0.22, 0.72, 0.18, 1)
 shader_parameter/bottom_color = Color(0.08, 0.45, 0.12, 1)
@@ -139,6 +423,7 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dqyvv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_m8x2t")
 
 [node name="MapSelectionLayer" type="CanvasLayer" parent="." unique_id=280550618]
+visible = false
 
 [node name="Darkener" type="ColorRect" parent="MapSelectionLayer" unique_id=472727133]
 anchors_preset = 15
@@ -280,47 +565,112 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
-[node name="SettingsMenu" type="TextureRect" parent="SettingsLayer" unique_id=965433223]
+[node name="SettingsMenu" type="PanelContainer" parent="SettingsLayer" unique_id=965433223]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -336.5
-offset_top = -185.5
-offset_right = 336.5
-offset_bottom = 185.5
+offset_left = -260.0
+offset_top = -170.0
+offset_right = 260.0
+offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_jix8l")
+theme_override_styles/panel = SubResource("StyleBoxFlat_settings_panel")
 
-[node name="VolumeSlider" type="HSlider" parent="SettingsLayer/SettingsMenu" unique_id=875006373]
-layout_mode = 0
-offset_left = 250.5
-offset_top = 1.5
-offset_right = 518.5
-offset_bottom = 242.5
+[node name="Margin" type="MarginContainer" parent="SettingsLayer/SettingsMenu" unique_id=630281905]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 22
+
+[node name="Content" type="VBoxContainer" parent="SettingsLayer/SettingsMenu/Margin" unique_id=975809330]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="HBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content" unique_id=1868137793]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="SettingsLayer/SettingsMenu/Margin/Content/Header" unique_id=9618431]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.96, 0.72, 1)
+theme_override_colors/font_outline_color = Color(0.04, 0.19, 0.2, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 34
+text = "Settings"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="SettingsLayer/SettingsMenu/Margin/Content/Header" unique_id=2092980879]
+custom_minimum_size = Vector2(48, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.04, 0.19, 0.2, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_settings_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_settings_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_settings_button_hover")
+text = "X"
+
+[node name="Rows" type="VBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content" unique_id=2126154164]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="VolumeRow" type="PanelContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows" unique_id=258813080]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_settings_field")
+
+[node name="VolumeLayout" type="HBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/VolumeRow" unique_id=113242412]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="VolumeLabel" type="Label" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/VolumeRow/VolumeLayout" unique_id=1626674376]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.72, 1)
+theme_override_colors/font_outline_color = Color(0.04, 0.19, 0.2, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "Volume"
+vertical_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/VolumeRow/VolumeLayout" unique_id=875006373]
+layout_mode = 2
+size_flags_horizontal = 3
 min_value = 0.001
 max_value = 1.0
-step = 0.1
+step = 0.05
 value = 0.501
 
-[node name="FullscreenButton" type="OptionButton" parent="SettingsLayer/SettingsMenu" unique_id=873207580]
-custom_minimum_size = Vector2(168, 20)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -326.5
-offset_top = -190.5
-offset_right = -151.5
-offset_bottom = -165.5
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 12
-autowrap_trim_flags = 192
+[node name="FullscreenRow" type="PanelContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows" unique_id=1728756337]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_settings_field")
+
+[node name="FullscreenLayout" type="HBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/FullscreenRow" unique_id=1606461916]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="FullscreenLabel" type="Label" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/FullscreenRow/FullscreenLayout" unique_id=1898143306]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.72, 1)
+theme_override_colors/font_outline_color = Color(0.04, 0.19, 0.2, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "Display"
+vertical_alignment = 1
+
+[node name="FullscreenButton" type="OptionButton" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/FullscreenRow/FullscreenLayout" unique_id=873207580]
+custom_minimum_size = Vector2(230, 38)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.04, 0.19, 0.2, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_settings_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_settings_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_settings_button_hover")
 item_count = 3
 popup/item_0/text = "Windowed"
 popup/item_0/id = 0
@@ -329,22 +679,33 @@ popup/item_1/id = 1
 popup/item_2/text = "Exclusive Fullscreen"
 popup/item_2/id = 2
 
-[node name="CBButton" type="OptionButton" parent="SettingsLayer/SettingsMenu" unique_id=558514119]
-custom_minimum_size = Vector2(168, 20)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -326.5
-offset_top = -152.5
-offset_right = -151.5
-offset_bottom = -127.5
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 12
-autowrap_trim_flags = 192
+[node name="ColorblindRow" type="PanelContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows" unique_id=2089463676]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_settings_field")
+
+[node name="ColorblindLayout" type="HBoxContainer" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/ColorblindRow" unique_id=376497132]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="ColorblindLabel" type="Label" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/ColorblindRow/ColorblindLayout" unique_id=1109665126]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.72, 1)
+theme_override_colors/font_outline_color = Color(0.04, 0.19, 0.2, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "Color Filter"
+vertical_alignment = 1
+
+[node name="CBButton" type="OptionButton" parent="SettingsLayer/SettingsMenu/Margin/Content/Rows/ColorblindRow/ColorblindLayout" unique_id=558514119]
+custom_minimum_size = Vector2(230, 38)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.04, 0.19, 0.2, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_settings_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_settings_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_settings_button_hover")
 item_count = 4
 popup/item_0/text = "Default"
 popup/item_0/id = 0
@@ -355,18 +716,14 @@ popup/item_2/id = 2
 popup/item_3/text = "Tritanopia"
 popup/item_3/id = 3
 
-[node name="Button" type="Button" parent="SettingsLayer/SettingsMenu" unique_id=2092980879]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 275.5
-offset_top = 324.5
-offset_right = 399.5
-offset_bottom = 352.5
-
 [node name="TowersLayer" type="CanvasLayer" parent="." unique_id=1277460239]
 visible = false
 
-[node name="Darkener" type="ColorRect" parent="TowersLayer" unique_id=608754605]
+[node name="Turts" type="CanvasLayer" parent="TowersLayer" unique_id=1070375472]
+visible = false
+script = SubResource("GDScript_turts")
+
+[node name="Darkener" type="ColorRect" parent="TowersLayer/Turts" unique_id=608754605]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -374,20 +731,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
-[node name="ReturnTowers" type="Button" parent="TowersLayer" unique_id=1651348533]
-material = SubResource("ShaderMaterial_o4wy8")
-offset_left = 12.0
-offset_top = 11.0
-offset_right = 72.0
-offset_bottom = 71.0
-theme_override_styles/normal = ExtResource("13_o4wy8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o4wy8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dqyvv")
-icon = ExtResource("4_o4wy8")
-icon_alignment = 1
-expand_icon = true
-
-[node name="LeftArrow" type="Button" parent="TowersLayer" unique_id=727303500]
+[node name="LeftArrow" type="Button" parent="TowersLayer/Turts" unique_id=727303500]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -401,7 +745,7 @@ theme_override_font_sizes/font_size = 100
 text = "<"
 flat = true
 
-[node name="RightArrow" type="Button" parent="TowersLayer" unique_id=389936466]
+[node name="RightArrow" type="Button" parent="TowersLayer/Turts" unique_id=389936466]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -418,7 +762,7 @@ theme_override_font_sizes/font_size = 100
 text = ">"
 flat = true
 
-[node name="1" type="ColorRect" parent="TowersLayer" unique_id=130209667]
+[node name="1" type="ColorRect" parent="TowersLayer/Turts" unique_id=130209667]
 material = SubResource("ShaderMaterial_cn2sd")
 offset_left = 267.0
 offset_top = 87.0
@@ -426,23 +770,22 @@ offset_right = 454.0
 offset_bottom = 311.0
 color = Color(0.922642, 0.11762213, 0.19775996, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/1" unique_id=101010101]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/1" unique_id=101010101]
 layout_mode = 0
 offset_left = -3.0
-offset_top = 2.0
 offset_right = 187.0
-offset_bottom = 30.0
+offset_bottom = 28.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Bomb Tower"
+text = "TNTurt"
 horizontal_alignment = 1
 
-[node name="BombTower" type="Sprite2D" parent="TowersLayer/1" unique_id=613190859]
-position = Vector2(95, 119)
-scale = Vector2(0.45, 0.47)
+[node name="BombTower" type="Sprite2D" parent="TowersLayer/Turts/1" unique_id=613190859]
+position = Vector2(93.5, 119)
+scale = Vector2(0.42, 0.439)
 texture = ExtResource("7_cn2sd")
 
-[node name="2" type="ColorRect" parent="TowersLayer" unique_id=1321598397]
+[node name="2" type="ColorRect" parent="TowersLayer/Turts" unique_id=1321598397]
 material = SubResource("ShaderMaterial_cn2sd")
 offset_left = 483.0
 offset_top = 85.0
@@ -450,22 +793,21 @@ offset_right = 670.0
 offset_bottom = 309.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/2" unique_id=202020202]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/2" unique_id=202020202]
 layout_mode = 0
-offset_top = 5.0
 offset_right = 187.0
-offset_bottom = 35.0
+offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Electric Tower"
+text = "Mad Scienturt"
 horizontal_alignment = 1
 
-[node name="ElectricTower" type="Sprite2D" parent="TowersLayer/2" unique_id=1083541443]
-position = Vector2(88, 125)
-scale = Vector2(0.42, 0.457)
+[node name="ElectricTower" type="Sprite2D" parent="TowersLayer/Turts/2" unique_id=1083541443]
+position = Vector2(93.5, 123.5)
+scale = Vector2(0.4, 0.435)
 texture = ExtResource("8_ywk15")
 
-[node name="3" type="ColorRect" parent="TowersLayer" unique_id=2013696268]
+[node name="3" type="ColorRect" parent="TowersLayer/Turts" unique_id=2013696268]
 material = SubResource("ShaderMaterial_cn2sd")
 offset_left = 700.0
 offset_top = 85.0
@@ -473,22 +815,21 @@ offset_right = 887.0
 offset_bottom = 309.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/3" unique_id=303030303]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/3" unique_id=303030303]
 layout_mode = 0
-offset_top = 5.0
 offset_right = 187.0
-offset_bottom = 35.0
+offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Blackhole Tower"
+text = "Graviturt"
 horizontal_alignment = 1
 
-[node name="BlackholeTower" type="Sprite2D" parent="TowersLayer/3" unique_id=1263058208]
-position = Vector2(92, 124)
-scale = Vector2(0.55, 0.597)
+[node name="BlackholeTower" type="Sprite2D" parent="TowersLayer/Turts/3" unique_id=1263058208]
+position = Vector2(93.5, 124)
+scale = Vector2(0.5, 0.543)
 texture = ExtResource("9_ws7s4")
 
-[node name="4" type="ColorRect" parent="TowersLayer" unique_id=1003340736]
+[node name="4" type="ColorRect" parent="TowersLayer/Turts" unique_id=1003340736]
 material = SubResource("ShaderMaterial_cn2sd")
 offset_left = 266.0
 offset_top = 339.0
@@ -496,22 +837,21 @@ offset_right = 453.0
 offset_bottom = 563.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/4" unique_id=404040404]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/4" unique_id=404040404]
 layout_mode = 0
-offset_top = 5.0
 offset_right = 187.0
-offset_bottom = 35.0
+offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Godzilla Tower"
+text = "Turtosaurus Rex"
 horizontal_alignment = 1
 
-[node name="GodzillaTower" type="Sprite2D" parent="TowersLayer/4" unique_id=673475163]
-position = Vector2(90, 125)
-scale = Vector2(0.7, 0.716)
+[node name="GodzillaTower" type="Sprite2D" parent="TowersLayer/Turts/4" unique_id=673475163]
+position = Vector2(93.5, 118)
+scale = Vector2(0.62, 0.634)
 texture = ExtResource("10_fduiw")
 
-[node name="5" type="ColorRect" parent="TowersLayer" unique_id=1479644517]
+[node name="5" type="ColorRect" parent="TowersLayer/Turts" unique_id=1479644517]
 material = SubResource("ShaderMaterial_cn2sd")
 offset_left = 483.0
 offset_top = 339.0
@@ -519,22 +859,21 @@ offset_right = 670.0
 offset_bottom = 563.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/5" unique_id=505050505]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/5" unique_id=505050505]
 layout_mode = 0
-offset_top = 5.0
 offset_right = 187.0
-offset_bottom = 35.0
+offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Bullet Tower"
+text = "The Lieturtant"
 horizontal_alignment = 1
 
-[node name="BulletTower" type="Sprite2D" parent="TowersLayer/5" unique_id=372846596]
-position = Vector2(93, 126.999985)
-scale = Vector2(0.489, 0.4845)
+[node name="BulletTower" type="Sprite2D" parent="TowersLayer/Turts/5" unique_id=372846596]
+position = Vector2(93.5, 127)
+scale = Vector2(0.46, 0.455)
 texture = ExtResource("11_fduiw")
 
-[node name="6" type="ColorRect" parent="TowersLayer" unique_id=831493604]
+[node name="6" type="ColorRect" parent="TowersLayer/Turts" unique_id=831493604]
 material = SubResource("ShaderMaterial_cn2sd")
 offset_left = 700.0
 offset_top = 339.0
@@ -542,23 +881,21 @@ offset_right = 887.0
 offset_bottom = 563.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/6" unique_id=606060606]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/6" unique_id=606060606]
 layout_mode = 0
-offset_top = 5.0
 offset_right = 187.0
-offset_bottom = 35.0
+offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Ace Tower"
+text = "Fighturt Jet"
 horizontal_alignment = 1
 
-[node name="PaperAirplane" type="Sprite2D" parent="TowersLayer/6" unique_id=1811139515]
-position = Vector2(82.000015, 125.00001)
-rotation = -0.60613
-scale = Vector2(0.7, 0.859)
-texture = ExtResource("12_cgse8")
+[node name="PaperAirplane" type="Sprite2D" parent="TowersLayer/Turts/6" unique_id=1811139515]
+position = Vector2(93.5, 120)
+scale = Vector2(0.5, 0.613)
+texture = ExtResource("14_6v0gp")
 
-[node name="7" type="ColorRect" parent="TowersLayer" unique_id=777777777]
+[node name="7" type="ColorRect" parent="TowersLayer/Turts" unique_id=777777777]
 material = SubResource("ShaderMaterial_cn2sd")
 offset_left = 267.0
 offset_top = 87.0
@@ -566,22 +903,21 @@ offset_right = 454.0
 offset_bottom = 311.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/7" unique_id=777777778]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/7" unique_id=777777778]
 layout_mode = 0
-offset_top = 5.0
 offset_right = 187.0
-offset_bottom = 35.0
+offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "Holy Crusader"
+text = "Holy Crusaturt"
 horizontal_alignment = 1
 
-[node name="HolyCrusader" type="Sprite2D" parent="TowersLayer/7" unique_id=1133539019]
-position = Vector2(91, 128)
-scale = Vector2(0.175, 0.175)
+[node name="HolyCrusader" type="Sprite2D" parent="TowersLayer/Turts/7" unique_id=1133539019]
+position = Vector2(93.5, 128)
+scale = Vector2(0.165, 0.165)
 texture = ExtResource("15_dqyvv")
 
-[node name="8" type="ColorRect" parent="TowersLayer" unique_id=888888888]
+[node name="8" type="ColorRect" parent="TowersLayer/Turts" unique_id=888888888]
 material = SubResource("ShaderMaterial_cn2sd")
 offset_left = 483.0
 offset_top = 85.0
@@ -589,22 +925,21 @@ offset_right = 670.0
 offset_bottom = 309.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/8" unique_id=888888889]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/8" unique_id=888888889]
 layout_mode = 0
-offset_top = 5.0
 offset_right = 187.0
-offset_bottom = 35.0
+offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
 text = "Turt Sahur"
 horizontal_alignment = 1
 
-[node name="Turt^3Sahur" type="Sprite2D" parent="TowersLayer/8" unique_id=334133041]
-position = Vector2(91, 107)
-scale = Vector2(0.43, 0.43)
+[node name="Turt^3Sahur" type="Sprite2D" parent="TowersLayer/Turts/8" unique_id=334133041]
+position = Vector2(93.5, 107)
+scale = Vector2(0.42, 0.42)
 texture = ExtResource("16_m8x2t")
 
-[node name="9" type="ColorRect" parent="TowersLayer" unique_id=999999999]
+[node name="9" type="ColorRect" parent="TowersLayer/Turts" unique_id=999999999]
 material = SubResource("ShaderMaterial_cn2sd")
 offset_left = 700.0
 offset_top = 85.0
@@ -612,22 +947,21 @@ offset_right = 887.0
 offset_bottom = 309.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/9" unique_id=999999998]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/9" unique_id=999999998]
 layout_mode = 0
-offset_top = 5.0
 offset_right = 187.0
-offset_bottom = 35.0
+offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
 text = "Turt Town"
 horizontal_alignment = 1
 
-[node name="TurtTown" type="Sprite2D" parent="TowersLayer/9" unique_id=9009]
-position = Vector2(91, 119)
-scale = Vector2(0.12, 0.12)
+[node name="TurtTown" type="Sprite2D" parent="TowersLayer/Turts/9" unique_id=9009]
+position = Vector2(93.5, 107)
+scale = Vector2(0.365, 0.355)
 texture = ExtResource("17_trttn")
 
-[node name="10" type="ColorRect" parent="TowersLayer" unique_id=101001001]
+[node name="10" type="ColorRect" parent="TowersLayer/Turts" unique_id=101001001]
 material = SubResource("ShaderMaterial_cn2sd")
 offset_left = 266.0
 offset_top = 339.0
@@ -635,16 +969,21 @@ offset_right = 453.0
 offset_bottom = 563.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/10" unique_id=101101101]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/10" unique_id=101101101]
 layout_mode = 0
-offset_top = 5.0
 offset_right = 187.0
-offset_bottom = 35.0
+offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
+text = "Flameturter"
 horizontal_alignment = 1
 
-[node name="11" type="ColorRect" parent="TowersLayer" unique_id=111011101]
+[node name="Sprite2D" type="Sprite2D" parent="TowersLayer/Turts/10" unique_id=1721001357]
+position = Vector2(93.5, 115)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("18_6v0gp")
+
+[node name="11" type="ColorRect" parent="TowersLayer/Turts" unique_id=111011101]
 material = SubResource("ShaderMaterial_cn2sd")
 offset_left = 483.0
 offset_top = 339.0
@@ -652,16 +991,21 @@ offset_right = 670.0
 offset_bottom = 563.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/11" unique_id=111111112]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/11" unique_id=111111112]
 layout_mode = 0
-offset_top = 5.0
 offset_right = 187.0
-offset_bottom = 35.0
+offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
+text = "Shell Facturtory"
 horizontal_alignment = 1
 
-[node name="12" type="ColorRect" parent="TowersLayer" unique_id=121012101]
+[node name="Sprite2D" type="Sprite2D" parent="TowersLayer/Turts/11" unique_id=2134811291]
+position = Vector2(91, 124)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("19_a0ncs")
+
+[node name="12" type="ColorRect" parent="TowersLayer/Turts" unique_id=121012101]
 material = SubResource("ShaderMaterial_cn2sd")
 offset_left = 700.0
 offset_top = 339.0
@@ -669,14 +1013,308 @@ offset_right = 887.0
 offset_bottom = 563.0
 color = Color(0.18431373, 0.6039216, 0.07450981, 1)
 
-[node name="NameLabel" type="Label" parent="TowersLayer/12" unique_id=121112111]
+[node name="NameLabel" type="Label" parent="TowersLayer/Turts/12" unique_id=121112111]
 layout_mode = 0
-offset_top = 5.0
 offset_right = 187.0
-offset_bottom = 35.0
+offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
+text = "Turtory Bomb"
 horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="TowersLayer/Turts/12" unique_id=957336173]
+position = Vector2(85, 121)
+scale = Vector2(0.415, 0.415)
+texture = ExtResource("20_fqpxm")
+
+[node name="UpgradeTrees" type="CanvasLayer" parent="TowersLayer" unique_id=546907222]
+visible = false
+script = ExtResource("21_6v0gp")
+
+[node name="Arrow" type="Control" parent="TowersLayer/UpgradeTrees" unique_id=2131729710]
+z_index = 1000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_tek0n")
+
+[node name="Darkener" type="ColorRect" parent="TowersLayer/UpgradeTrees" unique_id=944427218]
+material = SubResource("ShaderMaterial_lb8o0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="ColorRect" type="ColorRect" parent="TowersLayer/UpgradeTrees" unique_id=491647528]
+material = SubResource("ShaderMaterial_vmyal")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Right" type="VBoxContainer" parent="TowersLayer/UpgradeTrees" unique_id=1570486598]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -122.5
+offset_bottom = 122.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="LeftPath" type="VBoxContainer" parent="TowersLayer/UpgradeTrees" unique_id=917165360]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 125.0
+offset_top = -194.0
+offset_right = 375.0
+offset_bottom = 306.0
+grow_vertical = 2
+theme = ExtResource("21_qn1v7")
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="U1" type="Button" parent="TowersLayer/UpgradeTrees/LeftPath" unique_id=296488674]
+material = SubResource("ShaderMaterial_o4wy8")
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("21_qn1v7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
+icon_alignment = 2
+expand_icon = true
+
+[node name="U2" type="Button" parent="TowersLayer/UpgradeTrees/LeftPath" unique_id=766573212]
+material = SubResource("ShaderMaterial_o4wy8")
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("21_qn1v7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="U3" type="Button" parent="TowersLayer/UpgradeTrees/LeftPath" unique_id=411433089]
+material = SubResource("ShaderMaterial_o4wy8")
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("21_qn1v7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="RightPath" type="VBoxContainer" parent="TowersLayer/UpgradeTrees" unique_id=505643610]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -194.0
+offset_right = -110.0
+offset_bottom = 306.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="U1" type="Button" parent="TowersLayer/UpgradeTrees/RightPath" unique_id=1834009873]
+material = SubResource("ShaderMaterial_o4wy8")
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("21_qn1v7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="U2" type="Button" parent="TowersLayer/UpgradeTrees/RightPath" unique_id=2017708627]
+material = SubResource("ShaderMaterial_o4wy8")
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("21_qn1v7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="U3" type="Button" parent="TowersLayer/UpgradeTrees/RightPath" unique_id=1555995101]
+material = SubResource("ShaderMaterial_o4wy8")
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("21_qn1v7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6v0gp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ncs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fqpxm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="LeftPathLabel" type="Button" parent="TowersLayer/UpgradeTrees" unique_id=1732566758]
+material = SubResource("ShaderMaterial_o4wy8")
+offset_left = 125.0
+offset_top = 15.0
+offset_right = 375.0
+offset_bottom = 115.0
+size_flags_vertical = 3
+mouse_filter = 2
+theme = ExtResource("21_qn1v7")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_tek0n")
+icon_alignment = 1
+expand_icon = true
+
+[node name="RightPathLabel" type="Button" parent="TowersLayer/UpgradeTrees" unique_id=929110308]
+material = SubResource("ShaderMaterial_o4wy8")
+offset_left = 792.0
+offset_top = 15.0
+offset_right = 1042.0
+offset_bottom = 115.0
+size_flags_vertical = 3
+mouse_filter = 2
+theme = ExtResource("21_qn1v7")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_32sed")
+icon_alignment = 1
+expand_icon = true
+
+[node name="DescBox" type="Button" parent="TowersLayer/UpgradeTrees" unique_id=624483457]
+material = SubResource("ShaderMaterial_o4wy8")
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -0.027777778
+anchor_right = 0.5
+anchor_bottom = -0.027777778
+offset_left = -125.0
+offset_right = 125.0
+offset_bottom = 100.0
+grow_horizontal = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme = ExtResource("21_qn1v7")
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_qn1v7")
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Turt" type="ColorRect" parent="TowersLayer/UpgradeTrees" unique_id=972194598]
+material = SubResource("ShaderMaterial_6v0gp")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -175.0
+offset_right = 150.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameLabel" type="Label" parent="TowersLayer/UpgradeTrees/Turt" unique_id=1916422333]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.0
+offset_top = -10.0
+offset_right = 95.0
+offset_bottom = 27.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+
+[node name="Turt" type="Sprite2D" parent="TowersLayer/UpgradeTrees/Turt" unique_id=1230847423]
+visible = false
+position = Vector2(158.5, 202.5)
+scale = Vector2(0.67499995, 0.705)
+
+[node name="1" type="Sprite2D" parent="TowersLayer/UpgradeTrees/Turt" unique_id=763832749]
+position = Vector2(150, 175)
+scale = Vector2(0.65, 0.68)
+texture = ExtResource("7_cn2sd")
+
+[node name="2" type="Sprite2D" parent="TowersLayer/UpgradeTrees/Turt" unique_id=1689985893]
+position = Vector2(150, 185)
+scale = Vector2(0.65, 0.707)
+texture = ExtResource("8_ywk15")
+
+[node name="3" type="Sprite2D" parent="TowersLayer/UpgradeTrees/Turt" unique_id=315014124]
+position = Vector2(150, 185)
+scale = Vector2(0.775, 0.841)
+texture = ExtResource("9_ws7s4")
+
+[node name="4" type="Sprite2D" parent="TowersLayer/UpgradeTrees/Turt" unique_id=1674559060]
+position = Vector2(150, 185)
+scale = Vector2(1.05, 1.073)
+texture = ExtResource("10_fduiw")
+
+[node name="5" type="Sprite2D" parent="TowersLayer/UpgradeTrees/Turt" unique_id=1055042787]
+position = Vector2(150, 185)
+scale = Vector2(0.775, 0.766)
+texture = ExtResource("11_fduiw")
+
+[node name="6" type="Sprite2D" parent="TowersLayer/UpgradeTrees/Turt" unique_id=1238764919]
+position = Vector2(150, 195)
+scale = Vector2(0.775, 0.951)
+texture = ExtResource("14_6v0gp")
+
+[node name="7" type="Sprite2D" parent="TowersLayer/UpgradeTrees/Turt" unique_id=496216690]
+position = Vector2(150, 195)
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("15_dqyvv")
+
+[node name="8" type="Sprite2D" parent="TowersLayer/UpgradeTrees/Turt" unique_id=2018644202]
+position = Vector2(150, 170)
+scale = Vector2(0.665, 0.665)
+texture = ExtResource("16_m8x2t")
+
+[node name="9" type="Sprite2D" parent="TowersLayer/UpgradeTrees/Turt" unique_id=673986270]
+position = Vector2(150, 175)
+scale = Vector2(0.6, 0.583)
+texture = ExtResource("17_trttn")
+
+[node name="10" type="Sprite2D" parent="TowersLayer/UpgradeTrees/Turt" unique_id=905017534]
+position = Vector2(150, 175)
+texture = ExtResource("18_6v0gp")
+
+[node name="11" type="Sprite2D" parent="TowersLayer/UpgradeTrees/Turt" unique_id=592934889]
+position = Vector2(142.5, 192.5)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("19_a0ncs")
+
+[node name="12" type="Sprite2D" parent="TowersLayer/UpgradeTrees/Turt" unique_id=1382252410]
+position = Vector2(135, 185)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("20_fqpxm")
+
+[node name="ReturnTowers" type="Button" parent="TowersLayer" unique_id=1651348533]
+material = SubResource("ShaderMaterial_o4wy8")
+offset_left = 12.0
+offset_top = 11.0
+offset_right = 72.0
+offset_bottom = 71.0
+theme_override_styles/normal = ExtResource("13_o4wy8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o4wy8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dqyvv")
+icon = ExtResource("4_o4wy8")
+icon_alignment = 1
+expand_icon = true
 
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
@@ -685,10 +1323,10 @@ horizontal_alignment = 1
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/MapSelector" to="." method="_on_map_selector_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/LeftArrow" to="." method="_on_left_arrow_pressed"]
 [connection signal="pressed" from="MapSelectionLayer/MapPanel/RightArrow" to="." method="_on_right_arrow_pressed"]
-[connection signal="value_changed" from="SettingsLayer/SettingsMenu/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
-[connection signal="item_selected" from="SettingsLayer/SettingsMenu/FullscreenButton" to="." method="_on_fullscreen_item_selected"]
-[connection signal="item_selected" from="SettingsLayer/SettingsMenu/CBButton" to="." method="_on_option_button_item_selected"]
-[connection signal="pressed" from="SettingsLayer/SettingsMenu/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="SettingsLayer/SettingsMenu/Margin/Content/Header/Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="SettingsLayer/SettingsMenu/Margin/Content/Rows/VolumeRow/VolumeLayout/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="item_selected" from="SettingsLayer/SettingsMenu/Margin/Content/Rows/FullscreenRow/FullscreenLayout/FullscreenButton" to="." method="_on_fullscreen_item_selected"]
+[connection signal="item_selected" from="SettingsLayer/SettingsMenu/Margin/Content/Rows/ColorblindRow/ColorblindLayout/CBButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="TowersLayer/Turts/LeftArrow" to="." method="_on_left_tower_pressed"]
+[connection signal="pressed" from="TowersLayer/Turts/RightArrow" to="." method="_on_right_tower_pressed"]
 [connection signal="pressed" from="TowersLayer/ReturnTowers" to="." method="_on_return_towers_pressed"]
-[connection signal="pressed" from="TowersLayer/LeftArrow" to="." method="_on_left_tower_pressed"]
-[connection signal="pressed" from="TowersLayer/RightArrow" to="." method="_on_right_tower_pressed"]

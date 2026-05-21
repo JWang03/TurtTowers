@@ -8,6 +8,7 @@ var progress: float:
 @export var attack_damage: int = 1
 @export var damage = 5
 @export var speed_modifier = 1.0
+@export var shelling_drop: int
 
 @onready var starter = get_tree().current_scene.find_child("PlayButton", true, false)
 @onready var ray_cast = $RayCast2D 
@@ -15,10 +16,15 @@ var progress: float:
 @onready var currency = get_node("/root/Game/UI/HUD/CurrencyManager")
 @onready var wave_manager = null
 
-@export var max_health: float = 100.0
+@export var max_health: float = 75.0
 var health: float = max_health
 @onready var health_bar = $HealthBar  # or preload and add manually
 const HEALTH_BAR = preload("res://SandyShores/Scenes/HealthBar.tscn")
+
+var bob_time: float = 0.0
+@export var bob_speed: float = 6.0
+@export var bob_amount: float = 5.0
+@onready var sprite = $Sprite2D
 
 #For Flameturter:
 var is_burning: bool = false
@@ -36,11 +42,17 @@ func _ready():
 	bar.position = Vector2(0, -30)  # float it above the sprite
 	health_bar = bar
 	health_bar.update(health, max_health)
+	bob_time = randf() * TAU
+	shelling_drop = 2
 
 
 
 func _process(delta):
 	if starter.playing == true:
+		bob_time += delta
+		var bob_offset = sin(bob_time * bob_speed) * bob_amount
+		sprite.position.y = bob_offset
+		health_bar.position.y = -30 + bob_offset
 		var follow = get_parent()
 		if follow is PathFollow2D:
 			follow.progress += speed * delta * speed_modifier
@@ -74,7 +86,7 @@ func die():
 	# Add loot drop here
 	if is_burning:
 		_flashpoint_explode()
-	currency.add_shellings(2)
+	currency.add_shellings(shelling_drop)
 	if wave_manager != null:
 		wave_manager.enemy_removed()
 	queue_free()

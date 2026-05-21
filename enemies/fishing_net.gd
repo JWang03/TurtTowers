@@ -10,7 +10,7 @@ func _ready():
 	super._ready()
 	health = 60
 	speed = 15
-	
+	shelling_drop = 10
 	start_stealth_loop()
 
 func start_stealth_loop():

@@ -44,7 +44,7 @@ var upgrades = {
 
 func _ready():
 	super._ready()
-	cost = 75
+	cost = 225
 	fire_rate = 4.0
 	timer.wait_time = fire_rate
 	timer.one_shot = false
@@ -155,9 +155,7 @@ func _input(event):
 				break
 
 func purchase_upgrade(branch: String):
-	if chosen_branch == "":
-		chosen_branch = branch
-	elif chosen_branch != branch:
+	if chosen_branch != "" and chosen_branch != branch:
 		return
 	
 	var ucost = 0

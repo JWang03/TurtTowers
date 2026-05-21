@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://38e3k6dy7y1m"
-path="res://.godot/imported/F-15-Fighter-Jet.png-59ba2c2eafff6e188fc5ec44cddbb8c5.ctex"
+path="res://.godot/imported/F-15-Fighter-Jet.png-fe67f4ea23199af976b983aa63d54cf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/F-15-Fighter-Jet.png"
-dest_files=["res://.godot/imported/F-15-Fighter-Jet.png-59ba2c2eafff6e188fc5ec44cddbb8c5.ctex"]
+source_file="res://Textures/F-15-Fighter-Jet.png"
+dest_files=["res://.godot/imported/F-15-Fighter-Jet.png-fe67f4ea23199af976b983aa63d54cf3.ctex"]
 
 [params]
 

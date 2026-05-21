@@ -11,7 +11,7 @@ extends TowerBase
 var has_exploded: bool = false
 
 func _ready():
-	cost = 2000 
+	cost = 500
 	super._ready()
 	if explosion_ani:
 		explosion_ani.hide()

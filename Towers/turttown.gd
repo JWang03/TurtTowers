@@ -14,19 +14,16 @@ var buff_radius_tiles := 1
 var _buffed: Dictionary = {}
 var _turrets: Array = []
 
-# economy path
 var income_active: bool = false
 var income_amount: float = 20.0
 var income_interval: float = 8.0
-var kill_bonus_active: bool = false
-var kill_bonus_amount: float = 5.0
 var income_timer: Timer = null
 
 var soldier_scene = preload("res://Towers/bullet_tower.tscn")
 
 func _ready():
 	super._ready()
-	cost = 200
+	cost = 350
 	income_timer = Timer.new()
 	income_timer.one_shot = false
 	income_timer.timeout.connect(_on_income_tick)
@@ -75,33 +72,26 @@ func _spawn_popup(text: String, tier: int = 0):
 	label.text = text
 	label.z_index = 200
 	label.z_as_relative = false
-
 	match tier:
 		0:
-			# Tax Office — small plain yellow
 			label.add_theme_font_size_override("font_size", 16)
 			label.add_theme_color_override("font_color", Color(1, 0.85, 0.1, 1))
 			label.add_theme_constant_override("outline_size", 3)
 			label.add_theme_color_override("font_outline_color", Color(0.4, 0.3, 0, 1))
 		1:
-			# Trade Routes — bigger, brighter gold
 			label.add_theme_font_size_override("font_size", 22)
 			label.add_theme_color_override("font_color", Color(1, 0.9, 0.2, 1))
 			label.add_theme_constant_override("outline_size", 5)
 			label.add_theme_color_override("font_outline_color", Color(0.6, 0.4, 0, 1))
 		2:
-			# Boom Town — big flashy green money energy
 			label.add_theme_font_size_override("font_size", 30)
 			label.add_theme_color_override("font_color", Color(0.2, 1, 0.3, 1))
 			label.add_theme_constant_override("outline_size", 6)
 			label.add_theme_color_override("font_outline_color", Color(0, 0.3, 0, 1))
-
 	get_tree().current_scene.add_child(label)
 	label.global_position = global_position + Vector2(-20, -30)
-
 	var float_height = 40.0 + (tier * 15.0)
 	var duration = 1.0 + (tier * 0.3)
-
 	var tween = label.create_tween()
 	tween.tween_property(label, "position", label.position + Vector2(0, -float_height), duration)
 	tween.parallel().tween_property(label, "modulate:a", 0.0, duration)
@@ -118,6 +108,8 @@ func _try_buff(node: Node) -> void:
 	if _turrets.has(node):
 		return
 	if node.has_meta("is_turtret"):
+		return
+	if node.get_script() == get_script():  # don't buff other TurtTowns
 		return
 	var placed = node.get("is_placed")
 	if placed != null and placed == false:
@@ -182,7 +174,8 @@ func _apply_buff(tower: Node) -> void:
 	tower.set_meta("turttown_buff_data", buff_data)
 
 func _apply_radius_buff(collision_shape: CollisionShape2D, buff_data: Dictionary) -> void:
-	var shape := collision_shape.shape
+	var shape := collision_shape.shape.duplicate()  # duplicate to avoid shared resource mutation
+	collision_shape.shape = shape
 	buff_data["shape_node"] = collision_shape
 	if shape is CircleShape2D:
 		buff_data["original_radius"] = shape.radius
@@ -305,9 +298,7 @@ var right_level = 0
 var chosen_branch = ""
 
 func purchase_upgrade(branch: String):
-	if chosen_branch == "":
-		chosen_branch = branch
-	elif chosen_branch != branch:
+	if chosen_branch != "" and chosen_branch != branch:
 		return
 	var ucost = 0
 	if branch == "left":
@@ -318,6 +309,8 @@ func purchase_upgrade(branch: String):
 	if currency_manager.shellings < ucost:
 		return
 	currency_manager.spend_shellings(ucost)
+	if chosen_branch == "":
+		chosen_branch = branch
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
@@ -355,7 +348,6 @@ func apply_right_upgrade():
 			if currency_manager:
 				currency_manager.add_shellings(300)
 				_spawn_popup("+300", 2)
-	# restart timer with new interval every time
 	if income_active and not income_timer.is_stopped():
 		income_timer.stop()
 		income_timer.wait_time = income_interval

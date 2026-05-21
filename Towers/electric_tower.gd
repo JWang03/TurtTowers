@@ -48,7 +48,7 @@ var upgrades = {
 
 func _ready():
 	super._ready()
-	cost = 50
+	cost = 100
 	attack_timer.wait_time = attack_cooldown
 	if !attack_timer.timeout.is_connected(_on_tower_heartbeat):
 		attack_timer.timeout.connect(_on_tower_heartbeat)
@@ -203,9 +203,7 @@ func grant_extra_life():
 
 
 func purchase_upgrade(branch: String):
-	if chosen_branch == "":
-		chosen_branch = branch
-	elif chosen_branch != branch:
+	if chosen_branch != "" and chosen_branch != branch:
 		return
 		
 	var ucost = 0

@@ -8,7 +8,7 @@ var max_targets: int = 1
 
 func _ready():
 	super._ready()
-	cost = 100
+	cost = 250
 	anim_sprite.animation_looped.connect(_on_animation_looped)
 	anim_sprite.stop()
 	detection_area.body_entered.connect(_on_body_entered)
@@ -112,9 +112,7 @@ var right_level = 0
 var chosen_branch = ""
 
 func purchase_upgrade(branch: String):
-	if chosen_branch == "":
-		chosen_branch = branch
-	elif chosen_branch != branch:
+	if chosen_branch != "" and chosen_branch != branch:
 		return
 	var ucost = 0
 	if branch == "left":
@@ -125,6 +123,8 @@ func purchase_upgrade(branch: String):
 	if currency_manager.shellings < ucost:
 		return
 	currency_manager.spend_shellings(ucost)
+	if chosen_branch == "":
+		chosen_branch = branch  # only set AFTER confirming purchase
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
