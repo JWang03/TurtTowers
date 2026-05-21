@@ -182,9 +182,7 @@ var right_level = 0
 var chosen_branch = ""
 
 func purchase_upgrade(branch: String):
-	if chosen_branch == "":
-		chosen_branch = branch
-	elif chosen_branch != branch:
+	if chosen_branch != "" and chosen_branch != branch:
 		return
 	var ucost = 0
 	if branch == "left":
@@ -195,6 +193,8 @@ func purchase_upgrade(branch: String):
 	if currency_manager.shellings < ucost:
 		return
 	currency_manager.spend_shellings(ucost)
+	if chosen_branch == "":
+		chosen_branch = branch  # only set AFTER confirming purchase
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
