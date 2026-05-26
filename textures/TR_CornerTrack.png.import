@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpi7r0s3xuhfj"
-path="res://.godot/imported/TR_CornerTrack.png-2472324028bb83b55ea8d737d407974b.ctex"
+path="res://.godot/imported/TR_CornerTrack.png-436811e4b86f0c7bc3520a38eed88210.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/TR_CornerTrack.png"
-dest_files=["res://.godot/imported/TR_CornerTrack.png-2472324028bb83b55ea8d737d407974b.ctex"]
+source_file="res://textures/TR_CornerTrack.png"
+dest_files=["res://.godot/imported/TR_CornerTrack.png-436811e4b86f0c7bc3520a38eed88210.ctex"]
 
 [params]
 

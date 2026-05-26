@@ -13,6 +13,7 @@ z_index = 4096
 script = ExtResource("1_jymjt")
 cluster_bomber_sprite = ExtResource("2_oy8p2")
 missile_menace_sprite = ExtResource("3_ilneq")
+cost = 75.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1146264973]
 scale = Vector2(0.14843749, 0.14025)

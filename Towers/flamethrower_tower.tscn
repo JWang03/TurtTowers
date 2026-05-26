@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c8vad4jrhnsen" path="res://textures/image-removebg-preview (50).png" id="2_igapr"]
 [ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://textures/image-removebg-preview (15).png" id="2_occl0"]
 [ext_resource type="Texture2D" uid="uid://xalxm3776kni" path="res://textures/image-removebg-preview (51).png" id="3_1sj7e"]
-[ext_resource type="Texture2D" uid="uid://gup15b7ijlle" path="res://frames/image-removebg-preview (28).png" id="3_k6h5b"]
-[ext_resource type="Texture2D" uid="uid://n5mlpynwoohr" path="res://frames/blank screen.png" id="3_le5yd"]
+[ext_resource type="Texture2D" uid="uid://gup15b7ijlle" path="res://textures/Frames/image-removebg-preview (28).png" id="3_k6h5b"]
+[ext_resource type="Texture2D" uid="uid://n5mlpynwoohr" path="res://textures/Frames/blank screen.png" id="3_le5yd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_le5yd"]
 radius = 12.0415945
@@ -100,6 +100,7 @@ position = Vector2(0, -1)
 script = ExtResource("1_s8bkm")
 napalm_sprite = ExtResource("2_igapr")
 flashpoint_sprite = ExtResource("3_1sj7e")
+cost = 175.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1428673578]
 position = Vector2(0, -2)

@@ -13,7 +13,7 @@ z_index = 4096
 script = ExtResource("1_v0an6")
 gunner_sprite = ExtResource("2_pfo8e")
 marksman_sprite = ExtResource("3_xha8h")
-cost = 100.0
+cost = 75.0
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1053606515]
 position = Vector2(9, 1.0000005)
