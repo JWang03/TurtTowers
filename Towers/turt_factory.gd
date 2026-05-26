@@ -106,17 +106,17 @@ var upgrades = {
 	"left": {
 		"name": "Assembly Line",
 		"tiers": [
-			{"label": "Faster Belt", "cost": 75},
-			{"label": "Double Line", "cost": 175},
-			{"label": "Mass Production", "cost": 400}
+			{"label": "Overclocked Conveyor", "cost": 75},
+			{"label": "Dual-Lane Logistics", "cost": 175},
+			{"label": "Automated Swarm", "cost": 400}
 		]
 	},
 	"right": {
 		"name": "Heavy Shell",
 		"tiers": [
-			{"label": "Reinforced Hull", "cost": 100},
-			{"label": "Explosive Shell", "cost": 250},
-			{"label": "Mega Turt", "cost": 600}
+			{"label": "Ironclad Scutes", "cost": 100},
+			{"label": "Volatile Payload", "cost": 250},
+			{"label": "The Behemoth Project", "cost": 600}
 		]
 	}
 }

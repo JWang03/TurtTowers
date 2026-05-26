@@ -24,7 +24,7 @@ var upgrades = {
 	"left": {
 		"name": "Spread",
 		"tiers": [
-			{"label": "Wide Burst", "cost": 100},
+			{"label": "Cluster Munitions", "cost": 100},
 			{"label": "Hemisphere Fire", "cost": 250},
 			{"label": "Omnidirectional", "cost": 500}
 		]
@@ -32,9 +32,9 @@ var upgrades = {
 	"right": {
 		"name": "Focused Fire",
 		"tiers": [
-			{"label": "Faster Shooting", "cost": 75},
-			{"label": "High Caliber", "cost": 175},
-			{"label": "Railgun Mode", "cost": 500}
+			{"label": "Afterburners", "cost": 75},
+			{"label": "Depleted Uranium Rounds", "cost": 175},
+			{"label": "Mach-Speed Railgun", "cost": 500}
 		]
 	}
 }

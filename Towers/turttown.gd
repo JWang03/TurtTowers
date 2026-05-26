@@ -279,17 +279,17 @@ var upgrades = {
 	"left": {
 		"name": "Turt-rets",
 		"tiers": [
-			{"label": "Watchtower", "cost": 150},
+			{"label": "Rooftop Sentry", "cost": 150},
 			{"label": "The Buddy System", "cost": 300},
-			{"label": "Fortified", "cost": 600}
+			{"label": "Citadel Walls", "cost": 600}
 		]
 	},
 	"right": {
 		"name": "Economy",
 		"tiers": [
-			{"label": "Tax Office", "cost": 125},
-			{"label": "Trade Routes", "cost": 275},
-			{"label": "Boom Town", "cost": 650}
+			{"label": "Shell Tax", "cost": 125},
+			{"label": "Gilded Shell-ways", "cost": 275},
+			{"label": "Golden Age", "cost": 650}
 		]
 	}
 }
