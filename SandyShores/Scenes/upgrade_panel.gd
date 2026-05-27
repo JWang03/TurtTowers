@@ -33,6 +33,10 @@ func populate(tower):
 		elif i < tower.left_level:
 			btn.text = "Purchased"
 			btn.disabled = true
+		elif i == tower.left_level and i == 2:
+			var can_buy = UpgradeManager.can_purchase_tier3_left()
+			btn.text = left_tiers[i]["label"] + " ($" + str(left_tiers[i]["cost"]) + ")" if can_buy else "Tier 3 Taken"
+			btn.disabled = not can_buy
 		elif i == tower.left_level:
 			btn.text = left_tiers[i]["label"] + " ($" + str(left_tiers[i]["cost"]) + ")"
 			btn.disabled = false
@@ -48,6 +52,10 @@ func populate(tower):
 		elif i < tower.right_level:
 			btn.text = "Purchased"
 			btn.disabled = true
+		elif i == tower.right_level and i == 2:
+			var can_buy = UpgradeManager.can_purchase_tier3_right()
+			btn.text = right_tiers[i]["label"] + " ($" + str(right_tiers[i]["cost"]) + ")" if can_buy else "Tier 3 Taken"
+			btn.disabled = not can_buy
 		elif i == tower.right_level:
 			btn.text = right_tiers[i]["label"] + " ($" + str(right_tiers[i]["cost"]) + ")"
 			btn.disabled = false
