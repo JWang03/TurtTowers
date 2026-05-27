@@ -185,8 +185,7 @@ func purchase_upgrade(branch: String):
 		right_level += 1
 		if right_level == 3 and singularity_path_sprite:
 			sprite.texture = singularity_path_sprite
-		if left_level == 2:
-			UpgradeManager.register_tier3_left(tower_name)
+			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
 
