@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://Textures/blackhole_tower.png" id="9_ws7s4"]
 [ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://Textures/godzilla_tower.png" id="10_fduiw"]
 [ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://Textures/bullet_tower.png" id="11_fduiw"]
-[ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://exit_button.tres" id="13_o4wy8"]
+[ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://Menu/exit_button.tres" id="13_o4wy8"]
 [ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://Textures/image-removebg-preview (34).png" id="14_6v0gp"]
 [ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://Textures/holy_crusader.png" id="15_dqyvv"]
 [ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://Textures/Turt^3 Sahur.png" id="16_m8x2t"]
@@ -186,7 +186,14 @@ func _setup_card_button(card: Control) -> void:
 		button.pressed.connect(_on_card_pressed.bind(card))
 		
 func _on_card_pressed(card: Control) -> void:
+	if _is_turtory_bomb_card(card):
+		return
 	_open_tower_upgrades(card)
+
+func _is_turtory_bomb_card(card: Control) -> bool:
+	var card_button = card.get_node_or_null(\"CardButton\")
+	var label = card_button.get_node_or_null(\"NameLabel\") if card_button else card.get_node_or_null(\"NameLabel\")
+	return label != null and label.text == \"Turtory Bomb\"
 	
 func _open_tower_upgrades(card: Control) -> void:
 	if upgrades_tree:
@@ -865,7 +872,7 @@ offset_right = 187.0
 offset_bottom = 30.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 20
-text = "The Lieturtant"
+text = "The Lieuturtant"
 horizontal_alignment = 1
 
 [node name="BulletTower" type="Sprite2D" parent="TowersLayer/Turts/5" unique_id=372846596]

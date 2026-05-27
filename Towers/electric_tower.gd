@@ -31,17 +31,17 @@ var upgrades = {
 	"left": {
 		"name": "The Physicist",
 		"tiers": [
-			{"label": "Farther Chain Lightning", "cost": 75},
-			{"label": "Faster Shooting", "cost": 150},
-			{"label": "Farthest Chain Lightning", "cost": 300}
+			{"label": "High Voltage", "cost": 75},
+			{"label": "Superconductor", "cost": 150},
+			{"label": "Tesla Overload", "cost": 300}
 		]
 	},
 	"right": {
 		"name": "The Chemist",
 		"tiers": [
-			{"label": "Increased Damage for Nearby Towers", "cost": 100},
-			{"label": "Faster Shooting for Nearby Towers", "cost": 200},
-			{"label": "Synthesize Extra Lives", "cost": 700}
+			{"label": "Adrenaline Serum", "cost": 100},
+			{"label": "Anabolic Catalyst", "cost": 200},
+			{"label": "Elixir of Life", "cost": 700}
 		]
 	}
 }

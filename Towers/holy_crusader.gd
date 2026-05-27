@@ -113,17 +113,17 @@ var upgrades = {
 	"left": {
 		"name": "Demonic",
 		"tiers": [
-			{"label": "Faster Attacks", "cost": 75},
-			{"label": "Increased Range", "cost": 150},
-			{"label": "Frenzy", "cost": 300}
+			{"label": "Sinful Speed", "cost": 75},
+			{"label": "Corrupted Reach", "cost": 150},
+			{"label": "Abyssal Frenzy", "cost": 300}
 		]
 	},
 	"right": {
 		"name": "Angelic",
 		"tiers": [
-			{"label": "Stronger Beams", "cost": 100},
-			{"label": "Ultra-Powerful Beams", "cost": 200},
-			{"label": "Aim", "cost": 700}
+			{"label": "Righteous Wrath", "cost": 100},
+			{"label": "Hallowed Might", "cost": 200},
+			{"label": "Divine Providence", "cost": 700}
 		]
 	}
 }

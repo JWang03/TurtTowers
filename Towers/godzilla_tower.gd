@@ -182,9 +182,9 @@ var upgrades = {
 	"left": {
 		"name": "Twin Peaks",
 		"tiers": [
-			{"label": "Wider Beam", "cost": 75},
-			{"label": "Widest Beam", "cost": 150},
-			{"label": "Dual Beam", "cost": 300}
+			{"label": "Prism Lens", "cost": 75},
+			{"label": "Refraction Array", "cost": 150},
+			{"label": "Binary Star", "cost": 300}
 		]
 	},
 	"right": {

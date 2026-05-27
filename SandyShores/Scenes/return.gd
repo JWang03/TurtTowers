@@ -16,7 +16,13 @@ var _save_loaded := false
 
 func _ready():
 	pressed.connect(_on_pressed)
+	get_tree().auto_accept_quit = false
 	call_deferred("_load_autosave_if_available")
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		_autosave_current_run()
+		get_tree().quit()
 
 func _on_pressed():
 	_show_return_menu()
@@ -116,7 +122,6 @@ func _create_return_menu() -> void:
 	header.add_child(close_button)
 
 	var exit_button := _create_menu_button("Exit to Main Menu", EXIT_ICON)
-	exit_button.tooltip_text = "Autosaves before returning to the main menu."
 	exit_button.pressed.connect(_on_exit_to_main_menu_pressed)
 	options.add_child(exit_button)
 
@@ -252,7 +257,9 @@ func _autosave_current_run() -> void:
 	if wave_spawner:
 		save_data["current_wave"] = wave_spawner.get("current_wave")
 		save_data["game_started"] = wave_spawner.get("game_started")
+		save_data["wave_running"] = wave_spawner.get("wave_running")
 		save_data["game_finished"] = wave_spawner.get("game_finished")
+		save_data["enemies_alive"] = wave_spawner.get("enemies_alive")
 
 	var currency_manager := current_scene.find_child("CurrencyManager", true, false)
 	if currency_manager:
@@ -262,7 +269,12 @@ func _autosave_current_run() -> void:
 	if loss_conditions:
 		save_data["lives"] = loss_conditions.get("lives")
 
+	var play_button := current_scene.find_child("PlayButton", true, false)
+	if play_button:
+		save_data["play_button_playing"] = play_button.get("playing")
+
 	save_data["towers"] = _get_tower_save_data(current_scene)
+	save_data["active_enemies"] = _get_active_enemy_save_data()
 
 	var autosave_file := FileAccess.open(AUTOSAVE_PATH, FileAccess.WRITE)
 	if autosave_file == null:
@@ -297,6 +309,32 @@ func _get_tower_save_data(current_scene: Node) -> Array:
 		})
 
 	return tower_data
+
+func _get_active_enemy_save_data() -> Array:
+	var enemy_data := []
+	for enemy in get_tree().get_nodes_in_group("zombies"):
+		if not is_instance_valid(enemy):
+			continue
+
+		var follow := enemy.get_parent()
+		if not (follow is PathFollow2D):
+			continue
+
+		var scene_path := enemy.scene_file_path
+		if scene_path == "":
+			continue
+
+		enemy_data.append({
+			"scene": scene_path,
+			"progress": follow.progress,
+			"health": enemy.get("health"),
+			"max_health": enemy.get("max_health"),
+			"speed": enemy.get("speed"),
+			"speed_modifier": enemy.get("speed_modifier"),
+			"scale": {"x": enemy.scale.x, "y": enemy.scale.y}
+		})
+
+	return enemy_data
 
 func _load_autosave_if_available() -> void:
 	if _save_loaded or not FileAccess.file_exists(AUTOSAVE_PATH):
@@ -339,18 +377,25 @@ func _restore_autosave(save_data: Dictionary) -> void:
 
 	var wave_spawner := current_scene.find_child("WaveSpawner", true, false)
 	if wave_spawner:
-		var saved_wave: int = max(0, int(save_data.get("current_wave", 0)) - 1)
+		var saved_wave: int = max(0, int(save_data.get("current_wave", 0)))
+		if not save_data.has("wave_running"):
+			saved_wave = max(0, saved_wave - 1)
+		var wave_was_running := bool(save_data.get("wave_running", false))
 		wave_spawner.set("current_wave", saved_wave)
-		wave_spawner.set("game_started", false)
-		wave_spawner.set("wave_running", false)
+		wave_spawner.set("game_started", wave_was_running)
+		wave_spawner.set("wave_running", wave_was_running)
 		wave_spawner.set("game_finished", bool(save_data.get("game_finished", false)))
 		var wave_label = wave_spawner.get("wave_label")
 		if wave_label:
-			wave_label.text = "Wave " + str(saved_wave + 1) + " / " + str(wave_spawner.get("max_waves"))
+			var display_wave := saved_wave if wave_was_running else saved_wave + 1
+			wave_label.text = "Wave " + str(max(1, display_wave)) + " / " + str(wave_spawner.get("max_waves"))
+		_restore_active_enemies(current_scene, wave_spawner, save_data.get("active_enemies", []))
+		if wave_was_running and wave_spawner.has_method("resume_restored_wave"):
+			wave_spawner.call_deferred("resume_restored_wave")
 
 	var play_button := current_scene.find_child("PlayButton", true, false)
 	if play_button:
-		play_button.set("playing", false)
+		play_button.set("playing", bool(save_data.get("play_button_playing", save_data.get("wave_running", false))))
 		if play_button.has_method("_update_icons"):
 			play_button._update_icons()
 
@@ -425,3 +470,46 @@ func _restore_tower_upgrades(tower: Node, data: Dictionary) -> void:
 		tower.set("right_level", right_level)
 	if "chosen_branch" in tower:
 		tower.set("chosen_branch", str(data.get("chosen_branch", "")))
+
+func _restore_active_enemies(current_scene: Node, wave_spawner: Node, enemy_data: Array) -> void:
+	var enemy_path := current_scene.find_child("EnemyPath", true, false) as Path2D
+	if enemy_path == null:
+		return
+
+	var restored_count := 0
+	for data in enemy_data:
+		if not (data is Dictionary) or not data.has("scene"):
+			continue
+
+		var enemy_scene := load(str(data["scene"])) as PackedScene
+		if enemy_scene == null:
+			continue
+
+		var follow := PathFollow2D.new()
+		follow.rotates = false
+		follow.loop = false
+		follow.progress = float(data.get("progress", 0.0))
+		enemy_path.add_child(follow)
+
+		var enemy := enemy_scene.instantiate()
+		follow.add_child(enemy)
+		enemy.set("wave_manager", wave_spawner)
+
+		if data.has("max_health") and enemy.get("max_health") != null:
+			enemy.set("max_health", float(data["max_health"]))
+		if data.has("health") and enemy.get("health") != null:
+			enemy.set("health", float(data["health"]))
+			var health_bar = enemy.get("health_bar")
+			if health_bar and health_bar.has_method("update"):
+				health_bar.update(enemy.get("health"), enemy.get("max_health"))
+		if data.has("speed") and enemy.get("speed") != null:
+			enemy.set("speed", float(data["speed"]))
+		if data.has("speed_modifier") and enemy.get("speed_modifier") != null:
+			enemy.set("speed_modifier", float(data["speed_modifier"]))
+		var scale_data: Variant = data.get("scale", {})
+		if scale_data is Dictionary:
+			enemy.scale = Vector2(float(scale_data.get("x", 1.0)), float(scale_data.get("y", 1.0)))
+
+		restored_count += 1
+
+	wave_spawner.set("enemies_alive", restored_count)

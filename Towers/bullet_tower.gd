@@ -15,23 +15,23 @@ var aimbot = false
 var left_level = 0
 var right_level = 0
 var chosen_branch = ""
-var tower_name = "The Lieturtant"
+var tower_name = "The Lieuturtant"
 
 var upgrades = {
 	"left": {
-		"name": "Gunner",
+		"name": "Commando",
 		"tiers": [
-			{"label": "Faster Shooting", "cost": 75},
-			{"label": "Faster Shooting 2", "cost": 150},
-			{"label": "Double Shot", "cost": 300}
+			{"label": "Trigger Finger", "cost": 75},
+			{"label": "Belt-Fed Shells", "cost": 150},
+			{"label": "Dual-Wield Sergeant", "cost": 300}
 		]
 	},
 	"right": {
 		"name": "Marksman",
 		"tiers": [
-			{"label": "Increased Range", "cost": 100},
+			{"label": "Eagle Eye", "cost": 100},
 			{"label": "High Caliber Bullets", "cost": 200},
-			{"label": "Aimbot", "cost": 700}
+			{"label": "Targeting Matrix", "cost": 700}
 		]
 	}
 }
