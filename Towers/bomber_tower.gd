@@ -141,9 +141,9 @@ func purchase_upgrade(branch: String):
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
 	# block tier 3 if another tower already has it
-	if branch == "left" and left_level == 2 and not UpgradeManager.can_purchase_tier3_left():
+	if branch == "left" and left_level == 2 and not UpgradeManager.can_purchase_tier3_left(tower_name):
 		return
-	if branch == "right" and right_level == 2 and not UpgradeManager.can_purchase_tier3_right():
+	if branch == "right" and right_level == 2 and not UpgradeManager.can_purchase_tier3_right(tower_name):
 		return
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
@@ -156,14 +156,14 @@ func purchase_upgrade(branch: String):
 		left_level += 1
 		if left_level == 3 and cluster_bomber_sprite:
 			sprite.texture = cluster_bomber_sprite
-			UpgradeManager.register_tier3_left()
+			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
 		if right_level == 3 and missile_menace_sprite:
 			sprite.texture = missile_menace_sprite
-			UpgradeManager.register_tier3_right()
+			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
 
@@ -185,7 +185,7 @@ func apply_right_upgrade():
 
 func sell() -> void:
 		if left_level >= 3:
-			UpgradeManager.unregister_tier3_left()
+			UpgradeManager.unregister_tier3_left(tower_name)
 		if right_level >= 3:
-			UpgradeManager.unregister_tier3_right()
+			UpgradeManager.unregister_tier3_right(tower_name)
 		super.sell()

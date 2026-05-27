@@ -15,7 +15,7 @@ func _on_tower_deselected():
 	current_tower = null
 	visible = false
 func populate(tower):
-	$VBoxContainer/TowerName.text = tower.tower_name
+	$VBoxContainer/TowerName.text = tower.get("tower_id") if tower.get("tower_id") else tower.tower_name
 	$VBoxContainer/HBoxContainer/LeftButtons/LeftPathLabel.text = tower.upgrades["left"]["name"]
 	$VBoxContainer/HBoxContainer/RightButtons/RightPathLabel.text = tower.upgrades["right"]["name"]
 	
@@ -34,7 +34,7 @@ func populate(tower):
 			btn.text = "Purchased"
 			btn.disabled = true
 		elif i == tower.left_level and i == 2:
-			var can_buy = UpgradeManager.can_purchase_tier3_left()
+			var can_buy = UpgradeManager.can_purchase_tier3_left(tower.tower_name)
 			btn.text = left_tiers[i]["label"] + " ($" + str(left_tiers[i]["cost"]) + ")" if can_buy else "Tier 3 Taken"
 			btn.disabled = not can_buy
 		elif i == tower.left_level:
@@ -53,7 +53,7 @@ func populate(tower):
 			btn.text = "Purchased"
 			btn.disabled = true
 		elif i == tower.right_level and i == 2:
-			var can_buy = UpgradeManager.can_purchase_tier3_right()
+			var can_buy = UpgradeManager.can_purchase_tier3_right(tower.tower_name)
 			btn.text = right_tiers[i]["label"] + " ($" + str(right_tiers[i]["cost"]) + ")" if can_buy else "Tier 3 Taken"
 			btn.disabled = not can_buy
 		elif i == tower.right_level:
