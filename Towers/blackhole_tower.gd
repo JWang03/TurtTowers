@@ -28,7 +28,7 @@ var upgrades = {
 		"name": "Scatter",
 		"tiers": [
 			{"label": "Twin Holes", "cost": 100},
-			{"label": "Triple Holes", "cost": 200},
+			{"label": "Triple Alpha Process", "cost": 200},
 			{"label": "Hole Barrage", "cost": 400}
 		]
 	},

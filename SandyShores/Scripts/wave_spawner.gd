@@ -33,6 +33,24 @@ func start_game() -> void:
 	game_started = true
 	await start_next_wave()
 
+func resume_restored_wave() -> void:
+	if game_finished:
+		return
+
+	game_started = true
+	wave_running = true
+
+	while enemies_alive > 0:
+		await get_tree().create_timer(0.1).timeout
+
+	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
+	if currency_manager:
+		currency_manager.add_shellings(get_wave_bonus(current_wave))
+
+	wave_running = false
+	await wait_while_unpaused(time_between_waves)
+	await start_next_wave()
+
 func get_wave_bonus(wave: int) -> int:
 	return 15 + (wave * 5)
 func wait_while_unpaused(seconds: float) -> void:

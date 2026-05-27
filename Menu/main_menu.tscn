@@ -186,7 +186,14 @@ func _setup_card_button(card: Control) -> void:
 		button.pressed.connect(_on_card_pressed.bind(card))
 		
 func _on_card_pressed(card: Control) -> void:
+	if _is_turtory_bomb_card(card):
+		return
 	_open_tower_upgrades(card)
+
+func _is_turtory_bomb_card(card: Control) -> bool:
+	var card_button = card.get_node_or_null(\"CardButton\")
+	var label = card_button.get_node_or_null(\"NameLabel\") if card_button else card.get_node_or_null(\"NameLabel\")
+	return label != null and label.text == \"Turtory Bomb\"
 	
 func _open_tower_upgrades(card: Control) -> void:
 	if upgrades_tree:
