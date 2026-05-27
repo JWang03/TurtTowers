@@ -20,3 +20,7 @@ func unregister_tier3_left(tower_name: String):
 
 func unregister_tier3_right(tower_name: String):
 	tier3_right_owners[tower_name] = max(0, tier3_right_owners.get(tower_name, 0) - 1)
+
+func clear_all() -> void:
+	tier3_left_owners.clear()
+	tier3_right_owners.clear()

@@ -213,6 +213,7 @@ func _on_restart_pressed() -> void:
 	_prepare_for_scene_change()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+	UpgradeManager.clear_all()
 
 func _prepare_for_scene_change() -> void:
 	if _menu_panel:
