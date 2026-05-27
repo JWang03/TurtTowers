@@ -5,7 +5,7 @@ var group = ButtonGroup.new()
 const TOWER_SCENES_BY_MENU_NAME := {
 	"TNTurt": "res://Towers/bomber_tower.tscn",
 	"Fighturt Jet": "res://Towers/Turt-22.tscn",
-	"The Lieturtant": "res://Towers/bullet_tower.tscn",
+	"The Lieuturtant": "res://Towers/bullet_tower.tscn",
 	"Flameturter": "res://Towers/flamethrower_tower.tscn",
 	"Graviturt": "res://Towers/blackhole_tower.tscn",
 	"Mad Scienturt": "res://Towers/electric_tower.tscn",
@@ -16,21 +16,19 @@ const TOWER_SCENES_BY_MENU_NAME := {
 	"Turt Sahur": "res://Towers/turttttt.tscn",
 }
 
-# Visual-only metadata. Branch names, upgrade names, and costs are read from
-# each tower scene's script through its `upgrades` dictionary.
 var upgrade_visual_data = {
 	"TNTurt": {
 		"left": {
 			"upgrades": [
-				{"icon": "💣", "desc": "Fires two bombs at once."},
-				{"icon": "💣💣", "desc": "Fires three bombs at once."},
-				{"icon": "💣💣💣", "desc": "Fires four bombs at once."},
+				{"icon": "✌️", "desc": "Fires two bombs at once."},
+				{"icon": "☘️", "desc": "Fires three bombs at once."},
+				{"icon": "🤯", "desc": "Fires four bombs at once."},
 			]
 		},
 		"right": {
 			"upgrades": [
-				{"icon": "🔥", "desc": "Doubles the fire rate."},
-				{"icon": "🎯", "desc": "Doubles the detection range."},
+				{"icon": "⚡", "desc": "Doubles the fire rate."},
+				{"icon": "🔭", "desc": "Doubles the detection range."},
 				{"icon": "🚀", "desc": "Upgrades bombs to homing missiles."},
 			]
 		}
@@ -38,32 +36,32 @@ var upgrade_visual_data = {
 	"Fighturt Jet": {
 		"left": {
 			"upgrades": [
-				{"icon": "💥", "desc": "Widens the firing arc and increases projectile count to 8."},
+				{"icon": "🛰️", "desc": "Widens the firing arc and increases projectile count to 8."},
 				{"icon": "🌎", "desc": "Fires a 180-degree burst of 12 projectiles."},
 				{"icon": "🪐", "desc": "Fires a massive 360-degree ring of 24 projectiles."},
 			]
 		},
 		"right": {
 			"upgrades": [
-				{"icon": "⚡", "desc": "Tightens the spread and doubles the firing speed."},
-				{"icon": "💥", "desc": "Doubles bullet damage and focuses the stream further."},
-				{"icon": "🎯", "desc": "Condenses fire into a single high-damage bolt with extreme fire rate."},
+				{"icon": "🔋", "desc": "Tightens the spread and doubles the firing speed."},
+				{"icon": "☢️", "desc": "Doubles bullet damage and focuses the stream further."},
+				{"icon": "🚄", "desc": "Condenses fire into a single high-damage bolt with extreme fire rate."},
 			]
 		}
 	},
-	"The Lieturtant": {
+	"The Lieuturtant": {
 		"left": {
 			"upgrades": [
-				{"icon": "⚡", "desc": "Increases fire rate by 20%."},
-				{"icon": "⚡⚡", "desc": "Further increases fire rate."},
-				{"icon": "🔫🔫", "desc": "Fires two bullets simultaneously."},
+				{"icon": "🔫", "desc": "Increases fire rate by 20%."},
+				{"icon": "⛓️", "desc": "Further increases fire rate."},
+				{"icon": "⚔️", "desc": "Fires two bullets simultaneously."},
 			]
 		},
 		"right": {
 			"upgrades": [
-				{"icon": "🎯", "desc": "Extends detection range by 50%."},
+				{"icon": "🦅", "desc": "Extends detection range by 50%."},
 				{"icon": "💥", "desc": "Bullets deal 5x damage."},
-				{"icon": "🏹", "desc": "Bullets track targets. Massive damage & range boost."},
+				{"icon": "🎯", "desc": "Bullets track targets. Massive damage & range boost."},
 			]
 		}
 	},
@@ -71,31 +69,31 @@ var upgrade_visual_data = {
 		"left": {
 			"upgrades": [
 				{"icon": "🔥", "desc": "Doubles damage per tick."},
-				{"icon": "🔥", "desc": "Fire area grows 50% larger."},
-				{"icon": "💀", "desc": "Burning enemies spread fire on death."},
+				{"icon": "🐲", "desc": "Fire area grows 50% larger."},
+				{"icon": "☣️", "desc": "Burning enemies spread fire on death."},
 			]
 		},
 		"right": {
 			"upgrades": [
-				{"icon": "🐢", "desc": "Flames slow enemies to 60% speed."},
-				{"icon": "🛡️", "desc": "Burning enemies take 30% more damage."},
-				{"icon": "☄️", "desc": "Enemies ignite and keep burning after leaving range."},
+				{"icon": "🍯", "desc": "Flames slow enemies to 60% speed."},
+				{"icon": "🧪", "desc": "Burning enemies take 30% more damage."},
+				{"icon": "☀️", "desc": "Enemies ignite and keep burning after leaving range."},
 			]
 		}
 	},
 	"Graviturt": {
 		"left": {
 			"upgrades": [
-				{"icon": "🌀🌀", "desc": "Spawns 2 black holes per shot."},
-				{"icon": "🌀🌀🌀", "desc": "Spawns 3 black holes per shot."},
-				{"icon": "♾️🌀", "desc": "Spawns 5 holes and fires 25% faster."},
+				{"icon": "👥", "desc": "Spawns 2 black holes per shot."},
+				{"icon": "🌀", "desc": "Spawns 3 black holes per shot."},
+				{"icon": "🌌", "desc": "Spawns 5 holes and fires 25% faster."},
 			]
 		},
 		"right": {
 			"upgrades": [
-				{"icon": "🌌", "desc": "Black holes pull enemies much harder."},
+				{"icon": "🧲", "desc": "Black holes pull enemies much harder."},
 				{"icon": "⏳", "desc": "Black holes last twice as long."},
-				{"icon": "⚫", "desc": "Massive pull strength, size, and duration."},
+				{"icon": "🕳️", "desc": "Massive pull strength, size, and duration."},
 			]
 		}
 	},
@@ -103,46 +101,46 @@ var upgrade_visual_data = {
 		"left": {
 			"upgrades": [
 				{"icon": "⚡", "desc": "Lightning jumps further between enemies."},
-				{"icon": "⚡⚡", "desc": "Attack cooldown cut in half."},
-				{"icon": "💫⚡", "desc": "Lightning chain reaches 20 enemies."},
+				{"icon": "🔋", "desc": "Attack cooldown cut in half."},
+				{"icon": "🌩️", "desc": "Lightning chain reaches 20 enemies."},
 			]
 		},
 		"right": {
 			"upgrades": [
-				{"icon": "💥🧪", "desc": "Nearby towers deal double damage."},
-				{"icon": "💨🧪", "desc": "Nearby towers shoot twice as fast."},
-				{"icon": "❤️", "desc": "Synthesizes 100 extra lives."},
+				{"icon": "💉", "desc": "Nearby towers deal double damage."},
+				{"icon": "🧪", "desc": "Nearby towers shoot twice as fast."},
+				{"icon": "💖", "desc": "Synthesizes 100 extra lives."},
 			]
 		}
 	},
 	"Turtosaurus Rex": {
 		"left": {
 			"upgrades": [
-				{"icon": "↔🦖", "desc": "Beam widens and deals 50% more damage."},
-				{"icon": "↔↔🦖", "desc": "Beam widens further, more damage."},
-				{"icon": "🦖⚡⚡", "desc": "Fires a second beam at another target."},
+				{"icon": "💎", "desc": "Beam widens and deals 50% more damage."},
+				{"icon": "💠", "desc": "Beam widens further, more damage."},
+				{"icon": "🌟", "desc": "Fires a second beam at another target."},
 			]
 		},
 		"right": {
 			"upgrades": [
 				{"icon": "⚡", "desc": "Doubles beam damage."},
 				{"icon": "☢️", "desc": "Doubles beam damage again."},
-				{"icon": "💥", "desc": "Final doubling — maximum destruction."},
+				{"icon": "⚛️", "desc": "Final doubling — maximum destruction."},
 			]
 		}
 	},
 	"Holy Crusaturt": {
 		"left": {
 			"upgrades": [
-				{"icon": "💨", "desc": "Smites 33% faster."},
-				{"icon": "🎯", "desc": "Detection range grows by 50%."},
-				{"icon": "⚡", "desc": "Attack speed doubled."},
+				{"icon": "👹", "desc": "Smites 33% faster."},
+				{"icon": "👿", "desc": "Detection range grows by 50%."},
+				{"icon": "🧨", "desc": "Attack speed doubled."},
 			]
 		},
 		"right": {
 			"upgrades": [
-				{"icon": "🌟", "desc": "Beam damage doubled."},
-				{"icon": "💥🌟", "desc": "Beam damage doubled again."},
+				{"icon": "⚖️", "desc": "Beam damage doubled."},
+				{"icon": "✨", "desc": "Beam damage doubled again."},
 				{"icon": "👁️", "desc": "Beams now target the furthest enemy."},
 			]
 		}
@@ -150,32 +148,32 @@ var upgrade_visual_data = {
 	"Shell Facturtory": {
 		"left": {
 			"upgrades": [
-				{"icon": "💨🐢", "desc": "Spawns turts 40% faster."},
-				{"icon": "🐢🐢", "desc": "Spawns two turts at once."},
-				{"icon": "♾️🐢", "desc": "Extreme spawn speed with smaller turts."},
+				{"icon": "🏃‍♂️", "desc": "Spawns turts 40% faster."},
+				{"icon": "🛣️", "desc": "Spawns two turts at once."},
+				{"icon": "🐝", "desc": "Extreme spawn speed with smaller turts."},
 			]
 		},
 		"right": {
 			"upgrades": [
 				{"icon": "🛡️", "desc": "Turts have 3 HP and deal more damage."},
 				{"icon": "💥", "desc": "Turts explode on death."},
-				{"icon": "💪", "desc": "Spawns one giant turt with 10 HP and massive damage."},
+				{"icon": "🦖", "desc": "Spawns one giant turt with 10 HP and massive damage."},
 			]
 		}
 	},
 	"Turt Town": {
 		"left": {
 			"upgrades": [
-				{"icon": "♜", "desc": "Spawns a mini turret nearby."},
-				{"icon": "👥", "desc": "Spawns a second mini turret."},
-				{"icon": "🏰", "desc": "Turrets shoot twice as fast. Buff radius doubled."},
+				{"icon": "🏰", "desc": "Spawns a mini turret nearby."},
+				{"icon": "👮", "desc": "Spawns a second mini turret."},
+				{"icon": "🛡️", "desc": "Turrets shoot twice as fast. Buff radius doubled."},
 			]
 		},
 		"right": {
 			"upgrades": [
 				{"icon": "💰", "desc": "Earns 20 shrimp every 8 seconds."},
-				{"icon": "💰🛣️", "desc": "Earns 30 shrimp every 5 seconds."},
-				{"icon": "💰🏘️", "desc": "Earns 50 shrimp every 3 seconds. Instant +300."},
+				{"icon": "🚢", "desc": "Earns 30 shrimp every 5 seconds."},
+				{"icon": "🏛️", "desc": "Earns 50 shrimp every 3 seconds. Instant +300."},
 			]
 		}
 	},
@@ -183,15 +181,15 @@ var upgrade_visual_data = {
 		"left": {
 			"upgrades": [
 				{"icon": "👅", "desc": "Attack speed doubled."},
-				{"icon": "👅👅", "desc": "Detection range grows 50%."},
-				{"icon": "👅👅👅", "desc": "Attack speed doubled again."},
+				{"icon": "🧶", "desc": "Detection range grows 50%."},
+				{"icon": "⚡", "desc": "Attack speed doubled again."},
 			]
 		},
 		"right": {
 			"upgrades": [
 				{"icon": "🐌", "desc": "Slow effect doubled in strength."},
-				{"icon": "🐌🐌", "desc": "Slows up to 3 enemies at once."},
-				{"icon": "🐌🐌🐌", "desc": "Slows up to 6 enemies at once."},
+				{"icon": "🍯", "desc": "Slows up to 3 enemies at once."},
+				{"icon": "🕸️", "desc": "Slows up to 6 enemies at once."},
 			]
 		}
 	},

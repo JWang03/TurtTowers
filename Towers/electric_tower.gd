@@ -31,17 +31,17 @@ var upgrades = {
 	"left": {
 		"name": "The Physicist",
 		"tiers": [
-			{"label": "Farther Chain Lightning", "cost": 75},
-			{"label": "Faster Shooting", "cost": 150},
-			{"label": "Farthest Chain Lightning", "cost": 300}
+			{"label": "High Voltage", "cost": 75},
+			{"label": "Superconductor", "cost": 150},
+			{"label": "Tesla Overload", "cost": 300}
 		]
 	},
 	"right": {
 		"name": "The Chemist",
 		"tiers": [
-			{"label": "Increased Damage for Nearby Towers", "cost": 100},
-			{"label": "Faster Shooting for Nearby Towers", "cost": 200},
-			{"label": "Synthesize Extra Lives", "cost": 700}
+			{"label": "Adrenaline Serum", "cost": 100},
+			{"label": "Anabolic Catalyst", "cost": 200},
+			{"label": "Elixir of Life", "cost": 700}
 		]
 	}
 }
@@ -205,30 +205,36 @@ func grant_extra_life():
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
 		return
-		
 	var ucost = 0
 	if branch == "left":
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
-		
+	# block tier 3 if another tower already has it
+	if branch == "left" and left_level == 2 and not UpgradeManager.can_purchase_tier3_left(tower_name):
+		return
+	if branch == "right" and right_level == 2 and not UpgradeManager.can_purchase_tier3_right(tower_name):
+		return
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
 		return
-		
 	currency_manager.spend_shellings(ucost)
+	if chosen_branch == "":
+		chosen_branch = branch  # only set AFTER confirming purchase
 	
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
 		if left_level == 3 and physicist_sprite:
 			sprite.texture = physicist_sprite
+			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
 		if right_level == 3 and chemist_sprite:
 			sprite.texture = chemist_sprite
+			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
 
@@ -268,4 +274,8 @@ func sell() -> void:
 			tower.attack_cooldown /= speed_buff_multiplier
 			if tower.has_node("Timer"):
 				tower.get_node("Timer").wait_time = tower.attack_cooldown
+	if left_level >= 3:
+		UpgradeManager.unregister_tier3_left(tower_name)
+	if right_level >= 3:
+		UpgradeManager.unregister_tier3_right(tower_name)
 	super.sell()

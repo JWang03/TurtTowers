@@ -5,6 +5,7 @@ extends TowerBase
 @onready var anim_sprite = $AnimatedSprite2D
 var current_slow_target = null
 var max_targets: int = 1
+var tower_id: String = "Turt Turt Turt Sahur"  # display name, changes with upgrades
 
 func _ready():
 	super._ready()
@@ -88,7 +89,7 @@ func _input(event):
 				Signal_Bus.tower_selected.emit(self)
 				break
 
-var tower_name = "Turt Turt Turt Sahur"
+var tower_name = "Turt Turt Turt Sahur"  # fixed ID, used for UpgradeManager lookup
 var upgrades = {
 	"left": {
 		"name": "Tung",
@@ -119,39 +120,55 @@ func purchase_upgrade(branch: String):
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
+	if branch == "left" and left_level == 2 and not UpgradeManager.can_purchase_tier3_left(tower_name):
+		return
+	if branch == "right" and right_level == 2 and not UpgradeManager.can_purchase_tier3_right(tower_name):
+		return
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
 		return
 	currency_manager.spend_shellings(ucost)
 	if chosen_branch == "":
-		chosen_branch = branch  # only set AFTER confirming purchase
+		chosen_branch = branch
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
+		if left_level >= 3:
+			UpgradeManager.register_tier3_left(tower_name)
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
+		if right_level >= 3:
+			UpgradeManager.register_tier3_right(tower_name)
 	refresh_range_indicator()
+
 func apply_left_upgrade():
 	match left_level:
 		0:
 			fire_rate *= .5
-			tower_name = "Tung Turt Turt Sahur"
+			tower_id = "Tung Turt Turt Sahur"
 		1:
 			detection_area.scale *= 1.5
-			tower_name = "Tung Tung Turt Sahur"
+			tower_id = "Tung Tung Turt Sahur"
 		2:
 			fire_rate *= .5
-			tower_name = "Tung Tung Tung Sahur"
+			tower_id = "Tung Tung Tung Sahur"
 
 func apply_right_upgrade():
 	match right_level:
 		0:
 			slow_factor *= .5
-			tower_name = "Larp Turt Turt Sahur"
+			tower_id = "Larp Turt Turt Sahur"
 		1:
 			max_targets = 3
-			tower_name = "Larp Larp Turt Sahur"
+			tower_id = "Larp Larp Turt Sahur"
 		2:
 			max_targets = 6
-			tower_name = "Larp Larp Larp Sahur"
+			tower_id = "Larp Larp Larp Sahur"
+
+func sell() -> void:
+	if left_level >= 3:
+		UpgradeManager.unregister_tier3_left(tower_name)
+	if right_level >= 3:
+		UpgradeManager.unregister_tier3_right(tower_name)
+	super.sell()

@@ -182,9 +182,9 @@ var upgrades = {
 	"left": {
 		"name": "Twin Peaks",
 		"tiers": [
-			{"label": "Wider Beam", "cost": 75},
-			{"label": "Widest Beam", "cost": 150},
-			{"label": "Dual Beam", "cost": 300}
+			{"label": "Prism Lens", "cost": 75},
+			{"label": "Refraction Array", "cost": 150},
+			{"label": "Binary Star", "cost": 300}
 		]
 	},
 	"right": {
@@ -200,30 +200,36 @@ var upgrades = {
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
 		return
-	
 	var ucost = 0
 	if branch == "left":
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
-		
+	# block tier 3 if another tower already has it
+	if branch == "left" and left_level == 2 and not UpgradeManager.can_purchase_tier3_left(tower_name):
+		return
+	if branch == "right" and right_level == 2 and not UpgradeManager.can_purchase_tier3_right(tower_name):
+		return
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
 		return
-		
 	currency_manager.spend_shellings(ucost)
+	if chosen_branch == "":
+		chosen_branch = branch  # only set AFTER confirming purchase)
 	
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
 		if left_level == 3 and twin_peaks_sprite:
 			sprite.texture = twin_peaks_sprite
+			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
 		if right_level == 3 and atomic_sprite:
 			sprite.texture = atomic_sprite
+			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
 
@@ -266,3 +272,10 @@ func _input(event):
 			if result["collider"] == self:
 				Signal_Bus.tower_selected.emit(self)
 				break
+
+func sell() -> void:
+		if left_level >= 3:
+			UpgradeManager.unregister_tier3_left(tower_name)
+		if right_level >= 3:
+			UpgradeManager.unregister_tier3_right(tower_name)
+		super.sell()

@@ -13,6 +13,7 @@ z_index = 4096
 script = ExtResource("1_am03q")
 scatter_path_sprite = ExtResource("2_xuouo")
 singularity_path_sprite = ExtResource("3_htoos")
+cost = 225.0
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=106421023]
 

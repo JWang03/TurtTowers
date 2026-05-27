@@ -15,23 +15,23 @@ var aimbot = false
 var left_level = 0
 var right_level = 0
 var chosen_branch = ""
-var tower_name = "The Lieturtant"
+var tower_name = "The Lieuturtant"
 
 var upgrades = {
 	"left": {
-		"name": "Gunner",
+		"name": "Commando",
 		"tiers": [
-			{"label": "Faster Shooting", "cost": 75},
-			{"label": "Faster Shooting 2", "cost": 150},
-			{"label": "Double Shot", "cost": 300}
+			{"label": "Trigger Finger", "cost": 75},
+			{"label": "Belt-Fed Shells", "cost": 150},
+			{"label": "Dual-Wield Sergeant", "cost": 300}
 		]
 	},
 	"right": {
 		"name": "Marksman",
 		"tiers": [
-			{"label": "Increased Range", "cost": 100},
+			{"label": "Eagle Eye", "cost": 100},
 			{"label": "High Caliber Bullets", "cost": 200},
-			{"label": "Aimbot", "cost": 700}
+			{"label": "Targeting Matrix", "cost": 700}
 		]
 	}
 }
@@ -132,30 +132,35 @@ func _fire_bullet(final_target: Node2D, side_offset: float):
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
 		return
-		
 	var ucost = 0
 	if branch == "left":
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
-		
+	# block tier 3 if another tower already has it
+	if branch == "left" and left_level == 2 and not UpgradeManager.can_purchase_tier3_left(tower_name):
+		return
+	if branch == "right" and right_level == 2 and not UpgradeManager.can_purchase_tier3_right(tower_name):
+		return
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
 		return
-		
 	currency_manager.spend_shellings(ucost)
-	
+	if chosen_branch == "":
+		chosen_branch = branch  # only set AFTER confirming purchase
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
 		if left_level == 3 and gunner_sprite:
 			sprite.texture = gunner_sprite
+			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
 		if right_level == 3 and marksman_sprite:
 			sprite.texture = marksman_sprite
+			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
 
@@ -178,4 +183,8 @@ func apply_right_upgrade():
 			fire_rate *= 2.2
 
 func sell() -> void:
-	super.sell()
+		if left_level >= 3:
+			UpgradeManager.unregister_tier3_left(tower_name)
+		if right_level >= 3:
+			UpgradeManager.unregister_tier3_right(tower_name)
+		super.sell()

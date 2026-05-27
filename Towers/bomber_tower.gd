@@ -23,17 +23,17 @@ var upgrades = {
 	"left": {
 		"name": "Cluster Bomber",
 		"tiers": [
-			{"label": "+1 Bomb", "cost": 75},
-			{"label": "+1 Bomb", "cost": 150},
-			{"label": "+1 Bomb", "cost": 300}
+			{"label": "Double Deuce", "cost": 75},
+			{"label": "Triple Threat", "cost": 150},
+			{"label": "Shell-Shocked", "cost": 300}
 		]
 	},
 	"right": {
 		"name": "Missile Menace",
 		"tiers": [
-			{"label": "Faster Fire", "cost": 100},
-			{"label": "Increased Range", "cost": 200},
-			{"label": "Homing Missiles", "cost": 300}
+			{"label": "Rapid Retraction", "cost": 100},
+			{"label": "Long-Neck Optics", "cost": 200},
+			{"label": "Heat-Seeker Shells", "cost": 300}
 		]
 	}
 }
@@ -135,30 +135,35 @@ func _input(event):
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
 		return
-		
 	var ucost = 0
 	if branch == "left":
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
-		
+	# block tier 3 if another tower already has it
+	if branch == "left" and left_level == 2 and not UpgradeManager.can_purchase_tier3_left(tower_name):
+		return
+	if branch == "right" and right_level == 2 and not UpgradeManager.can_purchase_tier3_right(tower_name):
+		return
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
 		return
-		
 	currency_manager.spend_shellings(ucost)
-	
+	if chosen_branch == "":
+		chosen_branch = branch  # only set AFTER confirming purchase
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
 		if left_level == 3 and cluster_bomber_sprite:
 			sprite.texture = cluster_bomber_sprite
+			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
 		if right_level == 3 and missile_menace_sprite:
 			sprite.texture = missile_menace_sprite
+			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
 
@@ -177,3 +182,10 @@ func apply_right_upgrade():
 		0: fire_rate *= 0.5
 		1: detection_area.scale *= 2
 		2: bomb_scene = preload("res://Towers/missile.tscn")
+
+func sell() -> void:
+		if left_level >= 3:
+			UpgradeManager.unregister_tier3_left(tower_name)
+		if right_level >= 3:
+			UpgradeManager.unregister_tier3_right(tower_name)
+		super.sell()

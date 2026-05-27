@@ -13,6 +13,7 @@ z_index = 4096
 script = ExtResource("1_favj8")
 physicist_sprite = ExtResource("2_dvst0")
 chemist_sprite = ExtResource("3_6wuib")
+cost = 225.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=132394118]
 position = Vector2(81, 100)

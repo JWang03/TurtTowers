@@ -28,7 +28,7 @@ var upgrades = {
 		"name": "Scatter",
 		"tiers": [
 			{"label": "Twin Holes", "cost": 100},
-			{"label": "Triple Holes", "cost": 200},
+			{"label": "Triple Alpha Process", "cost": 200},
 			{"label": "Hole Barrage", "cost": 400}
 		]
 	},
@@ -157,30 +157,35 @@ func _input(event):
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
 		return
-	
 	var ucost = 0
 	if branch == "left":
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
-		
+	# block tier 3 if another tower already has it
+	if branch == "left" and left_level == 2 and not UpgradeManager.can_purchase_tier3_left(tower_name):
+		return
+	if branch == "right" and right_level == 2 and not UpgradeManager.can_purchase_tier3_right(tower_name):
+		return
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
 		return
-		
 	currency_manager.spend_shellings(ucost)
-	
+	if chosen_branch == "":
+		chosen_branch = branch  # only set AFTER confirming purchase
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
 		if left_level == 3 and scatter_path_sprite:
 			sprite.texture = scatter_path_sprite
+			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
 		if right_level == 3 and singularity_path_sprite:
 			sprite.texture = singularity_path_sprite
+			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
 
@@ -209,3 +214,11 @@ func apply_right_upgrade():
 			hole_pull_multiplier = 3.5
 			hole_scale_multiplier = 2.5
 			hole_duration_multiplier = 2.5
+
+func sell() -> void:
+		if left_level >= 3:
+			UpgradeManager.unregister_tier3_left(tower_name)
+		if right_level >= 3:
+			UpgradeManager.unregister_tier3_right(tower_name)
+		super.sell()
+	

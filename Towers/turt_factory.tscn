@@ -16,6 +16,7 @@ z_index = 4096
 script = ExtResource("1_a6nrm")
 mass_production_sprite = ExtResource("2_cg8qi")
 mega_turt_sprite = ExtResource("3_501lu")
+cost = 250.0
 
 [node name="Range" type="Area2D" parent="." unique_id=2028278944]
 

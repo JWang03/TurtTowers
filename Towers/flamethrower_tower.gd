@@ -100,7 +100,7 @@ var upgrades = {
 		"name": "Inferno",
 		"tiers": [
 			{"label": "Hotter Flames", "cost": 75},
-			{"label": "Wider Spread", "cost": 150},
+			{"label": "Dragon’s Breath", "cost": 150},
 			{"label": "Napalm", "cost": 300}
 		]
 	},
@@ -108,7 +108,7 @@ var upgrades = {
 		"name": "Crowd Control",
 		"tiers": [
 			{"label": "Scorched Earth", "cost": 100},
-			{"label": "Weaken", "cost": 200},
+			{"label": "Corrosive Catalyst", "cost": 200},
 			{"label": "Flashpoint", "cost": 700}
 		]
 	}
@@ -125,6 +125,11 @@ func purchase_upgrade(branch: String):
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
+	# block tier 3 if another tower already has it
+	if branch == "left" and left_level == 2 and not UpgradeManager.can_purchase_tier3_left(tower_name):
+		return
+	if branch == "right" and right_level == 2 and not UpgradeManager.can_purchase_tier3_right(tower_name):
+		return
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
 		return
@@ -137,6 +142,7 @@ func purchase_upgrade(branch: String):
 		if left_level == 3 and napalm_sprite:
 			base_sprite.texture = napalm_sprite
 			base_sprite.scale = Vector2(0.13,0.13)
+			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
@@ -144,6 +150,7 @@ func purchase_upgrade(branch: String):
 		if right_level == 3 and flashpoint_sprite:
 			base_sprite.texture = flashpoint_sprite
 			base_sprite.scale = Vector2(0.13,0.13)
+			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
 
@@ -158,3 +165,10 @@ func apply_right_upgrade():
 		0: slow_active = true
 		1: armor_shred_active = true
 		2: flashpoint_active = true
+
+func sell() -> void:
+		if left_level >= 3:
+			UpgradeManager.unregister_tier3_left(tower_name)
+		if right_level >= 3:
+			UpgradeManager.unregister_tier3_right(tower_name)
+		super.sell()

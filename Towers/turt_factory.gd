@@ -106,17 +106,17 @@ var upgrades = {
 	"left": {
 		"name": "Assembly Line",
 		"tiers": [
-			{"label": "Faster Belt", "cost": 75},
-			{"label": "Double Line", "cost": 175},
-			{"label": "Mass Production", "cost": 400}
+			{"label": "Overclocked Conveyor", "cost": 75},
+			{"label": "Dual-Lane Logistics", "cost": 175},
+			{"label": "Automated Swarm", "cost": 400}
 		]
 	},
 	"right": {
 		"name": "Heavy Shell",
 		"tiers": [
-			{"label": "Reinforced Hull", "cost": 100},
-			{"label": "Explosive Shell", "cost": 250},
-			{"label": "Mega Turt", "cost": 600}
+			{"label": "Ironclad Scutes", "cost": 100},
+			{"label": "Volatile Payload", "cost": 250},
+			{"label": "The Behemoth Project", "cost": 600}
 		]
 	}
 }
@@ -132,6 +132,11 @@ func purchase_upgrade(branch: String):
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
+	# block tier 3 if another tower already has it
+	if branch == "left" and left_level == 2 and not UpgradeManager.can_purchase_tier3_left(tower_name):
+		return
+	if branch == "right" and right_level == 2 and not UpgradeManager.can_purchase_tier3_right(tower_name):
+		return
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
 		return
@@ -143,11 +148,13 @@ func purchase_upgrade(branch: String):
 		left_level += 1
 		if left_level == 3 and mass_production_sprite:
 			base_sprite.texture = mass_production_sprite
+			UpgradeManager.register_tier3_left(tower_name)
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
 		if right_level == 3 and mega_turt_sprite:
 			base_sprite.texture = mega_turt_sprite
+			UpgradeManager.register_tier3_right(tower_name)
 	refresh_range_indicator()
 
 func apply_left_upgrade():
@@ -180,4 +187,8 @@ func apply_right_upgrade():
 			turt_health = 10
 
 func sell() -> void:
-	super.sell()
+		if left_level >= 3:
+			UpgradeManager.unregister_tier3_left(tower_name)
+		if right_level >= 3:
+			UpgradeManager.unregister_tier3_right(tower_name)
+		super.sell()
