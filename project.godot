@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalSettings="*uid://bpm6aiqhw60bo"
 Signal_Bus="*uid://db2d8304xnb2n"
+UpgradeManager="*uid://36eenbc5h5jk"
 
 [display]
 

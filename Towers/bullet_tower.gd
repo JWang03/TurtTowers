@@ -132,30 +132,35 @@ func _fire_bullet(final_target: Node2D, side_offset: float):
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
 		return
-		
 	var ucost = 0
 	if branch == "left":
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
-		
+	# block tier 3 if another tower already has it
+	if branch == "left" and left_level == 2 and not UpgradeManager.can_purchase_tier3_left():
+		return
+	if branch == "right" and right_level == 2 and not UpgradeManager.can_purchase_tier3_right():
+		return
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager.shellings < ucost:
 		return
-		
 	currency_manager.spend_shellings(ucost)
-	
+	if chosen_branch == "":
+		chosen_branch = branch  # only set AFTER confirming purchase
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
 		if left_level == 3 and gunner_sprite:
 			sprite.texture = gunner_sprite
+			UpgradeManager.register_tier3_left()
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
 		if right_level == 3 and marksman_sprite:
 			sprite.texture = marksman_sprite
+			UpgradeManager.register_tier3_right()
 			
 	refresh_range_indicator()
 
@@ -178,4 +183,8 @@ func apply_right_upgrade():
 			fire_rate *= 2.2
 
 func sell() -> void:
-	super.sell()
+		if left_level >= 3:
+			UpgradeManager.unregister_tier3_left()
+		if right_level >= 3:
+			UpgradeManager.unregister_tier3_right()
+		super.sell()
