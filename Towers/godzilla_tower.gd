@@ -14,8 +14,8 @@ var left_level = 0
 var right_level = 0
 var chosen_branch = ""
 
-@export var twin_peaks_sprite: Texture2D
-@export var atomic_sprite: Texture2D
+@export var left_sprite: Texture2D
+@export var right_sprite: Texture2D
 
 @export var damage_per_second: float = 30
 @export var rotation_speed: float = 5.0
@@ -77,10 +77,7 @@ func _process(delta):
 		
 		var target_rot = head.rotation
 		
-		if sprite.texture == twin_peaks_sprite or sprite.texture == atomic_sprite:
-			sprite.rotation = target_rot + PI
-		else:
-			sprite.rotation = target_rot + PI
+		sprite.rotation = target_rot + PI
 			
 		var angle = wrapf(sprite.rotation, -PI, PI)
 		if abs(angle) > PI / 2:
@@ -197,6 +194,12 @@ var upgrades = {
 	}
 }
 
+func _refresh_visuals():
+	if left_level >= 3 and left_sprite:
+		sprite.texture = left_sprite
+	elif right_level >= 3 and right_sprite:
+		sprite.texture = right_sprite
+
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
 		return
@@ -215,20 +218,19 @@ func purchase_upgrade(branch: String):
 		return
 	currency_manager.spend_shellings(ucost)
 	if chosen_branch == "":
-		chosen_branch = branch  # only set AFTER confirming purchase)
-	
+		chosen_branch = branch  # only set AFTER confirming purchase
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
-		if left_level == 3 and twin_peaks_sprite:
-			sprite.texture = twin_peaks_sprite
+		if left_level == 3 and left_sprite:
+			sprite.texture = left_sprite
 			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
-		if right_level == 3 and atomic_sprite:
-			sprite.texture = atomic_sprite
+		if right_level == 3 and right_sprite:
+			sprite.texture = right_sprite
 			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()

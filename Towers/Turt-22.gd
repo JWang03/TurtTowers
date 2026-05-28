@@ -4,8 +4,8 @@ extends TowerBase
 @export var spread_count: int = 4
 @export var spread_angle: float = 5.0
 
-@export var omni_sprite: Texture2D
-@export var railgun_sprite: Texture2D
+@export var left_sprite: Texture2D
+@export var right_sprite: Texture2D
 
 @onready var path_follow = $Path2D/PathFollow2D
 @onready var muzzle = $Path2D/PathFollow2D/Muzzle
@@ -52,7 +52,7 @@ func _ready():
 func _process(delta):
 	path_follow.progress += flight_speed * delta
 	
-	if sprite.texture == railgun_sprite:
+	if sprite.texture == left_sprite:
 		sprite.rotation = -PI/2
 	else:
 		sprite.rotation = PI/2
@@ -82,6 +82,12 @@ func _input(event):
 		if sprite.global_position.distance_to(mouse_pos) <= 40.0:
 			Signal_Bus.tower_selected.emit(self)
 
+func _refresh_visuals():
+	if left_level >= 3 and left_sprite:
+		sprite.texture = left_sprite
+	elif right_level >= 3 and right_sprite:
+		sprite.texture = right_sprite
+
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
 		return
@@ -101,19 +107,18 @@ func purchase_upgrade(branch: String):
 	currency_manager.spend_shellings(ucost)
 	if chosen_branch == "":
 		chosen_branch = branch  # only set AFTER confirming purchase
-	
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
-		if left_level == 3 and omni_sprite:
-			sprite.texture = omni_sprite
+		if left_level == 3 and left_sprite:
+			sprite.texture = left_sprite
 			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
-		if right_level == 3 and railgun_sprite:
-			sprite.texture = railgun_sprite
+		if right_level == 3 and right_sprite:
+			sprite.texture = right_sprite
 			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()

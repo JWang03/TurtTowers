@@ -4,8 +4,8 @@ extends TowerBase
 @onready var timer = $Timer
 @onready var sprite = $Sprite2D
 
-@export var cluster_bomber_sprite: Texture2D
-@export var missile_menace_sprite: Texture2D
+@export var left_sprite: Texture2D
+@export var right_sprite: Texture2D
 
 var damage_multiplier = 1.0
 var double_shot = false
@@ -46,16 +46,15 @@ func _ready():
 	timer.timeout.connect(_on_timer_timeout)
 	detection_area.body_entered.connect(_on_zombie_entered)
 
+
+		
 func _process(_delta: float) -> void:
 	timer.wait_time = fire_rate
 	
 	var target = get_best_target()
 	if target:
 		look_at(target.global_position)
-		if sprite.texture == cluster_bomber_sprite or sprite.texture == missile_menace_sprite:
-			rotation += PI
-		else:
-			rotation += PI 
+		rotation += PI
 		
 		var angle = wrapf(rotation, -PI, PI)
 		if abs(angle) > PI / 2:
@@ -132,6 +131,12 @@ func _input(event):
 				Signal_Bus.tower_selected.emit(self)
 				break
 
+func _refresh_visuals():
+	if left_level >= 3 and left_sprite:
+		sprite.texture = left_sprite
+	elif right_level >= 3 and right_sprite:
+		sprite.texture = right_sprite
+
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
 		return
@@ -154,15 +159,15 @@ func purchase_upgrade(branch: String):
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
-		if left_level == 3 and cluster_bomber_sprite:
-			sprite.texture = cluster_bomber_sprite
+		if left_level == 3 and left_sprite:
+			sprite.texture = left_sprite
 			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
-		if right_level == 3 and missile_menace_sprite:
-			sprite.texture = missile_menace_sprite
+		if right_level == 3 and right_sprite:
+			sprite.texture = right_sprite
 			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()

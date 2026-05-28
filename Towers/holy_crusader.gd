@@ -2,8 +2,8 @@ extends TowerBase
 
 @export var damage: int = 100
 
-@export var demonic_sprite: Texture2D
-@export var angelic_sprite: Texture2D
+@export var left_sprite: Texture2D
+@export var right_sprite: Texture2D
 
 var damage_multiplier = 1
 @onready var range_area = $Range
@@ -131,6 +131,12 @@ var left_level = 0
 var right_level = 0
 var chosen_branch = ""
 
+func _refresh_visuals():
+	if left_level >= 3 and left_sprite:
+		sprite.texture = left_sprite
+	elif right_level >= 3 and right_sprite:
+		sprite.texture = right_sprite
+
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
 		return
@@ -153,17 +159,15 @@ func purchase_upgrade(branch: String):
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
-		if left_level == 3 and demonic_sprite:
-			sprite.texture = demonic_sprite
-			sprite.scale = Vector2(0.18, 0.18)
+		if left_level == 3 and left_sprite:
+			sprite.texture = left_sprite
 			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
-		if right_level == 3 and angelic_sprite:
-			sprite.texture = angelic_sprite
-			sprite.scale = Vector2(0.18, 0.18)
+		if right_level == 3 and right_sprite:
+			sprite.texture = right_sprite
 			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()

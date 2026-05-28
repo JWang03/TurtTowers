@@ -4,8 +4,8 @@ extends TowerBase
 @onready var timer = $Timer
 @onready var sprite = $Sprite2D
 
-@export var gunner_sprite: Texture2D
-@export var marksman_sprite: Texture2D
+@export var left_sprite: Texture2D
+@export var right_sprite: Texture2D
 
 var bullet_scene = preload("res://Towers/bullet.tscn")
 var damage_multiplier = 1.0
@@ -36,6 +36,7 @@ var upgrades = {
 	}
 }
 
+
 func _ready():
 	super._ready()
 	cost = 25.0
@@ -53,7 +54,7 @@ func _process(_delta: float) -> void:
 	if target:
 		look_at(target.global_position)
 		
-		if sprite.texture == marksman_sprite or sprite.texture == gunner_sprite:
+		if sprite.texture == left_sprite or sprite.texture == right_sprite:
 			rotation += 0
 		else:
 			rotation += PI 
@@ -129,6 +130,12 @@ func _fire_bullet(final_target: Node2D, side_offset: float):
 		bullet.set_hit_target(final_target)
 
 
+func _refresh_visuals():
+	if left_level >= 3 and left_sprite:
+		sprite.texture = left_sprite
+	elif right_level >= 3 and right_sprite:
+		sprite.texture = right_sprite
+
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
 		return
@@ -151,15 +158,15 @@ func purchase_upgrade(branch: String):
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
-		if left_level == 3 and gunner_sprite:
-			sprite.texture = gunner_sprite
+		if left_level == 3 and left_sprite:
+			sprite.texture = left_sprite
 			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
-		if right_level == 3 and marksman_sprite:
-			sprite.texture = marksman_sprite
+		if right_level == 3 and right_sprite:
+			sprite.texture = right_sprite
 			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
