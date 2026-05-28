@@ -52,7 +52,7 @@ func _ready():
 func _process(delta):
 	path_follow.progress += flight_speed * delta
 	
-	if sprite.texture == left_sprite:
+	if sprite.texture == right_sprite:
 		sprite.rotation = -PI/2
 	else:
 		sprite.rotation = PI/2
@@ -122,6 +122,7 @@ func purchase_upgrade(branch: String):
 			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
+	_refresh_visuals()
 
 func apply_left_upgrade():
 	match left_level:

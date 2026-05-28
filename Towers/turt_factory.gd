@@ -164,6 +164,7 @@ func purchase_upgrade(branch: String):
 			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
+	_refresh_visuals()
 
 func apply_left_upgrade():
 	match left_level:

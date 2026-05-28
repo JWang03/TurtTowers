@@ -158,6 +158,7 @@ func _refresh_visuals():
 		sprite.texture = left_sprite
 	elif right_level >= 3 and right_sprite:
 		sprite.texture = right_sprite
+		sprite.scale*=.8
 
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
@@ -193,6 +194,7 @@ func purchase_upgrade(branch: String):
 			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
+	_refresh_visuals()
 
 func apply_left_upgrade():
 	match left_level:

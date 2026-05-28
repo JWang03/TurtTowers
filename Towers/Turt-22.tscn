@@ -20,8 +20,8 @@ collision_layer = 2
 script = ExtResource("1_jaf4s")
 flight_speed = 30.0
 spread_angle = 30.0
-left_sprite = ExtResource("3_ctm21")
-right_sprite = ExtResource("2_433y3")
+left_sprite = ExtResource("2_433y3")
+right_sprite = ExtResource("3_ctm21")
 fire_rate = 0.2
 cost = 200.0
 
@@ -36,7 +36,8 @@ position = Vector2(-773.0003, 432.89536)
 rotation = 0.83396745
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=1787003691]
-z_index = 10
+z_index = 4096
+z_as_relative = false
 position = Vector2(0.1402452, -0.28202558)
 rotation = 1.3631022
 scale = Vector2(0.11191265, 0.09152443)
