@@ -19,7 +19,18 @@ var current_wave: int = 0
 var enemies_alive: int = 0
 var game_started: bool = false
 var wave_running: bool = false
+var wave_spawning: bool = false
 var game_finished: bool = false
+var victory_menu_shown: bool = false
+var skip_to_wave_50_button: Button
+
+func _ready() -> void:
+	var current_scene := get_tree().current_scene
+	var run_stats := get_node_or_null("/root/RunStats")
+	if run_stats:
+		run_stats.reset_for_scene(current_scene.scene_file_path if current_scene else "")
+	if current_scene and current_scene.scene_file_path == "res://SandyShores/Scenes/Sandy_Beach.tscn":
+		_create_skip_to_wave_50_button()
 
 func _process(_delta: float) -> void:
 	if game_started or game_finished:
@@ -40,7 +51,7 @@ func resume_restored_wave() -> void:
 	game_started = true
 	wave_running = true
 
-	while enemies_alive > 0:
+	while not _all_pollution_cleared():
 		await get_tree().create_timer(0.1).timeout
 
 	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
@@ -48,6 +59,9 @@ func resume_restored_wave() -> void:
 		currency_manager.add_shellings(get_wave_bonus(current_wave))
 
 	wave_running = false
+	if current_wave >= max_waves:
+		await _finish_victory_if_final_clear()
+		return
 	await wait_while_unpaused(time_between_waves)
 	await start_next_wave()
 
@@ -61,10 +75,7 @@ func wait_while_unpaused(seconds: float) -> void:
 		await get_tree().create_timer(0.1).timeout
 func start_next_wave() -> void:
 	if current_wave >= max_waves:
-		game_finished = true
-		wave_running = false
-		if wave_label != null:
-			wave_label.text = "All Waves Cleared!"
+		await _finish_victory_if_final_clear()
 		return
 
 	current_wave += 1
@@ -74,9 +85,11 @@ func start_next_wave() -> void:
 		wave_label.text = "Wave " + str(current_wave) + " / " + str(max_waves)
 
 	var wave_data = get_wave_data(current_wave)
+	wave_spawning = true
 	await spawn_wave(wave_data)
+	wave_spawning = false
 
-	while enemies_alive > 0:
+	while not _all_pollution_cleared():
 		await get_tree().create_timer(0.1).timeout
 
 	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
@@ -132,6 +145,64 @@ func enemy_removed() -> void:
 	enemies_alive -= 1
 	if enemies_alive < 0:
 		enemies_alive = 0
+
+func _finish_victory_if_final_clear() -> void:
+	while wave_spawning or not _all_pollution_cleared():
+		await get_tree().create_timer(0.1).timeout
+
+	game_finished = true
+	wave_running = false
+	if wave_label != null:
+		wave_label.text = "All Waves Cleared!"
+	_show_victory_menu()
+
+func _all_pollution_cleared() -> bool:
+	if enemies_alive > 0:
+		return false
+	for pollution in get_tree().get_nodes_in_group("zombies"):
+		if is_instance_valid(pollution) and not pollution.is_queued_for_deletion():
+			return false
+	return true
+
+func _show_victory_menu() -> void:
+	if victory_menu_shown:
+		return
+	victory_menu_shown = true
+	var current_scene := get_tree().current_scene
+	var scene_path := current_scene.scene_file_path if current_scene else ""
+	var run_stats := get_node_or_null("/root/RunStats")
+	var victory_menu := get_node_or_null("/root/VictoryMenu")
+	if victory_menu:
+		victory_menu.show_victory(scene_path, run_stats.get_report() if run_stats else {})
+
+func _create_skip_to_wave_50_button() -> void:
+	var ui := get_tree().current_scene.find_child("UI", true, false)
+	if ui == null:
+		return
+
+	skip_to_wave_50_button = Button.new()
+	skip_to_wave_50_button.name = "TempSkipToWave50"
+	skip_to_wave_50_button.text = "Skip to 50"
+	skip_to_wave_50_button.custom_minimum_size = Vector2(120, 40)
+	skip_to_wave_50_button.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	skip_to_wave_50_button.offset_left = -145.0
+	skip_to_wave_50_button.offset_top = 12.0
+	skip_to_wave_50_button.offset_right = -25.0
+	skip_to_wave_50_button.offset_bottom = 52.0
+	skip_to_wave_50_button.add_theme_font_size_override("font_size", 18)
+	skip_to_wave_50_button.pressed.connect(_on_skip_to_wave_50_pressed)
+	ui.add_child(skip_to_wave_50_button)
+
+func _on_skip_to_wave_50_pressed() -> void:
+	if game_finished:
+		return
+	current_wave = 49
+	if wave_label != null:
+		wave_label.text = "Wave 50 ready"
+	if play_button and not play_button.playing:
+		play_button.playing = true
+	if not game_started:
+		start_game()
 
 func get_wave_data(wave_num: int) -> Array:
 	match wave_num:

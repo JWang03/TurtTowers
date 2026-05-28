@@ -15,6 +15,9 @@ func add_lives(amount: int):
 
 func spend_lives(amount: int):
 	lives -= amount
+	var run_stats := get_node_or_null("/root/RunStats")
+	if run_stats:
+		run_stats.record_lives_lost(amount)
 	update_label()
 
 

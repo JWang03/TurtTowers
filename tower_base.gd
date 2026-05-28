@@ -122,7 +122,7 @@ func set_target_priority(new_mode_index: int):
 
 func sell() -> void:
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
-	currency_manager.add_shellings(cost / 2)
+	currency_manager.add_shellings(cost / 2, false)
 	if tilemap:
 		tilemap.unoccupy_cell(occupied_cell)
 	queue_free()
