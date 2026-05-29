@@ -114,17 +114,17 @@ var upgrades = {
 	"left": {
 		"name": "Tung",
 		"tiers": [
-			{"label": "Tung", "cost": 75},
-			{"label": "Tung^2", "cost": 150},
-			{"label": "Tung^3", "cost": 300}
+			{"label": "Tung", "cost": 150},
+			{"label": "Tung^2", "cost": 400},
+			{"label": "Tung^3", "cost": 3000}
 		]
 	},
 	"right": {
 		"name": "Larp",
 		"tiers": [
-			{"label": "Larp", "cost": 100},
-			{"label": "Larp^2", "cost": 200},
-			{"label": "Larp^3", "cost": 700}
+			{"label": "Larp", "cost": 300},
+			{"label": "Larp^2", "cost": 1200},
+			{"label": "Larp^3", "cost": 10000}
 		]
 	}
 }

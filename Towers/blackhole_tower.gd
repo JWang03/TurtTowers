@@ -6,8 +6,8 @@ extends TowerBase
 
 var black_hole_scene = preload("res://Towers/blackhole.tscn")
 
-@export var scatter_path_sprite: Texture2D
-@export var singularity_path_sprite: Texture2D
+@export var left_sprite: Texture2D
+@export var right_sprite: Texture2D
 
 @export var lead_distance: float = 60.0
 var multi_hole_active: bool = false
@@ -27,17 +27,17 @@ var upgrades = {
 	"left": {
 		"name": "Scatter",
 		"tiers": [
-			{"label": "Twin Holes", "cost": 100},
-			{"label": "Triple Alpha Process", "cost": 200},
-			{"label": "Hole Barrage", "cost": 400}
+			{"label": "Twin Holes", "cost": 200},
+			{"label": "Triple Alpha Process", "cost": 800},
+			{"label": "Hole Barrage", "cost": 4000}
 		]
 	},
 	"right": {
 		"name": "Singularity",
 		"tiers": [
-			{"label": "Stronger Pull", "cost": 100},
-			{"label": "Extended Duration", "cost": 250},
-			{"label": "Event Horizon", "cost": 600}
+			{"label": "Stronger Pull", "cost": 500},
+			{"label": "Extended Duration", "cost": 1000},
+			{"label": "Event Horizon", "cost": 10000}
 		]
 	}
 }
@@ -51,6 +51,8 @@ func _ready():
 	timer.timeout.connect(_on_timer_timeout)
 	detection_area.body_entered.connect(_on_zombie_entered)
 
+
+
 func _process(_delta: float) -> void:
 	timer.wait_time = fire_rate
 	
@@ -58,10 +60,7 @@ func _process(_delta: float) -> void:
 	if target:
 		look_at(target.global_position)
 		
-		if sprite.texture == scatter_path_sprite or sprite.texture == singularity_path_sprite:
-			rotation += PI 
-		else:
-			rotation += PI 
+		rotation += PI
 		
 		var angle = wrapf(rotation, -PI, PI)
 		if abs(angle) > PI / 2:
@@ -154,6 +153,13 @@ func _input(event):
 				Signal_Bus.tower_selected.emit(self)
 				break
 
+func _refresh_visuals():
+	if left_level >= 3 and left_sprite:
+		sprite.texture = left_sprite
+	elif right_level >= 3 and right_sprite:
+		sprite.texture = right_sprite
+		sprite.scale*=.8
+
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
 		return
@@ -176,18 +182,19 @@ func purchase_upgrade(branch: String):
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
-		if left_level == 3 and scatter_path_sprite:
-			sprite.texture = scatter_path_sprite
+		if left_level == 3 and left_sprite:
+			sprite.texture = left_sprite
 			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
-		if right_level == 3 and singularity_path_sprite:
-			sprite.texture = singularity_path_sprite
+		if right_level == 3 and right_sprite:
+			sprite.texture = right_sprite
 			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
+	_refresh_visuals()
 
 func apply_left_upgrade():
 	match left_level:
@@ -211,9 +218,9 @@ func apply_right_upgrade():
 			hole_duration_multiplier = 2.0
 			hole_scale_multiplier = 1.7
 		2:
-			hole_pull_multiplier = 3.5
-			hole_scale_multiplier = 2.5
-			hole_duration_multiplier = 2.5
+			hole_pull_multiplier = 3
+			hole_scale_multiplier = 2.4
+			hole_duration_multiplier = 1.8
 
 func sell() -> void:
 		if left_level >= 3:

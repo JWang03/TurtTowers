@@ -3,14 +3,14 @@ extends TowerBase
 @export var damage_per_tick: float = 5
 @export var damage_frequency: float = 0.15
 
-@export var napalm_sprite: Texture2D
-@export var flashpoint_sprite: Texture2D
+@export var left_sprite: Texture2D
+@export var right_sprite: Texture2D
 
 @onready var head = $Head
 @onready var flame_anim = $Head/AnimatedSprite2D
 @onready var fire_area = $Head/FireDamageArea
 @onready var damage_timer = $Head/DamageTimer
-@onready var base_sprite = $Sprite2D 
+@onready var sprite = $Sprite2D 
 
 var target_zombie: Node2D = null
 var slow_active: bool = false
@@ -99,23 +99,31 @@ var upgrades = {
 	"left": {
 		"name": "Inferno",
 		"tiers": [
-			{"label": "Hotter Flames", "cost": 75},
-			{"label": "Dragon’s Breath", "cost": 150},
-			{"label": "Napalm", "cost": 300}
+			{"label": "Hotter Flames", "cost": 200},
+			{"label": "Dragon’s Breath", "cost": 600},
+			{"label": "Napalm", "cost": 2500}
 		]
 	},
 	"right": {
 		"name": "Crowd Control",
 		"tiers": [
-			{"label": "Scorched Earth", "cost": 100},
-			{"label": "Corrosive Catalyst", "cost": 200},
-			{"label": "Flashpoint", "cost": 700}
+			{"label": "Scorched Earth", "cost": 400},
+			{"label": "Corrosive Catalyst", "cost": 850},
+			{"label": "Flashpoint", "cost": 7500}
 		]
 	}
 }
 var left_level = 0
 var right_level = 0
 var chosen_branch = ""
+
+func _refresh_visuals():
+	if left_level >= 3 and left_sprite:
+		sprite.texture = left_sprite
+		sprite.scale*=.65
+	elif right_level >= 3 and right_sprite:
+		sprite.texture = right_sprite
+		sprite.scale*=.65
 
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
@@ -139,20 +147,19 @@ func purchase_upgrade(branch: String):
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
-		if left_level == 3 and napalm_sprite:
-			base_sprite.texture = napalm_sprite
-			base_sprite.scale = Vector2(0.13,0.13)
+		if left_level == 3 and left_sprite:
+			sprite.texture = left_sprite
 			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
-		if right_level == 3 and flashpoint_sprite:
-			base_sprite.texture = flashpoint_sprite
-			base_sprite.scale = Vector2(0.13,0.13)
+		if right_level == 3 and right_sprite:
+			sprite.texture = right_sprite
 			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()
+	_refresh_visuals()
 
 func apply_left_upgrade():
 	match left_level:

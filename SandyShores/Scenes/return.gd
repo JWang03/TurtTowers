@@ -208,12 +208,12 @@ func _on_exit_to_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file(MAIN_MENU_SCENE)
 
 func _on_restart_pressed() -> void:
+	UpgradeManager.clear_all()
 	if FileAccess.file_exists(AUTOSAVE_PATH):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(AUTOSAVE_PATH))
 	_prepare_for_scene_change()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
-	UpgradeManager.clear_all()
 
 func _prepare_for_scene_change() -> void:
 	if _menu_panel:
@@ -442,6 +442,9 @@ func _restore_towers(current_scene: Node, tower_data: Array) -> void:
 
 		_restore_tower_upgrades(tower, data)
 
+		# defer visual refresh so onready vars are guaranteed ready
+		tower.call_deferred("_refresh_visuals")
+
 		if grid:
 			var occupied_cells: Dictionary = grid.get("occupied_cells")
 			occupied_cells[occupied_cell] = true
@@ -471,6 +474,14 @@ func _restore_tower_upgrades(tower: Node, data: Dictionary) -> void:
 		tower.set("right_level", right_level)
 	if "chosen_branch" in tower:
 		tower.set("chosen_branch", str(data.get("chosen_branch", "")))
+
+	# re-register tier 3s with UpgradeManager
+	var tower_name = tower.get("tower_name")
+	if tower_name:
+		if left_level >= 3:
+			UpgradeManager.register_tier3_left(tower_name)
+		if right_level >= 3:
+			UpgradeManager.register_tier3_right(tower_name)
 
 func _restore_active_enemies(current_scene: Node, wave_spawner: Node, enemy_data: Array) -> void:
 	var enemy_path := current_scene.find_child("EnemyPath", true, false) as Path2D
