@@ -8,6 +8,8 @@ radius = 4.0
 height = 20.0
 
 [node name="Bullet" type="Area2D" unique_id=518468080]
+z_index = 4096
+z_as_relative = false
 script = ExtResource("1_v7oki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=324995108]

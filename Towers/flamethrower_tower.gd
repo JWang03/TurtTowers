@@ -99,17 +99,17 @@ var upgrades = {
 	"left": {
 		"name": "Inferno",
 		"tiers": [
-			{"label": "Hotter Flames", "cost": 75},
-			{"label": "Dragon’s Breath", "cost": 150},
-			{"label": "Napalm", "cost": 300}
+			{"label": "Hotter Flames", "cost": 200},
+			{"label": "Dragon’s Breath", "cost": 600},
+			{"label": "Napalm", "cost": 2500}
 		]
 	},
 	"right": {
 		"name": "Crowd Control",
 		"tiers": [
-			{"label": "Scorched Earth", "cost": 100},
-			{"label": "Corrosive Catalyst", "cost": 200},
-			{"label": "Flashpoint", "cost": 700}
+			{"label": "Scorched Earth", "cost": 400},
+			{"label": "Corrosive Catalyst", "cost": 850},
+			{"label": "Flashpoint", "cost": 7500}
 		]
 	}
 }

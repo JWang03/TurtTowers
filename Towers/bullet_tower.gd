@@ -21,17 +21,17 @@ var upgrades = {
 	"left": {
 		"name": "Commando",
 		"tiers": [
-			{"label": "Trigger Finger", "cost": 75},
-			{"label": "Belt-Fed Shells", "cost": 150},
-			{"label": "Dual-Wield Sergeant", "cost": 300}
+			{"label": "Trigger Finger", "cost": 150},
+			{"label": "Belt-Fed Shells", "cost": 400},
+			{"label": "Dual-Wield Sergeant", "cost": 1500}
 		]
 	},
 	"right": {
 		"name": "Marksman",
 		"tiers": [
-			{"label": "Eagle Eye", "cost": 100},
-			{"label": "High Caliber Bullets", "cost": 200},
-			{"label": "Targeting Matrix", "cost": 700}
+			{"label": "Eagle Eye", "cost": 200},
+			{"label": "High Caliber Bullets", "cost": 500},
+			{"label": "Targeting Matrix", "cost": 4000}
 		]
 	}
 }
@@ -186,8 +186,8 @@ func apply_right_upgrade():
 		2:
 			aimbot = true
 			detection_area.scale *= 2
-			damage_multiplier *= 3
-			fire_rate *= 2.2
+			damage_multiplier *= 4
+			fire_rate *= 3
 
 func sell() -> void:
 		if left_level >= 3:

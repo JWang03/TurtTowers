@@ -113,17 +113,17 @@ var upgrades = {
 	"left": {
 		"name": "Demonic",
 		"tiers": [
-			{"label": "Sinful Speed", "cost": 75},
-			{"label": "Corrupted Reach", "cost": 150},
-			{"label": "Abyssal Frenzy", "cost": 300}
+			{"label": "Sinful Speed", "cost": 250},
+			{"label": "Corrupted Reach", "cost": 750},
+			{"label": "Abyssal Frenzy", "cost": 4000}
 		]
 	},
 	"right": {
 		"name": "Angelic",
 		"tiers": [
-			{"label": "Righteous Wrath", "cost": 100},
-			{"label": "Hallowed Might", "cost": 200},
-			{"label": "Divine Providence", "cost": 700}
+			{"label": "Righteous Wrath", "cost": 300},
+			{"label": "Hallowed Might", "cost": 650},
+			{"label": "Divine Providence", "cost": 7000}
 		]
 	}
 }

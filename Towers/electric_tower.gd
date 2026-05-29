@@ -31,17 +31,17 @@ var upgrades = {
 	"left": {
 		"name": "The Physicist",
 		"tiers": [
-			{"label": "High Voltage", "cost": 75},
-			{"label": "Superconductor", "cost": 150},
-			{"label": "Tesla Overload", "cost": 300}
+			{"label": "High Voltage", "cost": 200},
+			{"label": "Superconductor", "cost": 600},
+			{"label": "Tesla Overload", "cost": 2000}
 		]
 	},
 	"right": {
 		"name": "The Chemist",
 		"tiers": [
-			{"label": "Adrenaline Serum", "cost": 100},
-			{"label": "Anabolic Catalyst", "cost": 200},
-			{"label": "Elixir of Life", "cost": 700}
+			{"label": "Adrenaline Serum", "cost": 250},
+			{"label": "Anabolic Catalyst", "cost": 900},
+			{"label": "Elixir of Life", "cost": 8000}
 		]
 	}
 }

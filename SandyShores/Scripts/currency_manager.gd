@@ -1,6 +1,6 @@
 extends Node
 
-var shellings: int = 105500
+var shellings: int = 250
 
 @onready var label = $"../Money/ShellingsLabel"
 

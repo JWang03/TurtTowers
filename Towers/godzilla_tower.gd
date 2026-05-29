@@ -179,17 +179,17 @@ var upgrades = {
 	"left": {
 		"name": "Twin Peaks",
 		"tiers": [
-			{"label": "Prism Lens", "cost": 75},
-			{"label": "Refraction Array", "cost": 150},
-			{"label": "Binary Star", "cost": 300}
+			{"label": "Prism Lens", "cost": 200},
+			{"label": "Refraction Array", "cost": 500},
+			{"label": "Binary Star", "cost": 5000}
 		]
 	},
 	"right": {
 		"name": "Atomic",
 		"tiers": [
-			{"label": "Supercharged", "cost": 100},
-			{"label": "Critical Mass", "cost": 200},
-			{"label": "Meltdown", "cost": 700}
+			{"label": "Supercharged", "cost": 300},
+			{"label": "Critical Mass", "cost": 700},
+			{"label": "Meltdown", "cost": 7000}
 		]
 	}
 }

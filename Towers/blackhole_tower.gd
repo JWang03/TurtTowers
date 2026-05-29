@@ -27,17 +27,17 @@ var upgrades = {
 	"left": {
 		"name": "Scatter",
 		"tiers": [
-			{"label": "Twin Holes", "cost": 100},
-			{"label": "Triple Alpha Process", "cost": 200},
-			{"label": "Hole Barrage", "cost": 400}
+			{"label": "Twin Holes", "cost": 200},
+			{"label": "Triple Alpha Process", "cost": 800},
+			{"label": "Hole Barrage", "cost": 4000}
 		]
 	},
 	"right": {
 		"name": "Singularity",
 		"tiers": [
-			{"label": "Stronger Pull", "cost": 100},
-			{"label": "Extended Duration", "cost": 250},
-			{"label": "Event Horizon", "cost": 600}
+			{"label": "Stronger Pull", "cost": 500},
+			{"label": "Extended Duration", "cost": 1000},
+			{"label": "Event Horizon", "cost": 10000}
 		]
 	}
 }
@@ -218,9 +218,9 @@ func apply_right_upgrade():
 			hole_duration_multiplier = 2.0
 			hole_scale_multiplier = 1.7
 		2:
-			hole_pull_multiplier = 3.5
-			hole_scale_multiplier = 2.5
-			hole_duration_multiplier = 2.5
+			hole_pull_multiplier = 3
+			hole_scale_multiplier = 2.4
+			hole_duration_multiplier = 1.8
 
 func sell() -> void:
 		if left_level >= 3:

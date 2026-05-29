@@ -23,17 +23,17 @@ var upgrades = {
 	"left": {
 		"name": "Cluster Bomber",
 		"tiers": [
-			{"label": "Double Deuce", "cost": 75},
-			{"label": "Triple Threat", "cost": 150},
-			{"label": "Shell-Shocked", "cost": 300}
+			{"label": "Double Deuce", "cost": 200},
+			{"label": "Triple Threat", "cost": 600},
+			{"label": "Shell-Shocked", "cost": 3000}
 		]
 	},
 	"right": {
 		"name": "Missile Menace",
 		"tiers": [
-			{"label": "Rapid Retraction", "cost": 100},
-			{"label": "Long-Neck Optics", "cost": 200},
-			{"label": "Heat-Seeker Shells", "cost": 300}
+			{"label": "Rapid Retraction", "cost": 150},
+			{"label": "Long-Neck Optics", "cost": 400},
+			{"label": "Heat-Seeker Shells", "cost": 5000}
 		]
 	}
 }
