@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7kvkhhfaf07o"
-path="res://.godot/imported/mothershell.png-c552fb4b99bb9274563ff99ebee2e257.ctex"
+path="res://.godot/imported/mothershell.png-f6623d780df323ed3aa19a663dbc07dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/mothershell.png"
-dest_files=["res://.godot/imported/mothershell.png-c552fb4b99bb9274563ff99ebee2e257.ctex"]
+source_file="res://Textures/mothershell.png"
+dest_files=["res://.godot/imported/mothershell.png-f6623d780df323ed3aa19a663dbc07dd.ctex"]
 
 [params]
 

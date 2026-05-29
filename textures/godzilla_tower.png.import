@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c41yx6lp4mrtb"
-path="res://.godot/imported/godzilla_tower.png-06e657ad42c8ed3ac977323dabf9e475.ctex"
+path="res://.godot/imported/godzilla_tower.png-e769637a925b49dea84fa942d4cef790.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/godzilla_tower.png"
-dest_files=["res://.godot/imported/godzilla_tower.png-06e657ad42c8ed3ac977323dabf9e475.ctex"]
+source_file="res://Textures/godzilla_tower.png"
+dest_files=["res://.godot/imported/godzilla_tower.png-e769637a925b49dea84fa942d4cef790.ctex"]
 
 [params]
 
