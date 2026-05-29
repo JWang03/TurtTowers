@@ -29,7 +29,7 @@ func _ready():
 	max_health = 100000.0
 	health = max_health
 	speed = base_boss_speed
-	damage = 25              
+	damage = 200              
 	shelling_drop = 150      
 	
 	if health_bar:

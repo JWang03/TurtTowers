@@ -138,10 +138,17 @@ func get_wave_data(wave_num: int) -> Array:
 	match wave_num:
 
 		# ── WAVES 1-10: Bottles only, learning the game ──
-		1:
+		1: #boss battle
 			return [
-				{"scene": cortex, "count": 1, "delay": 0.8, "speed_mult": 1.0, "health_mult": 1.0}
-			]
+				{"scene": cortex, "count": 1, "delay": 1.5, "speed_mult": 1, "health_mult": 1,},
+				{"scene": enemy_net, "count": 10, "delay": 1.5, "speed_mult": 3, "health_mult": 12,},
+				{"scene": enemy_shield, "count": 5, "delay": 0.2, "speed_mult": 3, "health_mult": 5,},
+				{"scene": enemy_spill, "count": 20, "delay": 0.5, "speed_mult": 3, "health_mult": 4,}
+				]
+		#1:
+			#return [
+				#{"scene": enemy_bottle, "count": 5, "delay": 0.8, "speed_mult": 1.0, "health_mult": 1.0}
+			#]
 		2:
 			return [
 				{"scene": enemy_bottle, "count": 10, "delay": 0.75, "speed_mult": 1.05, "health_mult": 1.1}
@@ -483,7 +490,15 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_shield, "count": 3, "delay": 1.5, "speed_mult": 1.2, "health_mult": 2.0},
 				{"scene": enemy_bottle, "count": 40, "delay": 0.2, "speed_mult": 3.3, "health_mult": 8.0}
 			]
-		
+		51: #boss battle
+			return [
+				{"scene": cortex, "count": 1, "delay": 1.5, "speed_mult": 1, "health_mult": 1,},
+				{"scene": enemy_net, "count": 10, "delay": 1.5, "speed_mult": 3, "health_mult": 12,},
+				{"scene": enemy_shield, "count": 5, "delay": 1.5, "speed_mult": 3, "health_mult": 5,},
+				{"scene": enemy_spill, "count": 20, "delay": 1.5, "speed_mult": 3, "health_mult": 4,}
+
+
+			]
 
 		_:
 			return []
