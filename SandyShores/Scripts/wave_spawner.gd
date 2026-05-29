@@ -11,6 +11,7 @@ var enemy_ring = preload("res://enemies/plastic_ring.tscn")
 var enemy_net = preload("res://enemies/fishing_net.tscn")
 var enemy_spill = preload("res://enemies/oil_spill.tscn")
 var enemy_shield = preload("res://enemies/shield_enemy.tscn")
+var cortex = preload("res://enemies/cortex.tscn")
 
 @export var time_between_waves: float = 3.0
 @export var max_waves: int = 50
@@ -139,7 +140,7 @@ func get_wave_data(wave_num: int) -> Array:
 		# ── WAVES 1-10: Bottles only, learning the game ──
 		1:
 			return [
-				{"scene": enemy_bottle, "count": 8, "delay": 0.8, "speed_mult": 1.0, "health_mult": 1.0}
+				{"scene": cortex, "count": 1, "delay": 0.8, "speed_mult": 1.0, "health_mult": 1.0}
 			]
 		2:
 			return [
@@ -482,6 +483,7 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_shield, "count": 3, "delay": 1.5, "speed_mult": 1.2, "health_mult": 2.0},
 				{"scene": enemy_bottle, "count": 40, "delay": 0.2, "speed_mult": 3.3, "health_mult": 8.0}
 			]
+		
 
 		_:
 			return []

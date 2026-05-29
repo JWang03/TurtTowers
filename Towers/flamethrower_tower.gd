@@ -48,7 +48,7 @@ func _on_damage_tick():
 				var shield_provider = get_shield_provider(body)
 				var final_damage_target = shield_provider if shield_provider else body
 
-				if slow_active:
+				if slow_active and body.get("is_boss") != true:
 					if "speed_modifier" in body:
 						body.speed_modifier = 0.6
 
@@ -74,7 +74,7 @@ func stop_flame():
 	if slow_active or armor_shred_active:
 		for body in fire_area.get_overlapping_bodies():
 			if body.is_in_group("zombies") and is_instance_valid(body):
-				if "speed_modifier" in body:
+				if body.get("is_boss") != true and "speed_modifier" in body:
 					body.speed_modifier = 1.0
 				if "damage_taken_multiplier" in body:
 					body.damage_taken_multiplier = 1.0

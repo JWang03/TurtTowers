@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cwnc2a6l62vcn"]
+
+[ext_resource type="Script" uid="uid://cxs5wjcnevxje" path="res://enemies/cortex.gd" id="1_51hwx"]
+[ext_resource type="Texture2D" uid="uid://b3qbv3m61vqvy" path="res://frames/cortex1-removebg-preview.png" id="1_b77ao"]
+[ext_resource type="Texture2D" uid="uid://uqguinjq78y3" path="res://frames/cortex2-removebg-preview.png" id="2_51hwx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgr01"]
+atlas = ExtResource("1_b77ao")
+region = Rect2(9, 0, 165, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck18h"]
+atlas = ExtResource("1_b77ao")
+region = Rect2(317, 0, 154, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0tqd"]
+atlas = ExtResource("1_b77ao")
+region = Rect2(619, 0, 152, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixq5k"]
+atlas = ExtResource("2_51hwx")
+region = Rect2(169, 0, 157, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mjjy"]
+atlas = ExtResource("2_51hwx")
+region = Rect2(465, 0, 150, 167)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2s57b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgr01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck18h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0tqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixq5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mjjy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Cortex" type="CharacterBody2D" unique_id=381879569]
+script = ExtResource("1_51hwx")
+
+[node name="walk" type="AnimatedSprite2D" parent="." unique_id=2036175498]
+position = Vector2(-1, 5)
+scale = Vector2(0.91295856, 0.72282606)
+sprite_frames = SubResource("SpriteFrames_2s57b")
+frame_progress = 0.31573343
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=543067670]
+position = Vector2(-2, -2)
+polygon = PackedVector2Array(-62, -14, 43, -15, 72, 20, 70, 59, -59, 50)

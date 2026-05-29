@@ -24,7 +24,7 @@ const HEALTH_BAR = preload("res://SandyShores/Scenes/HealthBar.tscn")
 var bob_time: float = 0.0
 @export var bob_speed: float = 6.0
 @export var bob_amount: float = 5.0
-@onready var sprite = $Sprite2D
+@onready var sprite = $Sprite2D if has_node("Sprite2D") else $walk
 
 #For Flameturter:
 var is_burning: bool = false

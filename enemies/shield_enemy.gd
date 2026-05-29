@@ -12,8 +12,8 @@ func _ready():
 	super._ready()
 	add_to_group("shield_mobs")
 	
-	health = 20
-	speed = 5
+	health = 50
+	speed = 40
 	shield_node.monitoring = false
 	shield_node.visible = false
 	shelling_drop = 12
@@ -49,7 +49,7 @@ func break_shield():
 	is_shield_active = false
 	shield_node.monitoring = false
 	shield_node.visible = false
-	shield_health = 50 
+	shield_health = 500 
 	start_shield_timer()
 
 func take_damage(amount):

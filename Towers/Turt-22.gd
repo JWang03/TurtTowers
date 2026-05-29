@@ -113,7 +113,7 @@ func purchase_upgrade(branch: String):
 		apply_right_upgrade()
 		right_level += 1
 		if right_level == 3 and railgun_sprite:
-			sprite.te.xture = railgun_sprite
+			sprite.texture = railgun_sprite
 			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()

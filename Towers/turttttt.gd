@@ -55,11 +55,31 @@ func _on_animation_looped():
 	for target in targets:
 		_apply_hit(target)
 
+#func _apply_hit(target):
+	#if not is_instance_valid(target):
+		#return
+	#if target.has_method("take_damage"):
+		#target.take_damage(attack_damage)
+	#if max_targets == 1:
+		#if current_slow_target and current_slow_target != target and is_instance_valid(current_slow_target):
+			#clear_slow_effect(current_slow_target)
+		#current_slow_target = target
+		#if "speed_modifier" in target:
+			#target.speed_modifier = slow_factor
+	#else:
+		#if "speed_modifier" in target:
+			#target.speed_modifier = slow_factor
+
 func _apply_hit(target):
 	if not is_instance_valid(target):
 		return
+		
 	if target.has_method("take_damage"):
 		target.take_damage(attack_damage)
+		
+	if target.get("is_boss") == true:
+		return
+
 	if max_targets == 1:
 		if current_slow_target and current_slow_target != target and is_instance_valid(current_slow_target):
 			clear_slow_effect(current_slow_target)

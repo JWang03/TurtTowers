@@ -9,7 +9,7 @@ var is_stealth: bool = false
 func _ready():
 	super._ready()
 	health = 60
-	speed = 15
+	speed = 60.0
 	shelling_drop = 10
 	start_stealth_loop()
 
