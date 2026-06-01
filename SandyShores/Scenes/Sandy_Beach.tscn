@@ -26,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="15_fuskk"]
 [ext_resource type="Texture2D" uid="uid://c43l2x13u6e1n" path="res://textures/hearts_no_bg.png" id="15_rjrdg"]
 [ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="16_ci5cp"]
-[ext_resource type="Script" uid="uid://cfxxtgfammudk" path="res://SandyShores/Scripts/death_screen.gd" id="16_dwuir"]
 [ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://textures/image-removebg-preview (34).png" id="20_as63w"]
 [ext_resource type="PackedScene" uid="uid://cfxko1b87aspq" path="res://Towers/Turt-22.tscn" id="22_vjk8x"]
 [ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="23_fr0rq"]
@@ -120,8 +119,6 @@ corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
-
-[sub_resource type="SystemFont" id="SystemFont_7x53i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr0rq"]
 bg_color = Color(0.38039216, 0.7176471, 0.29803923, 1)
@@ -744,45 +741,6 @@ offset_top = 25.0
 offset_right = -300.0
 offset_bottom = 133.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kpf84")
-
-[node name="DeathScreen" type="Control" parent="UI" unique_id=2058731793]
-z_index = 4096
-z_as_relative = false
-anchors_preset = 0
-offset_left = 544.0
-offset_top = -40.0
-offset_right = 939.0
-offset_bottom = 639.0
-script = ExtResource("16_dwuir")
-
-[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen" unique_id=1644698598]
-layout_mode = 0
-offset_left = -690.0
-offset_top = 227.0
-offset_right = -71.0
-offset_bottom = 584.0
-color = Color(0, 0.5372549, 0, 1)
-
-[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen/ColorRect" unique_id=811911442]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 600.0
-offset_bottom = 340.0
-color = Color(0.38039216, 0.7176471, 0.29803923, 1)
-
-[node name="Label" type="Label" parent="UI/DeathScreen/ColorRect/ColorRect" unique_id=1809529702]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 10.0
-offset_right = 569.0
-offset_bottom = 228.0
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = SubResource("SystemFont_7x53i")
-theme_override_font_sizes/font_size = 48
-text = "You failed to defend 
-the mothershell from
-a pollutant ambush!"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI" unique_id=429296001]
 
