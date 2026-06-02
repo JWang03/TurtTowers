@@ -4,7 +4,7 @@ extends "res://enemies/zombie.gd"
 var is_stealth: bool = false
 var has_triggered_stealth: bool = false
 @export var base_boss_speed: float = 10.0
-@export var fast_speed: float = 40.0
+@export var fast_speed: float = 20.0
 @export var slow_speed: float = 5.0
 var last_position: Vector2 = Vector2.ZERO
 

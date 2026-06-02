@@ -7,6 +7,7 @@
 radius = 55.00909
 
 [node name="buff_range" type="Area2D" unique_id=101611681]
+collision_mask = 2
 script = ExtResource("1_yxw5x")
 speed_boost_factor = 2.0
 
