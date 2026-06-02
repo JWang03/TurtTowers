@@ -60,8 +60,6 @@
 			#if upgrade_panel.visible:
 				#var panel_pos = upgrade_panel.get_global_transform_with_canvas().origin
 				#var panel_rect = Rect2(panel_pos, upgrade_panel.size)
-				#print("panel_rect: ", panel_rect)
-				#print("event.position: ", event.position)
 				#if panel_rect.has_point(event.position):
 					#return
 			#return
@@ -149,8 +147,6 @@ func _input(event: InputEvent) -> void:
 			if upgrade_panel.visible:
 				var panel_pos = upgrade_panel.get_global_transform_with_canvas().origin
 				var panel_rect = Rect2(panel_pos, upgrade_panel.size)
-				print("panel_rect: ", panel_rect)
-				print("event.position: ", event.position)
 				if panel_rect.has_point(event.position):
 					return
 			return

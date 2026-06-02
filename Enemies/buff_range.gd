@@ -20,12 +20,10 @@ func start_lifetime_timer():
 func _on_body_entered(body):
 	if body.is_in_group("zombies"):
 		body.speed_modifier = speed_boost_factor
-		print("Zombie buffed: ", body.name)
 
 func _on_body_exited(body):
 	if body.is_in_group("zombies"):
 		body.speed_modifier = 1.0
-		print("Zombie left buff range: ", body.name)
 
 func expire_buff():
 	for body in get_overlapping_bodies():

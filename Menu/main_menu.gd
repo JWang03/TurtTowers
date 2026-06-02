@@ -383,7 +383,6 @@ func _reset_debug_progression() -> void:
 	_delete_user_file(MAP_CLEAR_PATH)
 	cleared_maps = {}
 	_update_map_display()
-	print("Debug progression reset.")
 
 func _delete_user_file(path: String) -> void:
 	if FileAccess.file_exists(path):

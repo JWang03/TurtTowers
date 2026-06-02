@@ -1,8 +1,18 @@
 extends TowerBase
 
+const TOWER_FRAME_COLUMNS := 7
+const TOWER_FRAME_ROWS := 2
+const TOWER_FRAME_WIDTH := 134
+const TOWER_FRAME_HEIGHT := 133
+const TOWER_ANIMATION_NAME := &"attack"
+const TOWER_ANIMATION_SPEED := 20.0
+const UPGRADED_SPRITE_SCALE := Vector2(0.475, 0.475)
+const TUNG_FRAMES_TEXTURE := preload("res://textures/Frames/tung_frames.png")
+const LARP_FRAMES_TEXTURE := preload("res://textures/Frames/larp_frames.png")
+
 @export var attack_damage: float = 5.0
 @export var slow_factor: float = 0.2
-@onready var anim_sprite = $AnimatedSprite2D
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var current_slow_target = null
 var max_targets: int = 1
 var tower_id: String = "Turt Turt Turt Sahur"  # display name, changes with upgrades
@@ -14,6 +24,59 @@ func _ready():
 	anim_sprite.stop()
 	detection_area.body_entered.connect(_on_body_entered)
 	detection_area.body_exited.connect(_on_body_exited)
+
+func _set_animation_sheet(texture: Texture2D) -> void:
+	var was_playing: bool = anim_sprite.is_playing()
+	anim_sprite.sprite_frames = _build_sprite_frames(texture)
+	anim_sprite.animation = TOWER_ANIMATION_NAME
+	anim_sprite.frame = 0
+	anim_sprite.scale = UPGRADED_SPRITE_SCALE
+	if was_playing:
+		anim_sprite.play()
+	else:
+		anim_sprite.stop()
+
+func _build_sprite_frames(texture: Texture2D) -> SpriteFrames:
+	var sprite_frames: SpriteFrames = SpriteFrames.new()
+	if not sprite_frames.has_animation(TOWER_ANIMATION_NAME):
+		sprite_frames.add_animation(TOWER_ANIMATION_NAME)
+
+	sprite_frames.set_animation_loop(TOWER_ANIMATION_NAME, true)
+	sprite_frames.set_animation_speed(TOWER_ANIMATION_NAME, TOWER_ANIMATION_SPEED)
+
+	var source_image: Image = texture.get_image()
+	var sheet_width: float = float(texture.get_width())
+	var sheet_height: float = float(texture.get_height())
+	for row in range(TOWER_FRAME_ROWS):
+		for column in range(TOWER_FRAME_COLUMNS):
+			var source_x: int = int(round(column * sheet_width / TOWER_FRAME_COLUMNS))
+			var source_next_x: int = int(round((column + 1) * sheet_width / TOWER_FRAME_COLUMNS))
+			var source_y: int = int(round(row * sheet_height / TOWER_FRAME_ROWS))
+			var source_next_y: int = int(round((row + 1) * sheet_height / TOWER_FRAME_ROWS))
+			var source_frame_width: int = source_next_x - source_x
+			var source_frame_height: int = source_next_y - source_y
+			var source_frame: Image = source_image.get_region(
+				Rect2i(
+					source_x,
+					source_y,
+					source_frame_width,
+					source_frame_height
+				)
+			)
+			var used_rect: Rect2i = source_frame.get_used_rect()
+			var frame_image: Image = Image.create_empty(TOWER_FRAME_WIDTH, TOWER_FRAME_HEIGHT, false, source_image.get_format())
+			frame_image.fill(Color.TRANSPARENT)
+			if used_rect.size.x > 0 and used_rect.size.y > 0:
+				frame_image.blit_rect(
+					source_frame,
+					used_rect,
+					Vector2i(
+						(TOWER_FRAME_WIDTH - used_rect.size.x) / 2,
+						TOWER_FRAME_HEIGHT - used_rect.size.y
+					)
+				)
+			sprite_frames.add_frame(TOWER_ANIMATION_NAME, ImageTexture.create_from_image(frame_image))
+	return sprite_frames
 
 func get_multiple_targets() -> Array:
 	var bodies = detection_area.get_overlapping_bodies()
@@ -153,6 +216,7 @@ func apply_left_upgrade():
 		2:
 			fire_rate *= .5
 			tower_id = "Tung Tung Tung Sahur"
+			_set_animation_sheet(TUNG_FRAMES_TEXTURE)
 
 func apply_right_upgrade():
 	match right_level:
@@ -165,6 +229,7 @@ func apply_right_upgrade():
 		2:
 			max_targets = 6
 			tower_id = "Larp Larp Larp Sahur"
+			_set_animation_sheet(LARP_FRAMES_TEXTURE)
 
 func sell() -> void:
 	if left_level >= 3:

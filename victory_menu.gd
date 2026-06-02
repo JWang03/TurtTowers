@@ -13,10 +13,10 @@ var _menu_panel: PanelContainer
 var _darkener: ColorRect
 
 func show_victory(scene_path: String, stats: Dictionary) -> void:
-	_mark_map_cleared(scene_path)
+	var best_flags := _update_map_progress(scene_path, stats)
 	_clear_autosave()
 	_create_menu_if_needed()
-	_populate_report(scene_path, stats)
+	_populate_report(scene_path, stats, best_flags)
 
 	get_tree().paused = true
 	_menu_root.show()
@@ -87,7 +87,7 @@ func _create_menu_if_needed() -> void:
 	_menu_panel.hide()
 	_menu_root.hide()
 
-func _populate_report(scene_path: String, stats: Dictionary) -> void:
+func _populate_report(scene_path: String, stats: Dictionary, best_flags: Dictionary) -> void:
 	for child in _menu_panel.get_children():
 		child.queue_free()
 
@@ -124,11 +124,11 @@ func _populate_report(scene_path: String, stats: Dictionary) -> void:
 	rows.add_theme_constant_override("separation", 5)
 	content.add_child(rows)
 
-	_add_stat_row(rows, "Towers Placed", str(stats.get("towers_placed", 0)))
-	_add_stat_row(rows, "Cash Generated", str(stats.get("cash_generated", 0)))
-	_add_stat_row(rows, "Turtory Bombs Used", str(stats.get("turtory_bombs_used", 0)))
-	_add_stat_row(rows, "Lives Lost", str(stats.get("lives_lost", 0)))
-	_add_stat_row(rows, "Runtime", _format_runtime(int(stats.get("runtime_seconds", 0))))
+	_add_stat_row(rows, "Towers Placed", str(stats.get("towers_placed", 0)), bool(best_flags.get("towers_placed", false)))
+	_add_stat_row(rows, "Cash Generated", str(stats.get("cash_generated", 0)), bool(best_flags.get("cash_generated", false)))
+	_add_stat_row(rows, "Turtory Bombs Used", str(stats.get("turtory_bombs_used", 0)), bool(best_flags.get("turtory_bombs_used", false)))
+	_add_stat_row(rows, "Lives Lost", str(stats.get("lives_lost", 0)), bool(best_flags.get("lives_lost", false)))
+	_add_stat_row(rows, "Runtime", _format_runtime(int(stats.get("runtime_seconds", 0))), bool(best_flags.get("runtime_seconds", false)))
 
 	var footer := Label.new()
 	footer.text = "MAP CLEARED"
@@ -152,9 +152,9 @@ func _populate_report(scene_path: String, stats: Dictionary) -> void:
 	menu_button.pressed.connect(_on_map_select_pressed)
 	buttons.add_child(menu_button)
 
-func _add_stat_row(parent: VBoxContainer, label_text: String, value_text: String) -> void:
+func _add_stat_row(parent: VBoxContainer, label_text: String, value_text: String, is_best: bool) -> void:
 	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 12)
+	row.add_theme_constant_override("separation", 8)
 	parent.add_child(row)
 
 	var label := Label.new()
@@ -167,12 +167,22 @@ func _add_stat_row(parent: VBoxContainer, label_text: String, value_text: String
 	var value := Label.new()
 	value.text = value_text
 	value.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	value.custom_minimum_size = Vector2(120, 0)
+	value.custom_minimum_size = Vector2(95, 0)
 	value.add_theme_color_override("font_color", Color(0.8, 1.0, 0.42))
 	value.add_theme_constant_override("outline_size", 4)
 	value.add_theme_color_override("font_outline_color", Color(0.03, 0.15, 0.13))
 	value.add_theme_font_size_override("font_size", 20)
 	row.add_child(value)
+
+	var best_label := Label.new()
+	best_label.text = "BEST" if is_best else ""
+	best_label.custom_minimum_size = Vector2(54, 0)
+	best_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	best_label.add_theme_color_override("font_color", Color(1.0, 0.9, 0.25))
+	best_label.add_theme_constant_override("outline_size", 4)
+	best_label.add_theme_color_override("font_outline_color", Color(0.34, 0.08, 0.02))
+	best_label.add_theme_font_size_override("font_size", 16)
+	row.add_child(best_label)
 
 func _create_menu_button(label_text: String) -> Button:
 	var button := Button.new()
@@ -219,7 +229,7 @@ func _clear_upgrades() -> void:
 	if upgrade_manager and upgrade_manager.has_method("clear_all"):
 		upgrade_manager.clear_all()
 
-func _mark_map_cleared(scene_path: String) -> void:
+func _update_map_progress(scene_path: String, stats: Dictionary) -> Dictionary:
 	var data := _load_clear_data()
 	var cleared_maps := {}
 	if data.get("cleared_maps", {}) is Dictionary:
@@ -227,11 +237,62 @@ func _mark_map_cleared(scene_path: String) -> void:
 	cleared_maps[scene_path] = true
 	data["cleared_maps"] = cleared_maps
 
+	var best_runs := {}
+	if data.get("best_runs", {}) is Dictionary:
+		best_runs = data.get("best_runs", {})
+
+	var previous_best := {}
+	if best_runs.get(scene_path, {}) is Dictionary:
+		previous_best = best_runs.get(scene_path, {})
+
+	var best_flags := _get_best_flags(stats, previous_best)
+	best_runs[scene_path] = _merge_best_stats(stats, previous_best)
+	data["best_runs"] = best_runs
+
 	var save_file := FileAccess.open(MAP_CLEAR_PATH, FileAccess.WRITE)
 	if save_file == null:
 		push_warning("Could not write map clear data to %s." % MAP_CLEAR_PATH)
-		return
+		return best_flags
 	save_file.store_string(JSON.stringify(data, "\t"))
+	return best_flags
+
+func _get_best_flags(stats: Dictionary, previous_best: Dictionary) -> Dictionary:
+	return {
+		"towers_placed": _is_lower_or_equal_best(stats, previous_best, "towers_placed"),
+		"cash_generated": _is_higher_or_equal_best(stats, previous_best, "cash_generated"),
+		"turtory_bombs_used": _is_lower_or_equal_best(stats, previous_best, "turtory_bombs_used"),
+		"lives_lost": _is_lower_or_equal_best(stats, previous_best, "lives_lost"),
+		"runtime_seconds": _is_lower_or_equal_best(stats, previous_best, "runtime_seconds")
+	}
+
+func _merge_best_stats(stats: Dictionary, previous_best: Dictionary) -> Dictionary:
+	return {
+		"towers_placed": _best_lower(stats, previous_best, "towers_placed"),
+		"cash_generated": _best_higher(stats, previous_best, "cash_generated"),
+		"turtory_bombs_used": _best_lower(stats, previous_best, "turtory_bombs_used"),
+		"lives_lost": _best_lower(stats, previous_best, "lives_lost"),
+		"runtime_seconds": _best_lower(stats, previous_best, "runtime_seconds")
+	}
+
+func _is_lower_or_equal_best(stats: Dictionary, previous_best: Dictionary, key: String) -> bool:
+	if not previous_best.has(key):
+		return true
+	return int(stats.get(key, 0)) <= int(previous_best.get(key, 0))
+
+func _is_higher_or_equal_best(stats: Dictionary, previous_best: Dictionary, key: String) -> bool:
+	if not previous_best.has(key):
+		return true
+	return int(stats.get(key, 0)) >= int(previous_best.get(key, 0))
+
+func _best_lower(stats: Dictionary, previous_best: Dictionary, key: String) -> int:
+	if not previous_best.has(key):
+		return int(stats.get(key, 0))
+	return min(int(stats.get(key, 0)), int(previous_best.get(key, 0)))
+
+func _best_higher(stats: Dictionary, previous_best: Dictionary, key: String) -> int:
+	if not previous_best.has(key):
+		return int(stats.get(key, 0))
+	return max(int(stats.get(key, 0)), int(previous_best.get(key, 0)))
 
 func _load_clear_data() -> Dictionary:
 	if not FileAccess.file_exists(MAP_CLEAR_PATH):

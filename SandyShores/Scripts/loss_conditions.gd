@@ -1,6 +1,6 @@
 extends Node
 
-var lives = 1
+var lives = 100
 @onready var label = $"../Lives/LivesLabel"
 
 func update_label():
