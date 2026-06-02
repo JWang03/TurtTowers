@@ -428,14 +428,14 @@ curve = SubResource("Curve2D_wlj2d")
 [node name="UI" type="Control" parent="." unique_id=337163506]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 525.0
+offset_left = 531.0
 offset_top = 1.0
-offset_right = 1149.0
+offset_right = 1155.0
 offset_bottom = 650.0
 
 [node name="Mothershell" type="Sprite2D" parent="UI" unique_id=394719794]
-position = Vector2(-410.5, 322.99997)
-scale = Vector2(0.91599995, 0.93371755)
+position = Vector2(-414, 322.99997)
+scale = Vector2(0.93600005, 0.93371755)
 texture = ExtResource("11_vbuyy")
 
 [node name="Crack" type="Sprite2D" parent="UI" unique_id=1855562797]
