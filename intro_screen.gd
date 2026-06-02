@@ -14,7 +14,7 @@ func show_intro() -> void:
 	_starter = get_node_or_null("/root/Game/UI/Buttons/PlayButton")
 	if _starter:
 		_starter.playing = false
-	_create_menu()
+	_build_everything()
 	_menu_root.show()
 	_darkener.modulate.a = 0.0
 	_menu_panel.pivot_offset = _menu_panel.size / 2
@@ -27,7 +27,16 @@ func show_intro() -> void:
 	tween.tween_property(_menu_panel, "scale", Vector2.ONE, MENU_SCALE_DURATION)\
 		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
-func _create_menu() -> void:
+func spawn_info_button_only() -> void:
+	_starter = get_node_or_null("/root/Game/UI/Buttons/PlayButton")
+	_build_everything()
+	# keep everything hidden, just show the ? button
+	_menu_root.hide()
+	_darkener.modulate.a = 0.0
+	_menu_panel.hide()
+	_spawn_info_button()
+
+func _build_everything() -> void:
 	_menu_layer = CanvasLayer.new()
 	_menu_layer.name = "IntroMenuLayer"
 	_menu_layer.layer = 5000
@@ -45,6 +54,7 @@ func _create_menu() -> void:
 	_darkener.color = Color(0.0, 0.0, 0.0, 0.64)
 	_darkener.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_darkener.process_mode = Node.PROCESS_MODE_ALWAYS
+	_darkener.modulate.a = 0.0
 	_menu_root.add_child(_darkener)
 
 	_menu_panel = PanelContainer.new()
@@ -159,6 +169,7 @@ func _on_understood_pressed() -> void:
 
 func _finish_close() -> void:
 	_menu_root.hide()
+	_darkener.modulate.a = 0.0
 	_spawn_info_button()
 
 func _spawn_info_button() -> void:

@@ -474,9 +474,9 @@ texture = ExtResource("23_fr0rq")
 [node name="GraviturtButton" type="Button" parent="UI/ShopPanel" unique_id=1900778917]
 layout_mode = 0
 offset_left = -407.0
-offset_top = 188.0
+offset_top = 345.0
 offset_right = -330.0
-offset_bottom = 248.0
+offset_bottom = 405.0
 flat = true
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("13_amh5n")
@@ -552,9 +552,9 @@ texture = ExtResource("15_fuskk")
 [node name="FlameturterButton" type="Button" parent="UI/ShopPanel" unique_id=700935833]
 layout_mode = 0
 offset_left = -402.0
-offset_top = 350.0
+offset_top = 193.0
 offset_right = -325.0
-offset_bottom = 410.0
+offset_bottom = 253.0
 flat = true
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("32_0r82o")

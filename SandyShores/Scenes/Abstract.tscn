@@ -363,10 +363,9 @@ texture = ExtResource("5_gvbs8")
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("6_06ii1")
 
-[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path", "wave_label")]
+[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path")]
 script = ExtResource("7_ft65p")
 enemy_path = NodePath("../EnemyPath")
-wave_label = NodePath("")
 
 [node name="EnemyPath" type="Path2D" parent="." unique_id=367750900]
 position = Vector2(229, 4)
@@ -405,324 +404,6 @@ layout_mode = 2
 text = "Global Mode"
 flat = true
 script = ExtResource("36_target")
-
-[node name="ShopPanel" type="Control" parent="UI" unique_id=1749214142]
-z_index = 4096
-anchors_preset = 0
-offset_left = 7.0
-offset_top = -1.0
-offset_right = 157.0
-offset_bottom = 648.0
-
-[node name="BombButton" type="Button" parent="UI/ShopPanel" unique_id=592257210]
-layout_mode = 0
-offset_left = -507.0
-offset_top = 34.0
-offset_right = -430.0
-offset_bottom = 94.0
-flat = true
-script = ExtResource("10_av1he")
-tower_scene = ExtResource("11_bi50h")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/BombButton" unique_id=1866040859]
-z_index = 1
-layout_mode = 0
-offset_left = 11.0
-offset_top = 53.0
-offset_right = 63.0
-offset_bottom = 70.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/BombButton" unique_id=514565633]
-position = Vector2(44.999996, 29)
-scale = Vector2(0.213, 0.19299997)
-texture = ExtResource("9_sdjqy")
-
-[node name="LieturtantButton" type="Button" parent="UI/ShopPanel" unique_id=316193321]
-layout_mode = 0
-offset_left = -410.0
-offset_top = 34.0
-offset_right = -333.0
-offset_bottom = 94.0
-flat = true
-script = ExtResource("10_av1he")
-tower_scene = ExtResource("13_r0ofv")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/LieturtantButton" unique_id=407825641]
-z_index = 1
-layout_mode = 0
-offset_left = 16.0
-offset_top = 54.0
-offset_right = 68.0
-offset_bottom = 71.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/LieturtantButton" unique_id=1643704615]
-position = Vector2(45, 29)
-scale = Vector2(0.213, 0.19299997)
-texture = ExtResource("12_w4stb")
-
-[node name="TurtosaurButton" type="Button" parent="UI/ShopPanel" unique_id=1827226589]
-layout_mode = 0
-offset_left = -456.0
-offset_top = 112.0
-offset_right = -379.0
-offset_bottom = 179.0
-flat = true
-script = ExtResource("10_av1he")
-tower_scene = ExtResource("15_gdn63")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/TurtosaurButton" unique_id=1553001704]
-z_index = 1
-layout_mode = 0
-offset_left = 10.0
-offset_top = 53.0
-offset_right = 62.0
-offset_bottom = 70.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtosaurButton" unique_id=927017686]
-position = Vector2(39.000004, 26.999992)
-scale = Vector2(0.33725, 0.27725)
-texture = ExtResource("14_f2y8k")
-
-[node name="HolyButton" type="Button" parent="UI/ShopPanel" unique_id=189282159]
-layout_mode = 0
-offset_left = -507.0
-offset_top = 188.0
-offset_right = -430.0
-offset_bottom = 248.0
-flat = true
-script = ExtResource("10_av1he")
-tower_scene = ExtResource("30_gdn63")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/HolyButton" unique_id=1170937131]
-z_index = 1
-layout_mode = 0
-offset_left = 10.0
-offset_top = 54.0
-offset_right = 62.0
-offset_bottom = 71.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/HolyButton" unique_id=2107762301]
-position = Vector2(34, 23.999992)
-scale = Vector2(0.09765624, 0.08984376)
-texture = ExtResource("29_f2y8k")
-
-[node name="GraviturtButton" type="Button" parent="UI/ShopPanel" unique_id=41075459]
-layout_mode = 0
-offset_left = -407.0
-offset_top = 188.0
-offset_right = -330.0
-offset_bottom = 248.0
-flat = true
-script = ExtResource("10_av1he")
-tower_scene = ExtResource("17_fwthh")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/GraviturtButton" unique_id=1775726438]
-z_index = 1
-layout_mode = 0
-offset_left = 10.0
-offset_top = 54.0
-offset_right = 62.0
-offset_bottom = 71.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/GraviturtButton" unique_id=317597287]
-position = Vector2(38, 32.000004)
-scale = Vector2(0.2725, 0.22450002)
-texture = ExtResource("16_8audr")
-
-[node name="FighturtJetButton" type="Button" parent="UI/ShopPanel" unique_id=1876759180]
-layout_mode = 0
-offset_left = -461.0
-offset_top = 260.0
-offset_right = -384.0
-offset_bottom = 320.0
-flat = true
-script = ExtResource("10_av1he")
-tower_scene = ExtResource("28_r0ofv")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/FighturtJetButton" unique_id=860863705]
-z_index = 1
-layout_mode = 0
-offset_left = 14.0
-offset_top = 60.0
-offset_right = 66.0
-offset_bottom = 77.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FighturtJetButton" unique_id=302016509]
-position = Vector2(43, 36.999985)
-scale = Vector2(0.3343151, 0.2907974)
-texture = ExtResource("27_o8s8s")
-
-[node name="ScienturtButton" type="Button" parent="UI/ShopPanel" unique_id=339924391]
-layout_mode = 0
-offset_left = -509.0
-offset_top = 351.0
-offset_right = -432.0
-offset_bottom = 411.0
-flat = true
-script = ExtResource("10_av1he")
-tower_scene = ExtResource("19_gctuh")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/ScienturtButton" unique_id=890526187]
-z_index = 1
-layout_mode = 0
-offset_left = 13.0
-offset_top = 52.0
-offset_right = 65.0
-offset_bottom = 69.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/ScienturtButton" unique_id=758430675]
-position = Vector2(37, 23)
-scale = Vector2(0.1965, 0.17449996)
-texture = ExtResource("18_a4xci")
-
-[node name="FlameturterButton" type="Button" parent="UI/ShopPanel" unique_id=377468067]
-layout_mode = 0
-offset_left = -402.0
-offset_top = 350.0
-offset_right = -325.0
-offset_bottom = 410.0
-flat = true
-script = ExtResource("10_av1he")
-tower_scene = ExtResource("38_jtd81")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/FlameturterButton" unique_id=1531045681]
-z_index = 1
-layout_mode = 0
-offset_left = 10.0
-offset_top = 53.0
-offset_right = 62.0
-offset_bottom = 70.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FlameturterButton" unique_id=382425661]
-position = Vector2(36.198868, 21.301147)
-scale = Vector2(0.29215783, 0.2702948)
-texture = ExtResource("37_o8s8s")
-
-[node name="FacturtoryButton" type="Button" parent="UI/ShopPanel" unique_id=1975927810]
-layout_mode = 0
-offset_left = -453.0
-offset_top = 427.0
-offset_right = -376.0
-offset_bottom = 487.0
-flat = true
-script = ExtResource("10_av1he")
-tower_scene = ExtResource("40_eraor")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/FacturtoryButton" unique_id=381053516]
-z_index = 1
-layout_mode = 0
-offset_left = 10.0
-offset_top = 53.0
-offset_right = 62.0
-offset_bottom = 70.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FacturtoryButton" unique_id=617655094]
-position = Vector2(33, 25.584717)
-scale = Vector2(0.24848486, 0.23891471)
-texture = ExtResource("39_4v1lx")
-
-[node name="TurtSahurButton" type="Button" parent="UI/ShopPanel" unique_id=896829299]
-layout_mode = 0
-offset_left = -509.0
-offset_top = 502.0
-offset_right = -432.0
-offset_bottom = 562.0
-flat = true
-script = ExtResource("10_av1he")
-tower_scene = ExtResource("33_60ikt")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/TurtSahurButton" unique_id=1448153619]
-z_index = 1
-layout_mode = 0
-offset_left = 14.0
-offset_top = 56.0
-offset_right = 66.0
-offset_bottom = 73.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtSahurButton" unique_id=1277247401]
-position = Vector2(39.625004, 23.5)
-scale = Vector2(0.22649997, 0.18599997)
-texture = ExtResource("32_mhcsl")
-
-[node name="TurtTownButton" type="Button" parent="UI/ShopPanel" unique_id=1345904085]
-layout_mode = 0
-offset_left = -410.0
-offset_top = 505.0
-offset_right = -333.0
-offset_bottom = 565.0
-flat = true
-script = ExtResource("10_av1he")
-tower_scene = ExtResource("35_086hf")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/TurtTownButton" unique_id=1774565852]
-z_index = 1
-layout_mode = 0
-offset_left = 17.0
-offset_top = 53.0
-offset_right = 69.0
-offset_bottom = 70.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtTownButton" unique_id=1624449649]
-position = Vector2(44.696228, 23.06836)
-scale = Vector2(0.15593821, 0.14641082)
-texture = ExtResource("34_fpuwm")
-
-[node name="nuke" type="TextureButton" parent="UI/ShopPanel" unique_id=1515828115]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = -305.0
-offset_top = 577.0
-offset_right = -241.0
-offset_bottom = 647.0
-texture_normal = ExtResource("39_o8s8s")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("42_83rpp")
-tower_scene = ExtResource("40_jtd81")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/nuke" unique_id=892644773]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 56.0
-offset_right = 64.0
-offset_bottom = 73.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
 
 [node name="HUD" type="Node2D" parent="UI" unique_id=1268516601]
 position = Vector2(900, -20)
@@ -977,6 +658,324 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("24_a4xci")
 
 [node name="ExitLayer" type="CanvasLayer" parent="UI" unique_id=994558474]
+
+[node name="ShopPanel" type="Control" parent="UI" unique_id=1352178502]
+z_index = 4096
+anchors_preset = 0
+offset_left = 7.0
+offset_top = -1.0
+offset_right = 157.0
+offset_bottom = 648.0
+
+[node name="BombButton" type="Button" parent="UI/ShopPanel" unique_id=1820424020]
+layout_mode = 0
+offset_left = -507.0
+offset_top = 34.0
+offset_right = -430.0
+offset_bottom = 94.0
+flat = true
+script = ExtResource("10_av1he")
+tower_scene = ExtResource("11_bi50h")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/BombButton" unique_id=1561156228]
+z_index = 1
+layout_mode = 0
+offset_left = 11.0
+offset_top = 53.0
+offset_right = 63.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/BombButton" unique_id=124375832]
+position = Vector2(44.999996, 29)
+scale = Vector2(0.213, 0.19299997)
+texture = ExtResource("9_sdjqy")
+
+[node name="LieturtantButton" type="Button" parent="UI/ShopPanel" unique_id=259000221]
+layout_mode = 0
+offset_left = -410.0
+offset_top = 34.0
+offset_right = -333.0
+offset_bottom = 94.0
+flat = true
+script = ExtResource("10_av1he")
+tower_scene = ExtResource("13_r0ofv")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/LieturtantButton" unique_id=1824311735]
+z_index = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 54.0
+offset_right = 68.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/LieturtantButton" unique_id=1489459111]
+position = Vector2(45, 29)
+scale = Vector2(0.213, 0.19299997)
+texture = ExtResource("12_w4stb")
+
+[node name="TurtosaurButton" type="Button" parent="UI/ShopPanel" unique_id=917231342]
+layout_mode = 0
+offset_left = -456.0
+offset_top = 112.0
+offset_right = -379.0
+offset_bottom = 179.0
+flat = true
+script = ExtResource("10_av1he")
+tower_scene = ExtResource("15_gdn63")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/TurtosaurButton" unique_id=982894175]
+z_index = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 53.0
+offset_right = 62.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtosaurButton" unique_id=1287533948]
+position = Vector2(39.000004, 26.999992)
+scale = Vector2(0.33725, 0.27725)
+texture = ExtResource("14_f2y8k")
+
+[node name="HolyButton" type="Button" parent="UI/ShopPanel" unique_id=553806273]
+layout_mode = 0
+offset_left = -507.0
+offset_top = 188.0
+offset_right = -430.0
+offset_bottom = 248.0
+flat = true
+script = ExtResource("10_av1he")
+tower_scene = ExtResource("30_gdn63")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/HolyButton" unique_id=285476046]
+z_index = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 54.0
+offset_right = 62.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/HolyButton" unique_id=329484484]
+position = Vector2(34, 23.999992)
+scale = Vector2(0.09765624, 0.08984376)
+texture = ExtResource("29_f2y8k")
+
+[node name="GraviturtButton" type="Button" parent="UI/ShopPanel" unique_id=1514031643]
+layout_mode = 0
+offset_left = -407.0
+offset_top = 345.0
+offset_right = -330.0
+offset_bottom = 405.0
+flat = true
+script = ExtResource("10_av1he")
+tower_scene = ExtResource("17_fwthh")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/GraviturtButton" unique_id=80210720]
+z_index = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 54.0
+offset_right = 62.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/GraviturtButton" unique_id=1057660669]
+position = Vector2(38, 32.000004)
+scale = Vector2(0.2725, 0.22450002)
+texture = ExtResource("16_8audr")
+
+[node name="FighturtJetButton" type="Button" parent="UI/ShopPanel" unique_id=1309996398]
+layout_mode = 0
+offset_left = -461.0
+offset_top = 260.0
+offset_right = -384.0
+offset_bottom = 320.0
+flat = true
+script = ExtResource("10_av1he")
+tower_scene = ExtResource("28_r0ofv")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/FighturtJetButton" unique_id=2135749381]
+z_index = 1
+layout_mode = 0
+offset_left = 14.0
+offset_top = 60.0
+offset_right = 66.0
+offset_bottom = 77.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FighturtJetButton" unique_id=1717376734]
+position = Vector2(43, 36.999985)
+scale = Vector2(0.3343151, 0.2907974)
+texture = ExtResource("27_o8s8s")
+
+[node name="ScienturtButton" type="Button" parent="UI/ShopPanel" unique_id=1728904034]
+layout_mode = 0
+offset_left = -509.0
+offset_top = 351.0
+offset_right = -432.0
+offset_bottom = 411.0
+flat = true
+script = ExtResource("10_av1he")
+tower_scene = ExtResource("19_gctuh")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/ScienturtButton" unique_id=525319378]
+z_index = 1
+layout_mode = 0
+offset_left = 13.0
+offset_top = 52.0
+offset_right = 65.0
+offset_bottom = 69.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/ScienturtButton" unique_id=1896844289]
+position = Vector2(37, 23)
+scale = Vector2(0.1965, 0.17449996)
+texture = ExtResource("18_a4xci")
+
+[node name="FlameturterButton" type="Button" parent="UI/ShopPanel" unique_id=1097398862]
+layout_mode = 0
+offset_left = -402.0
+offset_top = 193.0
+offset_right = -325.0
+offset_bottom = 253.0
+flat = true
+script = ExtResource("10_av1he")
+tower_scene = ExtResource("38_jtd81")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/FlameturterButton" unique_id=1902379085]
+z_index = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 53.0
+offset_right = 62.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FlameturterButton" unique_id=958755165]
+position = Vector2(36.198868, 21.301147)
+scale = Vector2(0.29215783, 0.2702948)
+texture = ExtResource("37_o8s8s")
+
+[node name="FacturtoryButton" type="Button" parent="UI/ShopPanel" unique_id=1910508409]
+layout_mode = 0
+offset_left = -453.0
+offset_top = 427.0
+offset_right = -376.0
+offset_bottom = 487.0
+flat = true
+script = ExtResource("10_av1he")
+tower_scene = ExtResource("40_eraor")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/FacturtoryButton" unique_id=1597932963]
+z_index = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 53.0
+offset_right = 62.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FacturtoryButton" unique_id=1687024481]
+position = Vector2(33, 25.584717)
+scale = Vector2(0.24848486, 0.23891471)
+texture = ExtResource("39_4v1lx")
+
+[node name="TurtSahurButton" type="Button" parent="UI/ShopPanel" unique_id=1008817506]
+layout_mode = 0
+offset_left = -509.0
+offset_top = 502.0
+offset_right = -432.0
+offset_bottom = 562.0
+flat = true
+script = ExtResource("10_av1he")
+tower_scene = ExtResource("33_60ikt")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/TurtSahurButton" unique_id=1307546595]
+z_index = 1
+layout_mode = 0
+offset_left = 14.0
+offset_top = 56.0
+offset_right = 66.0
+offset_bottom = 73.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtSahurButton" unique_id=475410240]
+position = Vector2(39.625004, 23.5)
+scale = Vector2(0.22649997, 0.18599997)
+texture = ExtResource("32_mhcsl")
+
+[node name="TurtTownButton" type="Button" parent="UI/ShopPanel" unique_id=2032033341]
+layout_mode = 0
+offset_left = -410.0
+offset_top = 505.0
+offset_right = -333.0
+offset_bottom = 565.0
+flat = true
+script = ExtResource("10_av1he")
+tower_scene = ExtResource("35_086hf")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/TurtTownButton" unique_id=1796722567]
+z_index = 1
+layout_mode = 0
+offset_left = 17.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtTownButton" unique_id=1813479226]
+position = Vector2(44.696228, 23.06836)
+scale = Vector2(0.15593821, 0.14641082)
+texture = ExtResource("34_fpuwm")
+
+[node name="nuke" type="TextureButton" parent="UI/ShopPanel" unique_id=1739005886]
+z_index = 4096
+z_as_relative = false
+layout_mode = 1
+offset_left = -305.0
+offset_top = 577.0
+offset_right = -241.0
+offset_bottom = 647.0
+texture_normal = ExtResource("39_o8s8s")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("42_83rpp")
+tower_scene = ExtResource("40_jtd81")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/nuke" unique_id=469583516]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 56.0
+offset_right = 64.0
+offset_bottom = 73.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/LeftButtons/left_top" to="UI/CanvasLayer/UpgradePanel" method="_on_left_upgrade_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/LeftButtons/left_top2" to="UI/CanvasLayer/UpgradePanel" method="_on_left_upgrade_pressed"]
