@@ -1,6 +1,6 @@
 extends "res://enemies/zombie.gd"
 
-@export var shield_health: float = 50
+@export var shield_health: float = 500
 @export var shield_radius: float = 60.0
 
 @onready var shield_node = $ShieldArea
