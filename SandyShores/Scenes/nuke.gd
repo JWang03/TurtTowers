@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 @export var tower_scene: PackedScene
 @onready var cost_label: Label = $Label

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i6jor77yhnxq"
-path="res://.godot/imported/mothershell.png-c552fb4b99bb9274563ff99ebee2e257.ctex"
+uid="uid://bbj6k1ycpmckr"
+path="res://.godot/imported/swarm_field.png.png-86d892166bc575d564e793892e19a5f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/mothershell.png"
-dest_files=["res://.godot/imported/mothershell.png-c552fb4b99bb9274563ff99ebee2e257.ctex"]
+source_file="res://textures/swarm_field.png.png"
+dest_files=["res://.godot/imported/swarm_field.png.png-86d892166bc575d564e793892e19a5f6.ctex"]
 
 [params]
 

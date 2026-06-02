@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i6jor77yhnxq"
-path="res://.godot/imported/mothershell.png-c552fb4b99bb9274563ff99ebee2e257.ctex"
+uid="uid://dxyvdwl1gqm3l"
+path="res://.godot/imported/crack.png-87d53fcc42175219fb89b5a35634f589.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/mothershell.png"
-dest_files=["res://.godot/imported/mothershell.png-c552fb4b99bb9274563ff99ebee2e257.ctex"]
+source_file="res://textures/crack.png"
+dest_files=["res://.godot/imported/crack.png-87d53fcc42175219fb89b5a35634f589.ctex"]
 
 [params]
 

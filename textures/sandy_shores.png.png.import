@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i6jor77yhnxq"
-path="res://.godot/imported/mothershell.png-c552fb4b99bb9274563ff99ebee2e257.ctex"
+uid="uid://cr7knruhsdxa1"
+path="res://.godot/imported/sandy_shores.png.png-31407a9e1c92c11f1f1251ea48511b0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/mothershell.png"
-dest_files=["res://.godot/imported/mothershell.png-c552fb4b99bb9274563ff99ebee2e257.ctex"]
+source_file="res://textures/sandy_shores.png.png"
+dest_files=["res://.godot/imported/sandy_shores.png.png-31407a9e1c92c11f1f1251ea48511b0b.ctex"]
 
 [params]
 

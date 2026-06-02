@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://chk7xpr8woiu3"]
 
 [ext_resource type="Script" uid="uid://b781vvhbs7kjk" path="res://Enemies/shield_enemy.gd" id="1_117e8"]
-[ext_resource type="Texture2D" uid="uid://uurebpnhfhqf" path="res://Textures/image-removebg-preview (14).png" id="2_15ep3"]
-[ext_resource type="Texture2D" uid="uid://dqvsef5yvkf6k" path="res://Textures/image-removebg-preview (13).png" id="2_evmg5"]
+[ext_resource type="Texture2D" uid="uid://uurebpnhfhqf" path="res://textures/image-removebg-preview (14).png" id="2_15ep3"]
+[ext_resource type="Texture2D" uid="uid://bbj6k1ycpmckr" path="res://textures/swarm_field.png.png" id="3_im1tm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_15ep3"]
 radius = 60.0
@@ -16,6 +16,8 @@ script = ExtResource("1_117e8")
 [node name="ShieldArea" type="Area2D" parent="." unique_id=1337643953]
 
 [node name="Sprite2D" type="Sprite2D" parent="ShieldArea" unique_id=41729973]
+modulate = Color(1, 1, 1, 0.6)
+z_index = 2
 scale = Vector2(0.3468935, 0.32384825)
 texture = ExtResource("2_15ep3")
 
@@ -23,9 +25,10 @@ texture = ExtResource("2_15ep3")
 shape = SubResource("CircleShape2D_15ep3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1115373305]
-position = Vector2(0, -1)
-scale = Vector2(0.12391681, 0.12817553)
-texture = ExtResource("2_evmg5")
+z_index = 1
+position = Vector2(9.536743e-07, 0)
+scale = Vector2(0.1311776, 0.13305399)
+texture = ExtResource("3_im1tm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1294808361]
 shape = SubResource("CircleShape2D_evmg5")
