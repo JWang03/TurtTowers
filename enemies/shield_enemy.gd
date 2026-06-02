@@ -57,3 +57,8 @@ func take_damage(amount):
 		take_shield_damage(amount)
 	else:
 		super.take_damage(amount)
+
+func _process(delta):
+	super._process(delta)
+	if is_shield_active and is_instance_valid(shield_sprite):
+		shield_sprite.rotation += delta * 1.5

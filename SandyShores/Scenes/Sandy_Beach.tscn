@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bfaepla21qfgr" path="res://textures/tile54.png" id="1_je2ct"]
 [ext_resource type="Script" uid="uid://c7qark202ovo" path="res://SandyShores/Scripts/grid.gd" id="2_lsk4j"]
 [ext_resource type="Texture2D" uid="uid://c451qigpgmcvd" path="res://textures/BlueTrack.png" id="3_ai02a"]
-[ext_resource type="Texture2D" uid="uid://wgtpugqiaaqq" path="res://textures/beach.png" id="4_ckwcc"]
 [ext_resource type="Texture2D" uid="uid://i6jor77yhnxq" path="res://textures/mothershell.png" id="5_50yat"]
+[ext_resource type="Texture2D" uid="uid://cr7knruhsdxa1" path="res://textures/sandy_shores.png.png" id="5_fosoi"]
 [ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="6_b4hrs"]
 [ext_resource type="Script" uid="uid://byowlyow01qce" path="res://SandyShores/Scripts/build_manager.gd" id="6_rjrdg"]
 [ext_resource type="Texture2D" uid="uid://dil5b5bgf4wxt" path="res://textures/GearIcon.png" id="7_6cp8d"]
@@ -309,9 +309,9 @@ tile_set = SubResource("TileSet_hngk1")
 [node name="Beach" type="Sprite2D" parent="." unique_id=1801378851]
 z_index = -1000
 z_as_relative = false
-position = Vector2(692, 327.00006)
-scale = Vector2(0.65767044, 0.8567708)
-texture = ExtResource("4_ckwcc")
+position = Vector2(690.5, 324.00003)
+scale = Vector2(0.6555398, 0.84375)
+texture = ExtResource("5_fosoi")
 
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("6_rjrdg")
