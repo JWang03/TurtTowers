@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://d2l8b5nykdqdg"]
 
 [ext_resource type="Script" uid="uid://dgxr68ccu5gtv" path="res://Towers/godzilla_tower.gd" id="1_gth0i"]
-[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://Textures/godzilla_tower.png" id="2_qwdvh"]
-[ext_resource type="Texture2D" uid="uid://dcsbcqgcbm4ey" path="res://Textures/image-removebg-preview (45).png" id="2_y5jr4"]
-[ext_resource type="Texture2D" uid="uid://dw6fi2japgej7" path="res://Textures/image-removebg-preview (44).png" id="3_0bwuy"]
+[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="2_qwdvh"]
+[ext_resource type="Texture2D" uid="uid://dcsbcqgcbm4ey" path="res://textures/image-removebg-preview (45).png" id="2_y5jr4"]
+[ext_resource type="Texture2D" uid="uid://dw6fi2japgej7" path="res://textures/image-removebg-preview (44).png" id="3_0bwuy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_smrgo"]
 radius = 206.06067

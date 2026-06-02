@@ -10,6 +10,7 @@ radius = 6.0
 radius = 94.00532
 
 [node name="missile" type="Area2D" unique_id=390304399]
+collision_mask = 2
 monitoring = false
 script = ExtResource("1_0uoyr")
 

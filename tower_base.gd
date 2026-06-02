@@ -17,6 +17,9 @@ func _ready():
 	Signal_Bus.tower_selected.connect(_on_tower_selected)
 	Signal_Bus.tower_deselected.connect(_on_tower_deselected)
 	
+	collision_layer = 1 << 0
+	collision_mask = 1 << 1
+	detection_area.collision_mask = 1 << 1
 
 func _create_range_indicator():
 	range_fill = Polygon2D.new()

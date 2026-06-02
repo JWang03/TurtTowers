@@ -16,6 +16,7 @@ func _process(delta):
 	else:
 		visual_rotation(delta)
 		pull_entities(delta)
+	collision_mask = 1 << 1
 
 func activate_black_hole():
 	is_active = true

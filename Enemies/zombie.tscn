@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cp5mfxulgq6d7"]
 
-[ext_resource type="Script" uid="uid://cn7wpo6rhjlw6" path="res://Enemies/zombie.gd" id="1_uiaus"]
-[ext_resource type="Texture2D" uid="uid://d2wop783gxesj" path="res://Textures/da7e47a2-6873-4c7f-9f0f-30cf4d7c6728-removebg-preview.png" id="2_3p8yn"]
+[ext_resource type="Script" uid="uid://cn7wpo6rhjlw6" path="res://enemies/zombie.gd" id="1_uiaus"]
+[ext_resource type="Texture2D" uid="uid://d2wop783gxesj" path="res://textures/da7e47a2-6873-4c7f-9f0f-30cf4d7c6728-removebg-preview.png" id="2_3p8yn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_roy8y"]
 radius = 6.0

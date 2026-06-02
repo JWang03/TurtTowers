@@ -35,6 +35,14 @@ func _ready():
 	super._ready()
 	cost = 50
 	
+	laser_ray.collision_mask = 1 << 1
+	laser_ray2.collision_mask = 1 << 1
+	
+	laser_ray.collide_with_areas = false
+	laser_ray.collide_with_bodies = true
+	laser_ray2.collide_with_areas = false
+	laser_ray2.collide_with_bodies = true
+	
 	if has_node("Head/Line2D"): $Head/Line2D.queue_free()
 	if has_node("Head/Line2D2"): $Head/Line2D2.queue_free()
 	

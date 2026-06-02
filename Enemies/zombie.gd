@@ -44,6 +44,9 @@ func _ready():
 	health_bar.update(health, max_health)
 	bob_time = randf() * TAU
 	shelling_drop = 2
+	
+	collision_layer = 1 << 1
+	collision_mask = 1 << 0
 
 
 
