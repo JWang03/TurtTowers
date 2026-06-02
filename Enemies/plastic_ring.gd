@@ -28,38 +28,36 @@ func die():
 	spawn_children()
 	super.die()
 func take_damage(amount):
-	health -= amount
-	health_bar.update(health, max_health)
-	modulate = Color.RED
-	await get_tree().create_timer(0.1).timeout
-	modulate = Color.WHITE
-	if health <= 0:
-		die()
+	super.take_damage(amount)
 func spawn_children():
 	if child_enemy_scene == null:
 		return
-	
+
 	var parent_follow = get_parent()
-	if parent_follow == null or !(parent_follow is PathFollow2D):
+	if parent_follow == null or not (parent_follow is PathFollow2D):
 		return
-	
+
 	var path = parent_follow.get_parent()
-	if path == null or !(path is Path2D):
+	if path == null or not (path is Path2D):
 		return
-	
+
 	var death_progress = parent_follow.progress
-	
+
 	for i in range(spawn_count):
 		var new_follow = PathFollow2D.new()
 		new_follow.loop = false
 		path.add_child(new_follow)
-		
 		new_follow.progress = death_progress + i * 8.0
-		
+
 		var can = child_enemy_scene.instantiate()
 		new_follow.add_child(can)
-		
+
+		# register each can with the wave manager
+		can.set("WaveSpawner", wave_manager)
+		if wave_manager != null:
+			wave_manager.enemies_alive += 1
+
 		can.scale = Vector2(0.5, 0.5)
 		var tween = can.create_tween()
-		tween.tween_property(can, "scale", Vector2(1, 1), 0.3) \
+		tween.tween_property(can, "scale", Vector2(1, 1), 0.3)\
 			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)

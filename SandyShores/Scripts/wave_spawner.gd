@@ -53,7 +53,7 @@ func resume_restored_wave() -> void:
 	await start_next_wave()
 
 func get_wave_bonus(wave: int) -> int:
-	return 15 + (wave * 5)
+	return 15 + (wave * 7)
 func wait_while_unpaused(seconds: float) -> void:
 	var elapsed = 0.0
 	while elapsed < seconds:
@@ -114,8 +114,7 @@ func spawn_enemy(scene: PackedScene, speed_mult: float = 1.0, health_mult: float
 	enemy_path.add_child(follow)
 
 	var enemy = scene.instantiate()
-	follow.add_child(follow)
-	follow.add_child(enemy)
+	follow.add_child(enemy)  # just this, no follow.add_child(follow)
 
 	follow.progress = 0.0
 	enemies_alive += 1
