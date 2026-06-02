@@ -14,7 +14,7 @@ var enemy_shield = preload("res://enemies/shield_enemy.tscn")
 var cortex = preload("res://enemies/cortex.tscn")
 
 @export var time_between_waves: float = 3.0
-@export var max_waves: int = 50
+@export var max_waves: int = 51
 
 var current_wave: int = 0
 var enemies_alive: int = 0
@@ -483,7 +483,7 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_shield, "count": 3, "delay": 1.5, "speed_mult": 1.2, "health_mult": 2.0},
 				{"scene": enemy_bottle, "count": 40, "delay": 0.2, "speed_mult": 3.3, "health_mult": 8.0}
 			]
-		1: #boss battle
+		51: #boss battle
 			return [
 				{"scene": cortex, "count": 1, "delay": 1.5, "speed_mult": 1, "health_mult": 1,},
 				{"scene": enemy_net, "count": 10, "delay": 1.5, "speed_mult": 3, "health_mult": 12,},
