@@ -299,8 +299,8 @@ tile_set = SubResource("TileSet_hngk1")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=308524242]
 z_index = -1
-position = Vector2(688.00006, 323.5)
-scale = Vector2(0.7564935, 0.74884266)
+position = Vector2(687.00006, 323.99997)
+scale = Vector2(0.7548701, 0.75)
 texture = ExtResource("3_r1ppn")
 
 [node name="Temple" type="Sprite2D" parent="." unique_id=1142197630]
