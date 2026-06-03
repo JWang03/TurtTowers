@@ -6,22 +6,22 @@
 [ext_resource type="Texture2D" uid="uid://igbigqabkd3d" path="res://Menu/Images/Maps/SandyShores.png" id="3_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="4_o4wy8"]
 [ext_resource type="Shader" uid="uid://csheady12o671" path="res://Menu/gradient.gdshader" id="6_rw3mj"]
-[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://Textures/bomb_tower.png" id="7_cn2sd"]
-[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://Textures/electric_tower.png" id="8_ywk15"]
-[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://Textures/blackhole_tower.png" id="9_ws7s4"]
-[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://Textures/godzilla_tower.png" id="10_fduiw"]
-[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://Textures/bullet_tower.png" id="11_fduiw"]
+[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="7_cn2sd"]
+[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="8_ywk15"]
+[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="9_ws7s4"]
+[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="10_fduiw"]
+[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="11_fduiw"]
 [ext_resource type="StyleBox" uid="uid://dsbgt10xh2wso" path="res://Menu/exit_button.tres" id="13_o4wy8"]
-[ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://Textures/image-removebg-preview (34).png" id="14_6v0gp"]
-[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://Textures/holy_crusader.png" id="15_dqyvv"]
-[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://Textures/Turt^3 Sahur.png" id="16_m8x2t"]
-[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://Textures/TurtTown.png" id="17_trttn"]
-[ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://Textures/image-removebg-preview (15).png" id="18_6v0gp"]
+[ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://textures/image-removebg-preview (34).png" id="14_6v0gp"]
+[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="15_dqyvv"]
+[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="16_m8x2t"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/TurtTown.png" id="17_trttn"]
+[ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://textures/image-removebg-preview (15).png" id="18_6v0gp"]
 [ext_resource type="Shader" uid="uid://7ge7521o8ccw" path="res://Menu/towersui.gdshader" id="18_is5sc"]
 [ext_resource type="Script" uid="uid://t0tqkn4slqu8" path="res://Menu/arrow.gd" id="18_tek0n"]
-[ext_resource type="Texture2D" uid="uid://djhx0xow36mcw" path="res://Textures/image-removebg-preview (30).png" id="19_a0ncs"]
+[ext_resource type="Texture2D" uid="uid://djhx0xow36mcw" path="res://textures/image-removebg-preview (30).png" id="19_a0ncs"]
 [ext_resource type="Shader" uid="uid://df18vh8hlpx1q" path="res://Menu/towers2.gdshader" id="20_32sed"]
-[ext_resource type="Texture2D" uid="uid://dr8x45h4e2lwn" path="res://Textures/image-removebg-preview (31).png" id="20_fqpxm"]
+[ext_resource type="Texture2D" uid="uid://dr8x45h4e2lwn" path="res://textures/image-removebg-preview (31).png" id="20_fqpxm"]
 [ext_resource type="Script" uid="uid://ww178o82fnsd" path="res://Menu/upgrade_trees.gd" id="21_6v0gp"]
 [ext_resource type="Theme" uid="uid://boaafitswomev" path="res://upgrade_buttons.tres" id="21_qn1v7"]
 
@@ -402,27 +402,27 @@ stretch_mode = 6
 [node name="StartGame" type="Button" parent="." unique_id=1512135169]
 self_modulate = Color(0, 0, 0, 0)
 layout_mode = 1
-offset_left = 465.0
-offset_top = 221.0
-offset_right = 653.0
-offset_bottom = 276.0
+offset_left = 440.0
+offset_top = 311.0
+offset_right = 729.0
+offset_bottom = 375.0
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_fu7sn")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_jix8l")
 
 [node name="Settings" type="Button" parent="." unique_id=1513501099]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 480.0
-offset_top = 365.0
-offset_right = 642.0
-offset_bottom = 418.0
+offset_left = 445.0
+offset_top = 473.0
+offset_right = 725.0
+offset_bottom = 551.0
 
 [node name="Towers" type="Button" parent="." unique_id=984938724]
 layout_mode = 0
-offset_left = 477.0
-offset_top = 298.0
-offset_right = 645.0
-offset_bottom = 346.0
+offset_left = 447.0
+offset_top = 392.0
+offset_right = 725.0
+offset_bottom = 467.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fduiw")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cgse8")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_o4wy8")
