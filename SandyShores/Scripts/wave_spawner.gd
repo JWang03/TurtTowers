@@ -42,7 +42,10 @@ func resume_restored_wave() -> void:
 	wave_running = true
 
 	while enemies_alive > 0:
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.5).timeout
+		if enemy_path and enemy_path.get_child_count() == 0:
+			enemies_alive = 0
+		break
 
 	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager:
@@ -78,7 +81,10 @@ func start_next_wave() -> void:
 	await spawn_wave(wave_data)
 
 	while enemies_alive > 0:
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.5).timeout
+		if enemy_path and enemy_path.get_child_count() == 0:
+			enemies_alive = 0
+		break
 
 	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager:
