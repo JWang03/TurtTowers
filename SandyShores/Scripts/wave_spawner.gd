@@ -139,7 +139,7 @@ func get_wave_data(wave_num: int) -> Array:
 		# ── WAVES 1-10: Bottles only, learning the game ──
 		1:
 			return [
-				{"scene": enemy_net, "count": 5, "delay": 0.8, "speed_mult": 1.0, "health_mult": 1.0}
+				{"scene": enemy_bottle, "count": 5, "delay": 0.8, "speed_mult": 1.0, "health_mult": 1.0}
 			]
 		2:
 			return [
