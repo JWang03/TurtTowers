@@ -416,9 +416,10 @@ tile_set = SubResource("TileSet_sre1k")
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("12_b0jmt")
 
-[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path")]
+[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path", "wave_label")]
 script = ExtResource("13_6jpsd")
 enemy_path = NodePath("../EnemyPath")
+wave_label = NodePath("../UI/HUD/Waves/WaveLabel")
 
 [node name="EnemyPath" type="Path2D" parent="." unique_id=367750900]
 position = Vector2(228, 0)
