@@ -289,7 +289,7 @@ var upgrades = {
 		"tiers": [
 			{"label": "Shell Tax", "cost": 750},
 			{"label": "Gilded Shell-ways", "cost": 2375},
-			{"label": "Golden Age", "cost": 10000}
+			{"label": "Boom Town", "cost": 10000}
 		]
 	}
 }

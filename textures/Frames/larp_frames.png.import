@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmo8o7w6evhwe"
-path="res://.godot/imported/larp_frames.png-f80acd3786a458074dcf2f060c3420a2.ctex"
+path="res://.godot/imported/larp_frames.png-6df0cbe45928c531abb942311c176229.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Frames/larp_frames.png"
-dest_files=["res://.godot/imported/larp_frames.png-f80acd3786a458074dcf2f060c3420a2.ctex"]
+source_file="res://Textures/Frames/larp_frames.png"
+dest_files=["res://.godot/imported/larp_frames.png-6df0cbe45928c531abb942311c176229.ctex"]
 
 [params]
 
