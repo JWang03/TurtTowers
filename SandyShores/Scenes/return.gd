@@ -398,8 +398,8 @@ func _restore_autosave(save_data: Dictionary) -> void:
 		wave_spawner.set("current_wave", saved_wave)
 		wave_spawner.set("game_started", wave_was_running)
 		wave_spawner.set("wave_running", wave_was_running)
-		wave_spawner.set("game_finished", bool(save_data.get("game_finished", false)))
-		wave_spawner.set("victory_menu_shown", bool(save_data.get("victory_menu_shown", false)))
+		wave_spawner.set("game_finished", save_data.get("game_finished", false))
+		wave_spawner.set("victory_menu_shown", save_data.get("victory_menu_shown", false))
 		var wave_label = wave_spawner.get("wave_label")
 		if wave_label:
 			var display_wave := saved_wave if wave_was_running else saved_wave + 1

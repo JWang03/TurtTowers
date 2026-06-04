@@ -25,7 +25,11 @@ var spawning: bool = false
 
 func _process(_delta: float) -> void:
 	if enemy_path:
-		enemies_alive = enemy_path.get_child_count()
+		var count = 0
+		for child in enemy_path.get_children():
+			if not child.has_meta("is_turt"):
+				count += 1
+		enemies_alive = count
 	if game_started or game_finished:
 		return
 	if play_button and play_button.playing:
