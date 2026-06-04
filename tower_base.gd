@@ -123,7 +123,26 @@ func set_target_priority(new_mode_index: int):
 
 func sell() -> void:
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
-	currency_manager.add_shellings(cost / 2, false)
+	var refund = cost / 2.0
+
+	# calculate refund from purchased upgrades
+	if get("upgrades") and get("left_level") != null and get("right_level") != null:
+		var branch = get("chosen_branch")
+		var left_lvl = get("left_level")
+		var right_lvl = get("right_level")
+		var upgrade_data = get("upgrades")
+
+		# refund half of each purchased left upgrade tier
+		if branch == "left" or branch == "":
+			for i in range(left_lvl):
+				refund += upgrade_data["left"]["tiers"][i]["cost"] / 2.0
+
+		# refund half of each purchased right upgrade tier
+		if branch == "right" or branch == "":
+			for i in range(right_lvl):
+				refund += upgrade_data["right"]["tiers"][i]["cost"] / 2.0
+
+	currency_manager.add_shellings(int(refund))
 	if tilemap:
 		tilemap.unoccupy_cell(occupied_cell)
 	queue_free()
