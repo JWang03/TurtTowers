@@ -60,8 +60,6 @@
 			#if upgrade_panel.visible:
 				#var panel_pos = upgrade_panel.get_global_transform_with_canvas().origin
 				#var panel_rect = Rect2(panel_pos, upgrade_panel.size)
-				#print("panel_rect: ", panel_rect)
-				#print("event.position: ", event.position)
 				#if panel_rect.has_point(event.position):
 					#return
 			#return
@@ -149,8 +147,6 @@ func _input(event: InputEvent) -> void:
 			if upgrade_panel.visible:
 				var panel_pos = upgrade_panel.get_global_transform_with_canvas().origin
 				var panel_rect = Rect2(panel_pos, upgrade_panel.size)
-				print("panel_rect: ", panel_rect)
-				print("event.position: ", event.position)
 				if panel_rect.has_point(event.position):
 					return
 			return
@@ -174,6 +170,9 @@ func _input(event: InputEvent) -> void:
 					currency_manager.spend_shellings(cost)
 					occupied_cells[cell] = true
 					tower.is_placed = true
+					var run_stats := get_node_or_null("/root/RunStats")
+					if run_stats:
+						run_stats.record_tower_placed(tower.scene_file_path)
 					if tower.has_method("_on_placed"):
 						tower.call_deferred("_on_placed")
 					if tower.has_method("on_placed"):

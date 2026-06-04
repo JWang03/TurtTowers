@@ -110,7 +110,6 @@ func cycle_target_mode():
 	var current_index = target_priority as int
 	var next_index = (current_index + 1) % TargetMode.size()
 	target_priority = next_index as TargetMode
-	print("Tower mode changed to: ", TargetMode.keys()[target_priority])
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
@@ -121,11 +120,10 @@ func _input_event(_viewport, event, _shape_idx):
 
 func set_target_priority(new_mode_index: int):
 	target_priority = new_mode_index as TargetMode
-	print(name, " changed mode to: ", target_priority)
 
 func sell() -> void:
 	var currency_manager = get_node("/root/Game/UI/HUD/CurrencyManager")
-	currency_manager.add_shellings(cost / 2)
+	currency_manager.add_shellings(cost / 2, false)
 	if tilemap:
 		tilemap.unoccupy_cell(occupied_cell)
 	queue_free()

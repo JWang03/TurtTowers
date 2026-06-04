@@ -2,6 +2,7 @@ extends Control
 
 const DEFAULT_TOWER_NAME := "Turt"
 const TOWER_SCENE_AUTOSAVE_PATH := "user://tower_scene_autosave.json"
+const MAP_CLEAR_PATH := "user://map_clear_data.json"
 # Settings Menu Nodes
 @onready var settings_overlay = $SettingsLayer
 @onready var menu_panel = $SettingsLayer/SettingsMenu
@@ -49,6 +50,9 @@ var map_scenes: Array = [
 	"res://SandyShores/Scenes/Turtle_Temple.tscn"
 ]
 var current_map_index: int = 0
+var cleared_maps := {}
+var cleared_stamp: Label
+var cleared_map_dimmer: ColorRect
 
 # Button origins
 var map_return_origin: Vector2
@@ -88,12 +92,71 @@ func _ready():
 
 	map_return_origin = map_return_button.position
 	tower_return_origin = tower_return_button.position
+	cleared_maps = _load_cleared_maps()
+	_create_cleared_stamp()
 
 func _update_map_display():
 	if map_selector:
 		map_selector.texture_normal = map_textures[current_map_index]
 	if map_name_label:
 		map_name_label.text = map_names[current_map_index]
+	if cleared_stamp:
+		var is_cleared := bool(cleared_maps.get(map_scenes[current_map_index], false))
+		cleared_stamp.visible = is_cleared
+		if cleared_map_dimmer:
+			cleared_map_dimmer.visible = is_cleared
+
+func _create_cleared_stamp() -> void:
+	if cleared_stamp != null:
+		return
+	cleared_map_dimmer = ColorRect.new()
+	cleared_map_dimmer.name = "ClearedMapDimmer"
+	cleared_map_dimmer.color = Color(0.0, 0.0, 0.0, 0.42)
+	cleared_map_dimmer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	cleared_map_dimmer.z_index = 19
+	cleared_map_dimmer.set_anchors_preset(Control.PRESET_CENTER)
+	cleared_map_dimmer.offset_left = -282.5
+	cleared_map_dimmer.offset_top = -187.0
+	cleared_map_dimmer.offset_right = 282.5
+	cleared_map_dimmer.offset_bottom = 187.0
+	map_panel.add_child(cleared_map_dimmer)
+	cleared_map_dimmer.visible = false
+
+	cleared_stamp = Label.new()
+	cleared_stamp.name = "ClearedStamp"
+	cleared_stamp.text = "CLEARED"
+	cleared_stamp.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	cleared_stamp.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	cleared_stamp.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	cleared_stamp.rotation_degrees = -12
+	cleared_stamp.z_index = 20
+	cleared_stamp.add_theme_font_size_override("font_size", 50)
+	cleared_stamp.add_theme_color_override("font_color", Color(0.33, 0.95, 0.43, 0.9))
+	cleared_stamp.add_theme_color_override("font_outline_color", Color(0.03, 0.18, 0.07, 0.95))
+	cleared_stamp.add_theme_constant_override("outline_size", 8)
+	cleared_stamp.set_anchors_preset(Control.PRESET_CENTER)
+	cleared_stamp.offset_left = -282.5
+	cleared_stamp.offset_top = -187.0
+	cleared_stamp.offset_right = 282.5
+	cleared_stamp.offset_bottom = 187.0
+	cleared_stamp.pivot_offset = Vector2(282.5, 187.0)
+	map_panel.add_child(cleared_stamp)
+	cleared_stamp.visible = false
+
+func _load_cleared_maps() -> Dictionary:
+	if not FileAccess.file_exists(MAP_CLEAR_PATH):
+		return {}
+
+	var save_file := FileAccess.open(MAP_CLEAR_PATH, FileAccess.READ)
+	if save_file == null:
+		return {}
+
+	var parsed = JSON.parse_string(save_file.get_as_text())
+	if not (parsed is Dictionary):
+		return {}
+
+	var loaded_maps = parsed.get("cleared_maps", {})
+	return loaded_maps if loaded_maps is Dictionary else {}
 
 # Settings Menu Functions
 func _on_settings_pressed():
@@ -267,6 +330,9 @@ func _on_return_towers_pressed() -> void:
 
 func _input(event):
 	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_UP and event.alt_pressed and event.meta_pressed:
+			_reset_debug_progression()
+			return
 		if event.keycode == KEY_ESCAPE:
 			if event.alt_pressed:
 				get_tree().quit()
@@ -311,3 +377,13 @@ func _switch_tower_page(new_page: int) -> void:
 		card_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 		card_tween.tween_interval(0.2 + i * 0.05)
 		card_tween.tween_property(card, "scale", Vector2.ONE, 0.3)
+
+func _reset_debug_progression() -> void:
+	_delete_user_file(TOWER_SCENE_AUTOSAVE_PATH)
+	_delete_user_file(MAP_CLEAR_PATH)
+	cleared_maps = {}
+	_update_map_display()
+
+func _delete_user_file(path: String) -> void:
+	if FileAccess.file_exists(path):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(path))

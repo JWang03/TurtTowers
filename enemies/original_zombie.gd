@@ -34,10 +34,8 @@ func check_for_towers():
 
 func start_eating(tower):
 	is_eating = true
-	print("Eating tower!")
 
 func take_damage(amount):
-	print("zombie took: ", amount, "from ", get_stack()[1].source)
 	health -= amount
 	modulate = Color.RED
 	var tween = create_tween()
