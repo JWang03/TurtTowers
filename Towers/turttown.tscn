@@ -10,6 +10,7 @@ radius = 18.0
 radius = 75.00667
 
 [node name="turttown" type="StaticBody2D" unique_id=1028192946]
+collision_mask = 3
 script = ExtResource("1_trttwn")
 cost = 350.0
 

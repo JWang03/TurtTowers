@@ -10,9 +10,10 @@ radius = 169.5671
 
 [node name="Holy_Crusader" type="StaticBody2D" unique_id=313196950]
 z_index = 4096
+collision_mask = 2
 script = ExtResource("1_l2hnx")
-demonic_sprite = ExtResource("2_o0eas")
-angelic_sprite = ExtResource("3_v5irv")
+left_sprite = ExtResource("2_o0eas")
+right_sprite = ExtResource("3_v5irv")
 cost = 125.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2047579765]

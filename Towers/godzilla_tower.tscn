@@ -12,8 +12,8 @@ radius = 206.06067
 z_index = 4096
 collision_mask = 2
 script = ExtResource("1_gth0i")
-twin_peaks_sprite = ExtResource("2_y5jr4")
-atomic_sprite = ExtResource("3_0bwuy")
+left_sprite = ExtResource("2_y5jr4")
+right_sprite = ExtResource("3_0bwuy")
 cost = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2040546846]

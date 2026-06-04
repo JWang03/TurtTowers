@@ -14,8 +14,8 @@ var left_level = 0
 var right_level = 0
 var chosen_branch = ""
 
-@export var twin_peaks_sprite: Texture2D
-@export var atomic_sprite: Texture2D
+@export var left_sprite: Texture2D
+@export var right_sprite: Texture2D
 
 @export var damage_per_second: float = 30
 @export var rotation_speed: float = 5.0
@@ -34,6 +34,14 @@ var recoil_tween: Tween
 func _ready():
 	super._ready()
 	cost = 50
+	
+	laser_ray.collision_mask = 1 << 1
+	laser_ray2.collision_mask = 1 << 1
+	
+	laser_ray.collide_with_areas = false
+	laser_ray.collide_with_bodies = true
+	laser_ray2.collide_with_areas = false
+	laser_ray2.collide_with_bodies = true
 	
 	if has_node("Head/Line2D"): $Head/Line2D.queue_free()
 	if has_node("Head/Line2D2"): $Head/Line2D2.queue_free()
@@ -77,10 +85,7 @@ func _process(delta):
 		
 		var target_rot = head.rotation
 		
-		if sprite.texture == twin_peaks_sprite or sprite.texture == atomic_sprite:
-			sprite.rotation = target_rot + PI
-		else:
-			sprite.rotation = target_rot + PI
+		sprite.rotation = target_rot + PI
 			
 		var angle = wrapf(sprite.rotation, -PI, PI)
 		if abs(angle) > PI / 2:
@@ -182,20 +187,26 @@ var upgrades = {
 	"left": {
 		"name": "Twin Peaks",
 		"tiers": [
-			{"label": "Prism Lens", "cost": 75},
-			{"label": "Refraction Array", "cost": 150},
-			{"label": "Binary Star", "cost": 300}
+			{"label": "Prism Lens", "cost": 200},
+			{"label": "Refraction Array", "cost": 500},
+			{"label": "Binary Star", "cost": 5000}
 		]
 	},
 	"right": {
 		"name": "Atomic",
 		"tiers": [
-			{"label": "Supercharged", "cost": 100},
-			{"label": "Critical Mass", "cost": 200},
-			{"label": "Meltdown", "cost": 700}
+			{"label": "Supercharged", "cost": 300},
+			{"label": "Critical Mass", "cost": 700},
+			{"label": "Meltdown", "cost": 7000}
 		]
 	}
 }
+
+func _refresh_visuals():
+	if left_level >= 3 and left_sprite:
+		sprite.texture = left_sprite
+	elif right_level >= 3 and right_sprite:
+		sprite.texture = right_sprite
 
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
@@ -215,20 +226,19 @@ func purchase_upgrade(branch: String):
 		return
 	currency_manager.spend_shellings(ucost)
 	if chosen_branch == "":
-		chosen_branch = branch  # only set AFTER confirming purchase)
-	
+		chosen_branch = branch  # only set AFTER confirming purchase
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
-		if left_level == 3 and twin_peaks_sprite:
-			sprite.texture = twin_peaks_sprite
+		if left_level == 3 and left_sprite:
+			sprite.texture = left_sprite
 			UpgradeManager.register_tier3_left(tower_name)
 			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
-		if right_level == 3 and atomic_sprite:
-			sprite.texture = atomic_sprite
+		if right_level == 3 and right_sprite:
+			sprite.texture = right_sprite
 			UpgradeManager.register_tier3_right(tower_name)
 			
 	refresh_range_indicator()

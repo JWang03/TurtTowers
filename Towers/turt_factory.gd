@@ -4,8 +4,8 @@ var turt_scene = preload("res://Towers/turt_mine.tscn")
 @export var spawn_interval: float = 0.4
 @export var search_radius: float = 120.0
 
-@export var mass_production_sprite: Texture2D
-@export var mega_turt_sprite: Texture2D
+@export var left_sprite: Texture2D
+@export var right_sprite: Texture2D
 
 var path_node: Path2D = null
 var spawn_offset: float = 0.0
@@ -19,7 +19,7 @@ var turt_scale_multiplier: float = 1.0
 var turt_health: int = 1
 
 @onready var spawn_timer: Timer = Timer.new()
-@onready var base_sprite = $Sprite2D 
+@onready var sprite = $Sprite2D 
 
 func _ready():
 	super._ready()
@@ -106,23 +106,29 @@ var upgrades = {
 	"left": {
 		"name": "Assembly Line",
 		"tiers": [
-			{"label": "Overclocked Conveyor", "cost": 75},
-			{"label": "Dual-Lane Logistics", "cost": 175},
-			{"label": "Automated Swarm", "cost": 400}
+			{"label": "Overclocked Conveyor", "cost": 275},
+			{"label": "Dual-Lane Logistics", "cost": 575},
+			{"label": "Automated Swarm", "cost": 3000}
 		]
 	},
 	"right": {
 		"name": "Heavy Shell",
 		"tiers": [
-			{"label": "Ironclad Scutes", "cost": 100},
-			{"label": "Volatile Payload", "cost": 250},
-			{"label": "The Behemoth Project", "cost": 600}
+			{"label": "Ironclad Scutes", "cost": 500},
+			{"label": "Volatile Payload", "cost": 1000},
+			{"label": "The Behemoth Project", "cost": 6500}
 		]
 	}
 }
 var left_level = 0
 var right_level = 0
 var chosen_branch = ""
+
+func _refresh_visuals():
+	if left_level >= 3 and left_sprite:
+		sprite.texture = left_sprite
+	elif right_level >= 3 and right_sprite:
+		sprite.texture = right_sprite
 
 func purchase_upgrade(branch: String):
 	if chosen_branch != "" and chosen_branch != branch:
@@ -146,16 +152,19 @@ func purchase_upgrade(branch: String):
 	if branch == "left":
 		apply_left_upgrade()
 		left_level += 1
-		if left_level == 3 and mass_production_sprite:
-			base_sprite.texture = mass_production_sprite
+		if left_level == 3 and left_sprite:
+			sprite.texture = left_sprite
 			UpgradeManager.register_tier3_left(tower_name)
+			
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
-		if right_level == 3 and mega_turt_sprite:
-			base_sprite.texture = mega_turt_sprite
+		if right_level == 3 and right_sprite:
+			sprite.texture = right_sprite
 			UpgradeManager.register_tier3_right(tower_name)
+			
 	refresh_range_indicator()
+	_refresh_visuals()
 
 func apply_left_upgrade():
 	match left_level:

@@ -1,49 +1,51 @@
 [gd_scene format=4 uid="uid://b1gr3w5kx1m13"]
 
-[ext_resource type="Texture2D" uid="uid://bfaepla21qfgr" path="res://Textures/tile54.png" id="1_ndx66"]
+[ext_resource type="Script" uid="uid://dlip51g12u115" path="res://SandyShores/Scenes/sandy_beach.gd" id="1_bwtra"]
+[ext_resource type="Texture2D" uid="uid://bfaepla21qfgr" path="res://textures/tile54.png" id="1_ndx66"]
 [ext_resource type="Script" uid="uid://c7qark202ovo" path="res://SandyShores/Scripts/grid.gd" id="2_r1ppn"]
-[ext_resource type="Texture2D" uid="uid://dtd7hamgbkfne" path="res://Textures/TempleBG.png" id="3_r1ppn"]
-[ext_resource type="Texture2D" uid="uid://7kvkhhfaf07o" path="res://Textures/mothershell.png" id="5_8ssj6"]
-[ext_resource type="Texture2D" uid="uid://cuij4jh3gwfxn" path="res://Textures/temple.png" id="5_qnun0"]
+[ext_resource type="Texture2D" uid="uid://dtd7hamgbkfne" path="res://textures/TempleBG.png" id="3_r1ppn"]
+[ext_resource type="Texture2D" uid="uid://i6jor77yhnxq" path="res://textures/mothershell.png" id="5_8ssj6"]
+[ext_resource type="Texture2D" uid="uid://cuij4jh3gwfxn" path="res://textures/temple.png" id="5_qnun0"]
 [ext_resource type="Texture2D" uid="uid://bdypovwktvbb8" path="res://Menu/Images/Gemini_Generated_Image_k2lpzqk2lpzqk2lp-removebg-preview.png" id="6_5d46n"]
 [ext_resource type="Script" uid="uid://byowlyow01qce" path="res://SandyShores/Scripts/build_manager.gd" id="6_op2ha"]
 [ext_resource type="Script" uid="uid://ckfrd7gva57ou" path="res://SandyShores/Scenes/return.gd" id="7_gxa37"]
 [ext_resource type="Script" uid="uid://bceep1af2kp7r" path="res://SandyShores/Scripts/wave_spawner.gd" id="7_m5biy"]
-[ext_resource type="Texture2D" uid="uid://dil5b5bgf4wxt" path="res://Textures/GearIcon.png" id="8_4c3de"]
+[ext_resource type="Texture2D" uid="uid://dil5b5bgf4wxt" path="res://textures/GearIcon.png" id="8_4c3de"]
 [ext_resource type="Script" uid="uid://cy5j1efrjxakf" path="res://SandyShores/Scenes/settings.gd" id="9_2v7dk"]
-[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://Textures/bomb_tower.png" id="9_18q4q"]
+[ext_resource type="Texture2D" uid="uid://d1obmgjtm21w3" path="res://textures/bomb_tower.png" id="9_18q4q"]
+[ext_resource type="Texture2D" uid="uid://dxyvdwl1gqm3l" path="res://textures/crack.png" id="9_20doj"]
 [ext_resource type="Script" uid="uid://n800asycp1sd" path="res://SandyShores/Scripts/bomb_tower.gd" id="10_l1vld"]
 [ext_resource type="PackedScene" uid="uid://dmhok8tovvxvc" path="res://Towers/bomber_tower.tscn" id="11_o67r5"]
-[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://Textures/bullet_tower.png" id="12_5d46n"]
+[ext_resource type="Texture2D" uid="uid://dfn5jcvs8yoxa" path="res://textures/bullet_tower.png" id="12_5d46n"]
 [ext_resource type="PackedScene" uid="uid://do17203pjxuim" path="res://Towers/bullet_tower.tscn" id="13_gxa37"]
-[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://Textures/godzilla_tower.png" id="14_4c3de"]
+[ext_resource type="Texture2D" uid="uid://c41yx6lp4mrtb" path="res://textures/godzilla_tower.png" id="14_4c3de"]
 [ext_resource type="PackedScene" uid="uid://d2l8b5nykdqdg" path="res://Towers/godzilla_tower.tscn" id="15_2v7dk"]
-[ext_resource type="Texture2D" uid="uid://cf3ilal0r2oba" path="res://Textures/Resume.png" id="15_l1vld"]
-[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://Textures/blackhole_tower.png" id="16_6vmtx"]
-[ext_resource type="Texture2D" uid="uid://dvxhwiq86ypku" path="res://Textures/Pause.png" id="16_o67r5"]
+[ext_resource type="Texture2D" uid="uid://cf3ilal0r2oba" path="res://textures/Resume.png" id="15_l1vld"]
+[ext_resource type="Texture2D" uid="uid://dilaxrokla2a8" path="res://textures/blackhole_tower.png" id="16_6vmtx"]
+[ext_resource type="Texture2D" uid="uid://dvxhwiq86ypku" path="res://textures/Pause.png" id="16_o67r5"]
 [ext_resource type="PackedScene" uid="uid://cgc1rpmolx0r2" path="res://Towers/blackhole_tower.tscn" id="17_utgg1"]
-[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://Textures/electric_tower.png" id="18_jdmgg"]
+[ext_resource type="Texture2D" uid="uid://c0170p0fx5c71" path="res://textures/electric_tower.png" id="18_jdmgg"]
 [ext_resource type="PackedScene" uid="uid://b0ux31ymkvdun" path="res://Towers/electric_tower.tscn" id="19_c12jv"]
-[ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://Textures/image-removebg-preview (34).png" id="20_1kjwe"]
+[ext_resource type="Texture2D" uid="uid://denswvjjhnt46" path="res://textures/image-removebg-preview (34).png" id="20_1kjwe"]
 [ext_resource type="Script" uid="uid://b110lgne0ntlx" path="res://SandyShores/Scripts/currency_manager.gd" id="20_n0svf"]
-[ext_resource type="Texture2D" uid="uid://cu0qdmxuiyd4u" path="res://Textures/shrimp_no_bg.png" id="21_1kjwe"]
+[ext_resource type="Texture2D" uid="uid://cu0qdmxuiyd4u" path="res://textures/shrimp_no_bg.png" id="21_1kjwe"]
 [ext_resource type="Script" uid="uid://ceonqh1cw58me" path="res://SandyShores/Scripts/loss_conditions.gd" id="22_bwtra"]
 [ext_resource type="PackedScene" uid="uid://cfxko1b87aspq" path="res://Towers/Turt-22.tscn" id="22_m5biy"]
-[ext_resource type="Texture2D" uid="uid://c43l2x13u6e1n" path="res://Textures/hearts_no_bg.png" id="23_20doj"]
-[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://Textures/holy_crusader.png" id="23_heg8e"]
+[ext_resource type="Texture2D" uid="uid://c43l2x13u6e1n" path="res://textures/hearts_no_bg.png" id="23_20doj"]
+[ext_resource type="Texture2D" uid="uid://bcscv41p2b6p1" path="res://textures/holy_crusader.png" id="23_heg8e"]
 [ext_resource type="PackedScene" uid="uid://hovc6xdbesyd" path="res://Towers/holy_crusader.tscn" id="24_18q4q"]
-[ext_resource type="Script" uid="uid://cfxxtgfammudk" path="res://SandyShores/Scripts/death_screen.gd" id="24_eynw7"]
 [ext_resource type="Script" uid="uid://wp0no2spo0vw" path="res://SandyShores/Scenes/play_button.gd" id="26_6bjis"]
-[ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://Textures/image-removebg-preview (15).png" id="29_c12jv"]
+[ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://textures/image-removebg-preview (15).png" id="29_c12jv"]
 [ext_resource type="PackedScene" uid="uid://db8mm2oj2u0hg" path="res://Towers/flamethrower_tower.tscn" id="30_n0svf"]
-[ext_resource type="Texture2D" uid="uid://djhx0xow36mcw" path="res://Textures/image-removebg-preview (30).png" id="31_1kjwe"]
-[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://Textures/Turt^3 Sahur.png" id="32_4c3de"]
+[ext_resource type="Texture2D" uid="uid://djhx0xow36mcw" path="res://textures/image-removebg-preview (30).png" id="31_1kjwe"]
+[ext_resource type="Texture2D" uid="uid://cnxjihr7fc3y6" path="res://textures/Turt^3 Sahur.png" id="32_4c3de"]
 [ext_resource type="PackedScene" uid="uid://d0wiw8h7x0umg" path="res://Towers/turt_factory.tscn" id="32_bwtra"]
-[ext_resource type="Texture2D" uid="uid://dr8x45h4e2lwn" path="res://Textures/image-removebg-preview (31).png" id="32_n0svf"]
+[ext_resource type="Texture2D" uid="uid://dr8x45h4e2lwn" path="res://textures/image-removebg-preview (31).png" id="32_n0svf"]
 [ext_resource type="PackedScene" uid="uid://cq4rcm30vnirt" path="res://Towers/nuke.tscn" id="33_1kjwe"]
 [ext_resource type="PackedScene" uid="uid://btwem1yvxgacj" path="res://Towers/turttttt.tscn" id="33_2v7dk"]
+[ext_resource type="Script" uid="uid://k0dcgq7txhdy" path="res://SandyShores/Scenes/nuke.gd" id="35_eynw7"]
 [ext_resource type="Script" uid="uid://dx2vojrrp3e6u" path="res://SandyShores/Scenes/upgrade_panel.gd" id="38_20doj"]
-[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://Textures/TurtTown.png" id="39_6vmtx"]
+[ext_resource type="Texture2D" uid="uid://hv3yv34vpybc" path="res://textures/TurtTown.png" id="39_6vmtx"]
 [ext_resource type="PackedScene" uid="uid://67hd02tun5we" path="res://Towers/turttown.tscn" id="40_utgg1"]
 [ext_resource type="Script" uid="uid://cjt186qnocwu8" path="res://SandyShores/Scenes/tower_targeting.gd" id="41_target"]
 
@@ -72,11 +74,11 @@ tile_size = Vector2i(54, 54)
 
 [sub_resource type="Curve2D" id="Curve2D_r1ppn"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 596, 332, 0, 0, 0, 0, 601, 533, 0, 0, 0, 0, 844, 536, 0, 0, 0, 0, 844, 99, 0, 0, 0, 0, 353, 101, 0, 0, 0, 0, 355, 538, 0, 0, 0, 0, 596, 536, 0, 0, 0, 0, 596, 186, 0, 0, 0, 0, 465, 194, 0, 0, 0, 0, 466, 407, 0, 0, 0, 0, 722, 398, 0, 0, 0, 0, 722.49835, 340.04547, 0, 0, 0, 0, 720, 271, 0, 0, 0, 0, 184, 279)
+"points": PackedVector2Array(0, 0, 0, 0, 596, 332, 0, 0, 0, 0, 601, 533, 0, 0, 0, 0, 844, 536, 0, 0, 0, 0, 844, 99, 0, 0, 0, 0, 353, 101, 0, 0, 0, 0, 355, 538, 0, 0, 0, 0, 596, 536, 0, 0, 0, 0, 596, 186, 0, 0, 0, 0, 465, 194, 0, 0, 0, 0, 466, 407, 0, 0, 0, 0, 722, 398, 0, 0, 0, 0, 722.49835, 340.04547, 0, 0, 0, 0, 720, 271, 0, 0, 0, 0, 198, 302)
 }
 point_count = 14
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0svf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2xfg"]
 bg_color = Color(0.38039216, 0.7176471, 0.29803923, 1)
 border_width_left = 8
 border_width_top = 8
@@ -88,19 +90,19 @@ corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
-[sub_resource type="SystemFont" id="SystemFont_1kjwe"]
+[sub_resource type="SystemFont" id="SystemFont_6bjis"]
 font_names = PackedStringArray("Comic Sans MS")
 font_weight = 700
 
-[sub_resource type="SystemFont" id="SystemFont_bwtra"]
+[sub_resource type="SystemFont" id="SystemFont_j54so"]
 font_names = PackedStringArray("Comic Sans MS")
 font_weight = 700
 hinting = 2
 subpixel_positioning = 0
 
-[sub_resource type="SystemFont" id="SystemFont_20doj"]
+[sub_resource type="SystemFont" id="SystemFont_fpww2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eynw7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tx5y3"]
 bg_color = Color(0.38039216, 0.7176471, 0.29803923, 1)
 border_width_left = 8
 border_width_top = 8
@@ -112,9 +114,7 @@ corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
-[sub_resource type="SystemFont" id="SystemFont_f2xfg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bjis"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48dn5"]
 bg_color = Color(0.38039216, 0.7176471, 0.29803923, 1)
 border_width_left = 8
 border_width_top = 8
@@ -127,9 +127,9 @@ corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 corner_detail = 20
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j54so"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_20s56"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpww2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3gvj"]
 content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
@@ -147,7 +147,7 @@ corner_radius_bottom_left = 10
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tx5y3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfkvq"]
 bg_color = Color(1, 0.41960785, 0.41960785, 1)
 border_width_left = 2
 border_width_top = 2
@@ -161,7 +161,7 @@ corner_radius_bottom_left = 10
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48dn5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_noalr"]
 bg_color = Color(0.8, 0.101960786, 0.101960786, 1)
 border_width_left = 2
 border_width_top = 2
@@ -175,9 +175,9 @@ corner_radius_bottom_left = 10
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_20s56"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_847r6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3gvj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qprec"]
 content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
@@ -195,7 +195,7 @@ corner_radius_bottom_left = 10
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfkvq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk7si"]
 bg_color = Color(0.08235294, 0.49803922, 0.627451, 1)
 border_width_left = 2
 border_width_top = 2
@@ -210,7 +210,7 @@ shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
 shadow_size = 3
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_noalr"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fygj7"]
 bg_color = Color(0.101960786, 0.6156863, 0.7490196, 1)
 border_width_left = 2
 border_width_top = 2
@@ -225,7 +225,7 @@ shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
 shadow_size = 3
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_847r6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8mjf"]
 content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
@@ -243,7 +243,7 @@ corner_radius_bottom_left = 10
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qprec"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbvg7"]
 bg_color = Color(0.08627451, 0.39607844, 0.20392157, 1)
 border_width_left = 2
 border_width_top = 2
@@ -258,7 +258,7 @@ shadow_color = Color(0.003921569, 0.3019608, 0.30588236, 1)
 shadow_size = 3
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk7si"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0htu2"]
 bg_color = Color(0.08235294, 0.5019608, 0.23921569, 1)
 border_width_left = 2
 border_width_top = 2
@@ -276,6 +276,7 @@ shadow_offset = Vector2(1, 1)
 [node name="Game" type="Node2D" unique_id=2110147607]
 z_index = -100
 z_as_relative = false
+script = ExtResource("1_bwtra")
 
 [node name="TowerContainer" type="Node2D" parent="." unique_id=966425866]
 
@@ -298,16 +299,9 @@ tile_set = SubResource("TileSet_hngk1")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=308524242]
 z_index = -1
-position = Vector2(688.00006, 323.5)
-scale = Vector2(0.7564935, 0.74884266)
+position = Vector2(687.00006, 323.99997)
+scale = Vector2(0.7548701, 0.75)
 texture = ExtResource("3_r1ppn")
-
-[node name="Mothershell" type="Sprite2D" parent="." unique_id=420187488]
-z_index = 4096
-z_as_relative = false
-position = Vector2(115.25, 324.99997)
-scale = Vector2(2.0309734, 1.9578313)
-texture = ExtResource("5_8ssj6")
 
 [node name="Temple" type="Sprite2D" parent="." unique_id=1142197630]
 z_index = -1
@@ -322,11 +316,12 @@ curve = SubResource("Curve2D_r1ppn")
 [node name="BuildManager" type="Node" parent="." unique_id=2047673092]
 script = ExtResource("6_op2ha")
 
-[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path")]
+[node name="WaveSpawner" type="Node" parent="." unique_id=179306746 node_paths=PackedStringArray("enemy_path", "wave_label")]
 script = ExtResource("7_m5biy")
 enemy_path = NodePath("../EnemyPath")
+wave_label = NodePath("../UI/HUD/Waves/WaveLabel")
 
-[node name="UI" type="Control" parent="." unique_id=487219574]
+[node name="UI" type="Control" parent="." unique_id=896191749]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 525.0
@@ -334,324 +329,39 @@ offset_top = 1.0
 offset_right = 1149.0
 offset_bottom = 650.0
 
-[node name="TargetingPanel" type="PanelContainer" parent="UI" unique_id=1474310280]
+[node name="Mothershell" type="Sprite2D" parent="UI" unique_id=1958030840]
+position = Vector2(-410.5, 322.99997)
+scale = Vector2(0.91599995, 0.93371755)
+texture = ExtResource("5_8ssj6")
+
+[node name="Crack" type="Sprite2D" parent="UI" unique_id=333497155]
+position = Vector2(-327, 298)
+scale = Vector2(0.9393939, 0.9142852)
+texture = ExtResource("9_20doj")
+
+[node name="TargetingPanel" type="PanelContainer" parent="UI" unique_id=1613800330]
 z_index = 500
 layout_mode = 0
-offset_left = 494.0
-offset_top = 187.0
-offset_right = 617.0
-offset_bottom = 228.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_n0svf")
+offset_left = -285.0
+offset_top = 11.0
+offset_right = -162.0
+offset_bottom = 65.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f2xfg")
 
-[node name="tower_targeting" type="Button" parent="UI/TargetingPanel" unique_id=593406547]
+[node name="tower_targeting" type="Button" parent="UI/TargetingPanel" unique_id=1513480556]
 z_index = 4096
 layout_mode = 2
 text = "Global Mode"
 flat = true
 script = ExtResource("41_target")
 
-[node name="ShopPanel" type="Control" parent="UI" unique_id=696932612]
-anchors_preset = 0
-offset_left = 7.0
-offset_top = -1.0
-offset_right = 157.0
-offset_bottom = 648.0
-
-[node name="BombButton" type="TextureButton" parent="UI/ShopPanel" unique_id=193767752]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = -534.0
-offset_top = 30.0
-offset_right = -459.0
-offset_bottom = 94.0
-texture_normal = ExtResource("9_18q4q")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("10_l1vld")
-tower_scene = ExtResource("11_o67r5")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/BombButton" unique_id=1272626863]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 56.0
-offset_right = 64.0
-offset_bottom = 73.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="BulletButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1294826417]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = -441.0
-offset_top = 29.0
-offset_right = -373.0
-offset_bottom = 105.0
-texture_normal = ExtResource("12_5d46n")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("10_l1vld")
-tower_scene = ExtResource("13_gxa37")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/BulletButton" unique_id=947198853]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 58.0
-offset_right = 58.0
-offset_bottom = 75.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="GodzillaButton" type="TextureButton" parent="UI/ShopPanel" unique_id=799159253]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = -542.0
-offset_top = 109.0
-offset_right = -450.0
-offset_bottom = 204.0
-texture_normal = ExtResource("14_4c3de")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("10_l1vld")
-tower_scene = ExtResource("15_2v7dk")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/GodzillaButton" unique_id=765598710]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 65.0
-offset_right = 71.0
-offset_bottom = 82.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="BlackHoleButton" type="TextureButton" parent="UI/ShopPanel" unique_id=1951433963]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = -465.0
-offset_top = 310.0
-offset_right = -359.0
-offset_bottom = 392.0
-texture_normal = ExtResource("16_6vmtx")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("10_l1vld")
-tower_scene = ExtResource("17_utgg1")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/BlackHoleButton" unique_id=499363388]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 58.0
-offset_right = 76.0
-offset_bottom = 75.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="ElectricButton" type="TextureButton" parent="UI/ShopPanel" unique_id=512806015]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = -537.0
-offset_top = 315.0
-offset_right = -452.0
-offset_bottom = 385.0
-texture_normal = ExtResource("18_jdmgg")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("10_l1vld")
-tower_scene = ExtResource("19_c12jv")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/ElectricButton" unique_id=1338870961]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 54.0
-offset_right = 66.0
-offset_bottom = 71.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Turt-22" type="TextureButton" parent="UI/ShopPanel" unique_id=1877210933]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = -472.0
-offset_top = 218.0
-offset_right = -343.0
-offset_bottom = 306.0
-texture_normal = ExtResource("20_1kjwe")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("10_l1vld")
-tower_scene = ExtResource("22_m5biy")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/Turt-22" unique_id=1025481271]
-layout_mode = 0
-offset_left = 36.0
-offset_top = 58.0
-offset_right = 88.0
-offset_bottom = 75.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Holy Crusader" type="TextureButton" parent="UI/ShopPanel" unique_id=1734707607]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = -451.0
-offset_top = 108.0
-offset_right = -362.0
-offset_bottom = 192.0
-texture_normal = ExtResource("23_heg8e")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("10_l1vld")
-tower_scene = ExtResource("24_18q4q")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/Holy Crusader" unique_id=45645901]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 64.0
-offset_right = 66.0
-offset_bottom = 81.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Turttttt" type="TextureButton" parent="UI/ShopPanel" unique_id=2027723311]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = -446.0
-offset_top = 411.0
-offset_right = -370.0
-offset_bottom = 482.0
-texture_normal = ExtResource("32_4c3de")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("10_l1vld")
-tower_scene = ExtResource("33_2v7dk")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/Turttttt" unique_id=1643239039]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 56.0
-offset_right = 64.0
-offset_bottom = 73.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="TurtTown" type="TextureButton" parent="UI/ShopPanel" unique_id=501155461]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = -535.0
-offset_top = 498.0
-offset_right = -453.0
-offset_bottom = 560.0
-texture_normal = ExtResource("39_6vmtx")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("10_l1vld")
-tower_scene = ExtResource("40_utgg1")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/TurtTown" unique_id=12345938]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 56.0
-offset_right = 64.0
-offset_bottom = 73.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="Flamturter" type="TextureButton" parent="UI/ShopPanel" unique_id=1611190747]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = -537.0
-offset_top = 223.0
-offset_right = -449.0
-offset_bottom = 282.0
-texture_normal = ExtResource("29_c12jv")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("10_l1vld")
-tower_scene = ExtResource("30_n0svf")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/Flamturter" unique_id=333959337]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 55.0
-offset_right = 71.0
-offset_bottom = 72.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="turt_factory" type="TextureButton" parent="UI/ShopPanel" unique_id=948165970]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = -528.0
-offset_top = 409.0
-offset_right = -464.0
-offset_bottom = 480.0
-texture_normal = ExtResource("31_1kjwe")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("10_l1vld")
-tower_scene = ExtResource("32_bwtra")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/turt_factory" unique_id=1766368110]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 56.0
-offset_right = 64.0
-offset_bottom = 73.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="nuke" type="TextureButton" parent="UI/ShopPanel" unique_id=501446937]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
-offset_left = -447.0
-offset_top = 500.0
-offset_right = -383.0
-offset_bottom = 570.0
-texture_normal = ExtResource("32_n0svf")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("10_l1vld")
-tower_scene = ExtResource("33_1kjwe")
-
-[node name="Label" type="Label" parent="UI/ShopPanel/nuke" unique_id=2055685328]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 56.0
-offset_right = 64.0
-offset_bottom = 73.0
-theme_override_constants/outline_size = 8
-text = "$00"
-horizontal_alignment = 1
-
-[node name="HUD" type="Node2D" parent="UI" unique_id=402515730]
+[node name="HUD" type="Node2D" parent="UI" unique_id=762779648]
 position = Vector2(900, -20)
 
-[node name="CurrencyManager" type="Node" parent="UI/HUD" unique_id=2088643139]
+[node name="CurrencyManager" type="Node" parent="UI/HUD" unique_id=625724997]
 script = ExtResource("20_n0svf")
 
-[node name="Lives" type="Control" parent="UI/HUD" unique_id=159687769]
+[node name="Lives" type="Control" parent="UI/HUD" unique_id=1609434014]
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
@@ -660,7 +370,7 @@ offset_top = -15.0
 offset_right = 51.0
 offset_bottom = 131.0
 
-[node name="LivesLabel" type="Label" parent="UI/HUD/Lives" unique_id=135670014]
+[node name="LivesLabel" type="Label" parent="UI/HUD/Lives" unique_id=942998686]
 z_index = 2
 z_as_relative = false
 layout_mode = 0
@@ -669,18 +379,18 @@ offset_top = 49.0
 offset_right = -311.875
 offset_bottom = 116.0
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = SubResource("SystemFont_1kjwe")
+theme_override_fonts/font = SubResource("SystemFont_6bjis")
 theme_override_font_sizes/font_size = 48
 text = "100"
 
-[node name="HeartsNoBg" type="Sprite2D" parent="UI/HUD/Lives" unique_id=2072012324]
+[node name="HeartsNoBg" type="Sprite2D" parent="UI/HUD/Lives" unique_id=1780864805]
 z_index = 2
 z_as_relative = false
 position = Vector2(-490.00003, 82.437485)
 scale = Vector2(0.23042826, 0.25237134)
 texture = ExtResource("23_20doj")
 
-[node name="Money" type="Control" parent="UI/HUD" unique_id=1131483982]
+[node name="Money" type="Control" parent="UI/HUD" unique_id=2008570412]
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
@@ -688,7 +398,7 @@ offset_left = -11.0
 offset_right = 228.0
 offset_bottom = 121.0
 
-[node name="ShellingsLabel" type="Label" parent="UI/HUD/Money" unique_id=1009433625]
+[node name="ShellingsLabel" type="Label" parent="UI/HUD/Money" unique_id=1265011454]
 z_index = 2
 z_as_relative = false
 layout_mode = 0
@@ -697,20 +407,20 @@ offset_top = 32.0
 offset_right = -324.875
 offset_bottom = 99.0
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = SubResource("SystemFont_bwtra")
+theme_override_fonts/font = SubResource("SystemFont_j54so")
 theme_override_font_sizes/font_size = 48
 text = "100"
 
-[node name="Shrimp" type="Sprite2D" parent="UI/HUD/Money" unique_id=1972878136]
+[node name="Shrimp" type="Sprite2D" parent="UI/HUD/Money" unique_id=27818678]
 z_index = 1096
 position = Vector2(-471.5313, 64.28126)
 scale = Vector2(0.21722679, 0.20443764)
 texture = ExtResource("21_1kjwe")
 
-[node name="LossConditions" type="Node" parent="UI/HUD" unique_id=1862957621]
+[node name="LossConditions" type="Node" parent="UI/HUD" unique_id=242840111]
 script = ExtResource("22_bwtra")
 
-[node name="Waves" type="Control" parent="UI/HUD" unique_id=1113520971]
+[node name="Waves" type="Control" parent="UI/HUD" unique_id=205583487]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -705.0
@@ -718,7 +428,7 @@ offset_top = 19.0
 offset_right = -545.0
 offset_bottom = 66.0
 
-[node name="WaveLabel" type="Label" parent="UI/HUD/Waves" unique_id=1151852754]
+[node name="WaveLabel" type="Label" parent="UI/HUD/Waves" unique_id=1820169600]
 z_index = 2
 z_as_relative = false
 layout_mode = 0
@@ -727,87 +437,49 @@ offset_top = 80.0
 offset_right = 265.125
 offset_bottom = 143.0
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = SubResource("SystemFont_20doj")
+theme_override_fonts/font = SubResource("SystemFont_fpww2")
 theme_override_font_sizes/font_size = 20
 text = " Wave 0/50
 "
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/HUD" unique_id=93500336]
+[node name="PanelContainer" type="PanelContainer" parent="UI/HUD" unique_id=863517560]
 z_index = 1
 offset_left = -719.0
 offset_top = 25.0
 offset_right = -300.0
 offset_bottom = 133.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_eynw7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_tx5y3")
 
-[node name="DeathScreen" type="Control" parent="UI" unique_id=1059728869]
-z_index = 4096
-z_as_relative = false
-anchors_preset = 0
-offset_left = 544.0
-offset_top = -40.0
-offset_right = 939.0
-offset_bottom = 639.0
-script = ExtResource("24_eynw7")
+[node name="CanvasLayer" type="CanvasLayer" parent="UI" unique_id=707754373]
 
-[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen" unique_id=1963971850]
-layout_mode = 0
-offset_left = -690.0
-offset_top = 227.0
-offset_right = -71.0
-offset_bottom = 584.0
-color = Color(0, 0.5372549, 0, 1)
-
-[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen/ColorRect" unique_id=1555554814]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 600.0
-offset_bottom = 340.0
-color = Color(0.38039216, 0.7176471, 0.29803923, 1)
-
-[node name="Label" type="Label" parent="UI/DeathScreen/ColorRect/ColorRect" unique_id=1208706645]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 10.0
-offset_right = 569.0
-offset_bottom = 228.0
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = SubResource("SystemFont_f2xfg")
-theme_override_font_sizes/font_size = 48
-text = "You failed to defend 
-the mothershell from
-a pollutant ambush!"
-
-[node name="CanvasLayer" type="CanvasLayer" parent="UI" unique_id=521752699]
-
-[node name="UpgradePanel" type="PanelContainer" parent="UI/CanvasLayer" unique_id=953592777]
+[node name="UpgradePanel" type="PanelContainer" parent="UI/CanvasLayer" unique_id=828047464]
+visible = false
 offset_top = 135.0
 offset_right = 239.0
 offset_bottom = 521.0
 mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6bjis")
+theme_override_styles/panel = SubResource("StyleBoxFlat_48dn5")
 script = ExtResource("38_20doj")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer/UpgradePanel" unique_id=2088907233]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer/UpgradePanel" unique_id=959390998]
 layout_mode = 2
 
-[node name="TowerName" type="Label" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer" unique_id=1848822903]
+[node name="TowerName" type="Label" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer" unique_id=1269663664]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Tower Name"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer" unique_id=1916996128]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer" unique_id=1550716759]
 layout_mode = 2
 alignment = 1
 
-[node name="LeftButtons" type="VBoxContainer" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer" unique_id=1837688004]
+[node name="LeftButtons" type="VBoxContainer" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer" unique_id=803207740]
 layout_mode = 2
 
-[node name="LeftPathLabel" type="Label" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/LeftButtons" unique_id=432307377]
+[node name="LeftPathLabel" type="Label" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/LeftButtons" unique_id=331717488]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = " Left
@@ -815,24 +487,24 @@ text = " Left
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="left_top" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/LeftButtons" unique_id=129003857]
+[node name="left_top" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/LeftButtons" unique_id=761483790]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 autowrap_mode = 2
 
-[node name="left_top2" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/LeftButtons" unique_id=1280708072]
+[node name="left_top2" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/LeftButtons" unique_id=1589891301]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 
-[node name="left_top3" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/LeftButtons" unique_id=1442309720]
+[node name="left_top3" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/LeftButtons" unique_id=2035843738]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 action_mode = 0
 
-[node name="RightButtons" type="VBoxContainer" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer" unique_id=990530062]
+[node name="RightButtons" type="VBoxContainer" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer" unique_id=486917730]
 layout_mode = 2
 
-[node name="RightPathLabel" type="Label" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/RightButtons" unique_id=1607703595]
+[node name="RightPathLabel" type="Label" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/RightButtons" unique_id=2095568496]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "Right
@@ -840,78 +512,77 @@ text = "Right
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="right_top" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/RightButtons" unique_id=1894170506]
+[node name="right_top" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/RightButtons" unique_id=1402850130]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 
-[node name="right_top2" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/RightButtons" unique_id=170730323]
+[node name="right_top2" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/RightButtons" unique_id=661603235]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 
-[node name="right_top3" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/RightButtons" unique_id=2117065895]
+[node name="right_top3" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/RightButtons" unique_id=1650220262]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 action_mode = 0
 
-[node name="sell_button" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer" unique_id=473727529]
+[node name="sell_button" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer" unique_id=1359798717]
 custom_minimum_size = Vector2(20, 10)
 layout_mode = 2
 text = "Sell"
 
-[node name="exit_button" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer" unique_id=1715658241]
+[node name="exit_button" type="Button" parent="UI/CanvasLayer/UpgradePanel/VBoxContainer" unique_id=386724568]
 custom_minimum_size = Vector2(20, 10)
 layout_mode = 2
 text = "Exit"
 
-[node name="Buttons" type="HBoxContainer" parent="UI" unique_id=1961303856]
-z_index = 4096
+[node name="Buttons" type="HBoxContainer" parent="UI" unique_id=1151292888]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 0
-offset_left = -518.0
-offset_top = 574.0
+offset_left = -524.0
+offset_top = 584.0
 offset_right = -298.0
 offset_bottom = 643.0
 alignment = 1
 
-[node name="Return" type="Button" parent="UI/Buttons" unique_id=2069635181]
+[node name="Return" type="Button" parent="UI/Buttons" unique_id=131172989]
 z_index = 4096
-material = SubResource("ShaderMaterial_j54so")
+material = SubResource("ShaderMaterial_20s56")
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_fpww2")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tx5y3")
-theme_override_styles/hover = SubResource("StyleBoxFlat_48dn5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v3gvj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nfkvq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_noalr")
 icon = ExtResource("6_5d46n")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("7_gxa37")
 
-[node name="Settings" type="Button" parent="UI/Buttons" unique_id=923108627]
+[node name="Settings" type="Button" parent="UI/Buttons" unique_id=1793406883]
 z_index = 4096
-material = SubResource("ShaderMaterial_20s56")
+material = SubResource("ShaderMaterial_847r6")
 custom_minimum_size = Vector2(70, 30)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_v3gvj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_nfkvq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_noalr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qprec")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nk7si")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fygj7")
 icon = ExtResource("8_4c3de")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("9_2v7dk")
 
-[node name="PlayButton" type="Button" parent="UI/Buttons" unique_id=787211865]
+[node name="PlayButton" type="Button" parent="UI/Buttons" unique_id=1099926389]
 z_index = 4096
-material = SubResource("ShaderMaterial_20s56")
+material = SubResource("ShaderMaterial_847r6")
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_847r6")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_qprec")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nk7si")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k8mjf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kbvg7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0htu2")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("26_6bjis")
 
-[node name="Resume" type="TextureRect" parent="UI/Buttons/PlayButton" unique_id=138633960]
+[node name="Resume" type="TextureRect" parent="UI/Buttons/PlayButton" unique_id=1350668421]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -927,14 +598,334 @@ grow_vertical = 2
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("15_l1vld")
 
-[node name="Pause" type="TextureRect" parent="UI/Buttons/PlayButton" unique_id=1924226470]
+[node name="Pause" type="TextureRect" parent="UI/Buttons/PlayButton" unique_id=1085900687]
 layout_mode = 0
 offset_left = -16.0
-offset_top = 7.0
+offset_top = 2.0
 offset_right = 661.0
-offset_bottom = 376.0
+offset_bottom = 371.0
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("16_o67r5")
+
+[node name="ExitLayer" type="CanvasLayer" parent="UI" unique_id=1032097488]
+
+[node name="ShopPanel" type="Control" parent="UI" unique_id=571749763]
+z_index = 4096
+anchors_preset = 0
+offset_left = 7.0
+offset_top = -1.0
+offset_right = 157.0
+offset_bottom = 648.0
+
+[node name="BombButton" type="Button" parent="UI/ShopPanel" unique_id=1205505420]
+layout_mode = 0
+offset_left = -507.0
+offset_top = 34.0
+offset_right = -430.0
+offset_bottom = 94.0
+flat = true
+script = ExtResource("10_l1vld")
+tower_scene = ExtResource("11_o67r5")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/BombButton" unique_id=1609077198]
+z_index = 1
+layout_mode = 0
+offset_left = 11.0
+offset_top = 53.0
+offset_right = 63.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/BombButton" unique_id=1362955495]
+position = Vector2(44.999996, 29)
+scale = Vector2(0.213, 0.19299997)
+texture = ExtResource("9_18q4q")
+
+[node name="LieturtantButton" type="Button" parent="UI/ShopPanel" unique_id=1374277727]
+layout_mode = 0
+offset_left = -410.0
+offset_top = 34.0
+offset_right = -333.0
+offset_bottom = 94.0
+flat = true
+script = ExtResource("10_l1vld")
+tower_scene = ExtResource("13_gxa37")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/LieturtantButton" unique_id=2060703849]
+z_index = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 54.0
+offset_right = 68.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/LieturtantButton" unique_id=762440418]
+position = Vector2(45, 29)
+scale = Vector2(0.213, 0.19299997)
+texture = ExtResource("12_5d46n")
+
+[node name="TurtosaurButton" type="Button" parent="UI/ShopPanel" unique_id=1001840450]
+layout_mode = 0
+offset_left = -456.0
+offset_top = 112.0
+offset_right = -379.0
+offset_bottom = 179.0
+flat = true
+script = ExtResource("10_l1vld")
+tower_scene = ExtResource("15_2v7dk")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/TurtosaurButton" unique_id=432104982]
+z_index = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 53.0
+offset_right = 62.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtosaurButton" unique_id=1516604311]
+position = Vector2(39.000004, 26.999992)
+scale = Vector2(0.33725, 0.27725)
+texture = ExtResource("14_4c3de")
+
+[node name="HolyButton" type="Button" parent="UI/ShopPanel" unique_id=267886643]
+layout_mode = 0
+offset_left = -507.0
+offset_top = 188.0
+offset_right = -430.0
+offset_bottom = 248.0
+flat = true
+script = ExtResource("10_l1vld")
+tower_scene = ExtResource("24_18q4q")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/HolyButton" unique_id=1996491125]
+z_index = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 54.0
+offset_right = 62.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/HolyButton" unique_id=113197519]
+position = Vector2(34, 23.999992)
+scale = Vector2(0.09765624, 0.08984376)
+texture = ExtResource("23_heg8e")
+
+[node name="GraviturtButton" type="Button" parent="UI/ShopPanel" unique_id=846195735]
+layout_mode = 0
+offset_left = -407.0
+offset_top = 345.0
+offset_right = -330.0
+offset_bottom = 405.0
+flat = true
+script = ExtResource("10_l1vld")
+tower_scene = ExtResource("17_utgg1")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/GraviturtButton" unique_id=1209154406]
+z_index = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 54.0
+offset_right = 62.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/GraviturtButton" unique_id=1863804268]
+position = Vector2(38, 32.000004)
+scale = Vector2(0.2725, 0.22450002)
+texture = ExtResource("16_6vmtx")
+
+[node name="FighturtJetButton" type="Button" parent="UI/ShopPanel" unique_id=39520734]
+layout_mode = 0
+offset_left = -461.0
+offset_top = 260.0
+offset_right = -384.0
+offset_bottom = 320.0
+flat = true
+script = ExtResource("10_l1vld")
+tower_scene = ExtResource("22_m5biy")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/FighturtJetButton" unique_id=768464726]
+z_index = 1
+layout_mode = 0
+offset_left = 14.0
+offset_top = 60.0
+offset_right = 66.0
+offset_bottom = 77.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FighturtJetButton" unique_id=721510110]
+position = Vector2(43, 36.999985)
+scale = Vector2(0.3343151, 0.2907974)
+texture = ExtResource("20_1kjwe")
+
+[node name="ScienturtButton" type="Button" parent="UI/ShopPanel" unique_id=869052576]
+layout_mode = 0
+offset_left = -509.0
+offset_top = 351.0
+offset_right = -432.0
+offset_bottom = 411.0
+flat = true
+script = ExtResource("10_l1vld")
+tower_scene = ExtResource("19_c12jv")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/ScienturtButton" unique_id=985952387]
+z_index = 1
+layout_mode = 0
+offset_left = 13.0
+offset_top = 52.0
+offset_right = 65.0
+offset_bottom = 69.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/ScienturtButton" unique_id=1214487148]
+position = Vector2(37, 23)
+scale = Vector2(0.1965, 0.17449996)
+texture = ExtResource("18_jdmgg")
+
+[node name="FlameturterButton" type="Button" parent="UI/ShopPanel" unique_id=982902128]
+layout_mode = 0
+offset_left = -402.0
+offset_top = 193.0
+offset_right = -325.0
+offset_bottom = 253.0
+flat = true
+script = ExtResource("10_l1vld")
+tower_scene = ExtResource("30_n0svf")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/FlameturterButton" unique_id=1428661296]
+z_index = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 53.0
+offset_right = 62.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FlameturterButton" unique_id=1398267276]
+position = Vector2(36.198868, 21.301147)
+scale = Vector2(0.29215783, 0.2702948)
+texture = ExtResource("29_c12jv")
+
+[node name="FacturtoryButton" type="Button" parent="UI/ShopPanel" unique_id=814188444]
+layout_mode = 0
+offset_left = -453.0
+offset_top = 427.0
+offset_right = -376.0
+offset_bottom = 487.0
+flat = true
+script = ExtResource("10_l1vld")
+tower_scene = ExtResource("32_bwtra")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/FacturtoryButton" unique_id=1697316008]
+z_index = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 53.0
+offset_right = 62.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FacturtoryButton" unique_id=1560459100]
+position = Vector2(33, 25.584717)
+scale = Vector2(0.24848486, 0.23891471)
+texture = ExtResource("31_1kjwe")
+
+[node name="TurtSahurButton" type="Button" parent="UI/ShopPanel" unique_id=1911398992]
+layout_mode = 0
+offset_left = -509.0
+offset_top = 502.0
+offset_right = -432.0
+offset_bottom = 562.0
+flat = true
+script = ExtResource("10_l1vld")
+tower_scene = ExtResource("33_2v7dk")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/TurtSahurButton" unique_id=694163295]
+z_index = 1
+layout_mode = 0
+offset_left = 14.0
+offset_top = 56.0
+offset_right = 66.0
+offset_bottom = 73.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtSahurButton" unique_id=2135372524]
+position = Vector2(39.625004, 23.5)
+scale = Vector2(0.22649997, 0.18599997)
+texture = ExtResource("32_4c3de")
+
+[node name="TurtTownButton" type="Button" parent="UI/ShopPanel" unique_id=819560261]
+layout_mode = 0
+offset_left = -410.0
+offset_top = 505.0
+offset_right = -333.0
+offset_bottom = 565.0
+flat = true
+script = ExtResource("10_l1vld")
+tower_scene = ExtResource("40_utgg1")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/TurtTownButton" unique_id=303981530]
+z_index = 1
+layout_mode = 0
+offset_left = 17.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtTownButton" unique_id=896504711]
+position = Vector2(44.696228, 23.06836)
+scale = Vector2(0.15593821, 0.14641082)
+texture = ExtResource("39_6vmtx")
+
+[node name="nuke" type="TextureButton" parent="UI/ShopPanel" unique_id=1577198991]
+z_index = 4096
+z_as_relative = false
+layout_mode = 1
+offset_left = -305.0
+offset_top = 577.0
+offset_right = -241.0
+offset_bottom = 647.0
+texture_normal = ExtResource("32_n0svf")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("35_eynw7")
+tower_scene = ExtResource("33_1kjwe")
+
+[node name="Label" type="Label" parent="UI/ShopPanel/nuke" unique_id=1318174902]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 56.0
+offset_right = 64.0
+offset_bottom = 73.0
+theme_override_constants/outline_size = 8
+text = "$00"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/LeftButtons/left_top" to="UI/CanvasLayer/UpgradePanel" method="_on_left_upgrade_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/UpgradePanel/VBoxContainer/HBoxContainer/LeftButtons/left_top2" to="UI/CanvasLayer/UpgradePanel" method="_on_left_upgrade_pressed"]

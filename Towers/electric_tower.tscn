@@ -10,9 +10,10 @@ radius = 143.0035
 
 [node name="electric_tower" type="StaticBody2D" unique_id=1495198832]
 z_index = 4096
+collision_mask = 2
 script = ExtResource("1_favj8")
-physicist_sprite = ExtResource("2_dvst0")
-chemist_sprite = ExtResource("3_6wuib")
+left_sprite = ExtResource("2_dvst0")
+right_sprite = ExtResource("3_6wuib")
 cost = 225.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=132394118]

@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://da5nlbbcr3cqy" path="res://Towers/nuke.gd" id="1_tceaf"]
 [ext_resource type="Texture2D" uid="uid://dr8x45h4e2lwn" path="res://textures/image-removebg-preview (31).png" id="2_gvcs2"]
 [ext_resource type="Texture2D" uid="uid://d35x3pdvw458l" path="res://frames/image-removebg-preview (52).png" id="3_1fiph"]
-[ext_resource type="Texture2D" uid="uid://n5mlpynwoohr" path="res://frames/blank screen.png" id="3_og4ry"]
+[ext_resource type="Texture2D" uid="uid://n5mlpynwoohr" path="res://textures/Frames/blank screen.png" id="3_og4ry"]
 [ext_resource type="Texture2D" uid="uid://d1wc1n5uib37" path="res://frames/image-removebg-preview (53).png" id="4_mh1pi"]
-[ext_resource type="Texture2D" uid="uid://dwjhifebidy6g" path="res://frames/image-removebg-preview (33).png" id="5_1ygxq"]
+[ext_resource type="Texture2D" uid="uid://dwjhifebidy6g" path="res://textures/Frames/image-removebg-preview (33).png" id="5_1ygxq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mwdu"]
 radius = 72.11102
@@ -146,6 +146,7 @@ animations = [{
 
 [node name="nuke" type="StaticBody2D" unique_id=345753950]
 collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_tceaf")
 cost = 500.0
 

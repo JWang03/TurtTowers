@@ -1,33 +1,19 @@
 extends Area2D
 
-@export var speed_boost_factor: float = 5.0
-@export var duration: float = 10.0
+@export var speed_boost_factor: float = 4.0
+@export var buff_duration: float = 5.0
 
 func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
-	start_lifetime_timer()
-
-func start_lifetime_timer():
-	await get_tree().create_timer(duration).timeout
 	
-	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, 0.5)
-	await tween.finished
-	
-	expire_buff()
+	var lifetime_timer = get_tree().create_timer(buff_duration)
+	lifetime_timer.timeout.connect(queue_free)
 
-func _on_body_entered(body):
-	if body.is_in_group("zombies"):
-		body.speed_modifier = speed_boost_factor
+func _on_body_entered(body: Node2D):
+	if body.is_in_group("zombies") and body != self:
+		body.speed_modifier *= speed_boost_factor
 
-func _on_body_exited(body):
-	if body.is_in_group("zombies"):
-		body.speed_modifier = 1.0
-
-func expire_buff():
-	for body in get_overlapping_bodies():
-		if body.is_in_group("zombies"):
-			body.speed_modifier = 1.0
-	
-	queue_free()
+func _on_body_exited(body: Node2D):
+	if body.is_in_group("zombies") and body != self:
+		body.speed_modifier /= speed_boost_factor

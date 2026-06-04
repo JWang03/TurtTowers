@@ -10,9 +10,10 @@ radius = 158.0
 
 [node name="Bullet_tower" type="StaticBody2D" unique_id=1649409067]
 z_index = 4096
+collision_mask = 2
 script = ExtResource("1_v0an6")
-gunner_sprite = ExtResource("2_pfo8e")
-marksman_sprite = ExtResource("3_xha8h")
+left_sprite = ExtResource("2_pfo8e")
+right_sprite = ExtResource("3_xha8h")
 cost = 75.0
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1053606515]

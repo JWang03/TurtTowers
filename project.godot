@@ -23,6 +23,7 @@ UpgradeManager="*uid://36eenbc5h5jk"
 RunStats="*res://run_stats.gd"
 VictoryMenu="*res://victory_menu.gd"
 DefeatScreen="*uid://sdawocs8u7ta"
+IntroScreen="*uid://csdb6t7lu2fgs"
 
 [display]
 

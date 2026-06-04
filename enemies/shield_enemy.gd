@@ -1,6 +1,6 @@
 extends "res://enemies/zombie.gd"
 
-@export var shield_health: float = 50
+@export var shield_health: float = 500
 @export var shield_radius: float = 60.0
 
 @onready var shield_node = $ShieldArea
@@ -12,15 +12,18 @@ func _ready():
 	super._ready()
 	add_to_group("shield_mobs")
 	
-	health = 20
-	speed = 5
+	health = 200
+	speed = 40
+	shelling_drop = 12
+	
 	shield_node.monitoring = false
 	shield_node.visible = false
-	shelling_drop = 12
-	start_shield_timer()
+	shield_node.scale = Vector2.ZERO
+	
+	deploy_shield()
 
 func start_shield_timer():
-	await get_tree().create_timer(randf_range(0.5,8.0)).timeout
+	await get_tree().create_timer(randf_range(0.5, 8.0)).timeout
 	deploy_shield()
 
 func deploy_shield():
@@ -36,7 +39,6 @@ func deploy_shield():
 
 func take_shield_damage(amount):
 	shield_health -= amount
-	# Feedback effect
 	shield_sprite.modulate = Color(2, 2, 2, 1) 
 	await get_tree().create_timer(0.05).timeout
 	if is_instance_valid(shield_sprite):
@@ -49,7 +51,8 @@ func break_shield():
 	is_shield_active = false
 	shield_node.monitoring = false
 	shield_node.visible = false
-	shield_health = 50 
+	shield_health = 500 
+	
 	start_shield_timer()
 
 func take_damage(amount):
@@ -57,3 +60,8 @@ func take_damage(amount):
 		take_shield_damage(amount)
 	else:
 		super.take_damage(amount)
+
+func _process(delta):
+	super._process(delta)
+	if is_shield_active and is_instance_valid(shield_sprite):
+		shield_sprite.rotation += delta * 1.5

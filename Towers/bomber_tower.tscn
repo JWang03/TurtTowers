@@ -10,9 +10,10 @@ radius = 120.0
 
 [node name="bomber_tower" type="StaticBody2D" unique_id=460392742]
 z_index = 4096
+collision_mask = 2
 script = ExtResource("1_jymjt")
-cluster_bomber_sprite = ExtResource("2_oy8p2")
-missile_menace_sprite = ExtResource("3_ilneq")
+left_sprite = ExtResource("2_oy8p2")
+right_sprite = ExtResource("3_ilneq")
 cost = 75.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1146264973]

@@ -118,11 +118,31 @@ func _on_animation_looped():
 	for target in targets:
 		_apply_hit(target)
 
+#func _apply_hit(target):
+	#if not is_instance_valid(target):
+		#return
+	#if target.has_method("take_damage"):
+		#target.take_damage(attack_damage)
+	#if max_targets == 1:
+		#if current_slow_target and current_slow_target != target and is_instance_valid(current_slow_target):
+			#clear_slow_effect(current_slow_target)
+		#current_slow_target = target
+		#if "speed_modifier" in target:
+			#target.speed_modifier = slow_factor
+	#else:
+		#if "speed_modifier" in target:
+			#target.speed_modifier = slow_factor
+
 func _apply_hit(target):
 	if not is_instance_valid(target):
 		return
+		
 	if target.has_method("take_damage"):
 		target.take_damage(attack_damage)
+		
+	if target.get("is_boss") == true:
+		return
+
 	if max_targets == 1:
 		if current_slow_target and current_slow_target != target and is_instance_valid(current_slow_target):
 			clear_slow_effect(current_slow_target)
@@ -157,17 +177,17 @@ var upgrades = {
 	"left": {
 		"name": "Tung",
 		"tiers": [
-			{"label": "Tung", "cost": 75},
-			{"label": "Tung^2", "cost": 150},
-			{"label": "Tung^3", "cost": 300}
+			{"label": "Tung", "cost": 150},
+			{"label": "Tung^2", "cost": 400},
+			{"label": "Tung^3", "cost": 3000}
 		]
 	},
 	"right": {
 		"name": "Larp",
 		"tiers": [
-			{"label": "Larp", "cost": 100},
-			{"label": "Larp^2", "cost": 200},
-			{"label": "Larp^3", "cost": 700}
+			{"label": "Larp", "cost": 300},
+			{"label": "Larp^2", "cost": 1200},
+			{"label": "Larp^3", "cost": 10000}
 		]
 	}
 }

@@ -16,6 +16,7 @@ func _process(delta):
 	else:
 		visual_rotation(delta)
 		pull_entities(delta)
+	collision_mask = 1 << 1
 
 func activate_black_hole():
 	is_active = true
@@ -36,10 +37,15 @@ func pull_entities(delta):
 		if follower == null:
 			continue
 
+		if body.has_method("take_damage"):
+			body.take_damage(damage_per_second * delta)
+
+		if body.get("is_boss") == true:
+			continue
+
 		var path = follower.get_parent()
 		var path_len = path.curve.get_baked_length()
 
-		# sample ahead in small steps to find which path point is closest to the black hole
 		var closest_progress = follower.progress
 		var closest_dist = global_position.distance_to(body.global_position)
 		var search_step = 10.0
@@ -51,13 +57,9 @@ func pull_entities(delta):
 				closest_dist = test_dist
 				closest_progress = test_progress
 
-		# pull toward closest point, capped so it cant overshoot
 		var pull_step = pull_strength * delta
 		if closest_progress < follower.progress:
 			follower.progress = max(follower.progress - pull_step, closest_progress)
-
-		if body.has_method("take_damage"):
-			body.take_damage(damage_per_second * delta)
 
 func get_path_follower(body: Node) -> PathFollow2D:
 	var node = body
