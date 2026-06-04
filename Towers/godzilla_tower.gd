@@ -33,7 +33,7 @@ var recoil_tween: Tween
 
 func _ready():
 	super._ready()
-	cost = 50
+	cost = 100
 	
 	laser_ray.collision_mask = 1 << 1
 	laser_ray2.collision_mask = 1 << 1
