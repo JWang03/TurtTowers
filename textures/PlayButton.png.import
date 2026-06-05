@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5dersis5dsos"
-path="res://.godot/imported/PlayButton.png-c91a96625d4b04ed90b4780978c314d3.ctex"
+path="res://.godot/imported/PlayButton.png-a051ab5cb21e61d0a46f37bfe1a2d583.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/PlayButton.png"
-dest_files=["res://.godot/imported/PlayButton.png-c91a96625d4b04ed90b4780978c314d3.ctex"]
+source_file="res://Textures/PlayButton.png"
+dest_files=["res://.godot/imported/PlayButton.png-a051ab5cb21e61d0a46f37bfe1a2d583.ctex"]
 
 [params]
 

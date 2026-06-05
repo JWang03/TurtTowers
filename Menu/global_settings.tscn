@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bsqcpev3ak5f6" path="res://SandyShores/Scripts/settings.gd" id="1_2js5j"]
 [ext_resource type="Shader" uid="uid://qwjefknosa0f" path="res://Menu/main_menu.gdshader" id="2_qjeld"]
-[ext_resource type="AudioStream" uid="uid://b4ivihcqewi1a" path="res://Menu/SPALEXMA - We Are Charlie Kirk.mp3" id="3_music"]
+[ext_resource type="AudioStream" uid="uid://cujlcecxoatol" path="res://Menu/mp3.mp3" id="3_worgf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c3be5"]
 shader = ExtResource("2_qjeld")
@@ -93,7 +93,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=100000001]
-stream = ExtResource("3_music")
+stream = ExtResource("3_worgf")
 autoplay = true
 parameters/looping = true
 
