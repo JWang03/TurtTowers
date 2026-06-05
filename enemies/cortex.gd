@@ -96,9 +96,8 @@ func take_damage(amount):
 	else:
 		modulate = Color.WHITE
 
-	if health <= (max_health * 0.25) and not has_triggered_stealth:
+	if health <= (max_health * 0.1) and not has_triggered_stealth:
 		_activate_permanent_stealth()
-
 	if health <= 0:
 		die()
 

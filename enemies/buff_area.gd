@@ -12,7 +12,7 @@ func start_lifetime_timer():
 	await get_tree().create_timer(duration).timeout
 	
 	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, 0.5)
+	tween.tween_property(self, "modulate:a", 0.0, 0.15)
 	await tween.finished
 	
 	expire_buff()

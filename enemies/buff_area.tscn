@@ -12,6 +12,7 @@ script = ExtResource("1_yxw5x")
 speed_boost_factor = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1876895683]
+modulate = Color(1, 1, 1, 0.44705883)
 self_modulate = Color(1, 1, 1, 0.44313726)
 position = Vector2(2.499997, 7.000001)
 scale = Vector2(0.5751879, 0.6146789)
