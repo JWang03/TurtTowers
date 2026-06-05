@@ -20,20 +20,16 @@ var current_wave: int = 0
 var enemies_alive: int = 0
 var game_started: bool = false
 var wave_running: bool = false
-var wave_spawning: bool = false
 var game_finished: bool = false
-var victory_menu_shown: bool = false
-var skip_to_wave_50_button: Button
-
-func _ready() -> void:
-	var current_scene := get_tree().current_scene
-	var run_stats := get_node_or_null("/root/RunStats")
-	if run_stats:
-		run_stats.reset_for_scene(current_scene.scene_file_path if current_scene else "")
-	if current_scene and current_scene.scene_file_path == "res://SandyShores/Scenes/Sandy_Beach.tscn":
-		_create_skip_to_wave_50_button()
+var spawning: bool = false
 
 func _process(_delta: float) -> void:
+	if enemy_path:
+		var count = 0
+		for child in enemy_path.get_children():
+			if not child.has_meta("is_turt"):
+				count += 1
+		enemies_alive = count
 	if game_started or game_finished:
 		return
 	if play_button and play_button.playing:
@@ -48,38 +44,33 @@ func start_game() -> void:
 func resume_restored_wave() -> void:
 	if game_finished:
 		return
-
 	game_started = true
 	wave_running = true
-
 	while enemies_alive > 0:
 		await get_tree().create_timer(0.5).timeout
-		if enemy_path and enemy_path.get_child_count() == 0:
-			enemies_alive = 0
-		break
-
 	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager:
 		currency_manager.add_shellings(get_wave_bonus(current_wave))
-
 	wave_running = false
-	if current_wave >= max_waves:
-		await _finish_victory_if_final_clear()
-		return
 	await wait_while_unpaused(time_between_waves)
 	await start_next_wave()
 
 func get_wave_bonus(wave: int) -> int:
 	return 15 + (wave * 7)
+
 func wait_while_unpaused(seconds: float) -> void:
 	var elapsed = 0.0
 	while elapsed < seconds:
 		if play_button and play_button.playing:
 			elapsed += 0.1
 		await get_tree().create_timer(0.1).timeout
+
 func start_next_wave() -> void:
 	if current_wave >= max_waves:
-		await _finish_victory_if_final_clear()
+		game_finished = true
+		wave_running = false
+		if wave_label != null:
+			wave_label.text = "All Waves Cleared!"
 		return
 
 	current_wave += 1
@@ -89,15 +80,13 @@ func start_next_wave() -> void:
 		wave_label.text = "Wave " + str(current_wave) + " / " + str(max_waves)
 
 	var wave_data = get_wave_data(current_wave)
-	wave_spawning = true
+	spawning = true
 	await spawn_wave(wave_data)
-	wave_spawning = false
+	spawning = false
 
+	# wait for all enemies to be cleared
 	while enemies_alive > 0:
 		await get_tree().create_timer(0.5).timeout
-		if enemy_path and enemy_path.get_child_count() == 0:
-			enemies_alive = 0
-		break
 
 	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager:
@@ -133,10 +122,9 @@ func spawn_enemy(scene: PackedScene, speed_mult: float = 1.0, health_mult: float
 	enemy_path.add_child(follow)
 
 	var enemy = scene.instantiate()
-	follow.add_child(enemy)  # just this, no follow.add_child(follow)
+	follow.add_child(enemy)
 
 	follow.progress = 0.0
-	enemies_alive += 1
 
 	enemy.set("wave_manager", self)
 
@@ -148,72 +136,10 @@ func spawn_enemy(scene: PackedScene, speed_mult: float = 1.0, health_mult: float
 		enemy.set("health", base_health)
 
 func enemy_removed() -> void:
-	enemies_alive -= 1
-	if enemies_alive < 0:
-		enemies_alive = 0
-
-func _finish_victory_if_final_clear() -> void:
-	while wave_spawning or not _all_pollution_cleared():
-		await get_tree().create_timer(0.1).timeout
-
-	game_finished = true
-	wave_running = false
-	if wave_label != null:
-		wave_label.text = "All Waves Cleared!"
-	_show_victory_menu()
-
-func _all_pollution_cleared() -> bool:
-	if enemies_alive > 0:
-		return false
-	for pollution in get_tree().get_nodes_in_group("zombies"):
-		if is_instance_valid(pollution) and not pollution.is_queued_for_deletion():
-			return false
-	return true
-
-func _show_victory_menu() -> void:
-	if victory_menu_shown:
-		return
-	victory_menu_shown = true
-	var current_scene := get_tree().current_scene
-	var scene_path := current_scene.scene_file_path if current_scene else ""
-	var run_stats := get_node_or_null("/root/RunStats")
-	var victory_menu := get_node_or_null("/root/VictoryMenu")
-	if victory_menu:
-		victory_menu.show_victory(scene_path, run_stats.get_report() if run_stats else {})
-
-func _create_skip_to_wave_50_button() -> void:
-	var ui := get_tree().current_scene.find_child("UI", true, false)
-	if ui == null:
-		return
-
-	skip_to_wave_50_button = Button.new()
-	skip_to_wave_50_button.name = "TempSkipToWave50"
-	skip_to_wave_50_button.text = "Skip to 50"
-	skip_to_wave_50_button.custom_minimum_size = Vector2(120, 40)
-	skip_to_wave_50_button.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	skip_to_wave_50_button.offset_left = -145.0
-	skip_to_wave_50_button.offset_top = 12.0
-	skip_to_wave_50_button.offset_right = -25.0
-	skip_to_wave_50_button.offset_bottom = 52.0
-	skip_to_wave_50_button.add_theme_font_size_override("font_size", 18)
-	skip_to_wave_50_button.pressed.connect(_on_skip_to_wave_50_pressed)
-	ui.add_child(skip_to_wave_50_button)
-
-func _on_skip_to_wave_50_pressed() -> void:
-	if game_finished:
-		return
-	current_wave = 49
-	if wave_label != null:
-		wave_label.text = "Wave 50 ready"
-	if play_button and not play_button.playing:
-		play_button.playing = true
-	if not game_started:
-		start_game()
+	pass # kept for compatibility since enemy scripts still call it
 
 func get_wave_data(wave_num: int) -> Array:
 	match wave_num:
-
-		# ── WAVES 1-10: Bottles only, learning the game ──
 		1:
 			return [
 				{"scene": enemy_bottle, "count": 5, "delay": 0.8, "speed_mult": 1.0, "health_mult": 1.0}
@@ -254,15 +180,11 @@ func get_wave_data(wave_num: int) -> Array:
 			return [
 				{"scene": enemy_bottle, "count": 30, "delay": 0.4, "speed_mult": 1.45, "health_mult": 2.1}
 			]
-
-		# ── WAVE 11: First algae bloom introduction ──
 		11:
 			return [
 				{"scene": enemy_algae, "count": 3, "delay": 1.5, "speed_mult": 1.0, "health_mult": 1.0, "pause_after": 2.0},
 				{"scene": enemy_bottle, "count": 15, "delay": 0.5, "speed_mult": 1.45, "health_mult": 2.1}
 			]
-
-		# ── WAVES 12-18: Algae blooms + bottles ──
 		12:
 			return [
 				{"scene": enemy_algae, "count": 2, "delay": 1.2, "speed_mult": 1.05, "health_mult": 1.1, "pause_after": 1.0},
@@ -302,8 +224,6 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_algae, "count": 6, "delay": 0.85, "speed_mult": 1.3, "health_mult": 1.6, "pause_after": 0.3},
 				{"scene": enemy_bottle, "count": 28, "delay": 0.38, "speed_mult": 1.75, "health_mult": 2.7}
 			]
-
-		# ── WAVES 19-26: Rings added ──
 		19:
 			return [
 				{"scene": enemy_algae, "count": 3, "delay": 1.0, "speed_mult": 1.3, "health_mult": 1.6, "pause_after": 1.0},
@@ -355,16 +275,12 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_algae, "count": 6, "delay": 0.8, "speed_mult": 1.65, "health_mult": 2.3, "pause_after": 0.3},
 				{"scene": enemy_bottle, "count": 30, "delay": 0.34, "speed_mult": 2.1, "health_mult": 3.4}
 			]
-
-		# ── WAVE 27: First fishing net ──
 		27:
 			return [
 				{"scene": enemy_net, "count": 2, "delay": 2.0, "speed_mult": 1.0, "health_mult": 1.0, "pause_after": 1.0},
 				{"scene": enemy_ring, "count": 5, "delay": 0.9, "speed_mult": 1.5, "health_mult": 2.1, "pause_after": 0.5},
 				{"scene": enemy_bottle, "count": 20, "delay": 0.38, "speed_mult": 2.15, "health_mult": 3.5}
 			]
-
-		# ── WAVES 28-34: All 4 types ──
 		28:
 			return [
 				{"scene": enemy_net, "count": 2, "delay": 1.8, "speed_mult": 1.05, "health_mult": 1.2, "pause_after": 0.5},
@@ -416,15 +332,11 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_ring, "count": 8, "delay": 0.8, "speed_mult": 1.8, "health_mult": 2.7},
 				{"scene": enemy_bottle, "count": 30, "delay": 0.32, "speed_mult": 2.5, "health_mult": 4.2}
 			]
-
-		# ── WAVE 35: Oil spill introduction ──
 		35:
 			return [
 				{"scene": enemy_spill, "count": 3, "delay": 3.0, "speed_mult": 1.0, "health_mult": 1.0, "pause_after": 2.0},
 				{"scene": enemy_bottle, "count": 15, "delay": 0.4, "speed_mult": 2.5, "health_mult": 4.3}
 			]
-
-		# ── WAVES 36-45: All 5 types ──
 		36:
 			return [
 				{"scene": enemy_spill, "count": 2, "delay": 2.5, "speed_mult": 1.05, "health_mult": 1.2, "pause_after": 0.5},
@@ -504,8 +416,6 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_ring, "count": 10, "delay": 0.68, "speed_mult": 2.3, "health_mult": 4.2},
 				{"scene": enemy_bottle, "count": 35, "delay": 0.25, "speed_mult": 3.0, "health_mult": 6.0}
 			]
-
-		# ── WAVES 46-49: Shield enemies ──
 		46:
 			return [
 				{"scene": enemy_shield, "count": 2, "delay": 2.0, "speed_mult": 1.0, "health_mult": 1.2, "pause_after": 0.5},
@@ -545,8 +455,6 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_ring, "count": 10, "delay": 0.63, "speed_mult": 2.5, "health_mult": 5.0},
 				{"scene": enemy_bottle, "count": 35, "delay": 0.23, "speed_mult": 3.2, "health_mult": 7.0}
 			]
-
-		# ── WAVE 50: THE FINAL PUSH ──
 		50:
 			return [
 				{"scene": enemy_shield, "count": 5, "delay": 1.5, "speed_mult": 1.2, "health_mult": 2.0, "pause_after": 0.5},
@@ -559,13 +467,12 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_shield, "count": 3, "delay": 1.5, "speed_mult": 1.2, "health_mult": 2.0},
 				{"scene": enemy_bottle, "count": 40, "delay": 0.2, "speed_mult": 3.3, "health_mult": 8.0}
 			]
-		51: #boss battle
+		51:
 			return [
-				{"scene": cortex, "count": 1, "delay": 1.5, "speed_mult": 1, "health_mult": 1,},
-				{"scene": enemy_net, "count": 10, "delay": 1.5, "speed_mult": 3, "health_mult": 12,},
-				{"scene": enemy_shield, "count": 5, "delay": 0.2, "speed_mult": 3, "health_mult": 5,},
-				{"scene": enemy_spill, "count": 20, "delay": 0.5, "speed_mult": 3, "health_mult": 4,}
-				]
-
+				{"scene": cortex, "count": 1, "delay": 1.5, "speed_mult": 1, "health_mult": 1},
+				{"scene": enemy_net, "count": 10, "delay": 1.5, "speed_mult": 3, "health_mult": 12},
+				{"scene": enemy_shield, "count": 5, "delay": 0.2, "speed_mult": 3, "health_mult": 5},
+				{"scene": enemy_spill, "count": 20, "delay": 0.5, "speed_mult": 3, "health_mult": 4}
+			]
 		_:
 			return []

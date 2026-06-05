@@ -71,6 +71,7 @@ func spawn_turt(progress_offset: float = 0.0, lateral_offset: float = 0.0):
 	var follower = PathFollow2D.new()
 	follower.loop = false
 	follower.rotates = true
+	follower.set_meta("is_turt", true)  # tag it
 	path_node.add_child(follower)
 	follower.progress = spawn_offset + progress_offset
 
@@ -79,6 +80,7 @@ func spawn_turt(progress_offset: float = 0.0, lateral_offset: float = 0.0):
 	turt.health = turt_health
 	turt.explosive = explosive_shell
 	turt.scale *= turt_scale_multiplier
+	turt.scale.y *= -1  # flips vertically
 	if lateral_offset != 0.0:
 		turt.position.y = lateral_offset
 	follower.add_child(turt)

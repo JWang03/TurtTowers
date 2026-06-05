@@ -99,7 +99,12 @@ func die():
 	currency.add_shellings(shelling_drop)
 	if wave_manager != null:
 		wave_manager.enemy_removed()
-	queue_free()
+	# free the parent follower too
+	var follow = get_parent()
+	if follow is PathFollow2D:
+		follow.queue_free()
+	else:
+		queue_free()
 
 func _flashpoint_explode():
 	var nearby = get_tree().get_nodes_in_group("zombies")
