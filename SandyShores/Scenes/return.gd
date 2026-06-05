@@ -256,10 +256,15 @@ func _autosave_current_run() -> void:
 
 	var wave_spawner := current_scene.find_child("WaveSpawner", true, false)
 	if wave_spawner:
+		if bool(wave_spawner.get("game_finished")):
+			if FileAccess.file_exists(AUTOSAVE_PATH):
+				DirAccess.remove_absolute(ProjectSettings.globalize_path(AUTOSAVE_PATH))
+			return
 		save_data["current_wave"] = wave_spawner.get("current_wave")
 		save_data["game_started"] = wave_spawner.get("game_started")
 		save_data["wave_running"] = wave_spawner.get("wave_running")
 		save_data["game_finished"] = wave_spawner.get("game_finished")
+		save_data["victory_menu_shown"] = wave_spawner.get("victory_menu_shown")
 		save_data["enemies_alive"] = wave_spawner.get("enemies_alive")
 
 	var currency_manager := current_scene.find_child("CurrencyManager", true, false)
@@ -276,6 +281,9 @@ func _autosave_current_run() -> void:
 
 	save_data["towers"] = _get_tower_save_data(current_scene)
 	save_data["active_enemies"] = _get_active_enemy_save_data()
+	var run_stats := get_node_or_null("/root/RunStats")
+	if run_stats:
+		save_data["run_stats"] = run_stats.get_save_data()
 
 	var autosave_file := FileAccess.open(AUTOSAVE_PATH, FileAccess.WRITE)
 	if autosave_file == null:
@@ -374,6 +382,11 @@ func _restore_autosave(save_data: Dictionary) -> void:
 		if loss_conditions.has_method("update_label"):
 			loss_conditions.update_label()
 
+	if save_data.get("run_stats", {}) is Dictionary:
+		var run_stats := get_node_or_null("/root/RunStats")
+		if run_stats:
+			run_stats.restore_from_save(save_data.get("run_stats", {}))
+
 	_restore_towers(current_scene, save_data.get("towers", []))
 
 	var wave_spawner := current_scene.find_child("WaveSpawner", true, false)
@@ -385,7 +398,8 @@ func _restore_autosave(save_data: Dictionary) -> void:
 		wave_spawner.set("current_wave", saved_wave)
 		wave_spawner.set("game_started", wave_was_running)
 		wave_spawner.set("wave_running", wave_was_running)
-		wave_spawner.set("game_finished", bool(save_data.get("game_finished", false)))
+		wave_spawner.set("game_finished", save_data.get("game_finished", false))
+		wave_spawner.set("victory_menu_shown", save_data.get("victory_menu_shown", false))
 		var wave_label = wave_spawner.get("wave_label")
 		if wave_label:
 			var display_wave := saved_wave if wave_was_running else saved_wave + 1

@@ -25,8 +25,6 @@ func _ready():
 		shoot_timer.start()
 
 func _process(delta):
-	if Engine.get_frames_drawn() % 60 == 0:
-		print("Enemies currently in array: ", enemies_in_range.size())
 	path_follow.progress += flight_speed * delta
 	_update_target()
 
@@ -44,7 +42,6 @@ func shoot():
 	b.global_transform = muzzle.global_transform
 
 func _on_range_body_entered(body):
-	print("zombie detected")
 	if body.is_in_group("zombies"):
 		enemies_in_range.append(body)
 		_update_target()

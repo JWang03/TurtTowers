@@ -48,7 +48,7 @@ var upgrades = {
 
 func _ready():
 	super._ready()
-	cost = 100
+	cost = 225
 	attack_timer.wait_time = attack_cooldown
 	if !attack_timer.timeout.is_connected(_on_tower_heartbeat):
 		attack_timer.timeout.connect(_on_tower_heartbeat)

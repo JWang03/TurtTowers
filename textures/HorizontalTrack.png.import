@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyhitvs4oq60n"
-path="res://.godot/imported/HorizontalTrack.png-f7f0d957c89d16129ee4ff981ba3bebf.ctex"
+path="res://.godot/imported/HorizontalTrack.png-08bbfd82da5467daa4b814ca1a93c0c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/HorizontalTrack.png"
-dest_files=["res://.godot/imported/HorizontalTrack.png-f7f0d957c89d16129ee4ff981ba3bebf.ctex"]
+source_file="res://Textures/HorizontalTrack.png"
+dest_files=["res://.godot/imported/HorizontalTrack.png-08bbfd82da5467daa4b814ca1a93c0c9.ctex"]
 
 [params]
 

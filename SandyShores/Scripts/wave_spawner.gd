@@ -21,8 +21,15 @@ var enemies_alive: int = 0
 var game_started: bool = false
 var wave_running: bool = false
 var game_finished: bool = false
+var spawning: bool = false
 
 func _process(_delta: float) -> void:
+	if enemy_path:
+		var count = 0
+		for child in enemy_path.get_children():
+			if not child.has_meta("is_turt"):
+				count += 1
+		enemies_alive = count
 	if game_started or game_finished:
 		return
 	if play_button and play_button.playing:
@@ -37,32 +44,27 @@ func start_game() -> void:
 func resume_restored_wave() -> void:
 	if game_finished:
 		return
-
 	game_started = true
 	wave_running = true
-
 	while enemies_alive > 0:
 		await get_tree().create_timer(0.5).timeout
-		if enemy_path and enemy_path.get_child_count() == 0:
-			enemies_alive = 0
-		break
-
 	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager:
 		currency_manager.add_shellings(get_wave_bonus(current_wave))
-
 	wave_running = false
 	await wait_while_unpaused(time_between_waves)
 	await start_next_wave()
 
 func get_wave_bonus(wave: int) -> int:
 	return 15 + (wave * 7)
+
 func wait_while_unpaused(seconds: float) -> void:
 	var elapsed = 0.0
 	while elapsed < seconds:
 		if play_button and play_button.playing:
 			elapsed += 0.1
 		await get_tree().create_timer(0.1).timeout
+
 func start_next_wave() -> void:
 	if current_wave >= max_waves:
 		game_finished = true
@@ -78,13 +80,13 @@ func start_next_wave() -> void:
 		wave_label.text = "Wave " + str(current_wave) + " / " + str(max_waves)
 
 	var wave_data = get_wave_data(current_wave)
+	spawning = true
 	await spawn_wave(wave_data)
+	spawning = false
 
+	# wait for all enemies to be cleared
 	while enemies_alive > 0:
 		await get_tree().create_timer(0.5).timeout
-		if enemy_path and enemy_path.get_child_count() == 0:
-			enemies_alive = 0
-		break
 
 	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager:
@@ -120,10 +122,9 @@ func spawn_enemy(scene: PackedScene, speed_mult: float = 1.0, health_mult: float
 	enemy_path.add_child(follow)
 
 	var enemy = scene.instantiate()
-	follow.add_child(enemy)  # just this, no follow.add_child(follow)
+	follow.add_child(enemy)
 
 	follow.progress = 0.0
-	enemies_alive += 1
 
 	enemy.set("wave_manager", self)
 
@@ -135,14 +136,10 @@ func spawn_enemy(scene: PackedScene, speed_mult: float = 1.0, health_mult: float
 		enemy.set("health", base_health)
 
 func enemy_removed() -> void:
-	enemies_alive -= 1
-	if enemies_alive < 0:
-		enemies_alive = 0
+	pass # kept for compatibility since enemy scripts still call it
 
 func get_wave_data(wave_num: int) -> Array:
 	match wave_num:
-
-		# ── WAVES 1-10: Bottles only, learning the game ──
 		1:
 			return [
 				{"scene": enemy_bottle, "count": 5, "delay": 0.8, "speed_mult": 1.0, "health_mult": 1.0}
@@ -183,15 +180,11 @@ func get_wave_data(wave_num: int) -> Array:
 			return [
 				{"scene": enemy_bottle, "count": 30, "delay": 0.4, "speed_mult": 1.45, "health_mult": 2.1}
 			]
-
-		# ── WAVE 11: First algae bloom introduction ──
 		11:
 			return [
 				{"scene": enemy_algae, "count": 3, "delay": 1.5, "speed_mult": 1.0, "health_mult": 1.0, "pause_after": 2.0},
 				{"scene": enemy_bottle, "count": 15, "delay": 0.5, "speed_mult": 1.45, "health_mult": 2.1}
 			]
-
-		# ── WAVES 12-18: Algae blooms + bottles ──
 		12:
 			return [
 				{"scene": enemy_algae, "count": 2, "delay": 1.2, "speed_mult": 1.05, "health_mult": 1.1, "pause_after": 1.0},
@@ -231,8 +224,6 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_algae, "count": 6, "delay": 0.85, "speed_mult": 1.3, "health_mult": 1.6, "pause_after": 0.3},
 				{"scene": enemy_bottle, "count": 28, "delay": 0.38, "speed_mult": 1.75, "health_mult": 2.7}
 			]
-
-		# ── WAVES 19-26: Rings added ──
 		19:
 			return [
 				{"scene": enemy_algae, "count": 3, "delay": 1.0, "speed_mult": 1.3, "health_mult": 1.6, "pause_after": 1.0},
@@ -284,16 +275,12 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_algae, "count": 6, "delay": 0.8, "speed_mult": 1.65, "health_mult": 2.3, "pause_after": 0.3},
 				{"scene": enemy_bottle, "count": 30, "delay": 0.34, "speed_mult": 2.1, "health_mult": 3.4}
 			]
-
-		# ── WAVE 27: First fishing net ──
 		27:
 			return [
 				{"scene": enemy_net, "count": 2, "delay": 2.0, "speed_mult": 1.0, "health_mult": 1.0, "pause_after": 1.0},
 				{"scene": enemy_ring, "count": 5, "delay": 0.9, "speed_mult": 1.5, "health_mult": 2.1, "pause_after": 0.5},
 				{"scene": enemy_bottle, "count": 20, "delay": 0.38, "speed_mult": 2.15, "health_mult": 3.5}
 			]
-
-		# ── WAVES 28-34: All 4 types ──
 		28:
 			return [
 				{"scene": enemy_net, "count": 2, "delay": 1.8, "speed_mult": 1.05, "health_mult": 1.2, "pause_after": 0.5},
@@ -345,15 +332,11 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_ring, "count": 8, "delay": 0.8, "speed_mult": 1.8, "health_mult": 2.7},
 				{"scene": enemy_bottle, "count": 30, "delay": 0.32, "speed_mult": 2.5, "health_mult": 4.2}
 			]
-
-		# ── WAVE 35: Oil spill introduction ──
 		35:
 			return [
 				{"scene": enemy_spill, "count": 3, "delay": 3.0, "speed_mult": 1.0, "health_mult": 1.0, "pause_after": 2.0},
 				{"scene": enemy_bottle, "count": 15, "delay": 0.4, "speed_mult": 2.5, "health_mult": 4.3}
 			]
-
-		# ── WAVES 36-45: All 5 types ──
 		36:
 			return [
 				{"scene": enemy_spill, "count": 2, "delay": 2.5, "speed_mult": 1.05, "health_mult": 1.2, "pause_after": 0.5},
@@ -433,8 +416,6 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_ring, "count": 10, "delay": 0.68, "speed_mult": 2.3, "health_mult": 4.2},
 				{"scene": enemy_bottle, "count": 35, "delay": 0.25, "speed_mult": 3.0, "health_mult": 6.0}
 			]
-
-		# ── WAVES 46-49: Shield enemies ──
 		46:
 			return [
 				{"scene": enemy_shield, "count": 2, "delay": 2.0, "speed_mult": 1.0, "health_mult": 1.2, "pause_after": 0.5},
@@ -474,8 +455,6 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_ring, "count": 10, "delay": 0.63, "speed_mult": 2.5, "health_mult": 5.0},
 				{"scene": enemy_bottle, "count": 35, "delay": 0.23, "speed_mult": 3.2, "health_mult": 7.0}
 			]
-
-		# ── WAVE 50: THE FINAL PUSH ──
 		50:
 			return [
 				{"scene": enemy_shield, "count": 5, "delay": 1.5, "speed_mult": 1.2, "health_mult": 2.0, "pause_after": 0.5},
@@ -488,13 +467,12 @@ func get_wave_data(wave_num: int) -> Array:
 				{"scene": enemy_shield, "count": 3, "delay": 1.5, "speed_mult": 1.2, "health_mult": 2.0},
 				{"scene": enemy_bottle, "count": 40, "delay": 0.2, "speed_mult": 3.3, "health_mult": 8.0}
 			]
-		51: #boss battle
+		51:
 			return [
-				{"scene": cortex, "count": 1, "delay": 1.5, "speed_mult": 1, "health_mult": 1,},
-				{"scene": enemy_net, "count": 10, "delay": 1.5, "speed_mult": 3, "health_mult": 12,},
-				{"scene": enemy_shield, "count": 5, "delay": 0.2, "speed_mult": 3, "health_mult": 5,},
-				{"scene": enemy_spill, "count": 20, "delay": 0.5, "speed_mult": 3, "health_mult": 4,}
-				]
-
+				{"scene": cortex, "count": 1, "delay": 1.5, "speed_mult": 1, "health_mult": 1},
+				{"scene": enemy_net, "count": 10, "delay": 1.5, "speed_mult": 3, "health_mult": 12},
+				{"scene": enemy_shield, "count": 5, "delay": 0.2, "speed_mult": 3, "health_mult": 5},
+				{"scene": enemy_spill, "count": 20, "delay": 0.5, "speed_mult": 3, "health_mult": 4}
+			]
 		_:
 			return []
