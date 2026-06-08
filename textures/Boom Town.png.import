@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctarv37negb7v"
-path="res://.godot/imported/Sahur.png-28ea979ada1a0358cfe5c225e3de5e2e.ctex"
+uid="uid://dxu8hc7bju8i2"
+path="res://.godot/imported/Boom Town.png-99d928feb9505b5d7f33406d84d17a44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Sahur.png"
-dest_files=["res://.godot/imported/Sahur.png-28ea979ada1a0358cfe5c225e3de5e2e.ctex"]
+source_file="res://textures/Boom Town.png"
+dest_files=["res://.godot/imported/Boom Town.png-99d928feb9505b5d7f33406d84d17a44.ctex"]
 
 [params]
 

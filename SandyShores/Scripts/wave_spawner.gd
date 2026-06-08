@@ -22,6 +22,7 @@ var game_started: bool = false
 var wave_running: bool = false
 var game_finished: bool = false
 var spawning: bool = false
+var wave_run_id: int = 0
 
 func _process(_delta: float) -> void:
 	if enemy_path:
@@ -41,18 +42,48 @@ func start_game() -> void:
 	game_started = true
 	await start_next_wave()
 
+func debug_skip_to_wave(wave_num: int) -> void:
+	wave_run_id += 1
+	spawning = false
+	wave_running = false
+	game_finished = false
+	game_started = true
+	current_wave = clampi(wave_num - 1, 0, max_waves - 1)
+	enemies_alive = 0
+
+	if play_button:
+		play_button.playing = true
+		if play_button.has_method("_update_icons"):
+			play_button._update_icons()
+
+	if enemy_path:
+		for child in enemy_path.get_children():
+			child.queue_free()
+
+	if wave_label != null:
+		wave_label.text = "Wave " + str(wave_num) + " / " + str(max_waves)
+
+	call_deferred("start_next_wave")
+
 func resume_restored_wave() -> void:
 	if game_finished:
 		return
 	game_started = true
 	wave_running = true
+	var run_id := wave_run_id
 	while enemies_alive > 0:
 		await get_tree().create_timer(0.5).timeout
+		if run_id != wave_run_id:
+			return
+	if run_id != wave_run_id:
+		return
 	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager:
 		currency_manager.add_shellings(get_wave_bonus(current_wave))
 	wave_running = false
 	await wait_while_unpaused(time_between_waves)
+	if run_id != wave_run_id:
+		return
 	await start_next_wave()
 
 func get_wave_bonus(wave: int) -> int:
@@ -66,11 +97,25 @@ func wait_while_unpaused(seconds: float) -> void:
 		await get_tree().create_timer(0.1).timeout
 
 func start_next_wave() -> void:
+	wave_run_id += 1
+	var run_id := wave_run_id
+
 	if current_wave >= max_waves:
 		game_finished = true
 		wave_running = false
 		if wave_label != null:
 			wave_label.text = "All Waves Cleared!"
+		
+		# Trigger victory menu
+		var victory_menu := get_node_or_null("/root/VictoryMenu")
+		if victory_menu and victory_menu.has_method("show_victory"):
+			var scene_path = get_tree().current_scene.scene_file_path
+			var stats = {}
+			var run_stats := get_node_or_null("/root/RunStats")
+			if run_stats:
+				stats = run_stats.get_report()
+			victory_menu.show_victory(scene_path, stats)
+		
 		return
 
 	current_wave += 1
@@ -81,12 +126,19 @@ func start_next_wave() -> void:
 
 	var wave_data = get_wave_data(current_wave)
 	spawning = true
-	await spawn_wave(wave_data)
+	await spawn_wave(wave_data, run_id)
+	if run_id != wave_run_id:
+		return
 	spawning = false
 
 	# wait for all enemies to be cleared
 	while enemies_alive > 0:
 		await get_tree().create_timer(0.5).timeout
+		if run_id != wave_run_id:
+			return
+
+	if run_id != wave_run_id:
+		return
 
 	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
 	if currency_manager:
@@ -94,10 +146,15 @@ func start_next_wave() -> void:
 
 	wave_running = false
 	await wait_while_unpaused(time_between_waves)
+	if run_id != wave_run_id:
+		return
 	await start_next_wave()
 
-func spawn_wave(wave_data: Array) -> void:
+func spawn_wave(wave_data: Array, run_id: int) -> void:
 	for group in wave_data:
+		if run_id != wave_run_id:
+			return
+
 		var scene: PackedScene = group["scene"]
 		var count: int = group["count"]
 		var delay: float = group["delay"]
@@ -106,11 +163,17 @@ func spawn_wave(wave_data: Array) -> void:
 		var pause_after: float = group.get("pause_after", 0.0)
 
 		for i in range(count):
+			if run_id != wave_run_id:
+				return
 			spawn_enemy(scene, speed_mult, health_mult)
 			await wait_while_unpaused(delay)
+			if run_id != wave_run_id:
+				return
 
 		if pause_after > 0.0:
 			await wait_while_unpaused(pause_after)
+			if run_id != wave_run_id:
+				return
 
 func spawn_enemy(scene: PackedScene, speed_mult: float = 1.0, health_mult: float = 1.0) -> void:
 	if scene == null or enemy_path == null:

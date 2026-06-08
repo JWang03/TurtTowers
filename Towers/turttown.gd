@@ -20,10 +20,14 @@ var income_interval: float = 8.0
 var income_timer: Timer = null
 
 var soldier_scene = preload("res://Towers/bullet_tower.tscn")
+var boom_town_sprite = preload("res://textures/Boom Town.png")
+
+@onready var sprite = $Sprite2D
 
 func _ready():
 	super._ready()
 	cost = 350
+	z_index = 100
 	income_timer = Timer.new()
 	income_timer.one_shot = false
 	income_timer.timeout.connect(_on_income_tick)
@@ -325,7 +329,8 @@ func purchase_upgrade(branch: String):
 	elif branch == "right":
 		apply_right_upgrade()
 		right_level += 1
-		if right_level>=3:
+		if right_level == 3:
+			sprite.texture = boom_town_sprite
 			UpgradeManager.register_tier3_right(tower_name)
 	refresh_range_indicator()
 
