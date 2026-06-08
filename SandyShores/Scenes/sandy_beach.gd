@@ -1,10 +1,10 @@
 extends Node2D
 
-#const DEBUG_SKIP_CASH := 100000
-#const DEBUG_TARGET_WAVE := 51
+const DEBUG_SKIP_CASH := 100000
+const DEBUG_TARGET_WAVE := 51
 
 func _ready():
-	#_add_debug_skip_button()
+	_add_debug_skip_button()
 
 	var run_stats := get_node_or_null("/root/RunStats")
 	if run_stats:
@@ -30,30 +30,36 @@ func _add_debug_skip_button() -> void:
 	button.offset_top = 12.0
 	button.offset_right = -12.0
 	button.offset_bottom = 52.0
-	#button.pressed.connect(_on_debug_skip_pressed)
+	button.pressed.connect(_on_debug_skip_pressed)
 	debug_layer.add_child(button)
 
-#func _on_debug_skip_pressed() -> void:
-	#var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
-	#if currency_manager:
-		#currency_manager.add_shellings(DEBUG_SKIP_CASH, false)
-#
-	#var wave_spawner = get_node_or_null("/root/Game/WaveSpawner")
-	#if wave_spawner and wave_spawner.has_method("debug_skip_to_wave"):
-		#wave_spawner.debug_skip_to_wave(DEBUG_TARGET_WAVE)
+func _on_debug_skip_pressed() -> void:
+	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
+	if currency_manager:
+		currency_manager.add_shellings(DEBUG_SKIP_CASH, false)
+
+	var wave_spawner = get_node_or_null("/root/Game/WaveSpawner")
+	if wave_spawner and wave_spawner.has_method("debug_skip_to_wave"):
+		wave_spawner.debug_skip_to_wave(DEBUG_TARGET_WAVE)
 
 func _check_intro():
-	var wave_spawner = get_node("/root/Game/WaveSpawner")
+	var wave_spawner = get_node_or_null("/root/Game/WaveSpawner")
 	var is_fresh_start = true
 	
 	if wave_spawner:
 		var current_wave = wave_spawner.get("current_wave")
 		var game_started = wave_spawner.get("game_started")
-		if current_wave > 0 or game_started:
+		if (current_wave != null and current_wave > 0) or game_started:
 			is_fresh_start = false
 	
 	if is_fresh_start:
 		IntroScreen.show_intro()
 	else:
-		# game was restored from save, just spawn the ? button
+		# --- THE FIX ---
+		# Instead of letting IntroScreen rebuild layers and look for UI buttons
+		# down paths that conflict with your active pause button, we clear its
+		# reference to the Play/Pause button completely before spawning the '?' icon.
+		if "_starter" in IntroScreen:
+			IntroScreen._starter = null
+			
 		IntroScreen.spawn_info_button_only()
