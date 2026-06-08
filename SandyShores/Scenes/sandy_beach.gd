@@ -1,10 +1,10 @@
 extends Node2D
 
-const DEBUG_SKIP_CASH := 100000
-const DEBUG_TARGET_WAVE := 51
+#const DEBUG_SKIP_CASH := 100000
+#const DEBUG_TARGET_WAVE := 51
 
 func _ready():
-	_add_debug_skip_button()
+	#_add_debug_skip_button()
 
 	var run_stats := get_node_or_null("/root/RunStats")
 	if run_stats:
@@ -30,17 +30,17 @@ func _add_debug_skip_button() -> void:
 	button.offset_top = 12.0
 	button.offset_right = -12.0
 	button.offset_bottom = 52.0
-	button.pressed.connect(_on_debug_skip_pressed)
+	#button.pressed.connect(_on_debug_skip_pressed)
 	debug_layer.add_child(button)
 
-func _on_debug_skip_pressed() -> void:
-	var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
-	if currency_manager:
-		currency_manager.add_shellings(DEBUG_SKIP_CASH, false)
-
-	var wave_spawner = get_node_or_null("/root/Game/WaveSpawner")
-	if wave_spawner and wave_spawner.has_method("debug_skip_to_wave"):
-		wave_spawner.debug_skip_to_wave(DEBUG_TARGET_WAVE)
+#func _on_debug_skip_pressed() -> void:
+	#var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
+	#if currency_manager:
+		#currency_manager.add_shellings(DEBUG_SKIP_CASH, false)
+#
+	#var wave_spawner = get_node_or_null("/root/Game/WaveSpawner")
+	#if wave_spawner and wave_spawner.has_method("debug_skip_to_wave"):
+		#wave_spawner.debug_skip_to_wave(DEBUG_TARGET_WAVE)
 
 func _check_intro():
 	var wave_spawner = get_node("/root/Game/WaveSpawner")

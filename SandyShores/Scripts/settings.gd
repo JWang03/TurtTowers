@@ -1,13 +1,12 @@
 extends CanvasLayer
 
-# Changed default to 0.0
 const DEFAULT_VOLUME: float = 0.0 
 const MENU_FADE_DURATION: float = 0.2
 const MENU_SCALE_DURATION: float = 0.3
 
 var colorblind_mode: int = 0
 var volume_value: float = DEFAULT_VOLUME
-var fullscreen_mode: int = 0
+var fullscreen_mode: int = 2
 var _is_animating: bool = false
 
 signal settings_updated
@@ -27,10 +26,8 @@ func _ready():
 	menu_panel.hide()
 	update_filter_shader()
 	
-	# Initialize volume to zero on startup
 	set_volume(DEFAULT_VOLUME)
 	
-	# Start background music if not already playing
 	if music_player and not music_player.playing:
 		music_player.play()
 
