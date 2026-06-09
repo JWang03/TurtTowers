@@ -1,16 +1,21 @@
 extends Button
 
+# Default to false, but we will auto-correct this in _ready()
 @export var playing := false
 
 @onready var resume_icon = $Resume
 @onready var pause_icon = $Pause
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	playing = !get_tree().paused
 	pressed.connect(_on_button_pressed)
 	_update_icons()
 
 func _on_button_pressed():
 	playing = !playing
+	get_tree().paused = !playing
+	
 	release_focus()
 	_update_icons()
 

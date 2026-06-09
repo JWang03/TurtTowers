@@ -3,36 +3,62 @@ extends TowerBase
 @export var nuke_damage: float = 1000.0
 @export var blast_radius: float = 250.0
 @export var fall_speed: float = 2.0
+
 @onready var missile_sprite = $Sprite2D
 @onready var explosion_ani = $MushroomCloud
 @onready var crater_sprite = $Crater
-var has_exploded: bool = false
+
+var drop_tween: Tween
+var _is_internal_explosion: bool = false
+
+# The setter now filters out external changes (saves) vs internal changes (gameplay impacts)
+@export var has_exploded: bool = false:
+	set(value):
+		has_exploded = value
+		if has_exploded and not _is_internal_explosion:
+			call_deferred("_restore_post_explosion_state")
 
 func _ready():
 	cost = 500
 	super._ready()
-	if explosion_ani:
-		explosion_ani.hide()
-	if crater_sprite:
-		crater_sprite.hide()
+	
+	# Default layout for fresh placements
+	if missile_sprite: missile_sprite.show()
+	if explosion_ani: explosion_ani.hide()
+	if crater_sprite: crater_sprite.hide()
+	
+	# Instant catch if it loads up already exploded
+	if has_exploded:
+		_restore_post_explosion_state()
 
 func on_placed():
+	if has_exploded:
+		return
 	cost = 0
 	start_nuke_sequence()
 
 func start_nuke_sequence():
+	if has_exploded:
+		return
+		
 	var target_pos = global_position
 	global_position.y -= 1000
-	var tween = create_tween()
-	tween.tween_property(self, "global_position", target_pos, fall_speed)\
+	
+	drop_tween = create_tween()
+	drop_tween.tween_property(self, "global_position", target_pos, fall_speed)\
 		.set_trans(Tween.TRANS_QUART)\
 		.set_ease(Tween.EASE_IN)
-	tween.finished.connect(_on_impact)
+	drop_tween.finished.connect(_on_impact)
 
 func _on_impact():
 	if has_exploded:
 		return
+		
+	# CRITICAL: Tell the setter this is a real gameplay impact.
+	# This bypasses the restore function and lets the mushroom cloud play out completely.
+	_is_internal_explosion = true
 	has_exploded = true
+	
 	remove_from_group("towers")
 	if missile_sprite:
 		missile_sprite.hide()
@@ -41,12 +67,15 @@ func _on_impact():
 	if explosion_ani:
 		explosion_ani.show()
 		explosion_ani.play("default")
-		explosion_ani.animation_finished.connect(_on_explosion_finished)
+		if not explosion_ani.animation_finished.is_connected(_on_explosion_finished):
+			explosion_ani.animation_finished.connect(_on_explosion_finished)
+			
 	destroy_nearby_towers()
 	damage_zombies()
 
 func _on_explosion_finished():
-	explosion_ani.hide()
+	if explosion_ani:
+		explosion_ani.hide()
 
 func destroy_nearby_towers():
 	var all_towers = get_tree().get_nodes_in_group("towers")
@@ -56,7 +85,6 @@ func destroy_nearby_towers():
 		if tower == self:
 			continue
 		if global_position.distance_to(tower.global_position) < (tile_size * 1.5):
-			# unregister tier 3s before destroying
 			var tower_name = tower.get("tower_name")
 			if tower_name:
 				var left_level = tower.get("left_level")
@@ -75,3 +103,18 @@ func damage_zombies():
 		if global_position.distance_to(zombie.global_position) < blast_radius:
 			if zombie.has_method("take_damage"):
 				zombie.take_damage(nuke_damage)
+
+func _restore_post_explosion_state() -> void:
+	# If a save file loads this mid-frame and accidentally started a tween, kill it instantly
+	if drop_tween and drop_tween.is_valid():
+		drop_tween.kill()
+		# Snap the position back to the ground if it got yanked into the sky before the save loaded
+		global_position.y += 1000 
+		
+	remove_from_group("towers")
+	if missile_sprite:
+		missile_sprite.hide()
+	if crater_sprite:
+		crater_sprite.show()
+	if explosion_ani:
+		explosion_ani.hide()
