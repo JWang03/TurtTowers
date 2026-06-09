@@ -175,6 +175,10 @@ func _on_understood_pressed() -> void:
 func _finish_close() -> void:
 	_menu_root.hide()
 	_darkener.modulate.a = 0.0
+	
+	if _starter and _starter.has_method("set_playing"):
+		_starter.set_playing(true)
+		
 	_spawn_info_button()
 
 func _spawn_info_button() -> void:
