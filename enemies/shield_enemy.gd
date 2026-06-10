@@ -1,6 +1,6 @@
 extends "res://enemies/zombie.gd"
 
-@export var shield_health: float = 500
+@export var shield_health: float = 1500
 @export var shield_radius: float = 60.0
 
 @onready var shield_node = $ShieldArea
@@ -12,8 +12,8 @@ func _ready():
 	super._ready()
 	add_to_group("shield_mobs")
 	
-	health = 200
-	speed = 40
+	health = 50
+	speed = 130
 	shelling_drop = 12
 	
 	shield_node.monitoring = false
@@ -23,7 +23,7 @@ func _ready():
 	deploy_shield()
 
 func start_shield_timer():
-	await get_tree().create_timer(randf_range(0.5, 8.0)).timeout
+	await get_tree().create_timer(randf_range(0.3, 0.8)).timeout
 	deploy_shield()
 
 func deploy_shield():

@@ -2,13 +2,13 @@ extends "res://enemies/zombie.gd"
 
 @export var stealth_alpha: float = 0.2
 @export var stealth_duration: float = 2
-@export var visible_duration: float = 3
+@export var visible_duration: float = 1.5
 
 var is_stealth: bool = false
 
 func _ready():
 	super._ready()
-	health = 500
+	max_health = 250
 	speed = 200.0
 	shelling_drop = 10
 	start_stealth_loop()

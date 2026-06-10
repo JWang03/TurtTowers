@@ -26,7 +26,7 @@ func _ready():
 	
 	last_position = global_position
 	
-	max_health = 75000.0
+	max_health = 40000.0
 	health = max_health
 	speed = base_boss_speed
 	damage = 200              

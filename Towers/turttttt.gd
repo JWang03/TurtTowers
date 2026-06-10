@@ -19,7 +19,7 @@ var tower_id: String = "Turt Turt Turt Sahur"  # display name, changes with upgr
 
 func _ready():
 	super._ready()
-	cost = 250
+	cost = 1500
 	anim_sprite.animation_looped.connect(_on_animation_looped)
 	anim_sprite.stop()
 	detection_area.body_entered.connect(_on_body_entered)
@@ -177,17 +177,17 @@ var upgrades = {
 	"left": {
 		"name": "Tung",
 		"tiers": [
-			{"label": "Tung", "cost": 150},
-			{"label": "Tung^2", "cost": 400},
-			{"label": "Tung^3", "cost": 3000}
+			{"label": "Tung", "cost": 0},
+			{"label": "Tung^2", "cost": 0},
+			{"label": "Tung^3", "cost": 0}
 		]
 	},
 	"right": {
 		"name": "Larp",
 		"tiers": [
-			{"label": "Larp", "cost": 300},
-			{"label": "Larp^2", "cost": 1200},
-			{"label": "Larp^3", "cost": 10000}
+			{"label": "Larp", "cost": 0},
+			{"label": "Larp^2", "cost": 0},
+			{"label": "Larp^3", "cost": 0}
 		]
 	}
 }

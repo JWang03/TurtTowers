@@ -205,7 +205,7 @@ func get_wave_data(wave_num: int) -> Array:
 	match wave_num:
 		1:
 			return [
-				{"scene": enemy_bottle, "count": 5, "delay": 0.8, "speed_mult": 1.0, "health_mult": 1.0}
+				{"scene": enemy_shield, "count": 5, "delay": 0.8, "speed_mult": 1.0, "health_mult": 1.0}
 			]
 		2:
 			return [

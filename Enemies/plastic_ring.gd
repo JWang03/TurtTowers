@@ -7,8 +7,8 @@ var child_enemy_scene = preload("res://enemies/cans.tscn")
 func _ready():
 	super._ready()
 	
-	health = 300
-	speed = 10.0
+	max_health = 400
+	speed = 40.0
 	attack_damage = 20
 	shelling_drop = 6
 func _process(delta):

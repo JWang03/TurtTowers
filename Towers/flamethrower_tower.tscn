@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://db8mm2oj2u0hg"]
 
 [ext_resource type="Script" uid="uid://yum22yjclc1b" path="res://Towers/flamethrower_tower.gd" id="1_s8bkm"]
-[ext_resource type="Texture2D" uid="uid://c8vad4jrhnsen" path="res://textures/image-removebg-preview (50).png" id="2_igapr"]
 [ext_resource type="Texture2D" uid="uid://dvgq2nmb0u6uu" path="res://textures/image-removebg-preview (15).png" id="2_occl0"]
-[ext_resource type="Texture2D" uid="uid://xalxm3776kni" path="res://textures/image-removebg-preview (51).png" id="3_1sj7e"]
 [ext_resource type="Texture2D" uid="uid://gup15b7ijlle" path="res://textures/Frames/image-removebg-preview (28).png" id="3_k6h5b"]
 [ext_resource type="Texture2D" uid="uid://n5mlpynwoohr" path="res://textures/Frames/blank screen.png" id="3_le5yd"]
 
@@ -98,8 +96,6 @@ animations = [{
 z_index = 4096
 collision_mask = 2
 script = ExtResource("1_s8bkm")
-left_sprite = ExtResource("2_igapr")
-right_sprite = ExtResource("3_1sj7e")
 cost = 175.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1428673578]
@@ -116,18 +112,19 @@ shape = SubResource("CircleShape2D_le5yd")
 shape = SubResource("CircleShape2D_1nd11")
 
 [node name="Head" type="Marker2D" parent="." unique_id=1030069258]
-position = Vector2(15, 0)
+position = Vector2(1, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Head" unique_id=1051787296]
 z_index = 4096
 z_as_relative = false
-position = Vector2(91.48514, -3.5516722)
+position = Vector2(103, 8)
 rotation = 1.5707964
 scale = Vector2(0.903021, 0.6410538)
 sprite_frames = SubResource("SpriteFrames_xrte0")
-frame_progress = 0.5517778
+frame_progress = 0.43144682
 
 [node name="FireDamageArea" type="Area2D" parent="Head" unique_id=470152181]
+position = Vector2(13, 1)
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Head/FireDamageArea" unique_id=1045013435]

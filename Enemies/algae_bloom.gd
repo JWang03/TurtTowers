@@ -4,8 +4,8 @@ var buff_scene = preload("res://enemies/buff_area.tscn")
 
 func _ready():
 	super._ready()
-	speed = 125.0
-	health = 40
+	speed = 70.0
+	health = 100
 	attack_damage = 5.0
 	shelling_drop = 8
 

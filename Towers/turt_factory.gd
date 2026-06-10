@@ -23,7 +23,7 @@ var turt_health: int = 1
 
 func _ready():
 	super._ready()
-	cost = 250
+	cost = 400
 	path_node = get_tree().get_first_node_in_group("EnemyPath")
 	add_child(spawn_timer)
 	spawn_timer.wait_time = spawn_interval
@@ -140,7 +140,6 @@ func purchase_upgrade(branch: String):
 		ucost = upgrades["left"]["tiers"][left_level]["cost"]
 	elif branch == "right":
 		ucost = upgrades["right"]["tiers"][right_level]["cost"]
-	# block tier 3 if another tower already has it
 	if branch == "left" and left_level == 2 and not UpgradeManager.can_purchase_tier3_left(tower_name):
 		return
 	if branch == "right" and right_level == 2 and not UpgradeManager.can_purchase_tier3_right(tower_name):
