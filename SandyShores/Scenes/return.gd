@@ -457,7 +457,12 @@ func _restore_towers(current_scene: Node, tower_data: Array) -> void:
 		_restore_tower_upgrades(tower, data)
 
 		# defer visual refresh so onready vars are guaranteed ready
+				# defer visual refresh so onready vars are guaranteed ready
 		tower.call_deferred("_refresh_visuals")
+		
+		# for nukes, restore the post-explosion state if it exploded
+		if tower.has_method("_restore_post_explosion_state"):
+			tower.call_deferred("_restore_post_explosion_state")
 
 		if grid:
 			var occupied_cells: Dictionary = grid.get("occupied_cells")

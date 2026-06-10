@@ -9,11 +9,14 @@ var _menu_root: Control
 var _menu_panel: PanelContainer
 var _darkener: ColorRect
 var _starter = null
+var _info_button_spawned: bool = false
 
 func show_intro() -> void:
 	_starter = get_node_or_null("/root/Game/UI/Buttons/PlayButton")
-	if _starter:
-		_starter.playing = false
+	# CHANGED: Use a safe method call if it exists instead of forcing the property directly
+	if _starter and _starter.has_method("set_playing"):
+		_starter.set_playing(false)
+		
 	_build_everything()
 	_menu_root.show()
 	_darkener.modulate.a = 0.0
@@ -30,13 +33,15 @@ func show_intro() -> void:
 func spawn_info_button_only() -> void:
 	_starter = get_node_or_null("/root/Game/UI/Buttons/PlayButton")
 	_build_everything()
-	# keep everything hidden, just show the ? button
 	_menu_root.hide()
 	_darkener.modulate.a = 0.0
 	_menu_panel.hide()
 	_spawn_info_button()
 
 func _build_everything() -> void:
+	if _menu_layer:
+		return
+
 	_menu_layer = CanvasLayer.new()
 	_menu_layer.name = "IntroMenuLayer"
 	_menu_layer.layer = 5000
@@ -170,9 +175,17 @@ func _on_understood_pressed() -> void:
 func _finish_close() -> void:
 	_menu_root.hide()
 	_darkener.modulate.a = 0.0
+	
+	if _starter and _starter.has_method("set_playing"):
+		_starter.set_playing(true)
+		
 	_spawn_info_button()
 
 func _spawn_info_button() -> void:
+	if _info_button_spawned:
+		return
+	_info_button_spawned = true
+
 	var button := Button.new()
 	button.text = "?"
 	button.custom_minimum_size = Vector2(36, 36)
@@ -191,8 +204,10 @@ func _spawn_info_button() -> void:
 	_menu_layer.add_child(button)
 
 func _on_info_pressed() -> void:
-	if _starter:
-		_starter.playing = false
+	# CHANGED: Use a safe method call if it exists instead of forcing the property directly
+	if _starter and _starter.has_method("set_playing"):
+		_starter.set_playing(false)
+		
 	_menu_root.show()
 	_darkener.modulate.a = 0.0
 	_menu_panel.pivot_offset = _menu_panel.size / 2

@@ -332,20 +332,12 @@ func purchase_upgrade(branch: String):
 		if right_level == 3:
 			sprite.texture = boom_town_sprite
 			UpgradeManager.register_tier3_right(tower_name)
+			# Give bonus only on initial purchase
+			var cm = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
+			if cm:
+				cm.add_shellings(300)
+				_spawn_popup("+300", 2)
 	refresh_range_indicator()
-
-func apply_left_upgrade():
-	match left_level:
-		0:
-			_spawn_turret(Vector2(-10, -10))
-		1:
-			_spawn_turret(Vector2(10, 10))
-		2:
-			for turret in _turrets:
-				if is_instance_valid(turret) and turret.has_node("Timer"):
-					turret.get_node("Timer").wait_time *= 0.5
-			buff_radius_tiles = 2
-			_rebuff_all()
 
 func apply_right_upgrade():
 	match right_level:
@@ -359,14 +351,27 @@ func apply_right_upgrade():
 		2:
 			income_interval = 3.0
 			income_amount = 50.0
-			var currency_manager = get_node_or_null("/root/Game/UI/HUD/CurrencyManager")
-			if currency_manager:
-				currency_manager.add_shellings(300)
-				_spawn_popup("+300", 2)
 	if income_active and not income_timer.is_stopped():
 		income_timer.stop()
 		income_timer.wait_time = income_interval
 		income_timer.start()
+
+func _refresh_visuals():
+	if right_level >= 3:
+		sprite.texture = boom_town_sprite
+
+func apply_left_upgrade():
+	match left_level:
+		0:
+			_spawn_turret(Vector2(-10, -10))
+		1:
+			_spawn_turret(Vector2(10, 10))
+		2:
+			for turret in _turrets:
+				if is_instance_valid(turret) and turret.has_node("Timer"):
+					turret.get_node("Timer").wait_time *= 0.5
+			buff_radius_tiles = 2
+			_rebuff_all()
 
 func sell() -> void:
 	for tower in _buffed.keys().duplicate():
