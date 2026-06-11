@@ -28,7 +28,7 @@ func _ready():
 	add_child(spawn_timer)
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
-	print(get_tree().get_nodes_in_group("EnemyPath"))
+
 
 func _process(_delta):
 	if starter.playing == true:

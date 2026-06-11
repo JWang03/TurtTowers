@@ -10,7 +10,7 @@ var damage_multiplier = 1
 @onready var collision_shape = $Range/CollisionShape2D
 @onready var sprite = $Sprite2D
 
-var beam_scene = preload("res://towers/holybeam.tscn")
+var beam_scene = preload("res://Towers/holybeam.tscn")
 var targets_in_range: Array = []
 var rng = RandomNumberGenerator.new()
 var time_since_last_shot: float = 0.0

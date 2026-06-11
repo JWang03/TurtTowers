@@ -1,4 +1,4 @@
-extends "res://enemies/zombie.gd"
+extends "res://Enemies/zombie.gd"
   # override before _ready fires
 
 func _ready():

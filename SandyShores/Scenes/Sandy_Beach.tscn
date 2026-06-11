@@ -577,10 +577,10 @@ texture = ExtResource("31_ux3bf")
 
 [node name="FacturtoryButton" type="Button" parent="UI/ShopPanel" unique_id=1288876156]
 layout_mode = 0
-offset_left = -453.0
-offset_top = 427.0
-offset_right = -376.0
-offset_bottom = 487.0
+offset_left = -504.0
+offset_top = 506.0
+offset_right = -427.0
+offset_bottom = 566.0
 flat = true
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("33_axmsp")
@@ -603,9 +603,9 @@ texture = ExtResource("32_as63w")
 
 [node name="TurtSahurButton" type="Button" parent="UI/ShopPanel" unique_id=1734483852]
 layout_mode = 0
-offset_left = -509.0
+offset_left = -405.0
 offset_top = 502.0
-offset_right = -432.0
+offset_right = -328.0
 offset_bottom = 562.0
 flat = true
 script = ExtResource("9_saejb")
@@ -629,10 +629,10 @@ texture = ExtResource("25_turt")
 
 [node name="TurtTownButton" type="Button" parent="UI/ShopPanel" unique_id=1966559656]
 layout_mode = 0
-offset_left = -410.0
-offset_top = 505.0
-offset_right = -333.0
-offset_bottom = 565.0
+offset_left = -460.0
+offset_top = 424.0
+offset_right = -383.0
+offset_bottom = 484.0
 flat = true
 script = ExtResource("9_saejb")
 tower_scene = ExtResource("27_turt")

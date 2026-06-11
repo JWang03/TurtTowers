@@ -1,4 +1,4 @@
-extends "res://enemies/zombie.gd"
+extends "res://Enemies/zombie.gd"
 
 @export var is_boss: bool = true
 var is_stealth: bool = false
@@ -12,7 +12,7 @@ var speed_timer: float = 0.0
 @export var speed_cycle_duration: float = 5.0 
 var current_speed_state: int = 0              
 
-@export var buff_scene: PackedScene = preload("res://enemies/buff_range.tscn")
+@export var buff_scene: PackedScene = preload("res://Enemies/buff_range.tscn")
 @export var buff_cooldown: float = 4.0        
 var buff_timer: float = 0.0
 

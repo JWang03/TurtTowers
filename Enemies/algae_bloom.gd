@@ -1,6 +1,6 @@
-extends "res://enemies/zombie.gd"
+extends "res://Enemies/zombie.gd"
 
-var buff_scene = preload("res://enemies/buff_area.tscn")
+var buff_scene = preload("res://Enemies/buff_area.tscn")
 
 func _ready():
 	super._ready()

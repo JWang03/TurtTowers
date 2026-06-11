@@ -1,8 +1,8 @@
-extends "res://enemies/zombie.gd"
+extends "res://Enemies/zombie.gd"
 
 @export var spawn_count: int = 6
 @export var scatter_range: float = 40.0
-var child_enemy_scene = preload("res://enemies/cans.tscn")
+var child_enemy_scene = preload("res://Enemies/cans.tscn")
 
 func _ready():
 	super._ready()

@@ -309,7 +309,7 @@ position = Vector2(600, 340.50006)
 scale = Vector2(1.5839999, 1.5180002)
 texture = ExtResource("5_qnun0")
 
-[node name="EnemyPath" type="Path2D" parent="." unique_id=1497783405]
+[node name="EnemyPath" type="Path2D" parent="." unique_id=1497783405 groups=["EnemyPath"]]
 z_index = 4096
 curve = SubResource("Curve2D_r1ppn")
 
@@ -609,7 +609,7 @@ texture = ExtResource("16_o67r5")
 
 [node name="ExitLayer" type="CanvasLayer" parent="UI" unique_id=1032097488]
 
-[node name="ShopPanel" type="Control" parent="UI" unique_id=571749763]
+[node name="ShopPanel" type="Control" parent="UI" unique_id=1267678051]
 z_index = 4096
 anchors_preset = 0
 offset_left = 7.0
@@ -617,7 +617,7 @@ offset_top = -1.0
 offset_right = 157.0
 offset_bottom = 648.0
 
-[node name="BombButton" type="Button" parent="UI/ShopPanel" unique_id=1205505420]
+[node name="BombButton" type="Button" parent="UI/ShopPanel" unique_id=935529257]
 layout_mode = 0
 offset_left = -507.0
 offset_top = 34.0
@@ -627,7 +627,7 @@ flat = true
 script = ExtResource("10_l1vld")
 tower_scene = ExtResource("11_o67r5")
 
-[node name="Label" type="Label" parent="UI/ShopPanel/BombButton" unique_id=1609077198]
+[node name="Label" type="Label" parent="UI/ShopPanel/BombButton" unique_id=528382525]
 z_index = 1
 layout_mode = 0
 offset_left = 11.0
@@ -638,12 +638,12 @@ theme_override_constants/outline_size = 8
 text = "$00"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/BombButton" unique_id=1362955495]
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/BombButton" unique_id=2095044191]
 position = Vector2(44.999996, 29)
 scale = Vector2(0.213, 0.19299997)
 texture = ExtResource("9_18q4q")
 
-[node name="LieturtantButton" type="Button" parent="UI/ShopPanel" unique_id=1374277727]
+[node name="LieturtantButton" type="Button" parent="UI/ShopPanel" unique_id=901298646]
 layout_mode = 0
 offset_left = -410.0
 offset_top = 34.0
@@ -653,7 +653,7 @@ flat = true
 script = ExtResource("10_l1vld")
 tower_scene = ExtResource("13_gxa37")
 
-[node name="Label" type="Label" parent="UI/ShopPanel/LieturtantButton" unique_id=2060703849]
+[node name="Label" type="Label" parent="UI/ShopPanel/LieturtantButton" unique_id=2011094412]
 z_index = 1
 layout_mode = 0
 offset_left = 16.0
@@ -664,12 +664,12 @@ theme_override_constants/outline_size = 8
 text = "$00"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/LieturtantButton" unique_id=762440418]
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/LieturtantButton" unique_id=1564256051]
 position = Vector2(45, 29)
 scale = Vector2(0.213, 0.19299997)
 texture = ExtResource("12_5d46n")
 
-[node name="TurtosaurButton" type="Button" parent="UI/ShopPanel" unique_id=1001840450]
+[node name="TurtosaurButton" type="Button" parent="UI/ShopPanel" unique_id=551825628]
 layout_mode = 0
 offset_left = -456.0
 offset_top = 112.0
@@ -679,7 +679,7 @@ flat = true
 script = ExtResource("10_l1vld")
 tower_scene = ExtResource("15_2v7dk")
 
-[node name="Label" type="Label" parent="UI/ShopPanel/TurtosaurButton" unique_id=432104982]
+[node name="Label" type="Label" parent="UI/ShopPanel/TurtosaurButton" unique_id=700830580]
 z_index = 1
 layout_mode = 0
 offset_left = 10.0
@@ -690,12 +690,12 @@ theme_override_constants/outline_size = 8
 text = "$00"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtosaurButton" unique_id=1516604311]
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtosaurButton" unique_id=217160087]
 position = Vector2(39.000004, 26.999992)
 scale = Vector2(0.33725, 0.27725)
 texture = ExtResource("14_4c3de")
 
-[node name="HolyButton" type="Button" parent="UI/ShopPanel" unique_id=267886643]
+[node name="HolyButton" type="Button" parent="UI/ShopPanel" unique_id=2067365601]
 layout_mode = 0
 offset_left = -507.0
 offset_top = 188.0
@@ -705,7 +705,7 @@ flat = true
 script = ExtResource("10_l1vld")
 tower_scene = ExtResource("24_18q4q")
 
-[node name="Label" type="Label" parent="UI/ShopPanel/HolyButton" unique_id=1996491125]
+[node name="Label" type="Label" parent="UI/ShopPanel/HolyButton" unique_id=737305115]
 z_index = 1
 layout_mode = 0
 offset_left = 10.0
@@ -716,12 +716,12 @@ theme_override_constants/outline_size = 8
 text = "$00"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/HolyButton" unique_id=113197519]
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/HolyButton" unique_id=555391821]
 position = Vector2(34, 23.999992)
 scale = Vector2(0.09765624, 0.08984376)
 texture = ExtResource("23_heg8e")
 
-[node name="GraviturtButton" type="Button" parent="UI/ShopPanel" unique_id=846195735]
+[node name="GraviturtButton" type="Button" parent="UI/ShopPanel" unique_id=701079017]
 layout_mode = 0
 offset_left = -407.0
 offset_top = 345.0
@@ -731,7 +731,7 @@ flat = true
 script = ExtResource("10_l1vld")
 tower_scene = ExtResource("17_utgg1")
 
-[node name="Label" type="Label" parent="UI/ShopPanel/GraviturtButton" unique_id=1209154406]
+[node name="Label" type="Label" parent="UI/ShopPanel/GraviturtButton" unique_id=1122703845]
 z_index = 1
 layout_mode = 0
 offset_left = 10.0
@@ -742,12 +742,12 @@ theme_override_constants/outline_size = 8
 text = "$00"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/GraviturtButton" unique_id=1863804268]
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/GraviturtButton" unique_id=1267903220]
 position = Vector2(38, 32.000004)
 scale = Vector2(0.2725, 0.22450002)
 texture = ExtResource("16_6vmtx")
 
-[node name="FighturtJetButton" type="Button" parent="UI/ShopPanel" unique_id=39520734]
+[node name="FighturtJetButton" type="Button" parent="UI/ShopPanel" unique_id=70028652]
 layout_mode = 0
 offset_left = -461.0
 offset_top = 260.0
@@ -757,7 +757,7 @@ flat = true
 script = ExtResource("10_l1vld")
 tower_scene = ExtResource("22_m5biy")
 
-[node name="Label" type="Label" parent="UI/ShopPanel/FighturtJetButton" unique_id=768464726]
+[node name="Label" type="Label" parent="UI/ShopPanel/FighturtJetButton" unique_id=317653213]
 z_index = 1
 layout_mode = 0
 offset_left = 14.0
@@ -768,12 +768,12 @@ theme_override_constants/outline_size = 8
 text = "$00"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FighturtJetButton" unique_id=721510110]
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FighturtJetButton" unique_id=1396950410]
 position = Vector2(43, 36.999985)
 scale = Vector2(0.3343151, 0.2907974)
 texture = ExtResource("20_1kjwe")
 
-[node name="ScienturtButton" type="Button" parent="UI/ShopPanel" unique_id=869052576]
+[node name="ScienturtButton" type="Button" parent="UI/ShopPanel" unique_id=512285030]
 layout_mode = 0
 offset_left = -509.0
 offset_top = 351.0
@@ -783,7 +783,7 @@ flat = true
 script = ExtResource("10_l1vld")
 tower_scene = ExtResource("19_c12jv")
 
-[node name="Label" type="Label" parent="UI/ShopPanel/ScienturtButton" unique_id=985952387]
+[node name="Label" type="Label" parent="UI/ShopPanel/ScienturtButton" unique_id=672606733]
 z_index = 1
 layout_mode = 0
 offset_left = 13.0
@@ -794,12 +794,12 @@ theme_override_constants/outline_size = 8
 text = "$00"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/ScienturtButton" unique_id=1214487148]
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/ScienturtButton" unique_id=1085535242]
 position = Vector2(37, 23)
 scale = Vector2(0.1965, 0.17449996)
 texture = ExtResource("18_jdmgg")
 
-[node name="FlameturterButton" type="Button" parent="UI/ShopPanel" unique_id=982902128]
+[node name="FlameturterButton" type="Button" parent="UI/ShopPanel" unique_id=1941800513]
 layout_mode = 0
 offset_left = -402.0
 offset_top = 193.0
@@ -809,7 +809,7 @@ flat = true
 script = ExtResource("10_l1vld")
 tower_scene = ExtResource("30_n0svf")
 
-[node name="Label" type="Label" parent="UI/ShopPanel/FlameturterButton" unique_id=1428661296]
+[node name="Label" type="Label" parent="UI/ShopPanel/FlameturterButton" unique_id=1306385658]
 z_index = 1
 layout_mode = 0
 offset_left = 10.0
@@ -820,22 +820,22 @@ theme_override_constants/outline_size = 8
 text = "$00"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FlameturterButton" unique_id=1398267276]
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FlameturterButton" unique_id=402841468]
 position = Vector2(36.198868, 21.301147)
 scale = Vector2(0.29215783, 0.2702948)
 texture = ExtResource("29_c12jv")
 
-[node name="FacturtoryButton" type="Button" parent="UI/ShopPanel" unique_id=814188444]
+[node name="FacturtoryButton" type="Button" parent="UI/ShopPanel" unique_id=953119644]
 layout_mode = 0
-offset_left = -453.0
-offset_top = 427.0
-offset_right = -376.0
-offset_bottom = 487.0
+offset_left = -504.0
+offset_top = 506.0
+offset_right = -427.0
+offset_bottom = 566.0
 flat = true
 script = ExtResource("10_l1vld")
 tower_scene = ExtResource("32_bwtra")
 
-[node name="Label" type="Label" parent="UI/ShopPanel/FacturtoryButton" unique_id=1697316008]
+[node name="Label" type="Label" parent="UI/ShopPanel/FacturtoryButton" unique_id=1051893202]
 z_index = 1
 layout_mode = 0
 offset_left = 10.0
@@ -846,22 +846,22 @@ theme_override_constants/outline_size = 8
 text = "$00"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FacturtoryButton" unique_id=1560459100]
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/FacturtoryButton" unique_id=1954590744]
 position = Vector2(33, 25.584717)
 scale = Vector2(0.24848486, 0.23891471)
 texture = ExtResource("31_1kjwe")
 
-[node name="TurtSahurButton" type="Button" parent="UI/ShopPanel" unique_id=1911398992]
+[node name="TurtSahurButton" type="Button" parent="UI/ShopPanel" unique_id=1778722657]
 layout_mode = 0
-offset_left = -509.0
+offset_left = -405.0
 offset_top = 502.0
-offset_right = -432.0
+offset_right = -328.0
 offset_bottom = 562.0
 flat = true
 script = ExtResource("10_l1vld")
 tower_scene = ExtResource("33_2v7dk")
 
-[node name="Label" type="Label" parent="UI/ShopPanel/TurtSahurButton" unique_id=694163295]
+[node name="Label" type="Label" parent="UI/ShopPanel/TurtSahurButton" unique_id=1187026003]
 z_index = 1
 layout_mode = 0
 offset_left = 14.0
@@ -872,22 +872,22 @@ theme_override_constants/outline_size = 8
 text = "$00"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtSahurButton" unique_id=2135372524]
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtSahurButton" unique_id=2118397244]
 position = Vector2(39.625004, 23.5)
 scale = Vector2(0.22649997, 0.18599997)
 texture = ExtResource("32_4c3de")
 
-[node name="TurtTownButton" type="Button" parent="UI/ShopPanel" unique_id=819560261]
+[node name="TurtTownButton" type="Button" parent="UI/ShopPanel" unique_id=1317385621]
 layout_mode = 0
-offset_left = -410.0
-offset_top = 505.0
-offset_right = -333.0
-offset_bottom = 565.0
+offset_left = -460.0
+offset_top = 424.0
+offset_right = -383.0
+offset_bottom = 484.0
 flat = true
 script = ExtResource("10_l1vld")
 tower_scene = ExtResource("40_utgg1")
 
-[node name="Label" type="Label" parent="UI/ShopPanel/TurtTownButton" unique_id=303981530]
+[node name="Label" type="Label" parent="UI/ShopPanel/TurtTownButton" unique_id=1483764616]
 z_index = 1
 layout_mode = 0
 offset_left = 17.0
@@ -898,12 +898,12 @@ theme_override_constants/outline_size = 8
 text = "$00"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtTownButton" unique_id=896504711]
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShopPanel/TurtTownButton" unique_id=1801857662]
 position = Vector2(44.696228, 23.06836)
 scale = Vector2(0.15593821, 0.14641082)
 texture = ExtResource("39_6vmtx")
 
-[node name="nuke" type="TextureButton" parent="UI/ShopPanel" unique_id=1577198991]
+[node name="nuke" type="TextureButton" parent="UI/ShopPanel" unique_id=669083189]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
@@ -917,7 +917,7 @@ stretch_mode = 5
 script = ExtResource("35_eynw7")
 tower_scene = ExtResource("33_1kjwe")
 
-[node name="Label" type="Label" parent="UI/ShopPanel/nuke" unique_id=1318174902]
+[node name="Label" type="Label" parent="UI/ShopPanel/nuke" unique_id=1621543405]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 56.0

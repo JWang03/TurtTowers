@@ -5,13 +5,13 @@ extends Node
 @export var enemy_path: Path2D
 @export var wave_label: Label
 
-var enemy_bottle = preload("res://enemies/zombie.tscn")
-var enemy_algae = preload("res://enemies/algae_bloom.tscn")
-var enemy_ring = preload("res://enemies/plastic_ring.tscn")
-var enemy_net = preload("res://enemies/fishing_net.tscn")
-var enemy_spill = preload("res://enemies/oil_spill.tscn")
-var enemy_shield = preload("res://enemies/shield_enemy.tscn")
-var cortex = preload("res://enemies/cortex.tscn")
+var enemy_bottle = preload("res://Enemies/zombie.tscn")
+var enemy_algae = preload("res://Enemies/algae_bloom.tscn")
+var enemy_ring = preload("res://Enemies/plastic_ring.tscn")
+var enemy_net = preload("res://Enemies/fishing_net.tscn")
+var enemy_spill = preload("res://Enemies/oil_spill.tscn")
+var enemy_shield = preload("res://Enemies/shield_enemy.tscn")
+var cortex = preload("res://Enemies/cortex.tscn")
 
 @export var time_between_waves: float = 3.0
 @export var max_waves: int = 51

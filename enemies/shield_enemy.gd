@@ -1,4 +1,4 @@
-extends "res://enemies/zombie.gd"
+extends "res://Enemies/zombie.gd"
 
 @export var shield_health: float = 1500
 @export var shield_radius: float = 60.0
