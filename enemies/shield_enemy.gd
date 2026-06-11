@@ -23,7 +23,7 @@ func _ready():
 	deploy_shield()
 
 func start_shield_timer():
-	await get_tree().create_timer(randf_range(0.3, 0.8)).timeout
+	await get_tree().create_timer(randf_range(0.0, 0.3)).timeout
 	deploy_shield()
 
 func deploy_shield():
@@ -51,7 +51,7 @@ func break_shield():
 	is_shield_active = false
 	shield_node.monitoring = false
 	shield_node.visible = false
-	shield_health = 500 
+	shield_health = 1000 
 	
 	start_shield_timer()
 
