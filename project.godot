@@ -30,6 +30,10 @@ IntroScreen="*uid://csdb6t7lu2fgs"
 window/size/mode=4
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+EnemyPath=""
+
 [gui]
 
 theme/custom_font="uid://csyqjjtdck41e"
