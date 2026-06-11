@@ -101,12 +101,13 @@ func _on_body_exited(body):
 		anim_sprite.stop()
 
 func _process(_delta):
-	if is_placed and starter and starter.playing:
-		if not get_multiple_targets().is_empty():
-			if not anim_sprite.is_playing():
-				anim_sprite.play()
-		else:
-			anim_sprite.stop()
+	if starter.playing == true:
+		if is_placed and starter and starter.playing:
+			if not get_multiple_targets().is_empty():
+				if not anim_sprite.is_playing():
+					anim_sprite.play()
+			else:
+				anim_sprite.stop()
 
 func _on_animation_looped():
 	if not starter or not starter.playing or not is_placed:

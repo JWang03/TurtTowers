@@ -26,13 +26,14 @@ func _ready():
 	
 
 func _process(delta):
-	if not is_placed or targets_in_range.is_empty():
-		return
 	if starter.playing == true:
-		time_since_last_shot += delta
-		if time_since_last_shot >= fire_rate:
-			smite()
-			time_since_last_shot = 0.0
+		if not is_placed or targets_in_range.is_empty():
+			return
+		if starter.playing == true:
+			time_since_last_shot += delta
+			if time_since_last_shot >= fire_rate:
+				smite()
+				time_since_last_shot = 0.0
 
 func _on_zombie_entered(body):
 	if is_placed:

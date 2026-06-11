@@ -73,77 +73,78 @@ func setup_beam_pair(glow: Line2D, core: Line2D, glow_color: Color):
 	head.add_child(core)
 
 func _process(delta):
-	if not is_placed or not starter or not starter.playing:
-		hide_beam()
-		reset_recoil()
-		return
+	if starter.playing == true:
+		if not is_placed or not starter or not starter.playing:
+			hide_beam()
+			reset_recoil()
+			return
 
-	target_zombie = get_best_target()
+		target_zombie = get_best_target()
 
-	if is_instance_valid(target_zombie):
-		head.look_at(target_zombie.global_position)
+		if is_instance_valid(target_zombie):
+			head.look_at(target_zombie.global_position)
 		
-		var target_rot = head.rotation
+			var target_rot = head.rotation
 		
-		sprite.rotation = target_rot + PI
+			sprite.rotation = target_rot + PI
 			
-		var angle = wrapf(sprite.rotation, -PI, PI)
-		if abs(angle) > PI / 2:
-			sprite.flip_v = true
-		else:
-			sprite.flip_v = false
-			
-		laser_ray.force_raycast_update()
-		if laser_ray.is_colliding():
-			var hit_collider = laser_ray.get_collider()
-			if hit_collider and hit_collider.is_in_group("zombies"):
-				var shield_provider = get_shield_provider(hit_collider)
-				var final_damage_target = shield_provider if shield_provider else hit_collider
-				show_beam(laser_ray.get_collision_point(), laser_glow, laser_core)
-				apply_laser_recoil()
-				
-				if final_damage_target.has_method("take_damage"):
-					final_damage_target.take_damage(damage_per_second * delta)
+			var angle = wrapf(sprite.rotation, -PI, PI)
+			if abs(angle) > PI / 2:
+				sprite.flip_v = true
 			else:
-				show_beam(laser_ray.get_collision_point(), laser_glow, laser_core)
+				sprite.flip_v = false
+			
+			laser_ray.force_raycast_update()
+			if laser_ray.is_colliding():
+				var hit_collider = laser_ray.get_collider()
+				if hit_collider and hit_collider.is_in_group("zombies"):
+					var shield_provider = get_shield_provider(hit_collider)
+					var final_damage_target = shield_provider if shield_provider else hit_collider
+					show_beam(laser_ray.get_collision_point(), laser_glow, laser_core)
+					apply_laser_recoil()
+				
+					if final_damage_target.has_method("take_damage"):
+						final_damage_target.take_damage(damage_per_second * delta)
+					else:
+						show_beam(laser_ray.get_collision_point(), laser_glow, laser_core)
+				else:
+					laser_glow.visible = false
+					laser_core.visible = false
+					if not dual_beam or not target_zombie2:
+						reset_recoil()
 		else:
 			laser_glow.visible = false
 			laser_core.visible = false
-			if not dual_beam or not target_zombie2:
-				reset_recoil()
-	else:
-		laser_glow.visible = false
-		laser_core.visible = false
-		reset_recoil()
+			reset_recoil()
 
-	if dual_beam:
-		var bodies = detection_area.get_overlapping_bodies().filter(func(b):
-			return b.is_in_group("zombies") and b != target_zombie and b.get("is_stealth") != true
-		)
-		if not bodies.is_empty():
-			target_zombie2 = bodies[0]
-			laser_ray2.look_at(target_zombie2.global_position)
-			laser_ray2.force_raycast_update()
-			if laser_ray2.is_colliding():
-				var hit_collider2 = laser_ray2.get_collider()
-				if hit_collider2 and hit_collider2.is_in_group("zombies"):
-					var shield_provider2 = get_shield_provider(hit_collider2)
-					var final_damage_target2 = shield_provider2 if shield_provider2 else hit_collider2
-					show_beam(laser_ray2.get_collision_point(), laser_glow2, laser_core2)
-					if final_damage_target2.has_method("take_damage"):
-						final_damage_target2.take_damage(damage_per_second * delta)
+		if dual_beam:
+			var bodies = detection_area.get_overlapping_bodies().filter(func(b):
+				return b.is_in_group("zombies") and b != target_zombie and b.get("is_stealth") != true
+			)
+			if not bodies.is_empty():
+				target_zombie2 = bodies[0]
+				laser_ray2.look_at(target_zombie2.global_position)
+				laser_ray2.force_raycast_update()
+				if laser_ray2.is_colliding():
+					var hit_collider2 = laser_ray2.get_collider()
+					if hit_collider2 and hit_collider2.is_in_group("zombies"):
+						var shield_provider2 = get_shield_provider(hit_collider2)
+						var final_damage_target2 = shield_provider2 if shield_provider2 else hit_collider2
+						show_beam(laser_ray2.get_collision_point(), laser_glow2, laser_core2)
+						if final_damage_target2.has_method("take_damage"):
+							final_damage_target2.take_damage(damage_per_second * delta)
+					else:
+						show_beam(laser_ray2.get_collision_point(), laser_glow2, laser_core2)
 				else:
-					show_beam(laser_ray2.get_collision_point(), laser_glow2, laser_core2)
+					laser_glow2.visible = false
+					laser_core2.visible = false
 			else:
 				laser_glow2.visible = false
 				laser_core2.visible = false
+				target_zombie2 = null
 		else:
 			laser_glow2.visible = false
 			laser_core2.visible = false
-			target_zombie2 = null
-	else:
-		laser_glow2.visible = false
-		laser_core2.visible = false
 
 
 func apply_laser_recoil():

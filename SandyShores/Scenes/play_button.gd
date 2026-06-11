@@ -8,14 +8,11 @@ extends Button
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	playing = !get_tree().paused
 	pressed.connect(_on_button_pressed)
 	_update_icons()
 
 func _on_button_pressed():
 	playing = !playing
-	get_tree().paused = !playing
-	
 	release_focus()
 	_update_icons()
 

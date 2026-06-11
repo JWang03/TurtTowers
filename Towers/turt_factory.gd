@@ -31,19 +31,20 @@ func _ready():
 	print(get_tree().get_nodes_in_group("EnemyPath"))
 
 func _process(_delta):
-	if path_node == null:
-		path_node = get_tree().get_first_node_in_group("EnemyPath")
-	if is_placed and not factory_active and path_node != null:
-		if starter and starter.playing:
-			calculate_best_spawn_point()
-			spawn_timer.start()
-			factory_active = true
-	if factory_active and starter and not starter.playing:
-		spawn_timer.stop()
-		factory_active = false
-	if not is_placed and factory_active:
-		spawn_timer.stop()
-		factory_active = false
+	if starter.playing == true:
+		if path_node == null:
+			path_node = get_tree().get_first_node_in_group("EnemyPath")
+		if is_placed and not factory_active and path_node != null:
+			if starter and starter.playing:
+				calculate_best_spawn_point()
+				spawn_timer.start()
+				factory_active = true
+		if factory_active and starter and not starter.playing:
+			spawn_timer.stop()
+			factory_active = false
+		if not is_placed and factory_active:
+			spawn_timer.stop()
+			factory_active = false
 
 func calculate_best_spawn_point():
 	if path_node == null:

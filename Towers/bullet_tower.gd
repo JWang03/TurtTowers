@@ -48,23 +48,24 @@ func _ready():
 	detection_area.body_entered.connect(_on_zombie_entered)
 
 func _process(_delta: float) -> void:
-	timer.wait_time = fire_rate
+	if starter.playing == true:
+		timer.wait_time = fire_rate
 	
-	var target = get_best_target()
-	if target:
-		look_at(target.global_position)
+		var target = get_best_target()
+		if target:
+			look_at(target.global_position)
 		
-		if sprite.texture == left_sprite or sprite.texture == right_sprite:
-			rotation += 0
-		else:
-			rotation += PI 
+			if sprite.texture == left_sprite or sprite.texture == right_sprite:
+				rotation += 0
+			else:
+				rotation += PI 
 		
-		var angle = wrapf(rotation, -PI, PI)
+			var angle = wrapf(rotation, -PI, PI)
 		
-		if abs(angle) > PI / 2:
-			sprite.flip_v = true
-		else:
-			sprite.flip_v = false
+			if abs(angle) > PI / 2:
+				sprite.flip_v = true
+			else:
+				sprite.flip_v = false
 
 func _input(event):
 	if not is_placed:

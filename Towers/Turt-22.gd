@@ -50,12 +50,13 @@ func _ready():
 		shoot_timer.start()
 
 func _process(delta):
-	path_follow.progress += flight_speed * delta
+	if starter.playing == true:
+		path_follow.progress += flight_speed * delta
 	
-	if sprite.texture == right_sprite:
-		sprite.rotation = -PI/2
-	else:
-		sprite.rotation = PI/2
+		if sprite.texture == right_sprite:
+			sprite.rotation = -PI/2
+		else:
+			sprite.rotation = PI/2
 
 func _on_shoot_timer_timeout():
 	shoot()

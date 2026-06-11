@@ -56,12 +56,13 @@ func _exit_tree() -> void:
 	_turrets.clear()
 
 func _process(_delta):
-	if income_active:
-		if starter and starter.playing and income_timer.is_stopped():
-			income_timer.wait_time = income_interval
-			income_timer.start()
-		elif starter and not starter.playing and not income_timer.is_stopped():
-			income_timer.stop()
+	if starter.playing == true:
+		if income_active:
+			if starter and starter.playing and income_timer.is_stopped():
+				income_timer.wait_time = income_interval
+				income_timer.start()
+			elif starter and not starter.playing and not income_timer.is_stopped():
+				income_timer.stop()
 
 func _on_income_tick():
 	if not starter or not starter.playing or not is_placed:

@@ -29,16 +29,16 @@ func _process(_delta):
 	if not is_placed or not starter or not starter.playing:
 		stop_flame()
 		return
-		
+	
 	target_zombie = get_best_target()
 	if is_instance_valid(target_zombie):
 		look_at(target_zombie.global_position)
-		
+	
 		if sprite.texture == left_sprite or sprite.texture == right_sprite:
 			rotation += 0
 		else:
 			rotation += 0
-		
+	
 		var angle = wrapf(rotation, -PI, PI)
 		if abs(angle) > PI / 2:
 			sprite.flip_v = true
@@ -46,7 +46,7 @@ func _process(_delta):
 		else:
 			sprite.flip_v = false
 			head.scale.y = 1.0
-			
+		
 		start_flame()
 	else:
 		stop_flame()

@@ -55,25 +55,26 @@ func _ready():
 	attack_timer.start()
 
 func _process(_delta):
-	attack_timer.wait_time = attack_cooldown
+	if starter.playing == true:
+		attack_timer.wait_time = attack_cooldown
 	
-	if right_level >= 1:
-		update_aura()
+		if right_level >= 1:
+			update_aura()
 		
-	var target = get_best_target()
-	if target:
-		look_at(target.global_position)
+		var target = get_best_target()
+		if target:
+			look_at(target.global_position)
 		
-		if sprite.texture == left_sprite or sprite.texture == right_sprite:
-			rotation += PI
-		else:
-			rotation += PI
+			if sprite.texture == left_sprite or sprite.texture == right_sprite:
+				rotation += PI
+			else:
+				rotation += PI
 			
-		var angle = wrapf(rotation, -PI, PI)
-		if abs(angle) > PI / 2:
-			sprite.flip_v = true
-		else:
-			sprite.flip_v = false
+			var angle = wrapf(rotation, -PI, PI)
+			if abs(angle) > PI / 2:
+				sprite.flip_v = true
+			else:
+				sprite.flip_v = false
 
 func _on_tower_heartbeat():
 	if starter.playing == true:

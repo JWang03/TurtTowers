@@ -49,18 +49,19 @@ func _ready():
 
 		
 func _process(_delta: float) -> void:
-	timer.wait_time = fire_rate
+	if starter.playing == true:
+		timer.wait_time = fire_rate
 	
-	var target = get_best_target()
-	if target:
-		look_at(target.global_position)
-		rotation += PI
+		var target = get_best_target()
+		if target:
+			look_at(target.global_position)
+			rotation += PI
 		
-		var angle = wrapf(rotation, -PI, PI)
-		if abs(angle) > PI / 2:
-			sprite.flip_v = true
-		else:
-			sprite.flip_v = false
+			var angle = wrapf(rotation, -PI, PI)
+			if abs(angle) > PI / 2:
+				sprite.flip_v = true
+			else:
+				sprite.flip_v = false
 
 func _on_zombie_entered(body):
 	if body.is_in_group("zombies") and timer.is_stopped():
