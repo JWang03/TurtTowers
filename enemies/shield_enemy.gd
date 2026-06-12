@@ -23,7 +23,7 @@ func _ready():
 	deploy_shield()
 
 func start_shield_timer():
-	await get_tree().create_timer(randf_range(0.0, 0.3)).timeout
+	await get_tree().create_timer(randf_range(0.3, 1)).timeout
 	deploy_shield()
 
 func deploy_shield():

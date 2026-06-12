@@ -1,6 +1,6 @@
 extends TowerBase
 
-@export var nuke_damage: float = 1000.0
+@export var nuke_damage: float = 2500.0
 @export var blast_radius: float = 250.0
 @export var fall_speed: float = 2.0
 
@@ -22,12 +22,10 @@ func _ready():
 	cost = 500
 	super._ready()
 	
-	# Default layout for fresh placements
 	if missile_sprite: missile_sprite.show()
 	if explosion_ani: explosion_ani.hide()
 	if crater_sprite: crater_sprite.hide()
 	
-	# Instant catch if it loads up already exploded
 	if has_exploded:
 		_restore_post_explosion_state()
 
@@ -54,8 +52,6 @@ func _on_impact():
 	if has_exploded:
 		return
 		
-	# CRITICAL: Tell the setter this is a real gameplay impact.
-	# This bypasses the restore function and lets the mushroom cloud play out completely.
 	_is_internal_explosion = true
 	has_exploded = true
 	
@@ -105,10 +101,8 @@ func damage_zombies():
 				zombie.take_damage(nuke_damage)
 
 func _restore_post_explosion_state() -> void:
-	# If a save file loads this mid-frame and accidentally started a tween, kill it instantly
 	if drop_tween and drop_tween.is_valid():
 		drop_tween.kill()
-		# Snap the position back to the ground if it got yanked into the sky before the save loaded
 		global_position.y += 1000 
 		
 	remove_from_group("towers")
